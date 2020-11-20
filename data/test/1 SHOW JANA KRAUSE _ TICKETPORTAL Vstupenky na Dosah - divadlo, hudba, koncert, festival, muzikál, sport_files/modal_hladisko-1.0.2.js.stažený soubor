@@ -1,0 +1,197 @@
+﻿// ******************************************************************************
+// MODIFIKACIA OKNA modalHladisko
+// ******************************************************************************
+
+$(function () {
+    //var VyskaHladiska = NastavVyskuHladiska();
+   // $('#modalHladisko').modal('show');
+
+    // klik na vyber cenovej hladiny / vyber sektora
+    $(".vyber-sektor .list-group").on('click', function () {
+        $('.zoznam-sektorov').toggleClass('hidden');
+    })
+
+    //$('.modalHladisko .hladisko-body').height(NastavVyskuHladiska());
+
+    // LEN PRE TESTOVANIE
+    // zisti a zobraz
+    //$('body').append('<span class="vypis" style="z-index:10000; background-color:#0096FF;color:whitesmoke;padding:5px;position: fixed;bottom:30px;right:50px">' + ReturnSizeGrid())
+    // end.LEN PRE TESTOVANIE
+
+    // ANIMACIA - ak je zvoleny sektor vyroluj spodny panel
+    var animationNameKosik = "bounceInUp";
+    var animationNamePocetVst = "fadeIn";
+    var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+    /*$('.hladisko').on('click', function () {
+        var $infoKosik = $('.kosik-box');
+        var $vyberPocetVst = $('.vyber-pocet-vst');
+
+        $infoKosik.removeClass("hidden").removeClass($vyberPocetVst).addClass("animated " + animationNameKosik).one(animationEnd, function () {
+            //sem co sa stane po animacii
+            $vyberPocetVst.removeClass('hidden');
+            $vyberPocetVst.addClass("animated " + animationNamePocetVst);
+        });
+
+    })*/
+    // end.ANIMACIA - ak je zvoleny sektor vyroluj spodny panel
+
+
+    initModalHladisko();
+})
+
+function initModalHladisko() {
+    var ZoznamSektorov = $('#zoznam-sektorov');
+
+    // zoznam sektorov vzdy zabaleny
+    ZoznamSektorov.addClass('hidden')
+
+    if (!(typeof (HladiskoFullscreen) != "undefined" && HladiskoFullscreen == true)) {
+
+        // nastavi triedu size-container(sirka stranky), alebo size-fullscreen(fullscreen) podla toho ci je mobil, desktop, tablet.. fullscreen priradujem zatial iba pre small a extrasmall
+        SetSizeModalHladisko()
+
+        // podla vysky okna nastavena vyska priestoru pre hladisko (trieda .hladisko-body)
+        NastavVyskuHladiska()
+    }
+}
+
+
+// Podla velkosti gridu nastavi triedu size-container alebo size-fullscreen
+function SetSizeModalHladisko() {
+    // vrati velkost gridu
+    var sizeGrid = ReturnSizeGrid();
+    
+    // Podla velkosti gridu nastav velkost okna
+    if (sizeGrid == "ExtraSmall" || sizeGrid == "Small") {
+        $('.modalHladisko').removeClass('size-container').addClass('size-fullscreen');
+        $('.modalHladisko .desktop-resize i').removeClass('fa-expand').addClass('fa-compress');
+        logSMS = "Velkost modal okna nastavena na fullscreen"
+
+    } else if (sizeGrid == "Medium" || sizeGrid == "Large") {
+        $('.modalHladisko').removeClass('size-fullscreen').addClass('size-container');
+        $('.modalHladisko .desktop-resize i').removeClass('fa-compress').addClass('fa-expand');
+        logSMS = "Velkost modal okna nastavena na container"
+
+    } else {
+        $('.modalHladisko').removeClass('size-fullscreen').addClass('size-container');
+    }
+
+    return logSMS
+}
+
+setTimeout(function () {
+    // $('.vypis').text(ReturnSizeGrid()).append(NastavVyskuHladiska()); // nizsie je toto uvedene aj v resize funkcii
+    //console.log('Vyska hladiska: ' + $('.modalHladisko').height());
+}, 200);
+
+
+// resize
+$(window).resize(function () {
+    $('.vypis').text(ReturnSizeGrid()).append(' | ' + NastavVyskuHladiska());
+    initModalHladisko();
+    ShowLog();
+})
+
+var HeightSizeContainer;
+var HeightSizeFullscreen;
+
+// vypocitaj vysku bloku pre hladisko
+function NastavVyskuHladiska() {
+    var titleHeight = $('.modalHladisko .modal-header').outerHeight();
+    var controlHeight = $('.modalHladisko .control-body').outerHeight();
+    var modalHeight = $('.modal-dialog').outerHeight();
+    var okno = $('.modal-content');//$(window).height();
+    var hladisko_vyska = okno - (titleHeight + controlHeight);
+
+    // vlastnosti + vyska pre hladisko (trieda .hladisko-body)
+    $('.hladisko-body').css({
+        //'max-height': hladisko_vyska,
+        'background-image': 'none'//,
+        //'background': '#3d89dc',
+        //'overflow': 'auto'
+    }).height(hladisko_vyska - 50);
+
+    //      $('.hladisko-body').height(hladisko_vyska);
+}
+
+
+// ikona zvacsit/zmensit okno (fullscreen/container)
+$('.desktop-resize button').on('click', function (e) {
+    $('.modalHladisko').toggleClass('size-fullscreen size-container');
+    $('.desktop-resize button i').toggleClass('fa-expand fa-compress');
+    //NastavVyskuHladiska();
+    //ShowLog();
+    NastavMenu();
+    e.preventDefault();
+});
+
+
+//Ked sa zobrazenie hladiska meni na fullscreen ale spat do okna, modifikuje sa css pre menu aby sme pri fullscreen ziskali viac priestoru
+function NastavMenu() {
+    data = g_performance;
+
+    /*if ($('.modalHladisko').hasClass("size-fullscreen")) {
+        $('#myModalHladiskoLabel').html(data.Event.Name + "<small style='margin-left:10px;' class=\"datum\">" + data.FormattedDatetimeDescription + "</small>, <small class=\"adresa-hladiska\">" + (data.Venue.Name.indexOf(data.Venue.City.Name) == -1 ? data.Venue.Name : data.Venue.Name.replace(data.Venue.City.Name, '')) + ", " + data.Venue.Address + " " + (data.Venue.Address.indexOf(data.Venue.City.Name) == -1 ? data.Venue.City.Name : "") + "</small>");
+        $('button.close.resize')[0].setAttribute('style', 'padding:7px');
+        $('#modal-header')[0].setAttribute('style', 'padding:0');
+        $('.hladisko-header .info')[0].setAttribute('style', 'position:relative;top:-10px');
+        $('ul.hladisko-header')[0].setAttribute('style', 'height:45px');
+        $('#modal-control-body')[0].setAttribute('style', 'padding:10px; top:44px');
+        $('#hladisko-basket-btn')[0].setAttribute('style', 'padding:5px 16px;font-size:16px');
+        $('#zoznam-volnych-miest-text')[0].setAttribute('style', 'padding:5px 15px;');
+        $('.modal-body.hladisko-body')[0].setAttribute('style', 'top:88px;');
+        $('#mainNav').toggleClass('visible-lg hidden');
+        body_resize();
+    }
+    else {
+        $('#myModalHladiskoLabel').html(data.Event.Name + "<br /> <small class=\"datum\">" + data.FormattedDatetimeDescription + "</small>, <small class=\"adresa-hladiska\">" + (data.Venue.Name.indexOf(data.Venue.City.Name) == -1 ? data.Venue.Name : data.Venue.Name.replace(data.Venue.City.Name, '')) + ", " + data.Venue.Address + " " + (data.Venue.Address.indexOf(data.Venue.City.Name) == -1 ? data.Venue.City.Name : "") + "</small>");
+
+        $('button.close.resize')[0].setAttribute('style', '');
+        $('#modal-header')[0].setAttribute('style', '');
+        $('.hladisko-header .info')[0].setAttribute('style', '');
+        $('ul.hladisko-header')[0].setAttribute('style', '');
+        $('#modal-control-body')[0].setAttribute('style', '');
+        $('#hladisko-basket-btn')[0].setAttribute('style', '');
+        $('#zoznam-volnych-miest-text')[0].setAttribute('style', '');
+        $('.modal-body.hladisko-body')[0].setAttribute('style', '');
+        $('#mainNav').toggleClass('visible-lg hidden');
+        body_resize();
+    }*/
+}
+
+
+// log
+function ShowLog() {
+    /*
+    console.log("GRID: " + grid);
+
+    console.log("Vyska hladiska(ked container ): " + HeightSizeContainer)
+    console.log("Vyska hladiska(ked fullscreen): " + HeightSizeFullscreen)
+    console.log("SetSizeModalHladisko() : " + logSMS)
+    
+    console.log('$(window).height():' + $(window).height())
+    console.log("Velkost okna bola zmenena(width/height): " + window.innerWidth + "/" + window.innerHeight)
+    */
+}
+
+
+// vrat velkost bootstrap gridu
+function ReturnSizeGrid() {
+    var Grids = ["ExtraSmall", "Small", "Medium", "Large"];
+    var GridValues = ["xs", "sm", "md", "lg"];
+
+    var $el = $('<div>');
+    //$el.appendTo($('body'));
+
+    for (var i = GridValues.length - 1; i >= 0; i--) {
+        var GridVal = GridValues[i];
+
+        $el.addClass('hidden-' + GridVal);
+        if ($el.is(':hidden')) {
+            $el.remove();
+            grid = Grids[i];
+            return Grids[i]
+        }
+    };
+}

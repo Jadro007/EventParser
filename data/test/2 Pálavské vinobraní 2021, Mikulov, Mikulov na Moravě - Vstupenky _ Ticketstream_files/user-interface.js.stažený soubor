@@ -1,0 +1,1230 @@
+﻿var scrollers = new Array();
+
+var scrollBeforePopup = 0;
+
+var overlayPopup = false;
+var scrollBeforeOverlayPopup = null;
+var bottomPopup = null;
+
+var temporarilyDisableScroll = false;
+var temporarilyDisableTileClick = false;
+
+var mobileWidth = 950;
+
+var currentStep = null;
+
+var fixScroll = false;
+var carouselInterval = null;
+
+var msgBoxCallback;
+
+var cartUrl = '/cart';
+
+var seatChartClicked = false;
+var hideSeatChartInfoBox = true;
+
+var bookerItemsPerPage = 50; 
+
+function initUserInterface()
+{
+    if (isBooker && iFrameOnlyBooker)
+        $('body').addClass('iframe-booker');
+
+    if (isBooker)
+        applyPaging();
+
+    applyFormats();
+
+    cartUrl = ensureURL(cartUrl);
+
+    $('.footer').closest('body').addClass('with-footer');
+
+    $('.hide').hide();
+
+    initExpandable();
+    initScrollers();
+
+    lastResizeWidth = $(document).width();
+
+    $(window).resize(function ()
+    {
+        if (lastResizeWidth != $(document).width())
+        {
+            window.setTimeout(function ()
+            {
+                for (var key in scrollers)
+                {
+                    if (scrollers.hasOwnProperty(key))
+                    {
+                        var scroller = scrollers[key];
+                        if (scroller.hasSnap)
+                        {
+                            if ($(document).width() <= mobileWidth)
+                            {
+                                console.log(key);
+                                scroller.scrollTo(-20, 0);
+                            }
+
+                        }
+
+                    }
+
+                }
+            }, 100);
+
+            lastResizeWidth = $(document).width();
+        }
+    });
+
+    document.addEventListener('touchmove', function (e)
+    {
+        if (temporarilyDisableScroll)
+        {
+            if (e.cancelable)
+                e.preventDefault();
+        }
+    }, { passive: false });
+
+
+    if (isBooker)
+        $('#booker-lang').val(lang);
+
+    $('.lang').each(function ()
+    {
+        var currentLang = $(this).data('lang');
+        $(this).val(currentLang);
+    });
+
+    $('.lang').change(function ()
+    {
+        var url = $(this).find(':selected').data('url');
+        window.location.href = url;
+    });
+
+    
+    $('select').niceSelect();
+
+    $('.event-name').text($('#event-name').text());
+    $('.stick-when-scrolling').each(function () { new stickyHeader($(this)); });
+
+
+    initTextBoxes();
+    initPopups();
+    initCarousel();
+    initLinkTracking();
+
+
+    $('.switch-menu li').click(function ()
+    {
+        $('.switch-menu li').removeClass('active');
+        $(this).addClass('active');
+
+        $('.switch-container').removeClass('active');
+        $('.switch-container.switch-' + $(this).data('switch')).addClass('active');
+    });
+
+
+    $('.cart-count').click(function ()
+    {
+        window.location.href = $(this).prev().attr('href');
+    });
+
+    $('font[color=red]').each(function ()
+    {
+        var redText = $(this).text();
+
+        if ($(this).parent().is('span'))
+            $(this).parent().replaceWith($('<span>').text(redText).addClass('red'));
+        else
+            $(this).replaceWith($('<span>').text(redText).addClass('red'));
+    }); 
+
+    $('form.generic-form').submit(function (e)
+    {
+        if (!$(this).data('is-valid'))
+        {
+            e.preventDefault();
+
+            $(this).find('.generic-form-validation-err').removeClass('active');
+
+
+            if (genericFormValidation($(this), true))
+            {
+                var botCode = $(this).find('input[name=bot-code]');
+
+                if (botCode.length == 0)
+                {
+                    botCode = $('<input>')
+                            .attr('type', 'hidden')
+                            .attr('name', 'bot-code');
+
+                    $(this).append(botCode);
+                }
+
+                botCode.attr('value', 'FXfkjh2422PQnsxc788*!');
+
+                $(this).data('is-valid', true);
+                $(this).submit();
+
+            }
+            else
+            {
+                $(this).find('.generic-form-validation-err').addClass('active');
+            }
+
+            return false;
+        }
+    });
+
+    $('#login-email, #login-password').keypress(function (e)
+    {
+        if (e.keyCode == 13)
+            login(); 
+    });
+
+    $(window).scroll(function ()
+    {
+        if ($('.show-all-link').length > 0)
+        {
+            if (elementInView('.show-all-link'))
+                loadNextPage();
+        }
+    });
+
+    if ($('#q').length == 1)
+    {
+        if (!("ontouchstart" in document.documentElement))
+        {
+            if (elementInView('#q'))
+                $('#q').focus();
+        }
+    }
+}
+
+function initPopups()
+{
+    $('.show-submenu').click(function (event)
+    {
+        event.stopPropagation();
+        $(this).toggleClass('show');
+    });
+
+    $('body').click(function ()
+    {
+        $('.show-submenu').removeClass('show');
+    });
+
+
+    $('.popup').click(function ()
+    {
+        popupClicked = true;
+        //!!!!!!!
+        //   event.stopPropagation()
+
+        if (!seatChartClicked)
+        {
+            if (hideSeatChartInfoBox)
+                if (activeSeatingChart)
+                    activeSeatingChart.seatInfoHide(true);
+        }
+
+        seatChartClicked = false;
+        hideSeatChartInfoBox = true;
+
+    });
+
+
+    $('.popup.full-height.middle').prepend(
+        $('<div>').addClass('popup-back middle').click(function () { event.stopPropagation() })
+    );
+
+    $('.popup.full-height.full-width').prepend(
+        $('<div>').addClass('popup-back full-width').click(function () { event.stopPropagation() })
+    );
+
+
+    $('.overlay')
+        .prepend($('<div>').addClass('overlay-back'))
+        .click(function ()
+        {
+            //     if (!popupClicked)
+            //         backToInitialScreen();
+
+            popupClicked = false;
+        });
+}
+
+function initCarousel()
+{
+
+    $('.carousel').each(function ()
+    {
+        var carousel = $(this);
+
+        if ($(this).data('delay'))
+        {
+            if ($(this).data('delay') > 0)
+            {
+                var itemsCount = carousel.find('.col-20 a').length;
+                var itemIndex = 1;
+
+                carouselInterval = window.setInterval(function ()
+                {
+                    itemIndex++;
+                    if (itemIndex > itemsCount)
+                        itemIndex = 1;
+
+                    showSlide('hp', itemIndex, true);
+
+                }, $(this).data('delay'));
+            }
+
+        }
+    });
+
+    $('.carousel-items a').on('touchend', null, null, function()
+    {
+        showSlide('hp', $(this).data('slide-id'));
+        return false; 
+    }); 
+
+}
+
+function initScrollers()
+{
+
+    $('.scroll_wrapper .tiles .tile').each(function ()
+    {
+        var d = $('<snap>')
+
+            .addClass('snap-point');
+
+        $(this).prepend(d);
+
+        $(this).on('click', function (e)
+        {
+            if (temporarilyDisableTileClick)
+            {
+                if (e.cancelable)
+                    e.preventDefault();
+            }
+        });
+
+    });
+
+    $('.scroll_wrapper').each(function ()
+    {
+        var current = $(this);
+        var id = current.attr('id');
+
+        var snap = current.hasClass('no-snap') ? false : 'snap';
+        //var snap = false;
+
+        var scroller = new IScroll('#' + id + ' .scroll',
+            {
+                eventPassthrough: true,
+                snap: snap,
+                scrollbars: false,
+                scrollX: true,
+                scrollY: false,
+                fadeScrollbar: true,
+                hideScrollbar: true,
+                momentum: true,
+                bounce: true,
+                //deceleration: 0.001
+                momentum: current.hasClass('no-snap'),
+                snapSpeed: 3000
+            });
+
+        scrollers[id] = scroller;
+
+        scroller.hasSnap = !current.hasClass('no-snap');
+
+        if (scroller.hasSnap)
+        {
+            if ($(document).width() <= mobileWidth)
+                scroller.scrollTo(-20, 0);
+        }
+
+        scrollers[id].on('scrollEnd', function ()
+        {
+            if (scroller.hasSnap)
+            {
+                if ($(document).width() <= mobileWidth)
+                {
+                    if (this.x == 0)
+                        scroller.scrollTo(-20, 0, 200);
+                }
+            }
+
+            current.find('.arrow.previous').toggle(this.x < 0);
+            current.find('.arrow.next').toggle(this.x != this.maxScrollX);
+            temporarilyDisableScroll = false;
+
+            setTimeout(function ()
+            {
+                temporarilyDisableTileClick = false;
+            }, 1000);
+        });
+
+        setTimeout(function ()
+        {
+            current.find('.arrow.next').toggle(scroller.x != scroller.maxScrollX);
+        }
+        , 500);
+
+        var w = current.find('a.tile').first().width() + 20;
+
+        scroller.on('scrollStart', function ()
+        {
+            temporarilyDisableTileClick = true;
+            temporarilyDisableScroll = true;
+        });
+
+        current.find('.arrow.next').bind("click", function ()
+        {
+            scroller.next(1000);
+            //scroller.scrollBy(-400, 0, 1000);
+            return false;
+        });
+
+        current.find('.arrow.previous').bind("click", function ()
+        {
+            scroller.prev(1000);
+            //scroller.scrollBy(400, 0, 1000);
+            return false;
+        });
+
+    });
+
+}
+
+
+function showSlide(slideID, slideIndex, onTimer)
+{
+    if (!onTimer)
+    {
+        if (carouselInterval != null)
+            window.clearInterval(carouselInterval);
+    }
+
+    var previousSlide = slideIndex - 1;
+
+    var slideCount = $('.slide_' + slideID).length;
+
+    for (var i = 0; i <= slideCount; i++)
+    {
+        if (i != slideIndex)
+            $('#slide_' + slideID + '_' + i).addClass(onTimer ? 'hidden-fade' : 'hidden');
+    }
+
+    if (onTimer)
+    {
+        window.setTimeout(function ()
+        {
+
+            for (var i = 0; i <= slideCount; i++)
+            {
+                if (i != slideIndex)
+                    $('#slide_' + slideID + '_' + i).addClass('hidden');
+            }
+
+            $('#slide_' + slideID + '_' + slideIndex).removeClass('hidden-fade');
+            $('#slide_' + slideID + '_' + slideIndex).removeClass('hidden');
+
+            if (onTimer)
+            {
+                $('.carousel-items a').removeClass('active');
+                $('#carousel_' + slideID + '_' + slideIndex).addClass('active');
+            }
+
+        }, 600);
+    }
+    else
+    {
+        $('#slide_' + slideID + '_' + slideIndex).removeClass('hidden-fade');
+        $('#slide_' + slideID + '_' + slideIndex).removeClass('hidden');
+
+
+        $('.carousel-items a').removeClass('active');
+        $('#carousel_' + slideID + '_' + slideIndex).addClass('active');
+    }
+
+}
+
+function initTextBoxes()
+{
+    $('input[data-label]').each(function ()
+    {
+        var element = $(this);
+        initTextBox(element); 
+    });
+
+    $('input[data-numeric]').each(function ()
+    {
+        var f = function (e)
+        {
+            if (this.value !== undefined)
+                e = this;
+
+            if (e.value !== undefined)
+            {
+                if (/\D/g.test(e.value))
+                {
+                    e.value = e.value.replace(/\D/g, '');
+                }
+            }
+        }
+
+        $(this).bind('input', function () { f(this); });
+        $(this).blur(f);
+    });
+}
+
+function initLinkTracking()
+{
+    window.setInterval(function ()
+    {
+        $('a.track-link').each(function (e)
+        {          
+            $(this).removeClass('track-link');
+            $(this).click(function (e)
+            {
+                var data =
+                    {
+                        action: 'track-event',
+                        eventType: 'link-click',
+                        eventData:
+                            {
+                                url: window.location.href,
+                                targetUrl: $(this).attr('href')
+                            }
+                    }
+
+                window.top.postMessage(data, '*');
+            });
+        });
+    }, 200); 
+}
+
+function initTextBox(element, reset)
+{
+
+    if (reset)
+    {
+        var placeholder = element.data('placeholder');
+        if (placeholder)
+        {
+            placeholder.remove();
+            var label = element.data('label-element')
+            label.remove(); 
+        }
+        element.removeData('placeholder');
+    }
+
+    if (!element.data('placeholder'))
+    {
+        var label = $('<label>')
+            .text(element.data('label'))
+            .attr('for', element.attr('name'))
+            .click(function () { element.focus() })
+            .addClass('small');
+
+        var textPlaceholder = $('<div>')
+            .text(element.data('label'))
+            .addClass('placeholder')
+            .click(function () { element.focus() });
+
+        element.addClass('has-placeholder');
+        label.insertBefore(element);
+        textPlaceholder.insertAfter(element);
+
+        element.data('placeholder', textPlaceholder);
+        element.data('label-element', label);
+
+        element.focus(function () { textBoxFocus(element, true) });
+        element.blur(function () { textBoxFocus(element, false) });
+
+        textBoxFocus(element);
+    }
+}
+
+
+function textBoxFocus(element, hasFocus)
+{
+    var showLabel = hasFocus || element.val() != '';
+
+    element.next().toggleClass('hidden', showLabel);
+    element.prev().toggleClass('hidden', !showLabel);
+
+    element.toggleClass('active', showLabel);
+}
+
+
+function showLogin()
+{
+    activatePopup('login-popup');
+    $('#login-form').show();
+    $('#register-form').hide();
+    $('#lost-password-form').hide();
+}
+
+function showLostPassword()
+{
+    activatePopup('login-popup');
+    $('#login-form').hide();
+    $('#register-form').hide();
+    $('#lost-password-form').show();
+}
+
+
+
+function showStep(stepName, scrollToTop)
+{
+    currentStep = stepName;
+
+    $('.step').removeClass('step-show');
+    $('.step-' + stepName).addClass('step-show');
+
+    if (scrollToTop)
+        scrollToAnimation(0);
+
+    $('.step-indicator').removeClass('active');
+    $('.step-indicator-' + stepName).addClass('active');
+}
+
+
+
+function stickyHeader(headerElement)
+{
+
+    this.headerElement = headerElement;
+    this.spacer = $('<div>').hide();
+    this.headerElement.after(this.spacer);
+    this.mainHeaderHeight = $('#header').height();
+    this.top = 0;
+    this.isFixed = false;
+
+    this.windowScroll = function ()
+    {
+        if (!this.headerElement.is(":visible"))
+            return;
+
+        var currentScroll = $(window).scrollTop();
+
+        if (!this.isFixed && this.top == 0)
+        {
+            this.top = this.headerElement.offset().top;
+            this.height = this.headerElement.height();
+            this.spacer.height(this.height);
+        }
+
+        var t = this.top - this.mainHeaderHeight;
+
+        if (currentScroll >= t)
+        {
+            this.headerElement.css({
+                top: this.mainHeaderHeight + 'px',
+                left: '0'
+            }).addClass('stick-active');
+            this.spacer.show();
+            this.isFixed = true;
+        }
+        else
+        {
+            this.headerElement.removeClass('stick-active');
+            this.spacer.hide();
+            this.isFixed = false;
+        }
+    }
+
+    $(window).scroll(this.windowScroll.bind(this));
+
+}
+
+
+
+
+function cartExpiration()
+{
+    $('#cart-content').hide();
+    $('.step-cart-payment')
+        .removeClass('step-show')
+        .hide();
+
+    $('#cart-expired').show();
+
+    $('#cart-expired p').text($('#cart-expired p').text().replace('{%}', cartData.expirationTotalMinutes));
+}
+
+
+function scrollToError()
+{
+    scrollToAnimation($('.err.active').first().offset().top - 220, 1000);
+}
+
+
+function scrollToAnimation(y, duration)
+{
+    if (!duration)
+        duration = 0;
+
+    if (isBooker && !iFrameOnlyBooker)
+        window.top.postMessage({ action: 'scroll', y: y, duration: duration }, '*');
+    else
+    {
+        if (iFrameOnlyBooker)
+        {
+            if (duration == 0)
+                $('.iframe-scroller').scrollTop(y);
+            else
+                $('.iframe-scroller').animate({
+                    scrollTop: y
+                }, duration);
+        }
+        else
+        {
+            if (duration == 0)
+                $(window).scrollTop(y);
+            else
+                $('html, body').animate({
+                    scrollTop: y
+                }, duration);
+        }
+    }
+}
+
+
+
+function menuButton()
+{
+    $('.menu').toggle(400);
+    $('.stick-to-top-mobile').toggleClass('mobile-hidden');
+    $('#menu_button').toggleClass('active');
+}
+
+
+
+
+function goToCart()
+{
+    var url = cartUrl + (isBooker ? '?booker=' + bookerName + (tsCookie ? '&tsid=' + tsCookie : '') : '');
+
+    if (iFrameOnlyBooker)
+    {
+        var bookerURL = queryStringParameter('booker_url', '');
+        url += '&booker_url=' + ((bookerURL != '') ? bookerURL : encodeURIComponent(window.location.pathname + window.location.search));
+    }
+    else if (isBooker)
+        url += '&fullbooker=yes';
+
+    window.location.href = url;
+}
+
+function goToCartIfPossible()
+{
+    console.log(activeSeatingChart.selectedSeats.length);
+
+    if (activeSeatingChart.selectedSeats.length > 0)
+        goToCart();
+}
+
+function showOutlets()
+{
+    var win = window.open(outletsLink, '_blank');
+    win.focus();
+}
+
+
+function showTermsAndConditions(link)
+{
+    var win = window.open(link, '_blank');
+    win.focus();
+}
+
+
+
+function applyFormats()
+{
+    $('.format-price:not(.formatted)').each(function ()
+    {
+        $(this)
+            .text(formatMoney(Math.floor($(this).text())))
+            .addClass('formatted');
+        
+    });
+
+    $('.format-date:not(.formatted)').each(function ()
+    {
+        var d = new Date($(this).text());
+        $(this)
+            .text(formatDate(d))
+            .addClass('formatted');
+
+    });
+
+    $('.format-date-short:not(.formatted)').each(function ()
+    {
+        var d = new Date($(this).text());
+        $(this)
+            .text(formatDateShort(d))
+            .addClass('formatted');
+
+    });
+
+    $('.format-date-time:not(.formatted)').each(function ()
+    {
+        var d = new Date($(this).text());
+        $(this)
+            .text(formatDateTime(d))
+            .addClass('formatted');
+
+    });
+
+
+    $('.format-date-segments:not(.formatted)').each(function ()
+    {
+        if ($(this).data('date-text') != '')
+        {
+            var s = $(this).data('date-text')
+
+            s = s.replaceAll(' // ', '<br/>');
+            s = s.replaceAll('-', '&#8209;');
+
+            if (s.length < 20)
+                s = s.replaceAll(' ', '&nbsp;');
+
+            $(this)
+                .html(s)
+                .addClass('formatted');
+        }
+        else
+        {
+            var dt = dateFromISO($(this).data('date'));
+
+            if (dt != null)
+            {
+                if (!isNaN(dt.getTime()))
+                    $(this)
+                        .append
+                            (
+                            $('<div>')
+                                .addClass('small')
+                                .text(capitalizeFirstLetter(dayNames[dt.getDay()])),
+                            $('<div>')
+                                .text(formatDayAndMonth(dt)),
+                            $('<div>')
+                                .addClass('small')
+                                .text(formatTime(dt))
+                            )
+                        .addClass('formatted');
+
+            }
+        }
+    });
+
+
+    $('.date-time-range:not(.formatted)').each(function ()
+    {
+        var d1 = $(this).find('.date-from').attr('content');
+        var d2 = $(this).find('.date-to').attr('content');
+        if (d2 == '')
+            d2 = d1;
+
+        var includeTime = ($(this).data('ignore-time') != 'yes');
+
+        if ($(this).hasClass('date-time-range-nbsp'))
+            $(this).html(formatDateRange(d1, d2, includeTime)
+                .replaceAll(' ', '&nbsp;')
+                .replaceAll('-', '&#8209;')
+                );
+        else
+            $(this).text(formatDateRange(d1, d2, includeTime));
+            
+        $(this).addClass('formatted');
+
+    });
+
+
+    $('.replace-nbsp:not(.formatted)').each(function ()
+    {
+        $(this)
+            .html($(this).text().replace(' ', '&nbsp;'))
+            .addClass('formatted');
+    });
+
+    $('.price-range:not(.formatted)').each(function ()
+    {
+        var p1 = $(this).data('price-from');
+        var p2 = $(this).data('price-to');
+        var curr = $(this).data('price-currency');
+
+        if (p1 == 0 || p1 == '')
+            $(this).hide();
+        else
+            $(this)
+                .text(formatMoneyRange(p1, p2, curr))
+                .addClass('formatted')
+                .show();
+    });
+
+    $('.make-link:not(.formatted)').each(function ()
+    {
+        var url = $(this).data('url');
+
+        if (url)
+        {
+            if (url != '')
+            {
+                $(this).wrap($('<a></a>')
+                    .attr('href', url))
+                    .addClass('formatted');
+            }
+        }
+
+    });
+
+
+    if (isBooker)
+    {
+        $('a').each(function ()
+        {
+            if ($(this).attr('href') != '')
+                if (!$(this).hasClass('same-frame'))
+                    $(this).attr('target', '_blank');
+        });
+    }
+}
+
+function initExpandable()
+{
+    $('.expandable').each(function ()
+    {
+        var threshold = $(this).data('height-threshold');
+        var h = $(this).height();
+        var w = $(this).width();
+        var t = $(this).offset().top;
+
+        if (h > threshold)
+        {
+            $(this)
+                .css({ height: threshold })
+                .data('original-height', h)
+                .prepend
+                (
+                    $('<div>')
+                        .addClass('gradient-wrapper')
+                        .append($('<div>')
+                            .addClass('gradient')
+                            .css({ top: (threshold - 150) + 'px' })
+                            )
+                )
+                .after
+                (
+                    $('<a>')
+                        .text($('#translation-more').val())
+                        .addClass('more')
+                        .click(function ()
+                        {
+                            $(this)
+                                .fadeOut(200)
+                                .prev()
+                                    .animate
+                                    (
+                                        { height: $(this).prev().data('original-height') }, h
+                                    )
+                                    .find('.gradient').fadeOut(100)
+
+                        })
+                )
+        }
+    });
+
+    $('.expandable-heading').click(function ()
+    {
+        $(this).toggleClass('active');
+        $(this).find('.expandable-content').slideToggle(500);
+    });
+
+    $('.expandable-content').click(function (e)
+    {
+        e.stopPropagation();
+    }); 
+
+
+}
+
+function genericFormValidation(parentID, markFields)
+{
+    var b = true;
+
+    if (typeof parentID === 'string' || parentID instanceof String)
+        var parentElement = $('#' + parentID);
+    else
+        var parentElement = parentID;
+
+    parentElement.find('.nice-select').each(function ()
+    {
+        if ($(this).is(':visible'))
+        { 
+            var select = $(this).prev();
+            if (!select.hasClass('allow-blank'))
+            {
+                if (select.val() == '')
+                {
+                    if (markFields)
+                        $(this).addClass('validation-err');
+
+                    b = false;
+                }
+                else
+                    $(this).removeClass('validation-err');
+            }
+        }
+    });
+
+    parentElement.find('input, textarea').each(function ()
+    {
+        if ($(this).is(':visible'))
+        {
+            if (!$(this).hasClass('allow-blank'))
+            {
+
+                var isValid = true;
+                var field = $(this).attr('name');
+                var fieldType = $(this).attr('type')
+
+                if ($(this).prop('nodeName').toLowerCase() == 'textarea')
+                    fieldType = 'textarea';
+
+                switch (fieldType)
+                {
+                    case 'password':
+                    case 'text':
+                    case 'tel':
+                    case 'email':
+                    case 'textarea':
+                        if (markFields)
+                            $(this).val($(this).val().trim());
+
+                        isValid = ($(this).val() != '')
+                        break;
+
+                    case 'checkbox':
+                        isValid = $(this).is(':checked');
+                        break;
+
+                    case 'radio':
+                        isValid = $('input[name=' + field.replaceAll('[', '\\[').replaceAll(']', '\\]') + ']:checked').length == 1;
+                        break;
+                }
+
+                if (fieldType == 'email' && isValid)
+                {
+                    if (!$(this).val().startsWith('__ANONYMOUS__'))
+                    {
+                        isValid = validateEmail($(this).val());
+                        if (!isValid && markFields)
+                            $(this).nextAll('.email-validation-err').addClass('active');
+                        else if (isValid)
+                            $(this).nextAll('.email-validation-err').removeClass('active');
+                    }
+
+                }
+
+                if (fieldType == 'tel' && isValid)
+                {
+                    isValid = validateTel($(this).val());
+                    if (!isValid && markFields)
+                        $('.tel-validation-err').addClass('active');
+                    else if (isValid)
+                        $('.tel-validation-err').removeClass('active');
+
+                }
+
+                if (field == 'PostalCode' && isValid)
+                {
+                    isValid = validatePostcode($(this).val());
+                    if (!isValid && markFields)
+                        $('.postal-code-validation-err').addClass('active');
+                    else if (isValid)
+                        $('.postal-code-validation-err').removeClass('active');
+                }
+
+
+                if (!isValid)
+                {
+                    b = false;
+
+                    if (markFields)
+                        $(this).addClass('validation-err');
+                }
+                else
+                    $(this).removeClass('validation-err');
+
+            }
+        }
+    });
+
+
+    return b;
+}
+
+
+
+function ticketsBack()
+{
+    if (activeSeatingChart)
+    {
+        if ($('#unnumbered-popup').hasClass('popup-current'))
+            backToInitialScreen(false, true);
+        else
+            activeSeatingChart.backToInitialScreenIfPossible();
+    }
+    else
+    {
+
+        switch (currentStep)
+        {
+            case 'prices-selection':
+
+                if (availableDates.length == 1 || pricesDirectlyShown)
+                    backToInitialScreen();
+                else if (timeSelection || dateSelectionSkipped)
+                    showStep('time-selection');
+                else
+                    showStep('date-selection');
+
+                break;
+
+            case 'time-selection':
+
+                selectedDateAndTime = null;
+                selectedPerformance = null;
+
+                if (dateSelectionSkipped)
+                    backToInitialScreen()
+                else
+                    showStep('date-selection');
+
+                break;
+
+            default:
+                backToInitialScreen();
+        }
+    }
+}
+
+function loadNextPage()
+{
+    var target = $('#page-loading-target');
+    target.children().first().html('<div class="loader"></div>'); 
+
+    var offset = parseInt(target.data('offset')) + 1; 
+
+    var query = window.location.search;
+    query = replaceParameter(query, 'offset', offset);
+    query = replaceParameter(query, 'ajax', 1);
+
+    var url = window.location.href.split('?')[0] + query;
+
+    target.removeAttr('id'); 
+    target.load(url, applyFormats);
+}
+
+function elementInView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+    var elemTop = $(elem).offset().top;
+    return ((elemTop <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+
+function applyPaging()
+{
+    var items = $('.fixed-schedule .prices > .row');
+    var itemsLength = items.length;
+
+    if (items.length > 0 && items.length > bookerItemsPerPage)
+    {
+        items.each(function (i)
+        {
+            if (i >= bookerItemsPerPage)
+            {
+                $(this).fadeOut(1).addClass('collapsed'); 
+            }
+        });
+
+
+        $('.fixed-schedule .prices').parent().append
+            (
+                $('<div>')
+                    .addClass('content narrow')
+                    .append
+                    (
+                        $('<div>')
+                            .addClass('row booker-pager')
+                            .append
+                            (
+                                $('<button>')
+                                    .addClass('big center')
+                                    .text($('#translation-load-more').val())
+                                    .click(function()
+                                    {
+                                        var btn = $(this);
+                                        $('.fixed-schedule .prices > .row.collapsed').each(function (i)
+                                        {
+                                            if (i < bookerItemsPerPage)
+                                                $(this).fadeIn(500, function ()
+                                                {
+                                                    $(this).removeClass('collapsed')
+                                                    if ($('.fixed-schedule .prices > .row.collapsed').length == 0)
+                                                        btn.parent().fadeOut();
+                                                });
+                                        })
+                                    })
+                            )
+                    )
+            );
+
+    }
+}
+
+var scalingContext = null; 
+
+function scaleDropdownFont(parentSelector)
+{
+    $(parentSelector + ' .nice-select li span, ' + parentSelector + ' .nice-select span.current span, #seat-info-sector, .resize').each(function ()
+    {
+        $(this).css('font-size', '');
+
+        var fontSizePx = $(this).css('font-size');
+        var fontSize = parseInt(fontSizePx.replace('px', ''));
+        var fontSizeOriginal = fontSize;
+
+        var w2 = $(this).width();
+
+        do
+        {
+            if (!scalingContext)
+            {
+                var canvas = $('<canvas>').addClass('hidden');
+                $('body').append(canvas);
+                scalingContext = canvas.get()[0].getContext('2d');
+            }
+
+            scalingContext.font = fontSize + 'px ' + $(this).css('font-family');
+            var w1 = scalingContext.measureText($(this).text()).width;
+
+            if (w1 > w2)
+                fontSize = fontSize - 0.1;
+        }
+        while (w1 > w2 && fontSize > 6);
+
+        if (fontSize != fontSizeOriginal)
+            $(this).css('font-size', fontSize + 'px');
+
+    });
+
+}

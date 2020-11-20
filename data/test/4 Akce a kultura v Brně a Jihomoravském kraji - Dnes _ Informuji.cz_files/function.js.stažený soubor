@@ -1,0 +1,860 @@
+function smaz(text) {
+	if (text) {
+		var t = text;
+	}
+	else {
+		var t = "Opravdu chcete vymazat tento záznam?";
+	}
+		return window.confirm(t);
+}
+
+function trim(str) {
+   str.replace(/^\s*/, '').replace(/\s*$/, '');
+   return str;
+}
+
+function twitterButton(placeholder,link,title) {
+	var placeholder = placeholder;
+	if(link==""){ var link = document.URL; }
+	if(title==""){ var title = document.title; }
+	$('#'+placeholder).append('<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+ link +'" data-text="'+ title +'" data-count="none" data-size="60" data-count="horizontal" data-via="informuji">Tweet</a>');
+}
+function facebookButton(placeholder,link) {
+	if(link==""){ var link = document.URL; }
+	$('#'+placeholder).append('<div class="fb-like" data-layout="button_count" data-send="false" data-width="100" data-show-faces="true" data-action="recommend" data-font="arial" data-href="'+ link +'"></div>');
+}
+function gPlusButton(placeholder,link) {
+	if(link==""){ var link = document.URL; }
+	$('#'+placeholder).append('<g:plusone size="medium" annotation="none" href="'+link+'"></g:plusone>');
+}
+function facebookPlugin(placeholder) {
+	$('#'+placeholder).append('<div class="fb-activity" data-site="https://www.informuji.cz" data-app-id="144220944059" data-recommendations="false" data-width="300" data-height="250" data-header="true" data-colorscheme="dark" data-linktarget="_top" data-border-color="#666666" data-font="arial"></div>');
+}
+function facebookLikeBox(placeholder) {
+	$('#'+placeholder).append('<span class="libi"></span><div class="fb-like-box" data-href="https://www.facebook.com/informuji" data-width="300" data-show-faces="false" data-stream="false" data-header="false"></div>');
+}
+
+// inicializace related articles	
+function related_init(where_elem, what_elem) {
+	var countElm = $("#"+where_elem+" p").length;
+	var inserted = Math.round(countElm/2);
+	var i = 0;
+	if (inserted>2){
+		$("#"+where_elem+" p").each(function(e){
+			i++;
+			if (i == inserted){
+				$(this).after($("#"+what_elem));
+			}
+		});	
+	}
+}
+
+/***************************************************
+STRIP HTML TAGS
+****************************************************/
+function strip_tags(html){
+	//PROCESS STRING
+	if(arguments.length < 3) {
+		html=html.replace(/<\/?(?!\!)[^>]*>/gi, '');
+	} else {
+		var allowed = arguments[1];
+		var specified = eval("["+arguments[2]+"]");
+		if(allowed){
+			var regex='</?(?!(' + specified.join('|') + '))\b[^>]*>';
+			html=html.replace(new RegExp(regex, 'gi'), '');
+		} else{
+			var regex='</?(' + specified.join('|') + ')\b[^>]*>';
+			html=html.replace(new RegExp(regex, 'gi'), '');
+		}
+	}
+	var clean_string = html;
+	return clean_string;
+}
+
+Effects = {
+	
+	TopActionSelect : function(e) {	
+		var region = $(this).attr('rel');
+
+		$("#topEventsList li").removeClass("active");	
+		if($(this).attr('id')=='allTop'){
+			if($(this).parent().hasClass('today')){
+				$(this).parent().removeClass('today');
+			}
+			else{
+				$(this).parent().addClass('today');
+			}
+			var id = 'vse';
+			$('#topEventsList #second').addClass("active");
+		}
+		else{						
+			$(this).parent().addClass("active");
+			var id = $(this).attr('id');
+		}	
+		
+		if($("#topEventsList li#first").hasClass('today')){
+			var today = 1;
+		}
+		else{
+			var today = 0;
+		}
+		
+		if($(this).attr('id')=="noAjx"){
+
+		}
+		else{	
+			ajax('tAHolder','./inc/_ajax.php?fragment=topEventsHp&type='+id+'&today='+today+'&region='+region);				
+			return false;
+		}	
+	},		
+	
+	menuSelect : function() {
+		// top menu more		
+		$("#m8").bind("click",function(){			
+			if($(this).hasClass("opened")){
+				$(this).removeClass("opened");
+				$("#submenu").hide();				
+			}
+			else{
+				$(this).addClass("opened");
+				$("#submenu").show();			
+			}
+		});			
+	},
+	outlineIE7 : function() {
+		$("a").each(function() {
+			$(this).attr("hideFocus", "true").css("outline", "none");
+		});
+	},
+	GAGaq : function() {
+		$('a#next').click(function(){ _gaq.push(['_trackEvent', 'Proklik', 'Next articles/events', ''+document.title+'']); });
+		$('#topEventsList li a').click(function(){ _gaq.push(['_trackEvent', 'Proklik', 'HP Menu Events', ''+$(this).attr('id')+'']); });		
+		$('a#nextMorePhotosLink').click(function(){ _gaq.push(['_trackEvent', 'Proklik', 'More photos', ''+document.title+'']); });
+		$('#aside .topSideEvent .action a').click(function(){ _gaq.push(['_trackEvent', 'Proklik', 'TOP Event SIDEBAR', ''+$(this).attr('href')+'']); });
+		$('#socialMenu a').click(function(){ _gaq.push(['_trackEvent', 'Proklik', 'Social menu fixed', ''+$(this).attr('href')+'']); });
+	},
+	init : function() {	
+		$("#sB").hover(function() { $(this).attr('src',dict.domain+'/img/button_hledat_active.png');},	function() {$(this).attr('src',dict.domain+'/img/button_hledat.png');} );
+		$("#topEventsList li a#allTop").click(Effects.TopActionSelect);	
+		Effects.menuSelect();
+		Effects.outlineIE7();
+		Effects.GAGaq();	
+	}
+};
+
+
+function ajax(place, url) {
+//	$("body").unbind("click");	
+	$.ajax({
+		url: url,
+		cache: false,
+		encoding:"UTF-8",
+		contentType: "text/plain; charset=UTF-8",
+		beforeSend : function() {
+			if($("#"+place).hasClass("loader")){
+				$("#"+place).html("<div id=\"loader\"></div>");
+			}
+		},
+		success: function(html){
+			$("#"+place).html(html);
+			$("#"+place).show();
+		},
+		error : function() {
+			$("#"+place).html('<div class="center">'+dict.error+"</div>");
+		}	
+	});
+}
+
+function mark(point,html,m) {
+	bounds.extend(point);
+
+	var infoIcon = new GIcon(G_DEFAULT_ICON);
+	infoIcon.image = "/img/icko_mini.png";
+    infoIcon.iconSize = new GSize(28, 33);
+	
+	var x = toDg(point.lat(),'lat');
+	var y = toDg(point.lng(),'lng');
+	html = html + "<br />"+x+"<br />"+y;
+	
+	markerOptions = { icon:infoIcon };
+	var marker = new GMarker(point, markerOptions);	
+
+	GEvent.addListener(marker, "click", function() {
+		marker.openInfoWindowHtml(html);		
+	});
+	GEvent.addListener(marker,"mouseover", function() {
+		//marker.openInfoWindowHtml(html);
+	});
+	map.addOverlay(marker);
+	if(m!=0){map.addOverlay(GPolyline.Circle(point,m,'#71ac00',3)); map.addOverlay(GPolyline.Circle(point,m*2,'#00abe2',3));}
+	if(m!=0){
+		var center = map.getCenter();
+		map.setCenter(bounds.getCenter());
+		map.setZoom(map.getBoundsZoomLevel(bounds));
+	}else{
+		map.setCenter(bounds.getCenter());
+		var zum = parseInt($("#zoom").val(),10);
+		if (zum==0){
+			map.setZoom(map.getBoundsZoomLevel(bounds) - zum);
+		}
+		else{
+			map.setZoom(map.getBoundsZoomLevel(bounds) - 7);
+		}	
+	}
+}	
+
+function newWindow(src,x,y) { return window.open(src,'_blank','width='+x+',height='+y+',resizable=yes,scrollbars=yes'); }
+var newwindow = '';
+
+// $Id: bookmark_us.js,v 1.4.2.1 2006/11/17 15:25:18 Gurpartap Exp $
+/**
+* Bookmark Us - Drupal Add to Bookmarks Module.
+* @ Released under GNU/GPL License - http://www.gnu.org/copyleft/gpl.html
+* @ copyright (C) 2005 by Michael Carico - All rights reserved
+**/
+
+
+function displayLink(p_type, p_url, p_title, p_link_text) {
+
+  var agt = navigator.userAgent.toLowerCase();
+  var p_here = top.location.href
+
+  if (p_type == 3)
+  {
+    if ((agt.indexOf("opera") != -1)) // || (agt.indexOf("firefox") != -1))
+    {
+      document.write("<a href=\""+p_here+"\" title=\"" + p_title + "\" rel=\"sidebar\">" + p_link_text + "</a>");
+    } else
+    {
+      document.write("<a href=\"javascript:addBookmark('"+p_title+"',top.location.href);\" title=\"" + p_title + "\" >" + p_link_text + "</a>");
+    }
+  } else
+  {
+    if (agt.indexOf("opera") != -1)
+    {
+      document.write("<a href=\"" + p_url + "\" title=\"" + p_title + "\" rel=\"sidebar\">" + p_link_text + "</a>");
+    } else
+    {
+      document.write("<a href=\"javascript:addBookmark('"+p_title+"','"+p_url+"');\" title=\"" + p_title + "\" >" + p_link_text + "</a>");
+    }
+  }
+}
+
+
+function addBookmark(title,url) {
+
+  var msg_netscape = "NetScape message";
+  var msg_opera    = "This function does not work with this version of Opera.  Please bookmark us manually.";
+  var msg_other    = "Your browser does not support automatic bookmarks.  Please bookmark us manually.";
+  var agt          = navigator.userAgent.toLowerCase();
+
+
+  if (agt.indexOf("opera") != -1)
+  {
+    if (window.opera && window.print)
+    {
+      return true;
+    } else
+    {
+      alert(msg_other);
+    }
+  }
+  else if (agt.indexOf("firefox") != -1) window.sidebar.addPanel(title,url,"");
+  else if ((agt.indexOf("msie") != -1) && (parseInt(navigator.appVersion) >=4)) window.external.AddFavorite(url,title);
+  else if (agt.indexOf("netscape") != -1) window.sidebar.addPanel(title,url,"")
+  else if (window.sidebar && window.sidebar.addPanel) window.sidebar.addPanel(title,url,"");
+  else alert(msg_other);
+
+}
+
+
+/**
+*
+*  AJAX IFRAME METHOD (AIM)
+*  http://www.webtoolkit.info/
+*
+**/
+
+AIM = {
+    frame : function(c) {
+
+        var n = 'f' + Math.floor(Math.random() * 99999);
+        var d = document.createElement('DIV');
+        d.innerHTML = '<iframe style="display:none" src="about:blank" id="'+n+'" name="'+n+'" onload="AIM.loaded(\''+n+'\')"></iframe>';
+        document.body.appendChild(d);
+
+        var i = document.getElementById(n);
+        if (c && typeof(c.onComplete) == 'function') {
+            i.onComplete = c.onComplete;
+        }
+
+        return n;
+    },
+
+    form : function(f, name) {
+        f.setAttribute('target', name);
+    },
+
+    submit : function(f, c) {
+        AIM.form(f, AIM.frame(c));
+        if (c && typeof(c.onStart) == 'function') {
+            return c.onStart();
+        } else {
+            return true;
+        }
+    },
+
+    loaded : function(id) {
+        var i = document.getElementById(id);
+        if (i.contentDocument) {
+            var d = i.contentDocument;
+        } else if (i.contentWindow) {
+            var d = i.contentWindow.document;
+        } else {
+            var d = window.frames[id].document;
+        }
+        if (d.location.href == "about:blank") {
+            return;
+        }
+
+        if (typeof(i.onComplete) == 'function') {
+            i.onComplete(d.body.innerHTML);
+        }
+    }
+};
+
+/*
+function redesign(color) {		
+	var color = color;
+	var url = '/pages/redesign.php';
+	var pars = '?color='+color;			
+	
+	$.ajax({
+		url: url+pars,
+		cache: false,
+		success: function(html){
+			$('body').get(0).className=color;
+		}
+	});		
+}
+*/
+
+
+// show GMap Info Bubble
+function infoMessage(map, marker, myLatLng, text) {
+	infowindow = new google.maps.InfoWindow();
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.setContent(text);
+		infowindow.setPosition(myLatLng);
+		infowindow.open(map,marker);
+	});
+}
+
+var Like = {
+	// informuji users like
+	liki : function (user_id, like_type_id, like_type, returnId) { 		
+		if(undefined===returnId){
+			var returnId = 'like_'+like_type_id;
+		}	
+		ajax(returnId,dict.domain+'/inc/_ajax.php?fragment=liki&type='+like_type+'&user_id='+user_id+'&id='+like_type_id);	
+		var parent = $("#"+returnId).parent();
+		if(parent.hasClass('liked')){
+			parent.removeClass('liked');
+		}
+		else{
+			parent.addClass('liked');
+		}
+		return false;
+	},
+
+	who_like : function (like_type_id, like_type, placeholder) {
+		ajax(placeholder,dict.domain+'/inc/_ajax.php?fragment=liki_who&type='+like_type+'&id='+like_type_id);	
+		return false;
+	},
+	
+	become_friends : function (user_id, like_type_id, like_type) {
+		ajax('friend',dict.domain+'/inc/_ajax.php?fragment=become_friends&type='+like_type+'&user_id='+user_id+'&id='+like_type_id);	
+		return false;	
+	}
+};
+
+
+
+var Content = {
+	init : function() {		
+		Content.buttons_init();
+		Content.submits_init();	
+		//Like.who_like();
+	},
+
+	// inicializace click udalosti
+	buttons_init : function(place) {
+		if(place){
+			var placeHolder = place;
+		}
+		else{
+			var placeHolder = 'edit';
+		}		
+		
+		// search select
+		$('#selectMoreLink').click(function(){
+			if($(this).hasClass('active')){
+				$(this).removeClass('active');
+				$('#selectMoreTypes').hide();
+				$('#selectedType').val('');
+			}
+			else{
+				$(this).addClass('active');
+				$('#selectMoreTypes').show();				
+			}
+			return false;
+		});
+		
+		$('#selectMoreTypes li').click(function(){
+			$('#selectedType').val($(this).attr('id'));
+			$('#selectMoreLink').text($(this).text());
+			$('#selectMoreLink').removeClass('active');
+			$('#selectMoreTypes').hide();
+		});
+	
+		// registrace, login
+		$('#loginLink').click(function(){
+			$('#signinFormHolder').show();
+			ajax('signinFormHolder',dict.domain+'/inc/_ajax.php?fragment=signup');
+			return false;
+		});
+		
+		$('#content a.ajax').click(function(){
+			var url 			= $(this).attr('href');
+			var placeholder 	= getParam('placeholder',url);
+			ajax(placeholder,url);
+			return false;
+		});
+
+			
+		// test na GMAP		
+		if(undefined===window.infoWindow){
+			window.infoWindow = [];
+		}
+		else{
+			loadGMapsScript();
+		}
+		
+		$('#nextMorePhotosLink').click(function(){
+			$('#nextMorePhotos').toggle('normal');
+			return false;
+		});
+		$('#img').fancybox();
+		$('#morePhotos a.gal').fancybox();
+		$('.fancybox').fancybox();
+		
+		var bubbleHolder = '<div id="bubbleHolder" class="greenBox"><div id="bubbleContent"></div><span class="arrow"></span><span id="bubbleCloser"></span></div>';
+		$('body').append(bubbleHolder);
+	
+		$('#bubbleCloser').click(function(){
+			$('#bubbleHolder').html();
+			$('#bubbleHolder').hide();		
+		});
+	
+		$('#content .bubbleHelp').click(function(){
+			var bubble = $(this);
+			var position = bubble.offset();
+			var bubbleHolder  = $('#bubbleHolder');
+			var bubbleContent = $('#bubbleContent');	
+			bubbleContent.html('');	
+			
+			if(bubble.attr('rel')=='empty'){
+				if(bubble.attr('title')!=''){
+					bubbleContent.html(bubble.attr('title'), false);
+				}
+			}
+			else{
+				$.get(dict.domain+'/inc/_ajax.php?fragment=bubble&m='+bubble.attr('rel')+'', function(data) {
+					bubbleContent.html(data, false);
+				});
+			}
+			
+			if(bubble.hasClass('leftAlignBubble')){
+				var leftCoord = (position.left);
+				var topCoord = (position.top);
+			}
+			else{
+				//var leftCoord = (position.left-bubbleHolder.width()+bubble.outerWidth());
+				var leftCoord = (position.left);
+				var topCoord = (position.top-(bubbleHolder.height()-bubble.outerHeight()+30));
+			}
+
+			bubbleHolder.css("top",topCoord);
+			bubbleHolder.css("left",leftCoord);
+			
+			$('#bubbleHolder').show();
+			return false;
+		});
+		
+	},
+		
+	
+	// inicializace submit udalosti
+	submits_init : function(form) { //alert('init - '+form);
+		if (form){
+			var form = "#"+form;
+		}
+		else{
+			var form = "#content form";
+		}
+		
+		// date pattern
+		var datePattern = dict.datePattern;
+		$(""+form+" input.datePattern").each(function(){
+			
+		if(($(this).val()!=datePattern)&&($(this).val()!="")){
+				$(this).removeClass('datePattern');
+			}
+			else{
+				$(this).val(datePattern);
+				
+				$(this).click(function(){
+					$(this).removeClass('datePattern');
+					if($(this).val()==datePattern) {
+						$(this).val('');									
+					}			
+				});				
+			}			
+		});
+		
+		// errors in form
+		var error = 0;
+			
+			$(""+form+" input.submitInput").click(function(){
+				error = 0;
+				$(""+form+" input, "+form+" textarea").each(function(){
+					// prazdne pole
+					if($(this).hasClass('notEmpty')){
+					
+					
+						if ($(this).is('textarea')){
+							var minLength = 250;
+							if($(this).hasClass('tinyArea')){
+								// tiny text area - not empty	// class="tinyArea"
+								var idelm = $(this).attr('id');
+								var areaContent = trim(strip_tags(tinyMCE.get(idelm).getContent()));
+								//alert(areaContent.length);
+								if( areaContent == "" || areaContent == null){
+									$(this).addClass('error'); $(this).parent().addClass('error');
+									error++;
+								}
+								else{
+									if((minLength-areaContent.length)>0){
+										$(this).addClass('error'); $(this).parent().addClass('error');
+										error++;
+										alert('Popis akce musí mít minimálně '+ minLength + ' znaků. Ještě Vám jich zbývá ' +(minLength-areaContent.length)+'.');	
+									}
+									else{
+										$(this).removeClass('error'); $(this).parent().removeClass('error');	
+									}	
+								}
+							}
+							else{
+								// normal text area - not empty
+								if($(this).val()==""){
+									$(this).addClass('error'); $(this).parent().addClass('error');
+									error++;
+								}	
+								else{
+									if((minLength-$(this).val().length)>0){
+										$(this).addClass('error'); $(this).parent().addClass('error');
+										error++;
+										alert('Popis akce musí mít minimálně '+ minLength + ' znaků. Ještě Vám jich zbývá ' +(minLength-$(this).val().length)+'.');	
+									}
+									else{									
+										$(this).removeClass('error'); $(this).parent().removeClass('error');
+									}			
+								}	
+							}		
+						}
+						else{
+							if($(this).val()==""){
+								$(this).addClass('error'); $(this).parent().addClass('error');
+								error++;
+							}	
+							else{
+								$(this).removeClass('error'); $(this).parent().removeClass('error');		
+							}	
+						}			
+					}					
+					// kapitalky
+					if($(this).hasClass('notCapital')){
+						var titleFormat = /[A-Z]{6,}/;					
+						if (titleFormat.test($(this).val())==true){							
+							$(this).addClass('error'); $(this).parent().addClass('error');
+							error++; 		
+						}	
+						else{
+							if($(this).val()!=""){
+								$(this).removeClass('error'); $(this).parent().removeClass('error');
+							}			
+						}
+					}			
+					// email
+					if($(this).hasClass('email')){
+						var emailFormat = /^[^.]+(\.[^.]+)*@([^.]+[.])+[a-z]{2,24}$/;					
+						if (emailFormat.test($(this).val())==false){							
+							$(this).addClass('error'); $(this).parent().addClass('error');
+							error++; 		
+						}	
+						else{
+							if($(this).val()!=""){
+								$(this).removeClass('error'); $(this).parent().removeClass('error');
+							}			
+						}
+					}	
+					// web
+					if($(this).hasClass('www')){
+						if($(this).val()!=""){
+							var wwwFormat = /^http[s]?:\/\/([^.]+[.])+[a-z]{2,3}/;					
+							if (wwwFormat.test($(this).val())==false){							
+								$(this).addClass('error'); $(this).parent().addClass('error');
+								error++; 		
+							}	
+							else{							
+								$(this).removeClass('error'); $(this).parent().removeClass('error');										
+							}
+						}
+					}	
+				
+					// kontrola datumu
+					if($(this).hasClass('date')){
+					//	var dateFormat = /^.+@.+\..{2,4}$/;					
+						var dateFormat = /^\d{1,2}\.\d{1,2}\.20\d{2}$/;
+						if (dateFormat.test($(this).val())==true){
+							$(this).removeClass('error'); $(this).parent().removeClass('error');							
+						}
+						else{
+							if($(this).val()!=""){
+								$(this).addClass('error'); $(this).parent().addClass('error');
+								error++;
+							}	
+						}			
+					}
+			
+					//alert($(this).get(0));
+				});
+				
+				// select items
+				$(""+form+" select").each(function(){
+					if(($(this).hasClass('notEmpty'))&&($(this).val()=="")){
+						$(this).addClass('error'); $(this).parent().addClass('error');
+						error++;
+					}
+					else{
+						$(this).removeClass('error'); $(this).parent().removeClass('error');		
+					}
+					//alert($(this).get(0));
+				});
+				if(error>0){
+					return false;				
+				}
+
+			});	
+
+		// ajax odesilani formulare
+		$(""+form+" input.ajaxSubmit").click(function(){
+			var formHolder = (form || "#"+$(this).attr('rel'));
+			if(error==0){
+				$(formHolder+" form").ajaxSubmit(formHolder);
+			}	
+		});				
+		
+	}
+};
+
+// prevod titulku akce
+function strToLowerCase(elm) {
+	var string = $('#'+elm).val().toLowerCase();	
+	var returnString = string.substr(0,1).toUpperCase() + string.substr(1,string.length);
+	$('#'+elm).val(returnString);
+	return false;
+}
+
+
+
+/*
+ * FeatureList - simple and easy creation of an interactive "Featured Items" widget
+ * Examples and documentation at: http://jqueryglobe.com/article/feature_list/
+ * Version: 1.0.0 (01/09/2009)
+ * Copyright (c) 2009 jQueryGlobe
+ * Licensed under the MIT License: http://en.wikipedia.org/wiki/MIT_License
+ * Requires: jQuery v1.3+
+*/
+;(function($) {
+	$.fn.featureList = function(options) {
+		var tabs	= $(this);
+		var output	= $(options.output);
+		new jQuery.featureList(tabs, output, options);
+
+		return this;	
+	};
+
+	$.featureList = function(tabs, output, options) {
+		function slide(nr) {
+			if (typeof nr == "undefined") {
+				nr = visible_item + 1;
+				nr = nr >= total_items ? 0 : nr;
+			}
+
+			tabs.removeClass('current').filter(":eq(" + nr + ")").addClass('current');
+			tabs.removeClass('nextCurr').filter(":eq(" + (nr+1) + ")").addClass('nextCurr');
+
+			output.stop(true, true).filter(":visible").fadeOut();
+			output.filter(":eq(" + nr + ")").fadeIn(function() {
+				visible_item = nr;	
+			});
+		}
+
+		var options			= options || {};
+		var total_items		= tabs.length;
+		var visible_item	= options.start_item || 0;
+
+		options.pause_on_hover		= options.pause_on_hover		|| true;
+		options.transition_interval	= options.transition_interval	|| 5000;
+
+		output.hide().eq( visible_item ).show();
+		tabs.eq( visible_item ).addClass('current');
+		tabs.eq( visible_item+1 ).addClass('nextCurr');
+
+		tabs.click(function() {
+			if ($(this).hasClass('current')) {
+				return false;	
+			}
+
+			slide( tabs.index( this) );
+		});
+
+		if (options.transition_interval > 0) {
+			var timer = setInterval(function () {
+				slide();
+			}, options.transition_interval);
+
+			if (options.pause_on_hover) {
+				tabs.mouseenter(function() {
+					clearInterval( timer );
+
+				}).mouseleave(function() {
+					clearInterval( timer );
+					timer = setInterval(function () {
+						slide();
+					}, options.transition_interval);
+				});
+			}
+		}
+	};
+})(jQuery);
+
+// get param from URL
+function getParam(param,url) {
+  param = param.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+param+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec(url||window.location.href);
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+// isSet function
+function isset(varname) {
+if(typeof( window[ varname ] ) != "undefined") return true;
+else return false;
+}
+
+// ajax form submit method
+jQuery.fn.ajaxSubmit = function(foo, conf) {
+		var config = {
+				method: false,  // request method (get/post) defaults to form's
+				action: false,  // action (url) defaults to form's
+				loading: dict.loading
+		};
+		config = jQuery.extend(config, conf);
+		var callback = (typeof(foo) === 'string') ? function(data) { jQuery(foo).html(data); } : (typeof(foo) === 'function') ? foo : false;
+		return this.each(function() {
+				var form = jQuery(this);
+				if(form.is('form')) {
+						var clicked = false;
+						var method = config.method || form.attr('method');
+						var action = config.action || form.attr('action');
+						var rel = config.rel || form.attr('rel');
+						var submit = jQuery('input[type="submit"]', form);
+						var data = {};
+						form.submit(function() {
+							if(!clicked){								
+								jQuery('*[name]', form).each(function() {
+										var t = jQuery(this);
+										var val = (t.attr('type') == 'checkbox') ? (t.attr('checked')) ? 1 : 0 : t.val();
+										data[t.attr('name')] = val;											
+								});
+
+									submit.val(config.loading);
+									jQuery[method](action, data, function(data) {
+										callback(data);													
+										if(rel=="lightboxForm"){
+											//alert('REL:'+rel);	
+											//content.submit_init('lfh');
+										}
+										else{
+											//content.buttons_init();	
+											//content.submit_init();
+										}
+									});	
+								
+								clicked = true;	
+								return false;
+							}
+						});						
+				}				
+		});
+};
+
+function openMapByAddress(mapsObject, city = false)
+{
+	var baseUrl = 'https://www.google.com/maps/search/?api=1';
+	var url = '';
+	if(city){
+		url = baseUrl + '&query=' + mapsObject.city;
+	} else {
+		if(mapsObject.googleId !== '' && mapsObject.googleId !== '0'){
+			url = baseUrl + '&query=' + mapsObject.city + '&query_place_id=' + mapsObject.googleId;
+		} else if(mapsObject.lat !== '' && mapsObject.lng !== ''){
+			url = baseUrl + '&query=' + mapsObject.lat + ',' + mapsObject.lng;
+		}
+	}
+
+	if (url !== '') {
+		window.open(url, '_blank');
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function openPlaceOnMapyCz(mapsObject, city = false)
+{
+	var baseUrl = 'https://mapy.cz/turisticka?';
+	var url = '';
+
+	if(city){
+		url = baseUrl + 'q=' + mapsObject.city;
+	} else {
+		if(mapsObject.mapyczId !== '' && mapsObject.mapyczSource !== '' && mapsObject.mapyczId !== '0'){
+			url = baseUrl + 'source=' + mapsObject.mapyczSource + '&id=' + mapsObject.mapyczId;
+		} else if(mapsObject.lat !== '' && mapsObject.lng !== ''){
+			url = baseUrl + 'x=' + mapsObject.lng + '&y=' + mapsObject.lat + '&source=coor&id=' + mapsObject.lng + ',' + mapsObject.lat;
+		}
+	}
+
+	if (url !== '') {
+		window.open(url, '_blank');
+		return true;
+	} else {
+		return false;
+	}
+}

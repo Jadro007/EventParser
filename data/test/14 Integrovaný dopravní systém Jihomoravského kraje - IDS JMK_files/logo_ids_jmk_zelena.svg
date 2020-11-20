@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X6 -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xml:space="preserve"
+   width="11.4861in"
+   height="4.54166in"
+   version="1.1"
+   style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+   viewBox="0 0 11486 4542"
+   id="svg904"
+   sodipodi:docname="logo_ids_jmk_zelena.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
+   id="metadata908"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="3840"
+   inkscape:window-height="1901"
+   id="namedview906"
+   showgrid="false"
+   inkscape:zoom="2.760583"
+   inkscape:cx="596.94263"
+   inkscape:cy="217.99967"
+   inkscape:window-x="-16"
+   inkscape:window-y="-16"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg904" />
+ <defs
+   id="defs884">
+  <style
+   type="text/css"
+   id="style882">
+   <![CDATA[
+    .fil1 {fill:#373435;fill-rule:nonzero}
+    .fil0 {fill:#14A761;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g
+   id="Layer_x0020_1"
+   transform="matrix(0.99585906,0,0,0.99585906,22.641842,15.034518)">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <polygon
+   class="fil0"
+   points="0,478 0,2583 546,2583 546,478 "
+   id="polygon887"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+  <path
+   class="fil0"
+   d="m 767,478 h 409 c 264,0 443,12 536,36 93,24 164,64 212,120 48,56 79,117 91,185 12,68 18,202 18,401 v 737 c 0,189 -9,315 -27,379 -18,64 -49,114 -93,150 -44,36 -99,61 -164,75 -65,14 -163,21 -294,21 H 765 V 477 Z m 546,359 v 1388 c 80,0 128,-16 147,-48 18,-32 28,-118 28,-259 v -820 c 0,-96 -3,-157 -9,-184 -6,-27 -20,-47 -42,-59 -22,-13 -63,-19 -123,-19 z"
+   id="path889"
+   inkscape:connector-curvature="0"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+  <path
+   class="fil0"
+   d="M 3395,1116 H 2888 V 960 c 0,-73 -7,-119 -19,-139 -13,-20 -35,-30 -65,-30 -33,0 -58,13 -75,40 -17,27 -25,68 -25,122 0,70 9,123 28,159 18,36 69,78 154,129 243,144 396,263 460,356 63,93 95,242 95,448 0,150 -18,260 -53,331 -35,71 -103,131 -203,179 -101,48 -218,72 -351,72 -146,0 -271,-28 -375,-83 -104,-55 -171,-126 -203,-211 -32,-86 -48,-207 -48,-364 v -137 h 507 v 255 c 0,79 7,129 22,152 14,23 40,34 77,34 37,0 64,-14 82,-43 18,-29 27,-71 27,-127 0,-124 -17,-205 -50,-243 -35,-38 -120,-102 -256,-191 -136,-90 -226,-155 -270,-196 -44,-41 -81,-97 -110,-169 -29,-72 -44,-164 -44,-275 0,-161 21,-279 62,-353 41,-74 108,-133 199,-175 92,-42 203,-63 332,-63 142,0 263,23 363,69 100,46 166,104 199,173 32,70 49,188 49,355 v 83 z"
+   id="path891"
+   inkscape:connector-curvature="0"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+  <path
+   class="fil0"
+   d="m 8036,478 v 1407 c 0,211 -2,346 -7,406 -4,60 -24,115 -60,163 -35,49 -83,82 -143,101 -60,19 -151,28 -273,28 h -274 v -369 c 33,3 57,4 72,4 39,0 71,-10 93,-29 23,-19 36,-42 39,-70 4,-28 5,-81 5,-161 V 478 h 546 z"
+   id="path893"
+   inkscape:connector-curvature="0"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+  <path
+   class="fil0"
+   d="m 9933,478 v 2105 h -477 l -2,-1421 -189,1421 h -342 l -199,-1392 -2,1392 H 8245 V 478 h 706 c 21,128 43,277 66,449 l 78,534 124,-983 h 713 z"
+   id="path895"
+   inkscape:connector-curvature="0"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+  <polygon
+   class="fil0"
+   points="11486,2583 10925,2583 10699,1681 10699,2583 10153,2583 10153,478 10699,478 10699,1296 10944,478 11458,478 11143,1429 11486,2580 "
+   id="polygon897"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+  <path
+   class="fil1"
+   d="m 7037,597 c 3,0 6,0 9,0 V 478 C 7046,327 6924,170 6771,134 5840,-64 4932,-64 4000,134 3847,170 3725,327 3725,478 v 119 c 3,0 6,0 9,0 113,0 204,89 204,199 v 745 c 0,110 -91,199 -204,199 -3,0 -6,0 -9,0 v 723 c 0,151 123,308 275,344 46,10 92,19 137,28 -2,16 -4,32 -4,49 0,187 155,338 346,338 175,0 319,-126 343,-291 353,31 704,33 1056,6 26,162 169,285 342,285 191,0 346,-151 346,-338 0,-12 -1,-24 -2,-36 69,-12 138,-26 206,-40 153,-36 275,-193 275,-344 0,-241 0,-482 0,-723 -3,0 -6,0 -9,0 -113,0 -204,-89 -204,-199 V 797 c 0,-110 91,-199 204,-199 z m -2521,943 c 0,113 -91,204 -204,204 -113,0 -204,-91 -204,-204 V 776 c 0,-113 91,-204 204,-204 113,0 204,91 204,204 z m 1054,-87 c 0,161 -114,292 -254,292 h -380 c -140,0 -254,-131 -254,-292 V 868 c 0,-161 114,-292 254,-292 h 380 c 140,0 254,131 254,292 z m 1089,0 c 0,161 -118,292 -264,292 h -395 c -146,0 -264,-131 -264,-292 V 868 c 0,-161 118,-292 264,-292 h 395 c 146,0 264,131 264,292 z"
+   id="path899"
+   inkscape:connector-curvature="0"
+   style="fill:#373435;fill-rule:nonzero" />
+  <path
+   class="fil0"
+   d="m 1029,4542 c 0,0 1189,-899 4576,-1218 3153,-296 4515,474 4515,474 0,0 -1635,-313 -3420,-251 -1662,58 -2525,209 -3719,427 -637,116 -1952,568 -1952,568 z"
+   id="path901"
+   inkscape:connector-curvature="0"
+   style="fill:#007e00;fill-rule:nonzero;fill-opacity:1" />
+ </g>
+</svg>

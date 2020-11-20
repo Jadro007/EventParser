@@ -1,0 +1,512 @@
+/* 
+    Created on : 25.7.2014, 10:33:16
+    Author     : Tomas Mleziva - Dark side, a.s.
+*/
+.performance-content {
+    background: #d2cfd2;
+}
+.performance-content .col-left {
+    width: 630px;
+    padding-right: 14px;
+    border-right: 1px solid #b4afb4;
+    float: left;
+}
+.performance-content .col-right {
+    width: 300px;
+    margin-left: 15px;
+    float: left;
+}
+.performance-content .col-left .main-image {
+    width: 100%;
+}
+.performance-header {
+    width: auto;
+/*    height: 50px;*/
+    background: #e1dfe1;
+    padding: 25px 37px 30px 37px;
+    margin-bottom: 3px;
+}
+.performance-header h1 {
+    color: #008289;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: none;
+}
+.performance-header .subheader span.sep {
+    margin-top: 4px;
+}
+.performance-content .info {
+    width: auto;
+    padding: 0 0 30px 39px;
+}
+.performance-content .info .stickers {
+    margin: 2px 0 30px 0;
+    width:100%;
+}
+.performance-content .info .stickers div {
+    float: left;
+}
+.performance-content .info p {
+    font-size: 14px;
+    line-height: 18px;
+}
+.performance-content .info em {
+    font-style: italic;
+}
+.performance-content .info table {
+    width: auto;
+    margin: 30px 0 0 0;
+}
+.performance-content .info table th,
+.performance-content .info table td {
+    height: 27px;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: bold;
+    border: none;
+}
+.performance-content .info a {
+    color: #008289;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.performance-content .info table th {
+    color: #666;
+    font-weight: bold;
+    width: 135px;
+}
+.performance-content .gallery {
+    width: auto;
+}
+.gallery h3 {
+    margin-bottom: 8px;
+}
+.gallery-wrapper {
+    width: 630px;
+    height: 203px;
+    overflow: hidden;
+    position: relative;
+}
+.gallery-wrapper div {
+    width: 99999px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+}
+.gallery-wrapper div img {
+    height: 200px;
+}
+.gallery .gallery-controls {
+    padding-left: 41px;
+    margin: 2px 0 30px 0;
+}
+.gallery .gallery-controls a {
+    display: block;
+    float: left;
+    width: 135px;
+    height: 30px;
+    background: url(../images/bg-gallery-controls.png);
+    margin: 0 1px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.gallery .gallery-controls a.prev {
+    background-position: top left;
+}
+.gallery .gallery-controls a.fullscreen {
+    background-position: -50px 0;
+    width: 272px;
+    color: #fff;
+}
+.gallery .gallery-controls a.next {
+    background-position: top right;
+}
+.performance-content h3 {
+    font-size: 28px;
+    color: #b4afb4;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.info {
+    padding-bottom: 15px;
+}
+.info p {
+    font-size: 14px;
+    line-height: 18px;
+    margin:  0 0 30px 0;
+}
+.gallery-wrapper a {
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 5px;
+}
+.youtube span {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    height: 22px;
+    width: 35px;
+    line-height: 22px;
+    padding: 5px 12px;
+    background: #008289;
+    color: #fff;
+    position: absolute;
+    top: 84px;
+    left: 50%;
+    margin-left: -30px;
+    border-radius: 3px;
+}
+p.no-images {
+    padding-bottom: 20px;
+    margin: 15px 0 37px 37px; 
+    font-style: italic;
+    background: url(../images/schedule-dotted-separator.png);
+    background-repeat: repeat-x;
+    background-position: bottom left;
+    font-size: 12px;
+}
+/* matrix style gallery */
+.gallery-strip {
+	width: 100%;
+	background: #b4afb4;
+	height: 200px;
+	margin-bottom: 3px;
+}
+.gallery-strip img {
+	max-height: 100%;
+	background: #d2cfd2;
+	padding-right: 3px;
+}
+.gallery-strip a {
+	margin: 0;
+	position: relative;
+	text-decoration: none;
+	float: left;
+	display: block;
+	height: 100%;
+	width: auto;
+}
+
+.gallery-strip.odd a {
+	float: right;
+	
+}
+.gallery-strip.odd img {
+	padding-right: 0;
+	padding-left: 3px;
+}
+
+.references {
+    margin-bottom: 35px;
+}
+.references h3 {
+    margin-bottom: 5px;
+}
+.performance-content .reference {
+    width: 590px;
+    background-image: url(../images/schedule-dotted-separator.png);
+    background-position: bottom right;
+    background-repeat: repeat-x;
+    padding: 8px 0 12px 0;
+    margin-left: 39px;
+    position: relative;
+}
+.performance-content .reference p {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    width: 480px;
+    height: 37px;
+    margin-bottom: 5px;
+    
+}
+.performance-content .reference span {
+    font-size: 14px;
+    line-height: 14px;    
+}
+.performance-content .reference a.more {
+    color: #fff;
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding-right: 10px;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+    background: url(../images/upcoming-tickets.png);
+    background-position: top right;
+    text-decoration: none;
+}
+.thanks div.thx-item {
+    width: 135px;
+    margin: 10px 22px 2px 0;
+    float: left;
+}
+.thanks div.thx-item a {
+    text-decoration: none;
+    color: inherit;
+	padding: 5px;
+}
+.thanks div.thx-item div {
+/*    background: #e1dfe1;*/
+    background: #fff;
+    width: 119px;
+    height: 119px;
+    line-height: 119px;
+    margin-bottom: 5px;
+	border: 8px solid #fff;
+    overflow: hidden;
+}
+.thanks div.thx-item div img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.thanks div.thx-item.last {
+    margin-right: 0;
+}
+.thx-item p {
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* right col */
+.performance-content .col-right h3 {
+    color: #008289;
+    text-transform: uppercase;
+}
+.occurence {
+    position: relative;
+}
+.performance-content .col-right a.rightcol-tab {
+    display: block;
+    height: 37px;
+    width: 134px;
+    float: left;
+    font-weight: bold;
+    padding: 8px 0 0 8px; 
+    background: url(../images/bg-performance-right-filter.png);
+	background-position: bottom right;
+    margin-top: 5px;
+    
+    color: #fff;
+	text-decoration: none;
+	
+}
+.performance-content .col-right a.rightcol-tab.on {
+    background-image: url(../images/bg-performance-right-filter-on.png);
+}
+.performance-plan {
+    background: #e1dfe1;
+    padding-bottom: 3px;
+    border-top: none;
+}
+.performance-plan p.no-results {
+	padding: 12px 0;
+	text-align: center;
+	color: #aeaeaa;
+}
+.performance-plan h4 {
+    font-size: 24px;
+    color: #b4afb4;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 35px;
+    height: 35px;
+    text-indent: 3px;
+}
+.occurence {
+    position: relative;
+    height: 156px;
+}
+.performance-content .occurence h3 {
+    font-size: 20px;
+    color: #008289;
+    text-transform: none;
+}
+.occurence .subheader {
+    position: absolute;
+    top: 70px;
+    left: 0px;
+}
+.actions {
+    position: absolute;
+    bottom: 22px;
+    right: 1px;
+    width: 270px;
+}
+.actions a {
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    text-align: center;
+    bottom: 10px;
+    right: 1px;
+    padding-right: 20px;
+    width: 108px;
+    margin-left: 5px;
+    background-position: top right;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+}
+.actions a.tickets {
+    background-image: url(../images/upcoming-tickets.png);
+}
+.actions a.calendar {
+    background-image: url(../images/upcoming-more.png);
+}
+.br-dotted {
+    width: auto;
+    height: 2px;
+    margin-bottom: 2px;
+    padding-left: 37px;
+    background: url(../images/schedule-dotted-separator.png);
+    background-repeat: repeat-x;
+}
+.performance-plan .br-full {
+    width: 100%;
+    height: 2px;
+    border-top: 1px solid #fff;
+    background-repeat: repeat-x;
+}
+a.other-occurrences {
+    background: url(../images/upcoming-show-more.png);
+    width: 145px;
+    height: 34px;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    margin: 9px 0 8px 78px;
+}
+
+/** today */
+h3.today {
+    margin: 40px 0 10px 0;
+}
+.performance-small {
+    height: 222px;
+    background: #c7c3c7;
+    position: relative;
+}
+.performance-small-info {
+    padding-left: 39px;
+}
+.performance-small h4 {
+    font-size: 20px;
+    color: #008289;
+    line-height: 24px;
+    font-weight: bold;
+	padding: 12px 0 8px 0;
+}
+.performance-small .stickers {
+    margin-top: 9px;
+    width: 261px;
+}
+.performance-small img {
+	position: relative;
+	left: -38px;
+}
+.performance-small .stickers div {
+	margin-bottom: 2px;
+    float: left;
+}
+.performance-small .stickers div.crew {
+    max-width: 120px;
+}
+.performance-small .actions {
+    right: 0;
+    width: 264px;
+    bottom: 13px;
+}
+.performance-small .actions a {
+    width: 104px;
+}
+.performance-small .actions a.tickets {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .performance-content .col-left,
+    .performance-content .col-right {
+        border:none;
+        width:100%;
+    }
+    .gallery-wrapper {
+        width:100%;
+        margin-bottom:50px;
+    }
+    .gallery .gallery-controls {
+        display:none;
+    }
+
+    .gallery-wrapper div a {
+        margin-left:0;
+    }
+    .gallery-wrapper div a:not(:first-child) {
+        display:none;
+    }
+
+    .performance-content .reference {
+        width:100%;
+        margin:0;
+    }
+    .performance-content .reference p {
+        width:80%;
+        height:auto;
+        margin-right:55px;
+    }
+
+    .performance-content .col-right {
+        margin-left:0;
+    }
+
+    .performance-content .col-right h3.today,
+    .performance-small {
+        display:none;
+    }
+    .performance-small h4 {
+        padding-left: 0;
+    }
+    .performance-small-info {
+        padding-left:5%;
+        padding-right:5%;
+    }
+    .performance-small img {
+        width:105%;
+        left:-5%;
+    }
+    .performance-small .actions {
+        width:auto;
+    }
+    .thanks {
+        display: none;
+    }
+}
+
+
+.occurence .actions span.tickets.disabled {
+    width: auto;
+    background: none;
+    display: block;
+    border: 1px solid #b4afb4;
+    text-align: center;
+    padding: 8px 20px;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 20px;
+}

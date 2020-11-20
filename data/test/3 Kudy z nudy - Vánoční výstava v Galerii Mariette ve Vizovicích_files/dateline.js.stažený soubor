@@ -1,0 +1,319 @@
+﻿var date;
+
+DateLine = (function ($) {
+
+    function DateLine(el, options, callback) {
+        if (typeof (options) != 'object') options = {};
+        $.extend(this, DateLine.DEFAULT_OPTIONS, options);
+
+        this.target = $(el);
+        this.callback = callback;
+
+        this.build();
+    };
+
+    DateLine.DEFAULT_OPTIONS = {
+        month_names: 'Leden,Únor,Březen,Duben,Květen,Červen,Červenec,Srpen,Září,Říjen,Listopad,Prosinec'.split(','),
+        short_day_names: 'Ne,Po,Út,St,Čt,Pá,So'.split(','),
+        date_format: 'YYYY-mm-dd'
+    };
+
+    DateLine.prototype = {
+        numDays: 24,
+        selectedDays: null,
+        months: null,
+        onDatesDrawn: undefined,
+        onGetRenderDate: undefined,
+        onFullLoad: undefined,
+        base: {
+            onGetRenderDate: function () { return new Date(); }
+        },
+
+        build: function () {
+            var that = this;
+            date = (typeof (this.onGetRenderDate) == 'function') ? this.onGetRenderDate(new Date()) : this.base.onGetRenderDate(new Date());
+
+            this.executeNavLeft = false;
+            if (eventCalendar_getDate() != null) {
+                var firstSelectedDate = new Date(eventCalendar_getDate().split(',')[0]);
+                if (firstSelectedDate > new Date()) {
+                    date = firstSelectedDate;
+                    this.executeNavLeft = true;
+                }
+            }
+
+            switch (this.date_format) {
+                case "dd.mm.YYYY":
+                    this.reg = new RegExp(/^(\d{1,2}).(\d{1,2}).(\d{4})$/);
+                    this.date_decode = "new Date(matches[3], parseInt(matches[2]-1), matches[1]);";
+                    this.date_encode = 'this.strpad(date.getDate()) + "." + this.strpad(date.getMonth()+1) + "." + date.getFullYear();';
+                    break;
+                case "dd/mm/YYYY":
+                    this.reg = new RegExp(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+                    this.date_decode = "new Date(matches[3], parseInt(matches[2]-1), matches[1]);";
+                    this.date_encode = 'this.strpad(date.getDate()) + "/" + this.strpad(date.getMonth()+1) + "/" + date.getFullYear();';
+                    break;
+                case "dd-mm-YYYY":
+                    this.reg = new RegExp(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+                    this.date_decode = "new Date(matches[3], parseInt(matches[2]-1), matches[1]);";
+                    this.date_encode = 'this.strpad(date.getDate()) + "-" + this.strpad(date.getMonth()+1) + "-" + date.getFullYear();';
+                    break;
+                case "mm/dd/YYYY":
+                    this.reg = new RegExp(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+                    this.date_decode = "new Date(matches[3], parseInt(matches[1]-1), matches[2]);";
+                    this.date_encode = 'this.strpad(date.getMonth()+1) + "/" + this.strpad(date.getDate()) + "/" + date.getFullYear();';
+                    break;
+                case "mm-dd-YYYY":
+                    this.reg = new RegExp(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+                    this.date_decode = "new Date(matches[3], parseInt(matches[1]-1), matches[2]);";
+                    this.date_encode = 'this.strpad(date.getMonth()+1) + "-" + this.strpad(date.getDate()) + "-" + date.getFullYear();';
+                    break;
+                case "YYYY-mm-dd":
+                    this.reg = new RegExp(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+                    this.date_decode = "new Date(matches[2], matches[3], parseInt(matches[1]-1));";
+                    this.date_encode = 'date.getFullYear() + "-" + this.strpad(date.getMonth()+1) + "-" + this.strpad(date.getDate());';
+                    break;
+            }
+
+            var actualMonth, lastMonth;
+            if (date.getDate() === 1) {
+                actualMonth = date.getMonth() - 1 < 0 ? 11 : date.getMonth() - 1;
+                lastMonth = date.getMonth();
+            }
+            else {
+                actualMonth = date.getMonth();
+                lastMonth = date.getMonth() + 1 > 11 ? 0 : date.getMonth() + 1;
+            }
+            
+
+            this.dateLine = $('<div class="date-line"></div>');
+            this.dateSelector = $('<ul class="date-selector"></ul>');
+            this.dateNavRight = $('<a href="javascript:void(0);" class="date-nav date-nav-right">&raquo;</a>');
+            this.dateNavLeft = $('<a href="javascript:void(0);" class="date-nav date-nav-left Flip-H">&raquo;</a>');
+            this.dateWrap = $('<div class="date-wrap cf"></div>');
+            this.monthsIndicator = $('<div class="month-indicator" data-month="' + actualMonth + '">' + this.month_names[actualMonth] + '</div><div class="month-indicator" data-month="' + lastMonth + '">' + this.month_names[lastMonth] + ' </div>');
+            this.selectedDatesHiddenInput = $('<input id="selectedDates" style="display:none;" />');
+            this.selectedDatesHiddenInput.val(this.dateToString(new Date()));
+
+            if (this.executeNavLeft) {
+                this.drawDays(date);
+            }
+            else {
+                this.drawDays();
+            }
+
+            this.dateNavRight.click(function (e) {
+                var newDate = new Date(that.rangeStart.getFullYear(), that.rangeStart.getMonth(), that.rangeStart.getDate() + 1, 12, 00);
+                var selDateArray = that.selectedDatesHiddenInput.val().split('|');
+                /*inactive*/
+                that.drawDays(newDate);
+                that.refreshMonthsIndicator(false);
+
+                that.selectDateByArray(selDateArray);
+            });
+            
+            this.dateNavLeft.click(function (e) {
+                if (that.executeNavLeft) {
+                    var newDate = new Date(that.rangeStart.getFullYear(), that.rangeStart.getMonth(), that.rangeStart.getDate() - 1, 12, 00);
+                    var selDateArray = that.selectedDatesHiddenInput.val().split('|');
+
+                    that.drawDays(newDate);
+                    that.refreshMonthsIndicator(true);
+
+                    that.selectDateByArray(selDateArray);
+                }
+            });
+
+            $(this.dateSelector).selectable({
+                filter: 'li',
+                stop: function () {
+                    that.selectDate(that);
+                }
+            })
+
+            $(this.dateWrap).append(this.dateSelector).prepend(this.dateNavLeft);
+            $(this.dateWrap).append(this.dateSelector).append(this.dateNavRight);
+
+            $(this.dateLine).append(this.monthsIndicator).append(this.dateWrap);
+            $(this.dateLine).append(this.selectedDatesHiddenInput);
+            $(this.target).append(this.dateLine);
+
+            this.refreshMonthsIndicator();
+
+            if (typeof (this.onDatesDrawn) == 'function') {
+                this.onDatesDrawn();
+            }
+        },
+
+        drawDays: function (date) {
+            var selected = '';
+            if (!date) {
+                date = new Date();
+                if (getParameterByName('filter') == '') {
+                    selected = ' ui-selected';
+                }
+            }
+
+            var dayCells = '';
+
+            this.rangeStart = date;
+
+            if (this.rangeStart > new Date().setHours(23, 59, 59, 0)) {
+                /*set inactive left nav*/
+                this.dateNavLeft.removeClass('inactive');
+                this.executeNavLeft = true;
+            }
+            else {
+                this.dateNavLeft.addClass('inactive');
+                this.executeNavLeft = false;
+            }           
+
+            for (var i = 0; i <= this.numDays - 1; i++) {
+                var currentDay = new Date(this.rangeStart.getFullYear(), this.rangeStart.getMonth(), this.rangeStart.getDate() + i, 12, 00);
+                dayCells += '<li class="day' + (currentDay.getDay() == 6 || currentDay.getDay() == 0 || currentHolidays.indexOf(currentDay.yyyymmdd()) > -1 ? ' week' : '') + (currentDay.getDate() == 1 ? ' first' : '') + selected + '" data-date="' + this.dateToString(currentDay) + '"><span>' + currentDay.getDate() + '</span>' + this.short_day_names[currentDay.getDay()] + '</li>';
+                selected = '';
+            }
+
+            $(this.dateSelector)
+				.empty()
+				.append(dayCells);
+        },
+
+        selectDate: function (that) {
+            var selectedDays = new Array();
+
+            $('.ui-selected', this.dateSelector).each(function () {
+                var date = $(this).data('date');
+
+                selectedDays.push(date);
+            });
+
+            if (selectedDays.length) {
+                this.selectedDays = selectedDays;
+            } else {
+                this.selectedDays = null;
+            }
+
+            if (this.callback)
+                this.callback(this.selectedDays);
+        },
+
+        selectDateByArray: function (selectedDays) {
+            if (typeof (selectedDays) == 'undefined' || selectedDays === undefined || selectedDays == null) { return; }
+
+            for (var i = 0; i < selectedDays.length; i++) {
+                var dateItem = selectedDays[i];
+                $('#date_line li[data-date=' + dateItem + '][class~=day]').addClass('ui-selected');                
+            }
+        },
+
+        refreshMonthsIndicator: function (backward) {
+            var wrapWidth = $(this.dateWrap).width(),
+				firstDayOffset = $('.first', this.dateSelector).position(),
+				firstDay,
+				$firstMonth = $('.month-indicator:nth-child(1)', this.dateLine),
+				$secondMonth = $('.month-indicator:nth-child(2)', this.dateLine);
+
+            if (firstDayOffset) {
+                firstDay = firstDayOffset.left;
+            } else {
+                firstDay = wrapWidth;
+            }
+
+            if (!backward) {
+                if (this.lastOffset < firstDay && this.lastOffset != 'null') {
+                    var firstMonthColor = $firstMonth.css('background-color'),
+					secondMonthColor = $secondMonth.css('background-color'),
+					secondMonthContent = $secondMonth.html(),
+					actualMonth = $secondMonth.data('month');
+                    newMonth = actualMonth + 1 > 11 ? 0 : actualMonth + 1;
+
+                    $firstMonth
+					.css({ 'background-color': secondMonthColor })
+					.html(secondMonthContent);
+
+                    $secondMonth
+					.css({ 'background-color': firstMonthColor })
+					.html(this.month_names[newMonth])
+					.data('month', newMonth);
+                }
+            }
+            else {
+                if (this.lastOffset > firstDay && this.lastOffset != 'null') {
+                    var firstMonthColor = $firstMonth.css('background-color'),
+					secondMonthColor = $secondMonth.css('background-color'),
+					secondMonthContent = $secondMonth.html(),
+					actualMonth = $secondMonth.data('month');
+                    newMonth = actualMonth - 1 < 1 ? 0 : actualMonth - 1;
+
+                    $firstMonth
+					.css({ 'background-color': secondMonthColor })
+					.html(this.month_names[newMonth - 1]);
+
+                    $secondMonth
+					.css({ 'background-color': firstMonthColor })
+					.html(this.month_names[newMonth])
+					.data('month', newMonth);
+                }
+            }
+
+            this.lastOffset = firstDay;
+
+            $firstMonth.width(firstDay + 38);
+            $secondMonth.css({ left: firstDay + 38, width: (wrapWidth - firstDay) });
+        },
+
+        indexFor: function (array, value) {
+            for (var i = 0; i < array.length; i++) {
+                console.log(array[i]);
+                if (value == array[i]) return i;
+            };
+        },
+
+        dateToString: function (date) {
+            return eval(this.date_encode);
+        },
+
+        shortDayNum: function (day_name) {
+            return this.indexFor(this.short_day_names, day_name);
+        },
+
+        strpad: function (num) {
+            if (parseInt(num) < 10)
+                return '0' + parseInt(num);
+            else
+                return parseInt(num);
+        },
+
+        setStartDate: function (date) {
+            var newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1, 12, 00);
+            var selDateArray = that.selectedDatesHiddenInput.val().split('|');
+            /*inactive*/
+            that.drawDays(newDate);
+            that.refreshMonthsIndicator(false);
+
+            that.selectDateByArray(selDateArray);
+        }
+    };
+
+    $.fn.DateLine = function (options, callback) {
+        return this.each(function () {
+            new DateLine(this, options, callback);
+        });
+    };
+
+    return DateLine;
+})(sxQuery);
+
+
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(window.location.search);
+    if (results == null)
+        return "";
+    else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+}

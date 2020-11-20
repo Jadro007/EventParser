@@ -1,0 +1,224 @@
+/***********************************************/
+/* NUTNE ABSOLUTNI CESTY KVULI eMIMINU a spol. */
+/***********************************************/
+
+.r-head {position:relative; height:14px; line-height:12px; margin:auto; padding:0; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:9px !important; text-align:left; color:#666; max-width:1000px}
+.r-head span {display:inline-block; width:50px; height:14px; overflow:hidden; text-indent:-99em; margin-left:-3px; background:url('data:image/gif ;base64,R0lGODlhMgAOAIAAAGZmZv///ywAAAAAMgAOAAACSYyPqcvtD6OctIILXEa76tMpYTB6IgheKGl0WJqp8IK5a7xy7c4mpU2qtUKuV29TlOl4v97xxuQ5c0lkdCizOoWmrvcLDovH3wIAOw==') no-repeat}
+.col-r .r-head span, .ahead .r-head span {margin:0}
+.m62 .r-head {display:none}
+
+.r-body {position:relative; clear:both}
+.fix-block {position:relative; z-index:1}
+
+/* kopie z UNI kvuli sdileni na externich serverech */
+.fc0 {overflow:hidden; clear:both; float:none; display:block; height:0; line-height:0; margin:0; padding:0; font-size:0}
+.hid {display:none}
+
+/* pro mizeni mezirek ve FF */
+.r-body object, .r-body embed, .r-body iframe {display:block; margin:auto}
+
+/* centrovani obrazku z bebecek */
+.r-body table {margin:auto}
+
+/* ahead 200px */
+.ahead {display:table !important; width:0; height:217px; margin:0 auto 2px; border:0; border-collapse:collapse}
+.ahead td {vertical-align:bottom}
+.ahead .r-head {margin:0; padding:3px 0 0; z-index:1}
+.ahead * {vertical-align:middle}
+.ahead img {max-width:none}
+
+#adsintersticialelement {top:0; left:0; min-height:100% !important}
+
+.rollout-banner {z-index:9; position:relative}
+.rollout img, .rollout-banner img, .video-banner img {border:0}
+.rollout, .rollout-banner, .video-banner {position:absolute; overflow:hidden}
+.rollout .maly, .rollout-banner .maly, video-banner .maly {display:block}
+.rollout .velky, .rollout-banner .velky, .video-banner .velky {display:none}
+.rozvinuto .maly {display:none}
+.rozvinuto .velky {display:block !important}
+
+/*reklama partner*/
+.m-partner-min .r-head, .m-partner-mid .r-head, .m-partner-big .r-head {float:left; margin:0; padding:0 3px; background:#FFF}
+.m-partner-min .r-head span, .m-partner-mid .r-head span, .m-partner-big .r-head span {display:none}
+.m-partner-min .r-body, .m-partner-mid .r-body, .m-partner-big .r-body {clear:both; background:#FFF}
+
+/* reklama r-bwin */
+.r-bwin {line-height:11px}
+.r-bwin input {margin:0; height:0}
+.r-bwin td {text-align:left}
+
+.m11, .m12, .m17 {width:300px}
+.m29 {clear:both; margin:0 auto 20px}
+.m54 {clear:both; margin:auto; text-align:center; /*width:970px; margin:-10px auto 20px*/}
+.m54 .r-head {max-width:970px}
+.m55 {width:600px}
+.m58, .m60, .m76, [class*="s_widesquare"] {clear:both; width:480px; margin:0 auto 1.6em}
+
+.m62 iframe {position:absolute; top:-9999px; left:-9999px; z-index:1}
+.m63 {width:100%; overflow-x:hidden}
+
+#hyper300 {background:#FFF}
+#hyper300 .r-head {height:auto; line-height:1; margin:0 0 .5em; font-size:14px !important}
+#hyper300 .r-head a {color:#666}
+#hyper300 .r-body {margin:0; padding-top:4px}
+#hyper300 .r-body .r-body {margin-bottom:0}
+#hyper300 .entry, #hyper300 .r-art {overflow:hidden; width:100%; min-height:60px; margin-bottom:1.2em}
+#hyper300 .entry img, #hyper300 .entry span.midi {float:left; margin:0 10px 0 0}
+#hyper300 .entry b {font-weight:normal}
+#hyper300.vver-b .entry img {width:80px; height:55px} 
+#hyper300 .entry p {display:table; margin:.2em 0}
+#hyper300 .entry .fsm {display:table; font-size:x-small; letter-spacing:.1em}
+#ads-sticky {width:300px}
+#imagebox {visibility:hidden; float:right; width:300px; margin-top:-114px}
+
+/* reklamy neprokliknutelne bez focusu */
+.nonfocus .r-body, .nonfocus iframe {-webkit-pointer-events: none; -moz-pointer-events: none; -ms-pointer-events: none; pointer-events: none}
+
+/* oznaceni koupenych fotek */
+.mark-victimnews {position:relative; display:block}
+.mark-victimnews img {display:block}
+.mark-victimnews .mvn {position:absolute; left:0; top:0; z-index:1; width:104px; height:64px; background:url('//1gr.cz/u/n4/mark-victimnews.png') 50% 50% no-repeat}
+.foto-case .mark-victimnews .mvn {width:173px; height:120px; background-image:url('//1gr.cz/u/n4/mark-victimnews-big.png')}
+.sp5 .mvn {display:none}
+
+@media print {.r-head, .r-body, .col-r, #reklama-flash-body {display:none}}
+
+/* eTarget */
+#eTargetContent {padding:1.5em 0 1px; background:#FFF url('data:image/gif ;base64,R0lGODlhMgAOAIAAAGZmZv///ywAAAAAMgAOAAACSYyPqcvtD6OctIILXEa76tMpYTB6IgheKGl0WJqp8IK5a7xy7c4mpU2qtUKuV29TlOl4v97xxuQ5c0lkdCizOoWmrvcLDovH3wIAOw==') no-repeat 78px 0}
+#eTargetContent a {display:block; text-decoration:none; margin:0 0 15px; font-size:116%}
+#eTargetContent u {display:block; margin:0 0 4px; color:inherit; font-weight:bold; font-size:105%}
+#eTargetContent a:hover u {color:inherit}
+#eTargetContent span {display:inline; margin:0; padding-right:.5em; color:#000}
+#eTargetContent small {color:inherit; font-size:80%}
+#eTargetContent a:hover small {color:inherit; text-decoration:underline}
+.space-f #eTargetContent {margin:22px 0 0 10px} 
+.space-b #eTargetContent {margin:0 0 0 10px} 
+#space-b-add a.fr {margin-right:20px}
+
+#selfart {margin-left:10px}
+#selfart .r-body {-webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; position:relative; width:100%; min-height:132px; line-height:1.3; padding:0 0 0 246px; font-size:12px}
+#selfart a {text-decoration:none}
+#selfart a:hover, #selfart h3 a {text-decoration:underline}
+#selfart h3 {margin:0 0 .1em; font-size:150%}
+#selfart h3 img {position:absolute; top:3px; left:0; z-index:1; width:230px; height:129px; background-position:50% 50%; background-repeat:no-repeat; background-size:cover}
+#selfart h3 .over-sp5 {position:absolute; top:3px; left:0; z-index:1; width:230px; height:129px; overflow:hidden; text-align:center}
+#selfart h3 .over-sp5 img {position:static; max-width:100%; width:auto; height:auto}
+#selfart p {margin:0 0 .2em; font-size:117%}
+#selfart .price {color:#C00}
+#selfart .propety {list-style:none; overflow:hidden; margin:0 0 .3em; padding:3px 0}
+#selfart .propety li {float:left; list-style:none; margin:0 8px 0 -8px; padding:1px 8px}
+#selfart .more a {font-size:125%; color:#C00}
+/* topvyhody */
+#selfart .sale {display:block; margin:.3em 0}
+#selfart .percent {color:#C00; font-size:150%}
+#selfart .percent sup {font-size:100%; vertical-align:baseline}
+
+.space-f #selfart {margin:-14px 0 20px 10px}
+#space-g-add > div + div {margin-top:1em}
+
+#AdTrackForumTop {min-height:100px}
+
+.interbanner {height:300px}
+
+/* od 8.6.2016 mazani ouska reklama v skliku */
+.r-body a[href*="napoveda.sklik.cz"] {display:none}
+
+/* reklama v portalovce 5.2019 */
+#r-ucho .r-head {display:none}
+
+/*sme-reality strip bydleni, ekonomika, kraje*/
+.adstrip {overflow: hidden}
+.adstrip h3 {display: inline-block; font-size: 150%; line-height: 1}
+.adstrip .fr {color: #666; text-decoration: underline; line-height: 1.5}
+.adstrip ul {margin: 10px 0 40px; overflow: hidden}
+.adstrip .item {overflow: hidden; float: left; width: 135px; margin-left: 30px}
+.adstrip .item a {display: block; text-decoration: none}
+.adstrip .item i {font-style: italic}
+.adstrip .item:first-child {margin-left: 0}
+.adstrip .photo {position: relative}
+.adstrip img {display: block; margin-bottom: 3px; width: 100%; height: auto}
+.adstrip .price {position: absolute; display: block; right: 0; bottom: 10px; padding: 0 10px; z-index: 1; text-align: center; line-height: 1.7em; color: #ffffff; font-weight: 700; background: #2682d4}
+.adstrip .ad-text {margin-left:5px; font-size: 92%; line-height: 1.2; color:#000}
+.adstrip i {display:block; margin-top:5px}
+
+/* varovani ministerstva financi */
+.mf-warning {clear:both; width:24em; line-height:11px; font-size:9px; color:#AAA; font-family:Arial, Helvetica, sans-serif}
+.mf-warning:before {content:'18+'; float:left; width:18px; height:18px; line-height:18px; margin:0 .5em 0 0; border:1px solid #AAA; border-radius:100%; text-align:center; font-size:9px; font-weight:700}
+
+#fellow.r-fellow {position:absolute}
+#fellow.r-fellow:after {content:'Reklama'; position:absolute; left:100%; top:0; width:5em; text-align:center; color:#666; transform:rotate(90deg); transform-origin:.6em; font-size:10px; font-family:Arial, Helvetica, sans-serif;}
+#fellow.r-fellow .r-head {display:none}
+
+.klikaci-body {cursor:pointer}
+.klikaci-body .m-bg-4, .klikaci-body .foot-in, .klikaci-body .ahead, .klikaci-body #pE_pageBody, .klikaci-body #pageEnvelope_bottom, .klikaci-body #main-np {cursor:default}
+.klikaci-body .m-bg-4 > *, .klikaci-body .foot-in > *, .klikaci-body .ahead > * {cursor:auto}
+.klikaci-body .m-bg-4, .klikaci-body .foot-in, .klikaci-body .ahead {background:url('//1gr.cz/u/free.gif')}
+.klikaci-body .m-bg-4 {background-color:#FFF}
+.klikaci-body-siroke .m-bg-4 {padding-left:15px; padding-right:15px}
+.klikaci-body-siroke #foot2 .f-in {padding-left:25px; padding-right:25px}
+
+@media print {
+.klikaci-body-siroke .m-bg-4, .klikaci-body-siroke #foot2 .f-in {padding:0}
+}
+
+/* tahaci branding */
+#branding-tahlo { position: fixed; z-index: 1; left: 50%; top: 160px; transform: translateY(-210px) scale(1.5); border-radius: 100%; width: 50px; height: 50px; margin: -25px; background: #FFF; box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.333) inset, 0 0 2px rgba(0, 0, 0, 0.666); transition: transform 1.5s; cursor: move; cursor: grab }
+#branding-tahlo-sipky { position: absolute; left: 3px; top: 3px; width: 42px; height: 42px; border-radius: 100%; border: 1px solid rgba(127,127,127,0.33); transform: rotate(-540deg); transition: transform 1.5s }
+#branding-tahlo-sipky:before, #branding-tahlo-sipky:after { content: ''; position: absolute; top: 15px; width: 11px; height: 11px; transform: scaleY(0.75) rotate(45deg); border: 0 solid #000 }
+#branding-tahlo-sipky:after { right: 8px; border-width: 3px 3px 0 0 }
+#branding-tahlo-sipky:before { left: 8px; border-width: 0 0 3px 3px }
+#branding-tahlo.init { transform: translateY(0) scale(1) }
+#branding-tahlo.init #branding-tahlo-sipky { transform: rotate(0) }
+#branding-tahlo:hover, #branding-tahlo.hover { background: #444 }
+#branding-tahlo:hover #branding-tahlo-sipky:before, #branding-tahlo:hover #branding-tahlo-sipky:after, #branding-tahlo.hover #branding-tahlo-sipky:before, #branding-tahlo.hover #branding-tahlo-sipky:after { border-color: #FFF }
+
+#onlajny-com .r-head {display:none}
+
+/* nativka */
+.ads-mockup { pointer-events: none }
+.ads-mockup h3 span, .ads-mockup .perex span { background: rgba(128,128,128,0.1); color: transparent }
+
+.sq480 {position:relative; width:100%; height:480px; margin:auto}
+.sq480 .sq480-in {position:absolute; top:0; left:50%; width:480px; height:100%; margin-left:-240px; transform-origin:0 0}
+.sq480 .sq480-in img {max-width:none}
+
+.natban {position:relative;display: block;box-sizing: border-box;margin: 0 auto;overflow:hidden;text-align:center;font-family:Arial, Helvetica, sans-serif;background:#fff}
+.natban * {margin:0; padding:0; }
+.natban > a {display:block; width:100%; height:100%; cursor:pointer}
+.natban .image {margin: auto; width:auto; height:auto; max-width:100%; max-height:100%;}
+.natban .image img {display:block;width:auto; height:auto; max-width:100%; max-height:100%;margin: auto;}
+.natban h1 {margin: 20px 0 12px;font-size:25px;color:#f00;}
+.natban p {color: #666;line-height: 1.4;font-size: 15px;}
+.natban b {position:absolute;bottom:0;left:0;width:100%;display:block;margin: 15px 0 20px;padding-top: 15px;font-size: 18px;font-weight: bold;color:#444;background:#fff;}
+.natban b:after {content:"";display:inline-block;width: 10px;height: 10px;border: solid #444;border-width: 3px 3px 0 0;transform:rotate(45deg);}
+.natban b:before {content:"";position:absolute;bottom: 100%;/* visibility: hidden; */left:0;width:100%;height: 15px;background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);}
+.natban:hover b {text-decoration:underline}
+
+.natban300x300 {width:300px;height:300px;}
+
+.natban300x250 {width:300px;height:250px;}
+.natban300x250:not(.natban-banner) .image {max-height:90px;}
+.natban300x250 h1 {margin: 8px 0 8px;}
+.natban300x250 p {line-height:1.3}
+.natban300x250 b {margin-bottom: 10px;padding-top: 7px;}
+
+.natban300x600 {width:300px;height:600px;}
+.natban300x600 h1 {margin: 25px 0}
+.natban300x600 p {font-size: 16px; line-height: 1.5;}
+
+.natban-banner {padding:0;border:solid 1px #d0d0d0;}
+.natban-banner .image {margin:auto}
+
+.natban300x600.natban-drtg, .natban300x600.natban-combined {display:flex}
+.natban300x600.natban-drtg > *, .natban300x600.natban-combined > * {position:static}
+.natban300x600.natban-drtg .image, .natban300x600.natban-combined .image {flex-shrink: 1;}
+
+
+.natban480x300 {width:480px;height:300px;}
+.natban480x300:not(.natban-banner) a {padding: 10px;box-sizing: border-box;}
+.natban480x300:not(.natban-banner) .image {float: left;width: 280px;height: 100%;margin-right: 10px;}
+.natban480x300 b {position: static;}
+
+.natban970x310 {width:970px; height:310px; margin:auto}
+
+

@@ -1,0 +1,1965 @@
+/*
+ * jQuery UI CSS Framework 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*
+ * jQuery UI CSS Framework 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Lucida%20Grande,%20Lucida%20Sans,%20Arial,%20sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=5px&bgColorHeader=5c9ccc&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=55&borderColorHeader=4297d7&fcHeader=ffffff&iconColorHeader=d8e7f3&bgColorContent=fcfdfd&bgTextureContent=06_inset_hard.png&bgImgOpacityContent=100&borderColorContent=a6c9e2&fcContent=222222&iconColorContent=469bdd&bgColorDefault=dfeffc&bgTextureDefault=02_glass.png&bgImgOpacityDefault=85&borderColorDefault=c5dbec&fcDefault=2e6e9e&iconColorDefault=6da8d5&bgColorHover=d0e5f5&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=79b7e7&fcHover=1d5987&iconColorHover=217bc0&bgColorActive=f5f8f9&bgTextureActive=06_inset_hard.png&bgImgOpacityActive=100&borderColorActive=79b7e7&fcActive=e17009&iconColorActive=f9bd01&bgColorHighlight=fbec88&bgTextureHighlight=01_flat.png&bgImgOpacityHighlight=55&borderColorHighlight=fad42e&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=02_glass.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
+ */
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1.1em; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1em; }
+.ui-widget-content { border: 1px solid #a6c9e2; background: #fcfdfd url(/css/common/images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
+.ui-widget-content a { color: #222222; }
+.ui-widget-header { border: 1px solid #4297d7; background: #5c9ccc url(/css/common/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
+.ui-widget-header a { color: #ffffff; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #c5dbec; background: #dfeffc url(/css/common/images/ui-bg_glass_85_dfeffc_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #2e6e9e; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #2e6e9e; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #79b7e7; background: #d0e5f5 url(/css/common/images/ui-bg_glass_75_d0e5f5_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #1d5987; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #1d5987; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #79b7e7; background: #f5f8f9 url(/css/common/images/ui-bg_inset-hard_100_f5f8f9_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #e17009; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #e17009; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fad42e; background: #fbec88 url(/css/common/images/ui-bg_flat_55_fbec88_40x100.png) 50% 50% repeat-x; color: #363636; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(/css/common/images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url(/css/common/images/ui-icons_469bdd_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(/css/common/images/ui-icons_469bdd_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(/css/common/images/ui-icons_d8e7f3_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(/css/common/images/ui-icons_6da8d5_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(/css/common/images/ui-icons_217bc0_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(/css/common/images/ui-icons_f9bd01_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(/css/common/images/ui-icons_2e83ff_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(/css/common/images/ui-icons_cd0a0a_256x240.png); }
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-off { background-position: -96px -144px; }
+.ui-icon-radio-on { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { -moz-border-radius-topleft: 1px; -webkit-border-top-left-radius: 1px; -khtml-border-top-left-radius: 1px; border-top-left-radius: 1px; }
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { -moz-border-radius-topright: 1px; -webkit-border-top-right-radius: 1px; -khtml-border-top-right-radius: 1px; border-top-right-radius: 1px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { -moz-border-radius-bottomleft: 1px; -webkit-border-bottom-left-radius: 1px; -khtml-border-bottom-left-radius: 1px; border-bottom-left-radius: 1px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 1px; -webkit-border-bottom-right-radius: 1px; -khtml-border-bottom-right-radius: 1px; border-bottom-right-radius: 1px; }
+
+/* Overlays */
+.ui-widget-overlay { background: #aaaaaa url(/css/common/images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(/css/common/images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }/*
+ * jQuery UI Autocomplete 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.14
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+/*
+ * jQuery UI Dialog 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
+.ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
+.ui-dialog .ui-dialog-content { position: relative; border: 0; padding: .5em 1em; background: none; overflow: auto; zoom: 1; }
+.ui-dialog .ui-dialog-buttonpane { text-align: left; border-width: 1px 0 0 0; background-image: none; margin: .5em 0 0 0; padding: .3em 1em .5em .4em; }
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset { float: right; }
+.ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
+.ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
+.ui-draggable .ui-dialog-titlebar { cursor: move; }
+/*
+ * jQuery UI Tabs 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+/*
+ * jQuery UI Datepicker 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+body{margin:0px; padding:0px}
+fieldset{border:none; margin:0; padding:0}
+.strong{font-weight:bold !important}
+abbr{text-decoration:none; border-bottom:none}
+form{border:none; margin:0; padding:0}
+textarea{height:120px; width:400px; overflow:auto; padding:2px}
+h1, h2, h3, h4{margin:0 0 0 0px; font-weight:normal}
+p, ul, ol{margin-top:0px; margin-bottom:0px; line-height:140%}
+.viktor{clear:both}
+.left{float:left}
+.right{float:right}
+.green{color:green !important}
+.underline{text-decoration:underline}
+.center{text-align:center;}
+.small{font-size:10px;}
+.gray{color:gray;}
+.no-display{display:none;}
+#messagebox{display:none; position:absolute; top:0px; left:0px}
+#ad-sky{position:absolute; left:965px; top:0px; width:120px}
+#ad-catalogue{position:absolute; left:330px; top:390px; width:300px}
+.ram{width:960px;position:relative;margin:0 auto 0 auto;}
+.ram-left{position:absolute;width:120px;top:0px;left:-120px;background-color:#fff;}
+.ram-right{position:absolute;width:120px;top:0px;left:960px;background-color:#fff;}
+#leaderboard{text-align:center; margin-bottom:5px}
+#textad{padding:10px 0 12px 5px;background-color: #ececec;margin:10px 0;width:625px;}
+#textad a{color: #ca0111 !important;}
+.resultad{margin:50px auto 10px auto}
+.fullbanner{font-size:10px; color:gray}
+#results .fullbanner{margin:10px 0 10px 5px; float:left}
+.zero{padding:0px;margin:0px;border:none;}
+.zero td{padding:0px;margin:0px;border:none;}
+.zero tr{padding:0px;margin:0px;border:none;}
+.txt {font-size:10px;color:gray;}
+	
+
+#links{float:right;max-width:405px;text-align:right}
+#links > div {margin:8px 20px 0px 0px;}
+
+#kina > .container-title > h2{font-size:18px;padding-left:35px;background:url(/css/img/icons/26x26/film.png) no-repeat 0px 0px}
+#tipy > .container-title > h2{font-size:18px;padding-left:35px;background:url(/css/img/icons/26x26/lightbulb.png) no-repeat 0px 0px}
+
+.linkfav > .seznam {background-color:black; background: url(/css/img/icons/26x26/seznam.png) no-repeat 0px 0px}
+.linkfav > .rss {background:url(/css/img/icons/26x26/rss_add.png) no-repeat 0px 0px}
+.linkfav > .favlink {background:url(/css/img/icons/26x26/star.png) no-repeat 0px 0px}
+.linkfav > .facebook{}
+.linkfav > .gplus{}
+
+.resetnavigation{border:1px solid #6096BF; padding:0px 4px 0 4px; text-decoration:none; font-weight:normal}
+
+.typeeventsport{color:green}
+.alignleft{float:left}
+.alignright{float:right}
+.aligncenter{margin:0px auto}
+.fnormal{font-size:13px; font-weight:normal}
+.fsmall{font-size:11px; font-weight:normal}
+.fh2{font-size:18px; font-weight:normal}
+.fh1{font-size:24px; font-weight:normal;margin-top:15px;}
+a img{border:none}
+.input{padding-left:2px; background-color:white; font-family:sans-serif !important}
+
+ul.ls{padding:0px 0px 5px 13px; margin:0px}
+.no-list-style{list-style-type:none}
+ul.ls li{padding:0 3px 3px 0; margin:0px 0 0 5px}
+ul.akce li{padding:0px;margin:5px 0 5px 0px; list-style-image:url("/css/img/list-style2.gif"); list-style-type:none; list-style-position:inside; font-size:14px}
+ul.akce {padding:0px;margin:0px}
+
+
+.msg span{float:left; margin-right:5px}
+.msg p{padding:8px}
+.msg{margin:0px;width:100%;}
+
+#claim{letter-spacing:1px}
+
+.editarticle{width:650px; height:400px}
+#tabs-map{height:350px}
+
+#benefits{float:left; width:290px}
+#benefits li{padding:15px 0 5px 0}
+#benefits ul{margin:0px; padding:0 0 0 25px; list-style-type:disc}
+#form{float:left}
+#form h2{margin-bottom:15px}
+#regsubmit{margin:20px 0 10px 100px}
+#newplacesubmit{ padding:10px 0 10px 0}
+#regsubmit input, input.submit{min-width:150px; height:30px; font-weight:bold}
+.ctable td{padding:28px 10px 28px 0; vertical-align:top;white-space: nowrap;}
+#to{display:none}
+.inputtext{width:400px}
+.venuetextarea{height:400px; width:400px; overflow:auto; font-family:Arial,Helvetica,sans-serif; font-size:14px}
+.venuetextareafocus{height:120px !important; width:400px !important}
+#newplacedescription{height:190px; width:550px}
+#placenearby{max-width:230px}
+#form td .date{width:80px}
+#form td .time{width:50px}
+#dateto{display:none}
+.removeevent{color:red}
+.addevent{color:green}
+.required{color:red; font-weight:bold;font-size:18px;}
+.selected{border-width:2px ! important}
+.hidden{display:none}
+
+.feedbacktext{width:260px; height:55px; font-size:12px}
+.feedbackemail{width:193px}
+
+#wrapper{position:relative; margin:0px auto 0 auto; width:960px; top:0px; left:0px; right:0px; bottom:0px}
+
+#header{height:80px;margin-top:20px;}
+
+#logo{float:left;}
+#logo p{margin:0 0 0 3px; padding:0; line-height:13px}
+#logo img{margin:0; padding:0}
+
+#helpvideo{display:none; position:absolute}
+#newplaceform{display:none; position:absolute; width:910px}
+#newplacehold{padding:5px 0 5px 5px}
+#newplacetabs{padding:5px}
+#newplacetabs .tab{height:400px; overflow:auto}
+#newplacetabs{margin:5px}
+.venueimgitem{float:left; padding:5px; margin:5px; min-width:120px; min-height:100px}
+
+#venueresult{overflow:auto; max-height:200px}
+
+#venueresultmsg{padding:0px 10px 0px 10px; margin:0px}
+#venueresult li{list-style:none; padding:5px 0 5px 10px; margin:0}
+
+#venueresult li{cursor:pointer}
+#venueresult ul{padding:0px 0 7px 0px; margin:0}
+.venueitemname{font-weight:bold}
+
+#adtop{float:left; margin:0 0px 0 0px; width:257px; height:62px}
+#searchhold{float:left; padding:17px 10px 0 10px; height:41px; width:256px}
+
+#search .input{height:18px}
+.searchinput{padding:0 0 0 3px; margin:0 0 0 5px; width:125px}
+
+#search img{vertical-align:middle}
+
+.dest{margin:0 0 3px 0; padding:0px}
+#trips{width:340px; padding:5px 5px 5px 10px; float:left}
+.trip-image{float:left; min-width:90px; width:90px; padding:4px 0 0 0}
+.trip-name{float:left; margin:0 0 0 5px; width:240px}
+.trip-description{float:left; margin:0 0 0 5px; width:240px}
+.trip-text{float:left; margin:0 0 0 5px; padding:0 0 10px 0; width:240px}
+
+.dest{margin:0 0 10px 0}
+.dest-image{float:left; min-width:150px}
+.dest-name{float:left; margin:0 0 0 10px; width:430px}
+.dest-description{float:left; margin:0 0 0 10px; width:430px}
+
+#searchbox{float:left;width:520px;margin:25px 0 0 100px;}
+
+#navigation{margin:30px 0 15px 0; height:40px;position:relative;}
+#navigation p{margin-top:10px; margin-left:5px}
+
+#page{}
+.half{width:50%}
+.full{width:100%}
+
+#content{float:left; width:630px; padding:0; margin-right:0px; min-height:1100px}
+
+#catalogue{float:left;margin:10px 5px 5px 0;width:323px;min-height:300px;}
+.container{float:left}
+.container-title{height:32px}
+#map .container-title, #catalogue .container-title{padding:5px 0 10px 0;background-color: #d2e5f4;}
+.container-title p{padding:12px 0 0 48px}
+#map .container-title p, #catalogue .container-title p{padding:7px 0 0 40px;font-size:18px;font-weight:normal;}
+.container-title h4 {padding: 5px 0 0 10px;}
+#map .container-title h4, #catalogue .container-title h4 {padding: 5px 0 0 10px;}
+.container-content{padding:10px 5px 10px 5px;}
+input[name=place]{height:25px;width:100%;font-size:14px}
+select[name=date]{height:20px;width:120px;font-size:11px;float:right;margin:10px 5px 5px 5px;}
+select[name=okres]{height:20px;width:120px;font-size:11px;float:right;margin:10px 5px 5px 5px;}
+#catalogue-submit {cursor:pointer;}
+.catalogue-event-type{font-size:16px;list-style-type: none; float:left;padding:0px}
+.catalogue-event-type li{margin:1% 1% 1% 2%;font-size:12px;width:40%;float:left;list-style-position: inside;}
+#datechanger, #placechangerr {float:left;}
+input.date {width:50px;}
+.date-from-to {margin:0 0 0 35px;}
+#map #placetext{margin:25px 0 10px 0px; color:#000;width:100%;text-align: center;min-height:35px;}
+#map #placename { font-size:20px;}
+#map #placedescription { font-size:16px;}
+#catalogue .date-from-to input { padding:5px;font-size:16px; }
+#catalogue .date-from-to { font-size:18px; margin:25px 0;}
+#catalogue .date-from { margin-left:10px;float:left;}
+#catalogue .date-to { margin-left:50px;float:left;}
+#map #placeinput{ margin:15px 0 0 5%;width:90%; min-height: 55px;text-align: center;}
+#map #placechanger{ white-space: nowrap; }
+
+.resulthead {margin:20px 0 10px 0;}
+#resulttitle{height:45px}
+
+.containersearch{background-image:url(/images/lupa.png); background-repeat:no-repeat; background-position:10px 8px; height:30px}
+
+#resulttitle p{margin:5px 0 0 5px}
+#numresult{float:left}
+#numresult h1{margin:5px 0 0 5px}
+
+.resultterm{float:left; width:135px; height:120px}
+#result{float:left; width:700px}
+
+
+
+.resultdate{letter-spacing:0px}
+.resultdate p.date{margin:3px 0 0 0; height:22px}
+.resultdate p.datetext{margin:0}
+.resultplace{margin:5px 0 5px 0}
+.resultplace p{margin:0 0 0 0}
+
+.resultterm p{text-align:center}
+
+/* result */
+.resultitem{float:left; width:630px; margin:0;padding:5px 0 5px 0;background-color: #e8f2fb;border-bottom:1px solid #FFF; height:80px;}
+.resultitem:nth-child(even) {background: #e8f2fb}
+.resultitem:nth-child(odd) {background: #D7E8F7}
+.resultimg{float:left; margin:0 10px 0 5px;width:100px;height:80px;overflow: hidden;}
+.resulttitle {display:block;margin:5px 0 5px 0;font-size:20px;font-weight: bold;}
+.resultdescription{margin:0 0 5px 0px}
+.resultdescription .type{color:green;}
+.resultterminy {margin:0 0 0 0px;}
+/* end result */
+
+
+#sidebar p{margin-bottom:5px}
+
+#sidebar{float:right; width:315px; padding:0; margin:10px 0 0 0}
+#sidebarhold{margin-left:10px}
+
+.sidebarcontent{margin:8px 0 0 10px}
+
+#s_support .sidebarcontent{margin:0px; text-align:center}
+
+#addevent{}
+.sidebarcontainer{margin-bottom:20px}
+.sidebarcontainer h2{margin-bottom:3px}
+
+#addeventhold{padding:10px}
+
+#addeventhold img{vertical-align:middle}
+.atable td{padding:15px 10px 0 0}
+.atable th{text-align:left}
+
+.btable{width:100%; border-collapse:collapse; border-spacing:0px}
+.btable th{text-align:left; padding:10px 10px 10px 10px; font-size:13px; font-weight:bold; margin:0}
+.btable td{text-align:left; padding:10px 10px 10px 10px; font-size:12px; font-weight:normal; margin:0}
+
+.flinkstable{width:100%; padding:20px 0 20px 0}
+.flinkstable th{font-size:12px;text-align:left; padding:3px 7px}
+.flinkstable td{font-size:12px;text-align:left; padding:2px 7px}
+#companylinks {width:100%;text-align:center; font-size:12px;}
+
+#footer{height:100px; margin:10px 0 0 0; padding-top:5px}
+
+.e_day{background-color:green; padding:2px}
+.f_day{background-color:red; padding:2px}
+
+#detailimg, #detailtitle{float:left}
+#detailimg{margin:10px 0px 0px 0}
+#detailtitle{padding-bottom:0px;margin-top:10px;}
+
+/** detail **/
+table td {font-size:14px;}
+.detail-description{margin:10px 0 25px 0;display:block;width:100%;text-align: justify;line-height:18px;}
+.detail-reklama-trista{width:300px;margin:-10px 0 10px 20px;}
+.h3-detail {margin:30px 0 0 0;font-size:16px;font-weight: bold;}
+.h3-terminy{margin:0px 0 0 0;font-size:16px;font-weight: bold;}
+#detail-contact{margin:20px 0 0 0;}
+.detail-contant-item{padding:0px 0 5px 30px;}
+.c-url {background: url("/css/img/icons/16x16/www_page.png") no-repeat 6px 4px;}
+.e-url {background: url("/css/img/icons/16x16/email.png") no-repeat 6px 4px;}
+.p-url {background: url("/css/img/icons/16x16/phone.png") no-repeat 6px 4px;}
+.detail-price-link{background: url("/css/img/icons/26x26/basket_put.png") no-repeat 0px 0px;height:32px;}
+.detail-venue{margin-top:30px;}
+.detail-venue-list-title {margin:35px 0 5px 0;}
+.detail-venue-title {margin:5px 0 10px 10px;}
+.detail-table-list {width:100%; border-collapse:collapse; border-spacing:0px;padding:5px 0 0 10px;}
+.detail-table-list td{text-align:left; padding:5px 5px 5px 5px; margin:0}
+.detail-table-list td.city{ font-size:16px;font-weight:bold;}
+.detail-table-list td.venue{ font-size:16px;font-weight:bold;}
+.detail-table-list td.occurence{ font-size:12px;font-weight:normal;}
+.detail-table-list td.weekday{ width:140px;}
+.detail-table-list td.break{ height:10px;}
+#detail-map {width:630px;height:400px;margin-top:10px;}
+
+#terminy {
+	margin:30px 0 0 0;
+	padding:0px;
+}
+
+/** http://css3button.net/12785 */
+button.css3button {
+	background-color:#125ca5;
+	cursor:pointer;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#42aaff 0%,
+		#003366);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#42aaff),
+		to(#003366));
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #003366;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,0.5);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+
+ul.terminy {
+	list-style: none;
+	margin:10px 0;
+	padding:0px;
+}
+ul.terminy > li {
+	margin:0 0 5px 0;
+	padding:10px 0 5px 0;
+	border-top:1px solid #c5dbec;
+	min-height: 136px;
+}
+ul.terminy > li:last-child {
+	border-bottom:none;
+}
+
+
+.manage{color:red}
+
+.strcut{overflow:hidden}
+
+#detailtabs{margin:0 5px 5px 0}
+#tabs{width:680px}
+
+#pager{margin:45px auto 35px auto; font-size:18px; text-align:center}
+#pager .separator{font-size:14px; color:#808080}
+#pager p{font-size:14px; margin:15px 0 15px 0}
+
+#footer p{text-align:center}
+
+#uiradr-overlay{  position:fixed;   overflow:hidden;   height:100%;   width:100%;   z-index:100;   top:0;   left:0;   opacity:0.5;   filter:alpha(opacity=50);   display:none;   background-color:black}
+.addfav{background:url("/images/favorites.png") no-repeat 0 0; padding-left:18px}
+
+
+
+body {
+	background-color: #F7FCFF;
+	font-family: Arial, Helvetica, sans-serif;
+	/*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/ 
+	font-size: 13px;
+	color: #000000;
+}
+
+.href {
+	color: #0066B3 !important;
+	text-decoration: underline;
+	cursor:pointer;
+}
+a {
+	color: #0066B3;
+	text-decoration: underline;
+	cursor:pointer;
+}
+
+.inputalert {
+	background-color:#FEF1EC;
+	border-color: #CD0A0A ! important; 
+}
+.input {
+	border: 1px solid #6B6B6B;
+	background-color: #F9F9F9;
+}
+.inputfocus {
+	border: 2px solid #6B6B6B;
+}
+.error {
+	color: #CD0A0A; 
+}
+
+.boxout {
+	border: 1px solid #6096BF;
+	background-color: #FFF;
+}
+#catalogue, #map {
+	border: 1px solid #6096BF;
+	background-color: #E8F3FB;
+}
+
+.boxin {
+	border: 1px solid #F7FCFF;
+	background-color:#D1E5F5;
+}
+.catbox {border-bottom: 1px solid #d5e7f5}
+.catbox > .container-title {}
+#catalogue-submit-div{text-align: center;float:left;width:100%;margin:45px 0 0px 0}
+
+#venueresult li.venue {
+	background-color: #E6F4FF;
+}
+
+#venueresult li.uir {
+	background-color: #F8D668;
+}
+
+#venueresult li.sel, #venueresult li.sel a {
+	background-color: #6096BF;
+	color: #000;
+}
+
+#venueresultmsg {
+	border-bottom: 1px solid #BFE4FF;
+}
+
+#navigation {
+	background-color: #BFE4FF;
+	border-top: solid 1px #6096BF;
+	border-bottom: solid 1px #6096BF;
+	background: url(/css/blue/images/ui-bg_glass_75_d0e5f5_1x400.png) repeat-x;
+	background-attachment:scroll;
+	background-position:50% 50%;
+	opacity:1;
+}
+#content {
+	
+}
+.container-title, #resulttitle {
+	/*background: url(/css/blue/images/ui-bg_glass_75_d0e5f5_1x400.png) repeat-x;
+	background-attachment:scroll;
+	background-position:50% 50%;
+	opacity:1;*/
+}
+.container-title {
+	/*border-top: 1px solid #6096BF;*/
+}
+.containerplace {
+	background:url("/css/img/1.png") no-repeat 5px 6px;
+	height:32px;
+}
+.containerdate {
+	background:url("/css/img/2.png") no-repeat 5px 6px;
+	height:32px;
+}
+.containertype {
+	background:url("/css/img/3.png") no-repeat 5px 6px;
+	height:32px;
+}
+#linkmap {
+	float:right;
+	padding-left:15px;
+	background-image: url(/css/blue/images/map.png);
+	background-repeat:no-repeat;
+	background-position: 0px 7px;
+
+}
+.resultterm {
+	border:1px solid #BFE4FF;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.atable a, #profiletabs div a {
+	color:#0066B3;
+}
+.btable {
+	border:1px solid #D1E5F5;
+}
+.btable th {
+	background-color: #D1E5F5;
+}
+.btable td {
+	border:1px solid #D1E5F5;
+}
+.detail-table-list td.city{ background-color: #D1E5F5; }
+
+#footer {
+	border-top:1px solid #6096BF;
+}
+
+.flinkstable {
+	background-color: #D1E5F5;
+}
+.dest-img{
+	border:1px double #A6C9E2;
+}
+.sort-placeholder {
+	border: 3px dotted #6EA7D1;
+	margin: 5px 0 5px 0;
+}
+/*
+    ColorBox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of ColorBox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:url(/css/common/images/overlay.png) repeat 0 0;}
+#colorbox{}
+    #cboxTopLeft{width:21px; height:21px; background:url(/css/common/images/controls.png) no-repeat -100px 0;}
+    #cboxTopRight{width:21px; height:21px; background:url(/css/common/images/controls.png) no-repeat -129px 0;}
+    #cboxBottomLeft{width:21px; height:21px; background:url(/css/common/images/controls.png) no-repeat -100px -29px;}
+    #cboxBottomRight{width:21px; height:21px; background:url(/css/common/images/controls.png) no-repeat -129px -29px;}
+    #cboxMiddleLeft{width:21px; background:url(/css/common/images/controls.png) left top repeat-y;}
+    #cboxMiddleRight{width:21px; background:url(/css/common/images/controls.png) right top repeat-y;}
+    #cboxTopCenter{height:21px; background:url(/css/common/images/border.png) 0 0 repeat-x;}
+    #cboxBottomCenter{height:21px; background:url(/css/common/images/border.png) 0 -29px repeat-x;}
+    #cboxContent{background:#fff; overflow:hidden;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{margin-bottom:28px;}
+        #cboxTitle{position:absolute; bottom:4px; left:0; text-align:center; width:100%; color:#949494;}
+        #cboxCurrent{position:absolute; bottom:4px; left:58px; color:#949494;}
+        #cboxSlideshow{position:absolute; bottom:4px; right:30px; color:#0092ef;}
+        #cboxPrevious{position:absolute; bottom:0; left:0; background:url(/css/common/images/controls.png) no-repeat -75px 0; width:25px; height:25px; text-indent:-9999px;}
+        #cboxPrevious.hover{background-position:-75px -25px;}
+        #cboxNext{position:absolute; bottom:0; left:27px; background:url(/css/common/images/controls.png) no-repeat -50px 0; width:25px; height:25px; text-indent:-9999px;}
+        #cboxNext.hover{background-position:-50px -25px;}
+        #cboxLoadingOverlay{background:url(/css/common/images/loading_background.png) no-repeat center center;}
+        #cboxLoadingGraphic{background:url(/css/common/images/loading.gif) no-repeat center center;}
+        #cboxClose{position:absolute; bottom:0; right:0; background:url(/css/common/images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;}
+        #cboxClose.hover{background-position:-25px -25px;}
+
+/*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to IE9.
+*/
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}
+
+/*
+  The following provides PNG transparency support for IE6
+*/
+.cboxIE6 #cboxTopLeft{background:url(/css/common/images/ie6/borderTopLeft.png);}
+.cboxIE6 #cboxTopCenter{background:url(/css/common/images/ie6/borderTopCenter.png);}
+.cboxIE6 #cboxTopRight{background:url(/css/common/images/ie6/borderTopRight.png);}
+.cboxIE6 #cboxBottomLeft{background:url(/css/common/images/ie6/borderBottomLeft.png);}
+.cboxIE6 #cboxBottomCenter{background:url(/css/common/images/ie6/borderBottomCenter.png);}
+.cboxIE6 #cboxBottomRight{background:url(/css/common/images/ie6/borderBottomRight.png);}
+.cboxIE6 #cboxMiddleLeft{background:url(/css/common/images/ie6/borderMiddleLeft.png);}
+.cboxIE6 #cboxMiddleRight{background:url(/css/common/images/ie6/borderMiddleRight.png);}
+
+.cboxIE6 #cboxTopLeft,
+.cboxIE6 #cboxTopCenter,
+.cboxIE6 #cboxTopRight,
+.cboxIE6 #cboxBottomLeft,
+.cboxIE6 #cboxBottomCenter,
+.cboxIE6 #cboxBottomRight,
+.cboxIE6 #cboxMiddleLeft,
+.cboxIE6 #cboxMiddleRight {
+    _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
+}
+
+@font-face {
+	font-family: 'cezetmap';
+	src: url("/css/font/cezetmap.eot");
+	src: url("/css/font/cezetmap.eot?#iefix") format("embedded-opentype"),
+		url("/css/font/cezetmap.woff") format("woff"), url("/css/font/cezetmap.ttf")
+		format("truetype"), url("/css/font/cezetmap.svg#cezetmap") format("svg");
+	font-weight: normal;
+	font-style: normal
+}
+
+.cezetmap {
+	
+	width: 450px;
+	height: 260px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden
+}
+
+.cezetmap .kraje,.cezetmap .mesta,.cezetmap .numbers {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+.cezetmap .kraje {
+	font-family: "cezetmap";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 450px;
+	line-height: 1em;
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	-ms-text-rendering: optimizeLegibility;
+	-o-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+	-moz-font-feature-settings: "liga=1";
+	-ms-font-feature-settings: "liga" 1;
+	-ms-font-feature-settings: "liga", "dlig";
+	z-index: 700
+}
+
+@media screen and (min-width: 0 \0) {
+	.cezetmap .kraje {
+		line-height: normal
+	}
+}
+
+.cezetmap .kraj {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.cezetmap .kraj_env {
+	display: none
+}
+
+.cezetmap .infobox {
+	display:none;
+	position:absolute;
+	background-color: #1160a5;
+	color:#fff;
+	padding:5px;
+	z-index:1000;
+}
+
+.cezetmap .zlinsky:before,.cezetmap .moravskoslezsky:before,.cezetmap .jihomoravsky:before,.cezetmap .olomoucky:before,.cezetmap .vysocina:before,.cezetmap .pardubicky:before,.cezetmap .kralovehradecky:before,.cezetmap .jihocesky:before,.cezetmap .hlavni-mesto-praha:before,.cezetmap .stredocesky:before,.cezetmap .liberecky:before,.cezetmap .plzensky:before,.cezetmap .ustecky:before,.cezetmap .karlovarsky:before
+	{
+	font-family: 'cezetmap';
+	speak: none;
+	display: block;
+	font-style: normal;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased
+}
+
+.cezetmap .zlinsky:before {
+	content: "a"
+}
+
+.cezetmap .moravskoslezsky:before {
+	content: "b"
+}
+
+.cezetmap .jihomoravsky:before {
+	content: "c"
+}
+
+.cezetmap .olomoucky:before {
+	content: "d"
+}
+
+.cezetmap .vysocina:before {
+	content: "e"
+}
+
+.cezetmap .pardubicky:before {
+	content: "f"
+}
+
+.cezetmap .kralovehradecky:before {
+	content: "g"
+}
+
+.cezetmap .jihocesky:before {
+	content: "h"
+}
+
+.cezetmap .hlavni-mesto-praha:before {
+	content: "i"
+}
+
+.cezetmap .stredocesky:before {
+	content: "j"
+}
+
+.cezetmap .liberecky:before {
+	content: "k"
+}
+
+.cezetmap .plzensky:before {
+	content: "l"
+}
+
+.cezetmap .karlovarsky:before {
+	content: "m"
+}
+
+.cezetmap .ustecky:before {
+	content: "n"
+}
+
+.cezetmap .zlinsky {
+	color: #59C6F5
+}
+
+.cezetmap .moravskoslezsky {
+	color: #59C6F5
+}
+
+.cezetmap .jihomoravsky {
+	color: #59C6F5
+}
+
+.cezetmap .olomoucky {
+	color: #59C6F5
+}
+
+.cezetmap .vysocina {
+	color: #59C6F5
+}
+
+.cezetmap .pardubicky {
+	color: #59C6F5
+}
+
+.cezetmap .kralovehradecky {
+	color: #59C6F5
+}
+
+.cezetmap .jihocesky {
+	color: #59C6F5
+}
+
+.cezetmap .hlavni-mesto-praha {
+	color: #59C6F5
+}
+
+.cezetmap .stredocesky {
+	color: #59C6F5
+}
+
+.cezetmap .liberecky {
+	color: #59C6F5
+}
+
+.cezetmap .plzensky {
+	color: #59C6F5
+}
+
+.cezetmap .ustecky {
+	color: #59C6F5
+}
+
+.cezetmap .karlovarsky {
+	color: #59C6F5
+}
+
+.cezetmap .kraj_hover {
+	color: #59C6F5
+}
+
+.cezetmap .kraj_active {
+	color: #59C6F5
+}
+
+.cezetmap .zlinsky_center,.cezetmap .moravskoslezsky_center,.cezetmap .jihomoravsky_center,.cezetmap .olomoucky_center,.cezetmap .vysocina_center,.cezetmap .pardubicky_center,.cezetmap .kralovehradecky_center,.cezetmap .jihocesky_center,.cezetmap .hlavni-mesto-praha_center,.cezetmap .stredocesky_center,.cezetmap .liberecky_center,.cezetmap .plzensky_center,.cezetmap .ustecky_center,.cezetmap .karlovarsky_center
+	{
+	position: absolute
+}
+
+.cezetmap .zlinsky_center {
+	left: 85.125%;
+	top: 70.06507592190889%
+}
+
+.cezetmap .moravskoslezsky_center {
+	left: 86.375%;
+	top: 48.80694143167028%
+}
+
+.cezetmap .jihomoravsky_center {
+	left: 68.125%;
+	top: 76.13882863340564%
+}
+
+.cezetmap .olomoucky_center {
+	left: 73.875%;
+	top: 52.27765726681128%
+}
+
+.cezetmap .vysocina_center {
+	left: 53.75%;
+	top: 63.55748373101952%
+}
+
+.cezetmap .pardubicky_center {
+	left: 60.25%;
+	top: 47.50542299349241%
+}
+
+.cezetmap .kralovehradecky_center {
+	left: 54.37499999999999%;
+	top: 26.68112798264642%
+}
+
+.cezetmap .jihocesky_center {
+	left: 32.875%;
+	top: 77.22342733188721%
+}
+
+.cezetmap .hlavni-mesto-praha_center {
+	left: 33.875%;
+	top: 40.3470715835141%
+}
+
+.cezetmap .stredocesky_center {
+	left: 33.5%;
+	top: 51.84381778741866%
+}
+
+.cezetmap .liberecky_center {
+	left: 41.75%;
+	top: 13.665943600867678%
+}
+
+.cezetmap .plzensky_center {
+	left: 15.125%;
+	top: 57.04989154013015%
+}
+
+.cezetmap .ustecky_center {
+	left: 24.75%;
+	top: 23.427331887201735%
+}
+
+.cezetmap .karlovarsky_center {
+	left: 10.375%;
+	top: 37.52711496746204%
+}
+
+.cezetmap .mesta {
+	z-index: 800
+}
+
+.cezetmap .mesto,.cezetmap .mesto_active:before,.cezetmap .mesto_hover:before
+	{
+	display: block;
+	position: absolute;
+	font-size: 0;
+	border-radius: 100%
+}
+
+.cezetmap .mesto {
+	width: 8px;
+	height: 8px;
+	margin-left: -4px;
+	margin-top: -4px;
+	background: #0066B3;
+	cursor: pointer;
+}
+
+.cezetmap .mesto_hover.mesto:after {
+	display: none
+}
+
+.cezetmap .mesto_active:before,.cezetmap .mesto_hover:before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	margin-left: -2px;
+	margin-top: -2px;
+	border: 2px solid #fff;
+	z-index: 800
+}
+
+.cezetmap .mesto a {
+	display: block;
+	color: white;
+	text-decoration: none
+}
+
+.cezetmap .praha {
+	left: 35.1083591331269%;
+	top: 38.3458646616541%
+}
+
+.cezetmap .brno {
+	left: 66.7492260061919%;
+	top: 74.2212674543502%
+}
+
+.cezetmap .ostrava {
+	left: 90.875%;
+	top: 48.5900216919740%
+}
+
+.cezetmap .plzen {
+	left: 18.5139318885449%;
+	top: 52.4167561761547%
+}
+
+.cezetmap .liberec {
+	left: 43.2198142414861%;
+	top: 11.8152524167562%
+}
+
+.cezetmap .olomouc {
+	left: 75.8513931888545%;
+	top: 57.5725026852846%
+}
+
+.cezetmap .usti-nad-labem {
+	left: 28.6687306501548%;
+	top: 16.0042964554243%
+}
+
+.cezetmap .hradec-kralove {
+	left: 54.8606811145511%;
+	top: 34.3716433941998%
+}
+
+.cezetmap .ceske-budejovice {
+	left: 35.375%;
+	top: 81.5618221258135%
+}
+
+.cezetmap .pardubice {
+	left: 53.9938080495356%;
+	top: 41.3533834586466%
+}
+
+.cezetmap .havirov {
+	left: 93.0030959752322%;
+	top: 49.0870032223416%
+}
+
+.cezetmap .zlin {
+	left: 82.3529411764706%;
+	top: 71.7508055853921%
+}
+
+.cezetmap .kladno {
+	left: 29.4117647058824%;
+	top: 36.5198711063373%
+}
+
+.cezetmap .most {
+	left: 22.6006191950464%;
+	top: 22.4489795918367%
+}
+
+.cezetmap .karvina {
+	left: 94.6130030959752%;
+	top: 46.1868958109560%
+}
+
+.cezetmap .opava {
+	left: 85.1393188854489%;
+	top: 43.6090225563910%
+}
+
+.cezetmap .frydek-mistek {
+	left: 91.8266253869969%;
+	top: 53.2760472610097%
+}
+
+.cezetmap .karlovy-vary {
+	left: 11.3931888544892%;
+	top: 32.6530612244898%
+}
+
+.cezetmap .jihlava {
+	left: 51.3931888544892%;
+	top: 66.1654135338346%
+}
+
+.cezetmap .teplice {
+	left: 25.7585139318885%;
+	top: 17.1858216970999%
+}
+
+.cezetmap .decin {
+	left: 31.5170278637771%;
+	top: 11.3856068743287%
+}
+
+.cezetmap .chomutov {
+	left: 19.5665634674923%;
+	top: 24.0601503759398%
+}
+
+.cezetmap .prerov {
+	left: 78.8854489164087%;
+	top: 62.9430719656284%
+}
+
+.cezetmap .jablonec-nad-nisou {
+	left: 45.0773993808050%;
+	top: 13.6412459720730%
+}
+
+.cezetmap .mlada-boleslav {
+	left: 41.1764705882353%;
+	top: 26.5306122448980%
+}
+
+.cezetmap .prostejov {
+	left: 73.8080495356037%;
+	top: 62.4060150375940%
+}
+
+.cezetmap .trebic {
+	left: 55.875%;
+	top: 72.06074017506101%
+}
+
+.cezetmap .ceska-lipa {
+	left: 35.9752321981424%;
+	top: 15.0375939849624%
+}
+
+.cezetmap .trinec {
+	left: 96.9040247678019%;
+	top: 53.2760472610097%
+}
+
+.cezetmap .tabor {
+	left: 37.2755417956656%;
+	top: 65.5209452201933%
+}
+
+.cezetmap .znojmo {
+	left: 58.375%;
+	top: 86.33405639913232%
+}
+
+.cezetmap .bruntal {
+	left: 79.25%;
+	top: 42.0824295010846%
+}
+
+.cezetmap .vsetin {
+	left: 87%;
+	top: 67.24511930585683%
+}
+
+.cezetmap .valasske-mezirici {
+	left: 86.625%;
+	top: 61.82212581344903%
+}
+
+.cezetmap .uherske-hradiste {
+	left: 79.625%;
+	top: 77.87418655097615%
+}
+
+.cezetmap .uhersky-brod {
+	left: 82.125%;
+	top: 80.4772234273319%
+}
+
+.cezetmap .kromeriz {
+	left: 78.25%;
+	top: 69.41431670281996%
+}
+
+.cezetmap .hranice {
+	left: 83.125%;
+	top: 59.21908893709328%
+}
+
+.cezetmap .sumperk {
+	left: 71.75%;
+	top: 42.73318872017354%
+}
+
+.cezetmap .zabreh-na-morave {
+	left: 70.5%;
+	top: 46.85466377440347%
+}
+
+.cezetmap .mohelnice {
+	left: 71.125%;
+	top: 50.54229934924079%
+}
+
+.cezetmap .krnov {
+	left: 82.625%;
+	top: 39.26247288503254%
+}
+
+.cezetmap .kyjov {
+	left: 74.125%;
+	top: 80.26030368763557%
+}
+
+.cezetmap .hodonin {
+	left: 74.125%;
+	top: 85.90021691973969%
+}
+
+.cezetmap .bucovice {
+	left: 72.375%;
+	top: 74.62039045553145%
+}
+
+.cezetmap .vyskov {
+	left: 72.5%;
+	top: 69.84815618221259%
+}
+
+.cezetmap .blansko {
+	left: 67.125%;
+	top: 66.16052060737528%
+}
+
+.cezetmap .boskovice {
+	left: 67.5%;
+	top: 61.82212581344903%
+}
+
+.cezetmap .hustopece {
+	left: 68.25%;
+	top: 82.21258134490239%
+}
+
+.cezetmap .ivancice {
+	left: 63%;
+	top: 76.13882863340564%
+}
+
+.cezetmap .svitavy {
+	left: 64.5%;
+	top: 51.62689804772235%
+}
+
+.cezetmap .ceska-trebova {
+	left: 64.375%;
+	top: 45.33622559652928%
+}
+
+.cezetmap .usti-nad-orlici {
+	left: 63.7499999999999%;
+	top: 42.0824295010846%
+}
+
+.cezetmap .vysoke-myto {
+	left: 60.5%;
+	top: 43.81778741865509%
+}
+
+.cezetmap .hlinsko {
+	left: 56%;
+	top: 50.97613882863341%
+}
+
+.cezetmap .chrudim {
+	left: 54.75%;
+	top: 44.46854663774403%
+}
+
+.cezetmap .novy-jicin {
+	left: 87.25%;
+	top: 57.9175704989154%
+}
+
+.cezetmap .as {
+	left: 1.875%;
+	top: 32.79826729002847%
+}
+
+.cezetmap .cheb {
+	left: 4.125%;
+	top: 39.08893974122153%
+}
+
+.cezetmap .sokolov {
+	left: 8.625%;
+	top: 34.75054494729528%
+}
+
+.cezetmap .ostrov {
+	left: 12.625%;
+	top: 29.761390934280097%
+}
+
+.cezetmap .marianske-lazne {
+	left: 9.375%;
+	top: 42.77657531605884%
+}
+
+.cezetmap .tachov {
+	left: 8.125%;
+	top: 49.93492672603715%
+}
+
+.cezetmap .domazlice {
+	left: 12.625%;
+	top: 63.600870326904825%
+}
+
+.cezetmap .klatovy {
+	left: 18%;
+	top: 65.33622824447532%
+}
+
+.cezetmap .susice {
+	left: 21.375%;
+	top: 71.40998095597207%
+}
+
+.cezetmap .spalene-porici {
+	left: 22.5%;
+	top: 56.65943865662283%
+}
+
+.cezetmap .rokycany {
+	left: 22.5%;
+	top: 51.88720438330397%
+}
+
+.cezetmap .vimperk {
+	left: 25%;
+	top: 78.56833236595038%
+}
+
+.cezetmap .prachatice {
+	left: 28.249999999999996%;
+	top: 79.869850804128%
+}
+
+.cezetmap .cesky-krumlov {
+	left: 32.875%;
+	top: 87.46204169349919%
+}
+
+.cezetmap .trebon {
+	left: 39.5%;
+	top: 80.30369028352088%
+}
+
+.cezetmap .jindrichuv-hradec {
+	left: 43.125%;
+	top: 74.66377705141676%
+}
+
+.cezetmap .sobeslav {
+	left: 38.75%;
+	top: 70.54230199718681%
+}
+
+.cezetmap .vodnany {
+	left: 31%;
+	top: 74.88069679111307%
+}
+
+.cezetmap .strakonice {
+	left: 27.250000000000004%;
+	top: 70.542301997187%
+}
+
+.cezetmap .pisek {
+	left: 30.5%;
+	top: 69.02386381931264%
+}
+
+.cezetmap .blatna {
+	left: 26.5%;
+	top: 64.03470980629746%
+}
+
+.cezetmap .dacice {
+	left: 49.5%;
+	top: 77.2668139277725%
+}
+
+.cezetmap .moravske-budejovice {
+	left: 54.87499999999999%;
+	top: 77.91757314686144%
+}
+
+.cezetmap .telc {
+	left: 49.625%;
+	top: 73.14533887354257%
+}
+
+.cezetmap .trest {
+	left: 50.125%;
+	top: 69.45770329870527%
+}
+
+.cezetmap .velke-mezirici {
+	left: 57.875%;
+	top: 66.4208269429569%
+}
+
+.cezetmap .nove-mesto-na-morave {
+	left: 58.875%;
+	top: 58.61171631388964%
+}
+
+.cezetmap .pelhrimov {
+	left: 46.375%;
+	top: 64.03470980629746%
+}
+
+.cezetmap .humpolec {
+	left: 48.125%;
+	top: 59.91323475206751%
+}
+
+.cezetmap .havlickuv-brod {
+	left: 51.5%;
+	top: 57.310197875711765%
+}
+
+.cezetmap .chotebor {
+	left: 52.5%;
+	top: 52.27765726681128%
+}
+
+.cezetmap .pribram {
+	left: 28.249999999999996%;
+	top: 53.6225623008745%
+}
+
+.cezetmap .benesov {
+	left: 38.625%;
+	top: 50.15184646573346%
+}
+
+.cezetmap .kutna-hora {
+	left: 46.875%;
+	top: 43.644254274844094%
+}
+
+.cezetmap .caslav {
+	left: 48.75%;
+	top: 45.5965319321109%
+}
+
+.cezetmap .kolin {
+	left: 46%;
+	top: 40.824297658792034%
+}
+
+.cezetmap .podebrady {
+	left: 44.625%;
+	top: 36.26898312516947%
+}
+
+.cezetmap .nymburk {
+	left: 43.625%;
+	top: 34.9674646869916%
+}
+
+.cezetmap .neratovice {
+	left: 35.875%;
+	top: 31.93058833124322%
+}
+
+.cezetmap .melnik {
+	left: 35.375%;
+	top: 27.592193537316973%
+}
+
+.cezetmap .slany {
+	left: 29.5%;
+	top: 33.015187029724785%
+}
+
+.cezetmap .rakovnik {
+	left: 24.5%;
+	top: 37.78742130304366%
+}
+
+.cezetmap .beroun {
+	left: 29.375%;
+	top: 42.993495055755155%
+}
+
+.cezetmap .kadan {
+	left: 17.625%;
+	top: 26.941434318228037%
+}
+
+.cezetmap .zatec {
+	left: 21.5%;
+	top: 29.11063171519116%
+}
+
+.cezetmap .louny {
+	left: 25.5%;
+	top: 28.24295275640591%
+}
+
+.cezetmap .jirkov {
+	left: 20.375%;
+	top: 21.952280305212852%
+}
+
+.cezetmap .litomerice {
+	left: 30.25%;
+	top: 20.433842127338668%
+}
+
+.cezetmap .rumburk {
+	left: 36.25%;
+	top: 4.164861650115238%
+}
+
+.cezetmap .novy-bor {
+	left: 36.5%;
+	top: 11.757052539486171%
+}
+
+.cezetmap .turnov {
+	left: 45.25%;
+	top: 18.91540394946448%
+}
+
+.cezetmap .jicin {
+	left: 48.5%;
+	top: 24.772236921264916%
+}
+
+.cezetmap .nachod {
+	left: 60.25%;
+	top: 25.856835619746477%
+}
+
+.cezetmap .trutnov {
+	left: 56.25%;
+	top: 19.566163168553416%
+}
+
+.cezetmap .namest-nad-oslavou {
+	left: 59.25%;
+	top: 71.36659436008676%
+}
+
+.cezetmap .velke-prilepy {
+	left: 32.625%;
+	top: 35.401301683934804%
+}
+
+.cezetmap .baska {
+	left: 92.25%;
+	top: 56.10990586353227%
+}
+
+.cezetmap .lipnice-nad-sazavou {
+	left: 49.25%;
+	top: 56.326826844453294%
+}
+/* CEZET Map v2.3
+ * 17.3.2013 (c) Moravio.com
+ * Licence CC BY
+ */
+
+.cezetmap{
+	/* width & height ratio: 1.734 */
+	/* width: 400px; */
+	/* 370 / 1.734 = 213.39 */
+	/* height: 231px; */
+}
+
+.cezetmap .kraje{
+	/* musi byt stejne jako sirka (width) elementu cezetmap */
+	/* font-size: 400px; */	
+}
+
+/*
+.cezetmap .zlinsky                   { color: #59C6F5; }
+.cezetmap .moravskoslezsky           { color: #90D9F8; }
+.cezetmap .jihomoravsky              { color: #7DD2F7; }
+.cezetmap .olomoucky                 { color: #59C6F5; }
+.cezetmap .vysocina                  { color: #59C6F5; }
+.cezetmap .pardubicky                { color: #90D9F8; }
+.cezetmap .kralovehradecky           { color: #7DD2F7; }
+.cezetmap .jihocesky                 { color: #59C6F5; }
+.cezetmap .hlavni-mesto-praha        { color: #59C6F5; }
+.cezetmap .stredocesky               { color: #90D9F8; }
+.cezetmap .liberecky                 { color: #7DD2F7; }
+.cezetmap .plzensky                  { color: #59C6F5; }
+.cezetmap .ustecky                   { color: #59C6F5; }
+.cezetmap .karlovarsky               { color: #90D9F8; }
+
+.cezetmap .kraj_hover                { color: #ff4354; }
+.cezetmap .kraj_active               { color: #138cc6; }
+*/

@@ -1,0 +1,542 @@
+﻿var ts_root_url = '/';
+var ts_url = '/';
+
+var currentYear = (new Date()).getFullYear();
+
+var userLoggedIn = false;
+var eventID = null;
+
+var lastResizeWidth = 0;
+
+String.prototype.trim = function ()
+{
+    return this.replace(/^\s+|\s+$/g, '');
+};
+
+
+function init()
+{
+    var cookieCandidate = queryStringParameter('tsid');
+    if (cookieCandidate)
+        tsCookie = cookieCandidate;
+    else
+    {
+        if (iFrameOnlyBooker)
+            setQueryStringCookie();
+    }
+
+    if (typeof initUserInterface !== 'undefined')
+        initUserInterface();
+
+    if (typeof initTickets !== 'undefined')
+        initTickets();
+
+    if (typeof initFilters !== 'undefined')
+        initFilters();
+
+    if (typeof initCart !== 'undefined')
+        initCart();
+
+    startExpirationCounter();
+}
+
+function unEntity(str)
+{
+    return str.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+}
+
+function isToday(inputDate)
+{
+    var todaysDate = new Date();
+    return (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0))
+}
+
+function formatMoneyNBSP(v, curr)
+{
+    return formatMoney(v, curr).replace(' ', '&nbsp;');
+}
+
+function formatURLDate(d)
+{
+    var dt = new Date(d);
+    return dt.getFullYear() + '-' + pad(dt.getMonth() + 1, 2) + '-' + pad(dt.getDate(), 2);
+}
+
+function pad(n, width, z)
+{
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+
+
+function capitalizeFirstLetter(s)
+{
+    if (!s) return "";
+    return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function removeTimeFromDate(dt)
+{
+    dt = dateFromISO(ISOdateFormat(dt, true) + 'T00:00:00');
+    return dt;
+}
+
+function normalizeTime(dt)
+{
+    if (typeof dt.getDate == 'undefined')
+        var dts = convertStringToDate(dt);
+    else
+        var dts = dt;
+
+    // dts.setMinutes(Math.floor(dts.getMinutes() / 10) * 10);
+
+    return dts;
+}
+
+
+function getWeekDay(dt)
+{
+    var i = dt.getDay();
+    if (i == 0) i = 7;
+    return i;
+}
+
+
+
+function addDays(date, days, noParse)
+{
+    var dt;
+    if (!noParse)
+        dt = Date.parse(date);
+    else
+        dt = date;
+
+    var i = dt + (days * 86400000);
+    var d2 = new Date(i);
+
+    if (d2.getHours() == 23)
+        d2 = new Date(Date.parse(d2) + 3600000);
+    if (d2.getHours() == 1)
+        d2 = new Date(Date.parse(d2) - 3600000);
+
+    if (noParse)
+        return new Date(d2).setHours(0, 0, 0, 0);
+    else
+        return d2;
+
+}
+
+function ISOdateFormat(d, noTime)
+{
+    var result = d.getFullYear()
+        + '-' + zeroPad(d.getMonth() + 1, 2)
+        + '-' + zeroPad(d.getDate(), 2)
+
+    if (!noTime)
+        result = result
+            + 'T' + zeroPad(d.getHours(), 2)
+            + ':' + zeroPad(d.getMinutes(), 2)
+            + ':00';
+
+    return result
+}
+
+function isNull(val, defaultValue)
+{
+    if (val === null)
+        return defaultValue;
+    else
+        return val;
+}
+
+
+
+function Sum(array, fieldName, recursiveField)
+{
+    return AggregateFunction("sum", array, fieldName, recursiveField);
+}
+
+function Min(array, fieldName, recursiveField)
+{
+    return AggregateFunction("min", array, fieldName, recursiveField);
+}
+
+function Max(array, fieldName, recursiveField)
+{
+    return AggregateFunction("max", array, fieldName, recursiveField);
+}
+
+function Count(array, fieldName, recursiveField)
+{
+    return AggregateFunction("count", array, fieldName, recursiveField);
+}
+
+
+function getRecursiveArray(array, resultArray, recursiveField)
+{
+
+    if (!array)
+        return;
+
+    if (array.forEach)
+    {
+        array.forEach(function (element)
+        {
+            resultArray.push(element);
+
+            if (element[recursiveField])
+            {
+                getRecursiveArray(element[recursiveField], resultArray, recursiveField);
+            }
+
+        });
+    }
+
+}
+
+function AggregateFunction(type, array, fieldName, recursiveField)
+{
+    var i = null;
+
+    var a;
+
+    if (recursiveField)
+    {
+        a = [];
+        getRecursiveArray(array, a, recursiveField);
+    }
+    else
+        a = array;
+
+    if (!a.forEach)
+    {
+        var res = a.keys(obj)
+        .map(function (k)
+        {
+            return [+k, obj[k]];
+        });
+        a = res;
+
+        // Array.from(Object.keys(a), k => a[k]);
+    }
+
+
+    a.forEach(function (element)
+    {
+        var v;
+        if (fieldName == "*")
+        {
+            if (element.length)
+                v = null;
+            else
+                v = 1;
+        }
+        else
+            v = type === "count" ? element[fieldName] : Number(element[fieldName]);
+
+        if (!isNaN(v))
+        {
+            switch (type)
+            {
+                case "sum":
+                    if (i == null)
+                        i = v;
+                    else
+                        i += v;
+
+                    break;
+
+                case "min":
+                    if (v < i || i == null)
+                        i = v;
+
+                    break;
+
+                case "max":
+                    if (v > i || i == null)
+                        i = v;
+                    break;
+
+                case "count":
+                    if (v != null)
+                    {
+                        if (i == null)
+                            i = 1
+                        else
+                            i++;
+                    }
+                    break;
+            }
+        }
+
+    });
+
+    if (i == null)
+        i = 0;
+
+    return i;
+
+}
+
+function validateEmail(email)
+{
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validateTel(tel)
+{
+    tel = tel.replaceAll(' ', '');
+    var re = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g
+    return re.test(String(tel).toLowerCase());
+}
+
+function validatePostcode(v)
+{
+    v = v.replaceAll(' ', '');
+
+    if (v.length != 5)
+        return false;
+
+    var re = /[^0-9]/g
+
+    return !re.test(String(v));
+}
+
+
+
+
+function escapeFieldName(field)
+{
+    return field.replaceAll('[', '\\[').replaceAll(']', '\\]');
+}
+
+function convertStringToDate(s)
+{
+    if (s instanceof Date)
+        return s;
+
+    var arr1;
+
+    if (s.indexOf('T') > -1)
+    {
+        arr1 = s.split('T');
+    } else
+    {
+        arr1 = s.split(' ');
+    }
+
+    var arr2 = arr1[0].split('-');
+
+    var year = Number(arr2[0]);
+    var month = Number(arr2[1]) - 1;
+    var day = Number(arr2[2]);
+
+    var hour = 0;
+    var minute = 0;
+    var second = 0;
+
+    if (arr1.length == 2)
+    {
+        var arr3 = arr1[1].split(':');
+        hour = arr3[0];
+        minute = arr3[1];
+
+        if (arr3.length == 3)
+            second = arr3[2];
+    }
+
+    var dt = new Date(year, month, day, hour, minute, second);
+
+    return dt
+}
+
+function getObjectSize(obj)
+{
+    var size = 0;
+    for (key in obj)
+    {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+}
+
+function isNumeric(n)
+{
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+
+function ensureDate(d)
+{
+    if (d != null)
+        if (typeof d.getDate == 'undefined')
+        {
+            d = new Date(d);
+            d = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+            d = Date.parse(d);
+        }
+
+    return d;
+}
+
+
+function postRedirect(url, data)
+{
+    var form = $('<form>')
+        .attr('method', 'post')
+        .attr('action', url);
+
+
+    console.log(data);
+    for (var key in data)
+    {
+        if (data.hasOwnProperty(key))
+        {
+            var element = data[key];
+            var v = $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', key)
+                .attr('value', element);
+
+            form.append(v);
+        }
+    }
+
+    $('body').append(form);
+    form.submit();
+}
+
+function unescapeHTML(selector)
+{
+    $(selector).each(function ()
+    {
+        var h = $(this).html();
+        h = h.replace(/&lt;/g, '<');
+        h = h.replace(/&gt;/g, '>');
+        $(this).html(h);
+    });
+}
+
+
+function isTrue(val)
+{
+    if (!val)
+    {
+        // undefined or null or false or 0 or NaN or ''
+        return false;
+    }
+    else
+    {
+        val = val.toString();
+        return (val === 'true' || val === '1' || val === 'X' || val === 'Y');
+    }
+}
+
+
+function ensureURL(url)
+{
+    if (url)
+    {
+        if (url.startsWith('/'))
+            url = url.substring(1);
+
+        url = ts_url + url;
+        return url;
+    }
+}
+
+
+function trackBookerEvent(eventType, data)
+{
+    data.url = window.location.href;
+
+    window.top.postMessage(
+        {
+            action: 'track-event',
+            eventType: eventType,
+            eventData: data
+        }, '*');
+}
+
+function prepareGenericFormData(parentID, values, resultsAsObject)
+{
+    $('#' + parentID + ' input, #' + parentID + ' select, div.custom-form-read-only').each(function ()
+    {
+        var nodeName = $(this).prop('nodeName').toLowerCase();
+        var isVisible;
+
+        if (nodeName == 'input' || nodeName == 'div')
+            isVisible = $(this).is(':visible')
+        else
+            isVisible = $(this).next().is(':visible')
+
+        if (isVisible)
+        {
+
+            if (nodeName == 'div')
+            {
+                var field = $(this).data('field-name');
+                var value = $('input[name=' + escapeFieldName(field) + ']').val();
+            }
+            else
+            {
+                var field = $(this).attr('name');
+                var value = "";
+
+
+                if (field != '' && field != undefined)
+                {
+                    switch (nodeName)
+                    {
+                        case 'select':
+                            value = $(this).val();
+                            break;
+
+                        default:
+
+                            switch ($(this).attr('type'))
+                            {
+                                case 'password':
+                                case 'text':
+                                case 'email':
+                                case 'tel':
+                                    value = $(this).val();
+                                    break;
+
+                                case 'checkbox':
+                                    value = $(this).is(':checked');
+                                    break;
+
+                                case 'radio':
+                                    if ($(this).is(':checked'))
+                                        value = $('input[name=' + escapeFieldName(field) + ']:checked').val();
+                                    else
+                                        value = null;
+                                    break;
+                            }
+                    }
+                }
+            }
+
+            if (value != null)
+            {
+                if (resultsAsObject)
+                {
+                    values[field] = value;
+                }
+                else
+                {
+                    values.push(
+                        {
+                            field: field,
+                            value: value
+                        });
+                }
+            }
+        }
+    });
+}
+

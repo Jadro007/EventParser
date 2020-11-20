@@ -1,0 +1,764 @@
+/**
+	the script only works on "input [type=text]"
+
+**/
+
+// don't declare anything out here in the global namespace
+
+(function($) {
+
+	var today = new Date(); // used in defaults
+	
+	var days = dict.days.split(',');
+    var months = dict.months.split(',');
+	var monthlengths = '31,28,31,30,31,30,31,31,30,31,30,31'.split(',');
+  	var times = '01:00,02:00,03:00,04:00,05:00,06:00,07:00,08:00,09:00,10:00,11:00,12:00,13:00,14:00,15:00,16:00,17:00,18:00,19:00,20:00,21:00,22:00,23:00,00:00'.split(',');
+
+  	// format data type /Sun 28/ - only EN
+	var monthNamesShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	var monthNames = ['January', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'];
+	var	dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	var	dayNamesShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	var	dayNamesMin = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+	var	amPm = [dict.am, dict.pm];
+	var am = -1;
+	var shortYearCutoff = '+10';
+	// /format data
+	
+	var yearRegEx = /^\d{4,4}$/;
+
+    // next, declare the plugin function
+    $.fn.simpleDatepicker = function(options) {
+		// functions and vars declared here are created each time your plugn function is invoked
+
+        // you could probably refactor your 'build', 'load_month', etc, functions to be passed
+        // the DOM element from below
+
+		var opts = jQuery.extend({}, jQuery.fn.simpleDatepicker.defaults, options);
+		// replaces a date string with a date object in opts.startdate and opts.enddate, if one exists
+		// populates two new properties with a ready-to-use year: opts.startyear and opts.endyear
+
+		setupYearRange();
+		/** extracts and setup a valid year range from the opts object **/
+		function setupYearRange () {
+
+			var startyear, endyear;
+			if (opts.startdate.constructor == Date) {
+				startyear = opts.startdate.getFullYear();
+			} else if (opts.startdate) {
+				if (yearRegEx.test(opts.startdate)) {
+					startyear = opts.startdate;
+				} else
+					startyear = today.getFullYear();
+			} else {
+				startyear = today.getFullYear();
+			}
+			opts.startyear = startyear;
+			
+			if (opts.enddate.constructor == Date) {
+				endyear = opts.enddate.getFullYear();
+			} else if (opts.enddate) {
+				if (yearRegEx.test(opts.enddate)) {
+					endyear = opts.enddate;
+				} else
+					endyear = today.getFullYear();
+				
+			} else {
+				endyear = today.getFullYear();
+			}
+			opts.endyear = endyear;	
+		}
+		
+		/** HTML factory for the actual datepicker table element **/
+		// has to read the year range so it can setup the correct years in our HTML <select>
+		function newDatepickerHTML () {
+			
+			var years = [];
+			
+			// process year range into an array
+			for (var i = 0; i <= opts.endyear - opts.startyear; i ++) years[i] = opts.startyear + i;
+	
+			// build the table structure
+			var table = jQuery('<table class="datepicker" cellpadding="0" cellspacing="0"></table>');
+			table.append('<thead></thead>');
+			table.append('<tfoot></tfoot>');
+			table.append('<tbody></tbody>');
+			
+				// month select field
+				var monthselect = '<select name="month">';
+				for (var i in months) monthselect += '<option value="'+i+'">'+months[i]+'</option>';
+				monthselect += '</select>';
+			
+				// year select field
+				var yearselect = '<select name="year">';
+				for (var i in years) yearselect += '<option>'+years[i]+'</option>';
+				yearselect += '</select>';
+				
+				// time select field
+				var timeselect ='';
+				var timeselect = '<select name="time" style="display:none;">';
+				var sel = "";
+				for (var i in times) {
+					timeselect += '<option value="'+times[i]+'"'+sel+'">'+times[i]+'</option>';
+				}	
+				timeselect += '</select>';
+			
+			jQuery("thead",table).append('<tr class="controls"><th colspan="7"><span class="prevMonth">&laquo;</span>&nbsp;'+monthselect+yearselect+timeselect+'&nbsp;<span class="nextMonth">&raquo;</span></th></tr>');
+			
+			var day = '<tr class="days">';
+			for (var i in days){
+				if(opts.firstDay!=1){
+					aktd = (parseInt(opts.firstDay)-1) + parseInt(i);
+					if (aktd>6){aktd=aktd-7;}					
+					day += '<th>'+days[aktd]+'</th>';
+				}
+				else{
+					day += '<th>'+days[i]+'</th>';
+				}
+			}
+			day += '</tr>';
+			
+			jQuery("thead",table).append(day);
+			jQuery("tfoot",table).append('<tr><td colspan="2"><span class="today">Dnes</span></td><td colspan="3">&nbsp;</td><td colspan="2"><span class="close">Zavřít</span></td></tr>');
+		
+			if(opts.firstDay==1){
+				var rowsAndColls = '<tr><td></td><td></td><td></td><td></td><td></td><td class="weekend"></td><td class="weekend"></td></tr>';
+			}
+			else{
+				var rowsAndColls = '<tr><td class="weekend"></td><td></td><td></td><td></td><td></td><td></td><td class="weekend"></td></tr>';		
+			}
+			for (var i = 0; i < 6; i++) jQuery("tbody",table).append(rowsAndColls);	
+			return table;
+		}
+		
+		/** get the real position of the input (well, anything really) **/
+		//http://www.quirksmode.org/js/findpos.html
+		function findPosition (obj) {
+			var curleft = curtop = 0;
+			if (obj.offsetParent) {
+				do {
+					curleft += obj.offsetLeft;
+					curtop += obj.offsetTop;
+				} while (obj = obj.offsetParent);
+				return [curleft,curtop];
+			} else {
+				return false;
+			}
+		}
+		
+		/** load the initial date and handle all date-navigation **/
+		// initial calendar load (e is null)
+		// prevMonth & nextMonth buttons
+		// onchange for the select fields
+		function loadMonth (e, el, datepicker, chosendate) {
+			
+			// reference our years for the nextMonth and prevMonth buttons
+			var mo = jQuery("select[name=month]", datepicker).get(0).selectedIndex;
+			var yr = jQuery("select[name=year]", datepicker).get(0).selectedIndex;
+			var yrs = jQuery("select[name=year] option", datepicker).get().length;
+			
+			// first try to process buttons that may change the month we're on
+			if (e && jQuery(e.target).hasClass('prevMonth')) {				
+				if (0 == mo && yr) {
+					yr -= 1; mo = 11;
+					jQuery("select[name=month]", datepicker).get(0).selectedIndex = 11;
+					jQuery("select[name=year]", datepicker).get(0).selectedIndex = yr;
+				} else {
+					mo -= 1;
+					jQuery("select[name=month]", datepicker).get(0).selectedIndex = mo;
+				}
+			} else if (e && jQuery(e.target).hasClass('nextMonth')) {
+				if (11 == mo && yr + 1 < yrs) {
+					yr += 1; mo = 0;
+					jQuery("select[name=month]", datepicker).get(0).selectedIndex = 0;
+					jQuery("select[name=year]", datepicker).get(0).selectedIndex = yr;
+				} else {
+					mo += 1;
+					jQuery("select[name=month]", datepicker).get(0).selectedIndex = mo;
+				}
+			}
+			
+			// maybe hide buttons
+			if (0 == mo && !yr) jQuery("span.prevMonth", datepicker).hide();
+			else jQuery("span.prevMonth", datepicker).show();
+			if (yr + 1 == yrs && 11 == mo) jQuery("span.nextMonth", datepicker).hide();
+			else jQuery("span.nextMonth", datepicker).show();
+			
+			// clear the old cells
+			var cells = jQuery("tbody td", datepicker).unbind().empty().removeClass('date');
+			
+			// figure out what month and year to load
+			var m = jQuery("select[name=month]", datepicker).val();
+			var y = jQuery("select[name=year]", datepicker).val();
+			var d = new Date(y, m, 1);
+			
+			if(opts.firstDay==1){			
+				var startindex = d.getDay()-1;
+			}
+			else{
+				var startindex = d.getDay();
+			}
+			
+			var numdays = monthlengths[m];
+			
+			// http://en.wikipedia.org/wiki/Leap_year
+			if (1 == m && ((y%4 == 0 && y%100 != 0) || y%400 == 0)) numdays = 29;
+			
+			// test for end dates (instead of just a year range)
+			if (opts.startdate.constructor == Date) {
+				var startMonth = opts.startdate.getMonth();
+				var startDate = opts.startdate.getDate();
+			}
+			if (opts.enddate.constructor == Date) {
+				var endMonth = opts.enddate.getMonth();
+				var endDate = opts.enddate.getDate();
+			}
+			
+			// walk through the index and populate each cell, binding events too
+			for (var i = 0; i < numdays; i++) {
+				if(startindex<0){
+					var cell = jQuery(cells.get(i+startindex+7)).removeClass('chosen');
+				}
+				else{
+					var cell = jQuery(cells.get(i+startindex)).removeClass('chosen');
+				}
+				// test that the date falls within a range, if we have a range
+				if (
+					(yr || ((!startDate && !startMonth) || ((i+1 >= startDate && mo == startMonth) || mo > startMonth))) &&
+					(yr + 1 < yrs || ((!endDate && !endMonth) || ((i+1 <= endDate && mo == endMonth) || mo < endMonth)))) {
+				
+					cell
+						.text(i+1)
+						.addClass('date')
+						.hover(
+							function () { jQuery(this).addClass('over'); },
+							function () { jQuery(this).removeClass('over'); })
+						.click(function () {
+							var chosenDateObj = new Date(jQuery("select[name=year]", datepicker).val(), jQuery("select[name=month]", datepicker).val(), jQuery(this).text());	
+							var chosenTime = jQuery("select[name=time]", datepicker).val();		
+							closeIt(el, datepicker, chosenDateObj, chosenTime);
+						});
+						
+					// highlight the previous chosen date
+					if (i+1 == chosendate.getDate() && m == chosendate.getMonth() && y == chosendate.getFullYear()) cell.addClass('chosen');
+				}
+			}
+		}
+		
+		/** closes the datepicker **/
+		// sets the currently matched input element's value to the date, if one is available
+		// remove the table element from the DOM
+		// indicate that there is no datepicker for the currently matched input element
+		function closeIt (el, datepicker, dateObj, chosenTime) {			
+			if (dateObj && dateObj.constructor == Date)
+				el.val(formatOutput(dateObj, chosenTime));
+			datepicker.remove();
+			datepicker = null;
+			jQuery.data(el.get(0), "simpleDatepicker", { hasDatepicker : false });
+		}
+		
+		function formatOutput (dateObj, chosenTime) {		
+			return formatDate(opts.dateFormat,dateObj,chosenTime);			
+		}
+		
+        // iterate the matched nodeset
+        return this.each(function() {
+			
+            // functions and vars declared here are created for each matched element. so if
+            // your functions need to manage or access per-node state you can defined them
+            // here and use $this to get at the DOM element
+        	
+        	$(this).attr('autocomplete','off');
+			if ( jQuery(this).is('input') && 'text' == jQuery(this).attr('type')) {
+
+				var datepicker;
+				jQuery.data(jQuery(this).get(0), "simpleDatepicker", { hasDatepicker : false });
+				
+				// open a datepicker on the click event
+				jQuery(this).click(function (ev) {
+											
+					var $this = jQuery(ev.target);
+					if (false == jQuery.data($this.get(0), "simpleDatepicker").hasDatepicker) {
+						
+						// store data telling us there is already a datepicker
+						jQuery.data($this.get(0), "simpleDatepicker", { hasDatepicker : true });
+						
+						// validate the form's initial content for a date
+						var initialDate = $this.val();					
+						if(initialDate == dict.datePattern){
+							initialDate = '';
+						}	
+						if (initialDate) {
+							var chosendate = parseDate(opts.dateFormat,initialDate);							
+						} else if (opts.chosendate.constructor == Date) {
+							var chosendate = opts.chosendate;
+							chosendate.setHours(0,0,0);
+						} else if (opts.chosendate) {
+							var chosendate = new Date(opts.chosendate);
+							chosendate.setHours(0,0,0);
+						} else {
+							var chosendate = today;
+							chosendate.setHours(0,0,0);
+						}
+							
+						// insert the datepicker in the DOM
+						datepicker = newDatepickerHTML();
+						jQuery("body").append(datepicker);
+						
+						// position the datepicker
+						var elPos = findPosition($this.get(0));
+						var x = (parseInt(opts.x) ? parseInt(opts.x) : 0) + elPos[0];
+						var y = (parseInt(opts.y) ? parseInt(opts.y) : 0) + elPos[1];
+						jQuery(datepicker).css({ position: 'absolute', left: x, top: y });
+					
+						// bind events to the table controls
+						jQuery("span", datepicker).css("cursor","pointer");
+						jQuery("select", datepicker).bind('change', function () { loadMonth (null, $this, datepicker, chosendate); });
+						jQuery("span.prevMonth", datepicker).click(function (e) { loadMonth (e, $this, datepicker, chosendate); });
+						jQuery("span.nextMonth", datepicker).click(function (e) { loadMonth (e, $this, datepicker, chosendate); });
+						jQuery("span.today", datepicker).click(function () { closeIt($this, datepicker, new Date(),opts.defaultTime);
+						
+						//closeIt(el, datepicker, chosenDateObj, chosenTime);
+						});
+						jQuery("span.close", datepicker).click(function () { closeIt($this, datepicker); });
+						
+						// set the initial values for the month and year select fields
+						// and load the first month
+						jQuery("select[name=month]", datepicker).get(0).selectedIndex = chosendate.getMonth();
+						
+						var hours = chosendate.getHours();
+						var minutes = chosendate.getMinutes();
+						if(am!=-1){if(am==2){hours=hours+12; if(hours==24){hours=0;}}}
+						if (hours   < 10) { hours   = "0" + hours;   }
+						if (minutes < 10) { minutes = "0" + minutes; }
+						var times = hours+':'+minutes;
+						jQuery("select[name=time]", datepicker).get(0).value = times;
+						jQuery("select[name=year]", datepicker).get(0).selectedIndex = Math.max(0, chosendate.getFullYear() - opts.startyear);
+						loadMonth(null, $this, datepicker, chosendate);
+					}
+					$("#o").css('height',$(document).height()+'px');
+					$("#o").css('width',$(window).width() + 'px');					
+				});
+			}
+
+        });
+
+    };
+	
+	// return formated date OPTIONS FORMAT
+	function formatDate(format, date, time) { 	
+		if (!date)
+			return '';
+
+		if (!time)
+			time = opts.defaultTime || '00:00';
+			time = time.split(':');	
+			
+		// Check whether a format character is doubled
+		var lookAhead = function(match) {
+			var matches = (iFormat + 1 < format.length && format.charAt(iFormat + 1) == match && format.charAt(iFormat + 2) != match);
+			if (matches) {
+				iFormat++;
+			}
+			return matches;
+		};
+		// Format a number, with leading zero if necessary
+		var formatNumber = function(match, value, len) {
+			var num = '' + value;
+			if (lookAhead(match))
+				while (num.length < len)
+					num = '0' + num;
+			return num;
+		};
+		// Format a name, short or long as requested
+		var formatName = function(match, value, shortNames, longNames) {
+			return (lookAhead(match) ? longNames[value] : shortNames[value]);
+		};
+		var output = '';
+		var literal = false;
+		if (date)
+			for (var iFormat = 0; iFormat < format.length; iFormat++) {
+			
+				if (literal)
+					if (format.charAt(iFormat) == "'" && !lookAhead("'"))
+						literal = false;
+					else
+						output += format.charAt(iFormat);
+				else
+					switch (format.charAt(iFormat)) {
+						case 'd':
+							output += formatNumber('d', date.getDate(), 2);
+							break;															
+						case 'D':
+							output += formatName('D', date.getDay(), dayNamesShort, dayNames);
+							break;
+						case 'o':
+							output += formatNumber('o',
+								(date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86400000, 3);
+							break;
+						case 'M':
+						// JS - m	
+							output += formatNumber('M', date.getMonth() + 1, 2);
+							break;
+						case 'E':	
+						// JS - M	
+							output += formatName('E', date.getMonth(), monthNamesShort, monthNames);
+							break;
+						case 'y':
+						/*	output += (lookAhead('y') ? date.getFullYear() :
+								(date.getYear() % 100 < 10 ? '0' : '') + date.getYear() % 100); */
+							if (lookAhead('y')){output +=  date.getFullYear();}
+							break;
+						case 'H':
+						// JS - h	
+							output += formatNumber('H', time[0]);
+							break;
+						case 'h':	
+							var hour = formatNumber('h', time[0]);
+							if (hour > 12) { hour = hour - 12; }
+							if (hour == 0) { hour = 12; }
+							output += hour;
+							break;	
+						case 'm':
+						// JS - i		
+							output += formatNumber('m', time[1]);
+							break;	
+						case 'a':
+							output += getUSHours(time[0]);
+							break;		
+						case '@':
+							output += date.getTime();
+							break;
+						case "'":
+							if (lookAhead("'"))
+								output += "'";
+							else
+								literal = true;
+							break;
+						default:							
+							output += format.charAt(iFormat);
+					}
+			}		
+			
+		return output.replace(/^\s+|\s+$/g,"");
+	}
+
+	function parseDate(format, value) {
+		if (value == null) {
+			throw 'Invalid arguments';
+		}
+		value = (typeof value == 'object' ? value.toString() : value + '');
+		if (value == '') {
+			return null;
+		}
+		format = format || _defaults.dateFormat;
+		shortYearCutoff = (typeof shortYearCutoff != 'string' ? shortYearCutoff :
+			today.getFullYear() % 100 + parseInt(shortYearCutoff, 10));
+					
+		var year = -1;
+		var month = -1;
+		var day = -1;
+		var doy = -1;
+		var hours = -1;
+		var amPmhours = -1;
+		var minutes = -1;
+		var shortYear = false;
+		var literal = false;
+		// Check whether a format character is doubled
+		var doubled = function(match, step) {
+			var matches = 1;
+			while (iFormat + matches < format.length && format.charAt(iFormat + matches) == match) {
+				matches++;
+			}
+			iFormat += matches - 1;
+			return Math.floor(matches / (step || 1)) > 1;
+		};
+		// Extract a number from the string value
+		var getNumber = function(match, step) {
+			doubled(match, step);
+			var size = [2, 3, 4, 11, 20]['oy@!'.indexOf(match) + 1];
+			var digits = new RegExp('^-?\\d{1,' + size + '}');
+			var num = value.substring(iValue).match(digits);
+			if (!num) {
+				throw 'Missing number at position {0}'.replace(/\{0\}/, iValue);
+			}			
+			iValue += num[0].length;
+			return parseInt(num[0], 10);
+		};
+		// Extract a name from the string value and convert to an index
+		var getName = function(match, shortNames, longNames, step) {
+			var names = (doubled(match, step) ? longNames : shortNames);
+			for (var i = 0; i < names.length; i++) {
+				if (value.substr(iValue, names[i].length) == names[i]) {
+					iValue += names[i].length;
+					return i + 1;
+				}
+			}
+			throw 'Unknown name at position {0}'.replace(/\{0\}/, iValue);
+		};
+		// Confirm that a literal character matches the string value
+		var checkLiteral = function() {
+			if (value.charAt(iValue) != format.charAt(iFormat)) {
+				throw 'Unexpected literal at position {0}'.replace(/\{0\}/, iValue);
+			}
+			iValue++;
+		};
+		var iValue = 0;
+		for (var iFormat = 0; iFormat < format.length; iFormat++) {
+			if (literal) {
+				if (format.charAt(iFormat) == "'" && !doubled("'")) {
+					literal = false;
+				}
+				else {
+					checkLiteral();
+				}
+			}
+			else {
+				switch (format.charAt(iFormat)) {
+					case 'd': day = getNumber('d'); break;
+					case 'D': getName('D', dayNamesShort, dayNames); break;
+					case 'o': doy = getNumber('o'); break;
+					case 'w': getNumber('w'); break;
+					case 'H': hours = getNumber('H'); break; //h
+					case 'h': amPmhours = getNumber('h'); break; //h
+					case 'm': minutes = getNumber('m'); break; //i
+					case 'M': month = getNumber('M'); break; //m
+					case 'E': month = getName('E', monthNamesShort, monthNames); break; //M
+					case 'a': am = getName('a', amPm); break; //A
+					case 'y':
+						var iSave = iFormat;
+						shortYear = !doubled('y', 2);
+						iFormat = iSave;
+						year = getNumber('y', 2);
+						break;
+					case '@':
+						var date = _normaliseDate(new Date(getNumber('@') * 1000));
+						year = date.getFullYear();
+						month = date.getMonth() + 1;
+						day = date.getDate();
+						break;
+					case '!':
+						var date = _normaliseDate(
+							new Date((getNumber('!') - _ticksTo1970) / 10000));
+						year = date.getFullYear();
+						month = date.getMonth() + 1;
+						day = date.getDate();
+						break;
+					case '*': iValue = value.length; break;
+					case "'":
+						if (doubled("'")) {
+							checkLiteral();
+						}
+						else {
+							literal = true;
+						}
+						break;
+					default: checkLiteral();
+				}
+			}
+		}
+		if (iValue < value.length) {
+			throw 'Additional text found at end';
+		}
+		if (year == -1) {
+			year = today().getFullYear();
+		}
+		else if (year < 100 && shortYear) {
+			year += (shortYearCutoff == -1 ? 1900 : today.getFullYear() -
+				today.getFullYear() % 100 - (year <= shortYearCutoff ? 0 : 100));
+		}
+		if (doy > -1) {
+			month = 1;
+			day = doy;
+			for (var dim = daysInMonth(year, month); day > dim;
+					dim = daysInMonth(year, month)) {
+				month++;
+				day -= dim;
+			}
+		}
+		
+		if((minutes>=0)&&(hours>=0)){
+			if (hours   < 10) { hours   = "0" + hours;   }
+			if (minutes < 10) { minutes = "0" + minutes; }
+		}
+		
+		if(amPmhours!=-1){hours=amPmhours;}
+		if((minutes>=0)&&(hours>=0)){
+			var date = newDate(year, month, day, hours, minutes);
+		}
+		else{
+			var date = newDate(year, month, day);
+		}		
+		if (date.getFullYear() != year || date.getMonth() + 1 != month || date.getDate() != day) {
+			throw 'Invalid date';
+		}
+		//getUSTime(date);
+		return date;
+	}
+	
+	function getUSTime(date) {	
+	   var now    = date || new Date();
+	   var hour   = now.getHours();
+	   var minute = now.getMinutes();
+	   var second = now.getSeconds();
+	   var ap = dict.am;
+	   if (hour   > 11) { ap = dict.pm;          }
+	   if (hour   > 12) { hour = hour - 12;      }
+	   if (hour   == 0) { hour = 12;             }
+	   if (hour   < 10) { hour   = "0" + hour;   }
+	   if (minute < 10) { minute = "0" + minute; }
+	   var timeString = hour +
+						':' +
+						minute +
+						" " +
+						ap;
+		return timeString;
+	}
+	
+	function getUSHours(hour) {	
+	   var hour   = hour;
+	   var ap = dict.am;
+	   if (hour   > 11) { ap = dict.pm;             }
+	   return ap;
+	}
+	
+		
+	/* Find the number of days in a given month.
+	   @param  year   (Date) the date to get days for or
+	                  (number) the full year
+	   @param  month  (number) the month (1 to 12)
+	   @return  (number) the number of days in this month */
+	function daysInMonth(year, month) {
+		month = (year.getFullYear ? year.getMonth() + 1 : month);
+		year = (year.getFullYear ? year.getFullYear() : year);
+		return newDate(year, month + 1, 0).getDate();
+	}
+	/* Calculate the day of the year for a date.
+	   @param  year   (Date) the date to get the day-of-year for or
+	                  (number) the full year
+	   @param  month  (number) the month (1-12)
+	   @param  day    (number) the day
+	   @return  (number) the day of the year */
+	function dayOfYear(year, month, day) {
+		var date = (year.getFullYear ? year : newDate(year, month, day));
+		var newYear = newDate(date.getFullYear(), 1, 1);
+		return Math.floor((date.getTime() - newYear.getTime()) / _msPerDay) + 1;
+	}
+	/* Set as calculateWeek to determine the week of the year based on the ISO 8601 definition.
+	   @param  year   (Date) the date to get the week for or
+	                  (number) the full year
+	   @param  month  (number) the month (1-12)
+	   @param  day    (number) the day
+	   @return  (number) the number of the week within the year that contains this date */
+	function iso8601Week(year, month, day) {
+		var checkDate = (year.getFullYear ?
+			new Date(year.getTime()) : newDate(year, month, day));
+		// Find Thursday of this week starting on Monday
+		checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+		var time = checkDate.getTime();
+		checkDate.setMonth(0, 1); // Compare with Jan 1
+		return Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
+	}
+	/* Return today's date.
+	   @return  (Date) today */
+	function today() {
+		return _normaliseDate(new Date());
+	}
+	/* Return a new date.
+	   @param  year   (Date) the date to clone or
+					  (number) the year
+	   @param  month  (number) the month (1-12)
+	   @param  day    (number) the day
+	   @return  (Date) the date */
+	function newDate(year, month, day, hours, minutes) {
+		if (!hours)
+			var hours = '00';
+		if (!minutes)
+			var minutes = '00';
+			
+		return (!year ? null : (year.getFullYear ? _normaliseDate(new Date(year.getTime())) :
+			new Date(year, month - 1, day, hours, minutes)));
+	}
+	/* Standardise a date into a common format - time portion is 12 noon.
+	   @param  date  (Date) the date to standardise
+	   @return  (Date) the normalised date */
+	function _normaliseDate(date) {
+		if (date) {
+			date.setHours(12, 0, 0, 0);
+		}		
+		return date;
+	}
+	/* Set the year for a date.
+	   @param  date  (Date) the original date
+	   @param  year  (number) the new year
+	   @return  the updated date */
+	function year(date, year) {
+		date.setFullYear(year);
+		return _normaliseDate(date);
+	}
+	/* Set the month for a date.
+	   @param  date   (Date) the original date
+	   @param  month  (number) the new month (1-12)
+	   @return  the updated date */
+	function month(date, month) {
+		date.setMonth(month - 1);
+		return _normaliseDate(date);
+	}
+	/* Set the day for a date.
+	   @param  date  (Date) the original date
+	   @param  day   (number) the new day of the month
+	   @return  the updated date */
+	function day(date, day) {
+		date.setDate(day);
+		return _normaliseDate(date);
+	}
+	/* Add a number of periods to a date.
+	   @param  date    (Date) the original date
+	   @param  amount  (number) the number of periods
+	   @param  period  (string) the type of period d/w/m/y
+	   @return  the updated date */
+	function add(date, amount, period) {
+		if (period == 'd' || period == 'w') {
+			_normaliseDate(date);
+			date.setDate(date.getDate() + amount * (period == 'w' ? 7 : 1));
+		}
+		else {
+			var year = date.getFullYear() + (period == 'y' ? amount : 0);
+			var month = date.getMonth() + (period == 'm' ? amount : 0);
+			date.setTime($.datepick.newDate(year, month + 1,
+				Math.min(date.getDate(), daysInMonth(year, month + 1))).getTime());
+		}
+		return date;
+	}
+	
+	
+	jQuery.fn.simpleDatepicker.defaults = {
+		// date string matching /^\d{1,2}\/\d{1,2}\/\d{2}|\d{4}$/
+		chosendate : today,
+		// default time
+		defaultTime: '00:00',		
+		// type of country options
+		//dateFormat: 'dd.m.yy',
+		
+		//dd/MM/yyyy HH:mm
+		//dd.MM.yyyy HH:mm
+		// dateFormat:'dd-MM-yyyy h:mma
+		dateFormat : (datepickerOpts.dateFormat || 'dd.m.yy hh:ii'),
+		//dateFormat: 'E dd, yy',
+		//dateFormat: "dd.MM.yy HH:mm",
+		//dateFormat: "M dd, yy HH:mm A",
+		
+		// sunday = 0; monday = 1
+		firstDay: (datepickerOpts.firstDay || 1),
+		
+		// date string matching /^\d{1,2}\/\d{1,2}\/\d{2}|\d{4}$/
+		// or four digit year
+		startdate : today.getFullYear(),
+		enddate : today.getFullYear() + 2,
+		
+		// offset from the top left corner of the input element
+		x : 2, // must be in px
+		y : 24 // must be in px
+	};
+
+})(jQuery);

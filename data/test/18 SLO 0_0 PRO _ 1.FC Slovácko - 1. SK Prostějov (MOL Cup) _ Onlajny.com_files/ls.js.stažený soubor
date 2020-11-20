@@ -1,0 +1,2197 @@
+var checkGfyObjects;
+var checkFb = [];
+var checkInstagram = [];
+var checkEmbeds = [];
+var pushHotTime = 6000;
+var pushHotBackground = "#ffba83";
+var betClickUrl = "/bet/click/id/";
+var betClick2Url = "/bet/click2/id/";
+var betLogoUrl = imgBase + "../../betagency/logo/";
+var lsErrorsUrl = '/error/ls-error';
+var lsClient;
+var loggerProvider;
+var commentsSubscription;
+var logSubscription;
+var lsMatchDetail;
+
+if (typeof lsEnableWs == "undefined"){
+	var lsEnableWs = true;
+}
+
+function gridObject(grid) {
+	this.grid = grid;
+}
+
+function visualUpdateEvent(gridObject, updateInfo, itemName) {
+	this.updateInfo = updateInfo;
+	this.itemName = itemName;
+	this.isAuto = /_a/.test(itemName);
+	this.itemId = itemName.match(/^item_\d+/)[0];
+	this.gridObject = gridObject;
+	this.changed = {};
+	updateInfo.forEachChangedField(function(k, v){
+		this.changed[k] = v;
+	}.bind(this));
+}
+
+visualUpdateEvent.prototype.getChangedFieldValue = function (key){
+	if (typeof this.changed[key] != "undefined"){
+		return this.changed[key];
+	}
+	return null;
+}
+
+visualUpdateEvent.prototype.isValueChanged = function (key){
+	return typeof this.changed[key] != "undefined";
+}
+
+visualUpdateEvent.prototype.setServerValue = function(key, val){
+	this.changed[key] = val;
+	this.setCellValue(key, val);
+}
+
+visualUpdateEvent.prototype.getServerValue = function(key){
+	if (typeof this.changed[key] != "undefined"){
+		return this.changed[key];
+	}
+	val = this.gridObject.grid.getValue(this.itemName, key);
+	if (val === null){
+		val = "";
+	}
+	return val;
+}
+
+visualUpdateEvent.prototype.getCellValue = function(key, replicaId){
+	try {
+		return this.updateInfo.getCellValue(key, replicaId);
+	}
+	catch (e){
+		return null;
+	}
+}
+
+visualUpdateEvent.prototype.setCellValue = function(key, val, replicaId){
+	try {
+		this.getCellValue(key, replicaId).trim() == val.trim() || this.updateInfo.setCellValue(key, val, replicaId);
+	}
+	catch (e){
+	}
+}
+
+visualUpdateEvent.prototype.getStatusShortDb = function(){
+	var statusShortDb = this.getServerValue("mode");
+	if (statusShortDb == "b"){
+		statusShortDb = this.getServerValue("period")+'p';
+	}
+	else if (statusShortDb == "p"){
+		statusShortDb = this.getServerValue("period");
+	}
+	
+	return statusShortDb;
+}
+
+visualUpdateEvent.prototype.translateMessage = function(matchJson){
+	if (this.isAuto && matchJson && this.isValueChanged("message")){
+		var message = this.getServerValue("message");
+		
+		message = message.replace(/\{(?:([ulfn]{1,2}):)?(.+?)\}/g, function(match, matches1, matches2){
+
+			var txt = matches2.split(":");
+			var translated = txt.shift();
+			
+			if (matches1 != "n" && lsLangVars[translated]){
+				translated = lsLangVars[translated];
+				if (matches1=="lf"){
+					translated = translated.substr(0, 1).toLocaleLowerCase()+translated.substr(1);
+				}
+				else if (matches1=="uf"){
+					translated = translated.substr(0, 1).toLocaleUpperCase()+translated.substr(1);
+				}
+				else if (matches1=="us"){
+					translated = translated.toLocaleUpperCase();
+				}
+			}
+			
+			if (txt.length){
+				for (var k = 0; k < txt.length; k++){
+					var type = txt[k].substr(0, 1);
+					if (type == "T"){
+						txt[k] = $('span[data-item^="'+this.itemId+'"][data-field="beginTime"]:first').text();
+					}
+					else {
+						var teamId = txt[k].substr(1);
+						if (matchJson.teamNames[type] && matchJson.teamNames[type][teamId]){
+							txt[k] = matchJson.teamNames[type][teamId];
+						}
+					}
+				}
+
+				var no = 0;
+				translated = translated.replace(/%s/g, function(){
+					return txt[no++];
+				});
+			}
+			
+			return translated;
+		}.bind(this));
+
+		this.setServerValue('message', message);
+	}
+}
+
+function visualUpdateEventMatch(gridObject, updateInfo, itemName) {
+	visualUpdateEvent.call(this, gridObject, updateInfo, itemName);
+	this.isItemMainMatch = gridObject.isItemMainMatch;
+	
+	if (this.isItemMainMatch) {
+		this.zapasEl = $('#match');
+    }
+    else {
+    	this.zapasEl = $('#zapas_' + this.itemId);
+    }
+	
+	this.idMatchLanguage = itemName.replace(/[^\d]/g, '');
+}
+visualUpdateEventMatch.prototype =  Object.create(visualUpdateEvent.prototype);
+visualUpdateEventMatch.prototype.constructor = visualUpdateEventMatch;
+
+visualUpdateEventMatch.prototype.getNextResultsQuarters = function(){
+	var others = this.getServerValue('matchOthers');
+	if (!others){
+		return '';
+	}
+	var othersJSON = $.parseJSON(others);
+	return (othersJSON && othersJSON.nrq) ? othersJSON.nrq : '';
+}
+
+visualUpdateEventMatch.prototype.enableServe = function(){    
+	return this.isTennis() || this.isVolleyball();
+}
+
+visualUpdateEventMatch.prototype.isVolleyball = function(){
+	if (this.isItemMainMatch) {
+	    return matchJson.sport=='volleyball'	
+	}
+	else {
+	    return this.zapasEl.hasClass("volleyball");
+	}
+}
+
+visualUpdateEventMatch.prototype.isTennis = function(){
+	if (this.isItemMainMatch) {
+	    return matchJson.sport=='tennis'	
+	}
+	else {
+	    return this.zapasEl.hasClass("tennis");
+	}
+}
+
+visualUpdateEventMatch.prototype.isSoftbase = function(){
+	if(this.isItemMainMatch) {
+		return matchJson.sport=='softball' || matchJson.sport=='baseball' ;
+	}
+	else {
+		return this.zapasEl.hasClass("softball") || this.zapasEl.hasClass("baseball");
+	}
+}
+
+visualUpdateEventMatch.prototype.formatLive = function() {
+
+    if (! this.isValueChanged("mode")) {
+    	return;
+    }
+    
+    var mode = this.getServerValue("mode");    
+    var isLive = this.getServerValue("live") == "true"; 
+
+    if (mode == 'xy' && this.gridObject.isList) {
+    	this.zapasEl.hide();
+    }
+    
+    if (this.gridObject.isMobile){
+    	if (mode == "0" || mode == "?" || mode == "xo" || mode == "xz") {
+            var mClass = 'before';
+        } 
+        else if (isLive || mode == "xp") {
+        	var mClass = 'live';
+        } 
+        else {
+        	var mClass = 'finished';
+        }
+    	
+    	if (this.isItemMainMatch){
+    		$('.event-result', this.zapasEl).removeClass("before live finished").addClass(mClass);
+    	}
+    	else {
+    		this.zapasEl.removeClass("before live finished").addClass(mClass);
+    		if (this.gridObject.isCompetitionsList){
+    			$('.match-period', this.zapasEl).toggle(mode != "0" && mode != "k");
+    		}
+    	}
+    }
+    else if (this.gridObject.isList || this.gridObject.isMulti){
+        var showBefore = (!isLive && (mode == "0" || mode == "?")) || mode == "xo" || mode == "xz";
+        $('.live', this.zapasEl).toggle(isLive); 
+        $('.nazev', this.zapasEl).toggleClass('nazevLive', isLive);
+        $('.nobefore', this.zapasEl).toggle(!showBefore);
+        $('.before', this.zapasEl).toggle(showBefore);
+    }    
+}
+
+visualUpdateEventMatch.prototype.formatLiveTableIcon = function() {
+    if (! this.gridObject.isList || ! this.isValueChanged("mode")) {
+    	return;
+    }
+    
+    var soutezHolder = $(this.zapasEl).closest('.soutezHolder');
+    if(! $('.liveTableSoutez', soutezHolder).length) {
+        return;
+    }
+    var show = false;      
+    $('.zapasyPolozka', soutezHolder).each(function(){          
+	  if($(this).is('[class*="match-status-"]')) {             
+              if(! $(this).is('[class*="match-status-0"]') && ! $(this).is('[class*="match-status-k"]') && ! $(this).is('[class*="match-status-x"]')) {                
+                show = true;                
+                return;
+            }
+          }
+    }); 
+   
+    $('.liveTableSoutez1', soutezHolder).toggle(show);
+    $('.liveTableSoutez0', soutezHolder).toggle(! show);
+}
+
+visualUpdateEventMatch.prototype.formatNextResultsField = function() {
+    var newValue = this.getChangedFieldValue("nextResults");
+    if (newValue !== null) {
+    	this.setCellValue("#nextResultsBase", newValue);
+    	this.setCellValue("nextResults", newValue ? "(" + newValue + ")" : "");
+    	if (this.gridObject.isMobile && this.isItemMainMatch){
+    		$('span[data-field="nextResults"]', this.zapasEl).toggle(!!newValue);
+    	}	
+    }
+}
+
+visualUpdateEventMatch.prototype.formatLastTimeScore = function() {
+    var elm = $('.last-timescore', this.zapasEl);    
+    elm.length && elm.toggle(!!(this.getServerValue("mode") == 'p' && (this.getServerValue("timeScore") || elm.is(':visible'))));
+}
+
+visualUpdateEventMatch.prototype.formatScoreStatus = function() {
+    if (this.isValueChanged("status")) {
+    	var statusShortDb = this.getStatusShortDb();
+    	if (!this.gridObject.isMobile && this.gridObject.isList){
+    		$('.skore', this.zapasEl).attr('class', 'skore status-' + statusShortDb);
+    	}
+        var zapasyPolozka = $('#zapas_' + this.itemId + '.zapasyPolozka');
+        var zapasClassOld = zapasyPolozka.attr('class');         
+        if(zapasClassOld) {
+            var zapasClassNew = zapasClassOld.replace(new RegExp("match\\-status\\-\\w+",""), 'match-status-' + statusShortDb);
+            if(zapasClassOld != zapasClassNew) {
+            	zapasyPolozka.attr('class', zapasClassNew);                     
+                var matchesStatusType = getCookie('matchesStatusType');
+                if (!this.gridObject.isMobile && matchesStatusType && matchesStatusType != 'own') {
+                    initMatchesByStatusType(matchesStatusType, $('#today-date').html());                
+                }  
+            }
+        }  
+    }  
+}
+
+visualUpdateEventMatch.prototype.formatTotal = function() {    
+	if (this.isValueChanged("total")){
+		if (this.gridObject.isMobile){
+			$('.event-result-wrap', this.zapasEl).toggle(this.getServerValue("total")!=="");
+		}
+		else {
+	    	$('span.hideIfEmpty[data-field="total"]', this.zapasEl).toggle(this.getServerValue("total")!=="");
+	    } 
+	}  
+}
+
+visualUpdateEventMatch.prototype.formatScorersCardsShootoutField = function() {
+
+    if (! this.isValueChanged("scorers") && ! this.isValueChanged("cards") && ! this.isValueChanged("penaltiesNoscored") && ! this.isValueChanged("shootout")) {
+      return;
+    }
+    
+    var scorersValue = this.getServerValue("scorers");
+    var cardsValue = this.getServerValue("cards");
+    
+    if (this.gridObject.isMobile){
+    	$('#scorers_' + this.itemId).toggleClass("hidden", scorersValue=="");
+    	$('#cards_' + this.itemId).toggleClass("hidden", cardsValue=="");
+    	if (this.isItemMainMatch){
+    		$('#shootout_' + this.itemId).toggleClass("hidden", this.getServerValue("shootout")=="");
+        	$('#pen_noscored_' + this.itemId).toggleClass("hidden", this.getServerValue("penaltiesNoscored")=="");
+    	}
+    	else {
+    		$('#stats_' + this.itemId).toggleClass("hidden", scorersValue=="" && cardsValue=="" && this.getServerValue("referees")=="" && this.getServerValue("viewers")=="");
+    	}
+    }
+    else {
+    	if (this.gridObject.isList && scorersValue != null && cardsValue != null) {
+            var scorersCardsVal = "";
+            var spanGoals = $('.goals', this.zapasEl);  
+            if(spanGoals.length) {
+            	spanGoals.toggle(!!scorersValue);
+                scorersCardsVal += " " + spanGoals.wrap('<p/>').parent().html();
+            }
+            scorersCardsVal += scorersValue;                                        
+            if (cardsValue) {
+                if (scorersCardsVal) {
+                    scorersCardsVal += '<br />';
+                }
+                scorersCardsVal += cardsValue;
+            }                
+            if (!scorersCardsVal){
+            	scorersCardsVal = " ";
+            }
+
+            this.setCellValue("#scorersCards", scorersCardsVal);                        
+        }
+        
+        if (this.isValueChanged("cards")) {        
+            $('.cards_' + this.itemId).toggle(cardsValue!=="");
+        }
+        if (this.isValueChanged("penaltiesNoscored")) {
+            $('#pen_noscored_' + this.itemId).toggle(this.getServerValue("penaltiesNoscored")!=="");
+        }
+        if (this.isValueChanged("shootout")) {
+            var shootoutValue = this.getServerValue("shootout");
+        	var isShootout = !!(shootoutValue && shootoutValue!='&nbsp;');
+        	 $('.shootout_' + this.itemId).toggle(isShootout).prev().filter('hr').toggle(isShootout);
+        }
+    } 
+}
+
+visualUpdateEventMatch.prototype.formatReports = function() {
+	
+    if ((!this.gridObject.isMobile || this.isItemMainMatch) && this.isValueChanged("subs1") || this.isValueChanged("subs2") || this.isValueChanged("report1") || this.isValueChanged("report2")) {
+
+    	var isSubs1 = !!this.getServerValue("subs1");
+    	var isSubs2 = !!this.getServerValue("subs2");
+    
+	    $('#subs1_' + this.itemId).toggle(isSubs1);
+	    $('#subs2_' + this.itemId).toggle(isSubs2);
+	    $('#report1_' + this.itemId).toggle(!!this.getServerValue("report1") || isSubs1);
+	    $('#report2_' + this.itemId).toggle(!!this.getServerValue("report2") || isSubs2);    
+    }
+    
+   
+    	var matchLanguageId = this.isItemMainMatch ? 0 : this.itemId.replace('item_', '');
+
+    	var check = ['report', 'subs'];
+    	for (var nr = 1; nr <= 2; nr++){
+    		for (var i = 0; i < check.length; i++){
+    			var field = this.getChangedFieldValue(check[i]+nr);   
+    			if (field){
+    				this.setCellValue(check[i]+nr, replacePlayerNames(matchLanguageId, field, nr));
+    			}
+    		}
+    	}
+
+    	var check = ['cards', 'scorers', 'penaltiesNoscored', 'shootout'];
+    	for (var i = 0; i < check.length; i++){
+    		var field = this.getChangedFieldValue(check[i]);       
+    		if (field){
+    			this.setCellValue(check[i], replacePlayerNames(matchLanguageId, field, 0, check[i] == 'shootout'));
+    		}
+    	}
+     
+}
+
+visualUpdateEventMatch.prototype.formatBoxes = function() {
+    if (this.isValueChanged("referees")){
+    	$('#referees_' + this.itemId+', #box-referees_' + this.itemId).toggle(this.getServerValue("referees")!== "");
+    }
+    if (this.isValueChanged("viewers")){
+    	$('#viewers_' + this.itemId+', #box-viewers_' + this.itemId).toggle(this.getServerValue("viewers")!== "");
+    }
+    if (this.isValueChanged("matchInfo")){
+    	$('#box-matchInfo_' + this.itemId).toggle(this.getServerValue("matchInfo") !== "");
+    }
+    
+    var changedOthers = this.isValueChanged("matchOthers");
+    if (changedOthers) {
+    	var nrq = this.getNextResultsQuarters();
+    	if (this.isItemMainMatch) {
+            this.setCellValue("#nextResultsQuarters", nrq);
+        }
+    }
+    
+    if (this.gridObject.isMobile){
+    	if (this.isItemMainMatch){
+        	if (changedOthers){
+    			$('#nextResultsQuarters_' + this.itemId).toggle(nrq != "");
+    		}
+        	if (changedOthers || this.isValueChanged("tennisShow") || this.isValueChanged("tennisAuto") || this.isValueChanged("matchInfo")){
+        		var tennisStats = $('#box-stats_' + this.itemId);
+        		$('#statsAndInfo').toggle(this.getServerValue("matchInfo") !== "" || ((tennisStats.length > 0) ? !tennisStats.hasClass("hidden") : this.getServerValue("tennisShow") == "1") || this.getNextResultsQuarters() != "");
+        	}
+    	}
+    }
+    else if (changedOthers && !this.isTennis()){
+    	$('#box-stats_' + this.itemId).toggleClass('hidden', nrq == "").find('.nextResultsQuarters').toggle(nrq != "");
+    }
+}
+
+visualUpdateEventMatch.prototype.formatMessage = function() {
+    if (this.gridObject.isMobile || ! this.isValueChanged("message") && ! this.isValueChanged("timeScore") && ! this.isValueChanged("mode")) {
+      return;
+    }
+    
+    var message = this.getServerValue("message");
+
+    if (!this.isTennis() || this.getServerValue("mode") == "p"){
+    	var timescore = this.getServerValue("timeScore");
+    	if (timescore){
+    		message = " <b>" + timescore + "</b> &nbsp;" + message;
+    	}
+    }
+    
+    this.setCellValue("#message2", message);
+}
+
+visualUpdateEventMatch.prototype.formatOthers = function() {
+	var changedStatus = this.isValueChanged("status");
+    if (!this.isSoftbase() || (!changedStatus || this.gridObject.isMobile) && !this.isValueChanged("matchOthers")) {
+      return;
+    }
+
+    var others = this.getServerValue("matchOthers");
+    var othersJSON = others ? $.parseJSON(others) : null;
+    
+    if (!this.gridObject.isMobile || this.isItemMainMatch){
+    	
+        var mode = this.getServerValue("mode");
+        var period = this.getServerValue("period");
+
+        if (this.gridObject.isMobile){
+        	var filledInnings = [];
+        }
+        else if (changedStatus && this.gridObject.isList){
+			$('table.softbase-table', this.zapasEl).toggleClass('hidden', mode=="0" || mode=="?");
+	    }
+	    
+	    if (othersJSON){
+	    	if (!othersJSON.T) othersJSON.T = {};
+	    	if (!othersJSON.B) othersJSON.B = {};
+	    	if (!othersJSON.ET) othersJSON.ET = {};
+	    	if (!othersJSON.EB) othersJSON.EB = {};
+	    	
+		    var arr = {'scores_top': othersJSON.T, 'scores_bot': othersJSON.B};
+		    $.each(arr, function(fieldName, values){
+		    	$.each(values, function(i, value){
+		    		value+="";
+		        	this.setCellValue("#"+fieldName+i, this.gridObject.isMobile ? (value*1)+"" : value);
+		        	if (!this.gridObject.isMobile && !this.isItemMainMatch && fieldName == 'scores_bot'){
+		        		$('td.set.inning-'+i, this.zapasEl).toggleClass('filled', value!=="");
+		        	}
+		        	if (this.gridObject.isMobile && value!==""){
+		        		filledInnings[i*1] = true;
+		    		}
+		        }.bind(this));
+		    }.bind(this));
+	
+		    var extraTimesCount = 0;
+		    $.each(othersJSON.ET, function(){ extraTimesCount++;});
+		    var periodsCount = 0;
+		    $.each(othersJSON.T, function(){ periodsCount++;});
+		    var filledExtraTimes = {scores_top: 0, scores_bot: 0};
+		    
+			var arr = {'scores_top': othersJSON.ET, 'scores_bot': othersJSON.EB};
+			$.each(arr, function(fieldName, values){
+				$.each(values, function(i, value){
+					value+="";
+					this.setCellValue("#"+fieldName+(periodsCount+i*1), this.gridObject.isMobile ? (value*1)+"" : value);
+					if (!this.gridObject.isMobile && !this.isItemMainMatch && fieldName == 'scores_bot'){
+						$('td.set.inning-'+(periodsCount+i*1), this.zapasEl).toggleClass('filled', value!=="");
+					}
+					if (value!==""){
+						filledExtraTimes[fieldName] = i;
+						if (this.gridObject.isMobile){
+			        		filledInnings[(periodsCount+i*1)] = true;
+			    		}
+		    		}
+				}.bind(this));
+			}.bind(this));
+	
+			if (this.gridObject.isMobile){
+				for (var i = 1, n = periodsCount + extraTimesCount; i <= n; i++){
+					$('.inning-'+i, this.zapasEl).toggleClass('hidden', !filledInnings[i]);
+				}
+			}
+			else {
+				for (var i = 1, extraTimesShown = Math.max.apply(Math, [filledExtraTimes.scores_top, filledExtraTimes.scores_bot]); i <= extraTimesCount; i++){
+					$('.inning-'+(periodsCount + i), this.zapasEl).toggleClass('hidden', i > extraTimesShown)
+				}
+			}
+	    }
+	
+	    if (this.gridObject.isMobile){
+	    	$('.innings', this.zapasEl).toggleClass("hidden", $.inArray(true, filledInnings)===-1);
+	    }
+	    else if (changedStatus){
+			$('td.set', this.zapasEl).removeClass("actual");
+			if (this.isItemMainMatch){
+				$('tr.team-'+this.getServerValue("idServe")+' td.set.inning-'+period, this.zapasEl).addClass("actual");
+			}
+			else {
+				$('td.set.inning-'+period, this.zapasEl).addClass("actual");
+			}
+		}
+    }
+    
+	if (this.isItemMainMatch && othersJSON){
+		this.setCellValue("#hits_top", othersJSON.hiT+"");
+		this.setCellValue("#hits_bot", othersJSON.hiB+"");
+		this.setCellValue("#errors_top", othersJSON.erT+"");
+		this.setCellValue("#errors_bot", othersJSON.erB+"");
+	}
+}
+
+visualUpdateEventMatch.prototype.formatServe = function() {
+    if (this.isValueChanged("idServe") || this.isValueChanged("live")) {
+    	var selector = this.gridObject.isMobile ? 'i.tenis-serve-match' : 'img.serve';
+        $(selector, this.zapasEl).addClass("hidden"); 
+        if (this.getServerValue("live") == "true") {            
+            $(selector+'.serve-' + this.getServerValue("idServe"), this.zapasEl).removeClass("hidden");
+        }
+    }
+}
+
+visualUpdateEventMatch.prototype.formatTenisSets = function() {	
+	
+	if (! this.enableServe() || !this.gridObject.isMobile && !this.gridObject.isList){
+		return ;
+	}
+	
+	var notChanged = ! this.isValueChanged("nextResults") && ! this.isValueChanged("score1")  && ! this.isValueChanged("score2") && ! this.isValueChanged("status");
+    var mode = this.getServerValue("mode");
+    var nextResults = this.getServerValue("nextResults");
+    
+    if (this.gridObject.isMobile){
+    	
+    	if (this.gridObject.isList && this.isValueChanged("mode")){
+    		$('.tennis-score-wrap', this.zapasEl).toggle(mode != "0" && mode != "?");
+    	}
+    	
+    	if (notChanged && ! this.isValueChanged("fifteens1")  && ! this.isValueChanged("fifteens2")) {
+    		return;
+    	}
+    	
+    	$('span.nextResultsScore', this.zapasEl).toggle(nextResults!="");
+
+    	if (this.getServerValue("live") == "true" || mode == "xp" || mode == "xk"){             
+    		$('.tennisScore', this.zapasEl).show().find('.separator').toggle(nextResults != "");
+    		if (!this.gridObject.isList && ! this.isVolleyball()) $('span[data-field="total"]', this.zapasEl).hide();
+    	}
+    	else {           
+    		$('.tennisScore', this.zapasEl).hide();
+    		if (!this.gridObject.isList && ! this.isVolleyball()) $('span[data-field="total"]', this.zapasEl).toggle(nextResults == "")
+    	}
+    }
+    else if (!notChanged){    	
+    	if(nextResults) {
+            var parts = nextResults.split(/[,\-]/);
+        }     
+        else {
+            var parts = new Array();
+        }        
+        var sets = $('.set', this.zapasEl).length;         
+        for(var set = 1; set <= sets; set++) { 
+            var setscore = '';
+            var actual = false;
+                    
+            if (parts[set - 1]) {
+                var scoreFull = parts[set - 1].split('(');
+                setscore = scoreFull[0].trim();                
+                if(scoreFull.length > 1) {                    
+                    var tiebreak = scoreFull[1].trim();
+                    tiebreak = tiebreak.replace(')', '');
+                    setscore += '<span class="tiebreak">' + tiebreak + '</span>';
+                }
+                if(mode =="kzs" && set == sets) {
+                    $('.set' + set, this.zapasEl).addClass('gold-set');
+                }
+                $('.set' + set, this.zapasEl).show();                                
+            }      
+            else if(set == parts.length + 1 && ((this.getServerValue("live") == "true" && this.isTennis())
+            	|| mode == "0" || mode == "?" || mode.substring(0, 1) == 'x')) {            
+                setscore = this.getServerValue("score1") + ':' + this.getServerValue("score2");
+                actual = true;
+            }
+            
+            $('.set' + set, this.zapasEl).toggleClass('filled', !!setscore).toggleClass('actual', !!(actual && mode.substring(0, 1) != 'x'));
+            
+            this.setCellValue("#setscore" + set, setscore);             
+        }
+        
+        $('.game', this.zapasEl).toggleClass('actual', mode.substring(0, 1) != 'x');
+    }
+}
+
+visualUpdateEventMatch.prototype.formatTenisStatus = function() {
+
+     if (this.gridObject.isMobile || !this.gridObject.isList || ! this.isValueChanged("status") || ! this.enableServe()) {
+      return;
+    }
+
+    var mode = this.getServerValue("mode");
+    var tenisStatus = this.getServerValue("status");
+        
+    if(mode.substring(0, 1) != 'x') {
+        $('.tenis-status', this.zapasEl).hide();
+    }
+    else {
+        $('.tenis-status .retir', this.zapasEl).hide();
+        if (mode == "xk") {
+            tenisStatus = this.getServerValue("statusShort");
+            $('.tenis-status .retir-' + this.getServerValue("idWinner"), this.zapasEl).show();  
+            $('.game', this.zapasEl).hide();
+        }
+        else {
+        	$('.game', this.zapasEl).hide();
+        }
+        $('.tenis-status', this.zapasEl).show();
+    }    
+    this.setCellValue("#tenisStatus", tenisStatus);
+}
+
+visualUpdateEventMatch.prototype.initBettsBox = function () {
+
+	var inDetail = this.isItemMainMatch;
+    var mode = this.getServerValue("mode");  
+    var live = this.getServerValue("live") == "true";
+    var idType = this.getServerValue("betTypeId");
+    var winOdd = this.getServerValue("winOdd");   
+    var fullBox = false;
+    var simpleBox = false;
+    
+    if(live) {
+        if(idType == 1) {
+            simpleBox = true;
+        }
+        else if(idType == 2 && winOdd > 0) {
+            fullBox = true;
+        }
+        else if(idType == 3) {             
+            if(winOdd > 0) {
+                fullBox = true;
+            }
+            else if (parseInt(this.getServerValue("betAutoFixedActionId")) == 3 || lang == 'pl') {
+                simpleBox = true;                
+            }
+        }        
+    }
+    else {
+        if(winOdd > 0) {
+            fullBox = true;
+        }
+        else if(idType == 3 && parseInt(this.getServerValue("betAutoFixedActionId")) == 3) {            
+            simpleBox = true            
+        }        
+    }        
+    
+    var isBeforeMatch = mode == "0" || mode == "?";
+    var isFinished = !isBeforeMatch && !live;
+    if (isFinished) {
+        simpleBox = false;
+        if(! inDetail) {
+            fullBox = false;
+        }
+    }      
+    if(! inDetail && live && fullBox) {
+        fullBox = false;
+        simpleBox = true;
+    }
+      
+    var winAgencyIdValue;
+    var sazkyBox = $("#sazky_" + this.itemId);
+    var liveBox = $("#sazky_live_" + this.itemId);
+     
+    if (!inDetail){
+	    var skoreDetail = $("#skore_detail_" + this.itemId);
+	    var enableResult = skoreDetail.hasClass("enableResult");
+	    
+	    if (enableResult){
+	    	var scoreWide = !isBeforeMatch && !this.getServerValue("total").match(/^\d{1,3}:\d{1,3}$/);
+	    	$('#total_'+this.itemId).attr('class', 'status-' + this.getStatusShortDb() + (scoreWide ? ' skoreDetailSubpageWide2' : ' skore'));
+		}
+	    
+	    if (enableResult && scoreWide){
+	    	sazkyBox.hide();
+	    	skoreDetail.hide();
+	    }
+	    else {
+	    	sazkyBox.toggle(fullBox);
+	    	skoreDetail.toggle(!fullBox);
+		}
+    }
+    else {
+    	sazkyBox.toggle(fullBox);
+    }
+  
+
+    if ((this.isValueChanged("winAgencyId") || this.isValueChanged("mode")) && parseInt(this.getServerValue("winAgencyId"))) {    	  
+          this.updateAgency(sazkyBox, "win");          
+      if (inDetail) {
+        $("span.bets_title", sazkyBox).hide();
+        if(isBeforeMatch) {
+            $("span.bets_title_before", sazkyBox).show();                
+        }       
+        else if(live) {
+            $("span.bets_title_live", sazkyBox).show();
+        }
+        else {
+            $("span.bets_title_finished", sazkyBox).show();
+        }
+      }     
+    }
+   
+    if (this.isValueChanged("lossAgencyId") && parseInt(this.getServerValue("lossAgencyId"))) {
+    	this.updateAgency(sazkyBox, "loss");
+    }
+
+    if (this.isValueChanged("drawAgencyId") || this.isValueChanged("drawOdd")) {
+      if (parseInt(this.getServerValue("drawAgencyId")) && this.getServerValue("drawOdd") > 0) {
+    	  this.updateAgency(sazkyBox, "draw");
+    	  $("#remiza_" + this.itemId).show();
+      }
+      else {
+    	  $("#remiza_" + this.itemId).hide();
+      }
+    }
+
+    if (! inDetail) {
+        $('#zapas_' + this.itemId).removeClass('has-right-icon');
+        $("a.win-link img.logo", sazkyBox).toggle(this.getServerValue("winAgencyId") == this.getServerValue("lossAgencyId") &&
+             (this.getServerValue("winAgencyId") == this.getServerValue("drawAgencyId") || ! parseInt(this.getServerValue("drawAgencyId"))));
+    }
+ 
+    if ((this.isValueChanged("winAgencyId") || this.isValueChanged("live")) && (winAgencyIdValue = parseInt(this.getServerValue("winAgencyId")))) {        
+      if(live) {
+    	  var addr = inDetail ? 'small' : 'live';
+          var betOnTitle = lsLangVars['betLiveOn'];
+    	  var hiddenTitle = lsLangVars['betLiveOn'];
+      }
+      else {
+    	  var addr =  inDetail ? 'big' : 'small';
+          var betOnTitle = lsLangVars['betOn'];
+    	  var hiddenTitle = lsLangVars['betOn'];
+      }      
+        if(typeof plus18Text !== "undefined" && plus18Text) {
+            hiddenTitle += ' \u2022 ' + plus18Text;
+        }                
+        
+      $("a", liveBox)
+	      .attr("href", betClick2Url + parseInt(this.getServerValue("winBettId")))
+	      .attr("title",  hiddenTitle)
+	      .find("img.logo").attr("src", betLogoUrl + addr + "/" + winAgencyIdValue);
+	      
+      if (inDetail) {
+        $("span.bets_title", liveBox).hide();
+        if(isBeforeMatch) {
+            $("span.bets_title_before", liveBox).show();                
+        }       
+        else if(live) {
+            $("span.bets_title_live", liveBox).html('<span>'+ betOnTitle + "</span>:").show();
+        }
+        else {
+            $("span.bets_title_finished", liveBox).show();
+        }
+      }    
+    }
+   
+    if (inDetail) {
+    	
+    	var beforeBox = $("#sazky_before_" + this.itemId);
+
+	    if (this.isValueChanged("winBeforeOdd")){
+	    	$("span.bets_title_live", liveBox).add("span.bets_title_live", sazkyBox).toggleClass("hasBefore", this.getServerValue("winBeforeOdd") > 0);
+	    }
+	    
+	  	if (this.isValueChanged("winBeforeAgencyId") && parseInt(this.getServerValue("winBeforeAgencyId"))) {
+	    	this.updateAgency(beforeBox, "win", true);
+	    }
+	  	
+	    if (this.isValueChanged("drawBeforeAgencyId") || this.isValueChanged("drawBeforeOdd")) {
+	        if (parseInt(this.getServerValue("drawBeforeAgencyId")) && this.getServerValue("drawBeforeOdd") > 0) {
+	      	  this.updateAgency(beforeBox, "draw", true);
+	      	  $("#remiza_before_" + this.itemId).show();
+	        }
+	        else {
+	      	  $("#remiza_before_" + this.itemId).hide();
+	        }
+	    }
+	    
+	    if (this.isValueChanged("lossBeforeAgencyId") && parseInt(this.getServerValue("lossBeforeAgencyId"))) {
+	    	this.updateAgency(beforeBox, "loss", true);
+	    }
+	    
+	    var beforeShown = live && !simpleBox && !fullBox && (this.getServerValue("winBeforeOdd") > 0);
+	    if (beforeShown){
+	    	beforeBox.addClass("fixed").show(0);
+	    }
+	    else {
+	    	beforeBox.removeClass("fixed");
+	    	if (this.isValueChanged("winOdd") && (simpleBox || fullBox)){
+		    	beforeBox.hide(0);
+		    }
+	    }
+	    
+	    $('#match-bets').next(".separator").toggle(simpleBox || fullBox || beforeShown);
+    }
+    else {        
+    	if(simpleBox) {            
+            $("#sazky_short_1_" + this.itemId).html('');
+            $("#sazky_short_2_" + this.itemId).html('').toggle(isBeforeMatch);
+            if(isBeforeMatch) {
+            	skoreDetail.hide();               
+                liveBox.appendTo($("#sazky_short_2_" + this.itemId));
+            }
+            else {
+                liveBox.appendTo($("#sazky_short_1_" + this.itemId));
+                $('#zapas_' + this.itemId).addClass('has-right-icon');
+            }
+        }
+        else {
+        	$("#sazky_short_2_" + this.itemId).hide();
+        }
+    }
+    
+    liveBox.toggle(simpleBox);
+}
+
+visualUpdateEventMatch.prototype.initBettsBoxMobile = function () {
+
+	if (this.gridObject.isCompetitionsList){
+		return ;
+	}
+	
+	var inDetail = this.isItemMainMatch;
+    var mode = this.getServerValue("mode");  
+    var live = this.getServerValue("live") == "true";
+    var idType = this.getServerValue("betTypeId");
+    var winOdd = this.getServerValue("winOdd");
+    var drawOdd = this.getServerValue("drawOdd");
+    var isBeforeMatch = mode == "0" || mode == "?";
+    var isFinished = !isBeforeMatch && !live;
+    
+    var fullBox = false;
+    var simpleBox = false;
+    var showPrematch = false;
+    var fixedLive = idType == 1 && live;
+    
+    if (inDetail || !isFinished) {
+    	if (winOdd > 0 && !fixedLive){
+    		fullBox = true;
+    	}
+    	else if (!isFinished && this.getServerValue("winAgencyName") && (fixedLive || idType == 3 && !(winOdd > 0) && parseInt(this.getServerValue("betAutoFixedActionId")) == 3)){
+    		simpleBox = true;
+    	}
+    }
+    
+    var sazkyBox = $("#sazky_" + this.itemId);
+    var liveBox = $("#sazky_live_" + this.itemId);
+    var oddsEl = $("#odds_" + this.itemId);
+    
+    sazkyBox.toggle(fullBox);
+    liveBox.toggle(simpleBox);
+    
+    if (fullBox){
+    	sazkyBox.find(".live_label").toggle(live);
+    	sazkyBox.find(".draw").toggle(drawOdd > 0);        
+    	sazkyBox.find("a.win").attr("href", betClickUrl + parseInt(this.getServerValue("winBettId")));
+        sazkyBox.find("a.draw").attr("href", betClickUrl + parseInt(this.getServerValue("drawBettId")));
+        sazkyBox.find("a.loss").attr("href", betClickUrl + parseInt(this.getServerValue("lossBettId")));
+        sazkyBox.find("a.click-match").attr("href", betClick2Url + parseInt(this.getServerValue("winBettId")));    	
+    }
+    else if (simpleBox){
+    	liveBox.find(".bets_title_live").toggle(live);
+    	liveBox.find(".bets_title_before").toggle(!live);
+    	liveBox.find("a").attr("href", betClickUrl + parseInt(this.getServerValue("winBettId")));
+        liveBox.find("a.click-match").attr("href", betClick2Url + parseInt(this.getServerValue("winBettId")));
+    }
+    
+    if (inDetail){
+    	var beforeWinOdd = this.getServerValue("winBeforeOdd");
+    	var sazkyPrematch = $("#sazky_before_" + this.itemId);
+    	showPrematch = live && beforeWinOdd > 0;
+    	sazkyPrematch.toggle(showPrematch);
+    	if (showPrematch){
+    		sazkyPrematch.find(".separator").toggle(fullBox || simpleBox);
+    		sazkyPrematch.find(".draw").toggle(this.getServerValue("drawBeforeOdd") > 0);
+    	}
+    }
+
+    var tvEl = $(".tvprenos", this.zapasEl);
+    var showTv = !isFinished && tvEl.length > 0;
+    tvEl.toggleClass("hidden", !showTv);
+    
+    oddsEl.toggle(fullBox || simpleBox || showPrematch || inDetail && showTv);
+}
+
+visualUpdateEventMatch.prototype.updateAgency = function (box, type, before){
+	var suffix = before ? "Before" : "";
+	var agencyId = this.getServerValue(type+suffix+"AgencyId");
+        
+        var titleSuffix = "";
+        if(typeof plus18Text !== "undefined" && plus18Text) {
+            titleSuffix += ' \u2022 ' + plus18Text;
+        }        
+        
+	$("a."+type+"-link", box)
+		.attr("href", betClickUrl + parseInt(this.getServerValue(type+suffix+"BettId")))
+		.attr("title", this.getServerValue(type+suffix+"AgencyName") + titleSuffix)
+		.find("img.logo").attr("src", betLogoUrl + "small/" + agencyId).end()
+		.find("img.logo_big").attr("src", betLogoUrl + "big/" + agencyId);                
+}
+
+visualUpdateEventMatch.prototype.formatSerieBox = function(){
+	
+	if (!this.isItemMainMatch) {
+		return;
+	}
+	
+	if (this.isValueChanged("serie")){
+		$('span.stavSerie', this.zapasEl).toggle(this.getServerValue("serie")=="1");
+	}
+	
+	if (! this.isValueChanged("mode") && ! this.isValueChanged("idWinner")) {
+		return;
+	}
+	
+	var serieBox = $('#match-serie-'+this.itemId);
+	if (!serieBox.length){
+		return ;
+	}
+	
+	var mode = this.getServerValue("mode");  
+	var isFinished = !!(mode.match(/^k/) || mode == 'xk');
+	if (isFinished){
+		var idWinner = this.getServerValue("idWinner")*1;
+		if (idWinner){
+			var trClass = "win"+matchJson.teamPlayer[idWinner];
+		}
+		else {
+			var trClass = "tie";
+		}
+        var total = " "+this.getServerValue("total");
+        if (!this.gridObject.isMobile && mode!='k'){
+        	total+= " "+this.getServerValue("status");
+        }
+        var title = this.getServerValue("nextResults");
+	}
+	else {
+		var trClass = mode == "?" ? "possible" : "scheduled";
+		var total = "";
+		var title = "";
+	}
+	
+	if (this.gridObject.isMobile){
+		serieBox.removeClass("win1 win2 tie possible scheduled").addClass(trClass);
+	}
+	else {
+		$('a', serieBox).attr("title", title);
+		serieBox.prev().removeClass().addClass(trClass);
+	}
+	
+	this.setCellValue("#total3", total);
+}
+
+visualUpdateEventMatch.prototype.initMatchTitle = function() {
+    if (this.isValueChanged("total") || this.isValueChanged("live") 
+        || (this.isTennis() && (this.isValueChanged("score1") || this.isValueChanged("score2")))) {
+        
+        var live = this.getServerValue("live") == "true";
+        var mode = this.getServerValue("mode");
+        if(live && this.isTennis()) {
+            var total = this.getServerValue("score1") +  ':' + this.getServerValue("score2");
+        }
+        else {
+            var total = this.getServerValue("total");
+        }
+        
+        var totalBrackets = total;
+        if (live  && total != "") {
+            totalBrackets = '(' + total + ')';
+        }
+               
+        document.title = lsHiddenTitle.replace('%total%', totalBrackets);  
+
+        if(!live && mode != "0" && mode != "?") {
+        	var ogTitle = lsHiddenOgTitle.replace('%total%', total);  
+        }   
+        else {
+        	var ogTitle = lsHiddenOgTitle.replace(' %total%', '');
+        }
+        
+        $('head meta[property="og:title"]').attr('content', ogTitle);
+        $('head meta[name="description"]').attr('content', ogTitle);     
+    }
+}
+
+function matchesGridObject(group, schema, type, dataGrid, isMobile) {
+
+	try {
+
+		this.isItemMainMatch = type == 'match';
+		this.isList = type == 'list' || type == 'competitions';
+		this.isCompetitionsList = type == 'competitions';
+		this.isMulti = type == 'multi';
+		this.isMobile = isMobile;
+		
+		this.init = function(group, schema){
+			
+			if (!initLsClient()) {
+				return false;
+			}
+		    
+			this.wasSnapshot = {};
+			
+			this.subscription = new Lightstreamer.Subscription("MERGE", group, schema);
+			this.subscription.addListener({
+		    	onSubscriptionError: function(code, message){
+		    		loggerProvider.dispatchLog("custom", "ERROR", code+": "+message);
+		    	}
+		    });
+			this.subscription.setDataAdapter("MATCHES");
+			this.subscription.setRequestedSnapshot("yes");
+		    
+		    grid = new Lightstreamer.StaticGrid(dataGrid, true);
+		    grid.setHtmlInterpretationEnabled(true);
+		    grid.addListener({
+		    	onVisualUpdate: function (itemName, updateInfo, position) {
+		    		
+		    		if (!updateInfo){
+		    			return ;
+		    		}
+		    		
+		        	try {	
+		        		var event = new visualUpdateEventMatch(this, updateInfo, itemName);
+
+		        		if (!this.isMobile && typeof matchesJson != "undefined"){
+		        			event.translateMessage(matchesJson[event.idMatchLanguage]);
+		        		}
+		        		
+		    	        if (this.isItemMainMatch) {
+		    	            event.initMatchTitle();
+		    	            
+		    	            if (!this.isMobile && event.enableServe() && event.initTenisScoreboard) {
+		    	            	event.initTenisScoreboard();
+		    	            }
+                                    
+                                    if (event.initTenisStats){
+		    	        	event.initTenisStats();
+                                    }
+                                    if (event.initHandballStats){
+                                            event.initHandballStats();
+                                    }
+		    	        } 		    			    	        
+		    	        
+		    	        event.formatLive();                                
+		    	        event.formatScoreStatus();
+                                event.formatLiveTableIcon();
+		    	        event.formatTotal();                                  
+		    	        event.formatLastTimeScore();
+		    	        event.formatScorersCardsShootoutField();
+		    	        event.formatReports();
+		    	        event.formatBoxes();
+		    	        event.formatMessage();
+		    	        event.formatOthers();
+		    	        event.formatServe();
+		    	        event.formatTenisSets();  
+		    	        event.formatTenisStatus(); 
+		    	        event.formatNextResultsField();
+		    	        event.formatSerieBox();
+		                
+		    	        if (!this.isCompetitionsList) {
+		    	        	this.isMobile ? event.initBettsBoxMobile() : event.initBettsBox();
+		    	        }
+	
+		    	        if (this.wasSnapshot[itemName]){
+			    	        updateInfo.setHotTime(pushHotTime);
+		                    updateInfo.setAttribute(pushHotBackground, "", "backgroundColor");
+		                    try {updateInfo.setCellAttribute("shootout", "none", "", "backgroundColor");} catch (e){}
+		    	        }
+		        	} 
+		        	catch (err){
+		        		handleLsError(err);
+		        	}
+		        }.bind(this)
+		    });
+		    
+		    this.subscription.addListener({
+		    	onItemUpdate: function (updateInfo) {
+		    		if (!updateInfo.isSnapshot()){
+		    			this.wasSnapshot[updateInfo.getItemName()] = true;
+		    		}
+		    	}.bind(this)
+		    });
+		    
+		    this.subscription.addListener(grid);
+		    	
+		    lsClient.subscribe(this.subscription);
+		    
+		    loggerProvider.dispatchLog("custom", "INFO", 'Initialized matchesGridObject '+type+' '+dataGrid+' for match(es) '+group.join(', ')+'. Streaming columns: '+schema.join(', '));
+		
+		    gridObject.call(this, grid);
+		}
+		
+		this.destroy = function(){
+			if (lsClient){
+				lsClient.unsubscribe(this.subscription);
+				loggerProvider.dispatchLog("custom", "INFO", 'Unsubscribed from matchesGridObject '+type+' '+dataGrid+' for match(es) '+group.join(', ')+'.');
+			}
+		}
+		
+		this.init(group, schema);
+	}
+	catch (err){
+		handleLsError(err);
+	}
+}
+matchesGridObject.prototype= new gridObject();
+
+function matchDetailObj(itemMainMatch, groupMatches, isMobile) {   
+
+	this.itemMainMatch = null;
+    this.elements = null;
+
+	var appendMatches = []; 
+	var appendMatch = []; 
+	 
+     if (matchJson.enableServe) {
+    	 appendMatches = ["idServe", "score1", "score2", "fifteens1", "fifteens2"]; 
+    	 appendMatch = ["idServe", "score1", "score2", "sets1", "sets2", "fifteens1", "fifteens2", "tennisShow", "tennisAuto", "tennisManual"]; 
+     }
+     else if (matchJson.id_sport == '4') {
+    	 appendMatch = ["tennisShow", "tennisAuto"]; 
+     }
+     else if(matchJson.id_sport == '14' || matchJson.id_sport == '15') {
+    	 appendMatch = ["matchOthers", "idServe", "score1", "score2"];
+     }
+     else {
+    	 appendMatch = ["matchOthers"];
+     }
+
+     this.schemaMatches = ["beginTime", "idWinner", "total", "status", "statusShort", "mode", "period", "nextResults", "live", "timeScore", "serie"].concat(appendMatches);
+     this.schemaMatch = ["beginTime", "idWinner", "total", "status", "statusShort", "mode", "period", "nextResults", "scorers",     
+                         "report1", "report2", "subs1", "subs2", "referees", "viewers", "stadium", "cards", "penaltiesNoscored", "shootout", "matchInfo", 
+                         "winOdd", "winAgencyId", "winBettId", "winAgencyName", "drawOdd", "drawAgencyId", "drawBettId", "drawAgencyName", "lossOdd", "lossAgencyId", "lossBettId", "lossAgencyName", 
+                         "winBeforeOdd", "winBeforeAgencyId", "winBeforeBettId", "winBeforeAgencyName", "drawBeforeOdd", "drawBeforeAgencyId", "drawBeforeBettId", "drawBeforeAgencyName", "lossBeforeOdd", "lossBeforeAgencyId", "lossBeforeBettId", "lossBeforeAgencyName",
+                         "betTypeId", "betAutoFixedActionId", "live", "timeScore", "serie", "serieAfter1", "serieAfter2"].concat(appendMatch);
+    		 
+     this.initMatch = function(itemMainMatch){
+    	 this.match = new matchesGridObject([itemMainMatch], this.schemaMatch, 'match', 'main', isMobile);
+    	 this.itemMainMatch = itemMainMatch;
+     }
+     
+     this.reload = function(itemMainMatch){
+    	 if (this.itemMainMatch != itemMainMatch){
+	    	 this.match.destroy();
+	    	 if (!this.elements){
+	    		 this.elements = $('*[data-source="lightstreamer"][data-grid="main"]');
+	    	 }
+	    	 
+	    	 this.elements.each(function(){
+	    		 $(this).attr("data-item", itemMainMatch).data("item", itemMainMatch);
+	    	 }); 
+	    	 
+	    	 this.initMatch(itemMainMatch);
+    	 }
+     }
+     
+     this.initMatch(itemMainMatch);
+     
+     new matchesGridObject(groupMatches, this.schemaMatches, 'competitions', 'main2', isMobile); 
+}
+
+function visualUpdateEventComment(gridObject, updateInfo, domNode, itemName) {
+	visualUpdateEvent.call(this, gridObject, updateInfo, itemName);
+	this.domNode = domNode;
+	this.sportId = this.getMatchJson().id_sport*1;
+}
+visualUpdateEventComment.prototype =  Object.create(visualUpdateEvent.prototype);
+visualUpdateEventComment.prototype.constructor = visualUpdateEventComment;
+
+visualUpdateEventComment.prototype.getMatchJson = function(){
+	if (this.gridObject.isMulti){
+		return matchesJson[this.getServerValue("idMatchLanguage")];
+	}
+	else {
+		return matchJson;
+	}
+}
+
+visualUpdateEventComment.prototype.isSoftbase = function(){
+	return this.sportId == 14 || this.sportId == 15;
+}
+
+visualUpdateEventComment.prototype.setDomClass = function() {
+	   
+	var winner = this.getTeamNr(this.getServerValue("idWinner"));
+	
+    if (this.gridObject.isMulti) {
+        var className = 'm-' + this.getServerValue("flag") + ' m-' + this.getServerValue("flag2") + ' m-status-' + this.getStatusShortDb() + ' m-winner-' + winner;
+    }
+    else {
+    	var className = this.getServerValue("flag") + ' ' + ' m-status-' + this.getStatusShortDb() + ' winner-' + winner;
+    	if (!this.gridObject.isMobile){
+    		className+=" "+this.getServerValue("flag2");
+    	}
+    }          
+    
+    var country1 = this.getServerValue("idCountry");
+    var country2 = this.getServerValue("idCountry2");
+    if (country1 > 0){
+    	className += ' lng-'+countryLang[country1];
+    }
+    if (country2 > 0){
+    	className += ' lng-'+countryLang[country2];
+    }
+    if (this.getServerValue("ace")=="1"){
+    	className += this.gridObject.isMulti ? ' m-ace' : ' ace';
+    }
+    else if (this.getServerValue("doublefault")=="1"){
+    	className += this.gridObject.isMulti ? ' m-doublefault' : ' doublefault';
+    }
+    
+    if (this.gridObject.isMobile){
+    	className+=" row";
+    	
+    	if (this.isValueChanged("flag") || this.isValueChanged("message")){
+	    	
+	    	var wrapper = $('.button-wrapper', this.domNode);
+	    	
+		    if (this.getServerValue("flag") == "multimedia"){
+	    		var message = this.getServerValue("message");
+	    		var key = "default";
+	    		$.each(mmClasses, function(i){
+	    			if (message.indexOf(i)!=-1){
+	    				key = i;
+	    				return false;
+	    			}
+	    		});
+	    		
+	    		wrapper.show().find("button").html(mmClasses[key]['title']).off("click.opendesc").on("click.opendesc", showComment.bind(this, $(this.domNode)));
+	    		
+	    		className+=" "+mmClasses[key]['class'];
+	    		
+	    		$('.description', this.domNode).data("html", message);
+	    		$('span[data-field="message"],span[data-field="lastchange"],span[data-field="lastwrited"],span[data-field="#message-score"]', this.domNode).hide();
+	    		this.setCellValue("message", "");
+	    	}
+		    else {
+		    	wrapper.hide();
+	    		$('span[data-field="message"],span[data-field="lastchange"],span[data-field="lastwrited"],span[data-field="#message-score"]', this.domNode).show();
+		    }
+    	}
+    }
+    
+    this.domNode.className = className;
+}
+
+visualUpdateEventComment.prototype.isFlagMatchStatusRelated = function(flag){
+	return flag!='social' && flag!='multimedia' && flag!='expertComment' && flag!='tip' && flag!='advert' && flag!='advertWeb' && flag!='advertMobile';
+}
+
+visualUpdateEventComment.prototype.setMessageScore = function() {
+	var messageScore = '';
+    if (this.sportId==4 || this.sportId==5){
+        var flag = this.getServerValue("flag");
+        if (flag=='time' || (this.getServerValue("mode") == "p" && this.isFlagMatchStatusRelated(flag))) {
+        	messageScore = '('+this.getServerValue("score1")+':'+this.getServerValue("score2")+')';
+        }
+    }
+    this.setCellValue("#message-score", messageScore); 
+}
+
+visualUpdateEventComment.prototype.formatComment = function() {
+
+	$('.title', this.domNode).toggleClass("hidden", !Boolean(this.getServerValue("title")));  
+	
+	if (this.gridObject.isMulti){
+
+	    var idMatch = this.getMatchJson().id_match;
+	    var matchElm = $('#multiPrehled .match-' + idMatch);
+	    var matchTitle = $('.match-title', matchElm).html();
+	    var mode = this.getServerValue("mode");
+	    
+	    var writedValue = this.getChangedFieldValue("writed");
+	    if (writedValue) {
+	        this.setCellValue("writed", writedValue.split(' ')[1]);
+	    }
+	    
+	    var score;
+	    if(! mode || mode == '0' || mode == '?' || mode.substring(0,1) == 'x' || this.sportId == 9 || this.sportId == 11 || this.sportId == 12) {
+	       score = ''; 
+	    }
+	    else {        
+	       if(this.sportId == 8) {
+	            var score1 = this.getServerValue("score1");
+	            var score2 = this.getServerValue("score2");
+	            var fifteens1 = this.getServerValue("fifteens1");
+	            var fifteens2 = this.getServerValue("fifteens2");            
+	            if(score1 == '0' && score2 == '0' && fifteens1 == '0' && fifteens2 == '0') {
+	                score = this.getServerValue("sets1") + ":" + this.getServerValue("sets2"); 
+	                this.setCellValue("statusShort", "");
+	            }
+	            else {
+	            	score = "(" + score1 + ":" + score2 + ")";
+	            }             
+	       }
+	       else {
+	            score = this.getServerValue("score1") + ':' + this.getServerValue("score2"); 
+	       }
+	    }
+	    matchTitle += ' ' + score;
+	    
+	    var statusShortValue = this.getChangedFieldValue("statusShort");
+	    if (statusShortValue) {
+	        this.setCellValue("statusShort", "(" + statusShortValue + ")");
+	    }
+	    
+	    var messageValue = this.getChangedFieldValue("message");
+	    if (messageValue) {
+	        messageValue = messageValue.replace('<br /><br />', '<br />');
+	        messageValue = messageValue.replace('<br /><br />', '<br />');
+	        messageValue = messageValue.replace('<br><br>', '<br />');
+	        messageValue = messageValue.replace('<br><br>', '<br />');
+	        this.setCellValue("message", messageValue);
+	    }          
+	    
+	    var firstClass = 'first msport_'+this.sportId;
+	    if($('.first', this.domNode).hasClass('highlighted')) {
+	        firstClass += ' highlighted';
+	    } 
+	    $('.first', this.domNode).attr('class', firstClass);    
+	    $('.matchHeader img', this.domNode).attr('src', imgBase + this.sportId + '_sport_ico.png');
+	    $('.third .c-match-title', this.domNode).html('<a href="#" onclick="return showMultiMatch(' + idMatch + ')" title="' + $('.matchFilter', matchElm).attr('title') + '" >' + matchTitle + '</a>');  
+	    
+	    if (this.isSoftbase()) {
+	    	$('.second div[data-field="timeScore"]', this.domNode).addClass('hidden');    
+	    }
+	}
+	else {
+		
+	    var lastwritedValue = this.getChangedFieldValue("lastwrited");            
+	    if (lastwritedValue!==null) {                
+	       this.setCellValue("lastwrited", "(" + lastwritedValue + ")");
+	       $('.last-change', this.domNode).toggle(lastwritedValue!="");
+	    }
+	}
+}
+
+visualUpdateEventComment.prototype.getTeamNr = function(idTeam) {
+	idTeam *= 1;
+	if (idTeam > 0){
+		return this.getMatchJson().teamPlayer[idTeam]*1;
+	}
+	return 0;
+}
+
+visualUpdateEventComment.prototype.formatCommentTimeScore = function() {
+    var flag = this.getServerValue("flag");
+    var flag2 = this.getServerValue("flag2");
+    var idServe = this.getServerValue("idServe");
+    var timeScoreValue = this.getServerValue("timeScore");
+
+    if (this.gridObject.isMobile && this.isSoftbase()){
+    	timeScoreValue = "";
+    	if (this.getServerValue("mode") == "p" && this.isFlagMatchStatusRelated(flag)){
+    		var serveNr = this.getTeamNr(idServe);
+    		timeScoreValue = this.getServerValue("statusShort")+(serveNr > 0 ? (" "+(serveNr == 2 ? "TOP" : "BOT")) : "");
+    		if (flag!="time"){
+    			timeScoreValue+=", ";
+    			var others = this.getServerValue("commentOthers");
+    			var othersJSON = others ? $.parseJSON(others) : {};
+    			if (!othersJSON.out){
+    				timeScoreValue += lsLangVars['noOut'];
+    			}
+    			else if (othersJSON.out == 1){
+    				timeScoreValue += 1+" "+lsLangVars['out2'];
+    			}
+    			else {
+    				timeScoreValue += othersJSON.out+" "+lsLangVars['outs'];
+    			}
+    			timeScoreValue+=", ";
+    			if (!othersJSON.bas){
+    				timeScoreValue += lsLangVars['noBases'];
+    			}
+    			else if (othersJSON.bas == "1-2-3"){
+    				timeScoreValue += lsLangVars['basesFull'];
+    			}
+    			else {
+    				timeScoreValue += lsLangVars['bases2']+": "+othersJSON.bas;
+    			}
+    		}
+    	}
+    }
+    else if(timeScoreValue && idServe > 0) {
+    	var serveImg = this.gridObject.isMobile ? '<i class="tenis-serve-ico"></i>' : '<img src="' + imgBase + 'micek_podani_' + matchJson.sport + '.png" />';
+        if(this.getTeamNr(idServe) == 1) {
+            timeScoreValue = serveImg + ' ' + timeScoreValue;
+        }  
+        else {
+            timeScoreValue += ' ' + serveImg;
+        }
+    }
+    
+    if(!this.gridObject.isMobile && (flag == 'goal' || flag2 == 'game' || flag2 == 'set' || parseInt(this.getServerValue("idFlag")) == 32 || flag == 'sevenMetreThrowSucc')) {
+    	var isPoint = flag == 'goal' || flag == 'sevenMetreThrowSucc';
+        var idTeam = this.getServerValue(isPoint ? "idTeam" : "idWinner");
+        if(idTeam && typeof logosJson[idTeam] != "undefined" && logosJson[idTeam]) {
+        	var logo = '<img class="znak" src="' + logosJson[idTeam] + '" />';
+        	if (isPoint && this.sportId == 4){
+        		$('.first', this.domNode).html(logo);
+        	}
+        	else {
+        		if(timeScoreValue) {
+                    timeScoreValue += '<br />';
+                }
+                timeScoreValue += logo;
+        	}
+        }
+    }
+    
+    $('*[data-field="timeScore"]', this.domNode).toggleClass('hidden', !timeScoreValue || timeScoreValue=="&nbsp;");
+    
+    this.setCellValue("timeScore", timeScoreValue);
+}
+
+visualUpdateEventComment.prototype.formatCommentOthers = function() { 
+
+	var isSoftbase = this.isSoftbase();
+	
+	if (isSoftbase){
+		if (this.gridObject.isMobile || (!this.isValueChanged("commentOthers") && !this.isValueChanged("flag"))){
+			return ;
+		}
+	}
+	else{
+		var penaltyEl = $('.penalty', this.domNode);
+		if (!penaltyEl.length){
+			return ;
+		}
+
+		if (!this.isValueChanged("commentOthers") && !this.isValueChanged("flag2") && !this.isValueChanged("idTeam") && 
+			!this.isValueChanged("penalty1") && !this.isValueChanged("penalty2")){
+			return ;
+		}
+	}
+	
+	var others = this.getServerValue("commentOthers");
+	if (others){
+		var othersJSON = $.parseJSON(others);
+	}
+
+	if (isSoftbase){
+	
+		var flag = this.getServerValue("flag");
+		var outsEl = $('p.softball-outs', this.domNode);
+		var basesEl = $('p.softball-bases', this.domNode);
+
+		if (!others || (!othersJSON.chob && flag!="points")){
+			outsEl.addClass('hidden');
+			basesEl.addClass('hidden');
+			return ;
+		}
+	
+		outsEl.removeClass('hidden');
+		basesEl.removeClass('hidden');
+	
+		outsEl.removeClass('outs-1 outs-2 outs-3');
+		outsEl.addClass('outs-'+othersJSON.out);
+		
+		$('.base', basesEl).removeClass('taken');
+		$.each((othersJSON.bas+"").split('-'), function(i, v){$('.base-'+v, basesEl).addClass('taken');});
+	}
+	else {
+		penaltyEl.addClass('hidden');
+		var flag2 = this.getServerValue("flag2");
+		var idTeam = this.getServerValue("idTeam")*1; 
+		if (flag2 && idTeam && others && othersJSON.ss){
+			penaltyEl.removeClass('hidden');
+			var penaltyTeamNr = this.getTeamNr(idTeam);
+			var isSuccess = flag2=="penaltySuccess" || flag2=="shootoutSuccess";
+			var seriesEl = $('.penalty-series', penaltyEl);
+			seriesEl.html(seriesEl.html().replace(/X/, othersJSON.ss));
+
+			$('.penalty-attempt', penaltyEl).each(function(i, el){
+				$(el).removeClass().addClass('penalty-attempt').addClass('penalty-'+(penaltyTeamNr==i+1 ? (isSuccess ? 'goal' : 'failed') : 'free'));
+			});
+
+			$('.penalty-score', penaltyEl).html(this.getServerValue("penalty1")+':'+this.getServerValue("penalty2"));
+		}
+	}
+}
+
+visualUpdateEventComment.prototype.isSocMm = function() {
+	var flag = this.getServerValue("flag");
+    return flag == "multimedia" || flag == "social";
+}
+
+visualUpdateEventComment.prototype.isBetsAnalysis = function() {
+	var type = this.getServerValue("type");
+    return type == "bets" || type == "analysis";
+}
+
+visualUpdateEventComment.prototype.formatFullWidthComment = function() {
+    if(this.isValueChanged("flag") && this.isSocMm() || this.isValueChanged("type") && this.isBetsAnalysis()) {
+        $('.first', this.domNode).remove();
+        $('.second', this.domNode).remove();
+        $('.third', this.domNode).attr('colspan',3).addClass('full').removeClass('third');                        
+    }
+}
+
+visualUpdateEventComment.prototype.initScriptComments = function() {
+	var messageChanged = this.isValueChanged("message");
+	if (!this.isValueChanged("flag") && !messageChanged){
+		return ;
+	}
+
+	var isHidden = false;
+	var type = this.getServerValue("type");
+	var isGfy = false;
+    if (this.isSocMm()) {
+        isGfy = type == "gfy";
+        if (isGfy){
+        	isHidden = this.getMatchJson().showGifs!=1;
+        }
+        
+        if (!this.gridObject.isMobile || this.getServerValue("flag") == "social"){
+        
+        	var message = this.getServerValue("message");
+        	
+	        if (!checkGfyObjects && message.indexOf("gfyitem") >= 0) {
+	        	checkGfyObjects = setInterval(function(){initGfyObjects()}, 1000);
+	        }
+	        
+	        if(messageChanged) {
+		        if(typeof FB != "undefined" && message.indexOf("fb-post") >= 0) {
+		        	var key = this.getServerValue("key");
+		        	if (!checkFb[key]){
+		        		checkFb[key] = setInterval(function(){
+		        			if ($('.fb-post iframe', this.domNode).length){
+		        				clearInterval(checkFb[key]);
+			        			checkFb[key] = null;
+		        			}
+		        			else {
+			        			FB.XFBML.parse(this.domNode);
+		        			}
+		        		}.bind(this), 1000);    
+		        	}
+		        }
+		        if(typeof instgrm != "undefined" && message.indexOf("instagram-media") >= 0) {
+		        	var key = this.getServerValue("key");
+		        	if (!checkInstagram[key]){
+		        		checkInstagram[key] = setInterval(function(){
+		        			if ($('iframe.instagram-media', this.domNode).length){
+		        				clearInterval(checkInstagram[key]);
+		        				checkInstagram[key] = null;
+		        			}
+		        			else {
+		        				instgrm.Embeds.process();
+		        			}
+		        		}.bind(this), 1000);    
+		        	}
+		        }
+		        
+		        if(message.indexOf('class="embed-photo"') >= 0) {
+		        	var key = this.getServerValue("key");
+		        	if (!checkEmbeds[key]){
+		        		checkEmbeds[key] = setInterval(function(){
+		        			var images = $('img.embed-photo:not(.nofancybox)', this.domNode);
+		        			if (images.length){
+		        				images.each(function(){
+		                        	$(this).fancybox({href: $(this).attr('src').replace(/([_-])w390/, '$1w1000')});
+		                        });  
+		        				clearInterval(checkEmbeds[key]);
+		        				checkEmbeds[key] = null;
+		        			}
+		        		}.bind(this), 1000);    
+		        	}
+		        }
+	        }
+    	}
+    
+        this.runCommentsScripts();
+    }
+    
+    if (this.isBetsAnalysis()){
+    	var checkTipsport = function(){
+    		if (!initTipsort(this.domNode)){
+    			setTimeout(checkTipsport, 100);
+    		}
+    	}.bind(this);
+    	checkTipsport();
+    }
+
+    if (!this.gridObject.isMobile){
+    	$(this.domNode).toggleClass("gfy", isGfy);
+    }
+    
+    $(this.domNode).toggleClass("hidden", isHidden); 
+}
+
+visualUpdateEventComment.prototype.formatMobile = function() {
+	var showHeading = this.isAuto ? this.getServerValue("flag")!="" : this.getServerValue("flag")!="normal"; //TODO: 
+	if (!showHeading){
+		var isTimescore = !$('*[data-field="timeScore"]', this.domNode).hasClass('hidden');
+		var penaltyEl = $('.penalty', this.domNode);
+		var isPenalty = penaltyEl.length > 0 && !penaltyEl.hasClass("hidden");
+		if (isPenalty || isTimescore){
+			showHeading = true;
+		}
+	}
+	$('.heading', this.domNode).toggleClass("hidden", !showHeading);
+}
+
+
+visualUpdateEventComment.prototype.runCommentsScripts = function(){
+    var message = this.getChangedFieldValue("message");
+    if (message){
+	    var reg = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;       
+	    var match;
+	    while (match = reg.exec(message)) {
+	        var regsrc = /src="([\s\S]*?)"/gm;
+	        matchsrc = regsrc.exec(match[0]);
+	        if(matchsrc) {
+	            $.getScript(matchsrc[1]);
+	        }
+	        if(match[1]){
+	            eval(match[1]);
+	        }      
+	    }
+    }
+}
+
+visualUpdateEventComment.prototype.hotManualTr = function() {
+    $('td', this.domNode).addClass('highlighted');
+    setTimeout(function(){$('td', this.domNode).removeClass('highlighted');}.bind(this), pushHotTime);
+}
+
+
+function commentsGridObject(group, type, isMobile, isAuto) {
+
+	try {
+		this.init = function(group, type, isMobile){
+			
+			if (!initLsClient()){
+				return false;
+			}
+			
+			if (commentsSubscription){
+				commentsSubscription.getListeners()[1].clean();
+				lsClient.unsubscribe(commentsSubscription);
+			}
+			
+			this.isMulti = (typeof(group) == 'object');   
+			this.isMobile = isMobile;
+			this.isAuto = isAuto;
+		    this.isInited = false; 
+			this.isHotStarted = false;
+			this.inited = new Date();
+			
+		    if(this.isMulti) {
+		        var schema = ["key", "command", "timeScore", "message", "title", "order", "idFlag", "flag", "flag2", "ace", "doublefault", "type", "lastchange", "lastwrited", "idWinner", "statusShort", "writed", "idMatchLanguage", "mode", "period", "score1", "score2", "sets1", "sets2", "fifteens1", "fifteens2", "idTeam", "idServe", "penalty1", "penalty2", "commentOthers", "idCountry", "idCountry2"];
+		    }
+		    else {
+		        var schema = ["key", "command", "timeScore", "message", "title", "order", "idFlag", "flag", "flag2", "ace", "doublefault", "type", "lastchange", "lastwrited", "idWinner", "statusShort", "idTeam", "mode", "period", "score1", "score2", "idServe", "penalty1", "penalty2", "commentOthers", "idCountry", "idCountry2"];
+		    }
+	
+		    var uniq = new Date().getTime();
+		    var newId = "comments-" + type + "-" + uniq;
+		    if(this.isMulti) {
+		        $(".comments-multi").attr("id", newId).show();
+		    }
+		    else {
+		        $("#comments-" + type).attr("id", newId).show();
+		    }  
+		    
+		    commentsSubscription = new Lightstreamer.Subscription("COMMAND", group, schema);
+		    commentsSubscription.addListener({
+		    	onSubscriptionError: function(code, message){
+		    		loggerProvider.dispatchLog("custom", "ERROR", code+": "+message);
+		    	}
+		    });
+		    commentsSubscription.setDataAdapter("COMMENTS");
+		    commentsSubscription.setRequestedSnapshot("yes"); 
+	
+		    var grid = new Lightstreamer.DynaGrid(newId, false);
+		    grid.setNodeTypes(["DIV", "SPAN", "P"]);
+		    grid.parseHtml();
+		    grid.setMaxDynaRows(1000);
+		    grid.setHtmlInterpretationEnabled(true);
+		    grid.setSort('order', type !== 'all_desc', true);
+		    
+		    var typeSelector = type;
+		    switch (type) {
+		    	case 'all':
+		    	case 'all_desc':
+		            break;
+		        case 'lng':
+		        	typeSelector += "_"+lngCountryId;
+		        case 'goal':
+		        case 'point':        
+		        case 'important':        
+		        case 'exclusion':
+		        case 'card':
+		        case 'change':   
+		        case 'nonormal':
+		        case 'tenisscore':
+		        	commentsSubscription.setSelector(typeSelector);
+		            break;
+		        case 'last2':
+		        	grid.setMaxDynaRows(lsLastRows2);
+		            break;
+		        case 'last':
+		        default:
+		        	grid.setMaxDynaRows(lsLastRows);
+		    }
+		    
+		    if (this.isMulti){
+		    	commentsSubscription.setSelector(typeSelector+' M');
+			}
+		    else if (this.isMobile){
+		    	commentsSubscription.setSelector(typeSelector+' B');
+		    }
+	
+		    if (this.isMobile){
+		    	
+			    var timeout;
+			    var commentsEl = $('#comments');
+			    var bannerMiddle = $('#banner-middle');
+			    var bannerBottom = $('#banner-bottom');
+			    
+			    grid.addListener({
+			    	onVisualUpdate: function (itemName, updateInfo, domNode) {
+	
+		    			if (timeout){
+			    			clearTimeout(timeout);
+			    		}
+			    		timeout = setTimeout(function(){
+					    	
+			    			var rows = $('.row', commentsEl);
+			    			bannerBottom.toggle(rows.length-1 >= 10);
+			    			
+					    	var rows2 = rows.slice(0, 6);
+					    	var last = rows2[rows2.length-1];
+				
+					    	if (bannerMiddle.parent()[0]!=last){
+					    		bannerMiddle.appendTo(last);
+					    	}
+					    	
+					    	timeout = null;
+					    }, 300);
+			    	}.bind(this)
+			    });
+		    }
+		    
+		    grid.addListener({
+		    	onVisualUpdate: function (itemName, updateInfo, domNode) {
+		    		
+		    		if (!updateInfo){
+		    			return ;
+		    		}
+		    				
+		        	try {
+		        		
+		        		var event = new visualUpdateEventComment(this, updateInfo, domNode, itemName);
+		        		if (! this.isInited) {
+		        			$("#comments-nols").hide();
+		        			this.isInited = true;
+		        		}
+
+		        		event.translateMessage(event.getMatchJson());
+		        		event.setDomClass();
+			            event.setMessageScore();
+		                event.formatComment();
+		                event.formatCommentTimeScore();  
+		                event.formatCommentOthers();
+			            event.initScriptComments(); 
+			            this.isMobile ? event.formatMobile() : event.formatFullWidthComment(); 
+	
+		                if (! this.isHotStarted && (((new Date()).getTime() - this.inited.getTime()) / 1000) > 10) {
+		                	this.isHotStarted = true;
+		                }
+		                
+		                if (this.isHotStarted && (updateInfo.getChangedFieldValue("lastchange") || updateInfo.getChangedFieldValue("lastwrited"))) {
+			                event.hotManualTr();
+		                }
+		        	} 
+		        	catch (err){
+		        		handleLsError(err);
+		        	}
+		        }.bind(this)
+		    });
+		    
+		    commentsSubscription.addListener(grid);
+	
+		    lsClient.subscribe(commentsSubscription);
+		    
+		    loggerProvider.dispatchLog("custom", "INFO", 'Initialized commentsGridObject '+typeSelector+' for group(s) '+group+'. Streaming columns: '+schema.join(', ')+'. Selector: '+commentsSubscription.getSelector());
+		    
+			gridObject.call(this, grid);
+		}
+		
+		this.init(group, type, isMobile);
+	}
+	catch (err){
+		handleLsError(err);
+	}
+}
+
+commentsGridObject.prototype= new gridObject();
+
+function initLsMultiCommentsType(type) { 
+    var group = [];
+    var filter = $('#multiPrehled .match:visible .noFilter:visible');     
+    if ($(filter).length) {        
+        group[0] = $(filter).closest('.match').attr('id').replace('zapas_', '');
+    }
+    else {
+        $('#multiPrehled .match:visible').each(function(i,e){
+            group[i] = $(this).attr('id').replace('zapas_', '');
+        });
+    }
+        
+    new commentsGridObject(group, type, false);
+}
+
+function visualUpdateEventLog(gridObject, updateInfo, domNode, itemName) {
+	visualUpdateEventComment.call(this, gridObject, updateInfo, domNode, itemName);
+}
+
+visualUpdateEventLog.prototype =  Object.create(visualUpdateEventComment.prototype);
+visualUpdateEventLog.prototype.constructor = visualUpdateEventLog;
+
+function logGridObject(id, group, isMulti, isMobile) {
+
+	try {
+		this.init = function(id, group, isMulti, isMobile){
+			
+			if (!initLsClient()){
+				return false;
+			}
+			
+			if (logSubscription){
+				logSubscription.getListeners()[1].clean();
+				lsClient.unsubscribe(logSubscription);
+			}
+			
+			this.isMulti = isMulti;
+			this.isMobile = isMobile;
+		    this.isInited = false; 
+			this.isHotStarted = false;
+			this.inited = new Date();
+			this.element = $("#" + id).show();
+			
+		    if (this.isMulti) {
+		    	var schema = ["idMatchLanguage", "key", "command", "timeScore", "order", "flag", "idTeam", "team", "value", "player", "status"];
+		    }
+		    else {
+		    	var schema = ["key", "command", "timeScore", "order", "flag", "idTeam", "team", "value", "player", "status"];
+		    }
+	
+		    logSubscription = new Lightstreamer.Subscription("COMMAND", group, schema);
+		    logSubscription.addListener({
+		    	onSubscriptionError: function(code, message){
+		    		loggerProvider.dispatchLog("custom", "ERROR", code+": "+message);
+		    	}
+		    });
+		    logSubscription.setDataAdapter("COMMENTS");
+		    logSubscription.setRequestedSnapshot("yes");
+		    logSubscription.setSelector('log');
+		    
+		    var grid = new Lightstreamer.DynaGrid(id, true);
+		    grid.setMaxDynaRows(1000);
+		    grid.setHtmlInterpretationEnabled(true);
+		    grid.setSort('order', false, true);
+	
+		    grid.addListener({
+		    	onVisualUpdate: function (itemName, updateInfo, domNode) {
+	
+		        	try {
+		        		
+		        		var $domNode = $(domNode);
+	
+		        		if (updateInfo){
+	
+			        		if (! this.isInited) {
+			        			$(".match-log.nols").hide();
+			        			if (this.isMobile){
+			        				this.element.closest(".log-box").show();
+			        			}
+			        			else {
+			        				this.element.closest(".tabBox0").find(".navigace .logtitle").show();
+			        			}
+			        			this.isInited = true;
+			        		}
+			        		
+			        		var playerClass = this.isMobile ? "logplayer" : "player";
+			        		var event = new visualUpdateEventLog(this, updateInfo, domNode, itemName);
+			        		var flag = event.getServerValue("flag");			        		
+			        		if (flag == "time" || flag=="gong"){
+			                	$domNode.addClass("period").html('<td colspan="5">'+event.getServerValue("status")+'</td>');
+			                }
+			                else {
+			                	
+			                	var team1Abbr = event.getMatchJson().team1abbr;
+				        		var team = event.getServerValue("team").split("\n");
+				                var value = event.getServerValue("value").split("\n");
+				                var player = event.getServerValue("player").split("\n");
+				                var className = "penalty"; 
+                                                if(flag == "goal" || flag == "sevenMetreThrowSucc") {
+                                                    className = "goal";
+                                                }                     
+                                                else if(flag == "change") {
+                                                    className = "change";
+                                                }
+				                domNode.className = className+" "+(team[0] == team1Abbr ? "team1" : "team2");
+				                
+				                event.setCellValue("team", team[0]);
+				                event.setCellValue("value", value[0]);
+				                event.setCellValue("player", player[0]);
+				                
+				                setTimeout(function(){                                                    
+					                $('td.icon,td.time', domNode).attr("rowspan", team.length);
+					                $domNode.nextUntil(":not(.appended)", ".appended").remove();
+					                for(var i = team.length-1; i > 0; i--) { 
+					                	$('<tr class="'+className+' '+(team[i] == team1Abbr ? "team1" : "team2")+' appended">'+
+					                			'<td class="team">'+(team[i] ? team[i] : '')+'</td>'+
+					                		    '<td class="value">'+(value[i] ? value[i] : '')+'</td>'+
+					                		    '<td class="'+playerClass+'">'+(player[i] ? player[i] : '')+'</td>'+
+					                		    '</tr>').insertAfter(domNode);
+					                }
+				                }, 1000);
+			                }
+		
+			                if (! this.isHotStarted && (((new Date()).getTime() - this.inited.getTime()) / 1000) > 10) {
+			                	this.isHotStarted = true;
+			                }
+			                
+			                if (this.isHotStarted) {
+			                	updateInfo.setHotTime(pushHotTime);
+			                    updateInfo.setAttribute(pushHotBackground, "", "backgroundColor");
+			                }
+		        		}
+		        		else {
+		        			$domNode.nextUntil(":not(.appended)", ".appended").remove();
+		        		}
+		        	} 
+		        	catch (err){
+		        		handleLsError(err);
+		        	}
+		        }.bind(this)
+		    });
+		    
+		    logSubscription.addListener(grid);
+		    
+		    lsClient.subscribe(logSubscription);
+		    
+		    loggerProvider.dispatchLog("custom", "INFO", 'Initialized logGridObject for group '+group+'. Streaming columns: '+schema.join(', '));
+		    
+			gridObject.call(this, grid);
+		}
+		
+		this.init(id, group, isMulti, isMobile);
+		
+	} 
+	catch (err){
+		handleLsError(err);
+	}
+}
+
+logGridObject.prototype= new gridObject();
+
+function initGfyObjects() {    
+    var $gfyitems = document.getElementsByClassName("gfyitem");                
+    var $gfycount = $gfyitems.length;            
+    if ($gfycount > 0) {        
+        for (i = 0; i < $gfycount; i++) {
+        var gfyObj = new gfyObject($gfyitems[i]);                    
+        gfyObj.init();            
+        }
+        clearInterval(checkGfyObjects);
+        checkGfyObjects = false;        
+    }        
+}
+
+function initLsClient() {
+	 if(getCookie('streamDisabled') == 'true') {
+                    lsClient = null;
+                    console.log("Streaming is disabled for this client");
+                    return false;
+                }
+        
+	if (!lsClient){               
+		if (/(bot|slurp|spider|crawler)/i.test(navigator.userAgent) || window.location.search.indexOf('nols')!==-1){
+			console.log("Streaming disabled for robots");
+			return false;
+		}
+		
+		try {
+			
+			loggerProvider = new Lightstreamer.SimpleLoggerProvider();
+			loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("ERROR"));
+			loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("FATAL"));
+			//loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("DEBUG","lightstreamer.sharing"));
+			//loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("DEBUG","lightstreamer.subscriptions"));
+			//loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("DEBUG","lightstreamer.crosstab"));
+			
+			if (window.location.search.indexOf('lsdebug')!==-1){
+				loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("INFO", "custom"));
+				loggerProvider.addLoggerAppender(new Lightstreamer.ConsoleAppender("WARN"));
+			}
+			else {
+				function AjaxAppender(level, category) {
+					Lightstreamer.FunctionAppender.call(this, level, category);
+					this.sentErrors = [];
+				}
+				AjaxAppender.prototype  = new Lightstreamer.FunctionAppender();
+				AjaxAppender.prototype.constructor = AjaxAppender;
+				AjaxAppender.prototype.log = function(category, level, mex, header){
+					mex+="";
+					if (!mex.match(/^\d+\] Removing wrong address/) && $.inArray(category+'|'+level+'|'+mex, this.sentErrors)==-1){
+		    			$.post(lsErrorsUrl, {msg: this.composeLine(category, level, mex, header), url: window.location.href, userAgent: navigator.userAgent});
+		    			this.sentErrors.push(category+'|'+level+'|'+mex);
+		    		}
+				}
+	
+				loggerProvider.addLoggerAppender(new AjaxAppender("ERROR"));
+				loggerProvider.addLoggerAppender(new AjaxAppender("FATAL"));
+			}
+
+			if (document.domain.indexOf(lsDomain) !== -1){
+				document.domain = lsDomain;
+			}
+			
+			Lightstreamer.LightstreamerClient.setLoggerProvider(loggerProvider);
+			
+			if (lsEnableWs){
+				var match = window.location.search.match(/nolsws=(\d+)/);
+		        if (match){
+		        	document.cookie = "nolsws="+match[1];
+		        }
+		        else {
+		        	match = document.cookie.match(/nolsws=(\d+)/);
+		        }
+		        if (match && match[1]=="1"){
+		        	console.log("disabling websocket");
+		        	lsEnableWs = false;
+		        }
+			}  
+	        
+			lsClient = new Lightstreamer.LightstreamerClient(lsProtocol + '://push.www.' + lsDomain+":" + lsPort, "ONLAJNY");
+			lsClient.enableSharing(new Lightstreamer.ConnectionSharing("OnlajnyConnection", "ATTACH", "CREATE"));
+			if (!lsEnableWs){
+				lsClient.connectionOptions.setForcedTransport("HTTP");
+			}
+			lsClient.addListener({
+				onStatusChange: function(newStatus) {
+	
+			    	loggerProvider.dispatchLog("custom", "INFO", 'status changed to '+newStatus);
+	
+			        var statusImgSrc;
+			        var statusText;
+			        var isMaster = lsClient.isMaster();
+			        
+			        switch(newStatus) {
+				        case "CONNECTED:WS-STREAMING":
+				        case "CONNECTED:HTTP-STREAMING":
+				        	statusImgSrc = "status_connected_streaming" + (isMaster ? "_master" : "") + ".png";
+				            statusText = "Connected to Push Server<br />(Streaming" + (isMaster ? " - Master page" : "") + ")";
+				            break;
+				        case "CONNECTED:WS-POLLING":
+				        case "CONNECTED:HTTP-POLLING":
+				        case "CONNECTED:STREAM-SENSING":
+				        	statusImgSrc = "status_connected_polling" + (isMaster ? "_master" : "") + ".png";
+				            statusText = "Connected to Push Server<br />(Polling" + (isMaster ? " - Master page" : "") + ")";
+				            break;
+				        case "CONNECTING":
+				        	statusImgSrc = "status_disconnected" + (isMaster ? "_master" : "") + ".png";
+				            statusText = "Trying to connect to Push Server..." + (isMaster ? "<br /> (Master page)" : "");
+				            break;
+				        case "STALLED":
+				        	statusImgSrc = "status_stalled" + (isMaster ? "_master" : "") + ".png";
+				            statusText = "Connection to Push Server stalled" + (isMaster ? "<br /> (Master page)" : "");
+				            break;
+				        case "DISCONNECTED:WILL-RETRY":
+				        case "DISCONNECTED":
+				        	statusImgSrc = "status_disconnected" + (isMaster ? "_master" : "") + ".png";
+				            statusText = "Disconnected from Push Server" + (isMaster ? "<br /> (Master page)" : "");
+				            break;
+				    }
+			        
+			        document.statusImg.src = statusImgDir + statusImgSrc;
+			        document.getElementById("statusDiv").innerHTML = statusText;
+			        
+			        // on Safari write to the status bar, to overwrite a misleading download message
+			        if (navigator.vendor && navigator.vendor.indexOf("Apple") != -1) {
+			        	window.status = " ";  
+			        }                   
+			    }, 
+			    onServerError: function(code, msg) {
+			    	loggerProvider.dispatchLog("custom", "ERROR", code+": "+msg);
+			    }
+			});
+			lsClient.connect();
+	
+		    var statusImgDir = lsJs+"commons/custom/img/";
+	
+		    var prefetcher = new Array(9);
+		    for (i = 0; i <= 9; i++) {
+		        prefetcher[i] = new Image();
+		    }
+		    prefetcher[0].src = statusImgDir + "status_waiting.png";
+		    prefetcher[1].src = statusImgDir + "status_disconnected.png";
+		    prefetcher[2].src = statusImgDir + "status_disconnected_master.png";
+		    prefetcher[3].src = statusImgDir + "status_connected_streaming_master.png";
+		    prefetcher[4].src = statusImgDir + "status_connected_polling_master.png";
+		    prefetcher[5].src = statusImgDir + "status_connected_streaming.png";
+		    prefetcher[6].src = statusImgDir + "status_connected_polling.png";
+		    prefetcher[7].src = statusImgDir + "status_stalled.png";
+		    prefetcher[8].src = statusImgDir + "status_stalled_master.png";
+	
+		    var imgHtml1 = "<div id='semafor' style='position: ";
+		    var imgHtml2 = "top: 0px; left: 0px;' onmouseover='document.getElementById(\"statusDiv\").style.visibility=\"visible\"' onmouseout='document.getElementById(\"statusDiv\").style.visibility=\"hidden\"'><img name='statusImg' src='" + statusImgDir + "status_waiting.png' /></div>";
+		    var textHtml1 = "<div id='statusDiv' style='position: ";
+		    var textHtml2 = "top: 10px; left: 20px; visibility: hidden; border: 1px solid #C0C0C0; padding: 3px; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #333333; background-color: #FFFFFF; filter:alpha(opacity=90); -moz-opacity:0.9; -khtml-opacity: 0.9; opacity: 0.9;'>Waiting for Push Engine creation...</div>";
+	
+		    var statusContainer = document.createElement("div");
+                    if(! location.host.startsWith("m.")) {
+                        document.getElementsByTagName("body")[0].appendChild(statusContainer);
+                    }
+	
+		    statusContainer.innerHTML = "<!--[if lt IE 7]>" + imgHtml1 + "absolute; " + imgHtml2 + textHtml1 + "absolute; " + textHtml2 + "<![endif]-->";
+	
+		    if (!document.statusImg) {
+		        statusContainer.innerHTML = imgHtml1 + "fixed; " + imgHtml2 + textHtml1 + "fixed; " + textHtml2;
+		    }
+	
+			document.onkeydown = checkEscape;
+			document.onkeypress = checkEscape;
+			function checkEscape(e) {
+			    if (!e) e = event;
+			    if (e.keyCode == 27) return false;
+			}
+		}
+		catch (err){
+			handleLsError(err);
+	   	}
+	}
+	return true;
+}
+
+function handleLsError(err){
+	if (loggerProvider){
+		loggerProvider.dispatchLog("custom", "ERROR", err.stack ? err.stack : (typeof err == "Array" ? err.join(" \r\n") : err));
+	}
+	else {
+		throw err;
+	}
+}

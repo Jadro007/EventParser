@@ -1,0 +1,222 @@
+body    { font-size: 0.8em;  background-image: none;background-color:white; }
+body, h1, h2, h3, h4, h5, h6, caption, input { font-family:  "Tahoma", Arial,"Luxi Sans", Helvetica, sans-serif; }
+img {border:none;}
+hr{border-bottom: 1px dotted #47463a;}
+#box { background-color: white; text-align: center; width: 100%; float: left }
+#box_m { background-color: white; margin: auto; width: 100% }
+#box_m1 { background-color: white; margin: auto; width: 100%; float: left }
+#box_lang{float:left;width:985px;height:50px;text-align:right}
+#box_lang .inLa{float:right;color:white;padding-top:25px}
+#box_lang .inLa a{color:white;text-decoration:underline;}
+#box_lang .inLa a:hover{color:white;text-decoration:none;}
+#box_lang .inLa a.Ov{color:white;text-decoration:none;font-weight:bold}
+
+#boxH{float:left;width:100%;}
+#box_vrch{float:left;width:100%;height:315px;display:none}
+#box_logo{float:left;width:245px;height:315px;background-color:white;}
+#box_logo h1{display:none;}
+.logo{margin:25px 0 0 0}
+.logo_S{margin:10px 0 0 0}
+#box_image{float:left;width:740px;height:315px;}
+#box_left{float:left;width:245px;display:none}
+/*#box_left a:link,a:active,a:visited{color: #7e1b00;}
+#box_left a:hover{color: black;}*/
+.menH  { color: #7e1b00; font-weight: bold; background-color: #f8ce11; background-image: url("img/sipka.png"); background-repeat: no-repeat; background-position: 5px center; width: 245px }
+#box_partneri { color: #7e1b00; font-weight: bold; background-color: #e9e3ca; background-image: url("img/sipka.png"); background-repeat: no-repeat; background-position: 5px 12px; width: 245px }
+#box_novinky   { color: #7e1b00; font-weight: bold; background-image: url("img/sipka.png"); background-repeat: no-repeat; background-position: 5px 12px; margin-top: 5px; width: 245px }
+
+.inFormE label{ color: black; font-weight: lighter }
+.frame{border:none; overflow:hidden; width:360px; height:350px;}
+
+
+.inmenH  { padding: 16px 0px 16px 35px;text-align:left; font-size:1.05em}
+.partneri{width:245px;text-align:center;padding:0 0 40px 0}
+#rotaceLoga{width:245px;float:left;text-align:center;margin:10px 0 0 0;}
+#allAKt{float:left;margin-top:10px;}
+
+a.mmT:link, a.mmT:visited, a.mmT:active {text-decoration:none;color:#7E1B00;font-size:0.95em}
+a.mmT:hover {text-decoration:underline;color:black;}
+
+ul.menu  { margin: 0; padding: 0; width:245px;background-color:#ECE3B5 }
+
+ul.menu li  {  text-align: left; list-style: none; margin: 0; border-bottom: 1px solid #fef7db } 
+ul.menu li a.mm:link, a.mm:visited, a.mm:active  { color: black; text-decoration: none; background-image: url("img/ctv.gif"); background-repeat: no-repeat; background-position: 15px center; display: block; padding: 10px 5px 10px 30px }
+ul.menu li a.mm:hover  { color: #fff; background-color: #d6cb9d; background-image: url("img/ctv.gif"); background-repeat: no-repeat; background-position: 15px center } 
+
+ul.menu li a.mmSub:link, a.mmSub:visited, a.mmSub:active   { color: black; font-size: 0.85em; text-decoration: none; background-color: #f0e9c3; background-image: url("img/ctv.gif"); background-repeat: no-repeat; background-position: 25px center; display: block; padding: 10px 5px 10px 40px }
+ul.menu li a.mmSub:hover   { color: #fff; background-color: #dcd3b4; background-image: url("img/ctv.gif"); background-repeat: no-repeat; background-position: 25px center } 
+
+ul.menu li a.mmOver  { color: black; font-weight: bold; text-decoration: none; background-color: #d6cb9d; background-image: url("img/ctv.gif"); background-repeat: no-repeat; background-position: 15px center; display: block; padding: 10px 5px 10px 30px } 
+ul.menu li a.mmOverSub   { color: black; font-size: 0.85em; font-weight: bold; text-decoration: none; background-color: #dcd3b4; background-image: url("img/ctv.gif"); background-repeat: no-repeat; background-position: 25px center; display: block; padding: 10px 5px 10px 40px } 
+
+
+#box_right { background-color: white; width: 100%; float: left;}
+#box_right a:link,a:active,a:visited{color: #7e1b00;}
+#box_right a:hover{color: black;}
+#box_right a.bez:link,a.bez:active,a.bez:visited{text-decoration:none;}
+
+#box_right .ul li{padding:10px 0 0px 0}
+.soutez{float:left;width:680px;background-color:#f0e9cd;border:1px solid #e9e3ca;margin-bottom:20px;display:none}
+.soutez .inS {float:left;padding:15px;}
+.logoObr{float:left;margin-right:15px;}
+
+#box_right form, h2, h3{display:none}
+#box_right h3.nazev{display:block;font-size:1.6em}
+
+#navigace{background-color:#E9E3CA;width:740px;border-bottom:1px solid #BEAC83;float:left;display:none}
+#navigace .inNav{float:left;padding: 16px 0px 16px 25px;text-align:left;font-size:0.8em}
+#navigace .zakaznik {float:right;padding: 16px 25px 16px;font-size:0.8em}
+
+#lista_info  { background-image: url("img/kosik.png"); background-repeat: no-repeat; background-position: 10px 15px; width: 740px; float: left; border-bottom: 1px dotted #47463a }
+#lista_info .inLis { font-size: 0.8em; text-align: left; padding: 16px 0 16px 35px; float: left }
+#lista_info .reg {float:right;padding: 16px 25px 16px;font-size:0.8em;}
+
+#box_textH {float:left;width:415px;}
+.intextH{float:left;padding:27px;text-align:left;}
+.intextH a:link,a:visited,a:active  { color: #7e1b00 }
+.intextH a:hover{color: black;text-decoration:none}
+
+#box_textH-1 {float:left;width:740px;}
+#box_textH-2 {float:left;width:540px;}
+
+table  { font-size: 0.9em; line-height: 1.3em; background-color: #6b6b6b; background-position: 0 0; margin: 10px; width: 920px }
+table.objednavky{width:920px;font-size:1.1em}
+table.TabOb{width:680px;}
+td { background-color: white; padding: 15px }
+td.hlav  { background-color: #dcdcdc }
+td.str  { background-color: #f0f0f0 }
+table.objednavky form{margin:0;}
+
+table.obTisk { background-color: #b0b0b0 }
+table.obTisk td{background-color: white}
+
+table.sponzori img{border:1px solid #E9E3CA}
+
+#detail_vina{width:450px;float:left;margin-top:20px;}
+.list{float:left;width:450px;padding:5px;border-bottom:1px solid #E9E3CA;}
+/*label{float:left;font-weight:bold;width:150px;text-align:right;padding-right:10px;} ?????*/
+#newsLetter label{float:left;font-weight:normal;width:65px;text-align:right;padding-right:10px;font-size:0.9em;margin-bottom:10px}
+#newsLetter input.newS{border:1px solid #dcdcdc;float:left;width:250px}
+#newsLetter input.newSSub{margin:15px 0 15px 0;}
+#newsLetter input.newSCh{border:1px solid #dcdcdc;}
+#newsLetter fieldset{margin:5px 0 5px 10px;width:650px;border:1px solid #BEAC83;font-weight:normal;color:black;padding:10px;text-align:left;}
+#newsLetter legend{margin-bottom:10px;}
+#newsLetter span.pov{color:black;font-size:0.8em}
+.inNews{padding:0 15px 30px 15px;}
+span.hlaska{color:black;font-weight:normal;font-size:0.9em}
+.podpis{display:block;}
+
+
+.textClanky {float:left;border-bottom: 1px dotted #47463a;padding:0 0 20px 0; }
+.textClanky h2 {font-size:1.4em;}
+.textClanky a:hover {color:black;text-decoration:underline;}
+.h2sm{font-size:0.85em;}
+h2{margin:15px 0 15px 0;padding:0;color:#7E1B00;font-size:1.4em;}
+h2 a:link,a:visited,a:active {color:#7E1B00;text-decoration:underline;} 
+h2 a:hover {color:black;text-decoration:underline;} 
+.foto{border:5px solid #E9E3CA;float:left;margin:10px 5px 0 0;}
+.textVideo {float:left; text-align:left; padding:10px 0 20px 0; }
+
+
+.boxFoto{float:left;width:145px;margin-right:5px;}
+.obr_text{float:left;margin-top:5px;font-size:0.8em;cler:both;}
+.fotoH{color:black;}
+.red { color: #900 }
+.angl { color: #918861; font-style: italic }
+.vzorek { color: #9c0000; font-size: 1.2em; font-weight: bold }
+
+
+h3 {font-size:1.1em;color: #7e1b00;}
+ul h3{margin:0;}
+
+#box_aktualityH {background-color:#ECE3B5;width:325px;float:right}
+.inaktH{text-align:left;padding:30px;float:left;}
+#box_aktualityH h3  { font-size: 1.4em; font-weight: bold; margin: 0 }
+#box_aktualityH .aktH { padding: 15px 0 15px; float: left; border-bottom: 1px dotted #47463a; width:265px; }
+.clear{clear:both;}
+
+#box_aktualityHD {background-color:#ECE3B5;width:200px;float:right;}
+#box_aktualityHD .aktH {padding: 15px 0 15px; float: left; border-bottom: 1px dotted #47463a; }
+
+.aktualita{padding:15px 0 15px 0;border-bottom: 1px dotted #47463a;float:left;width:680px;}
+.aktualita h3{margin:0px 0 5px 0}
+.fotoAkt{float:left;}
+
+h4 {margin:0;font-size:1.0em}
+h4 a:link,a:visited,a:active {color: #7e1b00;}
+h4 a:hover {color: black;}
+.dat{font-size:0.8em; color:#675708}
+.fotoAkt{border:none;float:left;margin:5px 5px 0 0;}
+
+#box_facebook{background-color:#E9E3CA;width:360px;float:right;margin-top:15px;}
+
+#box_footer{float:left;width:985px;background-color:#F8CE11;margin-top:3px;display:none}
+#box_footer a.foo:link,a.foo:visited,a.foo:active {color: #675708;text-decoration:none;}
+.boxF {color: #675708; font-size: 0.85em; padding:0px 40px 0px 30px;border-right:1px solid #d4b00f; float:left; text-align: left;margin:15px 0 15px 0;float:left;}
+.boxFR {padding:10px 40px 0 30px;float:right;margin:15px 0 15px 0;text-align:right;float:left;border:0px solid }
+.ico-rss   { background-image: url("img/rss.gif"); background-repeat: no-repeat; background-position: left 0; padding: 5px 20px 25px 30px; float: left; border-right: 1px solid #d4b00f }
+.facebookI {float:left;border:0px solid;padding-left: 15px}
+.textTab{float:left;width:145px;}
+.help{float:right;cursor:pointer; z-index:0; position: relative;}
+.helpN { background-color: #eaf9f9; visibility: hidden; position: absolute; margin: 25px 0 0 10px;z-index: 1; width: 200px; border: solid 1px #b0c4de; padding: 15px; }
+.proTisk{display:block;}
+.proTisk h2{display:block}
+
+/*obchod*/
+.pulka { margin-right: 10px; padding: 10px; width: 310px; float: left; border: solid 1px #eae1c7; min-height: 270px;  _height:270px; }
+.pulka h3 {font-size:1.1em;color: #7e1b00;}
+.fotoO {border:1px solid #eae1c7;float:left;margin:0px 5px 0 0;width:110px;text-align:center;position:relative;z-index:0}
+.popis_zb{float:left;width:170px;margin:0px 5px 0 10px;}
+.popis_zb2{float:left;width:500px;margin:10px 5px 0 10px;position:relative;z-index:0}
+.akce  { color: #390; font-weight: bold }
+span.akceG  { background-image: url("img/akce.png"); background-repeat: no-repeat; display: block; position: absolute; top: -15px; left: -10px; width: 63px; height: 63px; float: left; z: index:1 }
+span.akceG2  { background-image: url("img/akce2.png"); background-repeat: no-repeat; display: block; position: absolute; top: -15px; left: -10px; width: 73px; height: 73px; float: left; z: index:1 }
+
+span.novinkaG  { background-image: url("img/novinka.png"); background-repeat: no-repeat; display: block; position: absolute; top: -15px; right: -10px; width: 63px; height: 63px; float: right; z: index:1 }
+span.novinkaG2  { background-image: url("img/novinka2.png"); background-repeat: no-repeat; display: block; position: absolute; top: -15px; right: -10px; width: 73px; height: 73px; float: right; z: index:1 }
+
+.novinka { color: #f30; font-weight: bold }
+#text_kategorie { background-color: #f6f1da; margin-bottom: 15px; padding: 10px; width: 670px; float: left; border: solid 1px #e9e3ca }
+.mezera{float:left;width:680px;height:10px}/*border-bottom:1px dotted #47463a;*/
+.mezera2{float:left;width:480px;height:10px;border-bottom:1px dotted #47463a;}
+
+#obrazky{float:left;width:670px;padding-top:10px;margin-top:20px;border-top:1px dotted #BEAC83}
+
+.obrazkyD { background-color: #f6f1da; margin-bottom: 15px; padding: 10px; width: 650px; float: left; border: solid 1px #e9e3ca }
+.fotoD{border:1px solid #E9E3CA;float:left;margin:0px 15px 0 0;position:relative;z-index:0;width:140px;text-align:center;}
+.cena  { color: #d30000; font-size: 1.3em }
+.pocet{width:25px;height:18px;border:1px solid #D6CB9D;padding:4px;}
+.nadpis {height:50px;}
+.popis{font-size:0.9em;line-height:1.4em}
+
+
+table.objednavky2{width:680px;}
+table.objednavky2 td.hlav { background-color: #f0e9cd }
+table.objednavky2 td.str { background-color: #f4eed5 }
+table.objednavky2 td.hlD  { background-color: #e2dbbc }
+table.objednavky2 td.hlDC  { background-color: #e2dbbc;border:1px solid red }
+table.objednavky2 td {border-bottom:1px solid #f0e9cd}
+table.objednavky2 form{margin:0;}
+table.objednavky2 input{border:1px solid #D6CB9D}
+
+table.objednavky3{width:660px;}
+table.objednavky3 td.hlav { background-color: #f0e9cd }
+table.objednavky3 td.str { background-color: #f4eed5 }
+table.objednavky3 td.hlD  { background-color: #e2dbbc }
+
+
+/*kroky objednavky*/
+.kroky1  { background-image: url("img/krok1.png"); background-repeat: no-repeat; margin-bottom: 20px; width: 680px; height: 39px; float: left }
+.kroky2  { background-image: url("img/krok2.png"); background-repeat: no-repeat; margin-bottom: 20px; width: 680px; height: 39px; float: left }
+.kroky3  { background-image: url("img/krok3.png"); background-repeat: no-repeat; margin-bottom: 20px; width: 680px; height: 39px; float: left }
+.kroky4  { background-image: url("img/krok4.png"); background-repeat: no-repeat; margin-bottom: 20px; width: 680px; height: 39px; float: left }
+.fl1,.fl2,.fl3,.fl4, .fl1a,.fl2a,.fl3a,.fl4a{float:left;}
+.fl1,.fl1a{padding:12px 0 10px 15px;}
+.fl2,.fl2a{padding:12px 0 10px 60px;}
+.fl3,.fl3a{padding:12px 0 10px 55px;}
+.fl4,.fl4a{padding:12px 0 10px 45px;}
+.fl1a,.fl2a,.fl3a,.fl4a{color:#F9F2D7;}
+
+.fl1 form {display:block;cursor:pointer;}
+.noprint{display:none}
+.print{display:block}

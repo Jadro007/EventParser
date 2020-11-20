@@ -1,0 +1,16 @@
+$("header a.search").on("click", function(e) {
+	$(".search-box").fadeIn(100);
+
+	if(ga && typeof ga === 'function') {
+        ga('send', 'event', 'search', 'search');
+    }
+	e.preventDefault();
+	return false;
+});
+
+$(".search-box a.close").on("click", function(e) {
+	$(this).closest(".search-box").fadeOut(80);
+	
+	e.preventDefault();
+	return false;
+});

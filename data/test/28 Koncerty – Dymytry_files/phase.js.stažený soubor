@@ -1,0 +1,153 @@
+/*!
+ * Additional Theme Methods
+ *
+ * Phase 1.3.3
+ */
+/* jshint -W062 */
+
+/* global PhaseParams, WVC */
+var Phase = function( $ ) {
+
+	'use strict';
+
+	return {
+		initFlag : false,
+		isWVC : 'undefined' !== typeof WVC,
+		isMobile : ( navigator.userAgent.match( /(iPad)|(iPhone)|(iPod)|(Android)|(PlayBook)|(BB10)|(BlackBerry)|(Opera Mini)|(IEMobile)|(webOS)|(MeeGo)/i ) ) ? true : false,
+
+		/**
+		 * Init all functions
+		 */
+		init : function () {
+
+			if ( this.initFlag ) {
+				return;
+			}
+
+			this.isMobile = PhaseParams.isMobile;
+
+			//this.setNavDesktopDataAttr();
+			this.offGridReleasesParallax();
+			this.cursorFollowingTitle();
+			this.buttonHoverEffect();
+
+			this.initFlag = true;
+		},
+
+		/**
+		 * Navigation hover effect
+		 */
+		setNavDesktopDataAttr : function () {
+			
+			if ( this.isMobile ) {
+				return;
+			}
+
+			var selector = '.nav-menu-desktop > li:not(.menu-button-primary):not(.menu-button-secondary) > a:first-child .menu-item-text-container';
+
+			$( selector ).each( function() {
+				$( this ).wrapInner( '<span />' );
+				$( this ).attr( 'data-text', $( this ).text() );
+			} );
+		},
+
+		/**
+		 * Off-grid releases parallax
+		 */
+		offGridReleasesParallax : function () {
+
+			if ( ! this.isWVC ) {
+				return;
+			}
+
+			$( '.entry-offgrid' ).each( function( index ) {
+
+				var y = -120,
+					marginTop = 60,
+					smoothness = 50;
+
+				if ( index % 2 === 0) {
+					y = 120;
+					marginTop = -60;
+				}
+
+				$( this ).attr( 'data-parallax', '{"y":' + y + ', "smoothness":' + smoothness + '}' )
+					.css( {
+						'top' : 60
+					} )
+					.removeClass( 'wow' );
+			} );
+		},
+
+		/**
+		 * Title following cursor effect
+		 */
+		cursorFollowingTitle : function () {
+
+			if ( this.isMobile ) {
+				return;
+			}
+
+			$( '.hover-effect-cursor .entry' ).each( function() {
+
+				var $item = $( this ),
+					$title = $item.find( '.entry-summary' );
+
+				$title.addClass( 'entry-summary-cursor' ).detach().prependTo( 'body' );
+
+				$title.find( 'a' ).contents().unwrap(); // strip tags
+
+				$item.on( 'mousemove', function( e ) {
+					$title.css( {
+						top: e.clientY,
+						left: e.clientX
+					} );
+				} );
+
+				$item.on( 'mouseenter', function() {
+					$title.addClass( 'tip-is-active' );
+
+				} ).on( 'mouseleave', function() {
+					$title.removeClass( 'tip-is-active' );
+				} );
+
+				$( window ).scroll( function() {
+					if ( $title.hasClass( 'tip-is-active' ) && ( $title.offset().top < $item.offset().top || $title.offset().top > $item.offset().top + $item.outerHeight() ) ) {
+						$title.removeClass( 'tip-is-active' );
+					}
+				} );
+			} );
+		},
+
+		/**
+		 * Custom button hover effect
+		 */
+		buttonHoverEffect : function () {
+			var selectors = '.phase_button, .phase_button2';
+
+			$( selectors ).on( 'mouseenter', function( e ) {
+				var parentOffset = $( this ).offset(),
+					relX = e.pageX - parentOffset.left,
+					relY = e.pageY - parentOffset.top;
+					$( this ).find( '.wvc-button-background-fill' ).css( { top:relY, left:relX } );
+			} )
+			.on( selectors, function( e ) {
+				var parentOffset = $( this ).offset(),
+					relX = e.pageX - parentOffset.left,
+					relY = e.pageY - parentOffset.top;
+					$( this ).find( '.wvc-button-background-fill' ).css( { top:relY, left:relX } );
+			} );
+		}
+	};
+
+}( jQuery );
+
+( function( $ ) {
+
+	'use strict';
+
+	$( document ).ready( function() {
+		Phase.init();
+	} );
+
+} )( jQuery );

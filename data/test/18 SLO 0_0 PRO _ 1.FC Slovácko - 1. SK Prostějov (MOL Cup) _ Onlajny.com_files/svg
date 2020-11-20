@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1" height="1" viewBox="0 0 1 1">
+    <defs>
+    <pattern id="7c2feb97-90cc-4509-8c3e-68dc3cab11f7" width="1" height="1"><image xlink:href="//aws.mpcsrv.com/9477e6bd226dfea263c374ec7262d351/6ebf0a58b1d2631ab144d6de72598ab8/CZ/D/C/pat06/png" width="1" height="1"/></pattern><pattern id="4a8ff8b6-0bab-4ee3-9cf4-8dec6942fa09" width="1" height="1"><image xlink:href="//aws.mpcsrv.com/b4667035f884d18cfc6debc4501383a2/6ebf0a58b1d2631ab144d6de72598ab8/CZ/D/C/pat07/png" width="1" height="1"/></pattern></defs>
+	<g>
+		<desc>Amazon S3</desc>
+        <a xlink:href="https://aws.amazon.com/s3/" target="_blank">
+            <rect x="0" y="0" width="100%" height="100%"/>
+        </a>
+	</g>
+</svg>

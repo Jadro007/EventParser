@@ -1,0 +1,32 @@
+.timed-offer-wrapper #countdown {
+  background: #0000;
+  float: right;
+  font-size: 2em;
+  margin: 0;
+  position: static;
+  width: auto;
+  text-align: center;
+  margin: 40px auto;
+}
+
+.timed-offer-wrapper #countdown>div.countdown {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3a8cbb), color-stop(50%, #347ea8), color-stop(50%, #4c96c1), to(#3a8cbb));
+  background-image: linear-gradient(to bottom, #3a8cbb 0%, #347ea8 50%, #4c96c1 50%, #3a8cbb 100%);
+  border: 2px solid #0054a6;
+  border-bottom: 2px solid #0054a6;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 0 3px rgba(50, 50, 50, 0.3);
+  box-shadow: 0 0 3px rgba(50, 50, 50, 0.3);
+  color: #fff;
+  float: left;
+  min-width: 2.3em;
+  padding: 0.3em 0;
+  position: relative;
+  margin: 0 0.2em;
+}
+
+.timed-offer-wrapper #countdown .countdown-unit {
+  color: #fff;
+  display: block;
+  font-size: .3em;
+}

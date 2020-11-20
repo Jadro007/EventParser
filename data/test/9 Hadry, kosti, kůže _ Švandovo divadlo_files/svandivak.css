@@ -1,0 +1,148 @@
+
+.container.svandivak {
+    background: none repeat scroll 0 0 #d2cfd2;
+}
+.svandivak .col-left {
+    float: left;
+    margin-right: 18px;
+    width: 630px;
+}
+.svandivak .col-right {
+    float: left;
+    width: 316px;
+}
+.svandivak .col-right .box {
+    background: none repeat scroll 0 0 #dddbdd;
+    margin-bottom: 20px;
+    padding: 7px;
+    position: relative;
+}
+
+.container.svandivak h1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #f0eff0;
+    text-transform: uppercase;
+    margin:10px 0;
+}
+.container.svandivak h2 {
+    font-size:25px;
+    color: #f0eff0;
+    margin:10px 0;
+}
+.container.svandivak h3 {
+    color: #008289;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 5px 0 26px;
+}
+.container.svandivak p {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 18px;
+    margin-bottom: 18px;
+}
+
+
+#frm-giftCouponSvandivakForm,
+#frm-registerSvandivakForm
+{
+    line-height:25px;
+    font-size:14px;
+}
+
+#frm-giftCouponSvandivakForm input[type="text"],
+#frm-giftCouponSvandivakForm input[type="email"],
+#frm-giftCouponSvandivakForm input[type="number"],
+#frm-giftCouponSvandivakForm textarea,
+#frm-registerSvandivakForm input[type="text"],
+#frm-registerSvandivakForm input[type="email"],
+#frm-registerSvandivakForm input[type="number"],
+#frm-registerSvandivakForm textarea {
+    width:290px;
+    height:20px;
+    padding-left:5px;
+    margin-bottom:5px;
+}
+#frm-giftCouponSvandivakForm textarea,
+#frm-registerSvandivakForm textarea {
+    height:40px;
+}
+
+.svandivak ol.list {
+    font-size:14px;
+    list-style:decimal;
+    line-height:18px;
+    margin-bottom:18px;
+}
+
+.svandivak ul.list {
+    font-size:14px;
+    list-style:disc;
+    line-height:18px;
+    margin-bottom:18px;
+}
+
+.svandivak li {
+    margin-left:15px;
+}
+.svandivak .tabs li {
+    margin-left:0;
+}
+.svandivak .col-right h3 {
+	font-size: 26px;
+	line-height: 28px;
+}
+#frm-giftCouponSvandivakForm input[type=submit],
+.svandivak .col-right input[type=submit] {
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	float: right;
+	margin-right: 4px;
+	text-align: center;
+	padding-right: 10px;
+	width: 117px;
+	background: url(../images/upcoming-tickets.png);
+	background-position: top right;
+	border: none;
+	cursor: pointer;
+}
+
+#frm-giftCouponSvandivakForm th,
+#frm-giftCouponSvandivakForm td {
+	text-align: left;
+	padding: 4px 8px 4px 0;
+	vertical-align: top;
+	width: 305px;
+}
+
+
+@media (max-width: 768px) {
+    .svandivak .col-left,
+    .svandivak .col-right {
+        border:none;
+        width:100%;
+    }
+
+    .svandivak .col-right {
+        margin-left:0;
+    }
+    #frm-giftCouponSvandivakForm input[type="text"],
+    #frm-giftCouponSvandivakForm input[type="email"],
+    #frm-giftCouponSvandivakForm input[type="number"],
+    #frm-giftCouponSvandivakForm textarea,
+    #frm-registerSvandivakForm input[type="text"],
+    #frm-registerSvandivakForm input[type="email"],
+    #frm-registerSvandivakForm input[type="number"],
+    #frm-registerSvandivakForm textarea {
+        width: 90%;
+        height: 2rem;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+    }
+}

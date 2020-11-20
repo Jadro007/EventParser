@@ -1,0 +1,1112 @@
+﻿var calendarThreshold = 5;
+var availableDates = [];
+var availableDatesCalendar = [];
+
+var availableTickets = [];
+var cartTickets = [];
+var cartData = [];
+
+var merchSelectors = [];
+
+var addToCartUrl = '/api/cart/ticket-add';
+var removeTicketUrl = '';
+
+var merchSelected = false;
+
+var lastPriceTitle = '';
+
+var timeSelection = false;
+
+var pricesDirectlyShown = false;
+var dateSelectionSkipped = false;
+
+var originalAvailableDates;
+var originalAvailableDatesCalendar;
+
+
+var supressDateSelection = false;
+
+var selectedDate = null;
+var selectedDateAndTime = null;
+var selectedPerformance = null;
+
+var discountCodeParentElement;
+var discountCodePopup;
+
+var discountCodeEntered = false;
+
+var ajaxCart = false;
+var hasSeatingChart = false;
+var discountInputActive = false; 
+
+var suppressCalendar = false;
+var calendarWasShown = false;
+
+function initTickets()
+{
+    addToCartUrl = ensureURL(addToCartUrl);
+
+    initAvailableDates();
+    originalAvailableDates = availableDates;
+    originalAvailableDatesCalendar = availableDatesCalendar;
+
+    if (availableTickets.options)
+        suppressCalendar = availableTickets.options.suppressCalendar;
+
+    console.log(availableDatesCalendar);
+
+    if (availableDatesCalendar.length >= calendarThreshold && !suppressCalendar)
+        calendars = new Calendars($('#calendars-placeholder'), availableDatesCalendar, iFrameOnlyBooker);
+
+    initDesktopPerformances();
+
+    if (window.location.href.includes('#'))
+    {
+        var perfID = parseInt(window.location.href.substring(window.location.href.indexOf('#') + 1));
+        if (Number.isInteger(perfID))
+            showTickets(perfID, 'performance');
+    }
+}
+
+function initDesktopPerformances()
+{
+    var dateText = hasDateTextPerformances(availableTickets.performances);
+
+    var performancesLength = 0;
+
+    if (availableTickets.performances)
+        performancesLength = availableTickets.performances.length;
+
+    if (availableDates.length == 0)
+    {
+        $('.get-tickets-button').hide();
+        $('#tickets-not-on-sale').show();
+    }
+    else if (availableTickets.performances && (dateText || availableDates.length > 1) && (availableDatesCalendar.length < calendarThreshold || suppressCalendar) && performancesLength != 1)
+    {
+        $('.get-tickets-button.desktop-only').hide();
+        $('.get-tickets-button.mobile-only').removeClass('hidden');
+
+        $('#tickets-not-on-sale').hide();
+
+        availableTickets.performances.forEach(function (element)
+        {
+            var dt = convertStringToDate(element['date']);
+            var rowElement = $('<div>').addClass('row');
+            $('#desktop-performances').append(rowElement);
+
+            var minPrice;
+            var maxPrice;
+
+            if (element['min_price'])
+                minPrice = element['min_price'];
+            else
+                minPrice = Min(element['content'], 'price', 'content');
+
+            if (element['max_price'])
+                maxPrice = element['max_price']
+            else
+                maxPrice = Max(element['content'], 'price', 'content');
+
+            var priceRange = formatMoneyRange(minPrice, maxPrice);
+
+            var lastColElement;
+
+            if (element.on_sale)
+                lastColElement = $('<button>')
+                            .addClass('btn black')
+                            .text(element.state_caption)
+                            .click(showPrices.bind(this, element, false));
+            else
+                lastColElement = $('<div>')
+                        .addClass('err active')
+                        .text(element.state_caption);
+
+            var dateElements
+
+            if (element.dateText == null)
+                dateElements =
+                [
+                    $('<div>')
+                        .addClass('small')
+                        .text(capitalizeFirstLetter(dayNames[dt.getDay()])),
+                    $('<div>')
+                        .text(formatDayAndMonth(dt)),
+                    $('<div>')
+                        .addClass('small')
+                        .text(formatTime(dt))
+                ];
+            else
+                dateElements = $('<div>').text(element.dateText);
+
+            rowElement.append
+                (
+                $('<div>')
+                    .addClass('col-20 condensed vertical-center date')
+                    .append(dateElements),
+                $('<div>')
+                    .addClass('col-20 vertical-center')
+                    .text(maxPrice == 0 ? '' : priceRange),
+                $('<div>')
+                    .addClass('col-20 right vertical-center')
+                    .append($('<div>').append(lastColElement))
+                )
+
+        });
+
+        $('#desktop-performances').show();
+
+    }
+    else
+    {
+        if (availableTickets.performances)
+        {
+            if (availableTickets.performances.length == 1)
+            {
+                var performance = availableTickets.performances[0];
+
+                if (performance.on_sale)
+                {
+                    $('div.get-tickets-button div, button.div.get-tickets-button')
+                        .text(performance.state_caption)
+
+                    $('.get-tickets-button').removeClass('hidden');
+                    $('.get-tickets-button').removeClass('mobile-only');
+
+                    $('#tickets-not-on-sale').hide();
+                }
+                else
+                {
+                    $('.get-tickets-button').addClass('hidden');
+                    $('#tickets-not-on-sale')
+                        .text(performance.state_caption)
+                        .show();
+                }
+            }
+            else
+            {
+                $('.get-tickets-button').removeClass('hidden');
+                $('.get-tickets-button').removeClass('mobile-only');
+
+                $('#tickets-not-on-sale').hide();
+            }
+        }
+        else
+        {
+            $('.get-tickets-button').removeClass('hidden');
+            $('.get-tickets-button').removeClass('mobile-only');
+
+            $('#tickets-not-on-sale').hide();
+        }
+
+    }
+}
+
+function initAvailableDates()
+{
+    if (availableTickets.performances)
+    {
+        if (availableTickets.performances.length > 0)
+        {
+            availableDates = [];
+            availableDatesCalendar = [];
+
+            availableTickets.performances.forEach(function (element)
+            {
+                var dt = ISOdateFormat(normalizeTime(element['date']));
+                element['date'] = dt;
+
+                if (availableDates.indexOf(dt) == -1)
+                {
+                    availableDates.push(dt);
+                    if (element.on_sale)
+                    {
+                        console.log(dt);
+                        availableDatesCalendar.push(dt);
+                    }
+                }
+            });
+        }
+        else
+            availableDatesCalendar = availableDates;
+
+        availableDates.sort();
+        availableDatesCalendar.sort();
+
+    }
+    else
+        availableDatesCalendar = availableDates;
+
+    for (var i = 0; i < availableDates.length; i++)
+    {
+        this.availableDates[i] = convertStringToDate(this.availableDates[i]);
+    }
+
+    for (var i = 0; i < availableDatesCalendar.length; i++)
+    {
+        this.availableDatesCalendar[i] = convertStringToDate(this.availableDatesCalendar[i]);
+    }
+
+}
+
+var showTicketsDoubleClick = false;
+
+function showTickets(itemID, itemType, insideBookerIFrame, bookerLangForced)
+{
+    if (showTicketsDoubleClick)
+        return;
+
+    showTicketsDoubleClick = true;
+
+    if (!bookerLangForced)
+        bookerLangForced = bookerLang;
+
+    window.setTimeout(function () { showTicketsDoubleClick = false; }, 700);
+
+    if (isBooker && !inlineBooker && !insideBookerIFrame && !iFrameOnlyBooker)
+    {
+        var data =
+        {
+            action: 'show-tickets',
+            id: itemID,
+            type: itemType,
+        };
+
+        window.top.postMessage(data, '*');
+
+    }
+    else
+    {
+        activatePopup('tickets-popup');
+        showStep('loader', true);
+        
+        var url = ts_url + 'api/available-tickets?type=' + itemType + '&id=' + itemID + (isBooker ? '&booker=' + bookerName + '&lang=' + bookerLangForced + '&tsid=' + tsCookie : '');
+        currentAvailableTicketsURL = url;
+
+        console.log(url);
+
+        $.getJSON(url, function (data)
+        {
+            console.log(data);
+
+            if (data.options.title)
+                $('.event-name').html(fixHtml(data.options.title));
+            else
+                $('.event-name').html('');
+
+            if (itemType == 'event')
+                eventID = itemID;
+
+            selectedDateAndTime = null;
+            selectedPerformance = null;
+            selectedDate = null;
+
+            availableTickets = data;
+            availableDates = data.availableDates;
+
+            initAvailableDates();
+
+            originalAvailableDates = availableDates;
+            originalAvailableDatesCalendar = availableDatesCalendar;
+
+            showDates();
+
+            var eventData =
+            {
+                itemID: itemID,
+                itemType: itemType,
+                ticketsData: data,
+                title: $('#translation-tickets').val() + ' - ' + data.options.title
+            };
+
+            trackBookerEvent('tickets-popup-loaded', eventData);
+        });
+    }
+}
+
+function showDates()
+{
+    $('.event-date').text('').hide();
+
+    timeSelection = false;
+    dateSelectionSkipped = false;
+
+    availableDates = originalAvailableDates;
+    availableDatesCalendar = originalAvailableDatesCalendar;
+
+    selectedDateAndTime = null;
+    selectedPerformance = null;
+
+    supressDateSelection = false;
+
+    if (availableDates.length == 0 && Object.keys(availableTickets.performances).length == 0)
+    {
+        backToInitialScreen();
+        var msg = $('#translation-tickets-not-on-sale').val(); 
+        showMessageBox(msg);        
+        return;
+    }
+    else if (
+        ((!hasDateTextPerformances(availableTickets.performances)
+        && availableDates.length == 1) ||
+        (availableTickets.performances && availableTickets.performances.length == 1))
+        || (availableTickets.options && availableTickets.options.suppressDateSelection))
+    {
+
+        supressDateSelection = true;
+        showPrices();
+    }
+    else if ((availableDatesCalendar.length < calendarThreshold || suppressCalendar) && (availableTickets.performances && !calendarWasShown))
+    {
+        activatePopup('tickets-popup');
+        $('#cancelDate').hide();
+        showStep('time-selection');
+        createDateTimeRadioButtons();
+        dateSelectionSkipped = true;
+    }
+    else
+    {
+        if (calendarWasShown)
+            availableTickets.performances = undefined;
+
+        calendarWasShown = true;
+        $('#calendars-placeholder').empty();
+
+        if (availableDatesCalendar.length == 0)
+            availableDatesCalendar = availableDates;
+
+        calendars = new Calendars($('#calendars-placeholder'), availableDatesCalendar, iFrameOnlyBooker);
+
+        activatePopup('tickets-popup');
+        showStep('date-selection');
+    }
+}
+
+
+
+function showTimes()
+{
+    console.log(selectedDate);
+
+    if (selectedDate == null)
+        return;
+
+    $('#continueButton').removeClass('red-background').addClass('white-background');
+
+    timeSelection = true;
+
+    showStep('time-selection');
+    resetWindowScroll()
+}
+
+function skipTime()
+{
+    var nextDay;
+    if (selectedDate != null)
+        nextDay = addDays(selectedDate, 1);
+
+    for (var i = 0; i < availableDates.length; i++)
+    {
+        if (selectedDate == null || (availableDates[i] >= selectedDate && availableDates[i] < nextDay))
+        {
+            selectedDateAndTime = availableDates[i];
+            break;
+        }
+    }
+
+    showDatePrices();
+}
+
+
+
+function hasDateTextPerformances(performances)
+{
+    if (!performances)
+        return false;
+
+    for (var i = 0; i < performances.length; i++)
+    {
+        if (performances[i].on_sale == false)
+            return true; 
+
+        if (performances[i].dateText != null)
+            return true;
+    }
+    return false;
+}
+
+
+function createDateTimeRadioButtons()
+{
+    $('#time-radio-buttons').empty();
+
+    var performances;
+    if (selectedDate == null)
+        performances = availableTickets.performances;
+    else
+        performances = getDatePerformances(selectedDate);
+
+    console.log(performances);
+
+    if (hasDateTextPerformances(performances))
+    {
+        for (var i = 0; i < performances.length; i++)
+        {
+            createPerformanceRadioButton(performances[i], i, performances[i].id);
+        }
+    }
+    else
+    {
+        var nextDay;
+        if (selectedDate != null)
+            nextDay = addDays(selectedDate, 1);
+
+        for (var i = 0; i < availableDates.length; i++)
+        {
+            if (selectedDate == null || (availableDates[i] >= selectedDate && availableDates[i] < nextDay))
+            {
+                var performances = getDatePerformances(availableDates[i])
+
+                if (performances.length == 1)
+                    createPerformanceRadioButton(performances[0], i);
+                else
+                    $('#time-radio-buttons').append(createDateTimeRadioButton(availableDates[i], i, null, true, null));
+            }
+        }
+    }
+}
+
+function createPerformanceRadioButton(performance, i, performanceID)
+{
+    var dt = dateFromISO(performance.date);
+
+    if (performance.dateText == null)
+        $('#time-radio-buttons').append(createDateTimeRadioButton(dt, i, null, performance.on_sale, performance.state_caption, performanceID, performance));
+    else
+        $('#time-radio-buttons').append(createDateTimeRadioButton(dt, i, performance.dateText, performance.on_sale, performance.state_caption, performanceID, performance));
+
+}
+
+function createDateTimeRadioButton(dt, i, dateText, onSale, stateCaption, performanceID, performance)
+{
+    var label = $('<label>').attr('for', (performanceID ? 'perf_' : 'time_') + i);
+
+    if (dateText == null)
+    {
+        var time = dt.getHours() + ':' + zeroPad(dt.getMinutes(), 2);
+
+        if (selectedDate == null)
+        {
+            label.text(formatDate(dt));
+            if (onSale)
+                label.append($('<span>').text(time));
+        }
+        else
+            label.text(time);
+    }
+    else
+        label.text(dateText);
+
+    if (performanceID)
+        var radioButton =
+            $('<input>')
+                .attr('type', 'radio')
+                .attr('value', performanceID)
+                .attr('name', 'perf')
+                .attr('id', 'perf_' + i)
+                .change(function ()
+                {
+                    selectPerformance($('input:radio[name=perf]:checked').val(), performance);
+                })
+    else
+        var radioButton =
+            $('<input>')
+                .attr('type', 'radio')
+                .attr('value', ISOdateFormat(dt))
+                .attr('name', 'time')
+                .attr('id', 'time_' + i)
+                .change(function ()
+                {
+                    selectDateAndTime($('input:radio[name=time]:checked').val());
+                })
+
+    if (!onSale)
+    {
+        radioButton.attr('disabled', 'disabled');
+        label.append(
+            $('<span>')
+                .text(stateCaption)
+                .addClass('err active'));
+    }
+
+    return $('<div>').append(radioButton, label);
+}
+
+function selectDateAndTime(dt)
+{
+    selectedDateAndTime = dt;
+    window.setTimeout(dateTimeSelected, 500);
+}
+
+function selectPerformance(performanceID, performance)
+{
+    selectedPerformance = performanceID;
+    window.setTimeout(function () { showPrices(performance) }, 500);
+}
+
+function dateTimeSelected()
+{
+    if (selectedDateAndTime == null && selectedPerformance == null)
+        return;
+
+    showDatePrices();
+}
+
+function showDatePrices()
+{
+    discountCodeEntered = false;
+
+    if (selectedPerformance)
+        var performances = getPerformanceById(selectedPerformance);
+    else
+        var performances = getDatePerformances(selectedDateAndTime);
+
+    $('#prices-list').empty();
+
+    priceSelectors = [];
+
+    performances.forEach(function (performanceData)
+    {
+        createPrices($('#prices-list'), performanceData);
+        if (performanceData.seatingchart_url)
+            hasSeatingChart = true; 
+    });
+
+    console.log(priceSelectors.length);
+
+    if (priceSelectors.length == 0 && !hasSeatingChart)
+    {
+        var msg = $('#translation-tickets-not-on-sale').val();
+        showMessageBox(msg, ticketsBack);
+    }
+}
+
+function getPerformanceById(performanceID)
+{
+    var result = [];
+
+    availableTickets.performances.forEach(function (performanceData)
+    {
+        if (performanceData.id == performanceID)
+            result.push(performanceData);
+    });
+
+    return result;
+
+}
+
+function getDatePerformances(dt)
+{
+    var result = [];
+
+    var sel
+
+    if (selectedDateAndTime == null)
+    {
+        if (selectedDate == null)
+            return result;
+        else
+            sel = selectedDate;
+    }
+    else
+    {
+        if (!(selectedDateAndTime instanceof Date))
+            selectedDateAndTime = convertStringToDate(selectedDateAndTime);
+        sel = selectedDateAndTime;
+    }
+
+    availableTickets.performances.forEach(function (performanceData)
+    {
+        var dt = convertStringToDate(performanceData['date']);
+
+        if (((dt.valueOf() == sel.valueOf()) && selectedDateAndTime != null)
+            || ((ISOdateFormat(dt, true) == ISOdateFormat(sel, true)) && selectedDateAndTime == null)
+        )
+            result.push(performanceData);
+    });
+
+    return result;
+}
+
+function showPrices(data)
+{
+    activatePopup('tickets-popup');
+    showStep('loader', true);
+
+    $.ajax({
+        url: ts_url + 'api/cart/show' + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : ''),
+        method: 'GET'
+    })
+      .done(function (response)
+      {
+          console.log(response); 
+
+          if (response)
+              cartTickets = response;
+
+          console.log(cartTickets);
+          showPricesSub(data);
+      });
+}
+
+var ticketsAlreadyInCart = 0;
+
+function showPricesSub(data, recursive)
+{
+    var parentElement = $('#prices-list');
+
+    if (!recursive)
+    {
+        parentElement.empty();
+        priceSelectors = [];
+        pricesDirectlyShown = true;
+        hasSeatingChart = false;
+    }
+
+    discountCodeEntered = false;
+
+    if (!data)
+    {
+        lastPriceTitle = '';
+        availableTickets.performances.forEach(function (e)
+        {
+            showPricesSub(e, true);
+        });
+
+        if (!recursive)
+        {
+            if (priceSelectors.length == 0 && !hasSeatingChart && !discountInputActive)
+            {
+                backToInitialScreen();
+                var msg = $('#translation-tickets-not-on-sale').val();
+                showMessageBox(msg);
+            }
+        }
+
+        return;
+    }
+
+    createPrices(parentElement, data, 'tickets-popup');
+}
+
+function createPrices(parentElement, data, popup)
+{
+    if (discountCodeEntered)
+    {
+        if (data.content.length == 0 && !data['seatingchart_url'])
+        {
+            backToInitialScreen();
+            var msg = $('#translation-tickets-not-on-sale').val();
+            showMessageBox(msg);
+        }
+    }
+
+    if (!supressDateSelection)
+    {
+        var dateText = formatDateTime(dateFromISO(data.date));
+
+        if (data.dateText != null)
+            dateText = data.dateText;
+
+        $('.event-date').text(dateText).show();
+    }
+
+    var performanceHasDiscountCode = isTrue(data.has_discount);
+
+    if (performanceHasDiscountCode && !discountCodeEntered)
+    {
+        if (popup)
+            activatePopup(popup);
+
+        showStep('discount-code-entry');
+        $('#coupon-code').val('');
+
+        discountCodeParentElement = parentElement;
+        discountCodeData = data;
+        discountCodePopup = popup;
+        discountInputActive = true;
+
+        if (data.discount)
+        {
+            $('.coupon-status.hide').hide();
+
+            if (data.discount.title)
+                $('#discount-coupon-title').text(data.discount.title);
+
+            if (data.discount.description)
+                $('#discount-coupon-description')
+                    .html(data.discount.description)
+                    .removeClass('hidden'); 
+
+            if (data.discount.caption)
+            {
+                var element = $('#coupon-code');
+                element.data('label', data.discount.caption);
+                initTextBox(element, true);
+            }
+
+            if (data.discount.img)
+                $('#discount-coupon-image')
+                    .attr('src', data.discount.img)
+                    .removeClass('hidden'); 
+
+            if (data.discount.mandatory)
+                $('#discount-codeContinueButton').hide();
+        }
+
+    }
+    else
+    {
+        discountInputActive = false;
+        var pricesData = data['content'];
+
+        if (data['seatingchart_url'])
+        {
+            console.log(data);
+
+            if (!data.on_sale)
+            {
+                backToInitialScreen();
+                return; 
+            }
+
+            $('.seating-chart-wrapper').hide();
+            $('.popup-active').removeClass('popup-active');
+            activatePopup('seatingchart-popup', true);
+            initSeatchart(data, availableTickets);
+            hasSeatingChart = true;
+
+            if (isBooker)
+                window.top.postMessage({ action: 'full-screen-toggle', active: true }, '*');
+        }
+        else
+        {
+            if (popup)
+                activatePopup(popup);
+
+            showStep('prices-selection', true);
+
+            var pricesArray = getPricesArray(pricesData, availableTickets.prices);
+
+            var singleTicket = Count(pricesArray, 'price') == 1 && availableTickets.performances.length == 1;
+
+            createPricesSub(parentElement, pricesData, singleTicket);
+
+            parentElement.toggleClass('single-price', singleTicket);
+
+            $('.multiple-tickets').toggleClass('hidden', !singleTicket);
+            $('.single-ticket').toggleClass('hidden', singleTicket);
+
+            if (singleTicket)
+                parentElement.find('.price-selector').after($('<div>').addClass('total'));
+
+            updateTotal();
+            allowCheckout();
+        }
+    }
+}
+
+
+function addPriceDescription(priceDataDetails, priceElement)
+{
+    if (priceDataDetails.description)
+    {
+        if (priceDataDetails.description != '')
+        {
+            priceElement.append
+            (
+            $('<div>')
+                .addClass('price-info-wrapper')
+                .append(
+                $('<a>')
+                    .addClass('expandable-heading condensed more no-border no-underline light')
+
+                    .text($('#translation-show-more-info').val())
+                    .click(function ()
+                    {
+                        var btn = $(this);
+                        if (btn.hasClass('active'))
+                        {
+                            btn.next().slideUp(300, function ()
+                            {
+                                btn.text($('#translation-show-more-info').val());
+                                btn.removeClass('active');
+                            });
+                        }
+                        else
+                        {
+                            btn.next().slideDown(300, function ()
+                            {
+                                btn.text($('#translation-hide-more-info').val());
+                                btn.addClass('active');
+                            });
+                        }
+                    })
+                    ,
+
+                $('<p>')
+                    .addClass('price-info')
+                    .html(fixHtml(priceDataDetails.description))
+                    .hide()
+             )
+            );
+        }
+    }
+}
+
+function createPricesSub(parentElement, pricesArray, singleTicket, sectorID)
+{
+    pricesArray.forEach(function (priceData)
+    {
+        if (priceData['content'] == undefined)
+        {
+            var priceElement = $('<div>').addClass('price');
+            var priceDataDetails = availableTickets.prices[priceData];
+
+            var priceInfoElement = $('<div>').addClass('info')
+                .append(
+                    ($('<div>').addClass('description').text(priceDataDetails['name'])),
+                    ($('<div>').addClass('amount').text(priceDataDetails['price'] + ' ' + currency))
+                );
+
+            var performanceID = priceDataDetails.performance_id;
+            var priceID = priceDataDetails.id;
+
+            var ticketCount = 0;
+
+            console.log(cartTickets); 
+
+            if (cartTickets.tickets)
+            {
+                cartTickets.tickets.forEach(function (reservation)
+                {
+                    console.log(reservation); 
+                    if (reservation.performanceId == performanceID)
+                    {
+                        reservation.content.forEach(function (ticket)
+                        {
+                            if (ticket.priceId == priceID && ticket.sectorId == sectorID)
+                                ticketCount++;
+                        });
+                    }
+                });
+            }
+
+            priceElement.append(priceInfoElement);
+
+            console.log(priceDataDetails);
+
+            var selector = new ticketSelector(priceElement, priceData, ticketCount > 0 ? ticketCount : (singleTicket ? parseInt(priceDataDetails['min_tickets']) : 0),
+                parseInt(priceDataDetails['min_tickets']), parseInt(priceDataDetails['max_tickets']),
+                parseInt(priceDataDetails['step']), !singleTicket || ticketCount > 0, priceDataDetails['price'],
+                sectorID, priceDataDetails,
+                function (selector)
+                {
+                    afterSelectorChange(selector, priceSelectors);
+                }
+                );
+
+            priceSelectors.push(selector);
+            ticketsAlreadyInCart += ticketCount;
+
+            addPriceDescription(priceDataDetails, priceElement);
+            parentElement.append(priceElement);
+        }
+        else
+        {
+            if (priceData['content'].length > 0)
+            {
+                var priceTitle = priceData['name'];
+                if (lastPriceTitle != priceTitle)
+                    parentElement.append($('<div>').addClass('h2').text(priceData['name']));
+
+                var sID = priceData['id'];
+
+                lastPriceTitle = priceTitle;
+                createPricesSub(parentElement, priceData['content'], singleTicket, sID);
+            }
+        }
+    });
+
+}
+
+var checkoutInProgress = false;
+
+function Checkout()
+{
+    if (checkoutInProgress || delayedDirectTicketChange)
+        return; 
+
+    console.log('checkout');
+
+    if (ticketsAlreadyInCart > 0)
+    {
+        if (isBooker)
+            window.top.postMessage({ action: 'hide-checkout-button' }, '*');
+
+        goToCart();
+        return;
+    }
+
+    if ((getTotalTicketCount() <= 0 || isPromoterAccess) && (!isBooker || iFrameOnlyBooker))
+        return;
+
+    checkoutButtonLoader(true);
+
+    $('.checkout-button').addClass('hidden');
+    $('.checkout-button-loader').removeClass('hidden');
+
+    if (isBooker)
+        window.top.postMessage({ action: 'hide-checkout-button' }, '*');
+
+    var selectedPrices = getSelectedPrices(priceSelectors)
+ 
+    var url = addToCartUrl + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : '')
+
+    console.log(url); 
+
+    if (selectedPrices.length > 0)
+    {
+
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: JSON.stringify(selectedPrices)
+        })
+            .done(function (response)
+            {
+                if (isBooker)
+                {
+                    var eventData =
+                      {
+                          requestData: selectedPrices,
+                          serverResponse: response
+                      };
+
+                    trackBookerEvent('tickets-added-to-cart', eventData);
+                }
+
+                console.log(response);
+
+                if (response.message === null)
+                {
+                    if (ajaxCart)
+                        showAjaxCart();
+                    else
+                        goToCart();
+                }
+                else
+                {
+                    cartItemsCount += response.tickets_added;
+                    showCartItemCount();
+
+                    var msgBoxCallback = null;
+                    var msg = response.message.replaceAll('{*}', formatTicketCount2(response.tickets_added));
+                    showMessageBox(msg);
+                    checkoutButtonLoader(false);
+                }
+            })
+            .fail(function (jqXHR, textStatus, errorThrown)
+            {
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+
+                showMessageBox(errorThrown);
+                checkoutButtonLoader(false);
+            });
+    }
+    else
+    {
+        if (isBooker)
+            goToCart();
+    }
+}
+
+function checkoutButtonLoader(b)
+{
+    checkoutInProgress = b;
+    $('.checkout-button-loader').toggleClass('hidden', !b);
+    $('.checkout-button').toggleClass('hidden', b);
+}
+
+
+function cancelDate()
+{
+    selectedDate = null;
+
+    $(".calendar .day.selected").removeClass("selected");
+    $('#showTimeButton').removeClass('red-background').addClass('white-background');
+    $('#skipTimeButton').removeClass('red-background').addClass('white-background');
+
+    showStep('date-selection');
+
+    $('.choose-date').hide();
+    $('#time-radio-buttons').empty();
+
+    resetWindowScroll()
+}
+
+
+function getPricesArray(data, prices)
+{
+    var result = [];
+    var currentSeatingChart = this;
+
+    data.forEach(function (f)
+    {
+        if (f.content)
+        {
+            f.content.forEach(function (e)
+            {
+                result.push(prices[e]);
+            });
+        }
+        else
+            result.push(prices[f]);
+    });
+
+    return result;
+}
+
+function afterSelectorChange(selector, selectors)
+{
+    if (ticketsAlreadyInCart > 0)
+    {
+        if (selector.timer)
+            if (selector.timer != null)
+                window.clearTimeout(selector.timer);
+
+        delayedDirectTicketChange = true;
+
+        $('.total').text('-'); 
+        selector.timer = window.setTimeout(function ()
+        {
+            selector.timer = null;
+            directTicketChange(selector, selectors, function ()
+            {
+                delayedDirectTicketChange = false;
+                allowCheckout();
+                updateTotal();
+            }
+            );
+        }, addTicketTimeout);
+    }
+    else
+        updateTotal();
+
+    allowCheckout();
+
+}
+
+

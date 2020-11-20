@@ -1,0 +1,52 @@
+var jqInst = ($ === undefined ? jq : $);
+var player;
+
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function getParentUrl() {
+    var DetectIframe = (parent !== window),
+        parentUrl = null;
+    if (DetectIframe) {
+        // parentUrl = document.referrer;
+        url = new URL(document.referrer);
+        parentUrl = url.hostname;
+    } else {
+        parentUrl = document.location.hostname;
+    }
+    return parentUrl;
+}
+
+jqInst(function() {
+    var partner_id = getUrlParameter('partner_id');
+    if ( ! partner_id ) {
+        partner_id = 'P-' + getParentUrl();
+    }
+
+    options = {
+        techOrder: ['html5'],
+        html5: {
+            hls: {
+              // overrideNative: true
+            }
+        },
+        plugins: {
+            tracker: {
+                partnerId: partner_id,
+                actionInterval: 30,
+                debug: true
+            }
+        }
+    };
+    videojs.registerPlugin('tracker', ElektrikaTrackerPlugin);
+    if ('video-player' in videojs.players ) {
+        player = videojs('video-player')
+        player.tracker(options.plugins.tracker);
+    } else {
+        player = videojs('video-player', options);
+    }
+});

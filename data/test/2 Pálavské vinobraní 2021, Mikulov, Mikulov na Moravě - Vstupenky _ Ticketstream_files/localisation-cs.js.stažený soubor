@@ -1,0 +1,173 @@
+﻿var currency = 'Kč';
+
+function fixMoneyFromServer(value)
+{
+    return value; // value / 100;
+}
+
+function formatMoney(v, curr)
+{
+    if (v == null)
+        return "";
+
+    if (!curr)
+        curr = currency;
+
+    if (curr == 'CZK')
+        curr = 'Kč';
+
+    return fixMoneyFromServer(v) + ' ' + curr;
+}
+
+function formatMoneyRange(minV, maxV, curr)
+{
+
+    if (minV == maxV)
+        return formatMoney(minV, curr);
+    else
+        return formatMoney(minV, curr) + ' \u2013 ' + formatMoney(maxV, curr);
+}
+
+function formatTicketCount(i)
+{
+    if (i == 0)
+        return "žádné vstupenky";
+    else if (i == 1)
+        return "1 vstupenka";
+    else if (i <= 4)
+        return i + " vstupenky";
+    else
+        return i + " vstupenek";
+}
+
+function formatTicketCount2(i)
+{
+    if (i == 0)
+        return "žádnou vstupenku"
+    else if (i == 1)
+        return "1 vstupenku";
+    else if (i <= 4)
+        return i + " vstupenky";
+    else
+        return i + " vstupenek";
+}
+
+
+//Day arrays start with Sunday
+var monthNames = ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'];
+var monthNames2 = ['ledna', 'února', 'března', 'dubna', 'května', 'června', 'července', 'srpna', 'září', 'října', 'listopadu', 'prosince'];
+
+var dayNames = ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'];
+var dayShortcuts = ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'];
+var calendarHeaderDays = ['n', 'p', 'ú', 's', 'č', 'p', 's'];
+
+
+function formatDate(dt)
+{
+    return capitalizeFirstLetter(dayNames[dt.getDay()])
+        + ' ' + dt.getDate() + '. '
+        + monthNames2[dt.getMonth()]
+        + ' ' + ((currentYear == dt.getFullYear()) ? '' : dt.getFullYear());
+}
+
+function formatDateShort(dt)
+{
+    return dt.getDate() + '. '
+            + monthNames2[dt.getMonth()]
+            + ' ' + dt.getFullYear();
+}
+
+function formatDayAndMonth(dt)
+{
+    return dt.getDate() + '. ' + monthNames2[dt.getMonth()];
+}
+
+function formatTime(dt)
+{
+    return dt.getHours() + ':' + zeroPad(dt.getMinutes(), 2);
+}
+
+function formatDateTimeRange(dt1, dt2)
+{
+    return formatDateRange(dt1, dt2, true);
+}
+
+function formatDateRange(dt1, dt2, includeTime)
+{
+    if (dt2 == null)
+        dt2 = dt1;
+
+    if (dt1 == null)
+        return '';
+
+    if (dt1 == '')
+        return '';
+
+    if(typeof dt1.getDate == 'undefined')
+        dt1 = dateFromISO(dt1);
+
+    if (typeof dt2.getDate == 'undefined')
+        dt2 = dateFromISO(dt2);
+
+    dt1 = normalizeTime(dt1);
+    dt2 = normalizeTime(dt2);
+
+    if (!includeTime)
+    {
+        dt1 = removeTimeFromDate(dt1);
+        dt2 = removeTimeFromDate(dt2);
+    }
+
+    if (Date.parse(removeTimeFromDate(dt1)) == Date.parse(removeTimeFromDate(dt2)))
+    {
+        var result = capitalizeFirstLetter(dayNames[dt1.getDay()]) + ' ' + formatDayAndMonth(dt1);
+
+        if (dt1.getFullYear() != new Date().getFullYear())
+            result += ' ' + dt1.getFullYear();
+
+        if (includeTime)
+            result += ' ' + formatTime(dt1); 
+    }
+    else
+    {
+        if (dt1.getMonth() == dt2.getMonth())
+        {
+            var result = dt1.getDate() + '. ' 
+
+            if (dt1.getDate() != dt2.getDate())
+                result += '- ' + dt2.getDate() + '. ';
+
+            result += monthNames[dt1.getMonth()];
+
+            if (dt1.getFullYear() != new Date().getFullYear())
+                result += ' ' + dt1.getFullYear();
+        }
+        else
+        {
+            var result = dt1.getDate() + '. ' + (dt1.getMonth() + 1) + '.';
+            if (dt1.getFullYear() != new Date().getFullYear())
+                result += ' ' + dt1.getFullYear();
+
+            result += ' - ';
+            result += dt2.getDate() + '. ' + (dt2.getMonth() + 1) + '.';
+
+            if (dt2.getFullYear() != new Date().getFullYear() || dt1.getFullYear() != new Date().getFullYear())
+                result += ' ' + dt2.getFullYear();
+        }
+    }
+    return result; 
+}
+
+function formatTimeRange(dt1, dt2)
+{
+    var result = formatTime(dt1);
+    if (formatTime(dt1) != formatTime(dt2))
+        result += ' - ' + formatTime(dt2);
+
+    return result;
+}
+
+function formatDateTime(dt)
+{
+    return formatDate(dt) + ' ' + formatTime(dt); 
+}

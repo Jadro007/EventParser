@@ -1,0 +1,3 @@
+fragment=new URI().get('fragment');var action,id;if(fragment){flags=fragment.split(':');if(flags.length=2){action=flags[0];id=flags[1];}}
+if(action=='term'&&$(id)){el=$(id);time=el.get('text');date=el.getParent('.nav').getElement('.hd > .header').get('text');loc=el.getParent('.section').getElement('div > strong > a').clone();loc.addClass('neutral-2-color');loc.inject($('js-category-placeholder'));$('js-category-placeholder').removeClass('hdn');$('js-terms-placeholder').set('text',date+' '+time);}
+window.addEvent('domready',function(){banner_grab=$('size745x200_kraje_grab');banner_inject=$('size745x200_kraje_inject');if(banner_grab!==null&&banner_inject!==null){banner_grab.inject(banner_inject);}});

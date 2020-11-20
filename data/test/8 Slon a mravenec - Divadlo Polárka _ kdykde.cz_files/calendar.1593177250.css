@@ -1,0 +1,46 @@
+.month.calendar td, .week.calendar
+.td{min-height:80px;padding:5px}.month.calendar
+td{height:80px}.month.calendar .day-num, .week.calendar .day-num{padding:0
+3px}.month-small.calendar th, .month-small.calendar
+td{height:30px;line-height:30px}.month-small.calendar .day-num{display:block;height:30px;line-height:30px}.week.calendar
+.collapse.td{min-height:0 !important;padding-left:0;padding-right:0}.one-event.list-calendar{margin-bottom:0}.one-event.list-calendar+.one-event.list-calendar{padding-top:12px}.short.event{margin-bottom:0}.basic.short.event{padding:20px
+0}.basic.short.event.first.ext{padding-top:0}.sidebar.short.event{padding:0
+14px 12px 14px;margin-left:-14px;margin-right:-14px}.sidebar.short.event+.sidebar.short.event{padding-top:12px}.sidebar.short.event .img
+img{margin-bottom:0}.sidebar.short.event .img>*+*{display:block;margin-top:9px}.sidebar.short.event
+.heading{margin-bottom:6px}.content-sidebar.short.event{padding:0
+0 12px 0}.content-sidebar.short.event+.content-sidebar.short.event{padding-top:12px}.short.event
+.description{margin-bottom:0}.content-sidebar.short.event
+.heading{margin-bottom:0}.encased.event>.float.img{padding:15px
+15px 0 0}.encased.event > .float.img *+*{margin-top:10px}.encased.event > .float.img
+img{margin-bottom:0}.encased.event>.hd{padding:15px
+15px 0 15px}.encased.event>.bd,.encased.event>.ft{padding:15px}.encased.event>.hd~.bd,.encased.event>.bd~.ft{padding-top:0}.margin-lt-rt-card-event-negative{margin:0
+-2px}.margin-lt-rt-card-event-negative
+.card.event{margin:0
+2px 14px 2px}.card.event{padding:10px}.card.event
+.img{margin:-10px -10px 10px -10px}.card.event
+.hd{margin-bottom:7px}.card.event
+.head{font-size:13px}.card.event .hd-bd{margin-bottom:10px}.card.event
+.ft{line-height:1}.card.event
+.more{display:inline-block;width:18px;height:18px;line-height:18px;font-size:16px;text-align:center}.card.event .more [class*="icon-"]{display:inline-block;margin-top:1px}.expand.card.event{padding:14px;overflow:hidden;position:relative}.expand.card.event
+.img{width:33.333333333%;float:left;margin:-14px 14px -14px -14px}.expand.card.event .hd-bd{overflow:hidden;margin-bottom:0}.expand.card.event
+.hd{margin-bottom:9px}.expand.card.event
+.head{font-size:17px}.expand.card.event .date-location, .expand.card.event .inline.nav .contents, .expand.card.event .inline.nav .item:after{font-size:15px}.expand.card.event .date-location{margin-bottom:9px}.expand.card.event
+.description{font-size:14px;line-height:1.25;margin-right:42px}.expand.card.event
+.more{position:absolute;right:14px;bottom:14px;width:28px;height:28px;line-height:28px;font-size:24px}@media only screen and (max-width: 767px){.week.calendar
+.td{padding-left:0;padding-right:0}.margin-lt-rt-card-event-negative{margin:0}.margin-lt-rt-card-event-negative
+.card.event{margin:0
+0 14px 0}.expand.card.event
+.img{width:auto;float:none;margin:-14px -14px 14px -14px}}.calendar-map{height:400px;width:auto;border:2px
+solid black}.calendar td, .week.calendar
+.td{border:1px
+solid #e5e5e5;background-color:#fff}.calendar .column + .column
+.td{border-left:none}.calendar
+td.today{background-color:#EAEFF8}.calendar
+td.disabled{color:#999;background-color:#f7f7f7}.month-small.calendar th, .month-small.calendar
+td{font-weight:normal;text-align:center}.month-small.calendar .day-num{text-decoration:none}.month-small.calendar a.day-num:hover, .month-small.calendar a.day-num:focus{color:#fff;background-color:#2A85E8}.week.calendar
+.collapse.td{border:none;border-top:solid 1px #e5e5e5;background-color:transparent}.one-event.list-calendar+.one-event.list-calendar{border-top:1px solid #7f7f7f}.basic.short.event{border-bottom:solid 1px #000}.basic.short.event.first{border-top:solid 4px #000}.basic.short.event.first.ext{border-top:none}.sidebar.short.event+.sidebar.short.event{border-top:solid 1px #000}.content-sidebar.short.event+.content-sidebar.short.event{border-top:1px solid #7f7f7f}.contrast.event, .contrast-less.event, .contrast.event .nav, .contrast-less.event .nav, .contrast.event .nav .item .contents, .contrast-less.event .nav .item
+.contents{color:#bfbfbf}.contrast.event a, .contrast-less.event a, .contrast.event .head, .contrast-less.event
+.head{color:#fff}.contrast.event{background-color:#000}.contrast-less.event{background-color:#545454}.neutral.event{background-color:#d1d1d1}.neutral-less.event{background-color:#ededed}.card.event
+.more{color:#662D91;background-color:#fff}.contrast.card.event .more, .contrast-less.card.event .more, .neutral.card.event
+.more{color:#fff;background-color:#662D91}@media only screen and (max-width: 767px){.week.calendar
+.td{border:none;border-top:solid 1px #e5e5e5;background-color:transparent}}

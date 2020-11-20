@@ -1,0 +1,347 @@
+﻿
+
+function login()
+{
+    var valid = genericFormValidation('login-form', true);
+
+    if (!valid)
+        return;
+
+    var data = { 'email': $('#login-email').val(), 'password': $('#login-password').val() };
+
+    $('#login-button').hide();
+    $('#login-loader').show();
+    $('#login-err').removeClass('active').text('');
+
+    console.log(data);
+
+    $.ajax({
+        url: ts_url + 'api/account/login',
+        method: 'POST',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            if (response.ok)
+            {
+                console.log(response);
+                backToInitialScreen();
+                $('#menu-login').hide();
+                $('#menu-profile')
+                    .show()
+                    .text(response.settings.displayName)
+                    .click();
+
+                $('.login-prompt').addClass('hidden');
+                $('.logout-prompt').removeClass('hidden');
+
+                if ($('#cart-content').length == 1)
+                {
+                    $.ajax({
+                        url: ts_url + 'api/cart/show',
+                        method: 'POST',
+                        data: null
+                    })
+                          .done(function (response)
+                          {
+                              console.log(response);
+                              userLoggedIn = true;                              
+                              cartData = response;
+                              initPaymentData();
+                              $('.prompt-for-login').slideUp(1000);
+                              $('.email-validation-warning').removeClass('active');
+                          });
+
+                }
+            }
+            else
+            {
+                var msg = response.message;
+
+                $('#login-err')
+                    .text(response.message)
+                    .addClass('active');
+
+                $('#login-button').show();
+                $('#login-loader').hide();
+
+                // console.log(response);
+            }
+
+        })
+        .fail(function (jqXHR, textStatus, errorThrown)
+        {
+            console.log(errorThrown, jqXHR);
+
+        }
+        );
+
+
+}
+
+function logout()
+{
+    $.ajax({
+        url: ts_url + 'api/account/logout',
+        method: 'POST',
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            if (response.ok)
+            {
+                $('#menu-login').show();
+                $('#menu-profile')
+                    .removeClass('show')
+                    .hide()
+                    .text('');
+                location.reload();
+                $('.login-prompt').removeClass('hidden');
+                $('.logout-prompt').addClass('hidden');
+            }
+            else
+                alert(response.message);
+        });
+}
+
+function facebookLogin()
+{
+    $.ajax({
+        url: ts_url + 'api/account/fblink',
+        method: 'POST',
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            var url = response.fbLink;
+            window.location.href = url;
+        });
+}
+
+function registerUser()
+{
+
+    $('#register-form .err').removeClass('active');
+
+    var valid = genericFormValidation('register-form', true);
+    $('#register-form-missing-fields').toggleClass('active', !valid);
+
+    if (!valid)
+        return;
+
+    if ($('#register-password').val() != $('#register-password2').val())
+    {
+        $('#register-form-missing-fields').addClass('active');
+        $('#register-password').addClass('validation-err');
+        $('#register-password2').addClass('validation-err');
+        return;
+    }
+
+    var data = {};
+    prepareGenericFormData('register-form', data, true);
+
+    $.ajax({
+        url: ts_url + 'api/account/signup',
+        data: JSON.stringify(data),
+        method: 'POST',
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            if (response.ok)
+                location.reload(true);
+            else
+                $('#register-form-generic-err')
+                    .text(response.message)
+                    .addClass('active');
+
+        });
+
+}
+
+
+function lostPassword()
+{
+
+    $('#lost-password-form .err').removeClass('active');
+
+    var valid = genericFormValidation('lost-password-form', true);
+
+    console.log(valid);
+
+    $('#lost-password-form-missing-fields').toggleClass('active', !valid);
+
+    if (!valid)
+        return;
+
+    var data = {};
+    prepareGenericFormData('lost-password-form', data, true);
+
+    $.ajax({
+        url: ts_url + 'api/account/lost-pwd',
+        data: JSON.stringify(data),
+        method: 'POST',
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            if (response.ok)
+            {
+                $('#lost-password-form').hide();
+                $('#lost-password-result').show();
+            }
+            else
+            {
+                $('#lost-password-form-generic-err')
+                    .text(response.message)
+                    .addClass('active');
+
+            }
+            //alert(response.message);
+
+        });
+
+}
+
+
+function saveProfileData(parentID, btn)
+{
+    var btnParent = btn.parent();
+
+    btnParent.find('.ok').removeClass('active');
+    btnParent.find('.err').removeClass('active');
+
+    var data = {};
+    prepareGenericFormData(parentID, data, true);
+
+    console.log(data);
+
+    btn.hide();
+    btnParent.find('.loader').show();
+
+
+    $.ajax({
+        url: ts_url + 'api/account/update',
+        data: JSON.stringify(data),
+        method: 'POST',
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            if (response.ok)
+            {
+                btn.show();
+                btnParent.find('.loader').hide();
+                btnParent.find('.ok').addClass('active');
+            }
+            else
+            {
+                console.log(response.message);
+                btn.show();
+                btnParent.find('.loader').hide();
+                btnParent.find('.err').addClass('active');
+            }
+        });
+
+}
+
+function saveProfileCheckBox(chkBox)
+{
+    var data = {};
+    data[chkBox.attr('name')] = (chkBox.is(':checked') ? 1 : 0);
+
+    $.ajax({
+        url: ts_url + 'api/account/update',
+        data: JSON.stringify(data),
+        method: 'POST',
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            if (!response.ok)
+                alert(response.message);
+        });
+}
+
+function changePassword()
+{
+    $('#change-password-results .ok').removeClass('active');
+    $('#change-password-results .err').removeClass('active');
+
+    if (genericFormValidation('profile-form-change-password', true))
+    {
+        if ($('#profile-new-password').val() != $('#profile-repeat-password').val())
+        {
+            $('#profile-new-password').addClass('validation-err');
+            $('#profile-repeat-password').addClass('validation-err');
+            $('#passwords-nomatch').addClass('active');
+            return;
+        }
+
+        var data = {};
+        data['newPassword'] = $('#profile-new-password').val();
+        data['oldPassword'] = $('#profile-old-password').val();
+
+
+        console.log(data);
+
+        $.ajax({
+            url: ts_url + 'api/account/change-pwd',
+            data: JSON.stringify(data),
+            method: 'POST',
+            contentType: "application/json; charset=UTF-8"
+        })
+            .done(function (response)
+            {
+                if (response.ok)
+                    $('#change-password-results .ok').addClass('active');
+                else
+                    showMessageBox(response.message);
+            });
+    }
+
+}
+
+function resetPassword()
+{
+    $('#change-password-results .ok').removeClass('active');
+    $('#change-password-results .err').removeClass('active');
+
+    if (genericFormValidation('reset-password-form', true))
+    {
+
+        if ($('#profile-new-password').val() != $('#profile-repeat-password').val())
+        {
+            $('#profile-new-password').addClass('validation-err');
+            $('#profile-repeat-password').addClass('validation-err');
+            $('#passwords-nomatch').addClass('active');
+            return;
+        }
+
+
+        var data = {};
+        data['password'] = $('#profile-new-password').val();
+        data['token'] = $('#password-reset-token').val();
+
+        console.log(data);
+
+        $.ajax({
+            url: ts_url + 'api/account/reset-pwd',
+            data: JSON.stringify(data),
+            method: 'POST',
+            contentType: "application/json; charset=UTF-8"
+        })
+            .done(function (response)
+            {
+                if (response.ok)
+                {
+                    $('#change-password-results .ok').addClass('active');
+                    $('#change-password-results button').hide();
+                }
+                else
+                    showMessageBox(response.message);
+            });
+
+    }
+}

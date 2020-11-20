@@ -1,0 +1,14 @@
+  body {
+	margin: 0!important;
+	font-family: Tahoma, Geneva, sans-serif!important;
+	font-size: 11px!important;
+	color: #303030!important;
+	
+	/* background: url(img/onlajny_reklama_afh.jpg) center top no-repeat #000000!important; */
+
+    cursor:pointer!important;
+    background-color: #ffffff!important;
+
+    /* repeat-y */
+
+}

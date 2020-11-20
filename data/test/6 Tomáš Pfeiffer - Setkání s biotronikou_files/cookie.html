@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- saved from url=(0160)https://www.seznam.cz/cookie?0.4788291799325115&dsid=id%3D15682576058663322576%7Ct%3D1591718637.679%7Cte%3D1601905658.743%7Cc%3D0681E14DCE6C141404266562BFF85CE7 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var logEnabled = false;
+        function log() {
+            if (!logEnabled) {return }
+            // prvni param - box
+            var args = Array.prototype.slice.call(arguments, 0);
+            var params = ['%c'+args[0], 'display: inline-block; color: #fff; background: #8bc34a; padding: 1px 4px; border-radius: 3px;'];
+            for (var i = 1; i < args.length; i++) {
+                params.push(args[i]);
+            }
+            console.log.apply(console, params);
+        }
+
+        var getItem = function (sKey) {
+            if (!sKey) { return null; }
+            try {
+				// kvuli amp
+				return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+			} catch (e) {
+				return null;
+			}
+        }
+
+        // ziskej sid z domeny .imedia.cz
+        var sid = getItem("sid");
+        if (sid) {
+            // postMessage do sluzby
+            var message = {name: "sidUpdate", sid: sid, domain:"seznam"}
+            window.parent.postMessage(JSON.stringify(message), '*'); // tady bude origin
+            log('DOT-cookie-szn', 'Sending postmessage sidUpdate');
+        }
+        log('DOT-cookie-szn', 'show sid: ', sid);
+    </script>
+
+</body></html>

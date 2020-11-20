@@ -1,0 +1,283 @@
+ns4 = document.layers
+ie = document.all 
+ie4 = document.all 
+nn6 = document.getElementById && !document.all 
+var cel=0;
+
+function radio2(id)
+{	
+	dd="rad2_"+id;
+	kr="krok2";
+	if (ns4) {
+	if(document.dd.checked)
+		{
+		cel+=1;
+		if(cel==4)
+		{
+		alert("Muzete vybrat maximalne 3 vinare!");
+		document.dd.checked="";
+		cel=3;
+		}
+		}
+	else
+		{cel-=1;}
+	if(cel)
+		{document.kr.disabled="";}
+	else {document.kr.disabled="true";}
+	
+      
+   	}
+ 	  else if (ie) {
+	if(document.getElementById(dd).checked)
+		{
+		cel+=1;
+		if(cel==4)
+		{
+		alert("Muzete vybrat maximalne 3 vinare!");
+		document.getElementById(dd).checked="";
+		cel=3;
+		}
+		}
+	else
+		{cel-=1;}
+	if(cel)
+		{document.getElementById('krok2').disabled="";}
+	else {document.getElementById('krok2').disabled="true";}
+   	}
+  	 else if (nn6) {
+	
+      	
+	if(document.getElementById(dd).checked)
+		{
+		cel+=1;
+		if(cel==4)
+		{
+		alert("Muzete vybrat maximalne 3 vinare!");
+		document.all.item(dd).checked="";
+		cel=3;
+		}
+		}
+	else
+		{cel-=1;}
+	if(cel)
+		{document.getElementById('krok2').disabled="";}
+	else {document.getElementById('krok2').disabled="true";}
+ 	  	
+  	 }
+	
+}
+
+
+
+
+
+function radioX(id)
+{	
+	dd="rad"+id;
+	kr="krok2";
+	if (ns4) {
+	if(document.dd.checked)
+		{
+		cel+=1;
+		if(cel==4)
+		{
+		alert("Muzete vybrat maximalne 3 vina!");
+		document.dd.checked="";
+		cel=3;
+		}
+		}
+	else
+		{cel-=1;}
+	if(cel)
+		{document.kr.disabled="";}
+	else {document.kr.disabled="true";}
+	
+      
+   	}
+ 	  else if (ie) {
+
+	if(document.getElementById(dd).checked)
+		{
+		cel+=1;
+		if(cel==4)
+		{
+		
+		alert("Muzete vybrat maximalne 3 vina!");
+		document.getElementById(dd).checked="";
+		//document.all.item(dd).checked="";
+		cel=3;
+		}
+		}
+	else
+		{cel-=1;}
+	if(cel)
+		{document.getElementById('krok1').disabled="";}
+	else {document.getElementById('krok1').disabled="true";}
+   	}
+  	 else if (nn6) {
+	
+      	
+	if(document.getElementById(dd).checked)
+		{
+		cel+=1;
+		if(cel==4)
+		{
+		alert("Muzete vybrat maximalne 3 vina!");
+		document.getElementById(dd).checked="";
+		cel=3;
+		}
+		}
+	else
+		{cel-=1;}
+		if(cel)
+			{document.getElementById('krok1').disabled="";}
+		else {document.getElementById('krok1').disabled="true";}
+ 	  	
+  	 }
+	
+	
+}
+
+function opravdu(sm)
+		{
+		if (confirm("Chcete opravdu smazat toto víno/ Are you sure to delete this wine?"))
+			{
+			window.location="https://www.vinarskecentrum.cz/registrace-vin/?co=soutez&ak=mojevina&amp;akce=smazat&amp;id="+sm;
+			
+			}
+		}
+		
+		
+		
+function tisk(w,sou)
+		{
+		window.open("https://www.vinarskecentrum.cz/file/SV-tisk.php?zak="+w+"&sou="+sou,"show_big","toolbar=0,scrollbars=1,location=0,status=0,width=750px,height=900px,resizable=1,menubar=0,directories=0")
+		}	
+
+
+	
+
+
+function vino(vin)
+{
+
+
+
+ if (ie4){
+	if(!vin)
+		{document.getElementById('nazev_vina').innerText='';}
+	else
+		{
+ 
+
+	  ret=document.getElementById('nazev_v['+vin+']').getAttribute("value");
+	  naz=ret.split('/');
+  	document.getElementById('nazev_vina').innerText=naz[0] ;  
+		//document.getElementById('nazev_vina').innerText=document.getElementById('nazev_v['+vin+']').getAttribute("value") ;
+		
+		}
+		
+      }
+ else if (nn6) {
+	if(!vin)
+		{document.getElementById('nazev_vina').value='';}
+	else
+		{
+		ret=document.getElementById('nazev_v['+vin+']').getAttribute("value");;
+	  naz=ret.split('/');
+  	document.getElementById('nazev_vina').value=naz[0] ;
+		//document.getElementById('nazev_vina').value=document.getElementById('nazev_v['+vin+']').getAttribute("value") ;
+    }
+   }
+	
+}
+
+function zem(zz)
+{
+	if(zz==1)
+		{
+		if (nn6)
+		{	 document.getElementById('oblast1').style.display='none';
+			 document.getElementById('oblast').style.display='';
+			 document.getElementById('zarazeni1').style.display='none';
+			 document.getElementById('zarazeni').style.display='';
+			}
+		else
+			{
+			document.getElementById('oblast1').style.display='none';
+			document.getElementById('oblast').style.display='';
+			document.getElementById('zarazeni1').style.display='none';
+			document.getElementById('zarazeni').style.display='';
+			}
+
+	}
+	else
+		{
+		if (nn6)
+		{	 document.getElementById('oblast').style.display='none';
+			 document.getElementById('oblast1').style.display='';
+			 document.getElementById('zarazeni').style.display='none';
+			 document.getElementById('zarazeni1').style.display='';
+			}
+		else
+			{
+			document.getElementById('oblast').style.display='none';
+			document.getElementById('oblast1').style.display='';
+			document.getElementById('zarazeni').style.display='none';
+			document.getElementById('zarazeni1').style.display='';
+			}
+		
+	}
+}
+
+function kat(zz)
+{
+	if(!zz)
+		{document.getElementById('katU').innerText='';}
+	else
+		{document.getElementById('katU').innerText=document.all.item('kat_POP['+zz+']').value;}
+}
+
+
+
+function hideObject(id) {
+   if (ns4) {
+      document.id.visibility = "hide";
+   }
+   else if (ie4) {
+      document.getElementById(id).style.visibility = "hidden";
+   }
+   else if (nn6) {
+      document.getElementById(id).style.visibility = "hidden";
+   }
+}
+
+// Show/Hide functions for pointer objects
+
+function showObject(id) {
+   if (ns4) {
+      document.id.visibility = "show";
+   }
+   else if (ie4) {
+      document.getElementById(id).style.visibility = "visible";
+   }
+   else if (nn6) {
+      document.getElementById(id).style.visibility = "visible";
+   }
+}
+
+function radio(id)
+{
+	dd="rad"+id;
+	if (ns4) {
+      document.dd.checked = "true";
+   	}
+ 	  else if (ie4) {
+	document.getElementById(dd).checked="true";
+   	}
+  	 else if (nn6) {
+	
+      	document.getElementById(dd).checked="true";
+  	 }
+	
+}

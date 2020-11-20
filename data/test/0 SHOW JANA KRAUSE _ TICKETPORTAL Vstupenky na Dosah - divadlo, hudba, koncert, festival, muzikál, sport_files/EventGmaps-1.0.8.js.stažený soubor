@@ -1,0 +1,392 @@
+﻿// When the window has finished loading create our google map below
+//google.maps.event.addDomListener(window, 'load', Gmaps_init);
+
+/*$(document).ready(function () {
+    Gmaps_init();
+});*/
+
+var mapaNacitana = false;                                   // Ak je true, mapa je uz nacitana a uz ju netreba znovu nacitavat
+var map = null;                                             // Objekt mapy
+var geocoder = null;                                        // Objekt geocodera ktory prevadza adresy na LAT, LON
+var zoznamHladiskAsync = new Array();                       // Zoznam hladisk pre ktore budeme asynchronne hladat polohu
+var infoWindowOpened = null;                                // Ukazovatel na informacne okno na mape ktore je prave otvorene
+var zoznamMarkerov = new Array();                           // Zoznam vsetkych znaciek na mape
+
+
+function Gmaps_init() {
+
+    if (mapaNacitana == true)
+        return;
+
+    mapaNacitana = true;
+
+    // Basic options for a simple Google Map
+    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+
+    var _lat = 48.1458923;
+    var _lon = 17.1071373;
+
+    if (lokalita == 'cz') { _lon = 14.4378005, _lat = 50.0755381; }
+
+    // mapmarker
+    var mapOptions = {
+        // How zoomed in you want the map to start at (always required)
+        zoom: 11,
+        scrollwheel: false,
+        // The latitude and longitude to center the map (always required)
+        center: new google.maps.LatLng(_lat, _lon), // Bratislava
+        scaleControl: true,
+        // How you would like to style the map.
+        // This is where you would paste any style found on Snazzy Maps.
+        styles: [{ "featureType": "all", "stylers": [{ "saturation": 0 }, { "hue": "#e7ecf0" }] }, { "featureType": "road", "stylers": [{ "saturation": -70 }] }, { "featureType": "transit", "stylers": [{ "visibility": "off" }] }, { "featureType": "poi", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "stylers": [{ "visibility": "simplified" }, { "saturation": -60 }] }]
+    };
+    // Get the HTML DOM element that will contain your map
+    // We are using a div with id="map" seen below in the <body>
+    var mapElement = document.getElementById('map-canvas');
+
+    // Create the Google Map using out element and options defined above
+    map = new google.maps.Map(mapElement, mapOptions);
+    geocoder = new google.maps.Geocoder();
+
+
+    // Ked klikne na mapu, tak povolime zoomivanie koleckom
+    google.maps.event.addListener(map, 'click', function (event) {
+        this.setOptions({ scrollwheel: true });
+    });
+
+    // ked klikne mimo tak zakazeme
+    $(document).click(function (evt) {
+        var target = $(evt.target);
+        var isMap = false;
+
+        while (true) {
+            if (target.attr('id') == "map-canvas") {
+                isMap = true;
+                break;
+            }
+            if (target[0] == document)
+                break;
+
+            target = target.parent();
+
+            if(target.length == 0)
+                return;
+        }
+
+        if (isMap == false)
+            map.setOptions({ scrollwheel: false });
+    });
+
+    google.maps.event.addListener(map, 'zoom_changed', function () {
+        //document.getElementById('map-canvas-zoom').innerHTML = map.zoom;
+        // 3 seconds after the center of the map has changed, pan back to the
+        // marker.
+        //window.setTimeout(function () {
+        //    map.panTo(marker.getPosition());
+        //}, 3000);
+    });
+
+    var zoznamHladisk = new Array();                        // Sem si ulozime vsetky hladiska pre toto podujatie resp. NPodujatie
+    var zhpocet = 0;
+
+    for (var i in ID_Predstavenie) {
+        if (ID_Predstavenie.hasOwnProperty(i)) {
+            var id_predstavenie = ID_Predstavenie[i];
+            var predstavenie = dic_predstavenie[id_predstavenie];
+
+            if (!(typeof (zoznamHladisk[predstavenie.hladisko.id]) != 'undefined' && zoznamHladisk[predstavenie.hladisko.id] != null)) {
+                if (isVenue) {
+                    if (VenueID == predstavenie.hladisko.id)
+                    {
+                        zoznamHladisk[predstavenie.hladisko.id] = predstavenie.hladisko;
+                        zhpocet++;
+                    }
+                }
+                else {
+                    zoznamHladisk[predstavenie.hladisko.id] = predstavenie.hladisko;
+                    zhpocet++;
+                }
+            }
+        }
+    }
+   
+    if (zhpocet == 0)
+        return;
+
+    for (var id_hladisko in zoznamHladisk) {
+        if (zoznamHladisk.hasOwnProperty(id_hladisko)) {
+            var hladisko = zoznamHladisk[id_hladisko];
+
+            if (!(hladisko.LAT != null && hladisko.LON != null))                                // O hladisku este nemame info, ze kde su jeho zemepisne suradnice, pokusime sa ich zistit pomocou Geocoding API
+            {
+                zoznamHladiskAsync.push(hladisko);                                              // Zapiseme si zoznam hladisk, ktore budeme zistovat asynchronne
+            }
+            else {
+                showMarker(hladisko);                                                           // Tie o ktorych vieme kde su, vykreslime okamzite
+            }
+        }
+    }
+
+    if (zoznamHladiskAsync.length != 0)
+        Gmaps_async_step();                                                                 // Spustime async zistovanie a vykreslovanie tych o ktorych nevieme polohu
+    else {
+        //google.maps.event.addListener(map, "resize", function () {
+        //    centruj(zoznamMarkerov);
+        //});
+        setTimeout("centruj(zoznamMarkerov);", 100);
+    }
+}
+
+// Asynchronne budeme zistovat pozicie na zaklade adries
+var hladisko_zahajene = null;
+
+function Gmaps_async_step() {
+
+    if (zoznamHladiskAsync.length != 0) {                                                   // Je co zistovat
+        if (hladisko_zahajene == null) {                                                    // Aktualne sa nic nezistuje
+            hladisko_zahajene = zoznamHladiskAsync.pop();
+            codeAddress(hladisko_zahajene);
+        }
+        setTimeout("Gmaps_async_step();", 500);                                             // Dalsie hladisko zistime po 500 ms
+    }
+    else {                                                                                  // Skoncili sme, zacentrujeme mapu
+        centruj(zoznamMarkerov);
+    }
+}
+
+function codeAddress(hladisko) {
+
+    var address = hladisko.nazov + (hladisko.adresa != null && hladisko.adresa.length > 3 ? (',' + hladisko.adresa) : '') + ',' + hladisko.mesto.nazov;
+
+    geocoder.geocode({
+        'address': address
+    }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+
+            var LAT = results[0].geometry.location.lat();
+            var LON = results[0].geometry.location.lng();
+
+            hladisko_zahajene.LAT = LAT;
+            hladisko_zahajene.LON = LON;
+            showMarker(hladisko_zahajene);
+
+            //map.setCenter(results[0].geometry.location);
+            //var marker = new google.maps.Marker({
+            //    map: map,
+            //    position: results[0].geometry.location
+            //});
+            //return results;
+            //alert(result);
+
+
+            // Vlozime miesta do kosika
+            $.ajax({
+                url: absoluteUri + "Event/GmapsSet/" + hladisko_zahajene.id + "/" + hladisko_zahajene.LAT + "/" + hladisko_zahajene.LON,
+                dataType: "json",
+                cache: false,
+                statusCode: {
+                    404: function () { alert('Page not found.'); },
+                    500: function () { alert('Internal server error.'); }
+                }
+            }).done(function (data) {
+            });
+
+            hladisko_zahajene = null;
+
+        } else {
+            //alert('Geocode was not successful for the following reason: ' + status);
+
+            $.ajax({
+                url: absoluteUri + "Event/GmapsSet/" + hladisko_zahajene.id + "/0/0",
+                dataType: "json",
+                cache: false,
+                statusCode: {
+                    404: function () { alert('Page not found.'); },
+                    500: function () { alert('Internal server error.'); }
+                }
+            }).done(function (data) {
+            });
+
+            hladisko_zahajene = null;
+        }
+    });
+}
+
+function showMarker(hladisko) {
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(hladisko.LAT, hladisko.LON),
+        map: map,
+        animation: google.maps.Animation.DROP,
+        title: hladisko.nazov
+    });
+
+    marker["Hladisko_id"] = hladisko.id;
+    zoznamMarkerov.push(marker);
+
+
+    google.maps.event.addListener(marker, 'click', function () {
+
+        map.setOptions({ scrollwheel: true });
+
+        var hladisko = dic_hladisko[this.Hladisko_id];
+        var infowindow = null;
+
+        if (typeof (hladisko.infowindow) != "undefined" && hladisko.infowindow != null) {
+            infowindow = hladisko.infowindow;
+        }
+        else {
+
+            var content = "<div style='margin:10px'>";
+            content += "<span style='font-size:12px; font-weight:bold'>" + hladisko.nazov + "</span>";
+
+            if(isVenue == false)
+                content += "&nbsp;&nbsp;<a href='" + absoluteUri + "Venue/" + hladisko.id + (window.location.href.indexOf("iframe") != -1 ? "?iframe" : "") + "'>" + lang["btnDetail"] + "</a>"
+            content += "<br/>";
+
+            if (lokalita == "empik")
+                content += "<span style='font-weight:bold'>" + lang["Adresa"] + ":&nbsp;</span><span>" + hladisko.adresa + ", " + hladisko.mesto.nazov + "</span><br/>";
+            else
+                content += "<span style='font-weight:bold'>" + lang["Adresa"] + ":&nbsp;</span><span>" + hladisko.adresa + ", " + hladisko.psc + " " + hladisko.mesto.nazov + "</span><br/>";
+
+            if (hladisko.www != null && hladisko.www.length > 3)
+                content += "<span style='font-weight:bold'>www:</span><a href='" + (hladisko.www.indexOf('http') == -1 ? 'http://' + hladisko.www : hladisko.www) + "' target='_blank'>" + hladisko.www + "</s><br>";
+
+
+            if(isVenue == false)
+            {
+                if (lokalita != "empik")
+                    content += "<br/><b>" + lang["Podujatia"] + "</b>&nbsp;&nbsp;&nbsp;(Počet predstavení)<br/>";
+                else
+                    content += "<br/><b>" + lang["Podujatia"] + "</b><br/>";
+
+                var buff_podujatia = new Array();
+
+                for (var i in hladisko.predstavenia) {
+                    if (hladisko.predstavenia.hasOwnProperty(i)) {
+                        var predstavenie = hladisko.predstavenia[i];
+                        var podujatie = predstavenie.podujatie;
+
+                        if (isnull(buff_podujatia[podujatie.id_podujatie_out]))
+                            buff_podujatia[podujatie.id_podujatie_out] = dic_podujatie_out[podujatie.id_podujatie_out];
+                    }
+                }
+
+                for (var i in buff_podujatia) {
+                    if (buff_podujatia.hasOwnProperty(i)) {
+                        var podujatie = buff_podujatia[i];
+                        var c = 0;
+
+                        for (var ii in podujatie.podujatia) {
+                            if (podujatie.podujatia.hasOwnProperty(ii)) {
+                                for (var iii in podujatie.podujatia[ii].predstavenia) {
+                                    if (podujatie.podujatia[ii].predstavenia.hasOwnProperty(iii)) {
+                                        if (podujatie.podujatia[ii].predstavenia[iii].hladisko.id == hladisko.id)
+                                            c++;
+                                    }
+                                }
+                            }
+                        }
+
+                        content += "<a href='" + absoluteUri + "Event/" + podujatie.id + (window.location.href.indexOf("iframe") != -1 ? "?iframe" : "") + "'>" + podujatie.nazov + " (" + c + ")</a><br/>";
+                    }
+                }
+
+
+                content += "<br/>";
+                content += "<a class='btn btn-navigacia pull-right' style='margin-left:10px' href='javascript:SetVenueFilter(" + hladisko.id + ");'>" + lang["KupitVstupenky"] + "</a>";
+                //content += "<a class='btn btn-navigacia pull-right' style='' href='javascript:Gmap_center_H(" + hladisko.id + ");'>Priblíž</a>";
+
+                if (IsMobile())
+                    content += "<a href='geo:" + hladisko.LAT + ", " + hladisko.LON + "' class='btn btn-navigacia pull-right'>" + lang["Navigacia"] + "</a><br/>";
+                else
+                    content += "<a href='http://maps.google.com/?daddr=" + hladisko.LAT + "," + hladisko.LON + "' class='btn btn-navigacia pull-right' target='_blank'>" + lang["Navigacia"] + "</a>";
+
+            }
+
+            content += "</div>";
+
+            infowindow = new google.maps.InfoWindow({
+                content: content
+            });
+            hladisko["infowindow"] = infowindow;
+        }
+
+        if (infoWindowOpened != null)
+            infoWindowOpened.close();
+
+        infowindow.open(map, marker);
+        infoWindowOpened = infowindow;
+    });
+}
+
+function Gmap_center_H(id_hladisko) {
+    var hladisko = dic_hladisko[id_hladisko];
+    map.setCenter(new google.maps.LatLng(hladisko.LAT, hladisko.LON));
+    map.setZoom(16);
+}
+
+function SetVenueFilter(id_hladisko) {
+    if ($("#search_venue").length != 0) {
+        $("#search_venue").selectpicker('val', '' + id_hladisko);
+        search_venue_change();
+    }
+
+    $('html,body').animate({
+        scrollTop: $("#vstupenky").offset().top
+    });
+
+    $("#vyber-hladisko").removeClass("hidden");
+}
+
+function createBoundsForMarkers(markers) {
+    var bounds = new google.maps.LatLngBounds();
+    $.each(markers, function () {
+        bounds.extend(this.getPosition());
+    });
+    return bounds;
+}
+
+function getBoundsZoomLevel(bounds, mapDim) {
+    var WORLD_DIM = { height: 256, width: 256 };
+    var ZOOM_MAX = 16;                                              // Viac sa to nepriblizi, aj keby bol len jeden marker
+
+    function latRad(lat) {
+        var sin = Math.sin(lat * Math.PI / 180);
+        var radX2 = Math.log((1 + sin) / (1 - sin)) / 2;
+        return Math.max(Math.min(radX2, Math.PI), -Math.PI) / 2;
+    }
+
+    function zoom(mapPx, worldPx, fraction) {
+        return Math.floor(Math.log(mapPx / worldPx / fraction) / Math.LN2);
+    }
+
+    var ne = bounds.getNorthEast();
+    var sw = bounds.getSouthWest();
+
+    var latFraction = (latRad(ne.lat()) - latRad(sw.lat())) / Math.PI;
+
+    var lngDiff = ne.lng() - sw.lng();
+    var lngFraction = ((lngDiff < 0) ? (lngDiff + 360) : lngDiff) / 360;
+
+    var latZoom = zoom(mapDim.height, WORLD_DIM.height, latFraction);
+    var lngZoom = zoom(mapDim.width, WORLD_DIM.width, lngFraction);
+
+    return Math.min(latZoom, lngZoom, ZOOM_MAX);
+}
+
+// Vstupom je pole obsahujuce znacky na mape
+// Funkcia vycentruje mapu tak, aby bolo vidiet vsetky puntiky
+function centruj(markers) {
+
+    // Zistime velkost mapy
+    var $mapDiv = $('#map-canvas');
+
+    var mapDim = {
+        height: $mapDiv.height(),
+        width: $mapDiv.width()
+    }
+
+    var bounds = createBoundsForMarkers(markers);
+    map.setCenter(bounds.getCenter());
+    map.setZoom(getBoundsZoomLevel(bounds, mapDim));
+}

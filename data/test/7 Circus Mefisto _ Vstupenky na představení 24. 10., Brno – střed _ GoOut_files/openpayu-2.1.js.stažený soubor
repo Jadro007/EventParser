@@ -1,0 +1,595 @@
+(function (window, undefined) {
+
+    function loadScript(src, callback) {
+        var script = document.createElement('script');
+
+        script.src = src;
+        script.onload = script.onreadystatechange = function () {
+            /**
+             * readyState only exists in Internet explorer
+             * to avoid executing multiple times "onreadystatechange" test for loaded readyState
+             */
+            if (typeof this.readyState === 'undefined' || this.readyState === 'loaded') {
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            }
+        };
+
+        var head = document.querySelector('head');
+        head.appendChild(script);
+    }
+
+    var getServer = function () {
+        var serverAddress = '',
+            regex = /^((.*:\/\/)?[^\/]*)\/.*openpayu-2.1.js$/;
+
+        [].slice.call(document.querySelectorAll('script[src]')).forEach(function (el) {
+            var result = el.src.match(regex);
+
+            if (result !== null) {
+                serverAddress = result[1];
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        return serverAddress;
+    };
+
+    var OpenPayU = {
+        version: '2.0',
+        plugins: [],
+        server: getServer(),
+        debug: false,
+        model: {
+            '2.0': {
+                'TokenCreateRequest': {
+                    mandatory: ['.payu-card-number', '.payu-card-expm', '.payu-card-expy'],
+                    mapping: {
+                        '.payu-card-cardholder': 'card.cardholder',
+                        '.payu-card-number': 'card.number',
+                        '.payu-card-cvv': 'card.cvv',
+                        '.payu-card-expm': 'card.expirationMonth',
+                        '.payu-card-expy': 'card.expirationYear',
+                        '.payu-customer-email': 'email',
+                        '.payu-agreement': 'agreement',
+                        '.payu-customer-id': 'customerId'
+                    },
+
+                    normalize: {
+                        '.payu-card-number': function (number) {
+                            if (number !== undefined && number !== '') {
+                                return number.replace(/\s+|-/g,'');
+                            } else {
+                                return number;
+                            }
+                        },
+
+                        '.payu-card-expm': function (expm) {
+                            if (expm !== undefined && expm !== '') {
+                                return expm.length === 1 ? '0' + expm : expm;
+                            } else {
+                                return expm;
+                            }
+
+                        },
+
+                        '.payu-card-expy': function (expy) {
+                            if (expy !== undefined && expy !== '') {
+                                return expy.length === 2 ? '20' + expy : expy;
+                            } else {
+                                return expy;
+                            }
+
+                        }
+                    }
+                }
+            }
+        },
+
+        setup: function (options) {
+            for (var key in options) {
+                this[key] = options[key];
+            }
+        },
+
+        init: function () {
+            OpenPayU.readyEvent();
+        },
+
+        log: function (dataLog) {
+            if (this.debug && typeof console === 'object' && typeof console.log === 'function') {
+                console.log(dataLog);
+            }
+        },
+
+        readyEvent: function() {
+            document.addEventListener('DOMContentLoaded', OpenPayU.ready, false);
+        },
+
+        ready: function () {
+            for (var i = 0; i < OpenPayU.plugins.length; i++) {
+                var name = OpenPayU.plugins[i],
+                    thePlugin = OpenPayU[name];
+
+                if (thePlugin.ready) {
+                    thePlugin.ready();
+                }
+            }
+        },
+
+        extend: function (options, body, replace) {
+            /* method extends skeleton with plugin, followind the rules:
+             * 1. if plugin exists and should not be replaced then return without any action (existing && !replace)
+             * 2. if plugin exists and should be replaced then method replace the plugin and return existed/old plugin object (existing && replace)
+             * 3. in all other cases plugin extends skeleton
+             */
+            replace = replace || true;
+            var existing = (this.plugins.indexOf(options.name) >= 0),
+                theCurrentValue = this[options.name] || null;
+
+            if (existing && !replace) {
+                return theCurrentValue;
+            }
+
+            var theExtension = this[options.name] = {};
+
+            //add default setup function to each plugin !!!
+            theExtension.setup = this.setup;
+
+            for (var prop in body) {
+                theExtension[prop] = body[prop];
+            }
+
+            if (theExtension.init) {
+                theExtension.init();
+            }
+
+            if (existing) {
+                return theCurrentValue;
+            } else {
+                this.plugins.push(options.name);
+            }
+
+            return theExtension;
+        },
+
+        validate: function (request, version) {
+            return OpenPayU.Validation.validate(request, version);
+        },
+
+        authorizeCVV: function (options, authorizeCvvCallback) {
+            var status = 'SUCCESS',
+                cvv = document.querySelector('.payu-card-cvv');
+
+            var cvvValidationResult = OpenPayU.Validation.validateCVV(cvv.value);
+
+            if (cvvValidationResult !== true) {
+                return 'WARNING_CONTINUE_CVV';
+            }
+
+            var refReqIdVal = options.url.match(/refReqId=(.*)/)[1];
+
+            if (refReqIdVal === '' || refReqIdVal === null) {
+                return 'ERROR_INTERNAL';
+            }
+
+            var data = {cvv: cvv.value, refReqId: refReqIdVal};
+
+            try {
+                OpenPayU.Transport.send({request: 'auth.cvv', data: data}, authorizeCvvCallback);
+            } catch (ex) {
+                status = 'ERROR_INTERNAL';
+            }
+
+            return status;
+        },
+
+        authorize3DS: function (options) {
+            OpenPayU.Builder.createIframe('#payu-3dsecure-placeholder', {
+                style: 'margin:0;border:0;width: 100%;height: 100%',
+                src: options.url
+            });
+        }
+    };
+
+    OpenPayU.extend({name: 'Builder'}, {
+        createHtmlElement: function (type, container, options) {
+            var _obj = document.createElement(type);
+
+            for (var option in options) {
+                _obj.setAttribute(option, options[option]);
+            }
+
+            if (typeof container === 'string') {
+                container = document.querySelector(container);
+            }
+
+            container.appendChild(_obj);
+            return _obj;
+        },
+
+        createIframe: function (container, options) {
+            return this.createHtmlElement('iframe', container, options);
+        },
+
+        createInput: function (container, options) {
+            return this.createHtmlElement('input', container, options);
+        },
+
+        createDiv: function (container, options) {
+            return this.createHtmlElement('div', container, options);
+        },
+
+        createMessage: function (rq, version) {
+            var theMessage = {},
+                model = OpenPayU.model[version],
+                mapping = model[rq].mapping;
+
+            for (var item in mapping) {
+
+                var field = mapping[item],
+                    input =  document.querySelector(item);
+
+                if (input !== null) {
+                    this.setProp(theMessage, field, input.value);
+                }
+            }
+
+            return theMessage;
+        },
+
+        setProp: function (obj, desc, value) {
+            var arr = desc.split('.');
+
+            while (arr.length && obj) {
+                var comp = arr.shift(),
+                    match = new RegExp("(.+)\\[([0-9]*)\\]").exec(comp);
+
+                if ((match !== null) && (match.length === 3)) {
+                    var arrayData = {
+                        arrName: match[1],
+                        arrIndex: match[2]
+                    };
+
+                    if (obj[arrayData.arrName] !== undefined) {
+                        if (value && arr.length === 0) {
+                            obj[arrayData.arrName][arrayData.arrIndex] = value;
+                        }
+
+                        obj = obj[arrayData.arrName][arrayData.arrIndex];
+                    } else {
+                        obj = undefined;
+                    }
+                    continue;
+                }
+
+                if (value) {
+                    if (obj[comp] === undefined) {
+                        obj[comp] = {};
+                    }
+
+                    if (arr.length === 0) {
+                        obj[comp] = value;
+                    }
+                }
+
+                obj = obj[comp];
+            }
+            return obj;
+        },
+
+        removePreloader: function () {
+            var payuPreloader = document.querySelector('.payu-preloader');
+
+            payuPreloader.style.opacity = 0;
+            payuPreloader.style.transition = 'opacity 1.5s ease-in-out';
+
+
+            setTimeout(function () {
+                payuPreloader.parentNode.remove()
+            }, 500);
+        },
+
+        addPreloader: function (msg) {
+            var wH = window.innerHeight,
+                wW = window.innerWidth,
+                sP = window.scrollTo(0, 0),
+                body = document.querySelector('body'),
+                div = document.createElement('div');
+
+            if (typeof msg !== 'undefined') {
+                div.innerHTML = '<div id="payu-preloader-overlay"><div class="payu-preloader"></div><span class="payu-preloader-text">' + msg + '</span></div>';
+            } else {
+                div.innerHTML = '<div id="payu-preloader-overlay"><div class="payu-preloader"></div></div>';
+            }
+
+            body.appendChild(div);
+            body.scrollTo(0, 0);
+
+            document.querySelector('#payu-preloader-overlay').style.width = wW - 20;
+            document.querySelector('#payu-preloader-overlay').style.height = wH + sP;
+            document.querySelector('.payu-preloader').style.display = 'block';
+            document.querySelector('.payu-preloader').style.opacity = 1;
+        }
+    });
+
+    OpenPayU.extend({name: 'Transport'}, {
+        completeCallback: undefined,
+        tunnelCreateCallbackList: [],
+
+        config: {
+            host: OpenPayU.server,
+            url: OpenPayU.server + '/res/v2',
+            timeout: 60000
+        },
+
+        getJSONP: function (url, success) { //I'm not sure if it works
+            var ud = '_' + new Date,
+                script = document.createElement('script'),
+                head = document.getElementsByTagName('head')[0]
+                    || document.documentElement;
+
+            window[ud] = function (data) {
+                head.removeChild(script);
+                success && success(data);
+            };
+
+            script.src = url.replace('callback=?', 'callback=' + ud);
+            head.appendChild(script);
+        },
+
+        postMessage: function (data) {
+            var iframe = document.querySelector('#payu-tunnel-iframe'),
+                iframeContent = iframe.contentWindow;
+
+            try {
+                iframeContent.postMessage(JSON.stringify(data), this.config.host);
+            } catch (err) {
+                OpenPayU.log(err);
+            }
+        },
+
+        dispatchMessage: function (message) {
+            if (message && message.type) {
+                if (message.type === 'message' && message.origin === this.config.host) {
+                    var data = message.data;
+
+                    try {
+                        data = JSON.parse(data);
+
+                        if (data.callback && data.plugin) {
+                            window['OpenPayU'][data.plugin][data.callback](data);
+                        } else if (this.completeCallback) {
+                            this.completeCallback.call(this, data);
+                        }
+                    } catch (e) { }
+                }
+            }
+        },
+
+        onTunnelCreate: function (callback) {
+            this.tunnelCreateCallbackList.push(callback);
+        },
+
+        //function executed when tunnel is successfully - may be oweritten by some plugin - installment for example to load data asyncronyus on loading plugin
+        tunnelReady: function (data) {
+            if (!data.successfully) {
+                OpenPayU.log('Error loading tunnel');
+                return false;
+            }
+
+            for (var key in this.tunnelCreateCallbackList) {
+                this.tunnelCreateCallbackList[key]();
+            }
+        },
+
+        init: function () {
+        },
+
+        ready: function () {
+            var that = this;
+
+            if (typeof window.postMessage !== 'undefined') {
+                OpenPayU.Builder.createIframe('body',
+                    {
+                        id: 'payu-tunnel-iframe',
+                        style: 'display: none;',
+                        src: this.config.url + '/tunnel.html'
+                    }
+                );
+
+
+                var onMessage = function (e) {
+                    that.dispatchMessage(e);
+                };
+
+                if (typeof window.addEventListener === 'undefined') {
+                    window.attachEvent('onmessage', onMessage);
+                } else {
+                    window.addEventListener('message', onMessage, false);
+                }
+            }
+        },
+
+        send: function (data, callback) {
+            try {
+                if (callback) {
+                    this.completeCallback = callback;
+                }
+
+                if (typeof window.postMessage === 'undefined') {
+                    this.getJSONP(this.config.url + '/api/v2/token.json', function (data) {
+                        this.dispatchMessage(data);
+                    });
+                } else {
+                    this.postMessage(data);
+                }
+            } catch (err) {
+                OpenPayU.log(err);
+            }
+        },
+
+        callMerchant: function (options, token) {
+            var form = document.createElement('form'),
+                input = document.createElement('input');
+
+            form.style.display = 'none';
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', options.url);
+
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'token');
+            input.setAttribute('token', token);
+
+            form.appendChild(input);
+            document.querySelector('body').appendChild(form);
+
+            form.submit();
+        }
+    });
+
+    OpenPayU.extend({name: 'Validation'}, {
+        ERR_FIELD_MISSING: 'fieldMissing',
+        ERR_FORMAT_INVALID: 'formatInvalid',
+        ERR_UNSUPPORTED_TYPE: 'unsupportedType',
+
+        init: function () {
+        },
+
+        ready: function () {
+        },
+
+        validate: function (rq, version) {
+            version = version || '2.0';
+            OpenPayU.log('version: ' + version);
+
+            var missing = [],
+                model = OpenPayU.model[version][rq],
+                mandatory = model.mandatory,
+                mapping = model.mapping;
+
+            for (var i = 0; i < mandatory.length; ++ i) {
+                var name = mandatory[i];
+
+                if (document.querySelectorAll(name).length <= 0) {
+                    OpenPayU.log('validation for ' + rq + ', missing field: ' + name);
+                    missing.push([mapping[name], this.ERR_FIELD_MISSING]);
+                }
+            }
+
+            if (missing.length === 0) {
+                OpenPayU.log('html is valid for request: ' + rq + ', version: ' + version);
+            } else {
+                OpenPayU.log('html is not valid for request: ' + rq + ', version: ' + version);
+            }
+
+            return missing;
+        },
+
+        isValidLuhn: function (number) {
+            if (this.isNumeric(number)) {
+                var CardNumber = number.toString(),
+                    sumTable = [
+                        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                        [0, 2, 4, 6, 8, 1, 3, 5, 7, 9]
+                    ],
+                    sum = 0,
+                    flip = 0;
+
+                for (var i = (CardNumber.length - 1); i >= 0; i--) {
+                    sum += sumTable[flip++ & 0x1][CardNumber[i]];
+                }
+                return sum % 10 === 0;
+            } else {
+                return false;
+            }
+        },
+
+        isCardTypeValid: function (number) {
+            var cardTypes = {
+                visa: /^4/,
+                maestro: /^(06|5[0678]|6\d)/,
+                mastercard: /^(5[1-5]|2[2-7])/
+            };
+
+            var typeMatch = false;
+
+            for (var brand in cardTypes) {
+                if (cardTypes[brand].test(number)) {
+                    typeMatch = true;
+                }
+            }
+
+            return typeMatch;
+        },
+
+        isDateValid: function (month, year) {
+            if (!this.isMonth(month) || !this.isYear(year)) {
+                return false;
+            }
+
+            var today = new Date(),
+                currentMonth = today.getMonth() + 1,
+                currentYear = today.getFullYear();
+
+            if (year.length === 2) {
+                currentYear = currentYear - 2000;
+            }
+
+            month = parseInt(month, 10);
+            year = parseInt(year, 10);
+
+            if (year > currentYear) {
+                return true;
+            } else {
+                return year === currentYear && month >= currentMonth;
+            }
+        },
+
+        isMonth: function (m) {
+            var reg = /^\d{2}$/;
+            return (reg.test(m) && m >= 1 && m <= 12)
+        },
+
+        isYear: function (y) {
+            var reg2Digits = /^\d{2}$/,
+                reg4Digits = /^\d{4}$/;
+
+            if (reg2Digits.test(y)) {
+                return true;
+            } else if (reg4Digits.test(y)) {
+                return (parseInt(y, 10) < 2100);
+            } else {
+                return false;
+            }
+        },
+
+        trim: function (str) {
+            return typeof str === 'string' ? str.replace(/^\s+|\s+$/g, '') : '';
+        },
+
+        isNumeric: function (str) {
+            str = String(str);
+            return str.match(/^[0-9]+$/) !== null;
+        },
+
+        normalize: function (cardNumber) {
+            return typeof cardNumber === 'string' ? cardNumber.replace(/\s+|-/g, '') : '';
+        },
+
+        validateCVV: function (cvv) {
+            var trimmedCvv = this.trim(cvv);
+
+            return this.isNumeric(trimmedCvv) && trimmedCvv.length >= 3 && trimmedCvv.length <= 4;
+        },
+        isEmail: function (email) {
+            return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(email);
+        }
+    });
+
+    window.OpenPayU = OpenPayU;
+    OpenPayU.init();
+}(window));

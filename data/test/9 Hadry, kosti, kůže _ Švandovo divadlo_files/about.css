@@ -1,0 +1,246 @@
+/*
+    Created on : 13.8.2014, 17:44:00
+    Author     : Tomas Mleziva - Dark side a.s.
+*/
+.about.container {
+    background: #d2cfd2;
+}
+.about.container h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+.tabs {
+    margin: 21px 0 38px 0;
+}
+.tabs a {
+    color: #fff;
+}
+
+ul.tabs li {
+    float: left;
+    width: 183px;
+    height: 32px;
+    position: relative;
+    margin-right: 5px;
+}
+ul.tabs li.on {
+    width: 205px;
+}
+
+.tabs a {
+    display: block;
+    background: url(../images/bg-tab-on.png);
+    background-position: bottom right;
+    height: 100%;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+    width: 150px;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+.tabs a.on,
+.tabs a.on {
+    width: 171px;
+    background-image: url(../images/bg-tab.png);
+    border-left: none;
+}
+
+.tabs ul {
+    position: absolute;
+    top: 32px;
+    left: 0px;
+    background: #b4afb4;
+    width: 200px;
+    z-index: 666;
+    display: none;
+}
+.tabs li:hover ul {
+    display: block;
+}
+.tabs ul li {
+    width: 100%;
+    height: 34px;
+    margin: 0;
+    float: none;
+}
+.tabs ul li a {
+    background: none;
+    display: block;
+    width: 184px;
+    height: 100%;
+    line-height: 34px;
+    background: transparent;
+    padding: 0 8px;
+    text-align: left !important;
+}
+.tabs ul li a:hover,
+.tabs ul li a.on {
+    width: 184px;
+    background: #d2cfd2;
+    opacity: 1;
+}
+.tabs ul li:hover {
+    background: none;
+}
+.tabs ul li.on:hover {
+    background: none;
+}
+.about-box {
+    width: 300px;
+    padding: 5px 8px 8px 8px;
+    background: #dddbdd;
+    height: 355px;
+    position: relative;
+    float: left;
+    margin-bottom: 15px;
+}
+.about-box h3 {
+    color: #008289;
+    font-size: 20px;
+    font-weight: bold;
+    height: 46px;
+    line-height: 23px;
+}
+.about h3 {
+    color: #008289;
+    font-size: 20px;
+    font-weight: bold;
+    height: 46px;
+    line-height: 23px;
+}
+.about-box .perex-image-wrapper {
+    display: block;
+    width: 300px;
+    height: 200px;
+    margin-bottom: 5px;
+    overflow: hidden;
+	text-decoration: none;
+}
+.perex-image-wrapper img {
+    max-width: 300px;
+}
+.about-box p {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.about-box a.more,
+.box a.more {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 45px;
+    padding-right: 15px;
+    font-size: 15px;
+    color: #fff;
+    line-height: 30px;
+    height: 30px;
+    background: url(../images/btn-more.png);
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+.about-box.middle {
+    margin: 0 10px 15px 10px;
+}
+.about-box.repertoire-box {
+    height: 340px;
+}
+
+/** about - footer */
+.container.about-footer {
+    padding: 17px 30px;
+    background: #e1dfe1;
+}
+.container.about-footer div.about-nav-container {
+    width: 155px;
+    float: left;
+    margin-right: 36px;
+    font-size: 15px;
+    color: #000;
+}
+.container.about-footer div h4 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+    padding: 9px 0;
+    border-bottom: 2px solid #cac7ca;
+}
+.container.about-footer li {
+    line-height: 16px;
+    margin: 8px 0 2px 0;
+
+}
+.container.about-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+
+    .perex-image-wrapper img,
+    .about-box .perex-image-wrapper {
+        width:100%;
+        max-width:100%;
+    }
+
+    .about-box,
+    .about-box.repertoire-box,
+    .about-box.middle,
+    .about-box.repertoire-box.middle {
+        border: none;
+        width:46%;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .about-box.even,
+    .about-box.repertoire-box.even {
+        margin-left:2%;
+        width:46%;
+    }
+}
+
+
+.street-view iframe {
+	max-width: 100%;
+	max-height: 80vh;
+}
+@media (max-width: 500px) {
+
+    .about-box,
+    .about-box.even,
+    .about-box.middle,
+    .about-box.repertoire-box,
+    .about-box.repertoire-box.middle {
+        width:100%;
+    }
+    .about-box h3 {
+        padding: .8em .6em;
+    }
+    .about-box p {
+        padding: .8em .6em;
+    }
+
+    .about-box,
+    .about-box.even,
+    .about-box.repertoire-box,
+    .about-box.middle,
+    .about-box.repertoire-box.middle {
+        margin: 10px 0;
+        padding: 0;
+        border: none;
+    }
+	.street-view iframe {
+		height: 70vh;
+	}
+}
+
+.about-overview > h3 {
+    font-size: 1.6rem;
+    color: #f0eff0;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-top: 1em;
+}

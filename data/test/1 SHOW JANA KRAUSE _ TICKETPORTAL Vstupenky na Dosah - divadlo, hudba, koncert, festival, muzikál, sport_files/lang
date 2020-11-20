@@ -1,0 +1,257 @@
+
+var lang = new Array();
+
+
+
+lang["DayOfWeek_0"] = "Neděle";
+lang["DayOfWeek_1"] = "Ponděl&#237;";
+lang["DayOfWeek_2"] = "&#218;ter&#253;";
+lang["DayOfWeek_3"] = "Středa";
+lang["DayOfWeek_4"] = "Čtvrtek";
+lang["DayOfWeek_5"] = "P&#225;tek";
+lang["DayOfWeek_6"] = "Sobota";
+
+lang["StatusPerf1"] = "Po kliknut&#237; můžete rezervovat vstupenky.";
+lang["StatusPerf1C"] = "VSTUPENKY";
+
+lang["StatusPerf2"] = "V s&#237;ti Ticketportal nyn&#237; vyprod&#225;no.";
+lang["StatusPerf2C"] = "V s&#237;ti Ticketportal nyn&#237; vyprod&#225;no.";
+
+lang["StatusPerf3"] = "Prodej ještě nebyl spuštěn, zkuste pros&#237;m později.";
+lang["StatusPerf3C"] = "ZAT&#205;M NEN&#205; V PRODEJI";
+
+lang["StatusPerf4"] = "V s&#237;ti Ticketportal nyn&#237; vyprod&#225;no (možnost uvolněn&#237; nevyzvednut&#253;ch rezervac&#237; zpět do prodeje).";
+lang["StatusPerf4C"] = "V s&#237;ti Ticketportal nyn&#237; vyprod&#225;no.";
+
+lang["StatusPerf5"] = "Již nen&#237; možn&#233; rezervovat. Vstupenky můžete zakoupit na prodejn&#237;ch m&#237;stech.";
+lang["StatusPerf5C"] = "REZERVACE NEN&#205; MOŽN&#193;";
+
+lang["StatusPerf6"] = "Prodej byl pozastaven.";
+lang["StatusPerf6C"] = "PRODEJ DOČASNĚ PŘERUŠEN";
+
+lang["StatusPerf16"] = "Prodej byl ukončen";
+lang["StatusPerf16C"] = "PRODEJ UKONČEN";
+
+lang["StatusPerf7"] = "V&#237;ce informac&#237; v sekci změny a zrušen&#237;.";
+lang["StatusPerf7C"] = "ZRUŠENO";
+
+lang["StatusPerf8"] = "VYPROD&#193;NO";
+lang["StatusPerf8C"] = "[CZ|StatusPerfC]";
+
+lang["StatusPerf9"] = "Připravujeme do prodeje.";
+lang["StatusPerf9C"] = "PŘIPRAVUJEME";
+
+lang["Dnes"] = "Dnes";
+lang["Zajtra"] = "Z&#237;tra";
+lang["TentoVikend"] = "Tento v&#237;kend";
+lang["NasledujúciVikend"] = "Víkend";
+lang["TentoTyzden"] = "Tento t&#253;den";
+lang["NasledujuciTyzden"] = "Nasledujúci týždeň";
+lang["TentoMesiac"] = "Tento měs&#237;c";
+lang["Dna"] = "Dne";
+lang["Den"] = "Den";
+lang["Dni"] = "Dny";
+lang["VTyzdni"] = "V t&#253;dnu";
+lang["PocasVikendu"] = "Přes v&#237;kend";
+lang["DoKoncaMesiaca"] = "Do konce";
+
+lang["KupitVstupenky"] = "Koupit vstupenky"
+lang["PocetPodujati"] = "Počet akc&#237;: ";
+lang["btnDetail"] = "Detail";
+lang["ZobrazDalsie1"] = "Zobrazit dalš&#237; {0} akci";
+lang["ZobrazDalsie4"] = "Zobrazit dalš&#237; {0} akce";
+lang["ZobrazDalsie5"] = "Zobrazit dalš&#237;ch {0} akc&#237;";
+    lang["Month_1"] = "Leden";
+    lang["Month_1_2"] = "Ledna";
+    lang["Month_2"] = "&#218;nor";
+    lang["Month_2_2"] = "&#218;nora";
+    lang["Month_3"] = "Březen";
+    lang["Month_3_2"] = "Března";
+    lang["Month_4"] = "Duben";
+    lang["Month_4_2"] = "Dubna";
+    lang["Month_5"] = "Květen";
+    lang["Month_5_2"] = "Května";
+    lang["Month_6"] = "Červen";
+    lang["Month_6_2"] = "Června";
+    lang["Month_7"] = "Červenec";
+    lang["Month_7_2"] = "Července";
+    lang["Month_8"] = "Srpen";
+    lang["Month_8_2"] = "Srpna";
+    lang["Month_9"] = "Z&#225;ř&#237;";
+    lang["Month_9_2"] = "Z&#225;ř&#237;";
+    lang["Month_10"] = "Ř&#237;jen";
+    lang["Month_10_2"] = "Ř&#237;jna";
+    lang["Month_11"] = "Listopad";
+    lang["Month_11_2"] = "Listopadu";
+    lang["Month_12"] = "Prosinec";
+    lang["Month_12_2"] = "Prosince";
+lang["kraje"] = "Kraje";
+lang["od"] = "od";
+lang["nadakcia"] = "Skupina akc&#237;";
+lang["podujatie"] = "Akce";
+lang["hladisko"] = "Hlediště";
+lang["kategoria"] = "Kategorie";
+lang["mesto"] = "Město";
+lang["pocetVysledkov"] = "Počet v&#253;sledků";
+lang["VsetkyMesiace"] = "Nač&#237;st dalš&#237; měs&#237;ce";
+lang["DetailPodujatia"] = "Detail akce";
+
+lang["lbFarbaKategorie"] = "Barva kategorie";
+lang["lbCenaVstupenky"] = "Cena vstupenky";
+lang["lbPocetVolnychMiest"] = "V&#253;sledky";
+lang["lbZoznamVolnychMiest"] = "Seznam dostupn&#253;ch m&#237;st";
+
+lang["lbNoveAkciePredstavenia"] = "Nov&#233; akce";
+lang["lbTopPodujatia"] = "Top akce";
+lang["lbSuperCena"] = "Super ceny";
+lang["Podujatia"] = "Akce";
+
+lang['Volne'] = "Voln&#233;";
+lang['DocastneObsadene'] = "Aktu&#225;lně obsazen&#233;";
+lang['Obsadene'] = "Obsazen&#233;";
+
+lang["ZobrazVsetkyPM"] = 'Zobrazit všechna prodejn&#237; m&#237;sta';
+lang["ZobrazPrvychPM"] = 'Zobrazit prvn&#237;ch {0} prodejn&#237;ch m&#237;st';
+lang["ZobrazitNaMape"] = 'Zobrazit na mapě';
+lang["Navigacia"] = 'Navigovat';
+lang["PM_icon_len_predaj"] = 'je možn&#233; zaplatit a vyzvednou internetovou rezervaci';                  
+lang["PM_icon_ma_goTicket"] = 'M&#225; GoTicket';
+lang["PM_icon_platba_poukazkou"] = 'Platba pouk&#225;zkou';
+lang["PM_icon_maju_poplatky"] = 'Prodejn&#237; m&#237;sto nem&#225; ž&#225;dn&#233; dodatečn&#233; poplatky';            
+
+lang["Kraje"] = 'Kraje';
+lang["Mesta"] = 'Město';
+lang["KrajeaMesta"] = 'Kraje a města';
+lang["VsetkyPM"] = 'Všechna prodejn&#237; m&#237;sta';
+lang["VyzdvihnutieErr1"] = 'Pros&#237;m vložte č&#237;slo';
+lang["VyzdvihnutieErr2"] = 'Zadejte č&#237;slo rezervace, nebo variabiln&#237; symbol n&#225;kupu';
+
+lang["PM_pocet_0"] = 'Žádné prodejní místo nevyhovuje Vámi zadaným požadavkům';
+lang["PM_pocet_1"] = 'Celkový počet prodejních míst: <strong>{0}</strong>';
+lang["PM_pocet_2"] = 'Filtru vyhovuje <strong>{0}</strong> prodejních míst';
+lang["PM_pocet_2_1"] = 'Filtru vyhovuje <strong>{0}</strong> prodejní místo';
+lang["PM_pocet_2_2az4"] = 'Filtru vyhovují <strong>{0}</strong> prodejní místa';
+
+lang["Akcia"] = 'Akce';
+lang["Zlava"] = 'Sleva';
+lang["lDobraCena"] = 'Dobr&#225; cena';
+lang["Top"] = 'Top';
+lang["Novinka"] = 'Novinka';
+lang["lbZrusitFilter"] = 'Zrušit filtr';
+lang["lbZrusitVyber"] = 'Zrušit v&#253;běr';
+
+
+lang["PredstavenieUmoznujeVyberMiesta"] = 'Vybrat m&#237;sta v hledišti';
+lang["PredstavenieUmoznujeVyberZlavy"] = 'Na představen&#237; je možn&#233; zvolit slevu.';
+lang["PredstavenieUmoznujeVyberMiestaZlavy"] = 'Vybrat m&#237;sta v hledišti';
+
+lang["bezvysledkov"] = 'Nebyly nalezeny ž&#225;dn&#233; v&#253;sledky';
+lang["vysledok"] = 'v&#253;sledek';
+lang["vysledky"] = 'v&#253;sledky';
+lang["vysledkov"] = 'v&#253;sledků';
+
+lang["search_speedinfo_1"] = 'Nalezen {0} v&#253;sledek za {1} ms';
+lang["search_speedinfo_2_4"] = 'Nalezen&#233; {0} v&#253;sledky za {1} ms';
+lang["search_speedinfo_5"] = 'Nalezen&#253;ch {0} v&#253;sledků za {1} ms';
+
+
+
+
+lang["dateFormat"] = "d. M. yyyy (dddd) HH:mm";
+lang["localCurrency"] = "Kč";
+
+lang["btnPay"] = "Zaplatit";
+lang["lbSumaCelkovo"] = "Celkem";
+lang["lbKusov"] = "ks";
+lang["btnLoading"] = "Zpracov&#225;v&#225; se ...";
+lang["lbRychlyNakup"] = "Rychl&#253; n&#225;kup";
+lang["RychlyNakup_NacitavamHladisko"] = "Hlediště se nač&#237;t&#225;";
+lang["RychlyNakup_Pokracuj"] = "Pokračuj v n&#225;kupu";
+lang["RychlyNakup_Pridaj"] = "Přidat dalš&#237;";
+lang["lbSektor"] = "Sektor";
+lang["lbRad"] = "Řada";
+lang["lbSedadlo"] = "Sedadlo";
+lang["Cena"] = "Cena";
+lang["RychlyNakup_NevybMiesta"] = "Zatím jste nevybrali žádná místa.";
+
+lang["PerformanceDovolene"] = "Maxim&#225;ln&#237; povolen&#253; počet m&#237;st v koš&#237;ku: #count#.";
+lang["btnPotvrdit"] = "Potvrdit";
+lang["PriorityOnlyPartnerBtn"] = "OK";
+lang["KalendarFilterTextSelected"] = "Zobrazit akce od {0}";
+lang["KalendarFilterTextDefault"] = "Zobrazit akce od data";
+lang["lbClanok"] = "Čl&#225;nek";
+
+
+lang["lbReservationDetail"] = "Detail rezervace";
+lang["lbPayedReservationNumber"] = "Uhrazen&#225; rezervace č&#237;slo";
+lang["lbVariableNumber"] = "Variabiln&#237; symbol";
+lang["lbPayed"] = "Uhrazeno";
+lang["lbTogether"] = "Celkem";
+lang["RychlyNakup_EmailRequired"] = "Pros&#237;m, zadejte e-mail";
+
+
+var googlePlusLoginWebApplicationId = '611916709712-6igqfhf5h3813mrjguvbp5756qtfnp19.apps.googleusercontent.com';
+var facebookLoginApiID = '1695812150642763';
+
+
+
+lang["lbPoistenieVstupeniekChyba"] = "Pojištěn&#237; nen&#237; spr&#225;vně vyplněn&#233;!";
+
+
+lang["lbQuickConfirmMessage"] = "Pros&#237;me, zkontrolujte V&#225;mi zadanou e-mailovou adresu.";
+lang["EmailRequired"] = "Pros&#237;m, zadejte email";
+
+
+var PocetZobrazenychVGrupe = new Array();
+var minPocetvTimeline = 60;
+function timeline_settings_init() {
+    PocetZobrazenychVGrupe[PerformanceGroupType.PrvyDen] = 12;
+    PocetZobrazenychVGrupe[PerformanceGroupType.DruhyDen] = 12;
+    PocetZobrazenychVGrupe[PerformanceGroupType.Vikend] = 12;
+    PocetZobrazenychVGrupe[PerformanceGroupType.Tyzden] = 12;
+    PocetZobrazenychVGrupe[PerformanceGroupType.DoKoncaMesiaca] = 18;
+    PocetZobrazenychVGrupe[PerformanceGroupType.Mesiac] = 24;
+    PocetZobrazenychVGrupe[PerformanceGroupType.Hladisko] = 24;
+    }
+
+
+    lang["priority_prihlasenie_msg"] = "Na představen&#237; je aktu&#225;lně umožňen pouze přednostn&#237; n&#225;kup. Pro pokračov&#225;n&#237; se pros&#237;m přihlaste.";
+    lang["GaleriaSektora"] = "Galerie sektoru";
+    lang["ViacInfo"] = "V&#237;ce info";
+    lang["VPredajiDnes"] = "V prodeji dnes od";
+    lang["VPredajiZajtra"] = "V prodeji z&#237;tra od";
+    lang["VPredajiOd"] = "V prodeji od";
+
+    lang["Kupit"] = "Koupit";
+    lang["lbPredajZacne"] = "Prodej začne za";
+    lang["LbSHour"] =  "hod.";
+    lang["lbSMin"] = "min.";
+    lang["lbSSek"] = "sek.";
+    lang["Miesto"] = "M&#237;sto";
+    lang["2az4Miesta"] = "M&#237;sta";
+    lang["5aViacMiest"] = "M&#237;st";
+    lang["VybMin"] = "Vyberte minim&#225;lně";
+    lang["VybMax"] = "Vyberte maxim&#225;lně";
+    lang["Vyberte"] = "Vyberte si pros&#237;m";
+    lang["Lbaz"] = "až";
+    lang["RychlyNakup_JednotnaCena"] = "Jednotn&#225; cena";
+    lang["lbServisnyPoplatok"] = "Transakčn&#237; poplatek";
+    lang["Adresa"] = "Adresa";
+    lang["Podujatia"] = "Akce";
+    lang["PocetPredstaveni"] = "[CZ|PocetPredstaveni]";
+    lang["PM_info_manipulak"] = "Při vyzvednut&#237; od 3.4.2018 V&#225;m bude k rezervaci připoč&#237;t&#225;n manipulačn&#237; poplatek 5Kč /1 vstupenka";
+    lang["PM_info_manipulak_2"] = "&#39;POZOR:\r\nPři platbě BENEFITN&#205; objedn&#225;vky, je nutn&#233; připoč&#237;tat manipulačn&#237; poplatek s&#237;tě ve v&#253;ši {0} k ceně celkem za vstupenky.\r\nV př&#237;padě vyzvednut&#237; vstupenek na prodejn&#237;m m&#237;stě V&#225;m bude &#250;čtov&#225;n manipulačn&#237; poplatek s&#237;tě ve v&#253;ši {0}.&#39;";
+    lang["PM_info_manipulak_Info"] = "Při vyzvednut&#237; od 3.4.2018 V&#225;m bude k rezervaci připoč&#237;t&#225;n manipulačn&#237; poplatek 5Kč /1 vstupenka";
+    lang["wd_prihlasenie_msg"] = "Na představen&#237; je aktu&#225;lně umožňen pouze hl&#237;dac&#237; pes. Pro pokračov&#225;n&#237; se pros&#237;m přihlaste.";
+    lang["WD_Objednat"] = "Objednat";
+    lang["PoplatokDorucenie_HT"] = "Poplatek za zpracov&#225;n&#237; elektronick&#233; vstupenky";
+    lang["lbHladiskoZobrazitCele"] = "Zobrazit cel&#233; hlediště";
+    lang["frontaError1"] = "Z důvodů Vaš&#237; dlouh&#233; neaktivity na str&#225;nce došlo ke ztr&#225;tě spojen&#237; a vypadl/a jste z fronty. Str&#225;nku si pros&#237;m obnovte.";
+    lang["ReloadPage"] = "Obnovit str&#225;nku";
+    var kdisp = 'K dispozici pouze s';
+
+    lang["PoukazkaTPNazov"] = 'Pouk&#225;zka Ticketportal';
+    lang["PriorityIdnesInePredstavenie"] = 'V&#225;š k&#243;d byl už použit&#253; na představen&#237; ';
+    lang["lbWaitBank"] = 'Byly jste přesměrov&#225;ni do platebn&#237; br&#225;ny banky. Str&#225;nka ček&#225; na odpověď z banky ..';
+    lang["MS2019_MiestaNevynechavat"] = 'Pros&#237;me, nenech&#225;vejte mezi m&#237;sty mezeru.';
+lang["Vyberte"] = 'Vyberte si pros&#237;m';

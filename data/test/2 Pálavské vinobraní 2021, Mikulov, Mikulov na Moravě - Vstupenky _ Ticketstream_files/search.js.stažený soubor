@@ -1,0 +1,469 @@
+/**
+ * Instant search
+ */
+
+var searchTimeout = null;
+var searchIsOnTop = false;
+
+var searchboxAnimation = false; 
+var searchPage = false;
+var searchURL = '/search';
+
+var qPrev = ''; // Previous query
+
+if (typeof(searchBoxAnimationEnabled) === 'undefined')
+{
+    searchBoxAnimationEnabled = false;
+}
+
+$(document).ready(function ()
+{
+
+    window.addEventListener('popstate', function (event)
+    {
+        if (window.location.pathname == '/' || window.location.pathname == '')
+            cancelSearch(true); 
+    }, false);
+
+
+    searchPage = $('.search').hasClass('search-page');
+
+    if (searchPage)
+    {
+        SetCaretAtEnd($('#q').get(0));
+        $('#q').focus();
+    }
+    else if (searchboxAnimation)
+    {
+        $(document).keypress(function (e)
+        {
+            if ($(window).scrollTop() < searchboxAnimation.element.offset().top - $('#header').outerHeight())
+            {
+                if (searchboxAnimation.active)
+                {
+                    if (!searchboxAnimation.element.is(':focus'))
+                    {
+                        if (e.keyCode == 13)
+                        {
+                            searchboxAnimation.afterAnimationClick = true;
+
+                            searchboxAnimation.element
+                                .focus()
+                                .val(searchboxAnimation.placeholders[searchboxAnimation.labelIndex])
+                                .keyup();
+                        }
+                        else
+                            searchboxAnimation.element.focus();
+                    }
+                }
+            }
+
+        });
+
+    }
+
+    var q = ''; // Current query
+    var xhr = null; // Last AJAX request object
+
+    if (searchBoxAnimationEnabled)
+    {
+        searchboxAnimation = new placeholderAnimation($('#q'));
+    }
+
+
+    //$('#serp').hide();
+
+    /**
+     * On keyup: search
+     */
+
+    $('#q').keydown(function (event)
+    {
+        if ((event.keyCode == 8 || event.keyCode == 46) && searchboxAnimation.afterAnimationClick)
+        {
+            $(this).val('');
+            $('#serp').html('');
+            searchboxAnimation.afterBackspace = true;
+            searchboxAnimation.afterAnimationClick = false;
+        }
+        else if (event.keyCode == 13)
+        {
+            $('#q').blur();
+            return false;
+        }
+
+    });
+
+
+    $('#q').keyup(function (event)
+    {
+        // Cancel last AJAX request (if not finished yet)
+        if (xhr && xhr.readyState !== 4)
+        {
+            xhr.abort();
+            console.log('XHR canceled');
+        }
+
+        if (searchboxAnimation.afterBackspace)
+        {
+            searchboxAnimation.afterBackspace = false;
+            return;
+        }
+        
+        q = $(this).val().trim();
+
+        if (searchTimeout)
+        {
+            window.clearInterval(searchTimeout);
+            searchTimeout = null;
+        }
+
+        if (q !== qPrev || searchboxAnimation.afterAnimationClick)
+        {
+            if (!searchIsOnTop)
+                scrollToAnimation(0, 700); 
+
+            $('.search').addClass('active');
+            searchboxAnimation.active = false;
+
+            $('.homepage-content, .footer').fadeOut(300);
+
+            searchTimeout = window.setTimeout(function ()
+            {
+                console.log("Searching: " + encodeURIComponent(q));
+                xhr = $.get('/search?term=' + encodeURIComponent(q), function (data)
+                {
+                    qPrev = q;
+                    $('#serp')
+                        .html(data);
+
+                    if (window.location.pathname.includes(searchURL))
+                        window.history.replaceState({}, 'Tickestream: ' + q, searchURL + '?term=' + encodeURIComponent(q));
+                    else
+                        window.history.pushState({}, 'Tickestream: ' + q, searchURL + '?term=' + encodeURIComponent(q));
+
+                    window.setTimeout(function ()
+                    {
+                        $('#serp')
+                           .slideDown(350);
+
+                    }, 300);
+                });
+
+            }, 300);
+
+            searchIsOnTop = true;
+
+        }
+        else if (q.length <= 0)
+        {
+            cancelSearch();
+        }
+
+        return false;
+    });
+
+    /**
+     * On press Escape: Clear searchbox and set focus
+     */
+    $(document).keydown(function (e)
+    {
+        if (e.keyCode === 27)
+        {
+            $('#q').val('').focus();
+        }
+    });
+
+});
+
+
+function cancelSearch(activateAnimation)
+{
+    if (searchPage && activateAnimation)
+    {
+        window.location = '/';
+    }
+
+    if (!searchPage)
+    {
+        window.history.pushState({}, 'Tickestream' + q, '/');
+
+        $('.search').removeClass('active');
+
+        window.setTimeout(function ()
+        {
+            $('.homepage-content, .footer').fadeIn(500);
+            searchIsOnTop = false;
+        }, 400);
+
+        $('#serp').html('');
+        $('#serp').slideUp(1);
+        $('#q').val('');
+        qPrev = '';
+
+        if (!("ontouchstart" in document.documentElement))
+            $('#q').focus();
+
+        if (searchboxAnimation)
+        {
+            if (activateAnimation)
+            {
+                window.setTimeout(function ()
+                {
+                    searchboxAnimation.activate();
+                    $('#q').blur();
+                }, 1000);
+            }
+        }
+    }
+}
+
+
+function placeholderAnimation(textBox, placeholders)
+{
+    var currentObject = this;
+
+    if (!textBox.data('placeholder'))
+        return;
+
+    this.placeholders = textBox.data('placeholder').split('|');
+
+    this.element = textBox;
+    this.labelIndex = 0;
+    this.charIndex = 0;
+
+    this.charIntervalDuration = 50;
+    this.intervalRandomizer = 130;
+
+    this.animationStartDelay = 1500;
+
+    this.labelIntervalDuration = 1000;
+    this.blankDuration = 700;
+    this.remainDuration = 1700;
+    this.cursorBlinkRate = 300;
+
+    this.deleteDuration = 20;
+    this.deleteRandomizer = 50;
+
+
+    this.deleting = false;
+
+    this.placeholderElement = $('<span>');
+
+    this.active = false;
+
+    this.element.after($('<div>')
+        .addClass('animated-placeholder')
+        .append(this.placeholderElement)
+        );
+
+    this.afterAnimationClick = false;
+    this.afterBackspace = false;
+
+    this.preservePromotionAfterClick = false
+
+    this.mobileDisplay = function () 
+    {
+      return $('.brutal-icon').css('opacity') == 0
+    };
+
+    this.placeholderElement.parent().click(function ()
+    {
+        if (searchboxAnimation.charIndex >= searchboxAnimation.placeholders[searchboxAnimation.labelIndex].length * 0.75 && this.preservePromotionAfterClick)
+        {
+            searchboxAnimation.afterAnimationClick = true;
+            textBox
+              .focus()
+              .val(searchboxAnimation.placeholders[searchboxAnimation.labelIndex])
+              .keyup();
+        }
+        else
+        {
+            textBox.focus();
+        }
+
+    });
+
+    this.element.focus(function ()
+    {
+
+        searchboxAnimation.placeholderElement.parent().hide();
+
+        if (currentObject.mobileDisplay && currentObject.active)
+        {
+            searchboxAnimation.afterAnimationClick = true;
+            searchboxAnimation.element
+              .val('')
+              .keyup();
+        }
+
+        searchboxAnimation.active = false;
+
+    });
+
+    this.element.blur(function ()
+    {
+        if (!$('.search').hasClass('active'))
+        {
+            if (currentObject.element.val() == '')
+            {
+                currentObject.activate();
+            }
+
+        }
+    });
+
+    this.activate = function ()
+    {
+
+        this.deleting = false;
+        this.labelIndex = 0;
+        this.charIndex = 0;
+
+        this.placeholderElement.text('');
+        this.setCSSValues();
+
+        currentObject.placeholderElement.parent().show();
+
+        if (!this.active)
+        {
+            this.active = true;
+
+            window.setTimeout(function ()
+            {
+                currentObject.frame();
+            }, this.animationStartDelay);
+        }
+    };
+
+    this.cursorBlink = function ()
+    {
+        this.placeholderElement.toggleClass('cursor-blink');
+    };
+
+    this.setCSSValues = function ()
+    {
+        this.placeholderElement.parent().css('top', '-' + this.placeholderElement.outerHeight() - 40 + 'px');
+        this.placeholderElement.parent().css('margin-bottom', '-' + this.placeholderElement.outerHeight() - 40 + 'px');
+    }
+
+    this.frame = function ()
+    {
+
+        if (!this.active)
+            return;
+
+        var currentObject = this;
+
+        //  if (this.element.is(':focus'))
+        //{
+        //    this.placeholderElement.text('');
+        //    return;
+        //}
+
+        this.placeholderElement.text(this.placeholders[this.labelIndex].substring(0, this.charIndex));
+        this.setCSSValues();
+
+        if (this.deleting)
+        {
+            this.charIndex--;
+
+            if (this.charIndex < 0)
+            {
+                this.deleting = false;
+                this.charIndex = 0;
+
+                if (++this.labelIndex >= this.placeholders.length)
+                    this.labelIndex = 0;
+
+                window.setTimeout(function ()
+                {
+                    currentObject.frame();
+                }, currentObject.blankDuration);
+
+            }
+            else
+            {
+                window.setTimeout(function () { currentObject.frame() }, this.deleteDuration + Math.random() * this.deleteRandomizer);
+            }
+
+        }
+        else
+        {
+            this.charIndex++;
+
+            if (this.charIndex > this.placeholders[this.labelIndex].length)
+            {
+                this.charIndex--;
+                this.deleting = true;
+
+                window.setTimeout(function ()
+                {
+                    currentObject.frame();
+                }, this.remainDuration);
+
+
+            }
+            else
+            {
+                window.setTimeout(function () { currentObject.frame() }, this.charIntervalDuration + Math.random() * this.intervalRandomizer);
+            }
+
+        }
+
+    };
+
+    this.activate();
+
+    window.setInterval(function () { currentObject.cursorBlink() }, this.cursorBlinkRate);
+
+}
+
+
+function SetCaretAtEnd(elem)
+{
+    var elemLen = elem.value.length;
+    // For IE Only
+    if (document.selection)
+    {
+        // Set focus
+        elem.focus();
+        // Use IE Ranges
+        var oSel = document.selection.createRange();
+        // Reset position to 0 & then set at end
+        oSel.moveStart('character', -elemLen);
+        oSel.moveStart('character', elemLen);
+        oSel.moveEnd('character', 0);
+        oSel.select();
+    }
+    else if (elem.selectionStart || elem.selectionStart == '0')
+    {
+        // Firefox/Chrome
+        elem.selectionStart = elemLen;
+        elem.selectionEnd = elemLen;
+        elem.focus();
+    } // if
+} // SetCaretAtEnd()
+
+
+function searchShowAll(element)
+{
+    var parent = element.parent().parent();
+
+    parent.nextAll().find('.hide').fadeOut(1);
+
+    window.setTimeout(function ()
+    {
+        parent.children().first().nextAll().slideDown(400);
+
+        window.setTimeout(function ()
+        {
+            parent.children().first().nextAll().find('img.' + $(window).width() > 850 ? 'desktop-only' : 'mobile-only').fadeIn(1000);
+        }, 800);
+
+        element.parent().fadeOut(200);
+
+    }, 200); 
+
+    return false;
+}

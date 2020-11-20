@@ -1,0 +1,34 @@
+
+// -- custom javascript --
+function MailocatorSelectSegment(){
+     
+    // !! kazdy nasledujici popup musi mit hidden inputy s name "opt_segment" a "email" !!!
+    // Pokud nejsou, treba doplnit
+  
+    // cislo musi byt platne ID nasledujiciho mutlistep popupu 
+    var segmentToDesignId = {'Divadlo':564, 'Hudba-a-koncerty':565, 'Sport':566, 'Vse':567};
+
+    var f = document.getElementById('MailocatorForm');  
+    var email    = f.elements['email'].value;
+    var segment  = '';
+    var segments = document.getElementsByName("opt_segment");
+    for( var i=0; i < segments.length; i++ ){
+        if( segments[i].checked ){          
+            segment = segments[i].value;
+            break;
+        }
+    }
+
+    if( email && segment ){
+        mailocator.action.do('subscribe:0|close|displayID:'+segmentToDesignId[segment]);
+        setTimeout( 
+            function(){
+              document.getElementsByName("opt_segment")[0].value = segment;
+              document.getElementsByName("email")[0].value = email;
+            }, 
+            750);
+        return!1;
+    }
+    else
+        return!1;  
+}console.log('[!] Remove Mailocator snippet from your page, your campaign number 100287 has been deleted.');

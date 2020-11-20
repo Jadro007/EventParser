@@ -1,0 +1,848 @@
+﻿//This is shared code for Tickets + Cart
+var bookerLang = 'cs';
+
+var addTicketTimeout = 800;
+
+var couponDelay = [];
+var couponValue = 0;
+
+var discountCodeData;
+var continueNoCouponCaption = '';
+
+var discountCodeValidOrEmpty = true;
+var isDiscountCode = false;
+
+var priceSelectors = [];
+
+var merchDeliveryMethodsCount = 0;
+
+var currentAvailableTicketsURL = null;
+
+var isPromoterAccess = false;
+var delayedDirectTicketChange = false; 
+
+function couponChange(key)
+{
+    if (couponDelay['_' + key])
+        window.clearTimeout(couponDelay['_' + key]);
+
+    couponDelay['_' + key] = window.setTimeout(function () { couponValidate(key) }, 1000);
+}
+
+function discountCodeChange()
+{
+    var discountCodeEmpty = $('#coupon-code').val() == '';
+
+    discountCodeValidOrEmpty = discountCodeEmpty;
+
+    if (discountCodeEmpty)
+    {
+        if (continueNoCouponCaption != '')
+            $('#discountCodeContinueButton div').text(continueNoCouponCaption);
+    }
+    else
+    {
+        if (continueNoCouponCaption == '')
+            continueNoCouponCaption = $('#discountCodeContinueButton div').text();
+
+        $('#discountCodeContinueButton div').text($('#continueButton div').text());
+    }
+
+    discountCodeEnableButton();
+
+    isDiscountCode = true;
+    couponChange();
+}
+
+function discountCodeEnableButton()
+{
+    if (!discountCodeValidOrEmpty)
+    {
+        $('#discountCodeContinueButton').removeClass('black-background');
+        $('#discountCodeContinueButton').addClass('white-background');
+    }
+    else
+    {
+        $('#discountCodeContinueButton').addClass('black-background');
+        $('#discountCodeContinueButton').removeClass('white-background');
+    }
+}
+
+function discountCodeContinue()
+{
+    if (!discountCodeValidOrEmpty || discountCodeEntered)
+        return;
+
+    discountCodeEntered = true;
+
+    console.log(availableTickets); 
+
+    var url = null;
+
+    if (currentAvailableTicketsURL)
+        url = currentAvailableTicketsURL;
+    else if (eventID)
+    {
+        var itemType = 'event';
+        var itemID = eventID;
+
+        var url = ts_url + 'api/available-tickets?type=' + itemType + '&id=' + itemID + (isBooker ? '&booker=' + bookerName + '&lang=' + bookerLang + '&tsid=' + tsCookie : '');
+
+    }
+
+    console.log(url);
+    
+    if (url)
+    {
+        $.getJSON(url, function (data)
+        {
+            console.log(data);
+            availableTickets = data;
+            availableDates = data.availableDates;
+            initAvailableDates();
+            var performanceID = discountCodeData.id;
+            var newData = getPerformanceById(performanceID)[0];
+            createPrices(discountCodeParentElement, newData, discountCodePopup);
+        });
+    }
+    else
+        createPrices(discountCodeParentElement, discountCodeData, discountCodePopup);
+
+}
+
+function couponValidate(key)
+{
+    console.log(isDiscountCode); 
+
+    if (key == undefined)
+        key = '';
+
+    if (couponDelay['_' + key])
+    {
+        window.clearInterval(couponDelay['_' + key]);
+        couponDelay['_' + key] = null;
+    }
+
+    var couponCode = $('#coupon-code' + key).val().trim();
+
+    if (couponCode == "")
+    {
+        $('.coupon-status' + key).hide();
+        return;
+    }
+
+    var data = { 'code': couponCode };
+
+    if (isDiscountCode || key != '')
+        data['useImmediately'] = true;
+
+    console.log(data);
+
+    var url = $('#coupon-code' + key).data('validate-url');
+
+    console.log(discountCodeData);
+
+    if (discountCodeData)
+        url = url.replace('[performanceID]', discountCodeData.id);
+
+    if (isBooker)
+        url += (url.indexOf('?') == -1 ? '?' : '&') + 'booker=' + bookerName + '&tsid=' + tsCookie;
+
+    $('#coupon-entry' + key + ' .loader').removeClass('hidden');
+
+    console.log(url);
+    console.log(data);
+
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            console.log(response);
+
+            $('#coupon-entry' + key + ' .loader').addClass('hidden');
+
+            if (response.result)
+            {
+                if (isDiscountCode)
+                {
+                    discountCodeValidOrEmpty = true;
+                    discountCodeEnableButton();
+                    $('.coupon-invalid').hide();
+                    $('#discount-codeContinueButton').hide();
+
+                    console.log(discountCodeData.discount); 
+
+                    $('.coupon-valid').fadeIn(500, function ()
+                    {
+                        window.setTimeout(function ()
+                        {
+                            if (discountCodeData.discount.redirectUrl)
+                                window.location.href = discountCodeData.discount.redirectUrl;
+                            else
+                                discountCodeContinue();
+
+                        }, 1000);
+                    });
+
+                }
+                else
+                {
+                    if (key == '')
+                    {
+                        addCoupon(response);
+                        calculateGrandTotal();
+                    }
+                    else
+                    {
+                        $('#coupon-section' + key).remove();
+                        reloadCart();
+                    }
+                }
+            }
+            else
+            {
+                $('.coupon-invalid' + key).html(response.errorMessage || response.message);
+                $('.coupon-invalid' + key).show(400);
+                $('.coupon-valid' + key).hide();
+            }
+        });
+
+}
+
+function addCoupon(response)
+{
+    console.log(response);
+
+    $('.coupon-status').hide();
+
+    var couponCode = response.code;
+    var couponCodeID = couponCode.replace('/', '-');
+
+    var couponRow = $('<div>')
+        .addClass('row head-row coupon-row')
+        .data('value', response.value)
+        .attr('id', 'coupon-row-' + couponCodeID)
+        .append
+        (
+        $('<div>')
+            .addClass('col-28')
+            .text($('#gift-coupon-translation').val()),
+        $('<div>')
+            .addClass('col-20')
+            .text(couponCode),
+        $('<div>')
+            .addClass('col-12 right')
+            .text('- ' + formatMoney(response.value))
+
+        );
+
+    couponRow.hide();
+
+    var couponCross = $('<div>')
+        .attr('id', 'coupon-cross-' + couponCodeID)
+        .addClass('coupon-cross cross')
+        .append
+        (
+        $('<button>').click(function ()
+        {
+            removeCoupon(couponCode);
+        })
+        );
+
+    couponCross.hide();
+
+    couponCross.insertBefore($('#coupon-section'));
+    couponRow.insertBefore($('#coupon-section'));
+
+    couponRow.show(400);
+    couponCross.fadeIn(1000);
+
+    $('#coupon-entry').hide(400);
+    $('#coupon-section button').fadeIn(400);
+    $('#first-coupon-title').fadeOut(400,
+        function ()
+        {
+            $('#next-coupon-title').fadeIn(400);
+        });
+
+
+    $('.coupon-valid').show(400);
+    $('.coupon-invalid').hide();
+    couponValue += parseInt(response.value);
+}
+
+
+function removeCoupon(couponCode)
+{
+    var couponCodeID = couponCode.replace('/', '-');
+
+    var button = $('#coupon-cross-' + couponCodeID + ' button');
+
+    if ((button).hasClass('loader'))
+        return;
+
+    button.addClass('loader');
+
+    var data = { 'code': couponCode };
+    console.log(data);
+
+    $.ajax({
+        url: ts_url + 'api/cart/unlink-voucher' + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : ''),
+        method: 'POST',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=UTF-8"
+    })
+        .done(function (response)
+        {
+            console.log(response);
+
+            button.removeClass('loader');
+
+            if (response.result)
+            {
+                button.remove();
+                $('#coupon-row-' + couponCodeID).hide(500, function ()
+                {
+                    couponValue -= parseInt($(this).data('value'));
+                    this.remove();
+                    calculateGrandTotal();
+                });
+            }
+            else
+            {
+                alert(text(response.errorMessage));
+            }
+
+        });
+
+}
+
+function showCouponCode(e, key)
+{
+    e.hide();
+    $('#coupon-code' + key).val('');
+    $('.coupon-status' + key).hide();
+    $('#coupon-entry' + key).show(400);
+}
+
+
+
+function calculateGrandTotal()
+{
+    grandTotal = 0;
+    insurancePrice = 0;
+    ticketCount = 0;
+
+    var potentialInsurancePrice = 0;
+
+    if (cartData['tickets'])
+    {
+        cartData['tickets'].forEach(function (performanceData, performanceIndex)
+        {
+            var performanceID = performanceData['performanceId'];
+            var performancePrice = Sum(performanceData['content'], 'price');
+            var performanceTicketCount = performanceData['content'].length;
+
+            $('#price-' + performanceID).text(formatMoney(performancePrice));
+            $('#count-' + performanceID).text(formatTicketCount(performanceTicketCount));
+
+            ticketCount += performanceTicketCount;
+            grandTotal += performancePrice;
+            potentialInsurancePrice += Sum(performanceData['content'], 'insurance');
+        });
+    }
+
+    if (ticketCount == 0)
+    {
+        $('#no-tickets').show(400);
+    }
+
+    $('.hide-on-empty-cart').toggle(ticketCount > 0);
+
+    calculateInsurance();
+
+    grandTotal += insurancePrice;
+    grandTotal += calculateMerchTotal();
+    grandTotal += calculateAdditonalCharges();
+    grandTotal -= couponValue;
+
+
+    if (grandTotal < 0)
+        grandTotal = 0;
+
+    $('.grand-total').text(formatMoney(grandTotal));
+
+}
+
+function calculateAdditonalCharges()
+{
+    console.log(cartData);
+
+    console.log(cartData.additionalCharges);
+    return Sum(cartData.additionalCharges, 'value');
+}
+
+
+function calculateInsurance()
+{
+    insurancePrice = 0;
+
+    $('input.insurance-checkbox').each(function ()
+    {
+        var reservationID = $(this).data('reservationId');
+
+        var potentialPrice = 0;
+
+        if ($(this).data('checked'))
+             potentialPrice =  parseInt($(this).data('price'));
+
+        insurancePrice += potentialPrice;
+
+        var priceElement = $('#insurance-price-' + reservationID);
+
+        if (priceElement.find('div.loader').length == 0)
+        {
+            if (potentialPrice == 0)
+                priceElement.text('');
+            else
+                priceElement.text(formatMoney(potentialPrice));
+        }
+    });
+
+}
+
+function calculateMerchTotal()
+{
+    var result = 0;
+    var count = 0;
+
+    merchSelectors.forEach(function (merchSelector)
+    {
+        if (merchSelector.getAmount)
+        {
+            result += merchSelector.getAmount();
+            count += merchSelector.value;
+        }
+        else
+        {
+            merchSelector.forEach(function (element)
+            {
+                result += element.getAmount();
+                count += element.value;
+            });
+        }
+    });
+
+    merchSelected = (count > 0);
+
+    if (merchSelected && merchDeliveryMethodsCount > 0)
+        $('#merch-delivery').show(400);
+    else
+        $('#merch-delivery').hide(400);
+
+    var merchDeliveryPrice = $('#merch-delivery input[type=radio]:checked').data('price');
+
+    if (merchDeliveryPrice == undefined)
+        merchDeliveryPrice = 0;
+
+    if (count > 0)
+        result += merchDeliveryPrice;
+
+    merchCount = count;
+
+    return result;
+}
+
+
+function ticketSelector(parentDiv, id, value, minValue, maxValue, step, allowZero, price, sectorId, priceData, onChange)
+{
+    this.add = function (i, noEvent)
+    {
+        if (this.loading)
+            return;
+
+        this.setValue(this.value + i, noEvent);
+    };
+
+    this.setValue = function (value, noEvent)
+    {
+        var lastValue = this.value;
+        this.value = value;
+
+        if (this.value < this.minValue)
+        {
+            if (this.allowZero)
+            {
+                if (value > lastValue)
+                    this.value = this.minValue;
+                else
+                    this.value = 0;
+            }
+            else
+                this.value = this.minValue;
+        }
+        else if (this.value > this.maxValue)
+            this.value = this.maxValue;
+
+        this.valueElement.text(this.value);
+
+        $(this.element).find('.minus').toggleClass('disabled', (this.value == this.minValue && !this.allowZero) || (this.allowZero && this.value == 0));
+        $(this.element).find('.plus').toggleClass('disabled', this.value == this.maxValue);
+
+        if (!noEvent && lastValue != this.value)
+            onChange(this);
+    }
+
+    this.getAmount = function ()
+    {
+        return this.value * this.price;
+    }
+
+    this.loader = function (active)
+    {
+        this.loading = active;
+        this.loaderElement.toggleClass('hidden', !active);
+        this.valueElement.toggleClass('hidden', active);
+    }
+
+    this.minValue = minValue;
+    this.maxValue = maxValue;
+    this.price = price;
+    this.value = value;
+    this.step = step;
+    this.allowZero = allowZero;
+    this.id = id;
+    this.sectorId = sectorId;
+    this.loading = false; 
+
+    var currentSelector = this;
+
+    this.element = $('<div>').addClass('price-selector');
+
+    this.element.append($('<input>').attr('type', 'hidden').attr('name', 'tickets_' + id));
+    this.element.append($('<button>')
+        .addClass('minus')
+        .click(function (e)
+        {
+            e.preventDefault();
+            currentSelector.add(-currentSelector.step);
+        })
+    );
+
+    this.valueElement = $('<span>');
+    this.element.append(this.valueElement);
+
+    this.loaderElement = $('<div>')
+            .addClass('loader-wrapper hidden')
+            .append
+            (
+                $('<div>')
+                    .addClass('loader-wrapper-sub')
+                    .append
+                    (
+                        $('<div>').addClass('loader small')
+                    )
+            );
+
+    this.element.append(this.loaderElement);
+
+    this.element.append($('<button>')
+        .addClass('plus')
+        .click(function (e)
+        {
+            e.preventDefault();
+            currentSelector.add(currentSelector.step);
+        })
+    );
+
+    this.add(0, true);
+
+    this.priceData = priceData;
+    this.parentDiv = parentDiv;
+
+    parentDiv.append(this.element);
+
+}
+
+
+function allowCheckout()
+{    
+    var active = getTotalTicketCount() > 0 && !isPromoterAccess && !delayedDirectTicketChange;
+
+    if (isBooker && !iFrameOnlyBooker)
+        window.top.postMessage({ action: 'activate-button', active: active }, '*');
+    else
+    {
+        if (active)
+        {
+            $('.checkout-button').removeClass('white-background').addClass('red-background');
+        }
+        else
+            $('.checkout-button').removeClass('red-background').addClass('white-background');
+    }
+}
+
+
+function getTotalTicketCount()
+{
+    var i = 0;
+    priceSelectors.forEach(function (element)
+    {
+        i += element.value;
+    });
+    return i;
+}
+
+function updateTotal()
+{
+    $('.total').text(formatMoney(getTotalTicketAmount()));
+}
+
+function getTotalTicketAmount()
+{
+    var i = 0;
+
+    priceSelectors.forEach(function (element)
+    {
+        i += element.getAmount();
+    });
+
+    return i;
+
+}
+
+
+function getSelectedPrices(selectors, includeZeroes)
+{
+    var items = [];
+    console.log(selectors);
+
+    selectors.forEach(function (element)
+    {
+        var performanceID = null;
+        var priceCategoryID = null;
+        var linkedReservationId = null;
+
+        if (element.priceData)
+        {
+            performanceID = element.priceData.performance_id;
+            priceCategoryID = element.priceData.price_category_id;
+            linkedReservationId = element.priceData.linked_performance_id;
+        }
+
+        if (element.value > 0 || includeZeroes)
+        {
+            items.push({
+                performanceId: performanceID,
+                priceCategoryId: priceCategoryID,
+                sectorId: element.sectorId,
+                priceId: element.id,
+                amount: element.value,
+                linkedReservationId: linkedReservationId
+            });
+        }
+    });
+
+
+    return items;
+}
+
+function directTicketChange(selector, selectorsArray, executeAfter)
+{
+    selector.loader(true);
+    var selectors = [];
+    selectors.push(selector);
+    
+    var selectedPrices = getSelectedPrices(selectors, true)
+    var url = '/api/cart/ticket-set' + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : '')
+
+    console.log(selectedPrices);
+    console.log(url);
+
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: JSON.stringify(selectedPrices)
+    })
+        .done(function (response)
+        {
+            console.log(response);
+            cartTickets = response.cart;
+            updateCartCounter(response.cart);
+            updateSelectors(selectorsArray);
+            selector.loader(false);
+
+            if (typeof updateAdditionalCharges !== 'undefined')
+            {
+                cartData = response.cart;
+                updateAdditionalCharges();
+            }
+
+            if (executeAfter)
+                executeAfter();
+
+            if (response.message)
+                showMessageBox(response.message);
+        });
+}
+
+
+
+function updateSelectors(selectors)
+{
+    console.log(selectors);
+
+    selectors.forEach(function (selector)
+    {
+        var performanceID = selector.priceData.performance_id;
+        var priceID = selector.priceData.id;
+        var sectorID = selector.sectorId;
+        var value = selector.value;
+        var linkedReservationId = selector.priceData.linked_performance_id;
+
+        var selectorFound = false;
+
+        var ticketCount = 0;
+
+        cartTickets.tickets.forEach(function (reservation)
+        {
+            if (reservation.performanceId == performanceID)
+            {
+                reservation.content.forEach(function (ticket)
+                {
+                    if (ticket.priceId == priceID && ticket.sectorId == sectorID)
+                        ticketCount++;
+                });
+            }
+        });
+
+        cartTickets.merchReservations.forEach(function (reservation)
+        {
+            if (reservation.performanceId == performanceID)
+            {
+                for (var key in reservation.items)
+                {
+                    if (reservation.items.hasOwnProperty(key))
+                    {
+                        item = reservation.items[key];
+                        if (item.linkedReservationId == linkedReservationId
+                            || (item.linkedReservationId == 0 && linkedReservationId == null && item.variantId == selector.variantID))
+                            ticketCount += item.count;
+                    }
+                }
+            }
+        });
+
+        if (selector.hideWhenZero)
+        {
+            if (ticketCount == 0)
+            {
+           //     console.log(selector); 
+
+                if (selector.addMerchButtonRow.is(':visible'))
+                {
+                    var variantsCount = 0;
+                    selectors.forEach(function (selector2)
+                    {
+                        if (selector.priceData.performance_id == selector2.priceData.performance_id)
+                            variantsCount += selector2.value;
+                    });
+
+                    console.log(variantsCount);
+
+                    if (variantsCount == 0)
+                    {
+                        selector.addMerchButtonRow.slideUp();
+                        selector.addMerchRow.slideDown();
+                    }
+                }
+
+                if (selector.parentDiv.parent().is(':visible'))
+                    selector.parentDiv.parent().slideUp();
+
+            }
+        }
+
+        if (value != ticketCount)
+            selector.setValue(ticketCount, true);
+
+        if (selector.priceDiv)
+        {
+            var price = selector.getAmount();
+            selector.priceDiv.text(price == 0 ? '' : formatMoney(price));
+        }
+    });
+}
+
+
+function escapeSeatID(seatID)
+{
+    return seatID
+        .replaceAll('-', '-1-')
+        .replaceAll('.', '-2-')
+        .replaceAll(' ', '-3-');
+}
+
+
+function changeSeatPricePopup(seat, performanceData, seatID, ticketID, priceID, seatingChart)
+{
+    var optionsParent = $('<div>');
+
+    seat.prices.forEach(function (e)
+    {
+        var priceDataDetail = performanceData.prices[e];
+
+        var priceOption = $('<input>')
+            .attr('type', 'radio')
+            .attr('name', 'price-option')
+            .attr('id', 'price-option-' + e)
+            .click(function ()
+            {
+                window.setTimeout(function ()
+                {
+                    hideMessageBox(function ()
+                    {
+                        if (seatingChart)
+                            seatingChart.tryToChangeSeatPrice(e, seatID);
+                        else
+                            tryToChangePrice(e, seatID, ticketID);
+                    });
+                }, 600);
+            });
+
+        if (e == priceID)
+            priceOption.attr('checked', 'checked');
+
+        var priceOptionLabel = $('<label>')
+            .attr('for', 'price-option-' + e)
+            .text(priceDataDetail.name);
+
+        optionsParent.append
+        (
+            $('<div>')
+                .append
+                (
+                    $('<div>')
+                        .addClass('radio-button-price')
+                        .text(formatMoney(priceDataDetail.value)),
+                    priceOption,
+                    priceOptionLabel,
+                    priceDataDetail.description ?
+                        $('<div>')
+                            .text(priceDataDetail.description)
+                            .addClass('radio-button-price-description')
+                        : null
+                )
+        );
+    });
+
+    console.log(typeof optionsParent, typeof optionsParent.html())
+
+    showMessageBox(optionsParent);
+
+
+}

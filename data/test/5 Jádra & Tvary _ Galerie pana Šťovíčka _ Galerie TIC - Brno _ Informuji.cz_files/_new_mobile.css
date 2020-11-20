@@ -1,0 +1,820 @@
+@media only screen and (max-width: 680px)
+{
+	.week .movieName img {display:none; }
+	.week table {margin:10px 0px 10px 10px;}
+	.week .movie {padding-bottom:0px; margin-bottom:0px; }
+	.week .movieName {padding-top:10px;}
+	.week div.last {border-bottom:none;}
+	.week, .filmKraj {position:relative;}
+	#film .week .movieTimes {width:65%;}
+	#film .week .movieName {width:35%;}
+	.week .gradient,
+	.filmKraj .gradient {
+		display:block;
+		width:50px;
+		height:100%;
+		position:absolute;
+		left:35%;
+		top:0px;
+		background:url('../images/gradient.png') repeat-y right top;
+	}	
+	.kina .howto {
+		background:#BF2727 url('../images/ico_move_hand.png') no-repeat 5px center;
+		padding:5px 10px 5px 10px;
+		color:#fff;
+		border:solid 1px #CC6F71;
+		font-size:12px;
+		margin-bottom:10px;
+		cursor:pointer;
+	}
+	.kina .howto::after {
+		display:block;
+		padding:10px 0px 10px 38px;
+		content: "Pro zobrazení programu potáhni do stran";
+		background: url('../images/ico_close.png') no-repeat right center;
+	}
+	.filmKraj .cinema {margin-bottom:0px;}
+	.filmKraj table td.over,
+	.filmKraj table th.over	{display:none;} 
+	.cinemasRegionList ul h3,
+	ul.listMini li h3 { float:none; width:100%; margin-bottom:5px; }
+	ul.krajeMenu {padding-bottom:0px; border-bottom:none;}
+	ul.krajeMenu li {width:50%;}
+	.main, .aside {clear:both;}
+	.mobile-hide { display: none;}
+}
+
+
+@media only screen and (max-width: 640px)
+{	
+	.main {margin-bottom:15px;}
+	#article #img { width:200px; }
+
+	.venues_box {width:100%; float:none;}
+	.mesto #eventsList p.date {width: 106px; float:left;}
+	.mesto #eventsList .action h3 {clear:none; font-size:14px;}
+	#promoInfo { margin-bottom:15px; }
+	.leftSide66 .halfGreyBox {width:100%;}
+	.mesto h3.headertab a.floatRight {display:none;}
+	.mesto #payVenue.moreImages a img {width:100%;}
+	h1 {font-size:1.4em; }
+	
+	#greenSection .articleItem {width:50%;}
+	#greenSection .articleItem span {height:130px;}
+	#greenSection .articleItem strong {min-height:85px; padding:20px 15px; font-size:15px;}
+	
+	#footer .box, #footer .double-box {padding:20px 10px 10px 10px; float:none; width:inherit;}
+	#footerMenu {background-image:none; padding:10px;}
+	
+	#body .promophoto p {height:180px;}
+	#body .promophoto p img {position:absolute;left:-10%;}
+	
+	.vylet .venues_box .articleItem {font-size:15px;}
+	.vylet .venues_box .articleItem .nameItem {display:block; }
+	
+	
+	/*
+	#content #tripsBox .locality {display:inline;}
+	#content #tripsBox .locality .greyLinkLight {display:none;} 
+	#content #tripsBox .place_info .distance {float:right; padding-top:5px;}
+	*/
+	
+	#myTripBox .del {display:block; overflow:hidden; margin:5px 0px 0px 0px; float:none;}
+	.left-box,
+	.right-box,
+	#tripsBox,
+	#myTripBox {float:none; width:auto; margin-left:0px; margin-right:0px;}
+	.infoyellowbox,
+ 	.placeInfoHolder div {text-align:center; font-size:14px;}
+ 	#timeDifficulty {margin-top:0px; }
+ 	
+ 	#content div.rating_linker_holder {text-align:center;}
+ 	#content div.rating_linker_holder small {display:inline-block; float:none; margin:auto; text-align:center;  }
+ 	#content div.rating_linker_holder span {display:block; border-bottom:none; padding:0px; line-height:20px; padding:5px 0px 0px 0px;}
+ 	#content div.rating_linker_holder span.link:hover {border-bottom:none; padding:5px 0px 0px 0px; color:#4CAC29;}
+ 	.rating_linker_holder em.count {display:block; left:0px;}
+ 	
+ 	#tripinfo { padding:15px 10px; }
+ 	#tripinfo p {font-size:15px; line-height:20px;}
+ 	.vylet #article h1 {font-size:28px;}
+ 	#body .list h2 a {font-size:24px;}
+ 	div.rating_linker_holder span.link {float:none;}
+ 	h3.nkip-title {margin-bottom:5px;}
+ 	.cykloitem .nkip-info {padding:5px 0px 0px 0px;}
+ 	.cykloitem .travelmode {margin-bottom:10px;}
+ 	.description .travelmode {margin-bottom:30px;}
+ 	#addButton {width:30px; height:30px; overflow:hidden; padding:0px; margin-top:5px;}
+ 	#addButton span {display:none;}
+ 	
+ 	/*.tripTop .trip {margin-bottom:15px; width:48%; margin-left:1%; margin-right:1%;}
+ 	.tripTop .t3 {clear:both;}
+ 	.tripTop .trip a {min-height:280px;}
+ 	.tripTop .trip strong {bottom:22%; font-size:20px;}
+ 	*/
+ 	
+ 	#content .p33 {width:inherit;}
+ 	#content .b1 .articleItem, #content .b1 h3.headertab,
+ 	#content .b3 .articleItem, #content .b3 h3.headertab {margin:0px 7.5px 0px 7.5px;}
+ 	
+ 	#content .eventsList p.city span.locality span {display:none;}
+	#content .eventsList p.city span.locality a {text-decoration:none;}
+	#content .eventsList p.city span.locality a span {display:inline;}
+ 	
+ 	#body .hotels .mesto {
+ 		float:none; 
+ 		display:block; 
+ 		clear:both; 
+ 		background:url('../images/ico_place_mini_green.png') no-repeat left bottom;	
+ 	}
+ 	
+ 	.vylet .p33 .articleItem {font-size:16px;}
+ 	.p33 { width:auto;}
+	.p33 .locality a.greyLinkLight {display:initial;}
+	
+	.contentHead h1 {font-size: 1.6em; margin-bottom:5px;}
+	.contentHead h3.adr {font-size:14px;}
+	
+	.objekt .contentHead #img {margin-right:20px;}
+	.objekt .contentHead {margin-top:30px;}
+	
+	
+	#objectMenu, .objekt #mapsHolder, .objekt #mapsHolder.fullmap {width:inherit; float:none; clear:both; }
+	.objekt #mapsHolder {margin-bottom:20px;}
+	
+	#mapsHolder #maps, 
+	.objekt #mapsHolder.fullmap #maps {height: 200px; }
+	.double-article-box li {float:none; width:inherit; display:block; margin-bottom:15px;}
+	.padding-box {padding-bottom:0px;}
+ 	.venues_box .switch { float:none; clear:both; text-align:center; display:block; }
+ 	
+ 	#content h2.main-sub-title {text-align:center;}
+ 	#objectMenu li a { background: url('../images/bg_sprite.png') no-repeat 105% -1047px }
+ 	body .section-margin {margin-bottom:20px;}
+ 	.sectionBreadcrumbs {overflow:hidden;}
+ 	
+ 	.objekt .promophoto p {
+		width: 48%;
+		margin: 0% 1% 2% 0%;
+	}
+	.objekt .promophoto p:nth-child(even) {
+		margin: 0% 0% 2% 1%;
+	}
+ 	#myTripBox .place_info {display:none;}
+ 	#socialHolderFooter {display:block; text-align:center; float:none; margin-bottom:10px;}
+ 	#author {text-align:center;}
+ 	#fanVizitka th {font-size:13px;}
+ 	ul.tabsList { 
+ 		height:inherit; 
+ 		border:none; 	
+ 		margin-bottom:15px;
+ 	}
+ 	ul.tabsList li { 
+ 		height:inherit; 
+ 		border:none;
+ 		float:none; 
+ 		display:block;
+ 		margin-right:0px;
+ 		border-top:none;	
+ 	}
+ 	ul.tabsList li.active {margin-top:0px; background:#eee;}
+ 	ul.tabsList li a {padding:12px 8px; border:none; }
+ 	ul.tabsList li.active a {border:none; text-decoration:none;}
+ 	h1.mainHeader {font-size:1.8em;}
+ 	
+	#signinFormHolder {
+		border:none;
+		padding:0px;
+		top:0px;
+		right:0px;
+		width:100%;
+		position:fixed;
+		background:#f5f5f5;
+		border-bottom:solid 1px #ddd;
+	}
+	#signinFormHolder form { padding:20px; }
+	#signinFormHolder fieldset {text-align:center;}	
+	#signinFormHolder legend {
+		margin-bottom:15px;
+		padding:0px;
+		font-weight:bold;
+		font-size:16px;
+	}
+	#signinFormHolder p {
+		margin-bottom:10px;
+		text-align:left;
+	}
+	#signinFormHolder label {
+		font-size:14px;
+		width:23%
+	}
+	#signinFormHolder input.text {
+		padding:5px 2.5%; 
+		width:70%;
+		background-color:#fff;
+	}
+	#signinFormHolder input.submit {
+		padding: 8px 0px;
+		-webkit-appearance: none;
+	}
+	
+	#body .item h3.nextPhotos {cursor:pointer; text-transform: lowercase;}
+	#body .item h3.nextPhotos::before { 
+  	  content: "Zobrazit";
+  	  color: #333;
+  	  font-weight: normal;
+  	  cursor:pointer;
+  	  font-size:18px;
+  	 /* background:url('../images/bg_object_icons.png') no-repeat 0px -198px; */
+  	  background:url('../images/bg_sprite.png') no-repeat 8px 10px;
+  	  padding:5px 5px 0px 32px;
+  	  text-transform: none;
+	}
+	/*#body h3.nextPhotos::after {
+		content: "";
+		background: transparent url('../img/bg_more_content.png') repeat-x bottom left;
+		display:block;
+		width:100%;
+		height:80px;
+		margin-top:10px;
+	}
+	*/
+ 	.item .promophoto {display:none;}
+ 	#body .item h3.photoshow::before {
+ 		content: "";
+ 		display:none;
+ 	}
+ 	#body .item h3.photoshow { text-transform: none; }
+	#body h3.nextPhotos {text-align:center;}
+ 	#body .list .paypr {margin:20px 0px;}
+ 	
+ 	.krajeObjekty .kraje { float:none; width:100%; list-style-type:square; margin-left:20px;}
+ 	.dark-full-section {padding-bottom:10px;}
+ 	#preview {padding:0px 10px;}
+ 	.movieText p:first-of-type {padding: 15px 20px;}
+ 	.movieText p {padding:0px 20px;}
+ 	
+ 	.kina h2.black {font-size:16px;}
+ 	h2.black .button-green {padding:10px 15px 8px 15px;}
+ 	.active-cinemas ul.cinemasList h3 {font-size:14px;}
+ 	.active-cinemas .cinema-address {font-size:12px;}
+ 	.clist .button-green {
+ 		padding:8px 15px 8px 15px;
+ 		font-size:14px;
+ 	}
+ 	.switch {display:block; float:none; margin-bottom:20px; text-align:center;}
+ 	h2.floatLeft {float:none;}
+ 	
+ 	ul.listMini li.top {width:50%; padding-bottom:0px;}
+ 	ul.listMini li.top em {
+ 		/*white-space: normal;*/
+ 		width:auto;
+ 		padding:0px 10px;
+ 	}
+ 	ul.listMini li:nth-child(3),
+ 	ul.listMini li:nth-child(5) {
+    	clear:both;
+	}
+	ul.listMini li:nth-child(5) { padding-top:25px; }
+	
+	#content .eventsList .top h3 {font-size:16px;}
+	body .no-mobile-padding,
+	body .no-mobile-padding .content-section { padding:0px; }
+	
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  textarea,
+  input {
+    font-size: 16px !important;
+  }
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px !important;
+    background: #fff;
+  }
+  #searchInput {padding-top:4px; padding-left:10px;}
+  
+  #programMenu li {font-size:16px;}
+  .movieDate span, .movieDate strong {font-size:12px;}
+  .movieDate strong,
+  .mtimes span.timef {font-size:14px;}
+  .movieDate {padding:10px 10px 5px 10px}
+  span.timesTitle {font-size:12px;} 
+  .mtimes { padding:10px 0px 5px 0px;}
+  
+}
+
+@media only screen and (max-width: 580px)
+{
+	.tAHolderCategory .action span.date, .tAHolderCategory .action span.dateEnd {top:60px;}
+	#tAHolder.tAHolderCategory .ehc .action {box-shadow:none;}
+	.eu-cookies {position:static;}	
+	
+	#content .active-cinemas ul.cinemasList li {padding:12px 10px 15px 15px;}
+	.active-cinemas ul.cinemasList h3 {width:100%; float:none;}
+	.bestList ul .articleItem {text-align:center;}
+	.bestList ul .articleItem span { margin:0px auto; float:none; }
+	.bestList ul .button-green {margin-bottom:0px;}
+	
+	#chold {overflow: hidden; overflow-x: auto;}
+	#calTab {min-width:500px;} 
+	#calTab .day {min-width:70px;}
+	
+	#content .eventsList .top h3 {padding:40px 0px 0px 75px;}
+	#content .eventsList .top p.date,
+	#content .eventsList .top a.tip {left:220px;}
+	#content .eventsList .top .locality {padding-left:76px;}
+}
+
+@media only screen and (max-width: 480px)
+{	
+	
+	.sectionBreadcrumbs, #breadcrumbs { display:none; background-color:transparent; }
+
+/*
+.kina .sectionBreadcrumbs, .kina #breadcrumbs {display:block; background-color: #ececec; }
+.kina #breadcrumbs li:first-of-type {display:none;}
+.kina #breadcrumbs li.last {display:none;}
+.kina #breadcrumbs li:nth-of-type(2n) {
+	background: url(../images/ico_breadcrumbs_home.png) no-repeat left center;
+    padding-left: 40px;
+}    
+.kina #breadcrumbs li {    
+	text-overflow: ellipsis;
+	max-width:140px;
+	white-space: nowrap;    
+	overflow:hidden;
+}    
+*/
+
+	#searchInput {width:inherit;}	
+	#nextFilter {display:none;}
+	#search {width:80%}
+	#search form {width:100%; margin-left:5px;}
+	#buttonHolder {padding-right:5%;}
+	#menu li {font-size:20px;  margin:0px 4%;}
+	
+	.banner745x90, .blead { display:none; }
+	#lang {display:none;}
+	
+/*	#menu_reg li.login {padding-right:5px; margin-top:10px;} */
+	#menu_reg li.register {display:none;}
+	#menu_reg li {padding-left:10px; font-size:12px;}
+	h1#logo {margin-left:5px;}
+	#loginInfoBox {margin-top:0px; position:absolute;  }	
+	body .content-section, #footer .section {padding:0px 10px;}
+	
+	/*
+	.tripTop {padding:0px;}
+	.tripTop .trip a {height:240px; min-height:240px;}
+	.tripTop .trip strong {font-size:16px; bottom:28%;}	
+	.tripTop .t3, .tripTop .t4 {display:none;}
+	*/
+	
+	.venues_box .articleItem {padding:10px 0px;}
+	.vylet .venues_box .articleItem .nameItem {margin-top:5px;}
+	
+	#content .addToCal {top:70px; right:inherit; left:145px; }
+	em.showOnMap { top:70px;}
+	/*
+	.tripinfographic {margin:0px 15px 20px 15px;}
+	*/
+	#footer .box, #footer .double-box {text-align:center;}
+	.timereset {clear:both; overflow:hidden; display:block; margin-bottom:10px;}
+	#footerMenu {border-top:solid 1px #777; padding-top:20px; text-align:center;}	
+	
+	#header .section { padding:0px; }
+	h1 { font-size:1.6em;}
+	
+	#article #img, .stripek .photo, .clanky .photo { float:none; margin:0px auto 10px auto !important; }	
+
+/*
+	#loginBox .smaller { display:none; }
+	#logo, #loginInfoBox { margin-bottom:10px; }
+	h1#logo { float:none; }
+
+*/
+		
+	.objekt #img { margin:0px auto 15px auto; display:block; text-align:center; float:none; }
+	.objekt #img img { margin:auto; float:none; }
+	.objekt h3.adr { text-align:center; }
+	.objekt #main h1, .akce #main h1 { text-align:center; margin-bottom:10px; }
+	
+	#article #body { font-size:16px; line-height:22px; }
+	#article #body  p  { margin-bottom:15px; }
+	h2 a.print { display:none; }
+
+	#content fieldset label { width:auto !important; padding-right:15px; float:none !important; }
+	#content .inlineFieldset fieldset { width:33% !important; }
+	#content fieldset span.info { border-left:0px; padding:3px 0px 0px 0px; display:block; margin-left:0px; }
+	#content input.submit, #content input.submitInput { margin-left:0px !important; }
+	#fanImage { margin:0px auto 20px auto; float:none; }
+	#content #main input.long { width:200px !important; }
+	form .formsetInfo span { margin-left:0px; width:auto; }
+
+/*	form .formTimeHolder { padding-top:15px; width:auto; } */
+	
+	#content .region h3, #content .region h3 span, #content .region .menubutton { float:none; display:block; }
+	#content .region h3 span { padding-top:5px; }
+	#content .region .menubutton { padding:0px 10px 5px 10px; }
+	
+	.infotext {background:transparent; text-align:center;}
+	#body .list div.item {padding:60px 10px 20px 10px; background-image:none;}
+	#body .list div.item span.km {left:45%; top:-20px;}
+	div.first span.km small.firstMargin {display:none;}
+	div.odd span.km small, #body .odd .paypr small {background:transparent;}
+	#body .list h2 {text-align:center;}
+	.item h2 span {display:none;}
+	.item h2.cyklotitle span {display:inline;}
+	a.imageItem {text-align:center; margin:0px auto 25px auto; float:none;}
+	#main a.addLike {position:absolute; right:10px; top:10px;}
+	
+	#body .list .paypr {text-align:center; border-bottom:solid 1px #62AA1A; padding-bottom:15px; margin-bottom:15px;}
+	#body .paypr h2.cyklotitle {left:0px; padding-left:0px;}
+	#body .paypr p.line {padding-left:0px;}
+	#body .list .paypr h2.cyklotitle {margin-bottom:75px;}
+	.icoHotel {left:45%; top:30px;}
+	#body .paypr p.line a.mainlink {width:100%; display:block; text-align:center; margin:0px auto 10px auto;}
+	#body .paypr small {left:58%; top:39px;}
+	.paypr p.line a.mainlink {margin-right:0px;}
+	#body .hotelImg {float:none; text-align:center; display:block; margin:0px auto 15px auto; width:200px;} 
+	
+	
+	.mb30 .link_events, .mb30 .link_cycle {display:block; margin-left:0px; margin-right:0px;}
+	#body .greybox {padding:0px; background:transparent;}
+	
+	span.addedObj {text-align:left;}
+	.button-next, .button-prev {min-width:125px; font-size:15px; padding:12px 20px 12px 20px;}
+	#body .list div.textv {padding-right:0px;}
+
+	#content .eventsList .imgLink span {width:70px; height:70px; margin-right:10px;}
+	#content .eventsList .imgLink span em {width:70px; height:70px;}
+	#content .eventsList p.city {clear:both; padding:10px 0px 10px 10px;}
+	#content .eventsList .action {height:inherit; margin-bottom:10px;}
+	#content .eventsList .action h3 {font-size:16px; line-height:16px; margin-top:10px; padding-right:8px;}
+	#content .eventsList .action .inner {overflow:hidden;}
+	
+	#body .cykloitem {text-align:center;}
+	#body .cykloitem img.floatLeft {float:none; margin:0px auto 20px auto; text-align:center;}
+	.travelmode {text-align:center;}
+	h3.nkip-title {margin-bottom:10px;}
+	.cykloitem .nkip-info {display:block;}
+	.cykloitem .travelmode {margin-bottom:20px; text-align:center;}
+	.cykloitem .travelmode span.travelico {float:none; margin: 0px auto;}
+	.travelmode span.difficulty, .travelmode span.timedifficulty {display:none;}
+	
+	#body .list .paypr a.hotel {float:none; display:block; margin:0px 0px 10px 0px; }
+ 	#body .hotels small {margin:auto; position:static;}
+ 	.hotelStarRating { float:none; }	
+ 	#body .hotels  .mesto {
+ 		background-image:none;	
+ 		padding-left:0px;
+ 	}
+ 	
+ 	.objekt .contentHead #img {margin:0px auto 0px auto;}
+ 	.kina .contentHead #img {display:none;}
+	.contentHead h1 {text-align:center; margin:0px auto 10px auto; padding-left:0px; font-size:1.8em;}
+	.kina .contentHead h1 {padding-top:0px;}
+	.kina .contentHead h3.adr {font-size:14px;}
+	.contentHead h3.adr {font-size:15px; margin:0px 0px 10px 0px; }
+	.contentHead a.addLike {
+		position:relative;
+		right:inherit;
+		top:inherit;
+		float:none;
+		margin:0px auto;
+	}
+	.kina .contentHead a.addLike {display:none;}
+	ul.next-line-list {margin-bottom:0px;}
+	ul.next-line-list li { text-align:center; display:block; float:none; }
+	a.print {display:none;}
+	
+	.inner span.place {
+		display:block; 
+		clear:both;
+		margin:0px 0px 10px 10px;
+		border-top:solid 10px #ededed;
+	}
+	.inner .vstupenka {top:42px; right:10px; }
+	
+	.objekt .promophoto p {
+		width: 100%;
+		margin: 0px 0px 10px 0px;
+		height: inherit;
+		float: none;
+	}
+	.objekt .promophoto p:nth-child(even) {
+		margin: 0px 0px 10px 0px;
+	}
+	.objekt .promophoto p.vertical img {position:static; top:inherit;}
+	#nextMorePhotosLink {
+		position:relative;
+		height:100px;
+		width:100%;
+		background: #16c134 url('../images/ico_arrow_right_white.png') no-repeat scroll center 85%;
+	}
+	#nextMorePhotosLink span {padding-top:12px;}
+	
+	#i_pamatky:hover {background-position:inherit;}
+	#i_pamatky.active {background-position:0px -54px;}
+	#i_priroda:hover {background-position:0px -108px;}
+	#i_priroda.active {background-position:0px -162px;}
+	#i_deti:hover {background-position:0px -324px;}
+	#i_deti.active {background-position:0px -378px;}
+	#i_kultura:hover {background-position:0px -216px;}
+	#i_kultura.active {background-position:0px -270px;}
+	#i_koupani:hover {background-position:0px -540px;}
+	#i_koupani.active {background-position:0px -594px;}
+	#i_gastro:hover {background-position:0px -432px;}
+	#i_gastro.active {background-position:0px -486px;}
+	#i_romantika:hover {background-position:0px -648px;}
+	#i_romantika.active {background-position:0px -702px;} 
+	body .top-section {padding-top:20px;}
+	ul.tabsList li {text-align:center;}
+	
+	#objectMenu.kino li {display:block; border-bottom:solid 1px #c1c1c1; float:none; margin-right:0px; }
+	#objectMenu.kino {border-bottom:none; margin-bottom:10px; }
+	#programMenu li {font-size:15px;}
+	#programMenu li strong {max-width:90px; display:inline-block;}
+	.movieDate {display:none;}
+	.mtimes { padding:8px 5px 8px 10px;}
+	.main .movieListItem img {margin-right:10px;}
+	.movieListItem .rating {font-size:11px; margin-bottom:8px; padding: 5px 5px 4px 48px; }
+	.movieListItem .csfd_rating_span strong, 
+	.movieListItem .info_rating_span strong, 
+	.movieListItem .imdb_rating_span strong {font-size:10px; padding-top:5px;}
+	
+	#content .topMoviesBox .first .info_rating_span strong {padding-top:4px; font-size:11px;}
+	#content .topMoviesBox .info_rating_span strong {padding-top:5px; font-size:11px;}
+	.movieTime { margin-top:5px; } 
+	p.miniinfo {text-align:center;}
+	.miniNewsBox .articleItem em.rest {top:0px; line-height:16px;}
+	.moreCinemas .greyLinkLight {margin-left:3px;}
+	
+	#footer h3.top-title {padding:35px 0px 0px 0px; background-position:center 0px;}
+	.kina h1.main-title {font-size:2em;}
+	.poster {margin-right:15px;}
+	
+	.regionLinkHolder { margin:15px 0px; float:none; display:block; }
+	.regionTitle, .regionLinkHolder, .perex {text-align:center;}
+	#content .regionLinkHolder a.regionLink {
+		display:inline-block;
+		padding:30px 0px 0px 0px;
+		background-position:center top;
+	}
+	
+	.clist .venues_box .button-green {
+		position:static;
+	}
+	.clist .venues_box .articleItem .nameItem { margin-top:5px; font-size:16px; }
+	.clist .articleItem strong {padding-bottom:1px;}
+	#layerInfo { top:0px; text-align:center; }
+	
+	#content .eventsList .top h3 {padding:28px 0px 0px 75px;}
+	#content .eventsList .top .locality {padding-left:0px;}
+	#subtips .item {float:none; width:auto; padding:0px;}
+	#subtips a {width:100%;}
+	#subtips a.button-green {display:block; margin-bottom:10px;}
+	
+	body .no-mobile-padding,
+	body .no-mobile-padding .content-section { padding:0px; }
+	.aside h3.smartgo {background-position:center bottom; padding-bottom:30px;}
+	#actualMovies div.grey {display:none;}
+	#actualMovies span.row {display:block; margin-bottom:3px;}
+	#content p.where-when {padding-top:5px; overflow:hidden;}
+	.where-when strong {color:#333; }
+}
+@media only screen and (max-width: 420px)
+{
+	#fanFoto {margin-top:0px; width:35px; height:35px;}	
+	#logged-user-links {display:none;}
+	.addToCal .more,
+	.addToCal:hover .more {display:none;}
+	.desktop-top-trips {display:none;}
+	#body .promophoto p {height:auto; float:none; width:100%; margin:0px 0px 10px 0px; }
+	#body .promophoto p img,
+	#body .promophoto p.vertical img {position:static;left:inherit;}
+	.double-article-box li a strong {font-weight:normal; font-size:14px;}
+	.double-article-box li .authorInfo {padding:1px 0px 5px 38px; font-size:12px;}
+	#tripsBox .button-green strong {font-weight:normal;}
+	#content .eventsList .action h3 {font-size:14px; line-height:15px; word-wrap:break-word; overflow:hidden;}
+	.vylet #article h1 {font-size:26px; padding:45px 0px 15px 0px; }
+	
+	header {
+		position: fixed;
+		width: 100%;
+		height: 55px;
+		z-index: 500;
+		background: #fff;
+		margin-bottom:0px;
+	}
+	
+	h1#logo img {display:none;}
+	h1#logo a {
+		display:block;
+		width:180px;
+		height:43px;
+		overflow:hidden;
+		background:url('../images/logo_informuji_mobile.png') no-repeat left top;
+	}
+	#menu_reg li.menu {display:block; padding:5px 10px 0px 10px;}
+	#menu_reg li.menu span, 
+	#menu_reg li.login span {display:none;}
+	#menu_reg li.menu a,
+	#mbut {
+		display:block;
+		width:34px; height:22px;
+		background:url('../images/ico_menu_mobile.png') no-repeat left top;
+	}
+	#mbut {
+		float:right;
+		padding:5px 10px 5px 5px;
+		margin-left:0px;
+		background-position:5px 6px;
+		height:38px;
+		cursor:pointer;
+	}
+	#mbut span { display:none; } 
+	#logged-user-box {text-align:left;}
+	
+	#menu_reg li.active a,
+	#mbut.active {
+		background:#16c134 url('../images/ico_menu_mobile_active.png') no-repeat left 6px;
+		height:45px;
+	}
+	#menu_reg li.active {background-color:#16c134; margin-left:5px;}
+	#mbut.active { padding-left:10px; background-position:10px 10px;}
+	
+	#menu_reg li.login {padding:2px 0px 0px 0px; margin:0px;}
+	#menu_reg li.login a {
+		display:block;
+		width:34px; height:32px;
+		padding:0px;
+		background-position:5px -337px;
+	}
+	#menu_reg {padding-top:0px;}
+	
+	#topMenuHolder.active {display:block;}
+	#topMenuHolder {
+		position:absolute;
+		width:100%;
+		top:55px;
+		left:0px;
+		z-index:10;
+		background-color:#16c134;
+		border-top:inherit;
+		padding:0px;
+		display:none;
+		margin-top:0px;
+	}
+	#menu li {
+		float:none;
+		display:block;
+		padding:5px 10px;
+		color:#fff;
+		border-bottom:solid 1px #fff;
+		text-align:left;
+	}
+	#menu li:last-child {border-bottom:inherit;}
+	#menu li a, 
+	#menu li a:hover {
+		color:#fff;
+		text-decoration:none;
+		padding:10px 0px;
+		display:block;
+	}
+	#menu li.active a {color:#333;}
+	.topsecbar {padding-top:55px;}
+	
+	h2.black a.button-green,
+	h2.black a.region {
+		display:block;
+		float:none;
+	}
+	.kina h2.black {text-align:center;}
+	h2.black a.region {margin-bottom:10px; display:inline-block; border-bottom:solid 1px transparent;}
+	
+	#content .active-cinemas ul.cinemasList li {position:relative; padding:12px 80px 15px 10px;}
+	.active-cinemas ul.cinemasList h3 a::after {
+		content: 'Program';
+		background-color: #4CAC29;
+		padding:6px 10px 6px 10px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-khtml-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		display:inline-block;
+		margin-bottom:0px;
+		color:#fff !important;
+		font-family:arial;
+		font-size:13px;
+		letter-spacing:0.5px;
+		text-decoration:none;
+		font-weight:normal;
+		position:absolute;
+		right:10px; top:10px;
+	}
+	.dark-full-section {background-image:none;}
+	ul.krajeMenu li {width:100%; float:none; text-align:center; }
+	
+	#content .eventsList .top h3 {padding:15px 0px 0px 10px; clear:both; font-size:16px; margin-bottom:0px;}
+	#content .eventsList .top .locality {padding-left:0px;}
+	
+}
+@media only screen and (max-width: 380px)
+{
+	#menu li {font-size:18px;  margin:0px 3%;}
+	.tripinfographic {
+		background-image: url('../images/bg_trip_help_small.png');
+		height:59px;
+		max-width:254px;
+	}
+	.vylet .venues_box .articleItem .nameItem {
+		font-size:15px;
+	}
+	.venues_box .articleItem span {margin-right:15px;}
+	#content .addToCal {
+		left:140px; 
+		height:25px;
+		top:75px;	
+		width:auto;
+	}
+	.addToCal .addC,
+	.addToCal:hover .addC  { padding: 5px 15px 3px 30px; font-size:14px;}
+	em.showOnMap {top:73px;}
+	#greenSection .articleItem {width:auto; float:none; background-image:none; }
+	#greenSection .articleItem strong {min-height:inherit; padding:20px 15px 30px 15px;}
+	h2.footerheadline {font-size:25px;}
+	.inner .vstupenka {top:46px;}
+	.button-next, .button-prev {min-width:100px;}
+	div.item .button-next, div.item .button-prev {min-width:90px;}
+	.button-next {background-position: 112% -197px;}
+	.venues_box strong.place_info a.greyLinkLight {font-size:13px;}
+	
+	.vylet .venues_box .articleItem .nameItem {font-size:14px; margin-top:1px; line-height:16px;}
+	#body .list div.item span.km { left: 42%; }
+	#body .list .paypr h2.cyklotitle { font-size:18px; }
+	.icoHotel { left: 40%; }
+	#objectMenu li a {background-position:110% -1047px;}
+	.rating_linker_holder .discussionItem .ratHolder { overflow:hidden; float:none; position:static; }
+	
+	.week .movieName,
+	#film .week .movieName { float:none; width:100%; margin-bottom:10px; }
+	.week .movieTimes,
+	#film .week .movieTimes { float:none; width:100%; }
+	.week span.gradient, 
+	.filmKraj .gradient {display:none; }
+	.week .rating {display:inline-table;}
+	.week h2.summary {font-size:19px;}
+	.week .movieName img { display:block; margin:0px 15px 15px 0px;}
+	.week table {margin:0px 0px 10px 0px;}
+	.movieName .city .distance::after {
+		content: ' od tvé aktuální polohy';
+		color:#999;
+		font-size:11px;
+	}		
+	
+	.active-cinemas .cinema-address { display:inline-block; padding:2px 0px 1px 15px;}
+	.movieText p:first-of-type {font-size:16px; padding:15px;}
+	.movieText p { padding:0px 10px; font-size:16px;}
+	#preview {padding:0px; }
+	#preview iframe {height:200px;}
+	.kina h1.main-title {text-align:center;}
+	.poster {width:100px; margin-top:5px;}
+	.additionalInfo p {line-height:20px; font-size:14px;}
+	.filmKraj .movieName h3 a { color:#333; text-decoration:none; border-bottom:solid 1px #333;}
+	#content .filmKraj .movieName h3 a:hover { border-bottom:none; text-decoration:none; }
+	.filmKraj .movieName h3 {font-size:16px;}
+	.kina .filmKraj .movieName h3 a::before {
+		content: 'Kino '; 
+	}
+	.clist .venues_box .articleItem .nameItem { font-size:15px; }
+	.kina .venues_box strong.place_info {display:none;}
+	
+	.movieListItem h2.summary {font-size:18px;}
+	.main .movieListItem img {width:90px; height:inherit;}
+	.topMoviesBox li .rating {position:relative; bottom:inherit;}
+	
+	#content .eventsList .top p.date, #content .eventsList .top a.tip {left:initial; right:15px;}
+	
+	#content .eventsList .top h3,
+	#content .eventsList .top p.adr {background:#fff; border-left:solid 1px #ededed; border-right:solid 1px #ededed; }
+	#content .eventsList .top p.adr	{border-bottom:solid 1px #ededed;} 
+	#greenSection .articleItem img {width:100%; left:0px; position:static;}
+	#body .list .nkip {font-size:14px;}
+}
+
+@media only screen and (max-width: 340px)
+{
+	.vylet .venues_box .articleItem span {width:100px;}
+	.vylet #content .addToCal,
+	#content .vylet .addToCal {left:110px;}
+	.venues_box strong.place_info {width:100%;}
+	.vylet .venues_box .articleItem img {width:130px; left: -15px; position: relative; }
+	#moviesForm .button-green { padding: 10px 10px 10px 15px }
+	#moviesForm .button-navigate { padding: 10px 0px 10px 25px; background-position: 10px center;}
+	ul.listMini li.top .topContent {min-height:190px;}
+}

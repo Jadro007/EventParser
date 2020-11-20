@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["R8f9r"]); }
+
+__d("VideoFeedFastPreloadController",["DOMQuery","Run"],(function(a,b,c,d,e,f){f.preload=c;f.reset=h;var g=0;function c(c){g<2&&(c=b("DOMQuery").scry(c,"video")[0],c instanceof a.HTMLVideoElement&&(g||b("Run").onBeforeUnload(function(){return h()}),c.preload="auto",g+=1))}function h(){g=0}h()}),null);

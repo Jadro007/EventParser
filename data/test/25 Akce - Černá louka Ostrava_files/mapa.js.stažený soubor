@@ -1,0 +1,67 @@
+$(document).ready(function() {
+
+	$.fn.svgMap = function (labels, labelEl) {
+		var map = $(this);
+		labels = $(labels);
+		labelEl = $(label);
+		var hoverColor = '#000';
+		var svg;
+
+		// Aktivace vyberu
+		var showLabel = function(areaName) {
+			var area = svg.find('#'+areaName);
+			var label = labels.find('[data-area="'+areaName+'"]');
+			area.css('fill', hoverColor);
+			label.addClass('active');
+			var parentTop = labelEl.closest('.col-md-6').position();
+			var parentLeft = labelEl.parent().offset();
+			var pos = area.position();
+			pos.top -= parentTop.top;
+			pos.left -= parentLeft.left;
+			var text = label.clone();
+			text.find('> *').remove();
+			labelEl
+				.text(text.text())
+				.css('left', Math.round(pos.left) - 20)
+				.css('top', Math.round(pos.top) - 40)
+				.show();
+		};
+
+		// Deaktivace vyberu
+		var hideLabel = function (areaName) {
+			var area = svg.find('#' + areaName);
+			var label = labels.find('[data-area="'+areaName+'"]');
+			area.css('fill', area.attr('data-fill'));
+			label.removeClass('active');
+			labelEl.text('').hide();
+		};
+
+		// Konverze <img /> na <svg>
+		var src = map.find('img[src$=".svg"]').attr('src');
+		$.get(src, function (data) {
+			svg = $(data).find('svg');
+			map.html(svg);
+
+			// Zaloha puvodni barvy pozadi
+			svg.find('.area').each(function () {
+				$(this).attr('data-fill', $(this).css('fill'));
+			});
+
+			// SVG - mouseEnter
+			svg.find('.area').hover(function () {
+				showLabel($(this).attr('id'));
+			}, function () {
+				hideLabel($(this).attr('id'));
+			});
+
+			// Hover na labelech
+			labels.find('li').hover(function () {
+				showLabel($(this).attr('data-area'));
+			}, function () {
+				hideLabel($(this).attr('data-area'));
+			});
+		});
+	};
+
+	$('#mapa').svgMap('#labels', '#label');
+});

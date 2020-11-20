@@ -1,0 +1,43 @@
+název události, datum (dd. mm. yyyy), čas, místo (může být i "online"), cena (číslo bez měny, případně rozmezí nejmenší-největší)
+
+událost = do budoucnosti
+možná aplikace rozpozná datum přidání příspěvku a ne datum akce?
+
+případně (dd. - dd. mm. yyyy)
+případně (dd. mm. - dd. mm. yyyy)
+případně (dd. mm. yyyy - dd. mm. yyyy)
+
+!!! ticket portal jiný formát data (6 Říj. 2020)
+
+(3) u vícedenních událostí časové rozmezí (např. od 5. 11. 09:00 do 11. 12. 13:00 zapsáno jako 05. 11. - 11. 12. 2020; 09:00 - 13:00)
+(3) chybějící údaje o roku
+
+(4) údaj "celý den" = 0:00 - 24:00 https://www.informuji.cz/akce/jhm/dnes/
+
+(5) datum 25. 09. - 29. 08. .. očividně je konečné datum už před začátečním, takže se musí jednat o jiný rok, informace ale není uvedena..
+
+(6) Cena: Dobrovolné = 0
+
+(7) Datum: "zítra" (další možnosti: "dnes"), zapracování údaje "zrušeno"? ("přesunuto")
+
+(8) Adresa Tučkova 922/34, Brno 602 00, ale mohlo by být i Divadlo Polárka, Brno
+
+(9) Stránky Švandova divadla neuvádí, že se představení koná ve Švandově divadle (možná by šlo doplnit z názvu stránek?)
+
+(14) není událost?
+
+(15) termín přihlášení asi taky není událost
+
+(17) Aqualand Moravia neuvádí, že se akce konají v Aqualandu, dalo by se ale vytáhnout z názvu webu?
+
+(21) nadcházející termíny - chybí název (je uvedeno pouze datum stejné události)
+
+(25) stránky Černé louky Ostrava neuvádí, že se akce konají na Černé louce dalo by se ale vytáhnout z názvu webu?
+
+(27) možná rozlišovat údaj "vyprodáno"?
+
+(32) není událost?
+
+
+
+

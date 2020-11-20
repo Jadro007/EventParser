@@ -1,0 +1,121 @@
+/*
+* based on videojs-ga
+*/
+  function ElektrikaTrackerPlugin(options) {
+    var VERSION = '1.0';
+    var partnerId, dataSetupOptions, defaultsEventsToTrack, error, eventCategory, eventLabel, eventsToTrack, loaded, parsedOptions, pause, play, start_tracker, stop_tracker, actionInterval, interval, sendbeacon;
+    var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+    if (options == null) {
+      options = {};
+    }
+    dataSetupOptions = {};
+    if (this.options()["data-setup"]) {
+      parsedOptions = JSON.parse(this.options()["data-setup"]);
+      if (parsedOptions.ga) {
+        dataSetupOptions = parsedOptions.ga;
+      }
+    }
+    defaultsEventsToTrack = ['play', 'pause', 'error'];
+    eventsToTrack = options.eventsToTrack || dataSetupOptions.eventsToTrack || defaultsEventsToTrack;
+    actionInterval = options.actionInterval || dataSetupOptions.actionInterval || 30;
+    eventCategory = options.eventCategory || dataSetupOptions.eventCategory || 'Playtime';
+    eventLabel = options.eventLabel || dataSetupOptions.eventLabel;
+    partnerId = options.partnerId || dataSetupOptions.partnerId || "";
+    options.debug = options.debug || false;
+    loaded = function() {
+      if (!eventLabel) {
+        // this gonna be the stream name
+        var parts = this.currentSrc().split("/");
+        if ( parts.slice(-1)[0] === "playlist.m3u8" ) {
+          // stream name (part before playlist.m3u8)
+          eventLabel = parts.slice(-2)[0];
+        } else {
+          // video name
+          eventLabel = parts.slice(-1)[0];
+        }
+        // remove mp4 or another prefix, if present
+        eventLabel = eventLabel.replace(/^([a-z0-9]+\:)/,"");
+      }
+      if (options.debug) {
+        console.log('currentSrc: ', this.currentSrc());
+        console.log('eventLabel: ', eventLabel);
+      };
+      // Do not start pinging on page load
+      //if (__indexOf.call(eventsToTrack, "loadedmetadata") >= 0) {
+      //  start_tracker('loadedmetadata');
+      //}
+    };
+    play = function() {
+      start_tracker('play');
+    };
+    pause = function() {
+      stop_tracker('pause');
+    };
+    error = function() {
+      stop_tracker('error');
+    };
+    ping_event = function() {
+      sendbeacon();
+    };
+    start_tracker = function(event) {
+        if (options.debug) {
+          console.log('starting tracker because of event ', event);
+        };
+        if (! interval) {
+          interval = setInterval(ping_event, actionInterval * 1000);
+        }
+    };
+    stop_tracker = function(event) {
+        if (options.debug) {
+          console.log('stopping tracker because of event ', event);
+        };
+        clearInterval(interval);
+        interval = null;
+        sendbeacon();
+    };
+    sendbeacon = function() {
+      if (window.ga) {
+        ga('send', 'event', {
+          'eventCategory': eventCategory,
+          'eventAction': partnerId,
+          'eventLabel': eventLabel,
+          'eventValue': actionInterval,
+          'nonInteraction': false
+        });
+        if (options.debug) {
+          console.log('GA event sent: ', {
+          'eventCategory': eventCategory,
+          'eventAction': partnerId,
+          'eventLabel': eventLabel,
+          'eventValue': actionInterval,
+          'nonInteraction': false
+          });
+        }
+      } else if (window._gaq) {
+        _gaq.push(['_trackEvent', eventCategory, partnerId, eventLabel, actionInterval, false]);
+        if (options.debug) {
+          console.log('Track event sent: ', {
+          'eventCategory': eventCategory,
+          'eventAction': partnerId,
+          'eventLabel': eventLabel,
+          'eventValue': actionInterval,
+          'nonInteraction': false
+          });
+        }
+      } else if (options.debug) {
+        console.log("Google Analytics not detected");
+      }
+    };
+    this.ready(function() {
+      this.on("loadedmetadata", loaded);
+      if (__indexOf.call(eventsToTrack, "play") >= 0) {
+        this.on("play", play);
+      }
+      if (__indexOf.call(eventsToTrack, "pause") >= 0) {
+        this.on("pause", pause);
+      }
+      if (__indexOf.call(eventsToTrack, "error") >= 0) {
+        this.on("error", error);
+      }
+    });
+  }

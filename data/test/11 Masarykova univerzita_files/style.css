@@ -1,0 +1,259 @@
+.cookiebar * {
+    max-height:1000000px;
+}
+
+.cookiebar {
+    margin: 0 !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 2147483647 !important;
+    font-size: 14px !important;
+    line-height: 21px !important;
+    overflow: hidden !important;
+    padding: 5px !important;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial !important;
+    display: block !important;
+}
+
+.cookiebar-flow {
+    position: relative !important;
+}
+
+.cookiebar-shadow {
+	z-index: inherit !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 21px !important;
+    overflow: hidden !important;
+    padding: 5px !important;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial !important;
+}
+
+.cookiebar .cookiebar-content, .cookiebar .cookiebar-content, .cookiebar .cookiebar-content table, .cookiebar .cookiebar-content table tr,
+.cookiebar .cookiebar-content table td, .cookiebar .cookiebar-content table th, .cookiebar .cookiebar-content a, .cookiebar .cookiebar-content p,
+.cookiebar .cookiebar-content .cookiebar-main p, .cookiebar .cookiebar-content .cookiebar-moreinfo p, .cookiebar .cookiebar-content h4 {
+    background-color: transparent !important;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial !important;
+    font-size: 14px !important;
+    line-height: 21px !important;
+    color: inherit !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .cookiebar .cookiebar-content, .cookiebar .cookiebar-content, .cookiebar .cookiebar-content table, .cookiebar .cookiebar-content table tr,
+    .cookiebar .cookiebar-content table td, .cookiebar .cookiebar-content table th, .cookiebar .cookiebar-content a, .cookiebar .cookiebar-content p,
+    .cookiebar .cookiebar-content .cookiebar-main p, .cookiebar .cookiebar-content .cookiebar-moreinfo p, .cookiebar .cookiebar-content h4,
+    .cookiebar-shadow {
+        font-size: 16px !important;
+        line-height: 24px !important;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .cookiebar .cookiebar-content, .cookiebar .cookiebar-content, .cookiebar .cookiebar-content table, .cookiebar .cookiebar-content table tr,
+    .cookiebar .cookiebar-content table td, .cookiebar .cookiebar-content table th, .cookiebar .cookiebar-content a, .cookiebar .cookiebar-content p,
+    .cookiebar .cookiebar-content .cookiebar-main p, .cookiebar .cookiebar-content .cookiebar-moreinfo p, .cookiebar .cookiebar-content h4,
+    .cookiebar-shadow {
+        font-size: 18px !important;
+        line-height: 27px !important;
+    }
+}
+
+.cookiebar h4 {
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.cookiebar .cookiebar-content a {
+    color: #31a8f0 !important;
+}
+
+.cookiebar a:active, .cookiebar a:hover {
+    outline: 0 !important;
+}
+
+.cookiebar .cookiebar-content b, .cookiebar .cookiebar-content strong {
+    font-weight: bold !important;
+}
+
+.cookiebar button {
+    color: inherit !important;
+    font: inherit !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    text-transform: none !important;
+    -webkit-appearance: button !important;
+    cursor: pointer !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-family: inherit !important;
+    padding: 0 !important;
+}
+
+.cookiebar button[disabled] {
+  cursor: default !important;
+}
+
+.cookiebar button::-moz-focus-inner {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+
+.cookiebar .cookiebar-content h4 {
+    padding: 10px 0 0 !important;
+}
+
+.cookiebar .cookiebar-main {
+    overflow: hidden !important;
+}
+
+.cookiebar .cookiebar-content {
+    width: 100% !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+.cookiebar .cookiebar-buttons {
+	float: right !important;
+	text-align: right !important;
+	vertical-align: middle !important;
+}
+
+.cookiebar .cookiebar-info {
+	padding: 15px 0 10px !important;
+}
+
+.cookiebar .cookiebar-buttons button, .cookiebar .cookiebar-moreinfo button {
+	cursor: pointer !important;
+	text-align: center !important;
+    vertical-align: middle !important;
+    border: 1px solid !important;
+
+	font-size: 12px !important;
+	line-height: 24px !important;
+	margin: 0 0 0 10px !important;
+    padding: 0 5px !important;
+}
+
+.cookiebar .cookiebar-moreinfo button.accept {
+    margin: 0 0 0 0 !important;
+}
+
+.cookiebar .cookiebar-buttons button.close {
+	width: 24px !important;
+    line-height: 24px !important;
+	border-radius: 5px !important;
+    opacity: 1 !important;
+}
+
+.cookiebar .cookiebar-buttons button.decline {
+    color: #888 !important;
+    border-color: #888 !important;
+}
+
+.cookiebar.cookiebar-top {
+	top: 0 !important;
+	bottom: inherit !important;
+}
+
+.cookiebar .cookiebar-moreinfo {
+	height: 250px !important;
+	overflow-y: auto !important;
+}
+
+.cookiebar table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 100% !important;
+    border: 0;
+}
+
+.cookiebar table td, .cookiebar table th {
+	border-bottom: 1px solid #aaa !important;
+	padding: 3px !important;
+}
+.cookiebar table th {
+	border-bottom: 4px solid #aaa !important;
+    text-align: left !important;
+} 
+.cookiebar table tr:last-child td {
+	border-bottom: 0 !important;
+}
+
+/* THEMES */
+.cookiebar.cookiebar-dark {
+	color: #ddd !important;
+	background: rgb(34, 34, 34) !important;
+	background: rgba(34, 34, 34, .95) !important;
+}
+.cookiebar.cookiebar-dark .cookiebar-buttons button, .cookiebar.cookiebar-dark .cookiebar-moreinfo button {
+	color: #eee !important;
+	background-color: #222 !important;
+	border-color: #eee !important;
+}
+.cookiebar.cookiebar-dark .cookiebar-buttons button.decline {
+    color: #aaa !important;
+    border-color: #aaa !important;
+}
+.cookiebar.cookiebar-dark .cookiebar-buttons button:hover {
+	background-color: #444 !important;
+}
+.cookiebar.cookiebar-dark .cookiebar-buttons button.decline:hover {
+	color: #eee !important;
+	border-color: #eee !important;
+}
+.cookiebar.cookiebar-dark h4, .cookiebar.cookiebar-dark .cookiebar-content, 
+.cookiebar.cookiebar-dark .cookiebar-content .cookiebar-main, 
+.cookiebar.cookiebar-dark .cookiebar-content .cookiebar-moreinfo  {
+    color: #eee !important;
+}
+
+.cookiebar.cookiebar-light {
+	color: #222 !important;
+	background: rgb(238, 238, 238) !important;
+	background: rgba(238, 238, 238, .95) !important;
+}
+.cookiebar.cookiebar-light .cookiebar-buttons button, .cookiebar.cookiebar-light .cookiebar-moreinfo button {
+	color: #222 !important;
+	background-color: #eee !important;
+	border-color: #222 !important;
+}
+.cookiebar.cookiebar-light .cookiebar-buttons button:hover {
+	background-color: #ccc !important;
+}
+.cookiebar.cookiebar-light .cookiebar-buttons button.decline:hover {
+	color: #222 !important;
+	border-color: #222 !important;
+}
+.cookiebar.cookiebar-light h4, .cookiebar.cookiebar-light .cookiebar-content, 
+.cookiebar.cookiebar-light .cookiebar-content .cookiebar-main, 
+.cookiebar.cookiebar-light .cookiebar-content .cookiebar-moreinfo  {
+    color: #222 !important;
+}
+
+/* SCROLLBARS*/
+.cookiebar ::-webkit-scrollbar { 
+	width: 9px;
+	height: 9px;
+}
+.cookiebar ::-webkit-scrollbar-button:start:decrement, .cookiebar ::-webkit-scrollbar-button:end:increment {
+	display: block;
+	height: 0;
+	background-color: transparent;
+}
+.cookiebar ::-webkit-scrollbar-track-piece { 
+	background-color: #ddd;
+}
+.cookiebar ::-webkit-scrollbar-thumb:vertical { 
+	height: 50px;
+	background-color: #aaa;
+}
+.cookiebar ::-webkit-scrollbar-thumb:horizontal { 
+	width: 50px; 
+	background-color: #aaa; 
+}

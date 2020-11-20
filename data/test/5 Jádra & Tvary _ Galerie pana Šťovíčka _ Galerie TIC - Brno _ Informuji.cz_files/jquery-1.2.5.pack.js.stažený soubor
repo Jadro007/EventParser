@@ -1,0 +1,1035 @@
+/*! fancyBox v2.1.5 fancyapps.com | fancyapps.com/fancybox/#license */
+(function(s,H,f,w){var K=f("html"),q=f(s),p=f(H),b=f.fancybox=function(){b.open.apply(this,arguments)},J=navigator.userAgent.match(/msie/i),C=null,t=H.createTouch!==w,u=function(a){return a&&a.hasOwnProperty&&a instanceof f},r=function(a){return a&&"string"===f.type(a)},F=function(a){return r(a)&&0<a.indexOf("%")},m=function(a,d){var e=parseInt(a,10)||0;d&&F(a)&&(e*=b.getViewport()[d]/100);return Math.ceil(e)},x=function(a,b){return m(a,b)+"px"};f.extend(b,{version:"2.1.5",defaults:{padding:15,margin:20,
+width:800,height:600,minWidth:100,minHeight:100,maxWidth:9999,maxHeight:9999,pixelRatio:1,autoSize:!0,autoHeight:!1,autoWidth:!1,autoResize:!0,autoCenter:!t,fitToView:!0,aspectRatio:!1,topRatio:0.5,leftRatio:0.5,scrolling:"auto",wrapCSS:"",arrows:!0,closeBtn:!0,closeClick:!1,nextClick:!1,mouseWheel:!0,autoPlay:!1,playSpeed:3E3,preload:3,modal:!1,loop:!0,ajax:{dataType:"html",headers:{"X-fancyBox":!0}},iframe:{scrolling:"auto",preload:!0},swf:{wmode:"transparent",allowfullscreen:"true",allowscriptaccess:"always"},
+keys:{next:{13:"left",34:"up",39:"left",40:"up"},prev:{8:"right",33:"down",37:"right",38:"down"},close:[27],play:[32],toggle:[70]},direction:{next:"left",prev:"right"},scrollOutside:!0,index:0,type:null,href:null,content:null,title:null,tpl:{wrap:'<div class="fancybox-wrap" tabIndex="-1"><div class="fancybox-skin"><div class="fancybox-outer"><div class="fancybox-inner"></div></div></div></div>',image:'<img class="fancybox-image" src="{href}" alt="" />',iframe:'<iframe id="fancybox-frame{rnd}" name="fancybox-frame{rnd}" class="fancybox-iframe" frameborder="0" vspace="0" hspace="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen'+
+(J?' allowtransparency="true"':"")+"></iframe>",error:'<p class="fancybox-error">The requested content cannot be loaded.<br/>Please try again later.</p>',closeBtn:'<a title="Close" class="fancybox-item fancybox-close" href="javascript:;"></a>',next:'<a title="Next" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',prev:'<a title="Previous" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'},openEffect:"fade",openSpeed:250,openEasing:"swing",openOpacity:!0,
+openMethod:"zoomIn",closeEffect:"fade",closeSpeed:250,closeEasing:"swing",closeOpacity:!0,closeMethod:"zoomOut",nextEffect:"elastic",nextSpeed:250,nextEasing:"swing",nextMethod:"changeIn",prevEffect:"elastic",prevSpeed:250,prevEasing:"swing",prevMethod:"changeOut",helpers:{overlay:!0,title:!0},onCancel:f.noop,beforeLoad:f.noop,afterLoad:f.noop,beforeShow:f.noop,afterShow:f.noop,beforeChange:f.noop,beforeClose:f.noop,afterClose:f.noop},group:{},opts:{},previous:null,coming:null,current:null,isActive:!1,
+isOpen:!1,isOpened:!1,wrap:null,skin:null,outer:null,inner:null,player:{timer:null,isActive:!1},ajaxLoad:null,imgPreload:null,transitions:{},helpers:{},open:function(a,d){if(a&&(f.isPlainObject(d)||(d={}),!1!==b.close(!0)))return f.isArray(a)||(a=u(a)?f(a).get():[a]),f.each(a,function(e,c){var l={},g,h,k,n,m;"object"===f.type(c)&&(c.nodeType&&(c=f(c)),u(c)?(l={href:c.data("fancybox-href")||c.attr("href"),title:f("<div/>").text(c.data("fancybox-title")||c.attr("title")).html(),isDom:!0,element:c},
+f.metadata&&f.extend(!0,l,c.metadata())):l=c);g=d.href||l.href||(r(c)?c:null);h=d.title!==w?d.title:l.title||"";n=(k=d.content||l.content)?"html":d.type||l.type;!n&&l.isDom&&(n=c.data("fancybox-type"),n||(n=(n=c.prop("class").match(/fancybox\.(\w+)/))?n[1]:null));r(g)&&(n||(b.isImage(g)?n="image":b.isSWF(g)?n="swf":"#"===g.charAt(0)?n="inline":r(c)&&(n="html",k=c)),"ajax"===n&&(m=g.split(/\s+/,2),g=m.shift(),m=m.shift()));k||("inline"===n?g?k=f(r(g)?g.replace(/.*(?=#[^\s]+$)/,""):g):l.isDom&&(k=c):
+"html"===n?k=g:n||g||!l.isDom||(n="inline",k=c));f.extend(l,{href:g,type:n,content:k,title:h,selector:m});a[e]=l}),b.opts=f.extend(!0,{},b.defaults,d),d.keys!==w&&(b.opts.keys=d.keys?f.extend({},b.defaults.keys,d.keys):!1),b.group=a,b._start(b.opts.index)},cancel:function(){var a=b.coming;a&&!1===b.trigger("onCancel")||(b.hideLoading(),a&&(b.ajaxLoad&&b.ajaxLoad.abort(),b.ajaxLoad=null,b.imgPreload&&(b.imgPreload.onload=b.imgPreload.onerror=null),a.wrap&&a.wrap.stop(!0,!0).trigger("onReset").remove(),
+b.coming=null,b.current||b._afterZoomOut(a)))},close:function(a){b.cancel();!1!==b.trigger("beforeClose")&&(b.unbindEvents(),b.isActive&&(b.isOpen&&!0!==a?(b.isOpen=b.isOpened=!1,b.isClosing=!0,f(".fancybox-item, .fancybox-nav").remove(),b.wrap.stop(!0,!0).removeClass("fancybox-opened"),b.transitions[b.current.closeMethod]()):(f(".fancybox-wrap").stop(!0).trigger("onReset").remove(),b._afterZoomOut())))},play:function(a){var d=function(){clearTimeout(b.player.timer)},e=function(){d();b.current&&b.player.isActive&&
+(b.player.timer=setTimeout(b.next,b.current.playSpeed))},c=function(){d();p.unbind(".player");b.player.isActive=!1;b.trigger("onPlayEnd")};!0===a||!b.player.isActive&&!1!==a?b.current&&(b.current.loop||b.current.index<b.group.length-1)&&(b.player.isActive=!0,p.bind({"onCancel.player beforeClose.player":c,"onUpdate.player":e,"beforeLoad.player":d}),e(),b.trigger("onPlayStart")):c()},next:function(a){var d=b.current;d&&(r(a)||(a=d.direction.next),b.jumpto(d.index+1,a,"next"))},prev:function(a){var d=
+b.current;d&&(r(a)||(a=d.direction.prev),b.jumpto(d.index-1,a,"prev"))},jumpto:function(a,d,e){var c=b.current;c&&(a=m(a),b.direction=d||c.direction[a>=c.index?"next":"prev"],b.router=e||"jumpto",c.loop&&(0>a&&(a=c.group.length+a%c.group.length),a%=c.group.length),c.group[a]!==w&&(b.cancel(),b._start(a)))},reposition:function(a,d){var e=b.current,c=e?e.wrap:null,l;c&&(l=b._getPosition(d),a&&"scroll"===a.type?(delete l.position,c.stop(!0,!0).animate(l,200)):(c.css(l),e.pos=f.extend({},e.dim,l)))},
+update:function(a){var d=a&&a.originalEvent&&a.originalEvent.type,e=!d||"orientationchange"===d;e&&(clearTimeout(C),C=null);b.isOpen&&!C&&(C=setTimeout(function(){var c=b.current;c&&!b.isClosing&&(b.wrap.removeClass("fancybox-tmp"),(e||"load"===d||"resize"===d&&c.autoResize)&&b._setDimension(),"scroll"===d&&c.canShrink||b.reposition(a),b.trigger("onUpdate"),C=null)},e&&!t?0:300))},toggle:function(a){b.isOpen&&(b.current.fitToView="boolean"===f.type(a)?a:!b.current.fitToView,t&&(b.wrap.removeAttr("style").addClass("fancybox-tmp"),
+b.trigger("onUpdate")),b.update())},hideLoading:function(){p.unbind(".loading");f("#fancybox-loading").remove()},showLoading:function(){var a,d;b.hideLoading();a=f('<div id="fancybox-loading"><div></div></div>').click(b.cancel).appendTo("body");p.bind("keydown.loading",function(a){27===(a.which||a.keyCode)&&(a.preventDefault(),b.cancel())});b.defaults.fixed||(d=b.getViewport(),a.css({position:"absolute",top:0.5*d.h+d.y,left:0.5*d.w+d.x}));b.trigger("onLoading")},getViewport:function(){var a=b.current&&
+b.current.locked||!1,d={x:q.scrollLeft(),y:q.scrollTop()};a&&a.length?(d.w=a[0].clientWidth,d.h=a[0].clientHeight):(d.w=t&&s.innerWidth?s.innerWidth:q.width(),d.h=t&&s.innerHeight?s.innerHeight:q.height());return d},unbindEvents:function(){b.wrap&&u(b.wrap)&&b.wrap.unbind(".fb");p.unbind(".fb");q.unbind(".fb")},bindEvents:function(){var a=b.current,d;a&&(q.bind("orientationchange.fb"+(t?"":" resize.fb")+(a.autoCenter&&!a.locked?" scroll.fb":""),b.update),(d=a.keys)&&p.bind("keydown.fb",function(e){var c=
+e.which||e.keyCode,l=e.target||e.srcElement;if(27===c&&b.coming)return!1;e.ctrlKey||e.altKey||e.shiftKey||e.metaKey||l&&(l.type||f(l).is("[contenteditable]"))||f.each(d,function(d,l){if(1<a.group.length&&l[c]!==w)return b[d](l[c]),e.preventDefault(),!1;if(-1<f.inArray(c,l))return b[d](),e.preventDefault(),!1})}),f.fn.mousewheel&&a.mouseWheel&&b.wrap.bind("mousewheel.fb",function(d,c,l,g){for(var h=f(d.target||null),k=!1;h.length&&!(k||h.is(".fancybox-skin")||h.is(".fancybox-wrap"));)k=h[0]&&!(h[0].style.overflow&&
+"hidden"===h[0].style.overflow)&&(h[0].clientWidth&&h[0].scrollWidth>h[0].clientWidth||h[0].clientHeight&&h[0].scrollHeight>h[0].clientHeight),h=f(h).parent();0!==c&&!k&&1<b.group.length&&!a.canShrink&&(0<g||0<l?b.prev(0<g?"down":"left"):(0>g||0>l)&&b.next(0>g?"up":"right"),d.preventDefault())}))},trigger:function(a,d){var e,c=d||b.coming||b.current;if(c){f.isFunction(c[a])&&(e=c[a].apply(c,Array.prototype.slice.call(arguments,1)));if(!1===e)return!1;c.helpers&&f.each(c.helpers,function(d,e){if(e&&
+b.helpers[d]&&f.isFunction(b.helpers[d][a]))b.helpers[d][a](f.extend(!0,{},b.helpers[d].defaults,e),c)})}p.trigger(a)},isImage:function(a){return r(a)&&a.match(/(^data:image\/.*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg)((\?|#).*)?$)/i)},isSWF:function(a){return r(a)&&a.match(/\.(swf)((\?|#).*)?$/i)},_start:function(a){var d={},e,c;a=m(a);e=b.group[a]||null;if(!e)return!1;d=f.extend(!0,{},b.opts,e);e=d.margin;c=d.padding;"number"===f.type(e)&&(d.margin=[e,e,e,e]);"number"===f.type(c)&&(d.padding=[c,c,
+c,c]);d.modal&&f.extend(!0,d,{closeBtn:!1,closeClick:!1,nextClick:!1,arrows:!1,mouseWheel:!1,keys:null,helpers:{overlay:{closeClick:!1}}});d.autoSize&&(d.autoWidth=d.autoHeight=!0);"auto"===d.width&&(d.autoWidth=!0);"auto"===d.height&&(d.autoHeight=!0);d.group=b.group;d.index=a;b.coming=d;if(!1===b.trigger("beforeLoad"))b.coming=null;else{c=d.type;e=d.href;if(!c)return b.coming=null,b.current&&b.router&&"jumpto"!==b.router?(b.current.index=a,b[b.router](b.direction)):!1;b.isActive=!0;if("image"===
+c||"swf"===c)d.autoHeight=d.autoWidth=!1,d.scrolling="visible";"image"===c&&(d.aspectRatio=!0);"iframe"===c&&t&&(d.scrolling="scroll");d.wrap=f(d.tpl.wrap).addClass("fancybox-"+(t?"mobile":"desktop")+" fancybox-type-"+c+" fancybox-tmp "+d.wrapCSS).appendTo(d.parent||"body");f.extend(d,{skin:f(".fancybox-skin",d.wrap),outer:f(".fancybox-outer",d.wrap),inner:f(".fancybox-inner",d.wrap)});f.each(["Top","Right","Bottom","Left"],function(a,b){d.skin.css("padding"+b,x(d.padding[a]))});b.trigger("onReady");
+if("inline"===c||"html"===c){if(!d.content||!d.content.length)return b._error("content")}else if(!e)return b._error("href");"image"===c?b._loadImage():"ajax"===c?b._loadAjax():"iframe"===c?b._loadIframe():b._afterLoad()}},_error:function(a){f.extend(b.coming,{type:"html",autoWidth:!0,autoHeight:!0,minWidth:0,minHeight:0,scrolling:"no",hasError:a,content:b.coming.tpl.error});b._afterLoad()},_loadImage:function(){var a=b.imgPreload=new Image;a.onload=function(){this.onload=this.onerror=null;b.coming.width=
+this.width/b.opts.pixelRatio;b.coming.height=this.height/b.opts.pixelRatio;b._afterLoad()};a.onerror=function(){this.onload=this.onerror=null;b._error("image")};a.src=b.coming.href;!0!==a.complete&&b.showLoading()},_loadAjax:function(){var a=b.coming;b.showLoading();b.ajaxLoad=f.ajax(f.extend({},a.ajax,{url:a.href,error:function(a,e){b.coming&&"abort"!==e?b._error("ajax",a):b.hideLoading()},success:function(d,e){"success"===e&&(a.content=d,b._afterLoad())}}))},_loadIframe:function(){var a=b.coming,
+d=f(a.tpl.iframe.replace(/\{rnd\}/g,(new Date).getTime())).attr("scrolling",t?"auto":a.iframe.scrolling).attr("src",a.href);f(a.wrap).bind("onReset",function(){try{f(this).find("iframe").hide().attr("src","//about:blank").end().empty()}catch(a){}});a.iframe.preload&&(b.showLoading(),d.one("load",function(){f(this).data("ready",1);t||f(this).bind("load.fb",b.update);f(this).parents(".fancybox-wrap").width("100%").removeClass("fancybox-tmp").show();b._afterLoad()}));a.content=d.appendTo(a.inner);a.iframe.preload||
+b._afterLoad()},_preloadImages:function(){var a=b.group,d=b.current,e=a.length,c=d.preload?Math.min(d.preload,e-1):0,f,g;for(g=1;g<=c;g+=1)f=a[(d.index+g)%e],"image"===f.type&&f.href&&((new Image).src=f.href)},_afterLoad:function(){var a=b.coming,d=b.current,e,c,l,g,h;b.hideLoading();if(a&&!1!==b.isActive)if(!1===b.trigger("afterLoad",a,d))a.wrap.stop(!0).trigger("onReset").remove(),b.coming=null;else{d&&(b.trigger("beforeChange",d),d.wrap.stop(!0).removeClass("fancybox-opened").find(".fancybox-item, .fancybox-nav").remove());
+b.unbindEvents();e=a.content;c=a.type;l=a.scrolling;f.extend(b,{wrap:a.wrap,skin:a.skin,outer:a.outer,inner:a.inner,current:a,previous:d});g=a.href;switch(c){case "inline":case "ajax":case "html":a.selector?e=f("<div>").html(e).find(a.selector):u(e)&&(e.data("fancybox-placeholder")||e.data("fancybox-placeholder",f('<div class="fancybox-placeholder"></div>').insertAfter(e).hide()),e=e.show().detach(),a.wrap.bind("onReset",function(){f(this).find(e).length&&e.hide().replaceAll(e.data("fancybox-placeholder")).data("fancybox-placeholder",
+!1)}));break;case "image":e=a.tpl.image.replace(/\{href\}/g,g);break;case "swf":e='<object id="fancybox-swf" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%"><param name="movie" value="'+g+'"></param>',h="",f.each(a.swf,function(a,b){e+='<param name="'+a+'" value="'+b+'"></param>';h+=" "+a+'="'+b+'"'}),e+='<embed src="'+g+'" type="application/x-shockwave-flash" width="100%" height="100%"'+h+"></embed></object>"}u(e)&&e.parent().is(a.inner)||a.inner.append(e);b.trigger("beforeShow");
+a.inner.css("overflow","yes"===l?"scroll":"no"===l?"hidden":l);b._setDimension();b.reposition();b.isOpen=!1;b.coming=null;b.bindEvents();if(!b.isOpened)f(".fancybox-wrap").not(a.wrap).stop(!0).trigger("onReset").remove();else if(d.prevMethod)b.transitions[d.prevMethod]();b.transitions[b.isOpened?a.nextMethod:a.openMethod]();b._preloadImages()}},_setDimension:function(){var a=b.getViewport(),d=0,e=!1,c=!1,e=b.wrap,l=b.skin,g=b.inner,h=b.current,c=h.width,k=h.height,n=h.minWidth,v=h.minHeight,p=h.maxWidth,
+q=h.maxHeight,t=h.scrolling,r=h.scrollOutside?h.scrollbarWidth:0,y=h.margin,z=m(y[1]+y[3]),s=m(y[0]+y[2]),w,A,u,D,B,G,C,E,I;e.add(l).add(g).width("auto").height("auto").removeClass("fancybox-tmp");y=m(l.outerWidth(!0)-l.width());w=m(l.outerHeight(!0)-l.height());A=z+y;u=s+w;D=F(c)?(a.w-A)*m(c)/100:c;B=F(k)?(a.h-u)*m(k)/100:k;if("iframe"===h.type){if(I=h.content,h.autoHeight&&1===I.data("ready"))try{I[0].contentWindow.document.location&&(g.width(D).height(9999),G=I.contents().find("body"),r&&G.css("overflow-x",
+"hidden"),B=G.outerHeight(!0))}catch(H){}}else if(h.autoWidth||h.autoHeight)g.addClass("fancybox-tmp"),h.autoWidth||g.width(D),h.autoHeight||g.height(B),h.autoWidth&&(D=g.width()),h.autoHeight&&(B=g.height()),g.removeClass("fancybox-tmp");c=m(D);k=m(B);E=D/B;n=m(F(n)?m(n,"w")-A:n);p=m(F(p)?m(p,"w")-A:p);v=m(F(v)?m(v,"h")-u:v);q=m(F(q)?m(q,"h")-u:q);G=p;C=q;h.fitToView&&(p=Math.min(a.w-A,p),q=Math.min(a.h-u,q));A=a.w-z;s=a.h-s;h.aspectRatio?(c>p&&(c=p,k=m(c/E)),k>q&&(k=q,c=m(k*E)),c<n&&(c=n,k=m(c/
+E)),k<v&&(k=v,c=m(k*E))):(c=Math.max(n,Math.min(c,p)),h.autoHeight&&"iframe"!==h.type&&(g.width(c),k=g.height()),k=Math.max(v,Math.min(k,q)));if(h.fitToView)if(g.width(c).height(k),e.width(c+y),a=e.width(),z=e.height(),h.aspectRatio)for(;(a>A||z>s)&&c>n&&k>v&&!(19<d++);)k=Math.max(v,Math.min(q,k-10)),c=m(k*E),c<n&&(c=n,k=m(c/E)),c>p&&(c=p,k=m(c/E)),g.width(c).height(k),e.width(c+y),a=e.width(),z=e.height();else c=Math.max(n,Math.min(c,c-(a-A))),k=Math.max(v,Math.min(k,k-(z-s)));r&&"auto"===t&&k<B&&
+c+y+r<A&&(c+=r);g.width(c).height(k);e.width(c+y);a=e.width();z=e.height();e=(a>A||z>s)&&c>n&&k>v;c=h.aspectRatio?c<G&&k<C&&c<D&&k<B:(c<G||k<C)&&(c<D||k<B);f.extend(h,{dim:{width:x(a),height:x(z)},origWidth:D,origHeight:B,canShrink:e,canExpand:c,wPadding:y,hPadding:w,wrapSpace:z-l.outerHeight(!0),skinSpace:l.height()-k});!I&&h.autoHeight&&k>v&&k<q&&!c&&g.height("auto")},_getPosition:function(a){var d=b.current,e=b.getViewport(),c=d.margin,f=b.wrap.width()+c[1]+c[3],g=b.wrap.height()+c[0]+c[2],c={position:"absolute",
+top:c[0],left:c[3]};d.autoCenter&&d.fixed&&!a&&g<=e.h&&f<=e.w?c.position="fixed":d.locked||(c.top+=e.y,c.left+=e.x);c.top=x(Math.max(c.top,c.top+(e.h-g)*d.topRatio));c.left=x(Math.max(c.left,c.left+(e.w-f)*d.leftRatio));return c},_afterZoomIn:function(){var a=b.current;a&&((b.isOpen=b.isOpened=!0,b.wrap.css("overflow","visible").addClass("fancybox-opened"),b.update(),(a.closeClick||a.nextClick&&1<b.group.length)&&b.inner.css("cursor","pointer").bind("click.fb",function(d){f(d.target).is("a")||f(d.target).parent().is("a")||
+(d.preventDefault(),b[a.closeClick?"close":"next"]())}),a.closeBtn&&f(a.tpl.closeBtn).appendTo(b.skin).bind("click.fb",function(a){a.preventDefault();b.close()}),a.arrows&&1<b.group.length&&((a.loop||0<a.index)&&f(a.tpl.prev).appendTo(b.outer).bind("click.fb",b.prev),(a.loop||a.index<b.group.length-1)&&f(a.tpl.next).appendTo(b.outer).bind("click.fb",b.next)),b.trigger("afterShow"),a.loop||a.index!==a.group.length-1)?b.opts.autoPlay&&!b.player.isActive&&(b.opts.autoPlay=!1,b.play(!0)):b.play(!1))},
+_afterZoomOut:function(a){a=a||b.current;f(".fancybox-wrap").trigger("onReset").remove();f.extend(b,{group:{},opts:{},router:!1,current:null,isActive:!1,isOpened:!1,isOpen:!1,isClosing:!1,wrap:null,skin:null,outer:null,inner:null});b.trigger("afterClose",a)}});b.transitions={getOrigPosition:function(){var a=b.current,d=a.element,e=a.orig,c={},f=50,g=50,h=a.hPadding,k=a.wPadding,n=b.getViewport();!e&&a.isDom&&d.is(":visible")&&(e=d.find("img:first"),e.length||(e=d));u(e)?(c=e.offset(),e.is("img")&&
+(f=e.outerWidth(),g=e.outerHeight())):(c.top=n.y+(n.h-g)*a.topRatio,c.left=n.x+(n.w-f)*a.leftRatio);if("fixed"===b.wrap.css("position")||a.locked)c.top-=n.y,c.left-=n.x;return c={top:x(c.top-h*a.topRatio),left:x(c.left-k*a.leftRatio),width:x(f+k),height:x(g+h)}},step:function(a,d){var e,c,f=d.prop;c=b.current;var g=c.wrapSpace,h=c.skinSpace;if("width"===f||"height"===f)e=d.end===d.start?1:(a-d.start)/(d.end-d.start),b.isClosing&&(e=1-e),c="width"===f?c.wPadding:c.hPadding,c=a-c,b.skin[f](m("width"===
+f?c:c-g*e)),b.inner[f](m("width"===f?c:c-g*e-h*e))},zoomIn:function(){var a=b.current,d=a.pos,e=a.openEffect,c="elastic"===e,l=f.extend({opacity:1},d);delete l.position;c?(d=this.getOrigPosition(),a.openOpacity&&(d.opacity=0.1)):"fade"===e&&(d.opacity=0.1);b.wrap.css(d).animate(l,{duration:"none"===e?0:a.openSpeed,easing:a.openEasing,step:c?this.step:null,complete:b._afterZoomIn})},zoomOut:function(){var a=b.current,d=a.closeEffect,e="elastic"===d,c={opacity:0.1};e&&(c=this.getOrigPosition(),a.closeOpacity&&
+(c.opacity=0.1));b.wrap.animate(c,{duration:"none"===d?0:a.closeSpeed,easing:a.closeEasing,step:e?this.step:null,complete:b._afterZoomOut})},changeIn:function(){var a=b.current,d=a.nextEffect,e=a.pos,c={opacity:1},f=b.direction,g;e.opacity=0.1;"elastic"===d&&(g="down"===f||"up"===f?"top":"left","down"===f||"right"===f?(e[g]=x(m(e[g])-200),c[g]="+=200px"):(e[g]=x(m(e[g])+200),c[g]="-=200px"));"none"===d?b._afterZoomIn():b.wrap.css(e).animate(c,{duration:a.nextSpeed,easing:a.nextEasing,complete:b._afterZoomIn})},
+changeOut:function(){var a=b.previous,d=a.prevEffect,e={opacity:0.1},c=b.direction;"elastic"===d&&(e["down"===c||"up"===c?"top":"left"]=("up"===c||"left"===c?"-":"+")+"=200px");a.wrap.animate(e,{duration:"none"===d?0:a.prevSpeed,easing:a.prevEasing,complete:function(){f(this).trigger("onReset").remove()}})}};b.helpers.overlay={defaults:{closeClick:!0,speedOut:200,showEarly:!0,css:{},locked:!t,fixed:!0},overlay:null,fixed:!1,el:f("html"),create:function(a){var d;a=f.extend({},this.defaults,a);this.overlay&&
+this.close();d=b.coming?b.coming.parent:a.parent;this.overlay=f('<div class="fancybox-overlay"></div>').appendTo(d&&d.lenth?d:"body");this.fixed=!1;a.fixed&&b.defaults.fixed&&(this.overlay.addClass("fancybox-overlay-fixed"),this.fixed=!0)},open:function(a){var d=this;a=f.extend({},this.defaults,a);this.overlay?this.overlay.unbind(".overlay").width("auto").height("auto"):this.create(a);this.fixed||(q.bind("resize.overlay",f.proxy(this.update,this)),this.update());a.closeClick&&this.overlay.bind("click.overlay",
+function(a){if(f(a.target).hasClass("fancybox-overlay"))return b.isActive?b.close():d.close(),!1});this.overlay.css(a.css).show()},close:function(){q.unbind("resize.overlay");this.el.hasClass("fancybox-lock")&&(f(".fancybox-margin").removeClass("fancybox-margin"),this.el.removeClass("fancybox-lock"),q.scrollTop(this.scrollV).scrollLeft(this.scrollH));f(".fancybox-overlay").remove().hide();f.extend(this,{overlay:null,fixed:!1})},update:function(){var a="100%",b;this.overlay.width(a).height("100%");
+J?(b=Math.max(H.documentElement.offsetWidth,H.body.offsetWidth),p.width()>b&&(a=p.width())):p.width()>q.width()&&(a=p.width());this.overlay.width(a).height(p.height())},onReady:function(a,b){var e=this.overlay;f(".fancybox-overlay").stop(!0,!0);e||this.create(a);a.locked&&this.fixed&&b.fixed&&(b.locked=this.overlay.append(b.wrap),b.fixed=!1);!0===a.showEarly&&this.beforeShow.apply(this,arguments)},beforeShow:function(a,b){b.locked&&!this.el.hasClass("fancybox-lock")&&(!1!==this.fixPosition&&f("*").filter(function(){return"fixed"===
+f(this).css("position")&&!f(this).hasClass("fancybox-overlay")&&!f(this).hasClass("fancybox-wrap")}).addClass("fancybox-margin"),this.el.addClass("fancybox-margin"),this.scrollV=q.scrollTop(),this.scrollH=q.scrollLeft(),this.el.addClass("fancybox-lock"),q.scrollTop(this.scrollV).scrollLeft(this.scrollH));this.open(a)},onUpdate:function(){this.fixed||this.update()},afterClose:function(a){this.overlay&&!b.coming&&this.overlay.fadeOut(a.speedOut,f.proxy(this.close,this))}};b.helpers.title={defaults:{type:"float",
+position:"bottom"},beforeShow:function(a){var d=b.current,e=d.title,c=a.type;f.isFunction(e)&&(e=e.call(d.element,d));if(r(e)&&""!==f.trim(e)){d=f('<div class="fancybox-title fancybox-title-'+c+'-wrap">'+e+"</div>");switch(c){case "inside":c=b.skin;break;case "outside":c=b.wrap;break;case "over":c=b.inner;break;default:c=b.skin,d.appendTo("body"),J&&d.width(d.width()),d.wrapInner('<span class="child"></span>'),b.current.margin[2]+=Math.abs(m(d.css("margin-bottom")))}d["top"===a.position?"prependTo":
+"appendTo"](c)}}};f.fn.fancybox=function(a){var d,e=f(this),c=this.selector||"",l=function(g){var h=f(this).blur(),k=d,l,m;g.ctrlKey||g.altKey||g.shiftKey||g.metaKey||h.is(".fancybox-wrap")||(l=a.groupAttr||"data-fancybox-group",m=h.attr(l),m||(l="rel",m=h.get(0)[l]),m&&""!==m&&"nofollow"!==m&&(h=c.length?f(c):e,h=h.filter("["+l+'="'+m+'"]'),k=h.index(this)),a.index=k,!1!==b.open(h,a)&&g.preventDefault())};a=a||{};d=a.index||0;c&&!1!==a.live?p.undelegate(c,"click.fb-start").delegate(c+":not('.fancybox-item, .fancybox-nav')",
+"click.fb-start",l):e.unbind("click.fb-start").bind("click.fb-start",l);this.filter("[data-fancybox-start=1]").trigger("click");return this};p.ready(function(){var a,d;f.scrollbarWidth===w&&(f.scrollbarWidth=function(){var a=f('<div style="width:50px;height:50px;overflow:auto"><div/></div>').appendTo("body"),b=a.children(),b=b.innerWidth()-b.height(99).innerWidth();a.remove();return b});f.support.fixedPosition===w&&(f.support.fixedPosition=function(){var a=f('<div style="position:fixed;top:20px;"></div>').appendTo("body"),
+b=20===a[0].offsetTop||15===a[0].offsetTop;a.remove();return b}());f.extend(b.defaults,{scrollbarWidth:f.scrollbarWidth(),fixed:f.support.fixedPosition,parent:f("body")});a=f(s).width();K.addClass("fancybox-lock-test");d=f(s).width();K.removeClass("fancybox-lock-test");f("<style type='text/css'>.fancybox-margin{margin-right:"+(d-a)+"px !important;}</style>").appendTo("head")})})(window,document,jQuery);
+
+
+(function(d){var k=d.scrollTo=function(a,i,e){d(window).scrollTo(a,i,e)};k.defaults={axis:'xy',duration:parseFloat(d.fn.jquery)>=1.3?0:1};k.window=function(a){return d(window)._scrollable()};d.fn._scrollable=function(){return this.map(function(){var a=this,i=!a.nodeName||d.inArray(a.nodeName.toLowerCase(),['iframe','#document','html','body'])!=-1;if(!i)return a;var e=(a.contentWindow||a).document||a.ownerDocument||a;return d.browser.safari||e.compatMode=='BackCompat'?e.body:e.documentElement})};d.fn.scrollTo=function(n,j,b){if(typeof j=='object'){b=j;j=0}if(typeof b=='function')b={onAfter:b};if(n=='max')n=9e9;b=d.extend({},k.defaults,b);j=j||b.speed||b.duration;b.queue=b.queue&&b.axis.length>1;if(b.queue)j/=2;b.offset=p(b.offset);b.over=p(b.over);return this._scrollable().each(function(){var q=this,r=d(q),f=n,s,g={},u=r.is('html,body');switch(typeof f){case'number':case'string':if(/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(f)){f=p(f);break}f=d(f,this);case'object':if(f.is||f.style)s=(f=d(f)).offset()}d.each(b.axis.split(''),function(a,i){var e=i=='x'?'Left':'Top',h=e.toLowerCase(),c='scroll'+e,l=q[c],m=k.max(q,i);if(s){g[c]=s[h]+(u?0:l-r.offset()[h]);if(b.margin){g[c]-=parseInt(f.css('margin'+e))||0;g[c]-=parseInt(f.css('border'+e+'Width'))||0}g[c]+=b.offset[h]||0;if(b.over[h])g[c]+=f[i=='x'?'width':'height']()*b.over[h]}else{var o=f[h];g[c]=o.slice&&o.slice(-1)=='%'?parseFloat(o)/100*m:o}if(/^\d+$/.test(g[c]))g[c]=g[c]<=0?0:Math.min(g[c],m);if(!a&&b.queue){if(l!=g[c])t(b.onAfterFirst);delete g[c]}});t(b.onAfter);function t(a){r.animate(g,j,b.easing,a&&function(){a.call(this,n,b)})}}).end()};k.max=function(a,i){var e=i=='x'?'Width':'Height',h='scroll'+e;if(!d(a).is('html,body'))return a[h]-d(a)[e.toLowerCase()]();var c='client'+e,l=a.ownerDocument.documentElement,m=a.ownerDocument.body;return Math.max(l[h],m[h])-Math.min(l[c],m[c])};function p(a){return typeof a=='object'?a:{top:a,left:a}}})(jQuery);
+
+/*
+	--------------------------------
+	Infinite Scroll
+	--------------------------------
+	+ https://github.com/paulirish/infinite-scroll
+	+ version 2.0b2.111027
+	+ Copyright 2011 Paul Irish & Luke Shumard
+	+ Licensed under the MIT license
+	
+	+ Documentation: http://infinite-scroll.com/
+	
+*/
+
+(function (window, $, undefined) {
+	
+	$.infinitescroll = function infscr(options, callback, element) {
+		
+		this.element = $(element);
+		this._create(options, callback);
+
+	};
+	
+	$.infinitescroll.defaults = {
+		loading: {
+			finished: undefined,
+			finishedMsg: "<em>Bohužel, více toho neodpovídá zadaným kritériím.</em>",
+			img: dict.domain+"/img/ajax-loader.gif",
+			msg: null,
+			msgText: "<em>Nahrávám další data...</em>",
+			selector: null,
+			speed: 'fast',
+			start: undefined
+		},
+		state: {
+			isDuringAjax: false,
+			isInvalidPage: false,
+			isDestroyed: false,
+			isDone: false, // For when it goes all the way through the archive.
+			isPaused: false,
+			currPage: 0
+		},
+		callback: undefined,
+		debug: false,
+		behavior: undefined,
+		binder: $(window), // used to cache the selector
+		nextSelector: "a#next",
+		navSelector: "div#pager",
+		contentSelector: null, // rename to pageFragment
+		extraScrollPx: 150,
+		itemSelector: "div.post",
+		animate: false,
+		pathParse: undefined,
+		dataType: 'html',
+		appendCallback: true,
+		bufferPx: 40,
+		errorCallback: function () { },
+		infid: 0, //Instance ID
+		pixelsFromNavToBottom: undefined,
+		path: undefined
+	};
+
+
+    $.infinitescroll.prototype = {
+
+        /*	
+        ----------------------------
+        Private methods
+        ----------------------------
+        */
+
+        // Bind or unbind from scroll
+        _binding: function infscr_binding(binding) {
+
+            var instance = this,
+				opts = instance.options;
+				
+			opts.v = '2.0b2.111027';
+
+            // if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_binding_'+opts.behavior] !== undefined) {
+				this['_binding_'+opts.behavior].call(this);
+				return;
+			}
+
+			if (binding !== 'bind' && binding !== 'unbind') {
+                this._debug('Binding value  ' + binding + ' not valid')
+                return false;
+            }
+
+            if (binding == 'unbind') {
+
+                (this.options.binder).unbind('smartscroll.infscr.' + instance.options.infid);
+
+            } else {
+
+                (this.options.binder)[binding]('smartscroll.infscr.' + instance.options.infid, function () {
+                    instance.scroll();
+                });
+
+            };
+
+            this._debug('Binding', binding);
+
+        },
+
+		// Fundamental aspects of the plugin are initialized
+		_create: function infscr_create(options, callback) {
+
+            // If selectors from options aren't valid, return false
+            if (!this._validate(options)) { return false; }
+            // Define options and shorthand
+            var opts = this.options = $.extend(true, {}, $.infinitescroll.defaults, options),
+				// get the relative URL - everything past the domain name.
+				relurl = /(.*?\/\/).*?(\/.*)/,
+				path = $(opts.nextSelector).attr('href');
+
+            // contentSelector is 'page fragment' option for .load() / .ajax() calls
+            opts.contentSelector = opts.contentSelector || this.element;
+
+            // loading.selector - if we want to place the load message in a specific selector, defaulted to the contentSelector
+            opts.loading.selector = opts.loading.selector || opts.contentSelector;
+
+            // if there's not path, return
+            if (!path) { this._debug('Navigation selector not found'); return; }
+
+            // Set the path to be a relative URL from root.
+            opts.path = this._determinepath(path);
+
+            // Define loading.msg
+            opts.loading.msg = $('<div id="infscr-loading"><img alt="Loading..." src="' + opts.loading.img + '" /><div>' + opts.loading.msgText + '</div></div>');
+
+            // Preload loading.img
+            (new Image()).src = opts.loading.img;
+
+            // distance from nav links to bottom
+            // computed as: height of the document + top offset of container - top offset of nav link
+            opts.pixelsFromNavToBottom = $(document).height() - $(opts.navSelector).offset().top;
+
+			// determine loading.start actions
+            opts.loading.start = opts.loading.start || function() {
+				
+				$(opts.navSelector).hide();
+				opts.loading.msg
+					.appendTo(opts.loading.selector)
+					.show(opts.loading.speed, function () {
+	                	beginAjax(opts);
+	            });
+			};
+			
+			// determine loading.finished actions
+			opts.loading.finished = opts.loading.finished || function() {
+				opts.loading.msg.fadeOut('normal');
+			};
+
+            // callback loading
+            opts.callback = function(instance,data) {
+				if (!!opts.behavior && instance['_callback_'+opts.behavior] !== undefined) {
+					instance['_callback_'+opts.behavior].call($(opts.contentSelector)[0], data);
+				}
+				if (callback) {
+					callback.call($(opts.contentSelector)[0], data, opts);
+				}
+			};
+
+            this._setup();
+
+        },
+
+        // Console log wrapper
+        _debug: function infscr_debug() {
+
+			if (this.options && this.options.debug) {
+                return window.console && console.log.call(console, arguments);
+            }
+
+        },
+
+        // find the number to increment in the path.
+        _determinepath: function infscr_determinepath(path) {
+
+            var opts = this.options;
+
+			// if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_determinepath_'+opts.behavior] !== undefined) {
+				this['_determinepath_'+opts.behavior].call(this,path);
+				return;
+			}
+
+            if (!!opts.pathParse) {
+
+                this._debug('pathParse manual');
+                return opts.pathParse();
+
+            } else if (path.match(/^(.*?)\b2\b(.*?$)/)) {
+                path = path.match(/^(.*?)\b2\b(.*?$)/).slice(1);
+
+                // if there is any 2 in the url at all.
+            } /* else if (path.match(/^(.*?)2(.*?$)/)) {  */
+
+                // page= is used in django:
+                // http://www.infinite-scroll.com/changelog/comment-page-1/#comment-127
+             /*
+				if (path.match(/^(.*?page=)2(\/.*|$)/)) {
+                    path = path.match(/^(.*?page=)2(\/.*|$)/).slice(1);
+                    return path;
+                }
+			
+                path = path.match(/^(.*?)2(.*?$)/).slice(1);
+			*/
+			
+					
+           /* } */ else {
+		
+                // page= is used in drupal too but second page is page=1 not page=2:
+                // thx Jerod Fritz, vladikoff
+                if (path.match(/^(.*?page=)1(\/.*|$)/)) {
+                    path = path.match(/^(.*?page=)1(\/.*|$)/).slice(1);
+
+                } else {
+                    this._debug('Sorry, we couldn\'t parse your Next (Previous Posts) URL. Verify your the css selector points to the correct A tag. If you still get this error: yell, scream, and kindly ask for help at infinite-scroll.com.');
+                    // Get rid of isInvalidPage to allow permalink to state
+                    opts.state.isInvalidPage = true;  //prevent it from running on this page.
+                }
+            }
+            this._debug('determinePath', path);
+            return path;
+	
+        },
+
+        // Custom error
+        _error: function infscr_error(xhr) {
+
+            var opts = this.options;
+
+			// if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_error_'+opts.behavior] !== undefined) {
+				this['_error_'+opts.behavior].call(this,xhr);
+				return;
+			}
+
+            if (xhr !== 'destroy' && xhr !== 'end') {
+                xhr = 'unknown';
+            }
+
+            this._debug('Error', xhr);
+
+            if (xhr == 'end') {
+                this._showdonemsg();
+            }
+
+            opts.state.isDone = true;
+            opts.state.currPage = 1; // if you need to go back to this instance
+            opts.state.isPaused = false;
+            this._binding('unbind');
+
+        },
+
+        // Load Callback
+        _loadcallback: function infscr_loadcallback(box, data) {
+
+            var opts = this.options,
+	    		callback = this.options.callback, // GLOBAL OBJECT FOR CALLBACK
+	    		result = (opts.state.isDone) ? 'done' : (!opts.appendCallback) ? 'no-append' : 'append',
+	    		frag;
+	
+			// if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_loadcallback_'+opts.behavior] !== undefined) {
+				this['_loadcallback_'+opts.behavior].call(this,box,data);
+				return;
+			}
+
+            switch (result) {
+
+                case 'done':
+
+                    this._showdonemsg();
+                    return false;
+
+                    break;
+
+                case 'no-append':
+
+                    if (opts.dataType == 'html') {
+                        data = '<div>' + data + '</div>';
+                        data = $(data).find(opts.itemSelector);
+                    };
+
+                    break;
+
+                case 'append':
+
+                    var children = box.children();
+
+                    // if it didn't return anything
+                    if (children.length == 0) {
+                        return this._error('end');
+                    }
+
+
+                    // use a documentFragment because it works when content is going into a table or UL
+                    frag = document.createDocumentFragment();
+                    while (box[0].firstChild) {
+                        frag.appendChild(box[0].firstChild);
+                    }
+
+                    this._debug('contentSelector', $(opts.contentSelector)[0])
+                    $(opts.contentSelector)[0].appendChild(frag);
+                    // previously, we would pass in the new DOM element as context for the callback
+                    // however we're now using a documentfragment, which doesnt havent parents or children,
+                    // so the context is the contentContainer guy, and we pass in an array
+                    //   of the elements collected as the first argument.
+
+                    data = children.get();
+
+
+                    break;
+
+            }
+
+            // loadingEnd function
+			opts.loading.finished.call($(opts.contentSelector)[0],opts)
+
+
+            // smooth scroll to ease in the new content
+            if (opts.animate) {
+                var scrollTo = $(window).scrollTop() + $('#infscr-loading').height() + opts.extraScrollPx + 'px';
+                $('html,body').animate({ scrollTop: scrollTo }, 800, function () { opts.state.isDuringAjax = false; });
+            }
+
+            if (!opts.animate) opts.state.isDuringAjax = false; // once the call is done, we can allow it again.
+
+            callback(this,data);
+
+        },
+
+        _nearbottom: function infscr_nearbottom() {
+
+            var opts = this.options,
+	        	pixelsFromWindowBottomToBottom = 0 + $(document).height() - (opts.binder.scrollTop()) - $(window).height();
+
+            // if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_nearbottom_'+opts.behavior] !== undefined) {
+				this['_nearbottom_'+opts.behavior].call(this);
+				return;
+			}
+
+			this._debug('math:', pixelsFromWindowBottomToBottom, opts.pixelsFromNavToBottom);
+
+            // if distance remaining in the scroll (including buffer) is less than the orignal nav to bottom....
+            return (pixelsFromWindowBottomToBottom - opts.bufferPx < opts.pixelsFromNavToBottom);
+
+        },
+
+		// Pause / temporarily disable plugin from firing
+        _pausing: function infscr_pausing(pause) {
+
+            var opts = this.options;
+
+            // if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_pausing_'+opts.behavior] !== undefined) {
+				this['_pausing_'+opts.behavior].call(this,pause);
+				return;
+			}
+
+			// If pause is not 'pause' or 'resume', toggle it's value
+            if (pause !== 'pause' && pause !== 'resume' && pause !== null) {
+                this._debug('Invalid argument. Toggling pause value instead');
+            };
+
+            pause = (pause && (pause == 'pause' || pause == 'resume')) ? pause : 'toggle';
+
+            switch (pause) {
+                case 'pause':
+                    opts.state.isPaused = true;
+                    break;
+
+                case 'resume':
+                    opts.state.isPaused = false;
+                    break;
+
+                case 'toggle':
+                    opts.state.isPaused = !opts.state.isPaused;
+                    break;
+            }
+
+            this._debug('Paused', opts.state.isPaused);
+            return false;
+
+        },
+
+		// Behavior is determined
+		// If the behavior option is undefined, it will set to default and bind to scroll
+		_setup: function infscr_setup() {
+			
+			var opts = this.options;
+			
+			// if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_setup_'+opts.behavior] !== undefined) {
+				this['_setup_'+opts.behavior].call(this);
+				return;
+			}
+			
+			this._binding('bind');
+			
+			return false;
+			
+		},
+
+        // Show done message
+        _showdonemsg: function infscr_showdonemsg() {
+
+            var opts = this.options;
+
+			// if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['_showdonemsg_'+opts.behavior] !== undefined) {
+				this['_showdonemsg_'+opts.behavior].call(this);
+				return;
+			}
+
+            opts.loading.msg
+	    		.find('img')
+	    		.hide()
+	    		.parent()
+	    		.find('div').html(opts.loading.finishedMsg).animate({ opacity: 1 }, 2000, function () {
+	    		    $(this).parent().fadeOut('normal');
+	    		});
+
+            // user provided callback when done
+            opts.errorCallback.call($(opts.contentSelector)[0],'done');
+
+        },
+
+		// grab each selector option and see if any fail
+        _validate: function infscr_validate(opts) {
+
+            for (var key in opts) {
+                if (key.indexOf && key.indexOf('Selector') > -1 && $(opts[key]).length === 0) {
+                    this._debug('Your ' + key + ' found no elements.');
+                    return false;
+                }
+                return true;
+            }
+
+        },
+
+        /*	
+        ----------------------------
+        Public methods
+        ----------------------------
+        */
+
+		// Bind to scroll
+		bind: function infscr_bind() {
+			this._binding('bind');
+		},
+
+        // Destroy current instance of plugin
+        destroy: function infscr_destroy() {
+
+            this.options.state.isDestroyed = true;
+            return this._error('destroy');
+
+        },
+
+		// Set pause value to false
+		pause: function infscr_pause() {
+			this._pausing('pause');
+		},
+		
+		// Set pause value to false
+		resume: function infscr_resume() {
+			this._pausing('resume');
+		},
+
+        // Retrieve next set of content items
+        retrieve: function infscr_retrieve(pageNum) {
+
+            var instance = this,
+				opts = instance.options,
+				path = opts.path,
+				box, frag, desturl, method, condition,
+	    		pageNum = pageNum || null,
+				getPage = (!!pageNum) ? pageNum : opts.state.currPage;
+				beginAjax = function infscr_ajax(opts) {
+					
+					// increment the URL bit. e.g. /page/3/
+	                opts.state.currPage++;
+
+	                instance._debug('heading into ajax', path);
+
+	                // if we're dealing with a table we can't use DIVs
+	                box = $(opts.contentSelector).is('table') ? $('<tbody/>') : $('<div/>');
+			
+			 // desturl = path.join(opts.state.currPage);			
+				
+					var re = /(=.*)/;
+				    desturl = path;				
+					desturl = desturl.replace(re,"="+opts.state.currPage+"/");	
+					//alert(opts.path + ' - ' +desturl);			
+					
+	                method = (opts.dataType == 'html' || opts.dataType == 'json') ? opts.dataType : 'html+callback';
+	                if (opts.appendCallback && opts.dataType == 'html') method += '+callback'
+
+	                switch (method) {
+
+	                    case 'html+callback':
+
+	                        instance._debug('Using HTML via .load() method');
+	                        box.load(desturl + ' ' + opts.itemSelector, null, function infscr_ajax_callback(responseText) {
+	                            instance._loadcallback(box, responseText);
+	                        });
+
+	                        break;
+
+	                    case 'html':
+	                    case 'json':
+
+	                        instance._debug('Using ' + (method.toUpperCase()) + ' via $.ajax() method');
+	                        $.ajax({
+	                            // params
+	                            url: desturl,
+	                            dataType: opts.dataType,
+	                            complete: function infscr_ajax_callback(jqXHR, textStatus) {
+	                                condition = (typeof (jqXHR.isResolved) !== 'undefined') ? (jqXHR.isResolved()) : (textStatus === "success" || textStatus === "notmodified");
+	                                (condition) ? instance._loadcallback(box, jqXHR.responseText) : instance._error('end');
+	                            }
+	                        });
+	
+	                        break;
+	                }
+				};
+				
+			// if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['retrieve_'+opts.behavior] !== undefined) {
+				this['retrieve_'+opts.behavior].call(this,pageNum);
+				return;
+			}
+
+
+			// for manual triggers, if destroyed, get out of here
+			if (opts.state.isDestroyed) {
+                this._debug('Instance is destroyed');
+                return false;
+            };
+
+            // we dont want to fire the ajax multiple times
+            opts.state.isDuringAjax = true;
+
+            opts.loading.start.call($(opts.contentSelector)[0],opts);
+
+        },
+
+        // Check to see next page is needed
+        scroll: function infscr_scroll() {
+
+            var opts = this.options,
+				state = opts.state;
+
+            // if behavior is defined and this function is extended, call that instead of default
+			if (!!opts.behavior && this['scroll_'+opts.behavior] !== undefined) {
+				this['scroll_'+opts.behavior].call(this);
+				return;
+			}
+
+			if (state.isDuringAjax || state.isInvalidPage || state.isDone || state.isDestroyed || state.isPaused) return;
+
+            if (!this._nearbottom()) return;
+
+            this.retrieve();
+
+        },
+		
+		// Toggle pause value
+		toggle: function infscr_toggle() {
+			this._pausing();
+		},
+		
+		// Unbind from scroll
+		unbind: function infscr_unbind() {
+			this._binding('unbind');
+		},
+		
+		// update options
+		update: function infscr_options(key) {
+			if ($.isPlainObject(key)) {
+				this.options = $.extend(true,this.options,key);
+			}
+		}
+
+    }
+
+
+    /*	
+    ----------------------------
+    Infinite Scroll function
+    ----------------------------
+	
+    Borrowed logic from the following...
+	
+    jQuery UI
+    - https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.widget.js
+	
+    jCarousel
+    - https://github.com/jsor/jcarousel/blob/master/lib/jquery.jcarousel.js
+	
+    Masonry
+    - https://github.com/desandro/masonry/blob/master/jquery.masonry.js		
+	
+    */
+
+    $.fn.infinitescroll = function infscr_init(options, callback) {
+
+        var thisCall = typeof options;
+
+        switch (thisCall) {
+
+            // method
+            case 'string':
+
+                var args = Array.prototype.slice.call(arguments, 1);
+
+                this.each(function () {
+
+                    var instance = $.data(this, 'infinitescroll');
+
+                    if (!instance) {
+                        // not setup yet
+                        // return $.error('Method ' + options + ' cannot be called until Infinite Scroll is setup');
+						return false;
+                    }
+                    if (!$.isFunction(instance[options]) || options.charAt(0) === "_") {
+                        // return $.error('No such method ' + options + ' for Infinite Scroll');
+						return false;
+                    }
+
+                    // no errors!
+                    instance[options].apply(instance, args);
+
+                });
+
+                break;
+
+            // creation
+            case 'object':
+
+                this.each(function () {
+
+                    var instance = $.data(this, 'infinitescroll');
+
+                    if (instance) {
+
+                        // update options of current instance
+                        instance.update(options);
+
+                    } else {
+
+                        // initialize new instance
+                        $.data(this, 'infinitescroll', new $.infinitescroll(options, callback, this));
+
+                    }
+
+                });
+
+                break;
+
+        }
+
+        return this;
+
+    };
+
+
+
+    /*
+    * smartscroll: debounced scroll event for jQuery *
+    * https://github.com/lukeshumard/smartscroll
+    * Based on smartresize by @louis_remi: https://github.com/lrbabe/jquery.smartresize.js *
+    * Copyright 2011 Louis-Remi & Luke Shumard * Licensed under the MIT license. *
+    */
+
+    var event = $.event,
+		scrollTimeout;
+
+    event.special.smartscroll = {
+        setup: function () {
+            $(this).bind("scroll", event.special.smartscroll.handler);
+        },
+        teardown: function () {
+            $(this).unbind("scroll", event.special.smartscroll.handler);
+        },
+        handler: function (event, execAsap) {
+            // Save the context
+            var context = this,
+		      args = arguments;
+
+            // set correct event type
+            event.type = "smartscroll";
+
+            if (scrollTimeout) { clearTimeout(scrollTimeout); }
+            scrollTimeout = setTimeout(function () {
+                $.event.handle.apply(context, args);
+            }, execAsap === "execAsap" ? 0 : 100);
+        }
+    };
+
+    $.fn.smartscroll = function (fn) {
+        return fn ? this.bind("smartscroll", fn) : this.trigger("smartscroll", ["execAsap"]);
+    };
+
+
+})(window, jQuery);
+
+
+/*
+	--------------------------------
+	Infinite Scroll Behavior
+	Manual / Twitter-style
+	--------------------------------
+	+ https://github.com/paulirish/infinitescroll/
+	+ version 2.0b2.110617
+	+ Copyright 2011 Paul Irish & Luke Shumard
+	+ Licensed under the MIT license
+	
+	+ Documentation: http://infinite-scroll.com/
+	
+*/
+
+$.extend($.infinitescroll.prototype,{
+	
+	_setup_twitter: function infscr_setup_twitter () {
+		var opts = this.options,
+			instance = this;
+			
+		// Bind nextSelector link to retrieve
+		$(opts.nextSelector).click(function(e) {
+		//	if (e.which == 1 && !e.metaKey && !e.shiftKey) {  alert('this');
+				e.preventDefault();
+				instance.retrieve();
+				return false;
+		//	}
+		});
+		
+		// Define loadingStart to never hide pager
+		instance.options.loading.start = function (opts) {
+			opts.loading.msg
+				.appendTo(opts.loading.selector)
+				.show(opts.loading.speed, function () {
+                	beginAjax(opts);
+            });
+		}
+	}
+	
+});
+
+
+// STARS PLUGIN
+;if(window.jQuery)(function($){if($.browser.msie)try{document.execCommand("BackgroundImageCache",false,true)}catch(e){}$.rating={split:0,starWidth:16,callback:function(){var voteStar=$(this).val();var cid=$(this).attr('rel');var categ=$('#categ').attr('title');var link=$('#stars').attr('rel');var url=link+"?rating="+voteStar+"&cid="+cid+"&categ="+categ;$.ajax({url:url,cache:false,success:function(html){$('#rat').html(html);}})},groups:{},event:{fill:function(n,el,settings,state){this.drain(n);$(el).prevAll('.star_group_'+n).andSelf().addClass('star_'+(state||'hover'));var lnk=$(el).children('a');val=lnk.text();if(settings.focus)settings.focus.apply($.rating.groups[n].valueElem[0],[val,lnk[0]])},drain:function(n,el,settings){$.rating.groups[n].valueElem.siblings('.star_group_'+n).removeClass('star_on').removeClass('star_hover')},reset:function(n,el,settings){if(!$($.rating.groups[n].current).is('.cancel'))$($.rating.groups[n].current).prevAll('.star_group_'+n).andSelf().addClass('star_on');var lnk=$(el).children('a');val=lnk.text();if(settings.blur)settings.blur.apply($.rating.groups[n].valueElem[0],[val,lnk[0]])},click:function(n,el,settings){$.rating.groups[n].current=el;var lnk=$(el).children('a');val=lnk.text();$.rating.groups[n].valueElem.val(val);$.rating.event.drain(n,el,settings);$.rating.event.reset(n,el,settings);if(settings.callback)settings.callback.apply($.rating.groups[n].valueElem[0],[val,lnk[0]])}}};$.fn.rating=function(instanceSettings){if(this.length==0)return this;instanceSettings=$.extend({},$.rating,instanceSettings||{});this.each(function(i){var settings=$.extend({},instanceSettings||{},($.metadata?$(this).metadata():($.meta?$(this).data():null))||{});var n=(this.name||'unnamed-rating').replace(/\[|\]+/g,"_");var rel=$(this).attr('rel');if(!$.rating.groups[n])$.rating.groups[n]={count:0};i=$.rating.groups[n].count;$.rating.groups[n].count++;$.rating.groups[n].readOnly=$.rating.groups[n].readOnly||settings.readOnly||$(this).attr('disabled');if(i==0){$.rating.groups[n].valueElem=$('<input rel="'+rel+'" type="hidden" name="'+n+'" value=""'+(settings.readOnly?' disabled="disabled"':'')+'/>');$(this).before($.rating.groups[n].valueElem)};eStar=$('<div class="star"><a title="'+(this.title||this.value)+'">'+this.value+'</a></div>');$(this).after(eStar);if(settings.half)settings.split=2;$(eStar).addClass('star_group_'+n);if($.rating.groups[n].readOnly)$(eStar).addClass('star_readonly');else $(eStar).addClass('star_live').mouseover(function(){$.rating.event.drain(n,this,settings);$.rating.event.fill(n,this,settings,'hover')}).mouseout(function(){$.rating.event.drain(n,this,settings);$.rating.event.reset(n,this,settings)}).click(function(){$.rating.event.click(n,this,settings)});if(this.checked)$.rating.groups[n].current=eStar;$(this).remove();if(i+1==this.length)$.rating.event.reset(n,this,settings)});for(n in $.rating.groups)(function(c,v,n){if(!c)return;$.rating.event.fill(n,c,instanceSettings||{},'on');$(v).val($(c).children('a').text())})($.rating.groups[n].current,$.rating.groups[n].valueElem,n);return this};$(function(){$('#stars input[type=radio].star').rating()})})(jQuery);
+
+/*
+ * Lazy Load - jQuery plugin for lazy loading images
+ *
+ * Copyright (c) 2007-2013 Mika Tuupola
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Project home:
+ *   http://www.appelsiini.net/projects/lazyload
+ *
+ * Version:  1.8.4
+ *
+ */
+(function($, window, document, undefined) {
+    var $window = $(window);
+
+    $.fn.lazyload = function(options) {
+        var elements = this;
+        var $container;
+        var settings = {
+            threshold       : 0,
+            failure_limit   : 0,
+            event           : "scroll",
+            effect          : "show",
+            container       : window,
+            data_attribute  : "original",
+            skip_invisible  : true,
+            appear          : null,
+            load            : null
+        };
+
+        function update() {
+            var counter = 0;
+
+            elements.each(function() {
+                var $this = $(this);
+                if (settings.skip_invisible && !$this.is(":visible")) {
+                    return;
+                }
+                if ($.abovethetop(this, settings) ||
+                    $.leftofbegin(this, settings)) {
+                        /* Nothing. */
+                } else if (!$.belowthefold(this, settings) &&
+                    !$.rightoffold(this, settings)) {
+                        $this.trigger("appear");
+                        /* if we found an image we'll load, reset the counter */
+                        counter = 0;
+                } else {
+                    if (++counter > settings.failure_limit) {
+                        return false;
+                    }
+                }
+            });
+
+        }
+
+        if(options) {
+            /* Maintain BC for a couple of versions. */
+            if (undefined !== options.failurelimit) {
+                options.failure_limit = options.failurelimit;
+                delete options.failurelimit;
+            }
+            if (undefined !== options.effectspeed) {
+                options.effect_speed = options.effectspeed;
+                delete options.effectspeed;
+            }
+
+            $.extend(settings, options);
+        }
+
+        /* Cache container as jQuery as object. */
+        $container = (settings.container === undefined ||
+                      settings.container === window) ? $window : $(settings.container);
+
+        /* Fire one scroll event per scroll. Not one scroll event per image. */
+        if (0 === settings.event.indexOf("scroll")) {
+            $container.bind(settings.event, function(event) {
+                return update();
+            });
+        }
+
+        this.each(function() {
+            var self = this;
+            var $self = $(self);
+
+            self.loaded = false;
+
+            /* When appear is triggered load original image. */
+            $self.one("appear", function() {
+                if (!this.loaded) {
+                    if (settings.appear) {
+                        var elements_left = elements.length;
+                        settings.appear.call(self, elements_left, settings);
+                    }
+                    $("<img />")
+                        .bind("load", function() {
+                            $self
+                                .hide()
+                                .attr("src", $self.data(settings.data_attribute))
+                                [settings.effect](settings.effect_speed);
+                            self.loaded = true;
+
+                            /* Remove image from array so it is not looped next time. */
+                            var temp = $.grep(elements, function(element) {
+                                return !element.loaded;
+                            });
+                            elements = $(temp);
+
+                            if (settings.load) {
+                                var elements_left = elements.length;
+                                settings.load.call(self, elements_left, settings);
+                            }
+                        })
+                        .attr("src", $self.data(settings.data_attribute));
+                }
+            });
+
+            /* When wanted event is triggered load original image */
+            /* by triggering appear.                              */
+            if (0 !== settings.event.indexOf("scroll")) {
+                $self.bind(settings.event, function(event) {
+                    if (!self.loaded) {
+                        $self.trigger("appear");
+                    }
+                });
+            }
+        });
+
+        /* Check if something appears when window is resized. */
+        $window.bind("resize", function(event) {
+            update();
+        });
+
+        /* With IOS5 force loading images when navigating with back button. */
+        /* Non optimal workaround. */
+        if ((/iphone|ipod|ipad.*os 5/gi).test(navigator.appVersion)) {
+            $window.bind("pageshow", function(event) {
+                if (event.originalEvent.persisted) {
+                    elements.each(function() {
+                        $(this).trigger("appear");
+                    });
+                }
+            });
+        }
+
+        /* Force initial check if images should appear. */
+        $(window).load(function() {
+            update();
+        });
+
+        return this;
+    };
+
+    /* Convenience methods in jQuery namespace.           */
+    /* Use as  $.belowthefold(element, {threshold : 100, container : window}) */
+
+    $.belowthefold = function(element, settings) {
+        var fold;
+
+        if (settings.container === undefined || settings.container === window) {
+            fold = $window.height() + $window.scrollTop();
+        } else {
+            fold = $(settings.container).offset().top + $(settings.container).height();
+        }
+
+        return fold <= $(element).offset().top - settings.threshold;
+    };
+
+    $.rightoffold = function(element, settings) {
+        var fold;
+
+        if (settings.container === undefined || settings.container === window) {
+            fold = $window.width() + $window.scrollLeft();
+        } else {
+            fold = $(settings.container).offset().left + $(settings.container).width();
+        }
+
+        return fold <= $(element).offset().left - settings.threshold;
+    };
+
+    $.abovethetop = function(element, settings) {
+        var fold;
+
+        if (settings.container === undefined || settings.container === window) {
+            fold = $window.scrollTop();
+        } else {
+            fold = $(settings.container).offset().top;
+        }
+
+        return fold >= $(element).offset().top + settings.threshold  + $(element).height();
+    };
+
+    $.leftofbegin = function(element, settings) {
+        var fold;
+
+        if (settings.container === undefined || settings.container === window) {
+            fold = $window.scrollLeft();
+        } else {
+            fold = $(settings.container).offset().left;
+        }
+
+        return fold >= $(element).offset().left + settings.threshold + $(element).width();
+    };
+
+    $.inviewport = function(element, settings) {
+         return !$.rightoffold(element, settings) && !$.leftofbegin(element, settings) &&
+                !$.belowthefold(element, settings) && !$.abovethetop(element, settings);
+     };
+
+    /* Custom selectors for your convenience.   */
+    /* Use as $("img:below-the-fold").something() or */
+    /* $("img").filter(":below-the-fold").something() which is faster */
+
+    $.extend($.expr[':'], {
+        "below-the-fold" : function(a) { return $.belowthefold(a, {threshold : 0}); },
+        "above-the-top"  : function(a) { return !$.belowthefold(a, {threshold : 0}); },
+        "right-of-screen": function(a) { return $.rightoffold(a, {threshold : 0}); },
+        "left-of-screen" : function(a) { return !$.rightoffold(a, {threshold : 0}); },
+        "in-viewport"    : function(a) { return $.inviewport(a, {threshold : 0}); },
+        /* Maintain BC for couple of versions. */
+        "above-the-fold" : function(a) { return !$.belowthefold(a, {threshold : 0}); },
+        "right-of-fold"  : function(a) { return $.rightoffold(a, {threshold : 0}); },
+        "left-of-fold"   : function(a) { return !$.rightoffold(a, {threshold : 0}); }
+    });
+
+})(jQuery, window, document);

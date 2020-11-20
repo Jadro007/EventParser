@@ -1,0 +1,27 @@
+
+	.fucking-eu-cookies {
+		background:#FF7200!important;
+	}
+	.fucking-eu-cookies span {
+		color:#ffffff!important;
+		font-weight:bold!important;
+	}
+	.fucking-eu-cookies a, .fucking-eu-cookies a:hover, .fucking-eu-cookies a:visited, .fucking-eu-cookies a:active, .fucking-eu-cookies a:focus {
+		color: #ffffff!important;
+	}
+
+	.fucking-eu-cookies button {
+		background-color:#dddddd;
+		-moz-border-radius:28px;
+		-webkit-border-radius:28px;
+		border-radius:28px;
+		border:0;
+		display:inline-block;
+		font-family:Arial;
+		text-decoration:none;
+		text-shadow:0px 1px 0px #dddddd;		
+	}
+	.fucking-eu-cookies button {
+		color: #000000!important;	
+	}
+	

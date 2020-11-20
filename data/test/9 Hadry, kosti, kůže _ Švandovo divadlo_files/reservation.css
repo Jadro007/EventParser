@@ -1,0 +1,288 @@
+/* 
+    Created on : 26.8.2014, 16:28:57
+    Author     : Tomas Mleziva - Dark side, a.s.
+*/
+.reservation-timeline {
+    height: 110px;
+    background-image: url(../images/bg-hp-timeline.png);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    position: relative;
+}
+.reservation-timeline h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 45px;
+    position: absolute;
+    top: 12px;
+    left: 17px;
+}
+.reservation-timeline .days {
+    position: absolute;
+    bottom: 0;
+}
+.reservation-timeline .days a {
+    cursor: default;
+}
+.reservation-timeline .days a:not(.on):hover {
+    background: url(../images/timeline-day-separator.png) no-repeat;
+    background-position: bottom left;
+    height: 100%;
+    font-size: 15px;
+    top: 0px;
+    line-height: 54px;
+}
+
+.reservation-box {
+    background: #d2cfd2;
+    min-height: 668px;
+    
+}
+.reservation-box h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+.reservation-box .col-right h3 {
+    color: #008289;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 0 0 15px 8px;
+    position: relative;
+}
+.reservation-box .col-left {
+    width: 635px;
+    float: left;
+}
+.reservation-canvas {
+    margin-top: 18px;
+}
+.reservation-box .col-right {
+    width: 299px;
+    float: left;
+    margin-top: 15px;
+}
+.reservation-box .col-right .show {
+    position: relative;
+    background: #e1dfe1;
+    width: 100%;
+    padding: 8px;
+}
+.reservation-box .col-right .show .header {
+    position: relative;
+    height: 65px;
+}
+.reservation-box .col-right .show .header .date {
+    background: url(../images/bg-cover-date.png) no-repeat;
+    width: 26px;
+    height: 57px;
+    color: #000;
+    position:absolute;
+    top: 5px;
+    font-weight: bold;
+    line-height: 29px;
+    text-align: right;
+    font-size: 24px;
+    padding: 0 3px 0 0;
+}
+.reservation-box .col-right .show h3 {
+    text-transform: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #008289;
+}
+table.reservation-data {
+    width: 260px;
+    margin: 18px 0 90px 37px;
+    text-align: left;
+    line-height: 18px;
+}
+table.reservation-data th,
+table.reservation-data td {
+    padding: 3px 0;
+    font-size: 14px;
+}
+
+.reservation-data a.seat {
+    display: block;
+    float: left;
+    background: #008289;
+    margin: 0 2px;
+    padding: 1px 3px 0 3px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+table.reservation-data tbody tr.sep td {
+    height: 2px;
+    padding: 0;
+    background: #cac7ca;
+}
+.reservation-data tfoot td {
+    font-size: 24px;
+    font-weight: bold;
+}
+.reservation-data tfoot th, .reservation-data tfoot td {
+    padding-top: 8px;
+}
+
+.arrow-links {
+    padding: 0 0 0 37px;
+    margin: 0 0 18px 0;
+    position: relative;
+}
+.arrow-links a:not(.text-link) {
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    float: right;
+    margin-right: 4px;
+    text-align: center;
+    padding-right: 10px;
+    width: 117px;
+    background: url(../images/upcoming-more.png);
+    background-position: top right;
+}
+.arrow-links a.green {
+    background-image: url(../images/upcoming-tickets.png);
+}
+
+.phone-reservation {
+    padding: 0 0 0 37px;
+    margin-top: 18px;
+}
+.phone-reservation * {
+    display: block;
+    padding: 4px 0;
+}
+.phone-reservation strong.other-option {
+    font-size: 85%;
+    color: #999;
+}
+.phone-reservation strong.phone {
+    font-size: 24px;
+}
+.phone-reservation  strong:first-child {
+    font-size: 115%;
+}
+.phone-reservation p {
+    font-size: 14px;
+    margin-top: 0;
+}
+
+/** email order form */
+.mail-reservation-popup {
+    width: 340px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 37px;
+    left: -31px;
+    box-shadow: #7a7c7a 0 0 9px;
+    background: #d2cfd2;
+    display: none;
+    z-index: 666;
+}
+.mail-reservation-popup *:not(.text-link) {
+    display: block;
+}
+.mail-reservation-popup label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.mail-reservation-popup input,
+.mail-reservation-popup textarea {
+    width: 325px;
+    height: 16px;
+    line-height: 16px;
+    padding: 3px 5px;
+    border: 1px solid #7a7c7a;
+}
+.mail-reservation-popup input[type=checkbox] {
+	width: 18px;
+	display: inline;
+	position: relative;
+	top: 4px;
+}
+.mail-reservation-popup textarea {
+    height: 50px;
+}
+.mail-reservation-popup .nwl-consent label {
+	font-size: 11px;
+    line-height: 1.6em;
+}
+.mail-reservation-popup input[type=submit] {
+    margin-top: 10px;
+    width: 337px;
+    padding: 0;
+    height: 30px;
+    border: none;
+    background: #008289;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+.mail-reservation-popup a.close {
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 3px;
+    right: 0px;
+    background: none;
+    width: 10px;
+    height: 10px;
+}
+
+@media (max-width:768px) {
+    .reservation-box .col-left {
+        width:100%;
+    }
+    .reservation-box .col-right {
+        width:100%;
+    }
+
+    .reservation-canvas {
+        width:100%;
+    }
+    .reservation-box .col-right .show {
+        padding: 0;
+    }
+
+    .mail-reservation-popup {
+        left:25%;
+        top:-250px;
+    }
+    .mail-reservation-popup input,
+    .mail-reservation-popup textarea {
+        width:100%;
+        padding: 3px 0;
+    }
+    .mail-reservation-popup input[type="submit"] {
+        width:100%;
+        font-size:16px;
+    }
+    table.reservation-data {
+        margin: 18px 0 0 37px;
+    }
+}
+
+@media (max-width:500px) {
+    .mail-reservation-popup {
+        width:85%;
+        top:0;
+        left:1%;
+    }
+    .mail-reservation-popup input,
+    .mail-reservation-popup textarea {
+        width:100%;
+        padding: 3px 0;
+    }
+    .mail-reservation-popup input[type="submit"] {
+        width:100%;
+        font-size:16px;
+    }
+}

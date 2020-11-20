@@ -1,0 +1,427 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+
+
+.artist-info-container,
+.artist-tabs-menu {
+    display: none;
+}
+.entry-artist-offgrid .entry-summary {
+    top: 70%;
+}
+.ikona .wp-image-9181 {
+    margin-top: 9px;
+    float: left;
+    display: block;
+    margin-right: 7px;
+}
+h3 {
+    line-height: 1;
+}
+aside#text-2 h3 {
+    line-height: 1.4;
+}
+.page-id-9273 #cff .cff-photo{ width: 40% !important; }
+.page-id-9273 #cff .cff-details { width: 57% !important; }
+.page-id-9273 #cff h3, .page-id-9273 #cff h4, .page-id-9273 #cff h5, .page-id-9273 #cff h6, .page-id-9273 #cff p {
+    clear: initial !important;
+
+    width: 50%;
+    padding-left: 24px !important;
+}
+.page-id-9273 #cff .cff-event-meta {
+    padding-left: 23px;
+}
+.page-id-9273 .link, .page-id-9273 .page-entry-content td a, .page-id-9273 p:not(.attachment) > a:not(.no-link-style):not(.button):not(.button-download):not(.added_to_cart):not(.button-secondary):not(.menu-link):not(.filter-link):not(.entry-link):not(.more-link):not(.wvc-image-inner):not(.wvc-button):not(.wvc-bigtext-link):not(.wvc-fittext-link):not(.ui-tabs-anchor):not(.wvc-icon-title-link):not(.wvc-icon-link):not(.wvc-social-icon-link):not(.wvc-team-member-social):not(.wolf-tweet-link):not(.author-link) {
+    padding: 0 0px;
+}
+.page-id-9273 #cff .cff-meta-wrap {
+    margin: -24px 0 0 0;
+}
+.page-id-9273 #cff p.cff-no-more-posts {
+    width: 100% !important;
+}
+.header-mobile { display: none;}
+.koncerty-home .cff-desc,
+.koncerty-home .cff-location .cff-event-street,
+.koncerty-home .cff-location .cff-event-zip,
+.koncerty-home .cff-event-meta {
+    display: none;
+}
+.koncerty-home #cff .cff-meta-wrap {
+    margin: -24px 0 0 0;
+}
+.koncerty-home #cff .cff-event .cff-photo {
+}
+.koncerty-home .cff-posts-wrap .cff-media-wrap {
+    width: 150px;
+    float: left;
+    padding-right: 20px;
+    box-sizing: content-box;
+    margin-top: 9px;
+}
+.koncerty-home #cff .cff-date,
+.koncerty-home #cff .cff-event-title,
+.koncerty-home #cff .cff-location {
+    width: 85%;
+    padding-left: 0px;
+}
+.cff-date .cff-start-date {
+    text-transform: lowercase !important;
+}
+.koncerty-home #cff p {
+    clear: inline-end;
+    margin: 3px 0;
+}
+.koncerty-home #cff .cff-event-title a,
+.koncerty-home #cff .cff-location a {
+    padding: 0;
+}
+.koncerty-home #cff .cff-event-title a:hover,
+.koncerty-home #cff .cff-location a:hover,
+.page-id-9273 #cff .cff-event-title a:hover,
+.page-id-9273 #cff .cff-location a:hover{
+    text-decoration:  none;
+}
+.technicke-padding p {
+    margin-bottom: 15px;
+}
+.flickity-viewport {
+    height: 141.0833px !important;
+}
+.product-overlay a.entry-link-mask.internal-link,
+.product-summary a.woocommerce-LoopProduct-link {
+    pointer-events: none;
+}
+.cff-event .cff-end-date { display: none; }
+
+.page-id-9620 #cff .cff-event .cff-photo,
+.page-id-9620 #cff p.cff-desc,
+.page-id-9620 #cff p.cff-location {
+    display: none;
+}
+.page-id-9620 #cff .cff-event-title a {
+    padding-left:  0px;
+    line-height: 22px;
+}
+.page-id-9620 #cff .cff-event-meta {
+    margin-top: 0px;
+}
+.page-id-9620 #cff .cff-post-links.cff-left {
+    margin: -5px 0;
+}
+
+.link, .page-entry-content td a, p:not(.attachment) > a:not(.no-link-style):not(.button):not(.button-download):not(.added_to_cart):not(.button-secondary):not(.menu-link):not(.filter-link):not(.entry-link):not(.more-link):not(.wvc-image-inner):not(.wvc-button):not(.wvc-bigtext-link):not(.wvc-fittext-link):not(.ui-tabs-anchor):not(.wvc-icon-title-link):not(.wvc-icon-link):not(.wvc-social-icon-link):not(.wvc-team-member-social):not(.wolf-tweet-link):not(.author-link) {
+    white-space: normal;
+}
+h2 { line-height: 1 !important; }
+#cff .cff-event b {
+    padding-right: 5px;
+}
+.dem-poll-title, .dem-only-users, .dem-date {
+    display: none !important;
+}
+.wvc-button-background-color-black:hover {
+	opacity:  0.8;
+}
+/*
+@media (max-width: 1350px) and (min-width: 1218px) {
+    #slider-3-slide-3-layer-4 { margin-left: -145px; }
+    #slider-3-slide-3-layer-8 { margin-left: -240px; }
+}
+@media (max-width: 1217px) and (min-width: 900px) {
+    .slider-box { height: 605px; }
+    
+    #slider-3-slide-3-layer-4 { margin-left: -145px; }
+    #slider-3-slide-3-layer-8 { margin-left: -240px; margin-top: 120px; }
+}
+@media (max-width: 899px) and (min-width: 600px) {
+    .slider-box { height: 605px; }
+    
+    #slider-3-slide-3-layer-4 { display: none; }
+    #slider-3-slide-3-layer-8 { width: 572px !important; height: 607px !important; margin-left: -405px !important; top: 123px; }
+}
+@media (max-width: 599px) and (min-width: 420px) {
+    .slider-box { height: 605px; }
+    
+    #slider-3-slide-3-layer-4 { display: none; }
+    #slider-3-slide-3-layer-8 { width: 572px !important; height: 607px !important; margin-left: -375px !important; }
+}
+@media (max-width: 419px)  {
+    .slider-box { height: 505px; }
+    
+    #slider-3-slide-3-layer-4 { display: none; }
+    #slider-3-slide-3-layer-8 { width: 372px !important; height: 407px !important; margin-left: -205px !important; }
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 2024px) and (min-width: 1201px) {
+    .novinky-mobil { display: none;}
+    
+}
+
+@media (max-width: 1200px) and (min-width: 1025px) {
+	#rt-top .rt-grid-5 {width: 212px; margin-top: 5px;}
+	#rt-top .rt-grid-7 { width: 735px; }
+	:root .gf-menu.l1 > li > .item {  font-size: 16px;}
+	#rt-copyright .rt-container .rt-grid-4.rt-omega {    width: 100%;}
+	#rt-copyright #text-17 { text-align: center;}
+	#rt-copyright #text-17 img { float: inherit;}
+	
+	#rt-top-surround .rt-grid-3.rt-alpha { width: 20%;}
+	#rt-top-surround .rt-grid-7 { width: 71%;}
+	#rt-top-surround .rt-grid-2.rt-omega {  width: 9%;}
+	#rt-top-surround {  height: 104px !important;}
+	.layout-mode-responsive .gf-menu.l1 > li { margin-right: 11px;}
+	#cornerContainer { top: 104px !important;}
+	
+	#text-10, #custom_html-8 { min-height: 1010px;}
+	#mpxl_featured_post-3 .featured_post_container { margin-top: -939px;}
+	#text-11 .boyz img, #custom_html-10 .boyz img { padding: 3px; width: 30%;}
+	#text-4 a img {  margin-bottom: 12px;}
+    .novinky-mobil { display: none;}
+    
+    .hlava-slideshow { right: -300px; }
+    .texty-slideshow { left: -172px; }
+	
+}
+
+
+@media (max-width: 1024px) and (min-width: 800px) {
+	body.home { background-position: center 97px !important; background-size: cover;}
+	#rt-top .rt-grid-5 {width: 168px; margin-top: 10px;}
+	#rt-top .rt-grid-7 { width: 600px; }
+	#rt-copyright #text-17 img { width: 7%; float: inherit; }
+#rt-copyright #text-17 { text-align: center !important;}
+:root .gf-menu.l1 > li > .item {    font-size: 14px !important;}
+#rt-copyright .rt-container .rt-grid-4.rt-omega {    width: 100%;}
+
+#cff .cff-iframe-wrap, #cff .cff-html5-video { margin: 0px 0px !important; width: 100%;}
+#cff .cff-media-above { padding: 0px !important; }
+#cff .cff-item {padding-top: 0px !important; }
+#text-4 a img { margin-bottom: 12px;}
+
+#rt-top-surround .rt-grid-3.rt-alpha { width: 20%;}
+	#rt-top-surround .rt-grid-7 { width: 71%;}
+	#rt-top-surround .rt-grid-2.rt-omega {  width: 9%;}
+	#rt-top-surround {  height: 104px !important;}
+	.layout-mode-responsive .gf-menu.l1 > li { margin-right: 11px;}
+	#cornerContainer { top: 104px !important;}
+	#text-11 .boyz img, #custom_html-10 .boyz img { padding: 3px; width: 30%;}
+	
+	#text-10, #custom_html-8 { min-height: 1010px;}
+	#mpxl_featured_post-3 .featured_post_container { margin-top: -939px;}
+	#text-4 a img {  margin-bottom: 12px;}
+	#text-6 { background-size: cover;}
+    
+	.levy-titulek { display: none;}
+    .stred-titulek, .pravy-titulek  { width: 50% !important;}
+    .home .wvc-audio-embed-container.wvc-element {  margin-top: 0px !important;}
+    
+    .novinky-mobil { display: none;}
+    
+    .hlava-slideshow { right: -300px; width: 767px !important; height: 835px !important; top: -35px; }
+    .texty-slideshow { left: -152px; }
+    
+}
+
+
+
+@media (max-width: 670px) {
+#cornerContainer {  display: none;}
+#custom_html-9 { display: none;}
+}
+
+@media (max-width: 799px) and (min-width: 481px) {
+	body.home { background-image:url(../../../../art/background-2-mobile.jpg) !important; background-size: cover !important; background-position: center 82px !important; }
+	#text-6 { background-image:none !important; height: 585px;}
+	
+	body.home.page-id-1696 {  background-size: 240%;}	
+	body.home.page-id-1696 #text-6 {  height: 390px;}
+
+	#rt-copyright #text-17 img { width: 12%; float: inherit; }
+#rt-copyright #text-17 { text-align: center !important;}
+#rt-copyright .rt-container .rt-grid-4.rt-omega {    width: 100%;}
+
+#cff .cff-iframe-wrap, #cff .cff-html5-video { margin: 0px 0px !important; width: 100%;}
+#cff .cff-media-above { padding: 0px !important; }
+#cff .cff-item {padding-top: 0px !important; }
+#text-4 a img, #custom_html-2 a img { margin-bottom: 12px;}
+
+#text-10 a, #custom_html-8 a {  letter-spacing: -1px;  line-height: 3px;}
+#text-10, #custom_html-8 { min-height: 1010px;}
+	#mpxl_featured_post-3 .featured_post_container { margin-top: -939px;}
+#text-11 .boyz img, #custom_html-10 .boyz img { padding: 3px; width: 50%;}
+#custom_html-9 { display: none;}
+.disable {   display: none;}
+#text-4, #custom_html-2 { padding-bottom: 31px;}
+#rt-copyright {  text-align: center;}
+#text-16 { display: none;}
+#post-2044 h3 a {
+    border: 0px solid #5d5d5d;
+    padding: 0px 0px;
+    line-height: 45px;}
+#post-2044 h3 a:hover { background-color: transparent;}
+
+.klip-box h3, .klip-box p { text-align: left !important;}
+
+.home.page-id-7250 .content-inner { top: -124px;}
+    .home .wvc-audio-embed-container.wvc-element {  margin-top: 0px !important;}
+    
+    .koncerty-home .cff-posts-wrap .cff-media-wrap { width: inherit; padding-bottom: 12px; }
+    .koncerty-home #cff .cff-date, .koncerty-home #cff .cff-event-title, .koncerty-home #cff .cff-location { width: 100%; padding-left: 0px;}
+    .koncerty-home #cff .cff-meta-wrap { margin: -1px 0 0 0;}
+    #cff .cff-post-links { padding-right: 18px;}
+    .koncerty-home .wvc-column-container { width: 94%;}
+    
+    .page-id-9273 #cff h3, .page-id-9273 #cff h4, .page-id-9273 #cff h5, .page-id-9273 #cff h6, .page-id-9273 #cff p {
+    clear: initial !important; width: 100%; padding-left: 0px !important; }  
+    .page-id-9273 #cff .cff-photo { width: 100% !important; padding-bottom: 15px;}
+    .page-id-9273 #cff .cff-event-meta { display: none;}
+    .page-id-9273 #cff .cff-meta-wrap { margin: 3px 0 0 0;}
+    
+    .novinky-desktop { display: none;}
+    
+    .hlava-slideshow { right: -114px; width: 567px !important; height: 635px !important; top: 0px; }
+    .linka-slideshow { display: none !important;}
+    
+    .slider-box { display: none !important; top: -124px; }
+    .header-mobile { display: inherit !important;}
+    
+}
+
+@media (max-width: 480px) and (min-width: 321px) {
+	body.home { background-image:url(../../../../art/background-2-mobile.jpg) !important; background-size: contain !important;background-position: center 106px !important;}
+	#text-6 { background-image:none !important; height: 360px;}
+	
+	body.home.page-id-1696 {  background-size: 240%;}
+	body.home.page-id-1696 #text-6 {  height: 320px;}
+.page-id-35 #rt-main .rt-grid-12 .rt-block { padding: 0px; margin: 0px;}
+.page-id-35 .item-page {  padding: 0px !important;}
+.postid-251 .post-content, .postid-244 .post-content .postid-255, .post-content { font-size: 14px; line-height: 21px;}
+.postid-251 .post-content h3, .postid-244 .post-content h3, .postid-255 .post-content h3 { line-height: 30px;}
+#rt-copyright #text-17 img { width: 12%; float: inherit; }
+#rt-copyright #text-17 { text-align: center !important;}
+#rt-copyright .rt-container .rt-grid-4.rt-omega {    width: 100%;}
+
+#cff .cff-iframe-wrap, #cff .cff-html5-video { margin: 0px 0px !important; width: 100%;}
+#cff .cff-media-above { padding: 0px !important; }
+#cff .cff-item {padding-top: 0px !important; }
+#text-4 a img, #custom_html-2 a img { margin-bottom: 12px;}
+
+#text-10, #custom_html-8 { min-height: 1010px;}
+	#mpxl_featured_post-3 .featured_post_container { margin-top: -939px;}
+#text-10 a, #custom_html-8 a {  letter-spacing: -1px;  line-height: 3px;}
+#text-11 .boyz img, #custom_html-10 .boyz img { padding: 3px; width: 50%;}
+#text-8 a, #custom_html-3 a { display: none;}
+.disable {   display: none;}
+#text-4, #custom_html-2 { padding-bottom: 31px;}
+#mpxl_featured_post-2, #mpxl_featured_post-4 {  padding-top: 138px;}
+#rt-copyright {  text-align: center;}
+#text-16 { display: none;}
+#post-2044 h3 a {
+    border: 0px solid #5d5d5d;
+    padding: 0px 0px;
+    line-height: 33px;}
+#post-2044 h3 a:hover { background-color: transparent;}
+
+    .klip-box h3, .klip-box p { text-align: left !important;}
+
+    .home.page-id-7250 .content-inner { top: -90px;}
+    .home .wvc-audio-embed-container.wvc-element {  margin-top: 0px !important;}
+    
+    .koncerty-home .cff-posts-wrap .cff-media-wrap { width: inherit; padding-bottom: 12px; }
+    .koncerty-home #cff .cff-date, .koncerty-home #cff .cff-event-title, .koncerty-home #cff .cff-location { width: 100%; padding-left: 0px;}
+    .koncerty-home #cff .cff-meta-wrap { margin: -1px 0 0 0;}
+    #cff .cff-post-links { padding-right: 18px;}
+    .koncerty-home .wvc-column-container { width: 94%;}
+    
+    .page-id-9273 #cff h3, .page-id-9273 #cff h4, .page-id-9273 #cff h5, .page-id-9273 #cff h6, .page-id-9273 #cff p {
+    clear: initial !important; width: 100%; padding-left: 0px !important; }  
+    .page-id-9273 #cff .cff-photo { width: 100% !important; padding-bottom: 15px;}
+    .page-id-9273 #cff .cff-event-meta { display: none;}
+    .page-id-9273 #cff .cff-meta-wrap { margin: 3px 0 0 0;}
+    
+    .novinky-desktop { display: none;}
+    
+    .hlava-slideshow { right: -124px; width: 467px !important; height: 535px !important; top: -16px;}
+    .linka-slideshow { display: none !important;}
+    
+    .slider-box { display: none !important; top: -90px; }
+    .header-mobile { display: inherit !important;}
+}
+
+@media (max-width: 320px) {	
+body.home { background-image:url(../../../../art/background-2-mobile.jpg) !important; background-size: contain !important;background-position: center 106px !important; }
+	#text-6 { background-image:none !important; height: 300px;}
+	
+body.home.page-id-1696 {  background-size: 240%;}
+	body.home.page-id-1696 #text-6 {  height: 258px;}
+.page-id-35 #rt-main .rt-grid-12 .rt-block { padding: 0px; margin: 0px;}
+.page-id-35 .item-page {  padding: 0px !important;}
+.postid-251 .post-content, .postid-244 .post-content .postid-255, .post-content { font-size: 14px; line-height: 21px;}
+.postid-251 .post-content h3, .postid-244 .post-content h3, .postid-255 .post-content h3 { line-height: 30px;}
+#rt-copyright #text-17 img { width: 12%; float: inherit; }
+#rt-copyright #text-17 { text-align: center !important;}
+#rt-copyright .rt-container .rt-grid-4.rt-omega {    width: 100%;}
+
+#cff .cff-iframe-wrap, #cff .cff-html5-video { margin: 0px 0px !important; width: 100%;}
+#cff .cff-media-above { padding: 0px !important; }
+#cff .cff-item {padding-top: 0px !important; }
+#text-4 a img, #custom_html-2 a img { margin-bottom: 12px;}
+
+#text-10, #custom_html-8 { min-height: 1010px;}
+	#mpxl_featured_post-3 .featured_post_container { margin-top: -939px;}
+#text-10 a, #custom_html-8 a {  letter-spacing: -1px;  line-height: 3px;}
+#text-11 .boyz img, #custom_html-10 .boyz img { padding: 3px; width: 70%;}
+#text-8 a, #custom_html-3 a { display: none;}
+#mpxl_featured_post-2, #mpxl_featured_post-4 {  padding-top: 138px;}
+.disable {   display: none;}
+#text-4, #custom_html-2 { padding-bottom: 31px;}
+#rt-copyright {  text-align: center;}
+#text-16 { display: none;}
+#post-2044 h3 a {
+    border: 0px solid #5d5d5d;
+    padding: 0px 0px;
+    line-height: 33px;}
+#post-2044 h3 a:hover { background-color: transparent;}
+
+    .klip-box h3, .klip-box p { text-align: left !important;}
+
+.home.page-id-7250 .content-inner { top: -90px;}
+    .home .wvc-audio-embed-container.wvc-element {  margin-top: 0px !important;}
+    
+    .koncerty-home .cff-posts-wrap .cff-media-wrap { width: inherit; padding-bottom: 12px; }
+    .koncerty-home #cff .cff-date, .koncerty-home #cff .cff-event-title, .koncerty-home #cff .cff-location { width: 100%; padding-left: 0px;}
+    .koncerty-home #cff .cff-meta-wrap { margin: -1px 0 0 0;}
+    #cff .cff-post-links { padding-right: 18px;}
+    
+    .page-id-9273 #cff h3, .page-id-9273 #cff h4, .page-id-9273 #cff h5, .page-id-9273 #cff h6, .page-id-9273 #cff p {
+    clear: initial !important; width: 100%; padding-left: 0px !important; }  
+    .page-id-9273 #cff .cff-photo { width: 100% !important; padding-bottom: 15px;}
+    .page-id-9273 #cff .cff-event-meta { display: none;}
+    .page-id-9273 #cff .cff-meta-wrap { margin: 3px 0 0 0;}
+    
+    .novinky-desktop { display: none;}
+    
+    .hlava-slideshow { right: -206px; width: 467px !important; height: 535px !important; top: -7px;}
+    .linka-slideshow { display: none !important;}
+    
+    .slider-box { display: none !important; top: -90px; }
+    .header-mobile { display: inherit !important;}
+	
+}

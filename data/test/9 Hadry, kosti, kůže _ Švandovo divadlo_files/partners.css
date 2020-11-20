@@ -1,0 +1,66 @@
+/* 
+    Created on : 28.8.2014, 15:53:16
+    Author     : Tomas
+*/
+
+.partner-box {
+    width: 150px;
+    background: #b9adad;
+    padding: 8px;
+    margin: 0 10px 10px 0;
+    float: left;
+}
+.partner-box .img-wrapper {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+.partner-box strong {
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    height: 36px;
+    margin: 10px 0 6px 0;
+}
+.partner-box a {
+    text-decoration: none;
+}
+.partner-box.viewer-partner {
+	width: 100%;
+	background: #dddbdd;
+	color: #000;
+}
+.partner-box.viewer-partner a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.partner-box.viewer-partner .img-wrapper {
+	float: left;
+	margin-right: 37px;
+}
+.partner-box.viewer-partner .right {
+	float: left;
+	width: 400px;
+}
+.partner-box.viewer-partner .right h4 {
+	font-size: 24px;
+	color: #008289;
+	margin: 4px 0 0 0;
+}
+.partner-box.viewer-partner .right p {
+	line-height: 1.1em;
+	font-size: 14px;
+	color: #000;
+}
+.partner-box.viewer-partner .right strong {
+	height: auto;
+}
+
+@media (max-width: 768px) {
+    .partner-box.viewer-partner .right {
+        width: 100%;
+    }
+}

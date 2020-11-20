@@ -1,0 +1,315 @@
+$.fn.eqGet=function(e,t,n){if(!this.length){return this}var r;var i=Math[e];this.each(function(e){var n=$(this)[t]();r=e?i(r,n):n});if(typeof n=="function"){n.call(this,r);return this}return r}
+function eq(e,t,n){$(t,e).css("height","");e.each(function(){var e=$(this).find(t);var r=e.length;if(n){for(var i=0;i<r;i=i+n){e.slice(i,i+n).eqGet("max","height",function(e){this.height(e)})}}else{e.eqGet("max","height",function(e){this.height(e)})}})}
+
+// Get viewport dimension including scrollbar, therefore same as using css media queries
+function getViewport(){var e;var t;if(typeof window.innerWidth!="undefined"){e=window.innerWidth,t=window.innerHeight}else if(typeof document.documentElement!="undefined"&&typeof document.documentElement.clientWidth!="undefined"&&document.documentElement.clientWidth!=0){e=document.documentElement.clientWidth,t=document.documentElement.clientHeight}else{e=document.getElementsByTagName("body")[0].clientWidth,t=document.getElementsByTagName("body")[0].clientHeight}return[e,t]}
+
+$(function(){
+	$('a[class*=thickbox]').lightBox({
+		imageBaseDir: 'images/lightbox/cs',
+		langPicture: 'Obrázek',
+		langOf: 'z'
+	});
+
+	/*podle jazyka treba podle class na body */
+    //if ( document.location.href.indexOf('/cs') > -1 ) {
+		//$('a[class*=lightbox]').lightBox({
+		//	imageBaseDir: 'img/lightbox/cs',
+		//	langPicture: 'Obrázek',
+		//	langOf: 'z'
+		//});
+    //}else{
+    //    $('a[class*=lightbox]').lightBox();
+    //}
+});
+
+$(document).ready(function () {
+	var $w = $(window);
+	var cssWidth = 0;
+	var viewportWidth = 0;
+	var oldWidth = 0;
+
+	(function(){
+		cssWidth = getViewport()[0];
+		viewportWidth = $w.width();
+
+		var timer = null,
+			levels = [
+				{
+					from: 0,
+					to: 479,
+					callback: function(){
+						eq($('.box-list:not(.box-list-wide)'), '.title', 2);
+						eq($('.box-list-lg'), '.iconlist', 2);
+						eq($('.box-list-lg'), '.annot', 2);
+						eq($('.box-list-lg'), '.desc', 2);
+						eq($('.box-list:not(.box-list-wide)'), '.content', 2);
+
+						carouselPhotos();
+						hpCarousel();
+					}
+				},
+				{
+					from: 480,
+					to: 767,
+					callback: function(){
+						eq($('.box-list:not(.box-list-wide)'), '.title', 2);
+						eq($('.box-list-lg'), '.desc', 2);
+						eq($('.box-list-lg'), '.annot', 2);
+						eq($('.box-list-lg'), '.iconlist', 2);
+						eq($('.box-list:not(.box-list-wide)'), '.content', 2);
+
+						carouselPhotos();
+						hpCarousel();
+					}
+				},
+				{
+					from: 768,
+					to: 959,
+					callback: function(){
+						eq($('.box-list:not(.box-list-lg, .box-list-wide)'), '.title', 2);
+						eq($('.box-list:not(.box-list-lg, .box-list-wide)'), '.content', 2);
+						eq($('.box-list-lg'), '.title', 3);
+						eq($('.box-list-lg'), '.desc', 3);
+						eq($('.box-list-lg'), '.annot', 3);
+						eq($('.box-list-lg'), '.iconlist', 3);
+						eq($('.box-list-lg'), '.content', 3);
+
+						carouselOpinions();
+						carouselPhotos();
+						hpCarousel();
+
+						/*skrollr.init({
+							edgeStrategy: 'set',
+							forceHeight: false
+						});*/
+					}
+				},
+				{
+					// >= 960
+					callback: function(){
+						eq($('.box-list:not(.box-list-lg, .box-list-wide)'), '.title', 2);
+						eq($('.box-list:not(.box-list-lg, .box-list-wide)'), '.content', 2);
+						eq($('.box-list-lg'), '.title', 3);
+						eq($('.box-list-lg'), '.desc', 3);
+						eq($('.box-list-lg'), '.annot', 3);
+						eq($('.box-list-lg'), '.iconlist', 3);
+						eq($('.box-list-lg'), '.content', 3);
+
+						carouselOpinions();
+						carouselPhotos();
+						hpCarousel();
+
+						/*skrollr.init({
+							edgeStrategy: 'set',
+							forceHeight: false
+						});*/
+					}
+				}
+			];
+
+		$(window).bind('resize firstcall', function(e) {
+			timer = clearTimeout(timer);
+			timer = setTimeout(function() {
+				cssWidth = getViewport()[0];
+				viewportWidth = $w.width();
+
+				if(oldWidth != cssWidth) {
+					// reset height
+					$('.box-list .title').css('height', '');
+					$('.box-list .content').css('height', '');
+					$('.box-list-lg .iconlist').css('height', '');
+					$('.box-list-lg .desc').css('height', '');
+
+					$("#carousel-opinions ul").trigger("destroy");
+					$("#list-photos-carousel ul").trigger("destroy");
+					$("#hp-carousel ul").trigger("destroy");
+
+					//skrollr.init().destroy();
+
+					for(var i = 0, l = levels.length; i < l; i++ ) {
+						if( i === l-1 || levels[i].from <= cssWidth && cssWidth <= levels[i].to ) {
+							levels[i].callback();
+							break;
+						}
+					}
+					oldWidth = cssWidth;
+
+				}
+
+			}, 200);
+		})
+		.triggerHandler('firstcall');
+	})(); // end width check
+
+	
+	$('a.ext').click(function(){
+		window.open(this.href);
+		return false;
+	});
+
+	$('.header-box').collapsable({
+		grouped: true
+	});
+
+	$('.tabs .tab-item').collapsable({
+		control:          '.tab-title',
+		box:              '.tab-content',
+		grouped:          true,
+		collapsableAll:   false,
+
+		classNames: {
+			expanded:        'tab-expanded',
+			collapsed:       'tab-collapsed'
+		}
+	});
+
+	$(".note-top").slideUp(1).delay(2000).slideDown('slow');
+
+	$('#main-menu .level-1 .has-sub .root').on("touchstart", function (e) {
+		if ($(window).width() > 960) {
+			'use strict'; //satisfy code inspectors
+			var link = $(this); //preselect the link
+			if (link.closest(".has-sub").hasClass('touchhover')) {
+				return true;
+			} else {
+				link.closest(".has-sub").addClass('touchhover');
+				$('#main-menu .level-1 .has-sub .root').not(this).closest(".has-sub").removeClass('touchhover');
+				e.preventDefault();
+				return false; //extra, and to make sure the function has consistent return points
+			}
+		}
+	});
+
+	function carouselOpinions(){
+		$('#carousel-opinions').each(function() {
+			var $this = $(this);
+			$this.find('.prev, .next').remove();
+
+			var $carousel = $this.find('> ul');
+
+
+			var $paging = $('<a href="#" class="prev">Předchozí</a> <a href="#" class="next">Následující</a>');
+
+			$this.append($paging);
+
+			$carousel.carouFredSel({
+				circular: true,
+				infinite: true,
+				responsive: true,
+				items: {
+					visible: 1,
+					width: 1200
+
+				},
+				scroll: {
+					easing: "quadratic",
+					duration: 1000
+				},
+				auto: {
+					timeoutDuration: 5000,
+
+					easing: "quadratic",
+					duration: 1000
+				},
+				prev: {
+					button: $paging.filter('.prev')
+				},
+				next: {
+					button: $paging.filter('.next')
+				}
+
+			});
+		});
+	}
+
+	function carouselPhotos(){
+		$('#list-photos-carousel').each(function() {
+			var $this = $(this);
+			$this.find('.prev, .next, .paging').remove();
+
+			var $carousel = $this.find('> ul');
+
+			var $paging = $('<p class="paging"></p>');
+			var $arrows2 = $('<a href="#" class="next icon-sipka-vkolecku">Následující</a>');
+
+			$this.append($paging);
+			$this.append($arrows2);
+
+			$carousel.carouFredSel({
+				circular: true,
+				infinite: true,
+				responsive: true,
+				items: {
+					visible: {
+						min: 1,
+						max: 2
+					},
+					width: 360,
+					height: Math.ceil(240 / 360 * 100) + '%'
+				},
+				scroll: {
+					easing: "quadratic",
+					duration: 1000
+				},
+				next: {
+					button: $arrows2.filter('.next')
+				},
+				pagination: $paging
+
+			});
+		});
+	}
+
+	function hpCarousel(){
+		$('#hp-carousel').each(function() {
+			var $this = $(this);
+			$this.find('.prev, .next, .paging').remove();
+
+			var $carousel = $this.find('> ul');
+
+			var $paging = $('<p class="paging"></p>');
+			var $arrows2 = $('<a href="#" class="next icon-sipka-vkolecku">Následující</a>');
+
+			$this.find('.pager').append($paging);
+			$this.find('.pager').append($arrows2);
+
+			$carousel.carouFredSel({
+				circular: true,
+				infinite: true,
+				responsive: true,
+				items: {
+					visible: 1,
+					width: 1400,
+					height: Math.ceil(390 / 1400 * 100) + '%'
+				},
+				auto: {
+					timeoutDuration: 5000,
+					fx: "crossfade",
+					duration: 1000
+				},
+				scroll: {
+					fx: "crossfade",
+					duration: 1000
+				},
+				next: {
+					button: $arrows2.filter('.next')
+				},
+				pagination: $paging
+
+			});
+		});
+	}
+
+	$('.eu-cookies button').click(function() {
+        var date = new Date();
+        date.setFullYear(date.getFullYear() + 10);
+        document.cookie = 'eu-cookies=1; path=/; expires=' + date.toGMTString();
+        $('.eu-cookies').hide();
+    });
+
+
+
+
+
+});

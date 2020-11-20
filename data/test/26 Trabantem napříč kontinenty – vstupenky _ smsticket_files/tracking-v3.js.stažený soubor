@@ -1,0 +1,58 @@
+function tracking() {
+
+    var urlParams;
+
+    (window.onpopstate = function () {
+        var match,
+            pl     = /\+/g,
+            search = /([^&=]+)=?([^&]*)/g,
+            decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+            query  = (window.location.search != "") ? window.location.search : window.location.hash;
+
+        urlParams = {};
+        while (match = search.exec(query.substr(1)))
+            urlParams[decode(match[1])] = decode(match[2]);
+    })();
+
+    if ("a_box" in urlParams) {
+    	var affilID = urlParams["a_box"];
+	} else if ("a_aid" in urlParams) {
+        var affilID = urlParams["a_aid"];
+    } else if ("aff_id" in urlParams) {
+        var affilID = urlParams["aff_id"];
+    }
+
+    if ("a_cam" in urlParams) {
+        var aCam = urlParams["a_cam"];
+    }
+
+    if ("a_cha" in urlParams) {
+        var channel = urlParams["a_cha"];
+    } else {
+        var i = 0;
+        var channel = [];
+        while ("a_cha["+ i +"]" in urlParams) {
+            channel[i] = urlParams["a_cha["+ i +"]"];
+            i++;
+        }
+    }
+
+    if (document.referrer) {
+        var url = document.referrer;
+        var ref = url.match(/:\/\/(.[^/]+)/)[1];
+    }
+
+    if (affilID != undefined || (ref != undefined && ref != document.location.hostname)) {
+        if (aCam == undefined || typeof ab_kampan == 'undefined' || (typeof ab_kampan !== 'undefined' && aCam == ab_kampan)) {
+            var iframe = document.createElement('iframe');
+            iframe.src = "https://"+ ab_instance +"/tracking/aid/"+ ab_inzerent +"/kid/"+ ((typeof ab_kampan !== 'undefined') ? ab_kampan : "0") + ((affilID != undefined) ? "/affilid/"+ affilID : "") +"/kanal/"+ encodeURIComponent(JSON.stringify(channel)) + ((aCam != undefined) ? "/acam/" + aCam : "") +"/?referrer="+ document.referrer;
+            iframe.width = 1;
+            iframe.height = 1;
+            iframe.style = "border: 0; position: fixed;";
+            iframe.scrolling = "no";
+            document.body.appendChild(iframe);
+        }
+    }
+}
+
+tracking();

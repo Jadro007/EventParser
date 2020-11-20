@@ -1,0 +1,20 @@
+﻿/*
+ * Translated default messages for the jQuery validation plugin.
+ * Locale: SK (Slovak; slovenčina, slovenský jazyk)
+ */
+$.extend($.validator.messages, {
+    required: "Povinné zadat.",
+    maxlength: $.validator.format("Maximálně {0} znaků."),
+    minlength: $.validator.format("Minimálně {0} znaky."),
+    rangelength: $.validator.format("Minimálně {0} a maximálně {1} znaků."),
+    email: "E-mailová adresa musí být platná.",
+    url: "URL musí být platná.",
+    date: "Musí být datum.",
+    number: "Musí být číslo.",
+    digits: "Může obsahovat pouze číslice.",
+    equalTo: "Hesla musí být shodné.",
+    range: $.validator.format("Musí být mezi {0} a {1}."),
+    max: $.validator.format("Nemůže být více než {0}."),
+    min: $.validator.format("Nemůže být méně než {0}."),
+    creditcard: "Číslo platební karty musí být platné."
+});

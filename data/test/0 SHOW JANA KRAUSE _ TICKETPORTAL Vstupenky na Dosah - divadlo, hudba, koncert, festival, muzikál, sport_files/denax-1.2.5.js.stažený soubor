@@ -1,0 +1,1547 @@
+﻿/* *********************************************************************************
+Denax, a.s. 
+Created: 23.9.2014
+Authors: Stefan Raschmann, Lubomir Orszagh
+
+
+Obsah:
+1.  Inicializacie               
+2.  Responsive Calendar         { kalendar v hlavnom menu,KALENDAR 0.7 ( http://w3widgets.com/responsive-calendar ) }
+3.  Mobile menu                 { zatial nieje pouzite ale uvazujem o tom .. slideout 0.1.9 https://github.com/mango/slideout}
+4.  Bootstrap-Select            { aktual: v 1.10, http://silviomoreto.github.io/bootstrap-select/examples/ }
+5.  Tabs                        { tabs v napriklad detaile podujatia }
+    - tabs detail podujatia  /mobile/
+6.  Preloader                    { Pace preloader }
+7.  Google maps                  { nastavenia google maps, detail podujatia/zalozka "nna mape"}
+8.  Formulare                    { jquery.validation , forgerytoken, http://jqueryvalidation.org/documentation/ , lokalizacia sprav je riesena v subore: /Scripts/localization/messages_sk.js}
+9.  WOW.js                       { plugin animacii ako sa zobrazia prvky ak su prave zobrazene pri scrolovani http://mynameismatthieu.com/WOW/docs.html }
+10. Socialne siete               {prihlasenie}
+11. CheckBoxList                 {checkbox list pouzity v PZ zlavach}
+12. HEATMAP                      { klikmapa: https://heatmap.it }
+13. ANIMACIE                     { sem vkladame animacie }
+14. HLAVNE MENU                  { plugin ticketmenu }
+15. Mobilny vyhladavac
+16. AFFIX                        { fixnutie menu}
+17. MODAL DIALOG ZAVRETIE        { neprechadzat na predchadzajucu stranku, zavri iba modalne okno /fix hloavne pre mobily/ }
+18. FIX CHECKBOXES               { odstrani neziaducu class .focus }
+19. Fixnut dva scrollbary ak sa otvaraju 2 modalne
+20. SUPER NOVE TOP
+21. Collaps radiobuttons(LABEL)  { napriklad: #SposobVyzdvihnutia }
+22. Cookie info panel            { zobrazne na spodku stranky na 365 dni }
+
+x.  VSEOBECNE FUNKCIE
+xx.  TESTY                       {temp testy.. ak dotestujes, tak si to premiestni pod novu polozku v osnove alebo pridaj do polozky ktora uz existuje}
+********************************************************************************* */
+
+// ***********************************************************************************************************************************
+// 1.   Inicializacie             { hlavna navigacia,tooltips }
+// ***********************************************************************************************************************************
+$(function () {
+    $('.navigacia-main-dropdown .btns-kategorie .btn').on("click", function () {
+        $(this).removeClass("focus")
+    });
+
+    $(document).on('click', '.selectpicker', function (e) {
+        if (e.currentTarget.parentElement.className.indexOf('stopPropagation') != -1)
+            e.stopPropagation();
+
+        toggle: false;
+    });
+
+    $(document).on('click', '.filter-container', function (e) {
+        e.stopPropagation();
+        toggle: false;
+    });
+
+    if (document.getElementById("content_timeline") != null)
+        default_timeline = document.getElementById("content_timeline").innerHTML;
+
+
+    // bootstrap tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover();
+
+    $(".fa-info-circle").popover({ 'trigger': 'click' });
+
+    // megamenu
+    $(".megamenu-content .btn-group a").click(function () {
+        $(this).toggleClass("active");
+    })
+
+    $(".megamenu-content .col-md-23 ul li").click(function () {
+        $(this).toggleClass("active");
+    })
+
+    // predikcia
+    $(".search-input").keyup(function () {
+        $(".search-value").val('');
+        var text = "ticketportal";
+        var searchText = $("#search-input").val();
+        // console.log(searchText.toLowerCase());
+        if (searchText === "")
+            $(".search-value").val('');
+        else if (text.indexOf(searchText.toLowerCase()) == 0) {
+            var currentLength = searchText.length;
+            $(".search-value").val(searchText + "" + text.substring(currentLength));
+        }
+    });
+
+    // COLLAPSING ACCORDION  (sposob dorucenia, sposob platby atd..)
+    function toggleChevron(e) {
+        // vyhlada sipku v oblasti a nataca ju
+        $(e.target)
+            .prev('.radio .collapsed')
+            .find("i.indikator")
+            .toggleClass('fa-chevron-up fa-chevron-down');
+    }
+    // ak je collapsovane, tak vykona toggleChevron (vyssie)
+    $('.SposobVyzdvihnutia').on('hidden.bs.collapse', toggleChevron);
+    $('.SposobVyzdvihnutia').on('shown.bs.collapse', toggleChevron);
+    //console.log("denax.js :");
+    //console.log("1. Inicializacie  -> OK");
+})  // end Ready
+
+// ***********************************************************************************************************************************
+// 2.  Responsive Calendar     {kalendar v hlavnom menu}
+// ***********************************************************************************************************************************
+var calendar_events = {};
+var kalendar_is_init = false;
+var buff_cal_html = "";
+
+function Kalendar_init_reset()
+{
+    kalendar_is_init = true;
+    calendar_events = {};
+
+    if (buff_cal_html == "")
+        buff_cal_html = $("#home_calendar_container").html();
+    else
+        $("#home_calendar_container").html(buff_cal_html);
+
+    $("#calendar-default").responsiveCalendar({
+        translateMonths: [" " + lang["Month_1"], " " + lang["Month_2"], " " + lang["Month_3"], " " + lang["Month_4"], " " + lang["Month_5"], " " + lang["Month_6"], " " + lang["Month_7"], " " + lang["Month_8"], " " + lang["Month_9"], " " + lang["Month_10"], " " + lang["Month_11"], " " + lang["Month_12"]],
+        onDayClick: function (events) {
+            var thisDayEvent, key;
+
+            if ($(this.parentElement).hasClass('past'))
+                return;
+
+            var pridaj = true;
+            if ($(this.parentElement).hasClass('active')) {
+                $(this.parentElement).removeClass('active');
+                pridaj = false;
+            }
+            else {
+                $('.responsive-calendar .active').removeClass('active');
+                $(this.parentElement).addClass('active');
+            }
+
+
+            var datum = new Date();
+            datum.setYear($(this).data('year'));
+            datum.setMonth($(this).data('month') - 1);
+            datum.setMonth($(this).data('month') - 1);
+            datum.setDate($(this).data('day'));
+            datum.setHours(0);
+            datum.setMinutes(0);
+            datum.setSeconds(0);
+            datum.setMilliseconds(0);
+
+            $("#kalendar-text").html(lang["KalendarFilterTextSelected"].replace("{0}", DateToString(datum, false)));
+            $("#kalendar-mobile-search-ikon").removeClass("inverse");
+
+            nezavry = true;
+            if (pridaj) { 
+                Pridaj_filter(events, "datum", datum);
+                $('#modalKalendar').modal('hide')
+            } else {
+                Odober_filter("datum", datum);
+            }
+            nezavry = true;    
+        },
+        onMonthChange: function (events) {
+            setTimeout('Kalendar_onMonthChange();', 1000);
+        },
+        onInit: function (events) {
+            if (Object.keys(calendar_events).length == 0) {
+                for (var i in search_result) {
+                    var dateBeginTmp = search_result[i].zaciatok.getFullYear() + "-" + (search_result[i].zaciatok.getMonth() + 1) + "-" + search_result[i].zaciatok.getDate();
+                    calendar_events[dateBeginTmp] = {};
+                    var dateEndTmp = search_result[i].koniec.getFullYear() + "-" + (search_result[i].koniec.getMonth() + 1) + "-" + search_result[i].koniec.getDate();
+                    calendar_events[dateEndTmp] = {};
+                }
+            }
+        },
+        onDaysDrawed: function () {
+
+            if (this.currentMonth == 1) 
+                Kalendar_disableEmptyDays(this.currentYear - 1, 12);
+            else
+                Kalendar_disableEmptyDays(this.currentYear, this.currentMonth - 1);
+
+            Kalendar_disableEmptyDays(this.currentYear, this.currentMonth);
+
+            if (this.currentMonth == 12)
+                Kalendar_disableEmptyDays(this.currentYear + 1, 1);
+            else
+                Kalendar_disableEmptyDays(this.currentYear, this.currentMonth + 1);
+        }
+    });
+    //console.log("2. Responsive Calendar  -> OK");
+}
+
+if (kalendar_is_init == false && typeof (search_result) != "undefined")
+    Kalendar_init_reset();
+
+function Kalendar_disableEmptyDays(currentYear, currentMonth) {
+    currentMonth++;
+    var monthDays = new Date(currentYear, currentMonth, 0).getDate();
+    for (var i = 1; i <= monthDays; i++) {
+        if (calendar_events[currentYear + "-" + currentMonth + "-" + i] == undefined) {
+            $(".responsive-calendar .day a[data-day=" + i + "][data-month=" + currentMonth + "][data-year=" + currentYear + "]")
+                .unbind("click")
+                .addClass("disabled")
+                .parent()
+                .removeClass("future")
+                .removeClass("past")
+                .addClass("not-current");
+        }
+    }
+}
+
+function Kalendar_onMonthChange() {
+    /*if (search_param.datum_od != null) {
+        $('.responsive-calendar a[data-day="' + search_param.datum_od.getDate() + '"][data-month="' + (search_param.datum_od.getMonth() + 1) + '"][data-year="' + search_param.datum_od.getFullYear() + '"]').parent().filter(':not(.not-current)').addClass('active');
+    }*/
+}
+
+// ***********************************************************************************************************************************
+// 3.  Mobile menu                 { slideout 0.1.9 https://github.com/mango/slideout}
+// ***********************************************************************************************************************************
+$(function () {
+
+    // MOBILE MENU ODKLIKY
+    var hash = window.location.hash;
+    $accountTabs = $('#mojeNastavenia,#mojeObjednavky,#season_tickets')
+
+    
+    // MOBILNE MENU - co otvorit ked klik z mobilneho menu (push-menu)
+    $accountTabs.on('click', function () {
+        //zavriet push-menu
+        $(".mask").remove();
+        $(".pml-open").removeClass();
+
+        // otvorit tab podla HASH
+        if (hash != "") {
+            $('#account-options a[href="' + hash + '"]').tab('show');
+            console.log("hash:"+hash)
+        } else {
+            //console.log("hash je prazdny");
+        }
+        console.log("hash2:" + hash)
+    })
+
+    $(window).on('hashchange', function () {
+        var hash = window.location.hash;
+        //  hash &asdasd& $('ul.nav a[href="' + hash + '"]').tab('show');
+        hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+        $('.nav-tabs a').click(function (e) {
+            $(this).tab('show');
+            window.location.hash = this.hash;
+        });
+    });
+
+
+    // VYHLADAVANIE SearchBar
+    $SearchBar = $('#SearchBar');
+    $callSearchBox = $('#callSearchBox');
+
+
+    $callSearchBox.on('click', function (e) {
+        $SearchBar.removeClass('hidden-xs');
+    })
+
+
+
+
+    //console.log("3. Mobilne menu ?");
+})
+// end Ready
+
+// ***********************************************************************************************************************************
+// 4. Bootstrap-Select 
+// ***********************************************************************************************************************************
+$(function () {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        $('.selectpicker').selectpicker('mobile');
+    } else {
+        $('.selectpicker').selectpicker({
+            size: 15,
+            showSubtext: true
+        });
+    };
+    //console.log("4. Bootstrap-Select  -> OK");
+})  // end Ready
+
+// ***********************************************************************************************************************************
+// 5.  Tabs                        { tabs v napriklad detaile podujatia }
+// ***********************************************************************************************************************************
+$(function () {
+    $('#detail-tabs  a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    //    $('.mobil-dropdown-tabs').collapse('hide');
+
+    $(".close-tab").click(function () {
+        //alert("tu som");
+        $(this).parent().parent().parent().toggleClass("active");
+        $("#nav-tabs-mobile li").removeClass("active");
+
+    });
+
+    $("#nav-tabs-mobile li .active").click(function () {
+        alert("eeejha");
+        $(this).removeClass("active");
+    });
+
+    $('#PMtab1 a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+
+    // - tabs detail podujatia  /mobile/
+    /*
+    $('.responsive-tabs').responsiveTabs({
+        accordionOn: ['xs', 'sm'] // xs, sm, md, lg
+    });
+    */
+
+    // ak klik v mobile tak scroll na vrch elementu
+    $(".responsive-tabs-container .tab-content a[role='tab']").on("click", function () {
+        $(this).scrollTo();
+    });
+
+
+    // ak klik na stranke tak ktory tab otvorit po zobrazeni modalneho
+    function activateTab(tab) {
+        $('#modalLoginRegNewPasswNewEmail .nav-tabs a[href="#' + tab + '"]').tab('show');
+    };
+
+    $("button[name*='mojUcetZmenaHesla']").click(function (e) {
+        e.preventDefault();
+        activateTab('tabNoveHeslo');
+    });
+
+    $("button[name*='mojUcetZmenitEmail']").click(function (e) {
+        e.preventDefault();
+        activateTab('tabZmenaEmailu');
+    });
+
+    $("#btnLogin").click(function (e) {
+        e.preventDefault();
+        activateTab('tabPrihlasenie');
+
+        if (typeof (ga) != "undefined") {
+            ga('set', 'page', window.location.pathname + "#login");
+            ga('send', 'pageview');
+        }
+    });
+
+    //console.log("5. Tabs -> OK");
+})  // end Ready
+
+// ***********************************************************************************************************************************
+//      6.  Preloader                    { Pace preloader }
+// ***********************************************************************************************************************************
+/*
+$(function () {
+    paceOptions = {
+        ajax: false, // disabled
+        document: false, // disabled
+        eventLag: false, // disabled
+        elements: {
+            selectors: ['body']
+        }
+    };
+})
+*/
+
+// ***********************************************************************************************************************************
+//      7. Google maps                 { nastavenia google maps, detail podujatia/zalozka "na mape"}
+// ***********************************************************************************************************************************
+$(function () {
+    /* activate jquery isotope */
+    $("#detail-tab3").click(function () {
+        $('#detail-tab3 #posts').imagesLoaded(function () {
+            $('#detail-tab3 #posts').isotope({
+                itemSelector: '.item'
+            });
+        });
+    });
+    //console.log("7. Google maps -> OK");
+}) // end Ready
+
+// ***********************************************************************************************************************************
+// 8.  Formulare                    { jquery.validation , forgerytoken, http://jqueryvalidation.org/documentation/ , lokalizacia sprav je riesena v subore: /Scripts/localization/messages_sk.js}
+// ***********************************************************************************************************************************
+var modalPoistenieForm = null;
+
+$(function () {
+    // VALIDACIA - PRIHLASENIE
+    $("#formLogin").validate({
+        errorClass: "text-danger",
+        validClass: "text-success",
+        errorElement: "span",
+
+        rules: {
+            login_email: {
+                required: true,
+                minlength: 1
+            },
+           /* email: {
+                email: false
+            },*/
+            login_password: {
+                required: true,
+                minlength: 1
+            }
+        },
+        errorPlacement: function (error, element) {
+            if (element.is(":radio") || element.is(":checkbox")) {
+                error.appendTo(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    if (lokalita == "empik") {
+        // VALIDACIA - REGISTRACIA
+        $("#FormRegistracia").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "span",
+
+            rules: {
+                reg_email: {
+                    required: true
+                },
+                reg_password: {
+                    required: true
+                },
+                reg_passwordRetype: { equalTo: '#reg_password' },
+                acceptTerms: { required: true }
+            },
+            errorPlacement: function (error, element) {
+                if (element.is(":radio") || element.is(":checkbox")) {
+                    error.appendTo(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        // VALIDACIA - NOVE HESLO
+        $("#NoveHeslo").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "span",
+
+            rules: {
+                newpwd_email: {
+                    required: true,
+                    email: true
+                },
+                newpwd_password: {
+                    required: true
+                },
+                newpwd_passwordRetype: {
+                    //equalTo: '#newpwd_password'
+                    required: true
+                },
+                acceptTerms: { required: true }
+            },
+            errorPlacement: function (error, element) {
+                if (element.is(":radio") || element.is(":checkbox")) {
+                    error.appendTo(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+
+        });
+
+        // VALIDACIA - NOVE HESLO
+        $("#NovyEmail").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "span",
+
+            rules: {
+                newp_email: {
+                    required: true,
+                    email: true
+                },
+                newpwd_password: {
+                    required: true
+                },
+            }
+        });
+    }
+    else {
+        // VALIDACIA - REGISTRACIA
+        $("#FormRegistracia").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "span",
+
+            rules: {
+                reg_email: {
+                    required: true
+                },
+                reg_password: {
+                    required: true,
+                    minlength: 4
+                },
+                reg_passwordRetype: { equalTo: '#reg_password' },
+                acceptTerms: { required: true }
+            },
+            errorPlacement: function (error, element) {
+                if (element.is(":radio") || element.is(":checkbox")) {
+                    error.appendTo(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        // VALIDACIA - NOVE HESLO
+        $("#NoveHeslo").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "span",
+
+            rules: {
+                newpwd_email: {
+                    required: true,
+                    email: true
+                },
+                newpwd_password: {
+                    required: true,
+                    minlength: 4
+                },
+                newpwd_passwordRetype: {
+                    //equalTo: '#newpwd_password'
+                    required: true,
+                    minlength: 4
+                },
+                acceptTerms: { required: true }
+            },
+            errorPlacement: function (error, element) {
+                if (element.is(":radio") || element.is(":checkbox")) {
+                    error.appendTo(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+
+        });
+
+
+        // VALIDACIA - NOVE HESLO
+        $("#NovyEmail").validate({
+            errorClass: "text-danger",
+            validClass: "text-success",
+            errorElement: "span",
+
+            rules: {
+                newp_email: {
+                    required: true,
+                    email: true
+                },
+                newpwd_password: {
+                    required: true,
+                    minlength: 4
+                },
+            }
+        });
+    }
+
+
+    // VALIDACIA - EMAIL V RYCHLEJ PLATBE
+    /*$("#SposobVyzdvihnutia").validate({
+        errorClass: "text-info",
+        validClass: "text-success",
+        errorElement: "span",
+
+        rules: {
+            emailHT: {
+                required: true,
+                email: true
+            },
+            email_pickup: {
+                required: true,
+                email: true
+            }
+        }
+    });*/
+
+    
+
+
+    // POISTENIE 
+    modalPoistenieForm = $('[name=modalPoistenieForm]').validate({
+        ignore: "",
+        errorClass: "text-info",
+        validClass: "text-success",
+        errorElement: "span",
+        onkeyup: function (element, event) {
+            if ( event.which === 9 && this.elementValue( element ) === "" )
+                return;
+
+            CheckInsurance();
+        },
+        onclick: function (element) {
+            CheckInsurance();
+        }
+    });
+    CheckInsurance();
+
+    function CheckInsurance()
+    {
+        if (modalPoistenieForm == undefined)
+            return;
+
+        modalPoistenieForm.checkForm();
+
+        if (modalPoistenieForm.valid()) {
+            $("#insuranceAdd").removeAttr("disabled");
+        } else {
+            $("#insuranceAdd").attr("disabled", "disabled");
+        }
+    }
+
+    //console.log("8. Formulare -> OK");
+}) // end Ready
+
+
+// ***********************************************************************************************************************************
+// 9. WOW.js                       { plugin animacii ako sa zobrazia prvky ak su prave zobrazene pri scrolovani http://mynameismatthieu.com/WOW/docs.html }
+// ***********************************************************************************************************************************
+// Calback sluzi na docitanie HTML, obrazkov ak sa blok zacne zobrazovat.
+$(function () {
+    var wow = new WOW(
+    {
+        callback: function (box) {
+            if ($(box).find('.row').length != 0) {
+                var id = $(box).find('.row')[0].id;
+                if (id.substring(0, 12) == "timeline_row")
+                    generate_timeline_row(id, true);
+            }
+            else {
+                if ($(box).find('.panel-body').length != 0) {
+                    var id = $(box).find('.panel-body')[0].firstChild.id;
+                    if (typeof (id) != 'undefined') {
+                        if (id.substring(0, 12) == "timeline_row")
+                            generate_timeline_row(id, true);
+                    }
+                }
+            }
+            // the callback is fired every time an animation is started
+            // the argument that is passed in is the DOM node being animated
+        }
+    }
+  );
+    wow.init();
+
+    //console.log("9. WOW.js -> OK");
+}); // end Ready
+
+// ***********************************************************************************************************************************
+// 10. Socialne siete {prihlasenie}
+// ***********************************************************************************************************************************
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+(function () {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    //po.src = 'https://plus.google.com/js/client:plusone.js?onload=loginCheckStateGoogle';
+    po.src = 'https://plus.google.com/js/client:plusone.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+})();
+
+$(function () {
+    $("#btnLogout").click(function () {
+        var logSrc = $(this).attr("href");
+
+        /*var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+            window.location = logSrc;
+        });*/
+
+
+        /*debugger;
+        if (gapi.auth.getToken() && gapi.auth.getToken()['status']['signed_in']) {
+            gapi.auth.signOut();
+            window.location = logSrc;
+        }*/
+
+
+        /*
+        var config = {
+            'client_id': googlePlusLoginWebApplicationId,
+            'scope': 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email',
+            'immediate': true,
+            'cookie_policy': 'single_host_origin'
+        };
+        gapi.auth.authorize(config, function (authResult) {
+            if (authResult && !authResult.error) {
+
+                var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' + authResult.access_token;
+                $.ajax({
+                    type: 'GET',
+                    url: revokeUrl,
+                    async: false,
+                    contentType: "application/json",
+                    dataType: 'jsonp',
+                    success: function (nullResponse) {
+                        window.location = logSrc;
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                });
+            }
+        });
+
+        FB.getLoginStatus(function (response) {
+            console.log(response);
+            if (response.status === 'connected') {
+                FB.logout(function (response) {
+                    window.location = logSrc;
+                });
+            }
+            else {
+            }
+        });
+        return false;*/
+        window.location = logSrc;
+    });
+
+    $("#btn-google-login").click(function () {
+        loginCheckStateGoogle(false);
+    });
+
+    $("#btn-facebook-login").click(function () {
+
+        if (FB_init == false)
+        {
+            FB.init({
+                appId: facebookLoginApiID,
+                cookie: true,  // enable cookies to allow the server to access the session
+                xfbml: false,  // parse social plugins on this page
+                version: 'v3.3'
+            });
+            FB_init = true;
+        }
+
+        FB.login(loginResponseFacebook, { scope: 'public_profile,email' });
+    });
+
+    $("#btnLoginSend").click(function () {
+        if ($('#formLogin').validate().form()) {
+            login({
+                type: "ticketportal",
+                login_email: $("#login_email").val(),
+                login_password: $("#login_password").val()
+            });
+        }
+        return false; 
+    });
+}); // end Ready
+
+function login(data) {
+    var urlLogin = absoluteUri + "account/login";
+    var indexQuery = location.href.indexOf("?");
+    if (indexQuery > -1)
+        urlLogin += location.href.substring(indexQuery);
+
+    if ($("#g-recaptcha-response").length != 0)
+        data["g-recaptcha-response"] = $("#g-recaptcha-response").val();
+
+    $.ajax({
+        type: "post",
+        url: urlLogin,
+        data: AddAntiForgeryToken(data),
+        dataType: "json",
+        success: login_response,
+        error: login_error
+    });
+}
+function login_response(a, b, c) {
+    if (a.Succeeded) {
+        window.location = a.ReturnedObject.RedirectUrl;
+    }
+    else {
+        message("danger", a.Message);
+    }
+}
+function login_error(a, b, c) {
+    document.getElementById('formLogin').submit();
+}
+
+var FB_init = false;
+
+// 20.1 facebook
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: facebookLoginApiID,
+        cookie: true,  // enable cookies to allow the server to access the session
+        xfbml: false,  // parse social plugins on this page
+        version: 'v3.2'
+    });
+    FB_init = true;
+    //loginCheckStateFacebook();
+
+};
+function loginResponseFacebook(response) {
+    //console.log(response);
+
+    if (response.status == "connected") {
+        login({
+            type: "facebook",
+            token: response.authResponse.accessToken,
+            signedRequest: response.authResponse.signedRequest
+        });
+    }
+}
+function loginCheckStateFacebook() {
+    if ($("#btnLogin").length != 0)
+        FB.getLoginStatus(loginResponseFacebook);
+}
+
+
+// 20.2 google+
+function loginCheckStateGoogle(immediate) {
+
+
+    if (immediate == undefined)
+        immediate = true;
+
+    /*gapi.signin.render("btnLoginGoogle", {
+        'callback': loginResponseGoogle,
+        'clientid': googlePlusLoginWebApplicationId,
+        'cookiepolicy': "single_host_origin",
+        'scope': 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email',
+        'accesstype': "online",
+        //'immediate': immediate
+    });
+    return;*/
+    //if ($("#btnLogin").length == 0)
+    //    return;
+
+
+
+    var config = {
+        'client_id': googlePlusLoginWebApplicationId,
+        'scope': 'https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.email',
+        'immediate': immediate,
+        'cookie_policy': 'single_host_origin'
+    };
+
+
+    gapi.auth.authorize(config, loginResponseGoogle);
+}
+
+function loginResponseGoogle(authResult) {
+    //debugger;
+    //console.log(authResult);
+
+    if (authResult && !authResult.error) {
+        login({
+            type: "google+",
+            token: authResult.access_token,
+        });
+    } else {
+
+    }
+}
+
+
+// ***********************************************************************************************************************************
+// 11. CheckBoxList                 {checkbox list pouzity v PZ zlavach}
+// ***********************************************************************************************************************************
+$(function () {
+
+    //  widget - CheckBoxList (pouzite v baskete)
+    $('.list-group.checked-list-box .list-group-item').each(function () {
+        // Settings
+        var $widget = $(this),
+            $checkbox = $('<input type="checkbox" class="hidden" /><div class="clearfix"></div>'),
+            color = ($widget.data('color') ? $widget.data('color') : "primary"),
+            style = ($widget.data('style') == "button" ? "btn-" : "list-group-item-"),
+            settings = {
+                on: {
+                    icon: 'fa fa-check-square-o'
+                },
+                off: {
+                    icon: 'fa fa-square-o'
+                }
+            };
+
+        $widget.css('cursor', 'pointer')
+        $widget.append($checkbox);
+
+        // Event Handlers
+        $widget.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $widget.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $widget.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$widget.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $widget.addClass(style + color + ' active');
+            } else {
+                $widget.removeClass(style + color + ' active');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            if ($widget.data('checked') == true) {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+            }
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($widget.find('.state-icon').length == 0) {
+                $widget.prepend('<div class="col-md-2 col-sm-2 col-xs-2"><i class="state-icon ' + settings[$widget.data('state')].icon + '"></i></div>');
+            }
+        }
+        init();
+    });
+
+    $('#get-checked-data').on('click', function (event) {
+        event.preventDefault();
+        var checkedItems = {}, counter = 0;
+        $("#check-list-box li.active").each(function (idx, li) {
+            checkedItems[counter] = $(li).text();
+            counter++;
+        });
+        $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+    });
+})
+
+// ***********************************************************************************************************************************
+// 12. HEATMAP                      { klikmapa: https://heatmap.it }
+// ***********************************************************************************************************************************
+
+/*$(function () {
+    (function () {
+        var hm = document.createElement('script'); hm.type = 'text/javascript'; hm.async = true;
+        hm.src = ('++u-heatmap-it+log-js').replace(/[+]/g, '/').replace(/-/g, '.');
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hm, s);
+    })();
+})*/
+
+
+// ***********************************************************************************************************************************
+// 13. ANIMACIE                     { sem vkladame animacie, funkcie }
+// ***********************************************************************************************************************************
+// animacia kosika
+function effect_AddBasket() {
+    var animationName1 = "animated";
+    var animationName2 = "bounceIn";
+    var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+    var $basket = $('.basket-button');
+
+    $basket.addClass(animationName1 + ' ' + animationName2).one(animationEnd, function () {
+        $basket.removeClass(animationName1).removeClass(animationName2);
+    });
+}
+// end.animacia kosika
+
+// ***********************************************************************************************************************************
+// 14. HLAVNE MENU                     { plugin ticketmenu }
+// ***********************************************************************************************************************************
+$(function () {
+    $('#nav').ticketmenu({
+         statusSlider: false
+    });
+
+
+})
+
+
+// ***********************************************************************************************************************************
+//15. MOBILNY VYHLADAVAC - ak v mobile klik na ikonu vyhladavania
+// ***********************************************************************************************************************************
+$('#search-btn').click(function () {
+    //ZablokujBtnSpat();
+});
+
+$(function () {
+    $("#TpHamMenu-link").on("click", function () {
+        this.classList.toggle("active");
+    });
+});
+function DeleteSearch() {
+    $('.search-input-mobile')
+        .val('')
+        .focus();
+
+    if (!($(".modal-body-search #search_erase_btn").hasClass('disabled')))
+        $(".modal-body-search #search_erase_btn").addClass('disabled');
+}
+
+$("#fullscreen-search").on('shown.bs.modal', function () {
+    $('.search-form input').val('').focus();
+});
+
+// ***********************************************************************************************************************************
+// 16. AFFIX                        { fixnutie menu}
+// ***********************************************************************************************************************************
+
+var num = 450; // 427; //number of pixels before modifying styles
+var numMapa = 77;
+var fixnuteMenu = false;
+
+$(function () {
+    //$('.timeline-block').remove()
+    //$('.content-timeline-block').css({ height: "2000px" })
+
+    var $heightContainer = $('.content-navbar-filter').outerHeight(),
+        $fixHeightContainer = 0,
+        $vyskaNavigacie = $('.navigacia').outerHeight(),
+        //a = $vyskaNavigacie + $vyskaSlider,
+        $timeline = $('.content-timeline-block'),
+        $container = $('.content-navbar-filter');
+
+    //console.log($vyskaNavigacie + $sliderHeight)
+
+    $(window).scroll(function(){
+        var winTop = $(window).scrollTop(),
+            winHeight = $(window).height();
+
+        if (winHeight>=900 && winTop >= (mapa_otvorena ? numMapa  : num)) {
+                if (fixnuteMenu == false) {
+                    $container.addClass('fixed');
+                    fixnuteMenu = true;
+                    
+                    $(".right-control>li.search-li").css({
+                        display: "block"
+                    })
+
+                    var posun = $('.content-navbar-filter').height();
+                    $("#timeline, footer").css({
+                        position: "relative",
+                        top: posun + "px"
+                    });
+
+                    if (mapa_otvorena) {
+                        $("#mapa").css({
+                            position: "relative",
+                            top: posun + "px"
+                        });
+                    }
+                }
+            } else {
+                if (fixnuteMenu == true) {
+                    $container.removeClass('fixed');
+                    fixnuteMenu = false;
+                    //console.log("NIEJE fixnute len tak si skrolujem: ");
+
+                    $(".right-control>li.search-li").css({
+                        display: "none"
+                    })
+
+                    $("#timeline, footer").css({
+                        position: "relative",
+                        top: "0px"
+                    });
+
+                    if (mapa_otvorena) {
+                        $("#mapa").css({
+                            position: "relative",
+                            top: "0px"
+                        });
+                    }
+                }
+            }//if-else
+
+    
+    })
+});
+
+// ***********************************************************************************************************************************
+// 17. MODAL DIALOG ZAVRETIE        { neprechadzat na predchadzajucu stranku, zavri iba modalne okno /fix hlavne pre mobily/ }
+// ***********************************************************************************************************************************
+$(function () {
+    // MOBILNE MENU
+    var MobileMenu = $("#menu");
+
+    $(".modal").on("shown.bs.modal", function () { // any time a modal is shown
+        var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
+        history.pushState(null, null, urlReplace); // push state that hash into the url
+    });
+
+    MobileMenu.on("shown.bs.collapse", function () { // any time a modal is shown
+        var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
+        history.pushState(null, null, urlReplace); // push state that hash into the url
+    });
+
+    // If a pushstate has previously happened and the back button is clicked, hide any modals.
+    $(window).on('popstate', function () {
+        if (window.location.hash.indexOf("collapse") != -1)
+            return;
+        if (typeof (nezavry) != "undefined" && nezavry == true)
+            return;
+        if ($(".modal").on("shown.bs.modal")) $(".modal").modal('hide');
+        if (MobileMenu.on("shown.bs.collapse")) MobileMenu.collapse('hide');
+    });
+
+})
+// ***********************************************************************************************************************************
+// 18. FIX CHECKBOXES               { odstrani neziaducu class .focus }
+// ***********************************************************************************************************************************
+$(function () {
+    $(".btn-group label").click(function () {
+        setTimeout('$("label.btn").removeClass("focus")', 50);
+    })
+    $("#modalHladajFilterMobile").css('padding-left', '0px')
+})
+
+// ***********************************************************************************************************************************
+// 19. Fixnut dva scrollbary ak sa otvaraju 2 modalne
+// ***********************************************************************************************************************************
+$(function () {
+    $('.modal')
+        .on('shown.bs.modal', function (e) {
+            $("body").addClass('over')
+        })
+        .on('hidden.bs.modal', function (e) {
+            $("body").removeClass('over')
+        })
+})
+
+// ***********************************************************************************************************************************
+// 20. SUPER NOVE TOP
+// ***********************************************************************************************************************************
+$(function () {
+
+    $('.snt-result button.close').on('click', function () {
+        hideElement('#top-container');
+    })
+
+    function hideElement(el) {
+        $(el).addClass("hidden");
+    }
+})
+
+// ***********************************************************************************************************************************
+// 21. Collaps radiobuttons(LABEL)  { napriklad: #SposobVyzdvihnutia }
+// ***********************************************************************************************************************************
+$(function () {
+    var $myRadioGroup = $('#SposobVyzdvihnutia');
+    $myRadioGroup.on('show.bs.collapse', '.collapse', function () {
+        $myRadioGroup.find('.collapse.in').collapse('hide');
+    });
+})
+// ***********************************************************************************************************************************
+// 22. Cookie info panel            { zobrazne na spodku stranky na 365 dni }
+// ***********************************************************************************************************************************
+$(function () {
+    $('.cookie-close').bind('click', function () {
+        Cookies.set('hideCookie', 'true', { expires: 365 });
+        $('.cookie-info').fadeOut('slow');
+    });
+    hideCookies();
+});
+function hideCookies() {
+    var hideCookie = Cookies.get('hideCookie');
+
+    if (hideCookie !== undefined) {
+        $('.cookie-info').css('display', 'none');
+    } else {
+        $('.cookie-info').css('display', 'block');
+    }
+}
+
+// ***********************************************************************************************************************************
+// x.  VSEOBECNE FUNKCIE
+// ***********************************************************************************************************************************
+// ziskanie tokenu pre ajax
+AddAntiForgeryToken = function (data) {
+    data.__RequestVerificationToken = $("input[name='__RequestVerificationToken']").val();
+    return data;
+};
+
+var articke_dom = null;
+// nacitanie clanku pre podmienky
+function LoadArticle(id, dom)
+{
+    articke_dom = dom;
+
+    $.ajax({
+        type: 'GET',
+        url: absoluteUri + "article/" + id + "?json=true",
+        contentType: "application/json",
+        dataType: 'json',
+        success: function (article) {
+
+            if (isnull(articke_dom) == false)
+            {
+                if (location.href.indexOf("iframe") != -1 && !(QueryString["noembeded"] == "")) {
+                    var _top = $(articke_dom).offset().top;
+                    $("#modalVOP .modal-dialog").css({ top: _top - 200 });
+                }
+            }
+
+            $("#termsArticleTitle").text(article.ReturnedObject.Title);
+            $("#termsArticleBody").html(article.ReturnedObject.Body);
+        },
+        error: function (e) {
+            console.log(e);
+        }
+    });
+}
+
+
+// ***********************************************************************************************************************************
+// xx.  TESTY                       {temp testy.. ak dotestujes, tak si to premiestni pod novu polozku v osnove alebo pridaj do polozky ktora uz existuje}
+// ***********************************************************************************************************************************
+
+var basketCounter = $('#basketko .basket-counter'),
+    basket = $('.basket-li'),
+    currentVal = parseInt(basketCounter.html());
+
+$(function () {
+
+    
+    changeBasketValue();
+
+    $('#plus').on('click', function () {
+        var currentVal = parseInt(basketCounter.html());
+
+        if (!isNaN(currentVal)) {
+            currentVal += 1;
+        } else {
+            currentVal = 1;
+        }
+        if (currentVal > 0) {
+            basket.addClass('noEmpty')
+            $('.basketko').removeClass('disabled');
+        }
+        basketCounter.html(currentVal);
+    })
+    $('#minus').on('click', function () {
+        var currentVal = parseInt(basketCounter.html());
+
+        if (!isNaN(currentVal) || currentVal >=0) {
+            currentVal -= 1;
+        } else {
+            currentVal = 1;
+        }
+        if (currentVal <= 0) {
+            basket.removeClass('noEmpty')
+            $('.basketko').addClass('disabled');
+        }
+        basketCounter.html(currentVal);
+    })
+})
+
+function changeBasketValue() {
+    var currentVal = parseInt($('#basketko .basket-counter').html());
+    if (currentVal != 0) {
+        $('.basketko').removeClass('disabled');
+        basket.addClass('noEmpty');
+    } else {
+        basket.removeClass('noEmpty');
+        $('.basketko').addClass('disabled');
+    }
+}
+
+$(function () {
+
+    $('.label-danger').click(function () {
+        effect_AddBasket();
+    });
+
+    //$('#fullscreen-search').on('shown.bs.modal', function () {
+    //    setTimeout(  $("#fullscreen-search").css("paddingRight", "0") ,500);
+    //});
+
+});
+
+
+$(function () {
+    btnHome = $('#linkHome,.linkHome');
+    btnNove = $('#linkNove,.linkNove');
+    btnTop = $('#linkTop,.linkTop');
+    btnZlavy = $('#linkZlavy,.linkZlavy');
+
+
+    $('#nove').addClass('hidden');
+    $('#zlavy').addClass('hidden');
+    $('#top').addClass('hidden');
+
+    var effect = "fadeInRight"
+    
+    $('.nav1 li[class!="home"], #navigacia-2 li').click(function () {
+        $('ul.nav > li').removeClass('active');
+        $(this).addClass('active');
+        //e.preventDefault();
+    });
+
+    // obnovuje menu 
+    ObnovMenuPodBanerom(); 
+
+    // bootlint - testuje spravnu semantiku bootstrapu
+    //javascript: (function () { var s = document.createElement("script"); s.onload = function () { bootlint.showLintReportForCurrentDocument([]); }; s.src = "https://maxcdn.bootstrapcdn.com/bootlint/latest/bootlint.min.js"; document.body.appendChild(s) })();
+
+})
+
+function animuj(target, animationName, removeHidden) {
+    var $target = target;
+    var animation = "animated " + animationName;
+    var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+    if (removeHidden) {
+        $(target).removeClass("hidden")
+    }
+
+    $(target).addClass(animation).one(animationEnd, function () {
+        $(this).removeClass(animation);
+    });
+
+}
+
+
+// Vrati spat o jednu stranku ale zaroven spravy refresh
+function GoBackWithRefresh(event) {
+    //if ('referrer' in document) {
+    //    window.location = document.referrer;
+        /* OR */
+        //location.replace(document.referrer);
+    //} else {
+
+    if (typeof (GoBackForce) != "undefined")
+        GoBackForce();
+    else
+        window.history.back();
+    //}
+}
+
+
+var odstavka1 = false;
+if (typeof (Storage) !== "undefined") {
+    if (sessionStorage.odstavka592018) {
+        odstavka1 = false;
+    } else {
+        odstavka1 = true;
+    }
+}
+else {
+    odstavka1 = true;
+}
+
+function oznac_odstavka1() {
+    if (typeof (Storage) !== "undefined") {
+        sessionStorage.odstavka592018 = true;
+    }
+}
+
+
+var odstavka2 = false;
+if (typeof (Storage) !== "undefined") {
+    if (sessionStorage.odstavka2) {
+        odstavka2 = false;
+    } else {
+        //sessionStorage.odstavka1 = true;
+        odstavka2 = true;
+    }
+}
+else {
+    odstavka2 = true;
+}
+
+function oznac_odstavka2() {
+    if (typeof (Storage) !== "undefined") {
+        sessionStorage.odstavka2 = true;
+    }
+}
+
+
+var odstavka3 = false;
+if (typeof (Storage) !== "undefined") {
+    if (sessionStorage.odstavka3) {
+        odstavka3 = false;
+    } else {
+        //sessionStorage.odstavka1 = true;
+        odstavka3 = true;
+    }
+}
+else {
+    odstavka3 = true;
+}
+
+function oznac_odstavka3() {
+    if (typeof (Storage) !== "undefined") {
+        sessionStorage.odstavka3 = true;
+    }
+}
+
+var ods_1 = 'UPOZORNENIE!';
+var ods_2 = 'Plánujete si dnes kúpiť vstupenky na svoje obľúbené podujatie? Máte na to už len pár minút!';
+var ods_3 = 'Pre údržbu systému budú stránky približne od 22:00 do 22:30 edostupné.';
+var ods_4 = 'Ospravedlňujeme sa a za pochopenie vám ďakujeme.';
+var ods_5 = 'Rozumiem';
+
+if (lokalita == 'cz') {
+    ods_1 = 'Pozor!';
+    ods_2 = 'Plánujete si právě teď koupit vstupenku na svoje oblíbené představení? Máte na to už jen pár minut.';
+    ods_3 = 'Z důvodu údržby budou stránky přibližně od 22:00 do 1:00 nedostupné.';
+    ods_4 = 'Omlouváme se a děkujeme za pochopení.';
+    ods_5 = 'Rozumím';
+}
+
+if (odstavka1 && (new Date() > new Date(2019, 9, 25, 21, 20, 0)) && new Date() < new Date(2019, 9, 25, 23, 50, 0)) {
+
+    // ODSTAVKA
+    var odstavka1 = $.notify({
+        message: '<table><tr><td><div class="under-pic"><img src="/Content/images/icons/under-website.png" alt="under construction ticketportal"></div></td><td><h3>' + ods_1 + '</h3><p>' + ods_2 + '</p><p><strong>' + ods_3 + '</strong></p><p>' + ods_4 + '</p><p class="text-right"><button type="button" class="btn btn-default" onclick="javascript:odstavka1.close();oznac_odstavka1();">' + ods_5 + '</button></p></td></tr></table>'
+    }, {
+        animate: {
+            enter: 'animated fadeInRight',
+            exit: 'animated fadeOutRight'
+        },
+        z_index: '10310',
+        type: 'pastel-danger',
+        delay: 500000,
+        placement: {
+            from: "top"
+        },
+        showProgressbar: true,
+        template: '<div data-notify="container" class="odstavka-1 col-xs-22 col-sm-22 col-md-12 col-lg-12 alert alert-{0}" role="alert">' +
+            '<span data-notify="title" class="title-notify">{1}</span>' +
+            '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+}
+
+if (odstavka2 && 1 == 2) {
+    var odstavka2 = $.notify({
+        message: '<table><tr><td><div class="under-pic"><img src="/Content/images/icons/under-website.png" alt="under construction ticketportal"></div></td><td><h3>UPOZORNENIE!</h3><p>Prosíme, dokončite nákup vstupeniek na svoje obľúbené podujatie. Máte na to už len chvíľku!</p><p><strong>Pre údržbu systému bude možnosť označovať miesta do košíka dostupná do <span style="color:#fd5855;font-size:120%"> 21:20</strong></p><p>Ospravedlňujeme sa a za pochopenie vám ďakujeme.</p><p class="text-right"><button type="button" class="btn btn-default" onclick="javascript:odstavka2.close();oznac_odstavka2();">Rozumiem</button></p></td></tr></table>'
+    }, {
+        animate: {
+            enter: 'animated fadeInRight',
+            exit: 'animated fadeOutRight'
+        },
+        z_index: '10310',
+        type: 'pastel-danger',
+        delay: 500000,
+        placement: {
+            from: "top"
+        },
+        showProgressbar: true,
+        template: '<div data-notify="container" class="odstavka-2 col-xs-22 col-sm-22 col-md-12 col-lg-12 alert alert-{0}" role="alert">' +
+            '<span data-notify="title" class="title-notify">{1}</span>' +
+            '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+}
+
+
+if (1 == 2) {
+    var odstavka3 = $.notify({
+        message: '<table><tr><td><div class="under-pic"><img src="/Content/images/icons/under-website.png" alt="under construction ticketportal"></div></td><td><h3>UPOZORNENIE!</h3><p><strong>Blíži sa plánovaná údržba systému. Nákup vstupeniek už nie je možný.</strong></p><p><strong>Pre údržbu systému bude pár hodín stránka nedostupná.</strong></p><p>Ospravedlňujeme sa a za pochopenie vám ďakujeme.</p><p class="text-right"><button type="button" class="btn btn-default" onclick="javascript:odstavka3.close();oznac_odstavka3();">Rozumiem</button></p></td></tr></table>'
+    }, {
+        animate: {
+            enter: 'animated fadeInRight',
+            exit: 'animated fadeOutRight'
+        },
+        z_index: '10310',
+        type: 'pastel-danger',
+        delay: 500000,
+        placement: {
+            from: "top"
+        },
+        showProgressbar: true,
+        template: '<div data-notify="container" class="odstavka-3 col-xs-22 col-sm-22 col-md-12 col-lg-12 alert alert-{0}" role="alert">' +
+            '<span data-notify="title" class="title-notify">{1}</span>' +
+            '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+}
+
+
+/*var odstavka4 = $.notify({
+    message: '<table><tr><td><div class="under-pic"><img src="/Content/images/icons/under-website.png" alt="under construction ticketportal"></div></td><td><h3>UPOZORNENIE!</h3><p><strong>Je nám to veľmi ľúto, ale pre plánovanú údržbu systému je naša stránka momentálne nedostupná.</strong></p><p>Ďakujeme za vašu trpezlivosť a pochopenie.</p><p class="text-right"><button type="button" class="btn btn-default" onclick="javascript:odstavka4.close();">Rozumiem</button></p></td></tr></table>'
+}, {
+    animate: {
+        enter: 'animated fadeInRight',
+        exit: 'animated fadeOutRight'
+    },
+    z_index: '10310',
+    type: 'pastel-danger',
+    delay: 500000,
+    placement: {
+        from: "top"
+    },
+    showProgressbar: true,
+    template: '<div data-notify="container" class="odstavka-4 col-xs-22 col-sm-22 col-md-12 col-lg-12 alert alert-{0}" role="alert">' +
+		'<span data-notify="title" class="title-notify">{1}</span>' +
+		'<span data-notify="message">{2}</span>' +
+	'</div>'
+});*/
+// end.ODSTAVKA
+
+
+function exponea_cart_update(idmp, action) {
+    if (lokalita == 'sk' && typeof (exponea) != "undefined") {
+        $.ajax({
+            url: absoluteUri + "exponea-card-update/" + idmp + "/" + action,
+            dataType: "json",
+            cache: false,
+            statusCode: {
+                404: function () { alert('Page not found.'); },
+                500: function () { alert('Internal server error.'); }
+            }
+        }).done(function (data) {
+            exponea.track('cart_update', data);
+        });
+    }
+}

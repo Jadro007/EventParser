@@ -1,0 +1,100 @@
+
+$(document).ready(function() {
+
+    $(".a-btn").button();
+
+    $(".delete-confirm").click(function(e) {
+        var ok = confirm("Opravdu smazat?");
+        if(!ok) {
+            e.preventDefault();
+        }
+        return ok;
+    });
+    
+    $("a[disabled=disabled]").on("click", function(e) {
+        e.preventDefault();
+        return false;
+    });
+    
+    $("input.datepicker").datepicker({
+        dateFormat: 'dd.mm.yy',
+        dayNamesMin: ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne'],
+        dayNames: ['Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota', 'Neděle'],
+        monthNames: ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'],
+        firstDay: 1,
+        changeYear: true,
+        yearRange: 'c-100:c'
+    });
+    
+    $("a.help").on("touchend click", function(e) {
+        $(this).find("div").css("display", "block");
+        e.preventDefault();
+        return false;
+    });
+    $("a.help div").on("touchend click", function() {
+        $(this).fadeOut();
+    });
+    $(".disabled").on("click", function(e) {
+       e.preventDefault();
+       return false;
+    });
+    
+    $("tr.clickable td:not(.actions)").on("click touchend", function() {
+        var link = $(this).closest("tr").find("a.clickable-link");
+        if(link.length) {
+            window.location.href = link.attr("href");
+        }
+    });
+    
+    $("a.button").on("click", function() {
+        if($(this).attr("data-progress-message")) {
+            if($(this).is("input")) {
+                $(this).text($(this).attr("data-progress-message"));
+            }
+            else {
+                $(this).html($(this).attr("data-progress-message"));
+            }
+        }
+    });
+    
+    // external links
+    $("a").each(function() {
+        if( /^(http|\/\/)/.test( $(this).attr("href")) && !/leaseplango\.cz/.test($(this).attr("href")) ) {
+            $(this).attr("target", "_blank");
+        }
+    });
+    
+    // ga events
+    $("a.ga").on("click", function(e) {
+        e.preventDefault();
+        var category = $(this).attr("data-ga-category") ? $(this).attr("data-ga-category") : 'default';
+        var event = $(this).attr("data-ga-event");
+        var href = $(this).attr("href");
+        ga('send', 'event', category, event);
+        window.setTimeout(function() {
+            window.location.href = href;
+        }, 150);
+        return false;
+    });
+
+    $('.mobile-calendar-toggle, #mobile-calendar, #mobile-calendar .days a').click(function(){
+        $('#mobile-calendar').slideToggle();
+    });
+
+    $(".newsflash").on("click", function() {
+        $(this).fadeOut(100);
+    });
+
+});
+
+// fix right column height (because of the separator line - both columns have variable content height)
+$(window).load(function() {
+	var colRight = $(".article-detail .col-right");
+	var colLeft = colRight.closest(".container").find(".col-left");
+	
+	if(colRight.height() < colLeft.height() && $(window).width() > 768) {
+		colRight.css("height", colLeft.height());
+	}
+	
+	
+});

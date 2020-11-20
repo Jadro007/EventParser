@@ -1,0 +1,166 @@
+﻿// nastavenia owl-carousel-2.2.1
+// nastavenia SLIDER
+
+var owl, IconNext, IconPrev;
+
+
+$(function () {
+    owl = $(".slider .owl-carousel");
+
+    owl.owlCarousel({
+        onInitialized: InitMyOwlNav,
+        loop: true,
+        autoplay: true,
+        rewind: true,
+        autoplayTimeout: lokalita == "cz" ? 4000 : 7000,
+        autoplayHoverPause: true,
+        navContainer: '#customNav',
+        dots: true,
+        //dotsContainer: '#customDots',
+        margin: 0,
+        nav: true,
+        responsive: {
+            0: { items: 1},
+            600: {items: 1},
+            1000: {items: 1}
+        }
+    });
+
+    $('.slider')
+        .mouseenter(function () {
+            $('.owl-nav-next').fadeIn(200)
+            $('.owl-nav-prev').fadeIn(200);
+        })
+        .mouseleave(function () {
+            $('.owl-nav-next').fadeOut(200)
+            $('.owl-nav-prev').fadeOut(200);
+        })
+
+    function InitMyOwlNav() { 
+        var IconNext = "<i class='fa fa-chevron-right fa-2x fa-fw owl-nav-next'></i>",
+            IconPrev = "<i class='fa fa-chevron-left fa-2x fa-fw owl-nav-prev'></i>";
+
+        // vytvori ikony 
+        owl.append(IconNext);
+        owl.append(IconPrev);
+
+        // az potom naviaze udalosti (next, prev)
+        $('.owl-nav-next').on('click', function () { owl.trigger("next.owl.carousel", 1000); });
+        $('.owl-nav-prev').on('click', function () { owl.trigger("prev.owl.carousel", 1000); });
+
+        // po naincializovani Owl-Carousela schova sipky
+        $('.owl-nav-next').fadeOut(500)
+        $('.owl-nav-prev').fadeOut(600);
+    }
+
+
+
+});
+
+
+// Nastavenie cena a sektory v rychlom nakupe
+//$(function () {
+
+function ActivujCarouselRychlyNakup() {
+
+    
+
+    $('#menu-sedenie [data-toggle="tab"]')
+		.on('shown.bs.tab', function (e) {
+		    toggleAttrs(e, 'true', '0', 'true', '1');
+		})
+		.on('hidden.bs.tab', function (e) {
+		    toggleAttrs(e, 'false', '-1', 'false', '0');
+		});
+
+    var owlRychlyNakup;
+    owlRychlyNakup = $(".owl-carousel.owl-theme-cena,.owl-carousel.owl-theme-sektor");
+    owlRychlyNakup.owlCarousel({
+        loop: false,
+        margin: 5,
+        nav: true,
+        navText: [
+      "<i class='fa fa-angle-left' aria-hidden='true'></i>",
+      "<i class='fa fa-angle-right' aria-hidden='true'></i>"
+        ],
+        startPosition: 0,
+        autoWidth: true,
+        responsiveClass: true,
+        //navContainer:"owl-stage",
+        responsive: {
+            0: {
+                items: 4,
+                slideBy: 4,
+                margin: 5,
+                stagePadding: 60
+            },
+            480: {
+                items: 6,
+                slideBy: 6,
+                margin: 5,
+                stagePadding: 60
+            },
+            768: {
+                items: 8,
+                slideBy: 6
+            },
+            992: {
+                items: 8,
+                slideBy: 6
+            },
+            1280: {
+                items: 8,
+                slideBy: 6
+            }
+        }
+    });
+
+    $('#vyber-sedenia-cena .owl-item, #vyber-sedenia-sektor .owl-item').on('click', function () {
+        //this.parent(".item").addClass('check');
+        $('#vyber-sedenia-cena .owl-item .item.check, #vyber-sedenia-sektor .owl-item .item.check').removeClass('check');
+        $(this).find('.item').addClass('check');
+
+        var vsetky = $("#vyber-sedenia-cena .flex-c, #vyber-sedenia-sektor .flex-c");
+        for (var i = 0; i < vsetky.length; i++)
+            vsetky[i].style.backgroundColor = '';
+
+        $(this).find('.item')[0].style.backgroundColor = $(this).find('.item').attr("border-qb"); //[0].style.borderColor;
+
+        quickpurchase_fill_price();
+    })
+
+    // reset ofarbenia owl itemov
+    // $('.item.flex-c').css({ borderColor: '#ccc' })
+}
+
+    function template_payOption_active(id) {
+        $("#SposobPlatby div").removeClass("active");
+        $("#template_payOption_" + id).addClass("active");
+
+        if (typeof (qpa) != "undefined" && typeof (quickpurchase_fill_price) != "undefined" && qpa == true)
+            quickpurchase_fill_price();
+
+        if (typeof (Reload_price) != "undefined")
+            Reload_price();
+    }
+
+    function toggleAttrs(e, ariaSelected, tabIndex, ariaHidden, focus) {
+        var target = e.target;
+        var id = $(target).attr('href');
+        $(target)
+            .attr({
+                'aria-selected': ariaSelected,
+                'tabindex': tabIndex
+            })
+            .closest('.tab-control').find(id).attr({
+                'aria-hidden': ariaHidden
+            });
+        if (focus === '1') {
+            target.focus();
+        }
+    }
+
+
+//});
+
+

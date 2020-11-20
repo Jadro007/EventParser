@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://secure.payu.com/res/v2/tunnel.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>postMessage</title>
+</head>
+<body>
+
+<script>
+    function onMessage(e) {
+        // test e.origin if we agree merchant
+        // create token based on e.data
+
+        function reqListener() {
+            window.parent.postMessage(this.response, "*");
+        }
+
+        // 1. connect to payu backend and send request
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.addEventListener('load', reqListener);
+        httpRequest.open('POST', '/api/v2/token/token.json');
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        httpRequest.send('data=' + encodeURIComponent(e.data));
+
+        // 2. callback error handling
+        // status : success, invalid merchant, invalid token, invalid request
+    }
+
+    if (typeof window.addEventListener !== 'undefined') {
+        window.addEventListener('message', onMessage, false);
+    } else if (typeof window.attachEvent !== 'undefined') {
+        window.attachEvent('onmessage', onMessage);
+    }
+</script>
+
+
+
+</body></html>

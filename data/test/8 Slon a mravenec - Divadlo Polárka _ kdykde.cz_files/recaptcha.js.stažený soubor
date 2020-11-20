@@ -1,0 +1,5 @@
+var CaptchaCallback = function(){
+   $$('.g-recaptcha').each(function(el) {
+      grecaptcha.render(el, {'sitekey' : el.get('data-sitekey')});
+   });
+};

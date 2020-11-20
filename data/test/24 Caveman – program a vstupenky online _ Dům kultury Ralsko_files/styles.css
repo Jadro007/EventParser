@@ -1,0 +1,514 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&subset=latin-ext,latin);
+/* ------ COLORS ------ 
+(21,62,91)
+(7,35,54)
+*/
+
+body { background-color:#b9cede; }
+
+/*default settings*/
+.themecolor1-bg,
+.themecolor1-hover:hover { background-color:rgba(21,62,91,1) !important; }
+.themecolor1-bg-transp { background-color:rgba(21,62,91,.22) !important; }
+.themecolor1-color { color:rgba(21,62,91,1) !important; }
+
+.themecolor1-b1 { border:1px solid rgba(21,62,91,1) !important; }
+.themecolor1-b1-l { border-left:1px solid rgba(21,62,91,1) !important; }
+.themecolor1-b1-r { border-right:1px solid rgba(21,62,91,1) !important; }
+.themecolor1-b1-t { border-top:1px solid rgba(21,62,91,1) !important; }
+.themecolor1-b1-b { border-bottom:1px solid rgba(21,62,91,1) !important; }
+
+.themecolor1-b2 { border:2px solid rgba(21,62,91,1) !important; }
+.themecolor1-b2-l { border-left:2px solid rgba(21,62,91,1) !important; }
+.themecolor1-b2-r { border-right:2px solid rgba(21,62,91,1) !important; }
+.themecolor1-b2-t { border-top:2px solid rgba(21,62,91,1) !important; }
+.themecolor1-b2-b { border-bottom:2px solid rgba(21,62,91,1) !important; }
+
+.themecolor2-bg,
+.themecolor2-hover:hover { background-color:rgba(7,35,54,1) !important; }
+.themecolor2-bg-transp { background-color:rgba(7,35,54,1) !important; }
+.themecolor2-color { color:rgba(7,35,54,1) !important; }
+
+.themecolor2-b1 { border:1px solid rgba(7,35,54,1) !important; }
+.themecolor2-b1-l { border-left:1px solid rgba(7,35,54,1) !important; }
+.themecolor2-b1-r { border-right:1px solid rgba(7,35,54,1) !important; }
+.themecolor2-b1-t { border-top:1px solid rgba(7,35,54,1) !important; }
+.themecolor2-b1-b { border-bottom:1px solid rgba(7,35,54,1) !important; }
+
+.themecolor2-b2 { border:2px solid rgba(7,35,54,1) !important; }
+.themecolor2-b2-l { border-left:2px solid rgba(7,35,54,1) !important; }
+.themecolor2-b2-r { border-right:2px solid rgba(7,35,54,1) !important; }
+.themecolor2-b2-t { border-top:2px solid rgba(7,35,54,1) !important; }
+.themecolor2-b2-b { border-bottom:2px solid rgba(7,35,54,1) !important; }
+
+
+
+/* main color 21,62,91 */
+#hornyPanel,
+.wrapper,
+#dolnyPanel,
+.navbar-toggle .icon-bar,
+#podujatia .podujatia-table-nav li.sub > ul,
+#podujatia .podujatia-table-nav li.sub > ul > li > a,
+#detail-accordion .ui-accordion-content,
+.login>form.form-signin>.checkbox-inline span.checkboxInput,
+.program_kina_wrapper .navbar-searchform>.input-group>input,
+#filter-zmluva #formZmluvy button#fZmluvaZrusitFilter,
+#filter-objednavka #formObjednavky button#fObjednavkaZrusitFilter,
+#filter-dodavatelska_faktura #formDodavatelskeFaktury button#fDodavatelskaFakturaZrusitFilter,
+#filter-odberatelska_faktura #formOdberatelskeFaktury button#fOdberatelskaFakturaZrusitFilter,
+#filter-rozpocet #formRozpocet button#fRozpocetZrusitFilter,
+footer{background-color:rgba(255,255,255,1);}
+
+#hlavickaTop{background-color:rgba(31,31,31,1);}
+#switcher div{background-color:rgba(197,197,197,1);}
+
+#menu,
+.login .btn,
+#novinky .box .btn-more,
+#novinky span.old .ico-right,
+#podujatia .podujatia-table-nav li>a,
+#detail-header ul li,
+#detail-header .program-title .tag,
+#detail-accordion .ui-state-default.ui-state-active,
+#detail-accordion .ui-state-default .tag,
+.tabulkaCennik a.buy,
+#newsletter>form>button.btn,
+#aktualny_program .program .tag,
+#aktualny_program .program .btn-buy,
+#partners .partners-nav>.btn,
+.program_kina_wrapper .navbar-searchform>.input-group>.input-group-btn>button,
+.program_kina_wrapper .paginator>li.active>a,
+.media .program-list-group .btn-buy,
+.ui-widget-header,
+.informacia-detail .ico-prev,
+#calendar .cal-box a,
+.slick-prev,
+.slick-next,
+#filter-zmluva #formZmluvy button,
+#filter-objednavka #formObjednavky button,
+#filter-dodavatelska_faktura #formDodavatelskeFaktury button,
+#filter-odberatelska_faktura #formOdberatelskeFaktury button,
+#filter-rozpocet #formRozpocet button,
+#tPovinneZverejnovaneDokumenty_paginate a,
+table#tPovinneZverejnovaneDokumenty th,
+#pripravujeme-v-obrazoch .caption,
+.program_kina_wrapper .tabs li.active a,
+.program_kina_wrapper .tabs li.active a:hover,
+.program_kina_wrapper .tabs li.active a:focus,
+.povinneDokumenty .tabs li.active a,
+.povinneDokumenty .tabs li.active a:hover,
+.povinneDokumenty .tabs li.active a:focus,
+#detail-accordion .ui-state-default.ui-state-active .tag,
+#detail-header .program-title .right a:focus .tag,
+#detail-header .program-title .right a:hover .tag,
+#calendar .cal-box a,
+#calendar .calendar-table span.today b,
+#programova_tabulka_dni.tabs li > a,
+#programova-tabulka .program2 td .time a,
+#programova-tabulka .program2 td .time .iconWrapper {background-color:rgba(21,62,91,1);}
+
+
+#detail-accordion .ui-accordion-content .btn.btn-more-price,
+#detail-accordion .ui-accordion-content .ico-info,
+.program_kina_wrapper .paginator>li>a:focus,
+.program_kina_wrapper .paginator>li>a:hover{background-color:rgba(21,62,91,.5);}
+
+.login,
+.rightPanel,
+#pravyPanel #info-podujatie,
+#pravyPanel #galeria,
+#pravyPanel #prilohy,
+#detail-header .program-title,
+#detail-accordion .ui-state-default,
+#pravyPanel .filmOsoby,
+#pravyPanel #newsletter,
+#pravyPanel .zoznam_podujati,
+.program_kina_wrapper .navbar-searchform,
+.program_kina_wrapper .paginator,
+#pripravujeme-v-obrazoch h2,
+.program_kina_wrapper .tabs li.tab a:focus,
+.program_kina_wrapper .tabs li.tab a:hover,
+.povinneDokumenty .tabs li a:focus,
+.povinneDokumenty .tabs li a:hover,
+#filmova-nastenka,
+#calendar,
+.col-12 #filmova-nastenka, #pravyPanel #filmova-nastenka {background-color:rgba(21,62,91,.22);}
+
+#cboxBottomLeft,
+#cboxBottomCenter,
+#cboxBottomRight{background-color: rgba(203,212,219,1);}
+
+	.program_kina_wrapper .tabs li.active a,
+	.program_kina_wrapper .tabs li.active a:hover,
+	.program_kina_wrapper .tabs li.active a:focus,
+	.povinneDokumenty .tabs li.active a,
+	.povinneDokumenty .tabs li.active a:hover,
+	.povinneDokumenty .tabs li.active a:focus {background-color:rgba(21,62,91,1);}
+	
+	
+.program_kina_wrapper .paginator>li>a{background-color:rgba(21,62,91,.3);}
+.media .program-list-group>.list-group-item:nth-child(odd){background-color:rgba(21,62,91,.16);}
+
+
+	#detail-header .program-title,
+	.program_kina_wrapper .paginator{border-top:2px solid rgba(21,62,91,1);}
+	
+	.zoznam_podujati>ul>li,
+	.zoznam_podujati>ol>li,
+	#zoznam_predstaveni tr{border-top:1px solid rgba(21,62,91,1);}
+	
+	
+	#novinky .box,
+	#podujatia .podujatia-table,
+	#detail-header .program-title,
+	#detail-accordion .ui-state-default,
+	#detail-accordion .ui-accordion-content,
+	#partners>.partner-heading,
+	.povinneDokumenty .tabs,
+	.program_kina_wrapper .tabs,
+	.program_kina_wrapper .navbar-searchform,
+	.program_kina_wrapper .media,
+	.program_kina_wrapper .paginator,
+	.informacia-detail .back,
+	#novinky .box,
+	.informacia-detail .box{border-bottom:2px solid rgba(21,62,91,1);}
+	
+	.zoznam_podujati>ul>li:last-child,
+	.zoznam_podujati>ol>li:last-child,
+	#zoznam_predstaveni tr:last-child,
+	#lavyPanel.col-6 .media .program-list-group>.list-group-item{border-bottom:1px solid rgba(21,62,91,1);}
+	
+	#podujatia .podujatia-table-tr{border-bottom:1px solid rgba(21,62,91,.16);}
+	
+
+	.login>form.form-signin>.checkbox-inline span.checkboxInput,
+	#newsletter>form>.form-control,
+	.vysledky_vyhladavania,
+	#aktualny_program .program .btn-price,
+	#filter-zmluva #formZmluvy input,
+	#filter-objednavka #formObjednavky input,
+	#filter-dodavatelska_faktura #formDodavatelskeFaktury input,
+	#filter-odberatelska_faktura #formOdberatelskeFaktury input,
+	#filter-rozpocet #formRozpocet input,
+	#filter-zmluva #formZmluvy button#fZmluvaZrusitFilter,
+	#filter-objednavka #formObjednavky button#fObjednavkaZrusitFilter,
+	#filter-dodavatelska_faktura #formDodavatelskeFaktury button#fDodavatelskaFakturaZrusitFilter,
+	#filter-odberatelska_faktura #formOdberatelskeFaktury button#fOdberatelskaFakturaZrusitFilter,
+	#filter-rozpocet #formRozpocet button#fRozpocetZrusitFilter,
+	#rokZmluvy,
+	#rokZmluvyObj,
+	#rokZmluvyFA,
+	#rokZmluvyOF,
+	#rokRozpocet{border:2px solid rgba(21,62,91,1);}
+	
+	.program_kina_wrapper .navbar-searchform>.input-group>input { border:1px solid rgba(21,62,91,1); }
+	
+	#platno .col-4:nth-child(odd):hover .caption,
+	#podujatia .podujatia-table-nav li>a:focus,
+	#podujatia .podujatia-table-nav li>a:hover{background-color:rgba(21,62,91,.9); }
+	
+	.galeria-wrapper .trailer:hover .caption,
+	.galeria-wrapper .colorbox:hover .caption,
+	.galeria-wrapper .dalsie_foto .caption.on{background-color:rgba(21,62,91,.7);}
+
+	.login>form.form-signin>.form-control:focus{outline:none; border:2px solid rgba(21,62,91,1);}
+	
+	.login{
+		border-left:2px solid rgba(21,62,91,1);
+		border-right:2px solid rgba(21,62,91,1);
+		border-bottom:2px solid rgba(21,62,91,1);
+	}
+	
+	#cboxPrevious:hover,
+	#cboxNext:hover,
+	#cboxClose:hover{color:rgba(21,62,91,0.6);}
+
+
+/* platno 2 varianty farieb */
+#calendar .cal-box a:hover,
+#platno .col-4:nth-child(odd) .caption{background-color:rgba(21,62,91,.8);}
+#platno .col-4:nth-child(even) .caption{background-color:rgba(7,35,54,.8);} /*lighter saturated from themecolor1*/
+#platno .col-4:nth-child(even):hover .caption{background-color:rgba(7,35,54,0.9);}
+
+
+/*menu hover,active 7,35,54 */
+.open > .dropdown-menu,
+.dropdown-menu,
+#novinky .box a:focus > .btn-more,
+#novinky .box a:hover > .btn-more,
+#newsletter>form>button.btn:hover,
+#calendar .cal-box a:hover{background-color:rgba(7,35,54,1);}
+
+.login .btn,
+.login>form.form-signin>.form-control,
+#calendar .cal-box a {border:2px solid rgba(7,35,54,1);}
+
+	/*calendar ramy*/
+	#calendar .calendar-table span div a{border-bottom:1px solid rgba(7,35,54,1);}
+	#calendar .cal-box a,
+	#calendar .calendar-table span div{border:2px solid rgba(7,35,54,1);}	
+	#calendar .calendar-table,
+	#calendar .calendar-table span { border:1px solid rgba(7,35,54,1); }
+		#calendar .calendar-table span {border-right:0;}	
+	#calendar .calendar-table { border-right:2px solid rgba(7,35,54,1); }	
+	#calendar .calendar-table span:nth-child(7n-1) { border-left:2px solid rgba(7,35,54,1); }
+
+	/*hovers*/
+	#cinemenu > li.selected > a,
+	#cinemenu > li > a:focus,
+	#cinemenu > li > a:hover,
+	#cinemenu > li.sub:focus>a,
+	#cinemenu > li.sub:hover>a,
+	#cinemenu > li.sub:focus ul.dropdown-menu,
+	#cinemenu > li.sub:hover ul.dropdown-menu,
+	#programova_tabulka_dni.tabs li.active > a,
+	#programova_tabulka_dni.tabs li > a:hover,
+	#programova_tabulka_dni.tabs li > a:focus,
+	#programova-tabulka .program2 td .time>a:hover,
+	.login :focus .btn,
+	.login :hover .btn,
+	#newsletter>form>button.btn:hover,
+	#newsletter>form>button.btn:focus,
+	.informacia-detail a:focus .ico-prev,
+	.informacia-detail a:hover .ico-prev,
+	.slick-prev:hover,
+	.slick-prev:focus,
+	.slick-next:hover,
+	.slick-next:focus,
+	#filter-zmluva #formZmluvy button:focus,
+	#filter-objednavka #formObjednavky button:focus,
+	#filter-dodavatelska_faktura #formDodavatelskeFaktury button:focus,
+	#filter-odberatelska_faktura #formOdberatelskeFaktury button:focus,
+	#filter-rozpocet #formRozpocet button:focus,
+	#filter-zmluva #formZmluvy button:hover,
+	#filter-objednavka #formObjednavky button:hover,
+	#filter-dodavatelska_faktura #formDodavatelskeFaktury button:hover,
+	#filter-odberatelska_faktura #formOdberatelskeFaktury button:hover,
+	#filter-rozpocet #formRozpocet button:hover,
+	#tPovinneZverejnovaneDokumenty_paginate a:focus,
+	#tPovinneZverejnovaneDokumenty_paginate a:hover,
+	#pripravujeme-v-obrazoch a:focus .caption,
+	#pripravujeme-v-obrazoch a:hover .caption{background-color:rgba(7,35,54,1);}
+	
+	.informacia-detail .back>a:focus,
+	.informacia-detail .back>a:hover{color:rgba(7,35,54,1);}
+	
+	#newsletter>form>.form-control:focus,
+	#filter-zmluva #formZmluvy button#fZmluvaZrusitFilter:focus,
+	#filter-objednavka #formObjednavky button#fObjednavkaZrusitFilter:focus,
+	#filter-dodavatelska_faktura #formDodavatelskeFaktury button#fDodavatelskaFakturaZrusitFilter:focus,
+	#filter-odberatelska_faktura #formOdberatelskeFaktury button#fOdberatelskaFakturaZrusitFilte:focus,
+	#filter-rozpocet #formRozpocet button#fRozpocetZrusitFilter:focus,
+	#filter-zmluva #formZmluvy button#fZmluvaZrusitFilter:hover,
+	#filter-objednavka #formObjednavky button#fObjednavkaZrusitFilter:hover,
+	#filter-dodavatelska_faktura #formDodavatelskeFaktury button#fDodavatelskaFakturaZrusitFilter:hover,
+	#filter-odberatelska_faktura #formOdberatelskeFaktury button#fOdberatelskaFakturaZrusitFilte:hover,
+	#filter-rozpocet #formRozpocet button#fRozpocetZrusitFilter:hover{outline:none; border:2px solid rgba(7,35,54,1);}
+
+
+.dropdown-menu > li{border-bottom:2px solid rgba(0,0,0,.16);}
+
+#podujatia .podujatia-table-nav li{border-right:2px solid rgba(245,245,245,1);}
+#podujatia .podujatia-table-nav li.sub > ul > li{border-top:1px solid rgba(0,0,0,0.24);}
+
+#podujatia .podujatia-table-tr{background-color:rgba(245,245,245,1);}
+
+.tabulkaCennik thead{background: rgba(232,232,232,1);}
+.tabulkaCennik tr td{border: 1px solid rgba(204,204,204,1);}
+
+
+/* misc start */
+#detail-accordion .ui-accordion-content .btn.frmt_2D {
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    border: 1px solid rgba(147,71,32,1);
+    background: rgba(191,101,46,1);	
+}
+#detail-accordion .ui-accordion-content .btn.title_SK{border: 1px solid rgba(118,171,199,1);}
+#detail-accordion .ui-accordion-content .btn.age{background:rgba(204,255,217,1);border:1px solid rgba(134,167,142,1);}
+#menu .navbar-searchform>.input-group>input.form-control,
+#menu .navbar-searchform>.input-group>.input-group-btn>button{background-color:rgba(255,255,255,0.16);}
+.vysledky_vyhladavania .media{border-top:2px solid rgba(227,227,227,1); background-color:rgba(255,255,255,1); }
+#aktualny_program .program{border-bottom:2px solid rgba(227,227,227,1);}
+#aktualny_program .program>.program-left>.time,
+#aktualny_program .program .btn-price{background-color:rgba(227,227,227,1);}
+.footer-content{background-color:rgba(53,53,53,1);}
+.footer-content>.col-4{border-right:2px solid rgba(0,0,0,0.20);}
+#partners .partners-nav>.btn.disabled{background-color:rgba(107,107,107,1);}
+#partners>.partners_body .caption{background:rgba(0,0,0,0.5);}
+#calendar .calendar-table span div {background:#fff770;}
+/* misc end */
+
+
+
+/* hover color */
+
+#switcher ul li.active a,
+#switcher ul li a:focus,
+#switcher ul li a:hover{background-color:rgba(255,255,255,.16);}
+
+#hlavickaSocial ul li a:focus,
+#hlavickaSocial ul li a:hover,
+#menu .cart a:focus .ico-cart,
+#menu .cart a:hover .ico-cart,
+.login a:hover .ico-logged,
+#novinky a:focus > span.old,
+#novinky a:hover > span.old,
+#detail-accordion .title .right a:hover,
+#detail-accordion .ui-accordion-content .btn-more-price:focus,
+#detail-accordion .ui-accordion-content .btn-more-price:hover,
+#partners .partners-nav>.btn:focus,
+#partners .partners-nav>.btn:hover{opacity:.8;}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover{background-color:rgba(0,0,0,.16);}
+
+
+#podujatia .podujatia-table-nav li.sub > ul > li > a:focus,
+#podujatia .podujatia-table-nav li.sub > ul > li > a:hover{background-color:rgba(0,0,0,.24);}
+
+#podujatia .podujatia-table-tr a:focus,
+#podujatia .podujatia-table-tr a:hover{background-color:rgba(194,194,194,.4);}
+
+#detail-accordion .ui-state-hover .ui-icon, 
+#detail-accordion .ui-state-focus .ui-icon{color:rgba(119,119,119,1);}
+
+
+.zoznam_podujati>ul>li>a:focus,
+.zoznam_podujati>ul>li>a:hover,
+.zoznam_podujati>ol>li>a:focus,
+.zoznam_podujati>ol>li>a:hover{background-color:rgba(255,255,255,.7);}
+
+.program_kina_wrapper .tabs li.active a,
+.povinneDokumenty .tabs li.active a{ color:rgba(255,255,255,1);}
+
+.slick-dots{background-color:rgba(255,255,255,.6);}
+
+
+/* font colors */
+body,
+a,
+#podujatia .podujatia-table-nav li.sub > ul > li > a,
+#detail-accordion .ui-state-default .btn-buy,
+#detail-accordion .ui-state-default,
+#detail-accordion .ui-state-default .ui-icon,
+.navbar-searchform>.input-group>input,
+.breadcrumb>.active,
+.breadcrumb>li.active>a, .breadcrumb>li.active>a:hover, .breadcrumb>li.active>a:focus,
+.program_kina_wrapper .navbar-searchform>.input-group>input,
+#newsletter>form>.form-control,
+.slick-dots li.slick-active button:before {color:rgba(0,0,0,1);}
+
+#hlavickaTop,
+#switcher ul li a,
+#hlavickaKontakt ul li a,
+#hlavickaJazyk ul li a,
+#cinemenu > li > a,
+.ico-arrow-down,
+.dropdown-menu > li > a,
+#menu .cart,
+.login .btn,
+#platno .caption,
+#platno .caption>a,
+#platno .col-4:hover .caption .more > a,
+#novinky .box .btn-more,
+#podujatia .podujatia-table-nav li>a,
+#detail-header ul li,
+#detail-header .program-title .tag,
+#detail-accordion .ui-state-default.ui-state-active,
+#detail-accordion .ui-state-default .tag,
+#detail-accordion .ui-state-default.ui-state-active .btn-buy,
+#detail-accordion .ui-state-default.ui-state-active .ui-icon,
+#detail-accordion .ui-accordion-content .btn.frmt_2D,
+#newsletter>form>button.btn,
+.galeria-wrapper .dalsie_foto .caption.on span,
+#menu .navbar-searchform>.input-group>input,
+#aktualny_program .program .tag,
+#aktualny_program .program .btn-buy,
+.footer-content h4,
+#partners>.partners_body .caption>span,
+.program_kina_wrapper .paginator>li.active>a,
+.media .program-list-group .btn-buy,
+.ui-widget-header,
+#calendar .cal-box a,
+#filter-zmluva #formZmluvy button,
+#filter-objednavka #formObjednavky button,
+#filter-dodavatelska_faktura #formDodavatelskeFaktury button,
+#filter-odberatelska_faktura #formOdberatelskeFaktury button,
+#filter-rozpocet #formRozpocet button,
+#tPovinneZverejnovaneDokumenty_paginate a,
+table#tPovinneZverejnovaneDokumenty th,
+#pripravujeme-v-obrazoch .caption span.title{ color:rgba(255,255,255,1); }
+
+#povinne_zverejnovane_dokumenty .flaticon-close47{color:rgba(21,62,91,.4);}
+
+.login>form.form-signin>.form-contro{color:rgba(102,102,102,1);}
+
+.login span{color:rgba(51,51,51,1);}
+#platno .caption .date{color:rgba(21,62,91,.22);}
+#detail-header h1{color:rgba(18,15,15,1);}
+
+#novinky .box,
+#novinky .box h2{color:rgba(22,22,22,1);}
+
+#novinky .box span.date{color:rgba(153,153,153,1);}
+#novinky span.old{color:rgba(211,97,53,1);}
+#podujatia .podujatia-table-nav li>a .ico-arrow-orange{color:rgba(7,35,54,1);}
+#podujatia .podujatia-table-tr span{color:rgba(64,64,75,1);}
+
+#podujatia .podujatia-table-tr .col-3 .strong,
+#partners h1,
+.media .program-list-group>.list-group-item span.tag,
+.informacia-detail .back>a{color:rgba(21,62,91,1);}
+
+#detail-accordion .ui-accordion-content .btn.title_SK{color:rgba(43,104,136,1);}
+#detail-accordion .ui-accordion-content .btn.age{color:rgba(1,107,28,1);}
+.breadcrumb>li>a{color:rgba(136,136,136,1);}
+
+.breadcrumb>li+li:before,
+.footer-content,
+.footer-content a{color:rgba(204,204,204,1);}
+
+.login>form input[type=checkbox]:checked + span.checkboxInput>.flaticon-check52,
+.slick-dots li button:before,
+#cboxCurrent{color:rgba(21,62,91,1);}
+
+#menu .navbar-searchform>.input-group>input::-webkit-input-placeholder { color:rgba(255,255,255,1); }
+#menu .navbar-searchform>.input-group>input:-moz-placeholder { color:rgba(255,255,255,1); }
+#menu .navbar-searchform>.input-group>input::-moz-placeholder { color:rgba(255,255,255,1); }
+#menu .navbar-searchform>.input-group>input:-ms-input-placeholder { color:rgba(255,255,255,1); }
+
+
+#calendar .calendar-table span div a:hover { background:#fffbbc; }/*hover light yellow*/
+#calendar .calendar-table span.cal-sunday { background:#e18787; } /*sunday-red*/
+#calendar .calendar-table span.cal-event,
+#calendar .calendar-table span.cal-sunday.cal-event { background:#7cb4d2; } /*event-blue*/
+#calendar .calendar-table span.cal-inactive,
+#calendar .calendar-table span.cal-inactive.cal-event,
+#calendar .calendar-table span.cal-inactive.cal-sunday.cal-event { background:#ccc;}
+#calendar .calendar-table span:hover,
+#calendar .calendar-table span.cal-sunday:hover,
+#calendar .calendar-table span.cal-event:hover,
+#calendar .calendar-table span.cal-sunday.cal-event:hover { background:#fff770; } /*yellow active*/
+#calendar .cal-box span.current-month {color:rgba(0,0,0,1);}
+
+@media only screen and (max-width: 992px) {
+	#lavyPanel.col-8 .media .program-list-group>.list-group-item { border-bottom:1px solid rgba(21,62,91,1); }
+}
+@media only screen and (max-width: 799px) {
+	.single_slider .caption { background-color:rgba(21,62,91,1); }
+}
+
+/* ----- COLORS END ---- */
+
+/* FONT SETTINGS */
+h1,
+#cinemenu,
+#pravyPanel h2,
+#platno .caption .title,
+.media-heading,
+#detail-header .program-title h2,
+#detail-header .program-title .originNazaov,
+#programova-tabulka .program2 td.name a,
+.footer-content h4 { font-family: 'Roboto Slab', serif; }

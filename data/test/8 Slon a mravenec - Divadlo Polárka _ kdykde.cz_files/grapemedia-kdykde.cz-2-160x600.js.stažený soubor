@@ -1,0 +1,21 @@
+(function () {
+//Definice HB pozice
+var RANK = "2",
+    SIZE = "160x600";
+var ADSLOT = RANK+"-"+SIZE;           
+
+var ADSIZE = "[[160, 600], [120, 600], [145, 600], [1,1]]";
+
+var GOOGLESIZE = ADSIZE;
+var GOOGLESLOT = '/85483919/digitalad/kdykde.cz-2-160x600-160x600';  
+
+var APPNEXUS_ID = 13231196;
+
+var ADFORM_MID = 560008;
+
+var SMART_SITE = 207711;
+var SMART_PAGE = 935701;
+var SMART_FORMAT = 62191;
+
+if(window.ibb_data&&window.ibb_data.passbackIds){ids=window.ibb_data.passbackIds,ibb=window.location.protocol+"//"+ids.adDomain+"/please/showit/"+ids.siteId+"/"+ids.sectionId+"/"+ids.positionId+"/"+ids.bannerType+"/?typkodu=js&_neidplan="+ids.planId+"&bust="+Math.random()+"&target=_blank&partners="+(ids.partners?ids.partners+",":"")+ids.partner+"&psbck=1","string"==typeof bbh&&(ibb+=bbh);var BBpass=ibb}var pmpb="pmpb_"+ADSLOT,pmpbg="pmpbg-"+ADSLOT,pmif="pmif-"+ADSLOT,pmpbSel="#"+pmpb,pmifSel="#"+pmif,ifrm=document.createElement("iframe");ifrm.id=pmif,ifrm.scrolling="no",ifrm.setAttribute("marginwidth","0"),ifrm.setAttribute("marginheight","0"),ifrm.setAttribute("frameborder","0"),ifrm.style="border: 0px; vertical-align: bottom;margin: 0px auto;border:0;",ifrm.width="0",ifrm.height="0",document.querySelector(pmpbSel).appendChild(ifrm),BBpass&&ifrm.setAttribute("data-passback-uri",BBpass);var hbScript='var adUnits=[{code:"'+pmpb+'",mediaTypes:{banner:{sizes:'+ADSIZE+'}},bids:[{bidder:"appnexus",params:{placementId:'+APPNEXUS_ID+'}},{bidder:"adform",params:{mid:'+ADFORM_MID+',rcur:"USD"}},{bidder:"smartadserver",params:{domain:"//prg.smartadserver.com",siteId:"'+SMART_SITE+'",pageId:"'+SMART_PAGE+'",formatId:"'+SMART_FORMAT+'",currency:"USD"}}]}],PREBID_TIMEOUT=1e3,FAILSAFE_TIMEOUT=3e3,googletag=googletag||{};googletag.cmd=googletag.cmd||[],googletag.cmd.push(function(){googletag.pubads().disableInitialLoad()});var pbjs=pbjs||{};function initAdserver(){pbjs.initAdserverSet||(pbjs.initAdserverSet=!0,googletag.cmd.push(function(){pbjs.que.push(function(){pbjs.setTargetingForGPTAsync();var e=window.top.__cmp;e?e("getVendorConsents",null,function(e){e&&e.purposeConsents[2]?(googletag.pubads().setRequestNonPersonalizedAds(0),googletag.pubads().setTargeting("consent","true"),googletag.pubads().refresh()):(googletag.pubads().setRequestNonPersonalizedAds(1),googletag.pubads().refresh())}):(googletag.pubads().setRequestNonPersonalizedAds(1),googletag.pubads().refresh())})}))}function frameSChange(){for(i=1;i<=30;++i)e=i,setTimeout(function(){if(parent.document.querySelector("'+pmifSel+'")){var e=parent.document.querySelector("'+pmifSel+'"),t=e.contentWindow;if(t.document.getElementsByTagName("iframe")[0]){var o=t.document.getElementsByTagName("iframe")[0],s=o.scrollHeight,a=o.scrollWidth;e.style.width=a+"px",e.style.height=s+"px",e.width=a,e.height=s}}},200*e*e*e);var e}pbjs.que=pbjs.que||[],pbjs.que.push(function(){pbjs.setConfig({consentManagement:{gdpr:{cmpApi:"iab",timeout:8e3,allowAuctionWithoutConsent:!0}}}),pbjs.addAdUnits(adUnits),pbjs.aliasBidder("appnexus","prgmt"),pbjs.requestBids({bidsBackHandler:initAdserver,timeout:PREBID_TIMEOUT})}),setTimeout(function(){initAdserver()},FAILSAFE_TIMEOUT),googletag.cmd.push(function(){googletag.defineSlot("'+GOOGLESLOT+'",'+GOOGLESIZE+',"'+pmpbg+'").addService(googletag.pubads()),googletag.pubads().enableSingleRequest(),googletag.pubads().setTargeting("pubSize", "'+SIZE+'"),googletag.pubads().collapseEmptyDivs(!0),googletag.pubads().setCentering(!0),googletag.enableServices()}),document.addEventListener("DOMContentLoaded",function(e){googletag.cmd.push(function(){googletag.display("'+pmpbg+'")}),frameSChange()});',fdoc=document.getElementById(pmif).contentWindow.document;fdoc.open(),fdoc.write('<style>body{margin:0;padding:0;}</style><script async="" src="//www.googletagservices.com/tag/js/gpt.js"><\/script><script async="" src="//eu.prgmt.com/lib/pbjs/last/prebid.js"><\/script><div id="'+pmpbg+'"></div><script>'+hbScript+"<\/script>"),fdoc.close();   
+})();     

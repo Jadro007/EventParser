@@ -1,0 +1,224 @@
+Ads.sklikSSP = function(param)
+{
+  if(param.sticky && !window.addEventListener) return;
+  if(!param.id)
+  {
+    param.id = Ads.uniqueId();
+    document.write("<div id=\"" + param.id + "\"></div>");
+  }    
+  var id = param.id;
+  var consent = document.cookies.read("euconsent");
+  var sid = document.cookies.read("sid");
+  
+  var zone = { "width": param["rozmery"][0], "height": param["rozmery"][1], "zoneId": param["zone"], "id": id };
+  
+  var pd = {};
+  pd.pvId = Ads.sasViewID;
+  pd.adblock = false;
+  pd.site = param.site || location.href;
+  pd.zones = [zone];
+  pd.consent = consent || null;
+  pd.sid = sid || null;
+  
+  var xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : null));
+  if(!xhr) return false;
+  xhr.open("POST", "https://ssp.imedia.cz/v1/xhr", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.withCredentials = true;
+  xhr.onreadystatechange = function()
+  {
+    if(xhr.readyState != 4) return;
+    try
+    {
+      var data = JSON.parse(xhr.responseText);
+    } catch(exc) { return; }
+    for(var i = 0; i < data.ads.length; i++)
+      if(buildAd(data.ads[i])) return;
+    passback();
+  };
+  xhr.send(JSON.stringify(pd));
+  
+  function passback()
+  {      
+      Log.ping(navigator.userAgent, "logsklik_passback_" + param.fcid);
+      postscribe('#'+id, '<script type="text/javascript" src="https://a.1gr.cz/mafra/jserver/SASPB/FCID='+param.fcid+'/passback=1/"></script>');
+  }
+  
+  function buildAd(ad)
+  {
+    Log.ping(navigator.userAgent, "logsklik_" + ad.type);
+    if(ad.type != "empty" && ad.type != "code" && ad.type != "iframe_url" && ad.type != "json_url") return;
+    if(ad.type == "code")
+      postscribe("#" + id, ad.data);
+    else if(ad.type == "empty")
+      passback();
+    else if(ad.type == "iframe_url")
+      element(id).innerHTML = "<iframe src=\"" + ad.data.replace(/"/g, "&quot;") + "\" width=\"" + ad.width + "\" height=\"" + ad.height + "\" align=\"middle\" scrolling=\"no\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" allowtransparency=\"true\"></iframe>";
+    else if(ad.type == "json_url")
+    {
+      var xhr = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : null));
+      xhr.open("GET", ad.data, true);
+      xhr.onreadystatechange = function()
+      {
+        if(xhr.readyState != 4) return;
+        try
+        {
+          var data = JSON.parse(xhr.responseText);
+          for(var i = 0; i < data.ads.length; i++)
+            if(createAdFromJson(data.ads[i]))
+            {
+              if(data.confirmImpUrl)
+                Ads.ping(data.confirmImpUrl);
+              return;
+            }  
+          passback();
+        } catch(exc) { return; }
+      };      
+      xhr.send();
+      function createAdFromJson(ad)
+      {
+        Log.ping(navigator.userAgent, "logsklik_json_url_" + ad.adType);
+        if(ad.adType != "DRTG" && ad.adType != "COMBINED" && ad.adType != "BANNER") return;
+        var el = element(id);
+        var clickUrl = param.log ? Log.link(ad.clickUrl, param.log) : ad.clickUrl;
+
+          if (ad.adImageUrl) {
+              // TODO: Doèasnì zpìtná kompatibilita, nutno pøedìlat na nový zpùsob bez pevnì zadané výšky (viz dokumentace)
+              ad.screenshot100 = ad.adImageUrl + "?fl=" + encodeURIComponent("res,100,75,3|jpg,90");
+              ad.screenshot160 = ad.adImageUrl + "?fl=" + encodeURIComponent("res,160,110,3|jpg,90");
+              ad.screenshot280 = ad.adImageUrl + "?fl=" + encodeURIComponent("res,280,130,3|jpg,90");
+          } else if(ad.imageUrl) {
+              ad.screenshot100 = ad.imageUrl + "?fl=" + encodeURIComponent("res,100,75,1,fff");
+              ad.screenshot160 = ad.imageUrl + "?fl=" + encodeURIComponent("res,160,125,1,fff");
+              ad.screenshot220 = ad.imageUrl + "?fl=" + encodeURIComponent("res,220,120,1,fff");
+          } else if (ad.adUrl) {
+              ad.screenshot100 = "https://fimg-resp.seznam.cz/?spec=ft100x75&fast=1&url=" + encodeURIComponent(ad.adUrl);
+              ad.screenshot160 = "https://fimg-resp.seznam.cz/?spec=ft160x110&fast=1&url=" + encodeURIComponent(ad.adUrl);
+              ad.screenshot280 = "https://fimg-resp.seznam.cz/?spec=ft280x130&fast=1&url=" + encodeURIComponent(ad.adUrl);
+          } else {
+              ad.screenshot100 = ad.screenshot160 = ad.screenshot220 = ad.screenshot280 = "//1gr.cz/u/free.gif";
+          }
+
+          if (param.native) {
+            // TODO: pøedìlat pro nové šablony
+            var nativeParam = {
+                "link": clickUrl,
+                "area": param.area
+            };
+
+            if (ad.adType === "DRTG") {
+                nativeParam["nadpis"] = ad.title + " &ndash; " + ad.price + " Kè";
+                nativeParam["popisek"] = ad.category;
+                nativeParam["obrazky"] = [
+                    [220, 120, ad.screenshot220],
+                    [160, 125, ad.screenshot160],
+                    [100, 75, ad.screenshot100]
+                ];
+            } else {
+                nativeParam["nadpis"] = ad.shortHeadline + (ad.longHeadline ? " – " + ad.longHeadline : "");
+                nativeParam["popisek"] = ad.description;
+                nativeParam["obrazky"] = [
+                    [280, 130, ad.screenshot280],
+                    [160, 110, ad.screenshot160],
+                    [100, 75, ad.screenshot100]
+                ];
+            }
+
+            Ads.Native(nativeParam);
+            return true;
+        }
+
+        if (param.sticky) {
+            var stickyParam = {
+                "link": clickUrl,
+                "async": el,
+                "cookieMin": param.cookieMin,
+                "area": param.area
+            };
+
+            if (ad.adType === "BANNER") {
+                stickyParam["obrazek"] = ad.bannerUrl;
+            } else {
+                // TODO: Aktualizovat šablonu
+                var backgroundImageUrl;
+                if (ad.adType === "DRTG") {
+                    backgroundImageUrl = ad.imageUrl + "?fl=" + encodeURIComponent("res,350,350,1,fff");
+                } else {
+                    backgroundImageUrl = ad.adSquareImageUrl + "?fl=" + encodeURIComponent("res,300,,1|jpg,90");
+                }
+                stickyParam["html"] = "<div style='display: flex;height: 100px;width: 100%;align-items: center;overflow:hidden;'>\
+                    <div style='flex: 0 0 auto;width:100px;height:100px;background-image:url(" + backgroundImageUrl + ");background-size: cover;'></div>\
+                    <div style='margin: 0 auto; padding: 0 0.25em;'>\
+                    <div class='b'>" + (ad.shortHeadline || ad.title) + "</div><p>" + (ad.description || ad.price) + "</p>\
+                    </div>\
+                    </div>";
+            }
+            Ads.MobilniSticky(stickyParam);
+
+            return true;
+        }
+
+        if (param.template) {
+            var templateHTML = param.template.replace(/\{([^\}]+)\}/g, function(m, m1)
+            {
+                if (ad.adType === "DRTG") {
+                    m1 = {
+                        "screenshot280": "screenshot220",
+                        "shortHeadline": "title",
+                        "longHeadline": "price",
+                        "description": "category"
+                    }[m1] || m1;
+                }
+
+                return ad[m1] || "";
+            });
+            el.classes.add(param.className ? param.className : "");
+            el.innerHTML = "<a href=\""+clickUrl+"\" target=\"_blank\">" + templateHTML + "</a>";
+            return true;
+        }
+
+        switch(ad.adType)
+        {
+          case "DRTG":
+            //TODO - zatím není oficiální šablona
+            el.classes.add("natban natban-drtg natban"+param["rozmery"][0]+"x"+param["rozmery"][1]);
+            el.innerHTML = "<a href=\""+clickUrl+"\" target=\"_blank\"><div class=\"image\"><img src=\""+ad.imageUrl+"\" /></div><h1>"+ad.title+"</h1><p>"+ad.category+"</p><b>Zjistit víc</b></a>";
+            break;
+          case "COMBINED":
+            var adImageSizes = [800, 768, 600, 512, 400, 384, 300, 256, 200, 192, 160, 128, 64];
+            var adImageWidth = Math.min.apply(null, adImageSizes.filter(function (v) {return v >= param["rozmery"][0]}))
+            var imageUrl = ad.adSquareImageUrl + "?fl=" + encodeURIComponent("res," + adImageWidth + ",,1|jpg,90");
+            el.classes.add("natban natban-combined natban"+param["rozmery"][0]+"x"+param["rozmery"][1]);
+            el.innerHTML = "<a href=\""+clickUrl+"\" target=\"_blank\"><div class=\"image\"><img src=\""+imageUrl+"\" /></div><h1>"+ad.shortHeadline+"</h1><p>"+(ad.longHeadline ? ad.longHeadline : ad.description)+"</p><b>Zjistit víc</b></a>";
+            break;
+          case "BANNER":
+            //TODO - zatím není oficiální šablona
+            el.classes.add("natban natban-banner natban"+param["rozmery"][0]+"x"+param["rozmery"][1]);
+            el.innerHTML = "<a href=\""+clickUrl+"\" target=\"_blank\"><div class=\"image\"><img src=\""+ad.bannerUrl+"\" /></div></a>";
+            break;
+          default:
+            break;
+        }
+        return true;
+      }
+    }
+    if(ad.tracking && ad.tracking.served && ad.tracking.served.length)
+      for(var i = 0; i < ad.tracking.served.length; i++)
+        Ads.ping(ad.tracking.served[i]);
+    if(ad.tracking && ad.tracking.visible && ad.tracking.visible.length)
+    {
+      var position = Ads.positionFromElement(id);
+      if(position)
+      {
+        position.setVisibilityCallback(function()
+        {
+         for(var i = 0; i < ad.tracking.visible.length; i++)
+            Ads.ping(ad.tracking.visible[i]);
+        });
+      }
+    }
+    return true;
+  }
+};
+
+Module.ready("SklikSSP", Ads.sklikSSP);

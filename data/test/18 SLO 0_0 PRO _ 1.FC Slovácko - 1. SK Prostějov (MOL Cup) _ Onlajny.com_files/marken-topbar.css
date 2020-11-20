@@ -1,0 +1,113 @@
+.marken-bar-popup:hover .marken-btn {
+    text-decoration: underline;
+}
+
+.marken-bar {
+    --white: white;
+    --blue: rgb(43, 62, 80);
+    --gray: rgb(70, 99, 128);
+    --light-gray: rgb(233, 236, 239);
+    --red: rgb(231, 76, 60);
+}
+.marken-bar {
+    background-color: var(--blue);
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.81rem;
+}
+
+.marken-bar-link {
+    color: var(--white);
+    line-height: 1rem;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.marken-bar-link:hover {
+    text-decoration: underline;
+}
+
+.marken-bar-link:hover .marken-bar-popup {
+    display: block;
+    animation: openPopup .2s ease-in-out forwards;
+}
+
+.marken-bar-link + .marken-bar-link:before {
+    content: "";
+    width: 1px;
+    height: 1.5rem;
+    background-color: var(--gray);
+    position: absolute;
+    left: 0;
+    top: .5rem;
+}
+
+.marken-bar-popup {
+    width: 9rem;
+    padding: .5rem;
+    background-color: var(--light-gray);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%,0);
+    z-index: 1;
+    display: none;
+}
+
+.marken-bar-popup:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%,-100%);
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 7.5px 9px 7.5px;
+    border-color: transparent transparent var(--light-gray) transparent;
+}
+
+.marken-bar-popup > img {
+    width: 100%;
+    height: auto;
+}
+
+.marken-btn {
+    color: var(--white);
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    background-color: var(--red);
+    border: 2px solid var(--light-gray);
+    display: inline-block;
+    margin-top: -1.13rem;
+}
+
+.marken-bar-popup:hover .marken-btn {
+    text-decoration: underline;
+}
+
+@keyframes openPopup {
+    0% {
+        display: block;
+        opacity: 0;
+        transform: translate(-50%,-1rem);
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%,0);
+    }
+}

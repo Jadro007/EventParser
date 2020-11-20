@@ -1,0 +1,6 @@
+$(".rightcol-tab").on("click", function(e) {
+    e.preventDefault();
+    $(".rightcol-tab").toggleClass("on");
+    $(".performance-plan").html("<p class='no-results'>Načítám...</p>");
+    return false;
+});

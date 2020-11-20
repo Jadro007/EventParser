@@ -1,0 +1,481 @@
+// JavaScript Document
+        function autoHeightAnimate(element, time){
+          	var curHeight = element.height(), // Get Default Height
+                autoHeight = element.css('height', 'auto').height(); // Get Auto Height
+            	  element.height(curHeight); // Reset to Default Height
+            	  element.stop().animate({ height: autoHeight }, parseInt(time)); // Animate to Auto Height
+        }
+
+function scrollToElement(selector, time, verticalOffset) {
+          time = typeof(time) != 'undefined' ? time : 1000;
+          verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+          element = $(selector);
+          offset = element.offset();
+          offsetTop = offset.top + verticalOffset;
+          $('html, body').animate({
+              scrollTop: offsetTop
+          }, time);
+           return false; 
+} 
+ 
+
+function wheight(){
+    
+
+    
+    toptop();    
+}
+
+function toptop(){
+    var windowh = $( window ).height();
+
+  if((/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+      
+    var maxi = $('#topimagespace').height();
+    var maxi2 = $('#topimagespace.super-small-image').height();
+    
+    var ww = $(window).width();
+    
+    if(ww<350){
+      if(maxi<170){maxi= 170;}    
+      if(maxi2<120){maxi2= 120;}            
+    }else if(ww<600){
+      if(maxi<200){maxi= 200;}    
+      if(maxi2<120){maxi2= 120;}    
+    }else{
+      if(maxi<240){maxi= 240;}    
+      if(maxi2<150){maxi2= 150;}
+    }
+    
+    
+    $('#topimagespace, .homepageimage').css('height',(maxi));
+    $('#topimagespace, .homepageimage').css('min-height',(maxi));
+    $('#topimagespace.small-image,.small-image .homepageimage').css('height',(maxi));
+    $('#topimagespace.small-image,.small-image .homepageimage').css('min-height',(maxi));
+    $('#topimagespace.super-small-image,.super-small-image .homepageimage').css('height',maxi2);
+    $('#topimagespace.super-small-image,.super-small-image .homepageimage').css('min-height',maxi2);    
+    }
+     setTimeout(function() {
+    if( $(window).width()<1000 ){
+      var alltop = $('.submenu.activem').height() + $('#top').height() - 20;
+      $('.topspace').css('height',alltop);
+      $('#slider').css('top',alltop);
+    }
+    }, 100); 
+    return true;
+}
+
+$(window).load(function () {
+
+}); 
+
+function zavirejprogram(hash){
+                var ccc = hash.length;
+                
+                if(ccc>20){
+                                                                
+                   var alltop = ($("ul.submenu").height() + $("#top").height()) * -1.45;
+
+
+  
+    hash = hash.replace('#', '');
+    //alert(hash);
+                    $( ".whitebox-program" ).hide();
+              
+                    
+                    if($(".d_" + hash).hasClass("down")){
+                       $("#h_" + hash).show();
+                    }else{
+                      $("#d_" + hash).fadeIn(100);
+                        
+                        
+                        
+                                              
+                        if((/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+                          var alltop = ($(".programline").height()); alltop = "";
+                          scrollToElement("#h_" + hash, 1500, alltop);
+                        }else{
+                          scrollToElement("#h_" + hash, 1500, alltop);
+                        }
+                                               $("#h_" + hash).hide();
+                                          
+                    } 
+                    
+                    $(".d_" + hash).toggleClass("down");
+                    
+                    
+               //     return false;      
+               
+               }                                                      
+
+}
+
+$(document).ready(function() {
+  
+      
+  toptop();
+  
+    
+  var hash = window.location.hash;
+  
+  var str = hash;
+  var n = str.indexOf("d_");
+
+  
+   
+  if(n!=2 && hash){  
+  
+    
+    zavirejprogram(hash);
+    
+    
+  }else if(n==2){
+    hash = hash.replace('dd_', 'h_');
+    hash = hash;
+    //alert(hash);
+    
+    
+                  var alltop = ($("ul.submenu").height() + $("#top").height()) * -1.45;
+                        
+                                              
+                        if((/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+                          var alltop = ($(".programline").height()); alltop = "";
+                          scrollToElement(hash, 800, alltop);
+                        }else{
+                          scrollToElement(hash, 800, alltop);
+                        }
+                        
+    
+    
+    //scrollToElement(hash, 1000, -115);
+       
+  }       
+
+
+  $( ".skoly" ).click(function() {
+  
+    //alert('Vstupenky na představení pro školy objednávejte na obchodním oddělení divadla: Vladimíra Bernatová, tel.: 326 531 250');      
+    //return false;
+    
+  });   
+
+                     
+  
+  $( ".extrainfoclose" ).click(function() {
+  
+     
+     $('.programline').show();
+
+     $(".programline-button-top").removeClass("down");
+     
+     $( ".whitebox-program" ).hide();
+
+    return false
+  });   
+
+  $( window ).on( "orientationchange", function( event ) {
+      setTimeout(function() {
+      if( $(window).width()<1000 ){        
+        var alltop = $('.submenu.activem').height() + $('#top').height();
+        $('.topspace').css('height',alltop);
+        $('#slider').css('top',alltop);
+      }
+      toptop();
+      }, 250);     
+  });  
+
+  setTimeout(function() {
+    $('.homebox').css('visibility','visible');
+    //$('.homepageimage').fadeIn(350);
+  }, 100);            
+  setTimeout(function() {
+    $('.divadlo').fadeIn(350);
+    //$('.homepageimage').fadeIn(350);
+  }, 200);  
+  setTimeout(function() {
+    $('.kino').fadeIn(350);
+  }, 250);  
+  setTimeout(function() {
+    $('.estrada').fadeIn(350);
+  }, 300);  
+  setTimeout(function() {
+    $('.dklub').fadeIn(350);
+  }, 350);  
+  setTimeout(function() {
+    $('.homebox-akce').fadeIn(350);
+  }, 400);  
+  setTimeout(function() {
+    $('.homebox-blazkova').fadeIn(350);
+  }, 450);  
+
+  /*
+  auto: true,             // Boolean: Animate automatically, true or false
+  speed: 500,            // Integer: Speed of the transition, in milliseconds
+  timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+  pager: false,           // Boolean: Show pager, true or false
+  nav: false,             // Boolean: Show navigation, true or false
+  random: false,          // Boolean: Randomize the order of the slides, true or false
+  pause: false,           // Boolean: Pause on hover, true or false
+  pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+  prevText: "Previous",   // String: Text for the "previous" button
+  nextText: "Next",       // String: Text for the "next" button
+  maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+  navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+  manualControls: "",     // Selector: Declare custom pager navigation
+  namespace: "rslides",   // String: Change the default namespace used
+  before: function(){},   // Function: Before callback
+  after: function(){}     // Function: After callback  
+  */
+      jQuery("#slider62").responsiveSlides({
+        auto: true,
+        timeout: 10000,        
+        pager: false,
+        pause: false,
+        nav: true,
+        speed: 600,
+        namespace: "callbacks",
+        before: function () {
+
+        },
+        after: function () {
+
+        }
+      });    
+    
+  if((/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+  }else{
+    $( ".textboxsmall" ).hover(
+      function() {
+        //$( this ).css('background-color','#fafafa');
+        $( this ).find( "h3 a" ).css('color','#e98667');
+        $(this).find('img').fadeTo(100, 0.70);    
+      }, function() {
+        $(this).find( "h3 a" ).css('color', '#00000f');
+         $(this).find('img').fadeTo(100, 1);
+         //$( this ).css('background-color','#fff');
+      }
+    );
+ 
+    
+  }
+    
+  if((/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){ 
+    setTimeout(function() {                
+      wheight();
+    }, 100);
+  }
+
+
+
+
+
+
+
+  $.fn.getTitle = function() { // Copy the title of every IMG tag and add it to its parent A so that fancybox can show titles
+  	var arr = $("a.fancybox");
+  	$.each(arr, function() {
+  		var title = $(this).children("img").attr("title");
+  		$(this).attr('title',title);
+  	})
+  }
+
+// Supported file extensions
+  var thumbnails = $("a:has(img)").not(".nolightbox").filter( function() { return /\.(jpe?g|png|gif|bmp)$/i.test($(this).attr('href')) });
+
+  thumbnails.addClass("fancybox").attr("rel","fancybox");//.getTitle();
+    
+		$('a.fancybox').fancybox({
+      beforeShow : function() {
+          var alt = this.element.attr('title');
+          
+          //this.inner.find('img').attr('alt', alt);
+          
+          this.title = alt;
+      },
+      padding : '0'
+    });
+
+
+
+$('.fancybox-home').click(function () {
+    var xcv = $(this).find('h2 a').attr('href');
+
+    $.fancybox({
+        helpers: { 
+            title: null
+        },
+        padding : '0',    
+        type: 'inline',
+        href: xcv
+    });
+});
+
+
+
+  var windoww = $( window ).width();
+  var windowh = $( window ).height();
+
+  var menuh = $( '#top' ).height();   
+
+
+  $( ".textboxsmallklik" ).click(function() {
+
+
+
+  
+    var href = $(this).find('a').attr('href');           
+    window.location.href = href;
+  });  
+
+
+  $( ".programline-in, .programline-image,.bggray .textboxsmallin" ).click(function() {
+  
+    var href = $(this).find('a').attr('href');           
+    window.location.href = href;
+  });  
+ 
+  $( ".box-small" ).click(function() {
+  
+    var href = $(this).find('a').attr('href');           
+    window.location.href = href;
+  });   
+
+
+  
+  
+  
+  
+    $( ".box-small .page-box-in, .box-small, .textboxsmallklik" ).hover(
+      function() {
+        $( this ).find( "h3 a" ).css('color','#e98667');
+        $(this).find('img').fadeTo(100, 0.70);          
+        //$( this ).css('background-color','#fafafa');
+      }, function() {
+        $(this).find( "h3 a" ).css('color', '#00000f');
+         $(this).find('img').fadeTo(100, 1);        
+         //$( this ).css('background-color','#fff');        
+      }
+    );
+
+
+function urlofdoc ( jsfile ) {
+ 
+    var scriptElements = document.getElementsByTagName('script');
+    var i, element, myfile;
+ 
+        for( i = 0; element = scriptElements[i]; i++ ) {
+ 
+            myfile = element.src;
+ 
+            if( myfile.indexOf( jsfile ) >= 0 ) {
+                var myurl = myfile.substring( 0, myfile.indexOf( jsfile ) );
+ 
+            }
+        }
+    return myurl;
+}
+
+    
+//console.log( [kdeje] );
+
+    
+    $( ".textboxsmallklik, .box-small .page-box-in" ).hover(
+      function() {
+        var kdeje = urlofdoc('scripts.js');
+        $( this ).find( "h3 a" ).css('color','#e98667');
+        $(this).find('img').fadeTo(100, 0.70);    
+         $(this).css('background-image','url(' + kdeje + '/img/sipkahover.png)'); 
+      }, function() {
+        var kdeje = urlofdoc('scripts.js');
+        $(this).find( "h3 a" ).css('color', '#00000f');
+         $(this).find('img').fadeTo(100, 1);
+         $(this).css('background-image','url(' + kdeje + '/img/sipka.png)');            
+      }
+    );
+    
+    
+    
+    $( ".whitebox-stahovaci" ).hover(
+      function() {
+        var kdeje = urlofdoc('scripts.js');
+        $( this ).find( "h2" ).css('color','#e98667');        
+        $( this ).css('cursor','pointer');
+        $( this ).css('cursor','hand');    
+      }, function() {
+        var kdeje = urlofdoc('scripts.js');
+        $(this).find( "h2" ).css('color', '#00000f');
+        $( this ).css('cursor','default');      
+      }
+    );
+
+
+  $( ".whitebox-stahovaci" ).click(function(e) {  
+
+    var target  = $(e.target);
+    if( target.is('div,h2') ) {
+      $( this ).css('cursor','default');
+      $(this).find( "h2" ).css('color', '#00000f');
+      $(this).toggleClass('whitebox-stahovaci-active');
+      $(this).toggleClass('stazeny'); 
+    }
+                      
+  });   
+
+  $( ".blazkova_komentuje a" ).click(function(e) {  
+    //$(this).parent().find('div.koment').fadeToggle(150);
+    
+          
+    
+    //return false;
+                      
+  });   
+  
+ 
+     
+    $( ".programline-image" ).hover(
+      function() {        
+        
+        $(this).parent().find( "h2 a" ).css('color','#e98667');      
+        $(this).fadeTo(0, 0.70);          
+      }, function() {
+        $(this).parent().find( "h2 a" ).css('color', '#00000f');
+        $(this).fadeTo(0, 1);      
+      }
+    );    
+     
+    $( ".programline-in" ).hover(
+      function() {        
+        
+        $(this).find( "h2 a" ).css('color','#e98667');      
+        $(this).parent().find('.programline-image').fadeTo(0, 0.70);          
+      }, function() {
+        $(this).find( "h2 a" ).css('color', '#00000f');
+        $(this).parent().find('.programline-image').fadeTo(0, 1);      
+      }
+    );
+
+    
+
+ 
+   
+  var $_GET = {};
+  
+  document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+      function decode(s) {
+          return decodeURIComponent(s.split("+").join(" "));
+      }
+  
+      $_GET[decode(arguments[1])] = decode(arguments[2]);
+  });
+  
+
+  $( "#menumobile" ).click(function() {
+  
+    $('.menu , .submenu, #menudiv, #top').toggleClass('active');      
+    
+    
+  });   
+
+    
+});      
+

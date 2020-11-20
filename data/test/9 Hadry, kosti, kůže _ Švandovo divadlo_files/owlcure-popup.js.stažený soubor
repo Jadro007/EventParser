@@ -1,0 +1,295 @@
+(function () {
+    var CONFIG = {
+        COOKIE_EXP: 36500
+    };
+
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
+
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    var deleteCookie = function (name) {
+        setCookie(name, '', 0);
+    };
+
+    var r = function () {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    };
+
+//HASH
+    var generateHash = function () {
+        var now = new Date().getTime();
+        var now = now.toString();
+        var base = "";
+        var uid = "";
+
+        for (var i = now.length; i < 16; i++) {
+            base += "1";
+        }
+        uid = base + "" + now + r() + r() + r() + r();
+
+        return uid;
+    };
+
+    var getHashForRegistration = function () {
+        var result;
+        var h = getCookie('oa_hash');
+        var ah = getCookie('oa_anonyme_hash');
+
+        if (h) {
+            result = h;
+        } else if (ah) {
+            result = ah;
+            deleteCookie('oa_anonyme_hash');
+        } else {
+            result = generateHash();
+        }
+
+        setCookie('oa_hash', result, CONFIG.COOKIE_EXP);
+
+        return result;
+    };
+
+
+    var calculatePopupDelay = function (server_timeout) {
+        var start = new Date(getCookie('owltimer'));
+        var now = new Date();
+
+        var diff = now.getTime() - start.getTime();
+
+        if (diff >= server_timeout) {
+            return 0;
+        } else {
+            return (server_timeout - diff);
+        }
+    };
+
+
+    function loadPopup() {
+        var url = "https://owlcure.eu/popup/domain";
+        var method = "POST";
+        var postData = JSON.stringify({ch: ch});
+        var async = true;
+        var request = new XMLHttpRequest();
+
+        request.onload = function () {
+            var status = request.status;
+            var data = request.responseText;
+            if (status == 200) {
+                showModal(JSON.parse(data));
+            } else {
+                //console.log('Fail to load popup. Status code: ' + status);
+            }
+        };
+
+        request.open(method, url, async);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        request.setRequestHeader("Accept", "application/json");
+
+        request.send(postData);
+    }
+
+    function showModal(data) {
+        if (!data.id) {
+            return;
+        }
+
+        if (data.active == false) {
+            return;
+        }
+
+        //checkers
+        if (!data.cookie_success) {
+            data.cookie_success = 60;
+        }
+        if (!data.cookie_fail) {
+            data.cookie_fail = 60;
+        }
+        if (!data.input_text) {
+            data.input_text = 'mail@domain.com';
+        }
+        
+        //create global style
+        var css = '.owl-btn:hover{ background-color: #000; cursor: pointer;}';
+        var gStyle = document.createElement('style');        
+        
+        gStyle.appendChild(document.createTextNode(css));         
+        
+        document.getElementsByTagName('head')[0].appendChild(gStyle);
+
+        var vw = window.innerWidth;
+
+        // CREATE MODAL CONTAINER
+        var container = document.createElement('div');
+        container.setAttribute('id', 'owlpopup');
+
+        container.style.cssText = 'background-color: rgba(0,0,0,0.5); position: fixed; z-index: 100000; top: 0px; left: 0px; right: 0px; bottom: 0px; color: #434343; font-family: "Arial"; letter-spacing: 0.015em; line-height: 1.7em;';
+
+        //CREATE FORM CONTAINER in middle
+        var formContainer = document.createElement('div');
+        formContainer.style.cssText = 'position: absolute; background-color: #f1f1f1; padding: 50px; font-size: 20px; text-align: justify;';
+
+        if (vw < 700) {
+            formContainer.style.cssText += 'top: 50%; left: 10px; right: 10px; transform: translate(0%, -50%); width: calc(100%-20px);';
+        } else {
+            formContainer.style.cssText += 'top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px;';
+        }
+
+        formContainer.style.cssText += data.container_style;
+
+        //CLOSE BUTTON
+        var closeBtn = document.createElement('button');
+        closeBtn.style.cssText = "position:absolute; display: inline-block; width: 32px; height: 32px; opacity: 0.5; background-color:inherit; top: 11px; right: 10px; -webkit-appearance: none; border: 0px solid #d40057;";
+        closeBtn.style.cssText += "background-image:url('http://www.owlcure.com/images/close.png'); background-repeat: no-repeat; background-size: 100%; background-position: 50% 50%;";
+        closeBtn.setAttribute('class', 'owl-btn');
+        closeBtn.onclick = function (event) {
+            /* HIDE DIALOG */
+            event.preventDefault();
+            var popup = document.getElementById("owlpopup");
+            popup.style.cssText = "display: none;";
+        };
+
+        formContainer.appendChild(closeBtn);
+
+        var content = document.createElement('div');
+        content.innerHTML = data.content;
+        formContainer.appendChild(content);
+
+        //CREATE FORM
+        var f = document.createElement("form");
+        f.style.cssText = "margin-top: 40px;";
+
+        var input = document.createElement("input"); //input element, text
+        input.setAttribute('type', "text");
+        input.setAttribute('name', "username");
+        input.setAttribute('id', "owlmail");
+        input.setAttribute('placeholder', data.input_text);
+        input.style.cssText = data.input_style;
+
+        var btn = document.createElement("button");
+        btn.setAttribute('class', 'owl-btn');
+        btn.innerHTML = data.button_text;
+        btn.style.cssText = data.button_style;        
+
+        btn.onclick = function (event) {
+            //set cookie
+            if (data.mode == "prod") {
+                setCookie('owlmodal', 'displayed', data.cookie_success);
+            }
+
+            /* HIDE DIALOG */
+            var popup = document.getElementById("owlpopup");
+            popup.style.cssText = "display: none;";
+
+            event.preventDefault();
+            var mail = document.getElementById("owlmail").value;
+            var url = "https://owlcure.eu/popup/save";
+            var method = "POST";
+            var postData = JSON.stringify({mail: mail, ch: ch, hash: getHashForRegistration()});
+            var async = true;
+            var request = new XMLHttpRequest();
+
+            request.onload = function () {
+                var status = request.status;
+                var data = request.responseText;
+            };
+
+            request.open(method, url, async);
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            request.setRequestHeader("Accept", "application/json");
+
+            request.send(postData);
+        };
+
+        f.appendChild(input);
+        f.appendChild(btn);
+
+        formContainer.appendChild(f);
+
+        container.appendChild(formContainer);
+
+        setTimeout(function () {
+            if (data.mode == "prod") {
+                setCookie('owlmodal', 'displayed', data.cookie_fail);
+            }
+
+            document.body.appendChild(container);
+
+            /* SEND FINAL STATISTIC */
+            var url = "https://owlcure.eu/popup/show";
+            var method = "POST";
+            var postData = JSON.stringify({ch: ch});
+            var async = true;
+            var request = new XMLHttpRequest();
+
+            request.onload = function () {
+                var status = request.status;
+                var data = request.responseText;
+            };
+
+            request.open(method, url, async);
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            request.setRequestHeader("Accept", "application/json");
+
+            request.send(postData);
+
+        }, calculatePopupDelay(data.timeout));
+    }
+
+//deleteCookie('owlmodal');
+//deleteCookie('owltimer');
+//deleteCookie('oa_hash');
+//deleteCookie('oa_anonyme_hash');
+
+    var val = getCookie("owlmodal");
+    var ch = document.getElementById("owlscript").getAttribute("data-ch");
+
+    if (!getCookie("owltimer")) {
+        setCookie("owltimer", new Date(), (1 / 24));
+    }
+
+    if (val !== "displayed" && !isMobile.any()) {
+        loadPopup();
+    }
+})();

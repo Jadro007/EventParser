@@ -1,0 +1,1 @@
+APP._onReady=function(){$.each(APP._ready,function(n,t){t()});APP._ready=null};APP._onLoad=function(){$.each(APP._load,function(n,t){t()});APP._load=null};$(APP._onReady);$(window).load(APP._onLoad)

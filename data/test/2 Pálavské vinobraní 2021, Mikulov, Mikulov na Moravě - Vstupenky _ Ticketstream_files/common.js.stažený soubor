@@ -1,0 +1,684 @@
+﻿var bookerName = queryStringParameter('booker', '');
+var isBooker = bookerName != '';
+var isBookerEditorMain = false; 
+var isBookerWrapper = false;
+var bookerPaymentReturnURL = null;
+var bookerCart = false;
+var inlineBooker = false;
+
+var messageBoxVisible = false;
+var messageBoxAboutToShow = false;
+var popupClicked = false;
+
+var originalTitle = '';
+
+var cartExpirationTimer;
+var expirationCounterStart;
+
+var lastExpirationDisplay = 0;
+var expirationShown = false;
+
+var expirationTimerElement;
+
+var expirationWarning = 300; //seconds
+
+var cartItemsCount = 0;
+var cartExpirationSeconds = 0;
+
+var activeSeatingChart;
+
+var tsCookie = '';
+
+var iFrameOnlyBooker = isBooker && (queryStringParameter('fullbooker', '') == '');
+var iframeBookerAutoPopup = false;
+
+String.prototype.replaceAll = function (search, replacement)
+{
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
+
+if (!String.prototype.startsWith)
+{
+    String.prototype.startsWith = function (str)
+    {
+        if (this.indexOf(str) === 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    };
+}
+
+function initBooker()
+{
+    $('.popup.full-height.middle').prepend(
+        $('<div>').addClass('popup-back middle').click(function () { event.stopPropagation() })
+    );
+
+    $('.popup.full-height.full-width').prepend(
+        $('<div>').addClass('popup-back full-width').click(function () { event.stopPropagation() })
+    );
+
+
+    $('.overlay')
+         .prepend($('<div>').addClass('overlay-back'))
+         .click(function ()
+         {
+             if (messageBoxVisible)
+                 hideMessageBox();
+             else
+             {
+                 if (!popupClicked)
+                     backToInitialScreen();
+
+                 popupClicked = false;
+             }
+         });
+}
+
+
+
+function activatePopup(id, force, overlay, bookerSeatingChart)
+{
+    if ($('.popup-active').length == 0 || force)
+    {
+        if (bookerSeatingChart && !iFrameOnlyBooker)
+        {
+            window.top.postMessage({ action: 'full-screen-toggle', active: false }, '*');
+            $('#seatingchart-popup').hide();
+            $('#unnumbered-popup .back-btn').hide();
+        }
+
+        originalTitle = document.title;
+
+        scrollBeforePopup = $(window).scrollTop();
+
+        var activePopup = $('#' + id);
+        var footerTop = 0;
+
+        if ($('.footer').length)
+            footerTop = $('.footer').offset().top;
+
+        if (!overlay)
+        {
+            $('.popup').removeClass('popup-current');
+            overlayPopup = false;
+        }
+        else
+        {
+            overlayPopup = true;
+            bottomPopup = $('.popup-current');
+
+            var l = bottomPopup.offset().left;
+            var t = bottomPopup.offset().top - $(window).scrollTop();
+
+            bottomPopup
+                .addClass('no-scroll')
+                .css({ top: t, left: l });
+        }
+
+        activePopup.addClass('popup-current');
+
+        if ($('.footer').length)
+            $('.footer').css({ top: (-scrollBeforePopup + footerTop - 123) + 'px' });
+
+        activePopup.closest('.overlay').addClass('popup-active');
+        $('body').addClass('popup-active-body');
+
+        var headerHeight = $('#header').height();
+
+        var insideBookerFrame = $('#booker-popup-iframe-wrapper').length > 0;
+
+        $('.initial-screen').css({ top: -scrollBeforePopup + (insideBookerFrame ? 0 : 59) + 'px' });
+
+    }
+
+    resetWindowScroll();
+}
+
+
+function resetWindowScroll()
+{
+    $(window).scrollTop(0);
+    $('.stick-active').removeClass('stick-active');
+}
+
+
+
+function backToInitialScreen(bookerMessageBoxHide, bookerSeatingChartUnnumbered)
+{
+    if (iframeBookerAutoPopup)
+        return;
+
+    if (isBooker && !isBookerEditorMain && !bookerSeatingChartUnnumbered && !iFrameOnlyBooker)
+    {
+        if (!bookerMessageBoxHide)
+        {
+            var data = { action: 'close-popup' };
+            window.top.postMessage(data, '*');
+        }
+    }
+    else
+    {
+        if (bookerSeatingChartUnnumbered)
+            window.top.postMessage({ action: 'full-screen-toggle', active: true }, '*');
+
+        if (isBookerWrapper)
+            window.top.postMessage({ action: 'close-popup-final' }, '*');
+
+        if (overlayPopup)
+            $('.popup-active.overlay-popup').addClass('fade-out')
+        else
+            $('.popup-active').addClass('fade-out')
+
+        $('.poupup.right-side').css({ 'margin-top': scrollBeforePopup + 'px' });
+
+        var animationEvent = whichAnimationEvent();
+
+        if (!overlayPopup)
+        {
+            $('.popup-active').one(animationEvent,
+                function (event)
+                {
+
+                    $('.footer').css({ top: 'unset' });
+
+                    $(this).removeClass('popup-active').removeClass('fade-out');
+                    $('.poupup.right-side').css({ marginTop: 0 });
+
+                    $('body').removeClass('popup-active-body');
+
+                    $(window).scrollTop(scrollBeforePopup);
+
+                    $('#booker-popup-iframe').attr('src', ts_root_url + '/loader');
+
+                });
+        }
+        else
+        {
+
+            $('.popup-active.overlay-popup').one(animationEvent,
+                function (event)
+                {
+                    $(this).find('.popup-current').removeClass('popup-current');
+                    $(this).removeClass('popup-active').removeClass('fade-out');
+
+                    bottomPopup.removeClass('no-scroll')
+                    bottomPopup.removeAttr('style');
+
+                    $(window).scrollTop(scrollBeforeOverlayPopup);
+
+                    activeSeatingChart.unZoom();
+
+                });
+
+        }
+
+        overlayPopup = false;
+    }
+
+}
+
+
+function zeroPad(num, places)
+{
+    var zero = places - num.toString().length + 1;
+    return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
+
+function dateFromISO(t)
+{
+    if (t == null)
+        return null;
+
+    if (t == '')
+        return null;
+
+    if (typeof t.getDate == 'undefined')
+    {
+        if (!isNaN(t))
+            return new Date(t);
+
+        t = t.replace(' ', 'T');
+        var arr = t.split('T');
+
+        if (arr.length == 1)
+            arr = t.split(' ');
+
+        var dateArr = arr[0].split('-');
+
+        if (arr.length == 1)
+            var d = new Date(dateArr[0], dateArr[1] - 1, dateArr[2]);
+        else
+        {
+            var timeArr = arr[1].split(':');
+            var d = new Date(dateArr[0], dateArr[1] - 1, dateArr[2], timeArr[0], timeArr[1], timeArr[2]);
+        }
+        return d;
+    }
+    else
+        return t;
+}
+
+
+
+function whichAnimationEvent()
+{
+    var t,
+        el = document.createElement("fakeelement");
+
+    var animations = {
+        "animation": "animationend",
+        "OAnimation": "oAnimationEnd",
+        "MozAnimation": "animationend",
+        "WebkitAnimation": "webkitAnimationEnd"
+    }
+
+    for (t in animations)
+    {
+        if (el.style[t] !== undefined)
+        {
+            return animations[t];
+        }
+    }
+}
+
+function queryStringParameter(key, defaultValue, queryString)
+{
+    if (!queryString)
+        queryString = location.search;
+
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+    var match = queryString.match(new RegExp("[?&]" + key + "=([^&]+)(&|$)"));
+
+    var result = match && decodeURIComponent(match[1].replace(/\+/g, " "));
+
+    if (!result)
+        result = defaultValue;
+
+    return result;
+}
+
+function startExpirationCounter()
+{
+    if (cartExpirationSeconds > 0)
+    {
+        expirationCounterStart = new Date().getTime();
+        window.requestAnimationFrame(cartExpirationCounter);
+    }
+
+    showCartItemCount();
+}
+
+
+function updateCartCounter(cartInfo)
+{
+    
+    if (isBookerWrapper)
+    {
+        if (!ticketsActive)
+        {
+            $('.go-to-cart-button').fadeOut(300);
+            return;
+        }
+    }
+    
+
+    if (cartInfo)
+    {
+        console.log(cartInfo);
+
+        if (isBooker)
+            window.top.postMessage({ action: 'update-cart-counter', cartInfo: cartInfo }, '*');
+
+        cartItemsCount = cartInfo.items;
+
+        console.log(cartItemsCount); 
+        if (cartItemsCount == undefined)
+        {
+            cartItemsCount = 0;
+
+            var l = cartInfo.tickets.length;
+            if (!l)
+                l = Object.keys(cartInfo.tickets).length;
+
+            for (var i = 0; i < l; i++)
+            {
+                if (cartInfo.tickets[i].content)
+                    cartItemsCount += cartInfo.tickets[i].content.length;
+                else
+                    if (cartInfo.tickets[i].tickets)
+                        cartItemsCount += cartInfo.tickets[i].tickets.length;
+                    else
+                        cartItemsCount++;
+            }
+
+            for (var i = 0; i < cartInfo.merchReservations.length; i++)
+            {
+                if (cartInfo.merchReservations[i].content)
+                    cartItemsCount += cartInfo.merchReservations[i].content.length;
+                else
+                    if (cartInfo.merchReservations[i].tickets)
+                        cartItemsCount += cartInfo.merchReservations[i].tickets.length;
+                    else
+                        cartItemsCount++;
+            }
+
+        }
+
+        if (cartItemsCount == 0)
+        {
+            cartExpirationSeconds = 0;
+            $('.go-to-cart-button').fadeOut(300);
+        }
+        else
+        {
+            cartExpirationSeconds = cartInfo.expirationSeconds;
+            startExpirationCounter();
+            $('.cart-expiration-time').text(formatTime(dateFromISO(cartInfo.expirationDate.date)));
+            $('.go-to-cart-button').fadeIn(300);
+        }
+
+        console.log(cartInfo); 
+
+        if (cartInfo.totalExclFee)
+            $('.grand-total').text(formatMoney(cartInfo.totalExclFee)); 
+    }
+}
+
+
+function cartExpirationCounter()
+{
+    if (cartExpirationSeconds > 60 * 60 * 24)
+    {
+        return;
+    }
+
+    var n = new Date().getTime();
+    var i = cartExpirationSeconds - Math.floor((n - expirationCounterStart) / 1000);
+
+    if (i != lastExpirationDisplay)
+    {
+        $('.expiration-display').toggleClass('warning', i < expirationWarning);
+
+        if (!expirationTimerElement)
+            expirationTimerElement = $('.expiration-timer');
+
+        expirationTimerElement.text(Math.floor(i / 60) + ':' + zeroPad(i % 60, 2));
+
+        lastExpirationDisplay = i;
+
+        if (i < 0)
+        {
+            if (expirationShown)
+            {
+                cartItemsCount = 0;
+                showCartItemCount();
+                $('.expiration-display-parent').hide();
+                expirationShown = false;
+                if (activeSeatingChart)
+                    activeSeatingChart.expire();
+            }
+        }
+        else
+        {
+            if (!expirationShown)
+            {
+                $('.expiration-display-parent').show();
+                expirationShown = true;
+            }
+        }
+    }
+
+    window.requestAnimationFrame(cartExpirationCounter);
+}
+
+function showCartItemCount()
+{
+   
+    if (cartItemsCount == 0)
+    {
+        $('.cart-count').removeClass('active');
+        $('.go-to-cart-button').fadeOut(300);
+    }
+    else
+    {
+        $('.cart-count')
+            .text(cartItemsCount)
+            .addClass('active');
+
+        $('.go-to-cart-button').fadeIn(300);
+
+    }
+
+    $('.popup-ticket-count').text(formatTicketCount(cartItemsCount));
+}
+
+
+var messageBoxButtons = [];
+
+function showMessageBox(msg, callback, buttons)
+{
+    messageBoxButtons = buttons;
+
+    console.log(buttons); 
+
+    if (isBooker && !iFrameOnlyBooker)
+    {
+        var bookerButtons = [];
+        if (buttons)
+        {
+            buttons.forEach(function (e)
+            {
+                bookerButtons.push([e[0], 'booker-button']);
+            });
+        }
+        console.log(bookerButtons); 
+
+        window.top.postMessage({ action: 'show-message-box', messageText: msg, buttons: bookerButtons }, '*');
+    }
+    else
+    {
+        msgBoxCallback = callback;
+
+        messageBoxAboutToShow = true;
+        console.log('show message box');
+
+        var i = 0;
+
+        if (buttons)
+        {
+            msg += '<div class="padding-top-less">';
+
+            buttons.forEach(function (e)
+            {
+                console.log(e);
+                msg += '<a onclick="event.preventDefault(); messageBoxButtonClicked=true; messageBoxButtonClick(' + i + ');" class="btn black">' + e[0] + '</a>';
+                i++;
+            });
+
+            msg += '</div>';
+        }
+
+        if (typeof msg === 'string')
+            $('#message-box-content').html(fixHtml(msg));
+        else
+            $('#message-box-content')
+                .empty()
+                .append(msg);
+
+        $('#message-box').parent().addClass('popup-active');
+        $('#message-box').addClass('popup-current');
+        messageBoxVisible = true;
+
+        window.setTimeout(function ()
+        {
+            messageBoxAboutToShow = false
+        }, 100);
+    }
+}
+
+var messageBoxButtonClicked = false;
+
+function messageBoxButtonClick(i)
+{
+    messageBoxButtonClicked = true;
+    msgBoxCallback = null;
+
+    var f = messageBoxButtons[i][1];
+
+    if (f)
+    {
+        if (f == 'booker-button')
+        {
+            if (!isBooker)
+                sendMessageToIframe(
+                    {
+                        action: 'execute-messagebox-button',
+                        buttonIndex: i
+                    });
+        }
+        else
+            f();
+    }
+}
+
+function hideMessageBox(callback)
+{
+    if (!messageBoxAboutToShow)
+    {
+        $('#message-box-content').html('');
+        $('#message-box').parent().removeClass('popup-active');
+        $('#message-box').removeClass('popup-current');
+
+        window.setTimeout(function ()
+        {
+            messageBoxVisible = false;
+            console.log(messageBoxButtonClicked); 
+
+            if (!messageBoxButtonClicked)
+            {
+                if (msgBoxCallback)
+                    msgBoxCallback();
+                if (callback)
+                    callback();
+            }
+
+        }, 100);
+    }
+}
+
+
+function fixHtml(t)
+{
+    if (t == null)
+        return '';
+    else
+        return t.replaceAll('color=red', 'class="red"');
+}
+
+
+function replaceParameter(queryString, parameterName, parameterValue)
+{
+    var result = '';
+
+    var arr = queryString.split('?');
+    queryString = arr[arr.length - 1];
+
+    var vars = queryString.split('&');
+    var found = false;
+
+    for (var i = 0; i < vars.length; i++)
+    {
+        var pair = vars[i].split('=');
+        var name = decodeURIComponent(pair[0]);
+
+        if (!(parameterName == '*' && name.startsWith('ts_')))
+        {
+            if (name == parameterName)
+            {
+                if (parameterValue != null)
+                    result += (result == '' ? '' : '&') + parameterName + '=' + parameterValue;
+
+                found = true;
+            }
+            else
+                result += (result == '' ? '' : '&') + vars[i];
+        }
+    }
+
+    if (!found && parameterName != '*' && parameterValue != null)
+        result += (result == '' ? '' : '&') + parameterName + '=' + parameterValue;
+
+    return (result == '' ? '' : '?') + result;
+}
+
+function setQueryStringCookie()
+{
+    tsCookie = getCookie('Ticketstream');
+
+    if (tsCookie == undefined)
+        tsCookie = '';
+
+    if (tsCookie == '')
+    {
+        tsCookie = makeID(26);
+        setCookie('Ticketstream', tsCookie, 1);
+    }
+
+    console.log(tsCookie);
+
+    if (tsCookie == undefined)
+    {
+        alert('Error - tsCookie not defined.');
+        return;
+    }
+}
+
+
+function makeID(length)
+{
+    var result = '';
+    var characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++)
+    {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+
+function setCookie(cname, cvalue, exdays)
+{
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname)
+{
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++)
+    {
+        var c = ca[i];
+        while (c.charAt(0) == ' ')
+        {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0)
+        {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+

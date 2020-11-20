@@ -1,0 +1,96 @@
+(function(window, document) {
+	// URL to the place where tracked data are sent to
+	var p_test = false;
+	var url = '';
+	if(p_test) {
+    url = '//webtrack.bvv.cz/test/class_bvv_tracking_control.php?test=1';
+  } else {
+    url = '//webtrack.bvv.cz/class_bvv_tracking_control.php';
+  }
+
+	function setCookie(cname, cvalue, exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires=" + d.toUTCString();
+//změna		document.cookie = cname + "=" + cvalue + "; " + expires;
+		document.cookie = cname + "=" + cvalue + "; " + expires + ';path=/;domain=bvv.cz';
+	}
+	
+	function getCookie(sKey) {
+		if (!sKey) { return null; }
+		return decodeURIComponent(
+			document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")
+		) || null;
+	}
+	
+	function sendData(url, data) {
+		var httpReq = new XMLHttpRequest();
+		httpReq.open("POST", url, true);
+		httpReq.setRequestHeader('Content-Type', 'application/json');
+		httpReq.send(JSON.stringify(data));
+
+    httpReq.onreadystatechange = function (){
+      if(httpReq.readyState==4) {
+        if(httpReq.status==200) {
+////          document.getElementById('response').innerHTML=httpReq.responseText;
+//console.log(httpReq.responseText);          
+        }
+      }
+    }
+
+	}
+	
+	var qd = {};
+//změna	location.search.substr(1).split("&").forEach(function(item) {
+
+  if(location.search.length>0) {
+  	location.search.substr(1).split("&").forEach(function(item) {
+  		var k = item.split("=")[0].toLowerCase();
+  		var v = decodeURIComponent(item.split("=")[1]).toUpperCase();
+  		(k in qd) ? qd[k].push(v) : qd[k] = [v];
+  	});
+  } else {
+  	location.href.substr(1).split("&").forEach(function(item) {
+  		var k = item.split("=")[0].toLowerCase();
+  		var v = decodeURIComponent(item.split("=")[1]).toUpperCase();
+  		(k in qd) ? qd[k].push(v) : qd[k] = [v];
+  	});
+  }
+
+	
+	var uniqid = getCookie('uniqid') || '';
+	if (uniqid === '') {
+		var uniqtime = new Date();
+		uniqid = uniqtime.getTime().toString();
+		uniqid += Math.floor((Math.random() * 100000) + 1).toString();
+		setCookie('uniqid', uniqid, 365);
+	}
+
+	var list = JSON.parse(getCookie('nidrid')) || [];
+	
+	var tracked = false;
+	if (qd['rid'] || qd['nid']) {
+		list.push({
+			n: qd['nid'] ? qd['nid'][0] : '',
+			r: qd['rid'] ? qd['rid'][0] : '',
+			t: new Date().getTime()
+		});
+		tracked = true;
+	} else {
+		list.push({
+			       t: new Date().getTime()
+		       });
+  }
+	
+	list = list.slice(-10, list.length);
+	setCookie('nidrid', JSON.stringify(list), 365);
+	
+//	return list.length && sendData(url, {
+	return sendData(url, {
+		uniqid: uniqid,
+		url: document.URL,
+		mailings: list,
+		tracked: tracked
+	});
+	
+})(window, document);

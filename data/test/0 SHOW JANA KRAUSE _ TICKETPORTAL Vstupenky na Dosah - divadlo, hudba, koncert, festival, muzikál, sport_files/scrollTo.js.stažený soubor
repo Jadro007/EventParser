@@ -1,0 +1,20 @@
+/*
+Denax, a.s. 
+Created: 13.4.2016
+*/
+;(function ($) {
+	$.fn.scrollTo = function ( options )
+	{
+		var defaults = {
+		    duration: 500,
+            offSetTarget: ".navigacia"
+			},
+			settings = $.extend({}, defaults, options);
+		
+		var targetHeight = settings.offSetTarget;
+		$('html,body').animate({ scrollTop: this.offset().top - $(".navigacia").height() }, settings.duration);
+		
+		return this;
+	}
+})( jQuery );
+

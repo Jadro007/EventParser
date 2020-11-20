@@ -1,0 +1,69 @@
+jQuery.fn.extend({
+    playRST: function() {
+        function _init(that) {
+            if(that.find("div").length < 2 && parseInt(that.find("div").data("id")) === 0) {
+                that.remove();
+                return;
+            }
+            _showSlide(that);
+        }
+
+        function _showSlide(that) {
+            var $visible = that.find("div:visible");
+            setTimeout(function() {
+                var $nextSlide = $visible.next("div");
+                if ($nextSlide.length < 1)
+                    $nextSlide = that.find("div:first-child");
+
+                $nextSlide.show();
+
+                if ($nextSlide.children().length > 0) {
+                    var vid = $nextSlide.children()[0];
+                    var isVideo = false;
+
+                    if (vid.nodeName.toLowerCase() == "video") {
+                        isVideo = true;
+                    } else
+                    if (vid.nodeName.toLowerCase() == "a" && vid.getAttribute("data-rst-media") == "video") {
+                        var vid = $(vid).children()[0];
+                        isVideo = true;
+                    }
+
+                    if (isVideo) {
+                        vid.play();
+                    }
+                }
+
+                $visible.hide();
+
+                if ($visible.children().length > 0) {
+                    var vid = $visible.children()[0];
+                    var isVideo = false;
+
+                    if (vid.nodeName.toLowerCase() == "video") {
+                        isVideo = true;
+                    } else
+                    if (vid.nodeName.toLowerCase() == "a" && vid.getAttribute("data-rst-media") == "video") {
+                        var vid = $(vid).children()[0];
+                        isVideo = true;
+                    }
+
+                    if (isVideo) {
+                        vid.pause();
+                        vid.currentTime = 0;
+                    }
+                }
+
+                _showSlide(that);
+            }, parseInt($visible.data("end")) * 1000);
+        }
+
+        this.each(function(i,o) {
+            if ($(o).find("div").length > 0) {
+                _init($(o));
+            }
+        });
+
+        return {};
+    }
+});

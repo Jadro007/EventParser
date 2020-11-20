@@ -1,0 +1,356 @@
+﻿var calendars;
+
+function Calendars(placeholder, availableDates, switcher)
+{
+    this.availableDates = availableDates;
+    this.placeholder = placeholder;
+    this.switcher = switcher;
+
+    this.currentSwitch = 0; 
+
+    this.init = function ()
+    {
+        if (!this.placeholder)
+            return;
+
+        var availableDatesCount = availableDates.length;
+
+        var y1 = this.availableDates[0].getFullYear();
+        var m1 = this.availableDates[0].getMonth();
+
+        var y2 = this.availableDates[availableDatesCount - 1].getFullYear();
+        var m2 = this.availableDates[availableDatesCount - 1].getMonth();
+
+        this.calendars = new Array();
+
+        var y = y1;
+        var m = m1;
+
+        var availableDatesCursor = 0;
+
+        while (y * 100 + m <= y2 * 100 + m2)
+        {
+            var calendar = new Calendar(this, y, m, availableDatesCursor);
+            this.calendars.push(calendar);
+
+            m++;
+            if (m == 12) { m = 0; y++; }
+
+            availableDatesCursor = calendar.availableDatesCursor;
+        }
+
+        this.addWeekHeaders();
+
+        if (this.switcher)
+            this.initCalendarsSwitcher();
+
+    }
+ 
+    this.addWeekHeaders = function ()
+    {
+        $('.week-header').each(function ()
+        {
+            $(this).empty();
+            for (var i = 0; i < 7; i++)
+            {
+                $(this).append(
+                    $('<div>')
+                        .addClass('day')
+                        .text(capitalizeFirstLetter(calendarHeaderDays[(i + 1) % 7]))
+                );
+            }
+        });
+
+    }
+
+    this.initCalendarsSwitcher = function ()
+    {
+        if (this.calendars.length > 1)
+        {
+            var currentObject = this;
+            this.placeholder.find
+            (
+                $('.month-header')
+                    .addClass('has-arrows')
+                    .prepend
+                        (                            
+                            $('<a>')
+                                .addClass('arrow previous float-left')
+                                .html('&nbsp;')
+                                .click(function () { currentObject.previous(); })
+                        )
+                    .append
+                        (
+                            $('<a>')
+                                .addClass('arrow next float-right')
+                                .html('&nbsp;')
+                                .click(function () { currentObject.next(); })
+                        )
+            )
+        }
+
+        this.calendars[0].calendarElement.find('.arrow.previous').addClass('inactive');
+        this.calendars[this.calendars.length - 1].calendarElement.find('.arrow.next').addClass('inactive');
+
+        this.calendars.forEach(function (calendar, i)
+        {
+            if (i > 0)
+                calendar.calendarElement.hide();
+        });
+    };
+
+    this.switch = function (i)
+    {
+        if (i < 0 || i >= this.calendars.length)
+            return; 
+
+        var currentObject = this;
+        this.calendars[this.currentSwitch].calendarElement.fadeOut
+        (
+            200,
+            function ()
+            {
+                currentObject.currentSwitch = i;
+                currentObject.calendars[i].calendarElement.fadeIn(200); 
+            }
+       );
+    }
+
+    this.next = function ()
+    {
+        this.switch(this.currentSwitch + 1);
+    };
+
+    this.previous = function ()
+    {
+        this.switch(this.currentSwitch - 1);
+    };
+
+
+    this.init();
+}
+
+
+function Calendar(parent, year, month, availableDatesCursor)
+{
+    this.y = year;
+    this.m = month;
+    this.parent = parent;
+    this.availableDatesCursor = availableDatesCursor;
+    this.addWeekHeader = false;
+    this.showDaysFromOtherMonths = false;
+    this.addDateTag = false;
+
+    this.highlightDateFrom = null;
+    this.highlightDateTo = null;
+
+    this.selectDate = function (dt, element)
+    {
+        $('.choose-date').hide();
+        $(".calendar .day.selected").removeClass("selected");
+        $(element).addClass('selected');
+        selectedDate = dt;
+
+        var dateString = formatDate(selectedDate);
+
+
+        var nextDay;
+        if (selectedDate != null)
+            nextDay = addDays(selectedDate, 1);
+
+        var performancesCount = 0;
+
+        if (availableTickets.performances)
+        {
+            availableTickets.performances.forEach(function (performanceData)
+            {
+                var dt = convertStringToDate(performanceData['date']);
+
+                if (dt >= selectedDate.valueOf() && dt < nextDay)
+                {
+                    performancesCount++;
+                }
+            });
+        }
+
+        if (performancesCount == 0)
+        {
+            var itemType = 'event'
+            var url = ts_url + 'api/available-tickets?type=' + itemType + '&id=' + eventID + '&dt=' + ISOdateFormat(selectedDate, true) + (isBooker ? '&booker=' + bookerName + '&tsid=' + tsCookie : '');
+
+            $('#skipTimeButton').addClass('hidden');
+            $('#showTimeButton').addClass('hidden');
+            $('#dateSelectionLoader').removeClass('hidden');
+
+            var currentObject = this;
+
+            $.getJSON(url, function (data)
+            {
+                availableTickets = data;
+                initAvailableDates();
+                currentObject.selectDateContinue(dateString, nextDay);
+            });
+        }
+        else
+        {
+            this.selectDateContinue(dateString, nextDay);
+        }
+
+    };
+
+    this.selectDateContinue = function (dateString, nextDay)
+    {
+        var datesCount = 0;
+
+        for (var i = 0; i < availableDates.length; i++)
+        {
+            if (selectedDate == null || (availableDates[i] >= selectedDate && availableDates[i] < nextDay))
+            {
+                datesCount++;
+            }
+        }
+
+        $('#dateSelectionLoader').addClass('hidden');
+
+        if (datesCount == 1)
+        {
+            skipTime();
+        }
+        else
+        {
+            $('#selectedDate').text(dateString);
+            createDateTimeRadioButtons();
+            showTimes();
+        }
+    }
+
+    this.init = function ()
+    {
+        this.calendarElement = $('<div>').addClass('calendar');
+
+        if (this.parent.placeholder)
+            this.parent.placeholder.append(this.calendarElement);
+        else
+            this.parent.append(this.calendarElement);
+
+        this.monthHeader = $('<div>').addClass('month-header');
+        this.calendarElement.append(this.monthHeader);
+        this.monthHeader.text(monthNames[this.m] + ' ' + (this.y == currentYear ? '' : this.y));
+
+        if (this.addWeekHeader)
+        {
+            this.calendarElement.append(
+                $('<div>')
+                    .addClass('week-header')
+            );
+        }
+
+        var dt = this.firstDate;
+        var i = 0;
+
+        var availableDatesCount = 0;
+
+        if (this.parent.availableDates)
+            availableDatesCount = this.parent.availableDates.length;
+
+        var monthSection = $('<div>').addClass('month-section');
+
+        this.calendarElement.append(monthSection);
+
+        for (var r = 0; r < 6; r++)
+        {
+            var calendarRow = $('<div>').addClass('week');
+            monthSection.append(calendarRow);
+
+            for (var c = 0; c < 7; c++)
+            {
+                var day = $('<div>').addClass('day');
+                calendarRow.append(day);
+
+                if (dt.getMonth() == this.m || this.showDaysFromOtherMonths)
+                {
+                    day.text(dt.getDate());
+
+                    if (this.addDateTag)
+                        day.data('date', dt);
+
+                    if (dt.getMonth() != this.m)
+                        day.addClass('grey');
+
+                    if (isToday(dt))
+                        day.addClass('today');
+
+                    if (this.parent.availableDates)
+                    {
+                        while (this.parent.availableDates[this.availableDatesCursor] < dt && this.availableDatesCursor < availableDatesCount - 1)
+                        {
+                            this.availableDatesCursor++;
+                        }
+
+                        var ad = this.parent.availableDates[this.availableDatesCursor];
+
+                        if (ad.getDate() == dt.getDate() && ad.getMonth() == dt.getMonth() && ad.getFullYear() == dt.getFullYear())
+                        {
+                            day.addClass("active");
+                            day.click(this.selectDate.bind(this, dt, day));
+                        }
+                    }
+
+                }
+
+                dt = addDays(dt, 1);
+                i++;
+            }
+        }
+
+    }
+
+    this.getFirstDate = function ()
+    {
+        var dt = new Date(this.y, this.m, 1);
+        var i = getWeekDay(dt);
+        dt = addDays(dt, -i + 1);
+
+        this.firstDate = dt;
+        this.lastDate = addDays(dt, 41);
+
+        return dt;
+    }
+
+    this.highlightDates = function ()
+    {
+        var currentCalendar = this;
+
+        var days = $(this.parent).find('.day');
+
+        days.each(function ()
+        {
+            var day = $(this);
+            var dt = new Date(day.data('date')).setHours(0, 0, 0, 0);
+
+            if (!day.hasClass('grey'))
+            {
+                if (dt == currentCalendar.highlightDateFrom || dt == currentCalendar.highlightDateTo)
+                    day.addClass('highlight').removeClass('highlight-between');
+                else
+                {
+                    if (dt > currentCalendar.highlightDateFrom && dt < currentCalendar.highlightDateTo)
+                        day.addClass('highlight-between').removeClass('highlight');
+                    else
+                    {
+                        day.removeClass('highlight')
+                        day.removeClass('highlight-between');
+                    }
+                }
+            }
+
+        });
+    }
+
+    this.getFirstDate();
+
+    if (this.availableDatesCursor != null)
+        this.init();
+
+}
+

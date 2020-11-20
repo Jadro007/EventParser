@@ -1,0 +1,5318 @@
+﻿function initSeatchart(data, availableTicketsData)
+{
+    var pricesData = availableTicketsData.prices;
+    var seatingChartURL = data['seatingchart_url'];
+    var availableSeatsURL = data['available_seats_url'];
+    var availableSectorsAndPricesURL = data['available_sectors_and_prices_url'];
+
+    var performanceID = data['id'];
+    var oldSessionID = data['old_id'];
+    var unnumberedSections = data['content'];
+
+    availableTicketsData.options.title = null;
+
+    var dateText = formatDateTime(dateFromISO(data.date));
+
+    if (data.dateText != null)    
+        dateText = data.dateText;
+
+    if (dateText != null)
+        $('.event-date').text(' \u2013 ' + dateText).show();
+
+    $('#sectors-overview').hide();
+    $('#prices-overview').hide();
+    $('#sector-sold-out').hide();
+
+    loadSeatingChartData(seatingChartURL, availableSeatsURL, availableSectorsAndPricesURL, performanceID, oldSessionID, unnumberedSections, pricesData);
+}
+
+function loadSeatingChartData(seatingChartURL, availableSeatsURL, availableSectorsAndPricesURL, performanceID, oldSessionID, unnumberedSections, pricesData)
+{
+    if (isBooker)
+        seatingChartURL += '?booker=' + bookerName + '&tsid=' + tsCookie;
+
+    console.log(seatingChartURL); 
+
+    $.getJSON(seatingChartURL, function (data)
+    {
+        console.log(data);
+        seatingchartData = data.data || data;
+
+        activeSeatingChart = seatingChart(seatingchartData, availableSeatsURL, availableSectorsAndPricesURL, performanceID, oldSessionID, unnumberedSections, pricesData);
+
+        if (queryStringParameter('vector') == 'yes')
+            activeSeatingChart.vectorAssets = ['stage-jeviste.jpg', 'zvuk.jpg'];
+
+    }).fail(function ()
+    {
+        showMessageBox($('#translation-communication-error').val(),
+            null,
+            [
+                [$('#translation-try-again').val(), function () { loadSeatingChartData(seatingChartURL, availableSeatsURL, availableSectorsAndPricesURL, performanceID, oldSessionID, unnumberedSections, pricesData) }],
+                [$('#translation-close').val(), hideMessageBox]
+            ]);
+    });
+}
+
+
+
+function seatingChart(jsonData, availableSeatsURL, availableSectorsAndPricesURL, performanceID, oldSessionID, unnumberedSections, pricesData)
+{
+    this.allAvailable = false;
+    this.separateViews = true;
+
+    this.chartData = jsonData;
+    this.seatsData = null;
+
+    this.unnumberedData = unnumberedSections;
+    this.pricesData = pricesData;
+
+    this.enableWheelZoom = false;
+    this.popupOnHover = false;
+
+    this.vectorAssets = [];
+
+    this.performanceID = performanceID;
+    this.chartID = oldSessionID;
+
+    this.zoomTextThreshold = 1;
+
+    this.zoomSteps = [];
+
+    this.canvas = document.getElementById('seating-chart');
+    this.context = this.canvas.getContext('2d');
+
+    this.context.font = '600 10px Fira Sans';
+    context.fillText('', 0, 0);
+
+    var devicePixelRatio = window.devicePixelRatio || 1;
+
+    var backingStoreRatio = this.context.webkitBackingStorePixelRatio ||
+        this.context.mozBackingStorePixelRatio ||
+        this.context.msBackingStorePixelRatio ||
+        this.context.oBackingStorePixelRatio ||
+        this.context.backingStorePixelRatio || 1;
+
+    this.ratio = devicePixelRatio / backingStoreRatio;
+
+    if (queryStringParameter('ratio'))
+        this.ratio = queryStringParameter('ratio');
+
+    this.printing = false;
+    this.printingInvoked = false;
+
+    this.maxRow = 99;
+
+    this.zoomInertiaStrength = 0.1;
+
+    this.zoomBounce = 0.2;
+
+    this.moveBounce = 0.06;
+    this.zoomMoveBounce = 0.01;
+
+    this.clickZoomBounce = 1;
+    this.transitionZoomBounce = 0.08;
+
+    this.unZoomBounce = 0.07;
+
+    this.moveFriction = 0.5;
+    this.zoomFriction = 0.7;
+
+    this.overlapResistance = 0.9;
+
+    this.sectionMargin = 20;
+
+    this.rowFontColor = '#2A2D34';
+    this.backgroundColor = '#FAFAFA';
+    this.soldColor = '#EFEEEE';
+    this.soldSeatsColorShade = 0.1;
+
+    this.seatSpacing = 0.15;
+
+    this.chartWidth = 250;
+
+    this.margin = 20;
+
+    this.topAreaMargin = 40;
+    this.bottomAreaMargin = 85;
+
+    this.touchTolerance = 10;
+    this.touchDuration = 300;
+
+    this.clickZoomSpeed = 0.025;
+    this.unZoomSpeed = 0.02;
+
+    this.mouseWheelSpeed = 0.005;
+
+    this.colorCycleSpeed = 0.24;
+
+    this.minAreaSize = 5000;
+
+    this.touchActive = false;
+
+    this.touchStartX = null;
+    this.touchStartY = null;
+    this.touchDurationActive = false;
+
+    this.mouseIsDown = false;
+
+    this.LastX = null;
+    this.LastY = null;
+
+    this.firstX = null;
+    this.firstY = null;
+
+    this.deltaXZoom = null;
+    this.deltaYZoom = null;
+
+    this.XInertia = null;
+    this.YInertia = null;
+
+    this.potentialZoomInertia = null;
+    this.zoomInertia = null;
+
+    this.destinationZoom = null;
+
+    this.maxZoomSeats = 2;
+    this.maxZoomMain = 1.1;
+
+    this.mainAnimationZoom = 6;
+
+    this.maxZoom = null;
+    this.minZoom = 0.7;
+    this.zoom = 0.7;
+
+    this.offsetX = 0;
+    this.offsetY = 0;
+
+    this.lastOffsetX = 0;
+    this.lastOffsetY = 0;
+
+    this.colorCycle = 0;
+    this.colorCycleFast = 0;
+    this.cycle = 0;
+
+    this.hasSelectedSeats = false;
+    this.lastZoom = 0;
+
+    this.cornerAreaX = 30;
+    this.cornerAreaY = isBooker ? 100 : 30;
+
+    this.cornerAreaInertia = 4;
+
+    this.zoomPhase = 0;
+    this.zoomFinished = false;
+
+    this.stopDrawing = false;
+
+    this.views = [];
+    this.areas = [];
+    this.assets = [];
+    this.sections = [];
+
+    this.images = [];
+
+    this.disableMove = false;
+    this.disableZoom = false;
+
+    this.imageCount = 0;
+    this.loadedImages = 0;
+
+    this.hasAreas = false;
+
+    this.disableClick = false;
+
+    this.selectedArea = null;
+
+    this.stopBlink = false;
+    this.afterAreaSelected = false;
+
+    this.transitionView = null;
+    this.activeView = 'Main';
+    this.viewCount = 0;
+
+    this.destinationTransitionZoom = null;
+
+    this.bigNumber = 100000000;
+
+    this.drawingInProgress = false;
+    this.mainElement = null;
+
+    this.drawAlwaysAll = false;
+
+    this.canvasTop = $('#seating-chart').offset().top;
+
+    this.preventMoveEvent = true;
+
+    this.mouseDownScrollPosition = 0;
+
+    this.afterTouch = false;
+
+    this.zoomTransitionOffsetX = 0;
+    this.zoomTransitionOffsetY = 0;
+
+    this.zoomMaximum = 0;
+
+    this.scrollDone = false;
+
+    this.selectedSeats = [];
+    this.selectedSections = [];
+    this.selectedAreas = [];
+
+    this.landscape = false;
+
+    this.viewHasUnnumberedSections = false;
+    this.chartHasUnnumberedSections = false;
+    this.chartHasSections = false;
+
+    this.clickedView = null;
+    this.showUnnumberedPopup = false;
+
+    this.debugShowCenter = false;
+
+    this.seatsInProgress = [];
+    this.seatInfoID = null;
+    this.lastSeatInfoID = null;
+
+    this.seatInfoHideTimeout = null;
+    this.mouseMoveTimeout = null;
+    this.seatPopupAboutToShow = false;
+
+    this.hoverSeatID = null;
+    this.hoverArea = null;
+
+    this.animationInProgress = true;
+
+    this.lastDrawTick = 0;
+    this.quickDraw = false;
+    this.quickDrawTimeout = null;
+    this.lastDrawOffsetX = 0;
+    this.lastDrawOffsetY = 0;
+    this.lastDrawZoom = 0;
+    this.drawWrongFrames = 0;
+
+    this.standardSeatSize = 16;
+    this.seatMinClickDistance = 16;
+    this.seatMargin = 2;
+
+    this.textLineHeight = 12;
+
+    this.doNotShowUnZoomButton = false;
+
+    this.selectedPriceDetail = null;
+
+    this.firstDisplay = true;
+
+    this.relativePosition = 0;
+
+    this.showSeatInfo = false;
+
+    this.canvas.addEventListener('touchstart', function (e)
+    {
+
+        e.preventDefault();
+
+        this.afterTouch = true;
+
+        if (this.transitionView)
+            return;
+
+        this.pointerReset();
+        this.touchActive = true;
+
+        if (e.targetTouches.length == 1)
+        {
+            var x = this.ratio * (e.targetTouches[0].clientX - this.canvas.getBoundingClientRect().left);
+            var y = this.ratio * (e.targetTouches[0].clientY - this.canvas.getBoundingClientRect().top);
+            this.pointerDown(x, y);
+        }
+        else
+        {
+            this.zoomMaximum = this.zoom;
+            this.touchDurationActive = false;
+        }
+    }.bind(this));
+
+    this.canvas.addEventListener('touchend', function (e)
+    {
+        this.afterTouch = true;
+
+        if (this.transitionView)
+            return;
+
+        var h = $('#seating-chart').offset().top + $('#seating-chart').height() - $(window).scrollTop();
+
+        if (!iFrameOnlyBooker)
+        {
+            if (!this.landscape)
+            {
+                if (h + 80 > $(window).height() || h < $('#seating-chart').height())
+                {
+                    scrollToAnimation(-($(window).height() - ($('#seating-chart').offset().top + $('#seating-chart').height())) + 180, 1000);
+                }
+            }
+            else
+            {
+                if (h + 60 > $(window).height())
+                    scrollToAnimation($('#seating-chart').offset().top, 700);
+            }
+        }
+
+        this.touchActive = false;
+        this.pointerUp();
+    }.bind(this));
+
+
+    this.canvas.addEventListener('mousedown', function (e)
+    {
+        e.preventDefault();
+
+        if (this.afterTouch)
+            return;
+
+        this.pointerReset();
+
+        var x = this.ratio * (e.pageX - this.canvas.getBoundingClientRect().left);
+        var y = this.ratio * (e.pageY - this.canvas.getBoundingClientRect().top - $(window).scrollTop());
+
+        this.mouseIsDown = true;
+        this.pointerDown(x, y);
+
+    }.bind(this));
+
+    this.canvas.addEventListener('mouseout', function (e)
+    {
+        e.preventDefault();
+
+        if (this.mouseIsDown)
+        {
+            this.mouseIsDown = false;
+            this.pointerUp();
+        }
+    }.bind(this));
+
+    this.canvas.addEventListener('mouseup', function (e)
+    {
+        if (this.afterTouch)
+        {
+            this.afterTouch = false;
+            return;
+        }
+        e.preventDefault();
+
+        this.mouseIsDown = false;
+        this.pointerUp();
+
+    }.bind(this));
+
+    this.canvas.addEventListener('mousemove', function (e)
+    {
+        e.preventDefault();
+
+        var x = this.ratio * (e.pageX - this.canvas.getBoundingClientRect().left);
+        var y = this.ratio * (e.pageY - this.canvas.getBoundingClientRect().top - $(window).scrollTop());
+
+        if (this.mouseIsDown)
+        {
+            this.pointerMove(x, y, e);
+        }
+
+        if (this.mouseMoveTimeout)
+        {
+            window.clearTimeout(this.mouseMoveTimeout);
+            this.mouseMoveTimeout = null;
+        }
+
+        var currentSeatingChart = this;
+
+        if (this.popupOnHover)
+        {
+            if (!this.seatInfoHideTimeout)
+            {
+                this.seatInfoHideTimeout = window.setTimeout(function ()
+                {
+                    currentSeatingChart.seatInfoHide();
+                }, 3000);
+            }
+
+            var zoomRatio = (this.zoom - this.minZoom) / (this.maxZoom - this.minZoom);
+
+            if (zoomRatio + 0.1 >= 1)
+            {
+                this.mouseMoveTimeout = window.setTimeout(function ()
+                {
+                    currentSeatingChart.checkMouseLocation(x, y);
+                }, 1000);
+            }
+        }
+
+        var seatID = this.getSeatByLocation(x, y, this.seatMinClickDistance);
+
+        var showPointer = false;
+
+        if (seatID)
+            showPointer = true;
+
+        if (this.popupOnHover)
+        {
+            if (this.hoverSeatID != this.seatInfoID)
+            {
+                if (!currentSeatingChart.seatInfoHideTimeout)
+                {
+                    this.seatInfoHideTimeout = window.setTimeout(function ()
+                    {
+                        currentSeatingChart.seatInfoHide();
+                    }, 1000);
+                }
+            }
+        }
+
+        this.hoverArea = false;
+
+        if (!seatID)
+        {
+            if (this.hasAreas && this.activeView == 'Main' && this.separateViews)
+            {
+                var area = this.getAreaByLocation(x, y);
+
+                if (area)
+                {
+                    if (area != this.hoverArea)
+                    {
+                        this.hoverArea = area;
+                        showPointer = true;
+                        this.draw();
+                    }
+
+
+                }
+            }
+
+        }
+
+        if (showPointer)
+            $('#' + this.canvas.id).css({ cursor: 'pointer' });
+        else
+            $('#' + this.canvas.id).css({ cursor: 'default' });
+
+    }.bind(this));
+
+    this.canvas.addEventListener('touchmove', function (e)
+    {
+        e.preventDefault();
+
+        if (e.targetTouches.length == 2)
+        {
+            this.gesturePinchZoom(e)
+            this.touchDurationActive = false;
+        }
+        else
+        {
+            var x = this.ratio * (e.targetTouches[0].clientX - this.canvas.getBoundingClientRect().left);
+            var y = this.ratio * (e.targetTouches[0].clientY - this.canvas.getBoundingClientRect().top);
+
+            if (e.targetTouches.length == 1)
+            {
+                this.pointerMove(x, y, e);
+            }
+        }
+    }.bind(this));
+
+
+    if (this.enableWheelZoom)
+    {
+
+        this.canvas.addEventListener('wheel', function (e)
+        {
+            e.preventDefault();
+
+            if (this.transitionView)
+                return;
+
+            this.destinationZoom = this.zoom * (1 + (e.deltaY * this.mouseWheelSpeed));
+
+            if (this.destinationZoom > this.maxZoom)
+            {
+                this.destinationZoom = this.maxZoom + (this.destinationZoom - this.maxZoom) / 6;
+            }
+
+            if (this.destinationZoom < this.minZoom * 0.9)
+            {
+                this.destinationZoom = this.minZoom - (this.minZoom - this.destinationZoom) / 4;
+
+                if (this.activeView != 'Main')
+                {
+                    this.unZoom();
+                    return;
+                }
+            }
+
+            this.zoomCenterX = this.ratio * (e.pageX - this.canvas.getBoundingClientRect().left);
+            this.zoomCenterY = this.ratio * (e.pageY - this.canvas.getBoundingClientRect().top);
+
+            this.originalZoom = this.zoom;
+
+        }.bind(this));
+    }
+
+
+    this.checkMouseLocation = function (x, y)
+    {
+        var seatID = this.getSeatByLocation(x, y, this.seatMinClickDistance);
+
+        if (seatID)
+        {
+            this.seatInfoShow(seatID, true);
+        }
+    }
+
+    this.alreadyResized = false; 
+
+    this.resize = function ()
+    {
+        if (isBooker && this.alreadyResized)
+            return;
+
+        if ($(document).width() <= mobileWidth && this.selectedSeats)
+        {
+            var emptyTickets = this.selectedSeats.length == 0;
+
+            if (emptyTickets)
+            {
+                if ($(document).width() <= mobileWidth)
+                    $('.add-to-cart.red-background').removeClass('unhide-hidden');
+            }
+            else
+            {
+                if ($(document).width() <= mobileWidth)
+                    $('.add-to-cart.red-background').addClass('unhide-hidden');
+            }
+        }
+        else
+            $('.add-to-cart.red-background').removeClass('unhide-hidden');
+
+
+        if (!this.seatsData)
+            return;
+
+        this.landscape = ($(window).height() < $(window).width() && $(window).height() < 450)
+
+        if (this.landscape)
+        {
+            $('#seating-chart').css({ height: $(window).height() - 90, width: $(window).width() - 50 });
+        }
+        else
+        {
+            $('.seating-chart-wrapper').removeAttr('style');
+            $('#seating-chart').removeAttr('style');
+        }
+
+
+        var canvasW = $('#seating-chart').innerWidth();
+        var canvasH = $('#seating-chart').innerHeight();
+
+        if (this.lastResizeCanvasW != canvasW || this.lastResizeCanvasH != canvasH)
+        {
+            this.lastResizeCanvasW = $('#seating-chart').innerWidth();
+            this.lastResizeCanvasH = $('#seating-chart').innerHeight();
+
+            if (this.alreadyResized)
+                this.getChartSize();
+
+            this.setDefaultZoom();
+
+            $('#seating-chart').attr('width', canvasW);
+            $('#seating-chart').attr('height', canvasH);
+
+            this.draw();
+            this.seatInfoHide(true, true);
+        }
+
+        $('#sectorLoaderWrapper').css({ 'top': ((canvasH / 2) - 100) + 'px' });
+
+        this.alreadyResized = true; 
+    };
+
+    this.pointerDown = function (pointerX, pointerY)
+    {
+
+        if (this.seatInfoHideTimeout)
+        {
+            window.clearTimeout(this.seatInfoHideTimeout);
+            this.seatInfoHideTimeout = null;
+        }
+
+        var currentSeatingChart = this;
+
+        this.seatInfoHideTimeout = window.setTimeout(function ()
+        {
+            currentSeatingChart.seatInfoHide(false, true);
+        }, 1000);
+
+
+        if (pointerX <= 0 || pointerX >= this.canvas.width || pointerY <= 0 || pointerY >= this.canvas.height)
+            return;
+
+        this.touchDurationActive = true;
+
+        this.touchStartX = pointerX;
+        this.touchStartY = pointerY;
+
+        this.mouseDownScrollPosition = $(window).scrollTop();
+
+        if (this.touchDurationInterval)
+        {
+            window.clearTimeout(this.touchDurationInterval);
+            this.touchDurationInterval = null;
+        }
+
+
+        this.touchDurationInterval = window.setTimeout(function ()
+        {
+            this.touchDurationActive = false;
+        }, this.touchDuration);
+
+    };
+
+    this.touchDurationInterval = null;
+
+    this.pointerUp = function ()
+    {
+
+        this.touchActive = false;
+        this.drawAlwaysAll = false;
+
+        if (this.touchDurationActive)
+        {
+            if (this.touchDurationInterval)
+            {
+                window.clearTimeout(this.touchDurationInterval);
+                this.touchDurationInterval = null;
+            }
+
+            this.touchDurationActive = false;
+            var x = this.touchStartX;
+            var y = this.touchStartY;
+            this.pointerReset();
+            this.click(x, y);
+        }
+        else
+        {
+            this.XInertia = this.deltaXZoom;
+            this.YInertia = this.deltaYZoom;
+            this.zoomInertia = this.potentialZoomInertia;
+
+            this.ensureChartInView();
+        }
+
+    };
+
+    this.pointerMove = function (relativeX, relativeY, e)
+    {
+        if (this.transitionView)
+            return;
+
+        this.firstZoomScale = null;
+        this.firstX = this.offsetX;
+        this.firstY = this.offsetY;
+
+        if (this.touchDurationActive)
+        {
+            if (Math.sqrt(Math.pow(relativeX - this.touchStartX, 2) + Math.pow(relativeY - this.touchStartY, 2)) > this.touchTolerance)
+            {
+                this.touchDurationActive = false;
+            }
+        }
+
+        this.doMove(relativeX, relativeY, e);
+
+    }
+
+    this.pointerReset = function ()
+    {
+        this.lastX = null;
+        this.lastY = null;
+
+        this.firstZoomScale = null;
+        this.lastZoomScale = null;
+
+        this.XInertia = null;
+        this.YInertia = null;
+
+        this.deltaXZoom = null;
+        this.deltaYZoom = null;
+
+        this.zoomInertia = null;
+        this.potentialZoomInertia = null;
+
+        this.destinationZoom = null;
+
+        this.zoomCenterX = null;
+        this.zoomCenterY = null;
+
+        this.firstRelativeOffsetX = null;
+        this.firstRelativeOffsetY = null;
+
+        this.firstOffsetX = null;
+        this.firstOffsetY = null;
+
+        this.firstX = null;
+        this.firstY = null;
+
+        this.zoomDestinationOffsetX = null;
+        this.zoomDestinationOffsetY = null;
+
+        this.zoomFinished = false;
+
+    }
+
+    this.gesturePinchZoom = function (event)
+    {
+
+        if (this.disableZoom)
+            return;
+
+        if (this.transitionView)
+            return;
+
+        if (event.targetTouches.length >= 2)
+        {
+
+            var p1 = event.targetTouches[0];
+            var p2 = event.targetTouches[1];
+            var zoomScale = Math.sqrt(Math.pow((p2.pageX - p1.pageX) * this.ratio, 2) + Math.pow((p2.pageY - p1.pageY) * this.ratio, 2));
+
+            this.drawAlwaysAll = true;
+
+            this.seatInfoHide(true, true);
+
+            if (this.firstZoomScale)
+            {
+
+                this.deltaZoomScale = zoomScale / this.firstZoomScale;
+                this.zoom = this.firstZoom * this.deltaZoomScale;
+
+                if (this.zoom > this.maxZoom)
+                    this.zoom = this.maxZoom + (this.zoom - this.maxZoom) / 6;
+
+                if (this.zoom < this.minZoom)
+                    this.zoom = this.minZoom - (this.minZoom - this.zoom) / 4;
+
+                if (this.zoomMaximum < this.zoom)
+                    this.zoomMaximum = this.zoom;
+
+                this.potentialZoomInertia = this.lastZoom - this.zoom;
+
+                this.lastZoom = this.zoom;
+
+                var x1 = (p1.pageX - this.canvas.getBoundingClientRect().left);
+                var y1 = (p1.pageY - this.canvas.getBoundingClientRect().top);
+
+                var x2 = (p2.pageX - this.canvas.getBoundingClientRect().left);
+                var y2 = (p2.pageY - this.canvas.getBoundingClientRect().top);
+
+                this.zoomCenterX = this.ratio * ((x1 < x2 ? x1 : x2) + Math.abs(x1 - x2) / 2);
+                this.zoomCenterY = this.ratio * ((y1 < y2 ? y1 : y2) + Math.abs(y1 - y2) / 2 - $(window).scrollTop());
+
+                this.calculateZoom();
+            }
+            else
+            {
+                this.firstZoomScale = zoomScale;
+                this.firstZoom = this.zoom;
+                this.firstX = null;
+                this.firstY = null;
+
+            }
+        }
+    }
+
+
+    this.doMove = function (relativeX, relativeY, e)
+    {
+        if (this.disableMove)
+            return;
+
+        if (this.lastX && this.lastY)
+        {
+            if (this.lastX != relativeX || this.lastY != relativeY)
+            {
+                this.deltaZoomScale = null;
+
+                var deltaX = (relativeX - this.lastX);
+                var deltaY = (relativeY - this.lastY);
+
+                this.deltaXZoom = deltaX / this.zoom;
+                this.deltaYZoom = deltaY / this.zoom;
+
+                var newX = this.offsetX + this.deltaXZoom;
+                var newY = this.offsetY + this.deltaYZoom;
+
+                var yo = this.getYOverlap(newY, this.zoom);
+                var xo = this.getXOverlap(newX, this.zoom);
+
+                this.offsetX = newX;
+                this.offsetY = newY;
+            }
+        }
+
+        this.lastX = relativeX;
+        this.lastY = relativeY;
+
+    }
+
+    this.ensureChartInView = function ()
+    {
+        var xi = this.getXOverlap(this.offsetX, this.zoom) * this.moveBounce;
+        var yi = this.getYOverlap(this.offsetY, this.zoom) * this.moveBounce;
+
+        if (xi != 0)
+            this.XInertia = xi;
+
+        if (yi != 0)
+            this.YInertia = yi;
+
+    }
+
+    this.getXOverlap = function (x, z)
+    {
+        var wb = this.chartWidth * z <= this.canvas.width ? 1 : -1;
+
+        if (wb == 1)
+        {
+            w2 = (x - (this.canvas.width / z - this.chartWidth) / 2 + this.minX);
+            w1 = this.canvas.width + w2;
+        }
+        else
+        {
+            var w1 = (this.chartWidth + x + this.minX) * z + this.canvas.width * 0.1;
+            var w2 = (x + this.minX) * z - this.canvas.width * 0.1;
+        }
+
+        var x1 = 0;
+        var x2 = 0;
+
+        if (w1 * wb > this.canvas.width * wb)
+            x1 = ((this.canvas.width - w1) / z);
+
+        if (w2 * wb < 0)
+            x2 = (-w2 / z);
+
+        var result = ((x1 + x2) / 2);
+        return result;
+    }
+
+    this.getYOverlap = function (y, z)
+    {
+        var canvasHeight = this.canvas.height - (this.activeView == 'Main' ? 0 : this.topAreaMargin);
+
+        var hb = this.chartHeight * z <= canvasHeight ? 1 : -1;
+
+        if (hb == 1)
+        {
+            h2 = (y - (canvasHeight / z - this.chartHeight) / 2 + this.minY);
+            h1 = canvasHeight + h2;
+        }
+        else
+        {
+            var h1 = (this.chartHeight + y + this.minY) * z + (this.zoom > this.minZoom ? this.bottomAreaMargin : 0);
+            var h2 = (y + this.minY) * z - (this.activeView == 'Main' ? 0 : this.topAreaMargin);
+        }
+
+        var y1 = 0;
+        var y2 = 0;
+
+        if (h1 * hb > canvasHeight * hb)
+            y1 = ((canvasHeight - h1) / z);
+
+        if (h2 * hb < 0)
+            y2 = (-h2 / z);
+
+        var result = ((y1 + y2) / 2);
+        return result;
+    }
+
+    this.drawMove = function ()
+    {
+        this.moveInertiaTimer();
+        this.zoomInertiaTimer();
+        this.colorCycleTimer();
+
+        if (this.zoomInertia)
+        {
+            if (this.zoomInertia > 0)
+            {
+                var zoomInertiaCandidate = (this.zoom - this.minZoom) / 2;
+
+                if (zoomInertiaCandidate < this.zoomInertia)
+                {
+                    this.zoomInertia = zoomInertiaCandidate;
+                }
+            }
+            else
+            {
+                var zoomInertiaCandidate = -(this.maxZoom - this.zoom) / 2;
+
+                if (zoomInertiaCandidate > this.zoomInertia)
+                {
+                    this.zoomInertia = zoomInertiaCandidate;
+                }
+            }
+
+            var deltaZoom = this.zoomInertia * this.zoomInertiaStrength;
+
+            this.zoom -= deltaZoom;
+
+            if (this.zoom > this.maxZoom)
+            {
+                this.zoomInertia = (this.zoom - this.maxZoom) * this.zoomBounce;
+            }
+
+            if (this.zoom < this.minZoom)
+            {
+                this.zoomInertia = -(this.minZoom - this.zoom) * this.zoomBounce;
+            }
+
+            var deltaXZoom;
+            var deltaYZoom;
+
+            if (this.minZoom == this.maxZoom)
+            {
+                deltaXZoom = 0;
+                deltaYZoom = 0;
+                this.transitionView = null;
+
+            }
+            else if (this.zoomCenterX && this.zoomCenterY)
+            {
+                var relativeOffsetX = -this.offsetX + this.zoomCenterX / this.zoom;
+                var relativeOffsetY = -this.offsetY + this.zoomCenterY / this.zoom;
+                deltaXZoom = (relativeOffsetX - this.firstRelativeOffsetX);
+                deltaYZoom = (relativeOffsetY - this.firstRelativeOffsetY);
+            }
+            else
+            {
+
+                deltaXZoom = -((this.offsetX + this.chartWidth / 2) * this.zoom - this.canvas.width / 2) * 0.005 * Math.pow((this.chartWidth / this.canvas.width), 2);
+                deltaYZoom = -((this.offsetY + this.chartHeight / 2) * this.zoom - this.canvas.height / 2) * 0.005 * Math.pow((this.chartHeight / this.canvas.height), 2);
+
+                if (deltaXZoom > 0)
+                    deltaXZoom *= 0.2;
+
+                if (deltaYZoom > 0)
+                    deltaYZoom *= 0.2;
+
+            }
+
+            if (Math.abs(this.zoomInertia) < 0.005)
+            {
+                this.zoomInertia = null;
+
+                if (this.zoom <= this.minZoom * 1.1)
+                {
+                    this.ensureChartInView();
+                    return;
+                }
+            }
+
+            this.offsetX += deltaXZoom;
+            this.offsetY += deltaYZoom;
+
+        }
+
+        var doDraw = false;
+
+        if (this.lastZoom == null || this.lastZoom != this.zoom)
+        {
+            this.lastZoom = this.zoom;
+            doDraw = true;
+        }
+
+        if (this.XInertia != null)
+            this.offsetX += this.XInertia;
+
+        if (this.YInertia != null)
+            this.offsetY += this.YInertia;
+
+        if (this.offsetX != this.lastOffsetX || this.offsetY != this.lastOffsetY)
+        {
+            doDraw = true;
+            this.lastOffsetX = this.offsetX;
+            this.lastOffsetY = this.offsetY
+        }
+        else if ((this.selectedArea != null || this.selectedAreas.length > 0) && this.activeView == 'Main')
+        {
+            doDraw = true;
+        }
+        else if ((this.hasSelectedSeats || this.seatsInProgress.length > 0 || this.hoverSeatID) && !this.transitionView)
+        {
+            this.draw(true);
+            return;
+        }
+
+        if (doDraw)
+        {
+            this.draw();
+            this.seatInfoMove();
+        }
+    };
+
+    this.zoomInertiaTimerLastTick = null;
+
+    this.zoomInertiaTimer = function ()
+    {
+        var ticks = 1;
+        var d = new Date()
+        var thisTick = d.getTime();
+
+        if (this.zoomInertiaTimerLastTick)
+        {
+            ticks = (thisTick - this.zoomInertiaTimerLastTick) / 20;
+
+            if (ticks < 1)
+                return;
+        }
+        this.zoomInertiaTimerLastTick = thisTick;
+
+        if (this.destinationZoom)
+        {
+            if (this.destinationZoom > this.zoom)
+                this.zoomPhase += this.clickZoomSpeed * ticks;
+            else
+                this.zoomPhase += this.unZoomSpeed * ticks;
+        }
+
+        if (this.zoomPhase > this.clickZoomBounce)
+            this.zoomPhase = this.clickZoomBounce;
+
+        var c = 0.5 - Math.cos(this.zoomPhase * Math.PI) / 2;
+
+        if (this.destinationZoom)
+        {
+            this.zoom = this.originalZoom + (this.destinationZoom - this.originalZoom) * c;
+
+            this.calculateZoom();
+
+            if (this.zoomPhase == this.clickZoomBounce)
+            {
+                if (this.zoom > this.maxZoom)
+                    this.zoomInertia = -0.02;
+
+                if (this.zoom < this.minZoom)
+                    this.zoomInertia = 0.01;
+
+                this.XInertia = null;
+                this.YInertia = null;
+
+                this.destinationZoom = null;
+                this.zoomDestinationOffsetX = null;
+                this.zoomDestinationOffsetY = null;
+
+                this.transitionView = null;
+
+                this.zoomTransitionOffsetX = 0;
+                this.zoomTransitionOffsetY = 0;
+
+                this.doNotShowUnZoomButton = false;
+            }
+
+        }
+
+        if (this.zoomDestinationOffsetX != null && this.zoomDestinationOffsetY != null)
+        {
+            this.offsetX = this.zoomStartOffsetX + (this.zoomDestinationOffsetX - this.zoomStartOffsetX) * c * (this.minZoom / this.zoom);
+            this.offsetY = this.zoomStartOffsetY + (this.zoomDestinationOffsetY - this.zoomStartOffsetY) * c * (this.minZoom / this.zoom);
+
+            this.zoomInertia = null;
+        }
+
+        if (!this.animationInProgress)
+        {
+            if (!this.doNotShowUnZoomButton)
+            {
+                if (this.zoom > this.minZoom + 0.1)
+                    $('#unzoomButton').fadeIn(1000);
+                else
+                    $('#unzoomButton').fadeOut(1000);
+            }
+        }
+
+    };
+
+    this.colorCycleTimerLastTick = null;
+
+    this.colorCycleTimer = function ()
+    {
+        var ticks = 1;
+        var d = new Date()
+        var thisTick = d.getTime();
+
+        if (this.colorCycleTimerLastTick)
+        {
+            ticks = (thisTick - this.colorCycleTimerLastTick) / 20;
+
+            if (ticks < 1)
+                return;
+        }
+
+        this.colorCycleTimerLastTick = thisTick;
+
+        this.cycle += this.colorCycleSpeed * ticks;
+
+        this.colorCycle = Math.sin(this.cycle);
+        this.colorCycleFast = Math.sin(this.cycle * 2);
+
+        if (this.colorCycle < -1)
+            this.colorCycle = -1;
+
+        if (this.colorCycle > 1)
+            this.colorCycle = 1;
+
+    }
+
+    this.calculateZoom = function ()
+    {
+        if (this.zoomDestinationOffsetX == null && this.zoomDestinationOffsetY == null)
+        {
+            if (this.firstX != null && this.firstY != null)
+            {
+                var relativeOffsetX = -this.offsetX + this.zoomCenterX / this.zoom;
+                var relativeOffsetY = -this.offsetY + this.zoomCenterY / this.zoom;
+
+                var deltaXZoom = (relativeOffsetX - this.firstRelativeOffsetX);
+                var deltaYZoom = (relativeOffsetY - this.firstRelativeOffsetY);
+
+                this.offsetX += deltaXZoom;
+                this.offsetY += deltaYZoom;
+            }
+            else
+            {
+                this.firstX = this.zoomCenterX;
+                this.firstOffsetX = this.offsetX;
+                this.firstY = this.zoomCenterY;
+                this.firstOffsetY = this.offsetY;
+
+                this.firstRelativeOffsetX = -this.offsetX + this.zoomCenterX / this.zoom;
+                this.firstRelativeOffsetY = -this.offsetY + this.zoomCenterY / this.zoom;
+            }
+        }
+    }
+
+    this.moveInertiaTimerLastTick = null;
+
+    this.moveInertiaTimer = function ()
+    {
+        var ticks = 1;
+        var d = new Date()
+        var thisTick = d.getTime();
+
+        if (this.moveInertiaTimerLastTick)
+        {
+            ticks = (thisTick - this.moveInertiaTimerLastTick) / 100;
+
+            if (ticks < 1)
+                return;
+        }
+
+        this.moveInertiaTimerLastTick = thisTick;
+
+        if (this.XInertia)
+            this.XInertia *= this.moveFriction * ticks;
+
+        if (this.YInertia)
+            this.YInertia *= this.moveFriction * ticks
+
+        if (Math.abs(this.XInertia) < 0.001)
+            this.XInertia = null;
+
+        if (Math.abs(this.YInertia) < 0.001)
+            this.YInertia = null;
+
+        if (!this.mouseIsDown && !this.destinationZoom)
+        {
+            if (this.XInertia && this.YInertia)
+            {
+                this.ensureChartInView();
+            }
+        }
+
+        if (this.zoomInertia)
+        {
+            this.zoomInertia *= this.zoomFriction * ticks;
+        }
+    }
+
+    this.draw = function (drawOnlySelected)
+    {
+        if (this.stopDrawing)
+            return;
+
+        if (this.drawingInProgress)
+            return;
+
+        if (!this.activeView)
+            return;
+
+        if (this.drawAlwaysAll)
+            drawOnlySelected = false;
+
+        var d = new Date()
+        var thisTick = d.getTime();
+
+        this.drawingInProgress = true;
+
+        var context = this.context;
+
+        var offsetX = this.offsetX;
+        var offsetY = this.offsetY;
+
+        var cycleAlpha = ((this.colorCycle + 1) / 2);
+
+        if (!drawOnlySelected)
+        {
+            this.setAlpha(1);
+
+            if (this.printing)
+                context.fillStyle = 'white';
+            else
+                context.fillStyle = this.backgroundColor;
+
+            context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+
+        var d = new Date()
+        var thisTick = d.getTime();
+
+        var deltaTick = thisTick - this.lastDrawTick;
+
+        var quickDraw = false;
+
+        var sectionID = 0;
+
+        var activeViewData = this.views[this.activeView];
+
+        if (activeViewData)
+            if (activeViewData.section)
+                sectionID = activeViewData.section.sectionId;
+
+        if (!activeViewData)
+            return;
+
+        if (Math.abs(this.offsetX - this.lastDrawOffsetX) < 1 && Math.abs(this.offsetY - this.lastDrawOffsetY) < 1 && Math.abs(this.zoom - this.lastDrawZoom) < 0.01)
+        {
+            this.drawWrongFrames = 0;
+
+            if (this.quickDraw)
+            {
+                if (this.quickDrawTimeout == null)
+                {
+                    this.quickDrawTimeout = window.setTimeout(function ()
+                    {
+                        this.quickDrawTimeout = null;
+                        this.quickDraw = false;
+                        this.draw();
+                    }, 300);
+                }
+            }
+        }
+        else
+        {
+            if (deltaTick > 30)
+            {
+                if (this.quickDrawTimeout != null)
+                {
+                    window.clearTimeout(this.quickDrawTimeout);
+                    this.quickDrawTimeout = null;
+                }
+
+                if (this.drawWrongFrames++ > 1)
+                    this.quickDraw = true;
+            }
+            else
+                this.drawWrongFrames = 0;
+        }
+
+        quickDraw = this.quickDraw;
+
+        this.lastDrawOffsetX = this.offsetX;
+        this.lastDrawOffsetY = this.offsetY;
+        this.lastDrawZoom = this.zoom;
+
+        this.lastDrawTick = thisTick;
+
+        var seatCount = 0;
+
+        var rowNumber = null;
+
+        var zoomRatio = 1;
+
+        if (this.minZoom != this.maxZoom)
+            zoomRatio = (this.zoom - this.minZoom) / (this.maxZoom - this.minZoom);
+
+        var transitionZoom = zoomRatio * this.destinationTransitionZoom;
+
+        var fontColorAlpha = (this.transitionView ? transitionZoom : this.zoom - this.zoomTextThreshold) / (this.maxZoom - this.zoomTextThreshold);
+
+        if (fontColorAlpha < 0)
+            fontColorAlpha = 0;
+
+        if (fontColorAlpha > 1)
+            fontColorAlpha = 1;
+
+        if (this.printing)
+            fontColorAlpha = 1;
+
+        var currentView = this.views['Main'];
+        var currentArea = null;
+
+
+        if (!this.transitionView && !drawOnlySelected)
+            this.drawAssets(zoomRatio);
+
+        for (var key in activeViewData.elements)
+        {
+            var element = activeViewData.elements[key];
+
+            var keySplit = key.split('_');
+            var elementType = keySplit[0];
+            var elementSectionID = keySplit[1];
+
+            var section = this.sections['section_' + elementSectionID];
+
+            var elementColor = element.color;
+
+            if (element.categoryColor)
+                elementColor = element.categoryColor;
+            else
+            {
+                if (this.seatsData)
+                {
+                    if (elementType == 'seat')
+                    {
+                        var seatData = this.seatsData.seats[key];
+
+                        if (seatData)
+                        {
+                            var categoryData = this.seatsData.price_areas[seatData.area];
+                            elementColor = categoryData.color;
+                            element.categoryColor = elementColor;
+                        }
+                    }
+                }
+            }
+
+            currentView = false;
+
+            if (section)
+                currentView = this.views[section.view];
+            else if (elementType == 'text')
+                currentView = this.views['Main'];
+
+            var numbered = true;
+
+            if (element.numbered != undefined)
+                numbered = element.numbered;
+
+            var available = true;
+
+            if (element.available != undefined)
+                available = element.available;
+
+            if (currentView)
+            {
+                if (elementType == 'row')
+                {
+                    rowNumber = element.number;
+                }
+                if (elementType == 'area')
+                {
+                    if (element.view != 'Main')
+                    {
+                        var x = ((element.x ? element.x : 0) + offsetX) * this.zoom;
+                        var y = ((element.y ? element.y : 0) + offsetY) * this.zoom;
+                        var w = element.w * this.zoom;
+                        var h = element.h * this.zoom;
+
+                        context.fillStyle = 'rgba(0,0,0,0.05)';
+
+                        context.fillRect(x, y, w, h);
+                    }
+                }
+
+                if
+                (
+                    (elementType == 'seat' && (!this.separateViews || currentView.name == this.activeView || currentView.name == this.transitionView || elementSectionID == sectionID)
+                        && !currentView.unnumbered
+                        && (!this.showUnnumberedPopup || currentView.name == 'Main')
+                    )
+                    || (elementType == 'text' && (element.view == this.activeView || element.view == this.transitionView))
+                )
+                {
+
+                    var ss = element.ss - this.seatMargin;
+
+                    if (!this.separateViews && currentView.name != 'Main')
+                    {
+                        var cx = (currentArea.w - this.sectionMargin) / (currentView.maxX - currentView.minX)
+                        var cy = (currentArea.h - this.sectionMargin) / (currentView.maxY - currentView.minY)
+
+                        var zoom = this.zoom;
+
+                        var x = ((element.x - currentView.minX + this.sectionMargin) * cx + offsetX + currentArea.x) * zoom;
+                        var y = ((element.y - currentView.minY + this.sectionMargin) * cy + offsetY + currentArea.y) * zoom;
+
+                        var w = (ss - this.seatMargin) * zoom * cx;
+                        var h = (ss - this.seatMargin) * zoom * cy;
+
+                        if (w < h)
+                            h = w;
+                        if (h < w)
+                            w = h
+                    }
+                    else
+                    {
+                        var zoom = this.transitionView ? transitionZoom : this.zoom;
+
+                        var cx = 1;
+                        var cy = 1;
+
+                        if (this.transitionView)
+                        {
+                            var ox = (this.canvas.width / 2) - (((this.views[this.transitionView].maxX - this.views[this.transitionView].minX) / 2) + this.views[this.transitionView].minX) * zoom;
+                            var oy = (this.canvas.height / 2) - (((this.views[this.transitionView].maxY - this.views[this.transitionView].minY) / 2) + this.views[this.transitionView].minY) * zoom;
+
+                            x = this.zoomTransitionOffsetX + element.x * zoom + ox + ((this.areaZoomCenterX - this.canvas.width / 2) * (1 - zoomRatio));
+                            y = this.zoomTransitionOffsetY + element.y * zoom + oy + ((this.areaZoomCenterY - this.canvas.height / 2) * (1 - zoomRatio)) - this.topAreaMargin / 2;
+
+                        }
+                        else
+                        {
+                            var x = (element.x + offsetX) * zoom;
+                            var y = (element.y + offsetY) * zoom;
+                        }
+
+                        if (this.transitionView)
+                        {
+                            var w = ss * zoom;
+                            var h = ss * zoom;
+                        }
+                        else
+                        {
+                            var w = ss * zoom;
+                            var h = ss * zoom;
+                        }
+                    }
+
+                    var seatFontSize = h / 2;
+
+                    if (elementType == 'text')
+                    {
+                        w = Number(element.w) * zoom;
+                        h = Number(element.h) * zoom;
+                        seatFontSize = h;
+                    }
+
+                    var rowFontSize = (h / 2) * 1.2;
+
+                    var selected = element['selected'];
+                    var inProgress = element.progress;
+
+                    if (this.separateViews)
+                        if (this.transitionView)
+                            this.setAlpha(zoomRatio);
+                        else
+                            this.setAlpha(1);
+                    else
+                        this.setAlpha(zoomRatio);
+
+                    var staticX = x;
+                    var staticY = y;
+
+                    if (elementType == 'text')
+                    {
+                        var staticW = 0;
+                        var staticH = 0;
+                    }
+                    else
+                    {
+                        var staticW = w;
+                        var staticH = h;
+                    }
+
+                    if (selected)
+                    {
+                        var cycle = this.colorCycle;
+
+                        if (!this.transitionView)
+                        {
+                            var c = 1.2 * zoomRatio;
+
+                            x = x - cycle * c;
+                            y = y - cycle * c;
+                            w = w + cycle * 2 * c;
+                            h = h + cycle * 2 * c;
+                        }
+                    }
+
+
+                    if
+                    (
+                        (
+                            ((
+                                element.area != '' &&
+                                elementType == 'seat')
+                                || (elementType == 'text' && element.view) || element.pref == 1 || element.suff == 1) && !drawOnlySelected &&
+
+                            x + (w * 2) > 0 && y + (h * 2) > 0
+                            && y < this.canvas.height
+                            && x < this.canvas.width + w
+                        )
+                        || (drawOnlySelected && (selected || inProgress || this.hoverSeatID == key) && !this.transitionView)
+                    )
+                    {
+                        if ((elementType == 'seat' && (element.number != undefined || element.pref == 1 || element.suff == 1) && numbered)
+                            || elementType == 'text')
+                        {
+                            if (!this.debugDone)
+                            {
+                                this.debugDone = true;
+                            }
+
+                            if (element.angle != 0)
+                            {
+                                context.save();
+                                context.translate(staticX + staticW / 2, staticY + staticH / 2);
+                                context.rotate(element.angle * (Math.PI / 180));
+
+                                if (selected)
+                                {
+                                    x = -cycle * c - staticW / 2;
+                                    y = -cycle * c - staticH / 2
+                                }
+                                else
+                                {
+                                    x = -staticW / 2;
+                                    y = -staticH / 2;
+                                }
+                                staticX = -staticW / 2;
+                                staticY = -staticH / 2;
+                            }
+
+                            if (selected && !this.transitionView)
+                            {
+                                context.fillStyle = this.backgroundColor;
+                                context.fillRect(x - c, y - c, w + c * 2, h + c * 2);
+                            }
+
+                            var sold = false;
+
+                            if (elementType == 'seat' && element.area != '')
+                            {
+                                sold = !element.available;
+
+                                if (!element.deleteProgress)
+                                {
+                                    if (sold)
+                                    {
+                                        context.fillStyle = this.soldColor;
+                                        context.fillRect(x, y, w, h);
+                                        if (this.soldSeatsColorShade > 0)
+                                        {
+                                            this.setAlpha(this.soldSeatsColorShade);
+                                            context.fillStyle = elementColor;
+                                            context.fillRect(x, y, w, h);
+                                            this.setAlpha(1);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        context.fillStyle = elementColor;
+                                        context.fillRect(x, y, w, h);
+                                    }
+                                }
+
+                                if (selected && !this.transitionView)
+                                {
+                                    this.hasSelectedSeats = true;
+                                    context.fillStyle = 'rgba(255,255,255,' + (1 - zoomRatio) * 0.5 + ')';
+                                    context.fillRect(x, y, w, h);
+
+                                    context.fillStyle = 'rgba(239,13,51,' + cycleAlpha * (1 - zoomRatio) + ')';
+                                    context.fillRect(x, y, w, h);
+
+                                    context.fillStyle = 'rgba(0,0,0,' + zoomRatio * (element.deleteProgress ? 0.1 : 0.3) + ')';
+                                    context.fillRect(x, y, w, h);
+                                }
+                                if (this.hoverSeatID == key && !this.transitionView)
+                                {
+                                    context.fillStyle = 'rgba(255,255,255,0.3)';
+                                    context.fillRect(x, y, w, h);
+                                }
+                            }
+
+                            if (elementType != 'text')
+                            {
+                                if (!selected && this.hoverSeatID != key)
+                                {
+                                    if (!sold && element.number && !quickDraw && element.color && !selected)
+                                    {
+                                        if (element.rectColor)
+                                            var br = element.rectColor
+                                        else
+                                        {
+                                            var br = (this.getBrightness(elementColor) / 255) * 0.3;
+                                            element.rectColor = br;
+                                        }
+
+                                        context.beginPath();
+                                        
+                                        context.strokeStyle = 'rgba(0,0,0,' + br + ')';
+                                       
+                                        context.lineWidth = 1; // this.ratio;
+
+                                        context.rect(x, y, w, h);
+                                        context.stroke();
+                                    }
+                                }
+                            }
+
+
+                            if ((zoom > this.zoomTextThreshold || elementType == 'text') && !this.transitionView)
+                            {
+                                var caption;
+
+                                if (elementType == 'text')
+                                {
+                                    caption = unEntity(element.value);
+                                    caption = caption.replaceAll('&nbsp;', ' ');
+                                }
+                                else
+                                    caption = element.number;
+
+                                var loaded = false;
+                                if (section)
+                                    loaded = section.loaded;
+
+                                if (caption && ((!quickDraw && loaded) || elementType == 'text'))
+                                {
+                                    if (sold)
+                                    {
+                                        context.beginPath();
+                                        context.moveTo(x, y);
+                                        context.strokeStyle = 'rgba(0,0,0,' + fontColorAlpha * (this.printing ? 1 : 0.1) + ')';
+                                        context.lineWidth = this.printing ? 2 : 1; // this.ratio;
+
+                                        context.lineTo(x + w, y + h);
+
+                                        context.moveTo(x + w, y);
+                                        context.lineWidth = this.priting ? 2 : 1; //this.ratio;
+
+                                        context.strokeStyle = 'rgba(0,0,0,' + fontColorAlpha * (this.printing ? 1 : 0.1) + ')';
+                                        context.lineTo(x, y + h);
+
+                                        context.stroke();
+
+                                    }
+                                    else
+                                    {
+
+                                        var i;
+                                        if (elementType == 'text')
+                                            i = this.zoom * 1.6;
+                                        else
+                                            i = (seatFontSize * (caption.length > 3 ? 0.65 : 1) + (selected ? c * cycle : 0)) / 10;
+
+
+                                        context.save();
+                                        context.scale(i, i);
+
+                                        context.font = '10px Fira Sans';
+
+                                        if (this.printing)
+                                            context.font = '600 10px Fira Sans';
+
+                                        if (elementType == 'text')
+                                        {
+                                            context.fillStyle = '#6A6C71';
+                                            context.font = '10px Fira Sans Extra Condensed';
+                                        }
+                                        else if (selected)
+                                        {
+                                            context.fillStyle = 'rgba(255,255,255,' + fontColorAlpha + ')';
+                                        }
+                                        else
+                                        {
+                                            if (this.getBrightness(elementColor) > 150)
+                                                context.fillStyle = 'rgba(0,0,0,' + fontColorAlpha * (this.printing ? 1 : 0.3) + ')';
+                                            else
+                                                context.fillStyle = 'rgba(255,255,255,' + fontColorAlpha * (this.printing ? 1 : 0.7) + ')';
+                                        }
+
+                                        var textMeasure = context.measureText(caption);
+                                        var textWidth = textMeasure.width;
+                                        var maxTextWidth = textWidth;
+
+                                        var textX;
+                                        var textY;
+
+                                        if (elementType == 'text')
+                                        {
+                                            maxTextWidth = element.w / 1.8;
+
+                                            textX = x / i;
+                                            textY = y / i + 7.5;
+                                        }
+                                        else
+                                        {
+                                            textX = (x + (w / 2)) / i - (textWidth / 2);
+                                            textY = (y + (h / 2)) / i + 7.5 / 2;
+                                        }
+
+                                        if (textWidth < maxTextWidth || elementType != 'text')
+                                            context.fillText(caption, textX, textY);
+                                        else
+                                        {
+                                            var spaceWidth = context.measureText(' ').width;
+
+                                            var wordX = textX;
+                                            var wordY = textY;
+                                            var arr = caption.split(' ')
+
+                                            for (var wordIndex = 0; wordIndex < arr.length; wordIndex++)
+                                            {
+                                                var word = arr[wordIndex];
+                                                var wordWidth = context.measureText(word).width;
+
+                                                if ((wordX + wordWidth) - textX > maxTextWidth)
+                                                {
+                                                    wordX = textX;
+                                                    wordY += this.textLineHeight;
+                                                }
+                                                context.fillText(word.replaceAll('_', ''), wordX, wordY);
+                                                wordX += wordWidth + spaceWidth;
+                                            }
+                                        }
+
+                                        context.restore();
+                                    }
+                                }
+                            }
+
+                            if ((element.suff == 1 || element.pref == 1) && !drawOnlySelected && rowNumber != 0)
+                            {
+                                var i = rowFontSize / 10;
+                                context.save();
+                                context.scale(i, i);
+
+                                context.fillStyle = this.rowFontColor;
+                                context.font = '10px Fira Sans Extra Condensed';
+
+                                var textMeasure = context.measureText(rowNumber);
+                                var textWidth = textMeasure.width;
+
+                                this.setAlpha(1);
+
+                                if (element.prefixAngle != 0 || element.prefixAngle != 0)
+                                {
+                                    context.translate((staticX + (staticW / 2)) / i, (staticY + (staticH / 2) * 1) / i);
+
+                                    if (element.prefixAngle != 0)
+                                        context.rotate(element.prefixAngle * (Math.PI / 180));
+
+                                    if (element.suffixAngle != 0)
+                                        context.rotate(element.suffixAngle * (Math.PI / 180));
+
+                                    context.translate(-(element.pref == 1 ? textWidth : 0) + (staticW / i) * (element.pref == 1 ? -1 : 1), ((staticH / 2) * 0.4) / i);
+                                    context.fillText(rowNumber, 0, 0);
+                                }
+                                else
+                                {
+                                    context.fillText(rowNumber, (staticX + (staticW / 2)) / i - (element.pref == 1 ? textWidth : 0) + (staticW / i) * (element.pref == 1 ? -1 : 1), (staticY + (staticH / 2) * 1.4) / i);
+                                }
+
+                                context.restore();
+                            }
+
+                            if (inProgress)
+                            {
+                                context.beginPath();
+                                var r = ((w > h) ? w : h) * 0.4;
+
+                                if (r > 10)
+                                {
+                                    context.strokeStyle = 'rgba(255,255,255,0.7)';
+                                    context.lineWidth = 5; // * this.ratio;
+                                    context.arc(x + w / 2, y + h / 2, r, 0, Math.PI * 2);
+                                    context.stroke();
+
+                                    var c = this.cycle * 0.4;
+
+                                    context.beginPath();
+                                    this.context.strokeStyle = 'rgba(239, 13, 51, 1)';
+                                    context.arc(x + w / 2, y + h / 2, r, c, c + Math.PI / 2);
+                                    context.stroke();
+                                }
+
+                            }
+
+                            if (element.angle != 0)
+                                context.restore();
+                        }
+                    }
+                    this.setAlpha(1);
+                }
+            }
+        }
+
+        if (this.transitionView && !drawOnlySelected)
+            this.drawAssets(zoomRatio);
+
+        if (this.hoverArea && this.activeView == 'Main')
+            this.highlightArea(this.hoverArea, 'rgba(0, 0, 0, 0.4)', 'rgba(255, 255,255, 0.2)', 2);
+
+        if (this.selectedArea && this.activeView == 'Main')
+            this.highlightArea(this.selectedArea, 'rgba(0, 255, 255, *)', 'rgba(255, 255,255, *)', 8);
+
+        if (this.activeView == 'Main')
+        {
+            var currentSeatingChart = this;
+
+            this.selectedAreas.forEach(function (area)
+            {
+                if (area != this.selectedArea)
+                    currentSeatingChart.highlightArea(area, 'rgba(239, 13, 51, *)', 'rgba(255, 255, 255, *)', 3);
+            });
+        }
+
+        this.drawingInProgress = false;
+
+        if (this.debugShowCenter)
+        {
+            this.context.beginPath();
+            this.context.strokeStyle = 'rgba(0,0,0,0.3)';
+            this.context.lineWidth = 0.5;
+            this.context.moveTo(this.canvas.width / 2, 0);
+            this.context.lineTo(this.canvas.width / 2, this.canvas.height);
+            this.context.stroke();
+            this.context.moveTo(0, this.canvas.height / 2);
+            this.context.lineTo(this.canvas.width, this.canvas.height / 2);
+            this.context.closePath();
+            this.context.stroke();
+        }
+    };
+
+
+    this.drawAssets = function (zoomRatio, stage)
+    {
+        if (!stage)
+        {
+            this.drawAssets(zoomRatio, 1);
+            this.drawAssets(zoomRatio, 2);
+        }
+
+        var transitionZoom = zoomRatio * this.destinationTransitionZoom;
+        var transitionZoomRatio = (this.zoom - this.maxZoomMain) / (this.mainAnimationZoom - this.maxZoomMain);
+
+        var assetsDrawn = [];
+
+        var context = this.context;
+
+        for (var key in this.assets)
+        {
+            if (this.assets.hasOwnProperty(key))
+            {
+                var element = this.assets[key];
+                var elementType = key.split('_')[0];
+
+                if (
+                    ((elementType == 'asset' && (!this.separateViews || element.view == this.activeView)) && stage == 2)
+                    || (element.type == 'view' && this.activeView == element.name && stage == 1)
+                )
+                {
+                    var vw;
+
+                    if (element.view)
+                        vw = element.view;
+                    else
+                        vw = element.name;
+
+                    var assetView = this.views[vw];
+                    var assetArea = this.areas[vw];
+
+                    var w;
+                    var h;
+                    var x;
+                    var y;
+
+                    if (elementType == 'view')
+                    {
+                        var w = element.bg_w * this.zoom;
+                        var h = element.bg_h * this.zoom;
+                        x = ((element.x ? element.x : 0) + offsetX) * this.zoom;
+                        y = ((element.y ? element.y : 0) + offsetY) * this.zoom;
+
+                    }
+                    else if (this.separateViews)
+                    {
+                        var zoom = this.transitionView ? transitionZoom : this.zoom;
+
+                        if (this.transitionView)
+                        {
+                            var ox = (this.canvas.width / 2) - (((this.views[this.transitionView].maxX - this.views[this.transitionView].minX) / 2) + this.views[this.transitionView].minX) * zoom;
+                            var oy = (this.canvas.height / 2) - (((this.views[this.transitionView].maxY - this.views[this.transitionView].minY) / 2) + this.views[this.transitionView].minY) * zoom;
+
+                            x = this.zoomTransitionOffsetX + (element.x * zoom) + ox + ((this.areaZoomCenterX - this.canvas.width / 2) * (1 - zoomRatio));
+                            y = this.zoomTransitionOffsetY + (element.y * zoom) + oy + ((this.areaZoomCenterY - this.canvas.height / 2) * (1 - zoomRatio)) - this.topAreaMargin / 2;
+                        }
+                        else
+                        {
+                            x = (element.x + offsetX) * zoom;
+                            y = (element.y + offsetY) * zoom;
+                        }
+
+                        var w = element.w * zoom;
+                        var h = element.h * zoom;
+                    }
+                    else
+                    {
+                        var cx = assetArea.w / (assetView.maxX - assetView.minX);
+                        var cy = assetArea.h / (assetView.maxY - assetView.minY);
+                        w = element.w * this.zoom * cx;
+                        h = element.h * this.zoom * cy;
+                        x = (((element.x ? element.x : 0) - assetView.minX) * cx + offsetX + assetArea.x) * this.zoom;
+                        y = (((element.y ? element.y : 0) - assetView.minY) * cy + offsetY + assetArea.y) * this.zoom;
+                    }
+
+                    var src = element.src;
+
+                    if (!src)
+                        src = element.bg;
+
+                    if (src && src != '' && (!this.showUnnumberedPopup || elementType == 'view'))
+                    {
+                        if (assetsDrawn.indexOf(src) == -1)
+                        {
+                            var url = this.getImageUrl(src);
+
+                            var img = document.getElementById(this.getImageKey(src));
+
+                            if (img != undefined)
+                            {
+                                if (element.angle != undefined && element.angle != 0)
+                                {
+                                    context.save();
+                                    context.translate(x, y);
+                                    context.rotate(element.angle * (Math.PI / 180));
+                                    x = 0;
+                                    y = 0;
+                                }
+
+                                if (elementType == 'view')
+                                {
+                                    if (this.transitionView)
+                                    {
+                                        this.setAlpha(1 - transitionZoomRatio / this.ratio);
+                                        context.fillStyle = this.backgroundColor;
+                                        context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                                    }
+                                    else
+                                        this.setAlpha(1);
+                                }
+                                else
+                                {
+                                    if (this.transitionView)
+                                        this.setAlpha(zoomRatio);
+                                    else
+                                        this.setAlpha(1);
+                                }
+                               
+                                try
+                                {
+                                    if (!(this.printing && !this.mainDomain))
+                                        context.drawImage(img, x, y, w, h);
+                                }
+                                catch (e) { }
+
+                                if (element.angle != 0)
+                                    context.restore();
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    this.highlightArea = function (area, color, fillColor, width)
+    {
+        if (this.activeView != 'Main')
+            return;
+
+        if (!this.hasAreas)
+            return;
+
+        if (area == null)
+            return;
+
+        var xs = area.lx.split(',');
+        var ys = area.ly.split(',');
+
+        var zoomRatio;
+
+        if (this.minZoom >= this.maxZoom)
+            zoomRatio = 0;
+        else
+            zoomRatio = (this.zoom - this.minZoom) / (this.maxZoom - this.minZoom);
+
+        var cycleAlpha;
+        if (this.stopBlink)
+            cycleAlpha = 0;
+        else
+            cycleAlpha = ((this.colorCycleFast + 1) / 2);
+
+        this.context.lineWidth = width; // * this.ratio;
+        this.context.strokeStyle = color.replace('*', cycleAlpha);
+
+        this.context.beginPath();
+
+        var nx = area.x;
+        var ny = area.y;
+
+        for (var i = 0; i < xs.length; i++)
+        {
+            nx += Number(xs[i]);
+            ny += Number(ys[i]);
+
+            var dx = (nx + this.offsetX) * this.zoom;
+            var dy = (ny + this.offsetY) * this.zoom;
+
+            if (i == 0)
+                this.context.moveTo(dx, dy);
+            else
+                this.context.lineTo(dx, dy);
+
+        }
+        this.context.closePath();
+        this.context.stroke();
+
+        this.context.fillStyle = fillColor.replace('*', cycleAlpha * 0.2);
+        this.context.fill();
+    }
+
+    this.setAlpha = function (alpha)
+    {
+        if (alpha < 0)
+            alpha = 0;
+
+        if (alpha > 1)
+            alpha = 1;
+
+        this.context.globalAlpha = alpha;
+    }
+
+    this.checkRequestAnimationFrame = function ()
+    {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x)
+        {
+            window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+            window.cancelAnimationFrame =
+                window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame)
+        {
+            window.requestAnimationFrame = function (callback, element)
+            {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                var id = window.setTimeout(function () { callback(currTime + timeToCall); },
+                    timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+        }
+
+        if (!window.cancelAnimationFrame)
+        {
+            window.cancelAnimationFrame = function (id)
+            {
+                clearTimeout(id);
+            };
+        }
+    }
+
+    this.getChartSize = function ()
+    {
+        var canvasW = $('#seating-chart').innerWidth();
+        var canvasH = $('#seating-chart').innerHeight();
+
+        this.canvas.width = canvasW * this.ratio;
+        this.canvas.height = canvasH * this.ratio;
+
+        var bottomOffset = (1 / this.canvas.height) * 50000;
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                var elementSectionID = key.split('_')[1];
+                var section = this.sections['section_' + elementSectionID];
+
+                var currentView = false;
+
+                if (section)
+                    currentView = this.views[section.view];
+                else
+                    currentView = this.views['Main'];
+
+                var numbered = true;
+
+                if (element.numbered != undefined)
+                    numbered = element.numbered;
+
+                if (currentView)
+                {
+
+                    if ((elementType == 'seat' && element.number != undefined && numbered
+                            && element.color != undefined && !currentView.unnumbered
+                            && element.row < this.maxRow
+
+                        )
+                        || elementType == 'asset'
+                        || elementType == 'area'
+                        || (elementType == 'text' && element.value != '')
+                        || (element.type == 'view' && element.name == 'Main')
+                    )
+                    {
+
+                        var x1 = 0;
+                        var y1 = 0;
+
+                        if (element.x)
+                            x1 = element.x;
+
+                        if (element.y)
+                            y1 = element.y;
+
+                        var x2;
+                        var y2;
+
+                        if (elementType == 'asset' || elementType == 'area' || elementType == 'text')
+                        {
+                            x2 = x1 + Number(element.w);
+                            y2 = y1 + Number(element.h);
+                        }
+                        else if (element.type == 'view')
+                        {
+                            x2 = x1 + Number(element.bg_w);
+                            y2 = y1 + Number(element.bg_h);
+                        }
+                        else if (!currentView.unnumbered)
+                        {
+                            x2 = x1 + element.ss;
+                            y2 = y1 + element.ss;
+
+                            if (element.suff == 1)
+                                x2 += element.ss * 2;
+
+                            if (element.pref == 1)
+                                x1 -= element.ss * 2;
+                        }
+
+                        var actualView;
+
+                        if (elementType == 'asset' || elementType == 'area' || elementType == 'text')
+                            actualView = this.views[element.view];
+                        else if (element.type == 'view')
+                            actualView = this.views[element.name];
+                        else
+                            actualView = currentView;
+
+                        if (element.angle != 0 && elementType == 'asset')
+                        {
+                            var cx = x1 + (x2 - x1) / 2;
+                            var cy = y1 + (y2 - y1) / 2;
+
+                            var r1 = this.rotatePoint(cx, cy, x1, y1, 90 - element.angle);
+                            var r2 = this.rotatePoint(cx, cy, x2, y1, 90 - element.angle);
+                            var r3 = this.rotatePoint(cx, cy, x1, y2, 90 - element.angle);
+                            var r4 = this.rotatePoint(cx, cy, x2, y2, 90 - element.angle);
+
+                            x1 = Math.min(r1[0], r2[0], r3[0], r4[0]);
+                            x2 = Math.max(r1[0], r2[0], r3[0], r4[0]);
+
+                            y1 = Math.min(r1[1], r2[1], r3[1], r4[1]);
+                            y2 = Math.max(r1[1], r2[1], r3[1], r4[1]);
+                        }
+
+                        if (actualView)
+                        {
+                            if (x1 < actualView.minX)
+                                actualView.minX = x1;
+
+                            if (x2 > actualView.maxX)
+                                actualView.maxX = x2;
+
+                            if (y1 < actualView.minY)
+                                actualView.minY = y1;
+
+                            if (y2 > actualView.maxY)
+                                actualView.maxY = y2;
+
+                            if (y1 < actualView.minY)
+                                actualView.minY = y1;
+                        }
+                    }
+                }
+            }
+        }
+
+        this.setActiveView(this.activeView);
+
+    };
+
+    this.rotatePoint = function rotate(cx, cy, x, y, angle)
+    {
+        var radians = (Math.PI / 180) * angle;
+        var cos = Math.cos(radians);
+        var sin = Math.sin(radians);
+        var nx = (cos * (x - cx)) + (sin * (y - cy)) + cx;
+        var ny = (cos * (y - cy)) - (sin * (x - cx)) + cy;
+        return [nx, ny];
+    }
+
+
+    this.setActiveView = function (v)
+    {
+        currentSeatingChart.seatInfoHide(true, true);
+
+        window.setTimeout(function ()
+        {
+            currentSeatingChart.seatInfoHide(true, true);
+        }, 1100);
+
+        if (this.activeView == v)
+            currentSeatingChart.setActiveViewSub(v)
+        else
+        {
+            if (!isBooker)
+            {
+                if (v == 'Main')
+                    $('#sector-back-button-wrapper').fadeOut(1100);
+                else
+                    $('#sector-back-button-wrapper').fadeIn(1100);
+            }
+
+            scrollToAnimation(0, 1000);
+
+            $('.seating-chart-wrapper, #sectors-headline').fadeTo(300, 0.2,
+                function ()
+                {
+                    currentSeatingChart.setActiveViewSub(v)
+                    $('.seating-chart-wrapper, #sectors-headline').fadeTo(800, 1);
+                }
+            );
+        }
+    }
+
+
+    this.setActiveViewSub = function (v, noFadeOut)
+    {
+        this.relativePosition = $('#seating-chart').offset().top - $(window).scrollTop();
+
+        var top = $(window).scrollTop();
+
+
+        var unnumbered = false;
+
+        if (!this.hasAreas)
+            unnumbered = false;
+        else if (this.selectedArea)
+            unnumbered = this.hasUnnumberedSections(this.selectedArea.target);
+
+        var initial = (this.activeView == null);
+
+        this.activeView = v;
+        var view = this.views[v];
+
+        this.showCategoryLegend();
+
+        if (view.maxX > this.bigNumber)
+            view.maxX = view.w;
+
+        if (view.maxY > this.bigNumber)
+            view.maxY = view.h;
+
+        this.chartWidth = view.maxX - view.minX;
+        this.chartHeight = view.maxY - view.minY;
+
+        this.minX = view.minX;
+        this.minY = view.minY;
+
+        this.maxX = view.maxX;
+        this.maxY = view.maxY;
+
+        this.topMargin = this.margin;
+        this.bottomMargin = this.margin;
+        this.sideMargin = this.margin;
+
+        var currentSeatingChart = this;
+
+        var pricesListActive = false;
+
+        var animateLegend = !this.firstDisplay;
+
+        var animationSpeed1 = animateLegend ? 400 : 25;
+        var animationSpeed2 = animateLegend ? 800 : 50;
+
+
+        if (view.hasSeats)
+        {
+            $('#sectors-headline').hide();
+            $('#prices-overview').show();
+
+            if (v != 'Main')
+            {
+                $('#sectors-headline').text(v);
+            }
+            else
+            {
+                $('#sectors-headline').text(this.seatingChartHeadline);
+            }
+
+            $('#sectors-headline').show();
+
+        }
+        else
+        {
+            $('#prices-overview').hide();
+            $('#sectors-headline').text(this.seatingChartHeadline);
+        }
+
+        if (view.hasSeats)
+            pricesListActive = true;
+
+        currentSeatingChart.prepareSectorList(v)
+        this.firstDisplay = false;
+
+        currentSeatingChart.animationInProgress = true;
+
+        window.setTimeout(function ()
+        {
+            currentSeatingChart.animationInProgress = false;
+        }, 500);
+
+
+        if (!this.separateViews)
+            this.maxZoom = 5 * this.ratio;
+        else
+        {
+            if (view.hasSeats)
+                this.maxZoom = this.maxZoomSeats * this.ratio * (this.standardSeatSize / view.minSeatSize);
+            else
+                this.maxZoom = this.maxZoomMain * this.ratio;
+
+        }
+
+        this.disableMove = (view.minX == 0 && view.minY == 0 && view.maxX == view.chartWidth && view.minY == 0);
+
+        this.setDefaultZoom();
+        this.viewHasUnnumberedSections = this.hasUnnumberedSections(v);
+    }
+
+    this.hasUnnumberedSections = function (view)
+    {
+        if (!this.seatsData)
+            return false;
+
+        var result = false;
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'section')
+                {
+                    if (element.view == view)
+                    {
+                        var sectionData = this.seatsData.sections[key];
+                        if (sectionData)
+                        {
+                            if (sectionData.numbered)
+                                return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    this.getViewImage = function (view)
+    {
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+
+                var elementType = key.split('_')[0];
+
+                if (elementType == 'asset')
+                {
+                    if (element.view == view)
+                    {
+                        var src = element.src;
+                        return this.getImageUrl(src);
+                    }
+                }
+                else if (elementType == 'view')
+                {
+                    if (key == 'view_' + view)
+                    {
+                        if (element.bg)
+                            return this.getImageUrl(element.bg);
+                    }
+                }
+            }
+        }
+    }
+
+
+    this.showUnnumberedView = function (viewID, sectionID)
+    {
+        this.stopBlink = true;
+
+        priceSelectors = [];
+        ticketsAlreadyInCart = 0;
+
+        var unnumberedParent = $('#unnumbered-tickets');
+        unnumberedParent.empty();
+
+        if (isBooker)
+            $('#unnumberedCheckoutButton').hide();
+
+        if (sectionID)
+        {
+            $('#unnumbered-img').hide();
+        }
+        else
+        {
+            console.log(this.views);
+
+            var viewData = this.views[viewID];
+            var viewName = viewData.name;
+
+            var img = this.getViewImage(viewID);
+
+            if (img && viewName != 'Main')
+                $('#unnumbered-img').attr('src', img).show();
+            else
+                $('#unnumbered-img').hide();
+
+        }
+
+        var sectionsCount = 0;
+
+        if (viewData)
+            $('#unnumbered-headline').text(viewName == 'Main' ? '' : viewName);
+        else
+            $('#unnumbered-headline').text($('#translation-choose-tickets').val());
+
+
+        for (var key in this.unnumberedData)
+        {
+            if (this.unnumberedData.hasOwnProperty(key))
+            {
+                var sectionData = this.unnumberedData[key];
+
+                if (sectionData)
+                {
+                    var showSection = false;
+                    for (var key2 in this.sections)
+                    {
+                        if (this.sections.hasOwnProperty(key2))
+                        {
+                            var section = this.sections[key2];
+                            if ((section.view == viewID || section.sectionId == sectionID) && section.sectionId == sectionData.id)
+                            {
+                                showSection = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (showSection)
+                    {
+                        var pricesArray = getPricesArray(sectionData.content, this.pricesData)
+                        var totalAvailable = Sum(pricesArray, 'available');
+
+                        if (totalAvailable > 0)
+                        {
+                            sectionsCount++;
+                            var sectionTitle = $('<div>').addClass('h2').text(sectionData.name);
+                            unnumberedParent.append(sectionTitle);
+
+                            this.showUnnumberedPrices(sectionData, unnumberedParent);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (sectionsCount == 1)
+            unnumberedParent.find('div.h2').hide();
+
+        activatePopup('unnumbered-popup', true, true, isBooker);
+        allowCheckout();
+    }
+
+    this.showUnnumberedPrices = function (sectionData, unnumberedParent)
+    {
+        var pricesCount = getObjectSize(sectionData.content);
+
+        for (var priceKey in sectionData.content)
+        {
+            if (sectionData.content.hasOwnProperty(priceKey))
+            {
+                var priceID = sectionData.content[priceKey];
+                var priceData = this.pricesData[priceID];
+
+                if (priceData.available > 0)
+                {
+                    var priceElement = $('<div>').addClass('price');
+
+                    if (pricesCount == 1)
+                    {
+                        priceElement.append($('<div>').addClass('info')
+                            .append(
+                                $('<div>').addClass('amount').text(sectionData.name),
+                                $('<div>').addClass('description').text(priceData['name'] + ' \u2013 ' + priceData['price'] + ' ' + currency)
+                            )
+                        );
+                    }
+                    else
+                    {
+                        priceElement.append($('<div>').addClass('info')
+                            .append(
+                                $('<div>').addClass('description').text(priceData['name']),
+                                $('<div>').addClass('amount').text(formatMoney(priceData['price']))
+                            ));
+                    }
+
+                    var singleTicket = false;
+
+                    var ticketCount = 0;
+                    var sectorID = sectionData['id'];
+
+                    if (cartTickets.tickets)
+                    {
+                        cartTickets.tickets.forEach(function (reservation)
+                        {
+                            if (reservation.performanceId == performanceID)
+                            {
+                                reservation.content.forEach(function (ticket)
+                                {
+                                    if (ticket.priceId == priceID && ticket.sectorId == sectorID)
+                                        ticketCount++;
+                                });
+                            }
+                        });
+                    }
+
+                    var selector = new ticketSelector
+                    (
+                        priceElement, priceData['id'],
+                        ticketCount > 0 ? ticketCount : (singleTicket ? parseInt(priceData['min_tickets']) : 0),
+                        parseInt(priceData['min_tickets']),
+                        parseInt(priceData['max_tickets']),
+                        parseInt(priceData['step']),
+                        !singleTicket || ticketCount > 0, priceData['value'], sectorID, priceData,
+                        function ()
+                        {
+                            afterSelectorChange(selector, priceSelectors);
+                        }
+                    );
+                    priceSelectors.push(selector);
+                    ticketsAlreadyInCart += ticketCount;
+
+                    addPriceDescription(priceData, priceElement);
+                    unnumberedParent.append(priceElement);
+                }
+            }
+        }
+    }
+
+
+    this.getUnnumberedData = function (sectionID)
+    {
+        var sectionID = sectionID.split('_')[1];
+
+        for (var key in this.unnumberedData)
+        {
+            if (this.unnumberedData.hasOwnProperty(key))
+            {
+                var sectionData = this.unnumberedData[key];
+                if (sectionData.id == sectionID)
+                {
+                    return sectionData;
+                }
+            }
+        }
+
+    }
+
+    this.setDefaultZoom = function ()
+    {
+        var zoomW = (this.canvas.width - this.sideMargin * 2) / this.chartWidth;
+        var zoomH = (this.canvas.height - this.topMargin - this.bottomMargin) / this.chartHeight;
+
+        if (zoomW < zoomH)
+            this.minZoom = zoomW;
+        else
+            this.minZoom = zoomH;
+
+        if (this.minZoom > this.maxZoom)
+            this.minZoom = this.maxZoom;
+
+        this.minOffsetX = ((this.canvas.width / this.minZoom - this.chartWidth) / 2 - this.minX);
+        this.minOffsetY = ((this.canvas.height / this.minZoom - this.chartHeight) / 2 - this.minY);
+
+        this.maxOffsetY = -(this.minOffsetY + this.chartHeight - (this.canvas.height) / this.minZoom);
+
+        this.offsetX = this.minOffsetX;
+        this.offsetY = this.minOffsetY;
+
+        this.zoom = this.minZoom;
+
+        this.defaultZoomCenterX = this.canvas.width / 2;
+        this.defaultZoomCenterY = this.canvas.height / 2;
+    };
+
+
+
+    this.animate = function ()
+    {
+        this.drawMove();
+        requestAnimationFrame(this.animate.bind(this));
+    };
+
+
+    this.moveChart = function (directionX, directionY)
+    {
+        this.XInertia = -this.cornerAreaInertia * directionX;
+        this.YInertia = -this.cornerAreaInertia * directionY;
+    }
+
+    this.click = function (clickX, clickY)
+    {
+        if (clickX <= 0 || clickX >= this.canvas.width || clickY <= 0 || clickY >= this.canvas.height)
+            return;
+
+        var zoomRatio = (this.zoom - this.minZoom) / (this.maxZoom - this.minZoom);
+
+        var moveDirectionX = 0;
+        var moveDirectionY = 0;
+
+        var chart = $('#seating-chart');
+
+        if (clickX / this.ratio < this.cornerAreaX)
+            moveDirectionX = -1;
+
+        if (clickY / this.ratio < this.cornerAreaY)
+            moveDirectionY = -1;
+
+        if (clickX / this.ratio > chart.width() - this.cornerAreaX)
+            moveDirectionX = 1;
+
+        if (clickY / this.ratio > chart.height() - this.cornerAreaY)
+            moveDirectionY = 1;
+
+        if (moveDirectionX != 0 || moveDirectionY != 0)
+        {
+            this.moveChart(moveDirectionX, moveDirectionY);
+            return;
+        }
+
+        if (this.animationInProgress)
+            return;
+
+        this.clickedView = null;
+        this.showUnnumberedPopup = false;
+
+        if ((this.XInertia == null && this.YInertia == null && this.zoomInertia == null) || this.disableZoom)
+        {
+            if (this.hasAreas && this.activeView == 'Main' && this.separateViews)
+            {
+                var areaZoomActive = false;
+                var clickedArea = this.getAreaByLocation(clickX, clickY);
+
+                if (clickedArea)
+                {
+                    var areaSize = this.getAreaSize(clickedArea);
+
+                    if (areaSize > this.minAreaSize || zoomRatio + 0.1 >= 1)
+                    {
+                        this.selectArea(clickedArea);
+                        return;
+                    }
+                    else
+                        areaZoomActive = true;
+
+                }
+
+                if (!areaZoomActive)
+                {
+                    if (clickX < (this.minX + this.offsetX) * this.zoom
+                        || clickX > (this.maxX + this.offsetX) * this.zoom
+                        || clickY < (this.minY + this.offsetY) * this.zoom
+                        || clickY > (this.maxY + this.offsetY) * this.zoom
+                    )
+                        return;
+
+                }
+            }
+        }
+
+        if (zoomRatio + 0.1 >= 1)
+        {
+            var selectedSeatID = this.getSeatByLocation(clickX, clickY);
+
+            if (selectedSeatID)
+            {
+                this.seatClick(selectedSeatID);
+                return;
+            }
+        }
+
+        if (!this.hasAreas || this.activeView != 'Main')
+        {
+            var nearestSeat = this.getSeatByLocation(clickX, clickY, this.seatMinClickDistance * 3);
+
+            if (!nearestSeat)
+            {
+                this.seatInfoHide(true, true);
+                return;
+            }
+        }
+
+        var selectedZoomStep = 1;
+
+        for (var i = 0; i < this.zoomSteps.length; i++)
+        {
+            var zoomStep = this.zoomSteps[i];
+            if (zoomStep > zoomRatio + 0.1)
+            {
+                selectedZoomStep = zoomStep;
+                break;
+            }
+        }
+
+        var cx = clickX;
+        var cy = clickY;
+
+        var z = ((this.maxZoom - this.minZoom) * selectedZoomStep + this.minZoom) + this.zoomBounce;
+
+        var c = (z + this.minZoom) * 2;
+
+        var centerX = (this.canvas.width / 2);
+        var x = cx - (centerX - cx) / c;
+
+        var centerY = (this.canvas.height / 2);
+        var y = cy - (centerY - cy) / c;
+
+        this.zoomDestinationOffsetX = null;
+        this.zoomDestinationOffsetY = null;
+        this.zoomStartOffsetX = null;
+        this.zoomStartOffsetY = null;
+
+        this.originalZoom = this.zoom;
+        this.zoomPhase = 0;
+        this.destinationZoom = z;
+
+        this.zoomCenterX = x;
+        this.zoomCenterY = y;
+    }
+
+    this.selectArea = function (clickedArea, slowerBlink)
+    {
+        var currentSeatingChart = this;
+
+        if (currentSeatingChart.transitionView)
+            return;
+
+        currentSeatingChart.selectedArea = clickedArea;
+        currentSeatingChart.stopBlink = false;
+
+        if (!this.sectionExists(clickedArea.target))
+        {
+            $('#sector-sold-out').fadeIn(500, function ()
+            {
+                window.setTimeout(function ()
+                {
+                    $('#sector-sold-out').fadeOut(1000, function ()
+                    {
+                        currentSeatingChart.selectedArea = null;
+                        currentSeatingChart.stopBlink = true;
+                    });
+                }, 2000);
+            });
+
+            return;
+        }
+
+
+
+        if (clickedArea)
+        {
+            currentSeatingChart.showUnnumberedPopup = currentSeatingChart.hasUnnumberedSections(clickedArea.target);
+
+            if (currentSeatingChart.showUnnumberedPopup)
+            {
+                window.setTimeout(function ()
+                {
+                    currentSeatingChart.showUnnumberedView(clickedArea.target);
+                }, slowerBlink ? 2400 : 1500);
+
+                return;
+
+            }
+        }
+
+        this.checkIfSeatsAreLoded(clickedArea.target);
+        this.afterAreaSelected = true;
+        this.draw();
+    }
+
+
+    this.backToInitialScreenIfPossible = function ()
+    {
+        if (this.activeView != 'Main')
+            this.backToMain();
+        else
+        {
+            $(window).off('beforeprint');
+            $(window).off('afterprint');
+            backToInitialScreen();
+        }
+    }
+
+
+    this.backToMain = function ()
+    {
+        this.selectedArea = null;
+        this.setActiveView('Main');
+    }
+
+    this.unZoom = function ()
+    {
+        this.seatInfoHide();
+
+        var zoomRatio = 0;
+
+        if (this.transitionView)
+            return;
+
+        if (this.maxZoom != this.minZoom)
+            zoomRatio = (this.zoom - this.minZoom) / (this.maxZoom - this.minZoom);
+
+        var selectedZoomStep = 0;
+
+        for (var i = this.zoomSteps.length; i >= 0; i--)
+        {
+            var zoomStep = this.zoomSteps[i];
+            if (zoomStep < zoomRatio - 0.1)
+            {
+                selectedZoomStep = zoomStep;
+                break;
+            }
+        }
+
+        var c = (this.canvas.width / this.zoom) / 2;
+        var i1 = (this.offsetX + c);
+        var i2 = (this.chartWidth / 2)
+
+        this.zoomStartOffsetX = this.offsetX;
+        this.zoomStartOffsetY = this.offsetY;
+
+        this.zoomInertia = null;
+
+        this.XInertia = 0;
+        this.YInertia = 0;
+
+        this.zoomPhase = 0;
+        this.originalZoom = this.zoom;
+        this.destinationZoom = ((this.maxZoom - this.minZoom) * selectedZoomStep + this.minZoom) - this.unZoomBounce;
+
+        this.zoomDestinationOffsetX = this.minOffsetX;
+        this.zoomDestinationOffsetY = this.minOffsetY - (this.activeView != 'Main' ? this.topAreaMargin / 2 : 0) / this.destinationZoom;
+
+        this.zoomDestinationOffsetX = this.zoomDestinationOffsetX + (this.chartWidth / 2 + this.zoomStartOffsetX - this.canvas.width / this.zoom / 2) * ((this.chartWidth / this.canvas.width) * 0.25);
+        this.zoomDestinationOffsetY = this.zoomDestinationOffsetY + (this.chartHeight / 2 + this.zoomStartOffsetY - this.canvas.height / this.zoom / 2) * ((this.chartHeight / this.canvas.height) * 0.25);
+
+        this.zoomCenterX = null;
+        this.zoomCenterY = null;
+    }
+
+
+    this.seatClick = function (seatID)
+    {
+        var seat = this.chartData[seatID];
+        var seatData = this.seatsData.seats[seatID];
+
+        console.log(seatID);
+        console.log(seat);
+        console.log(seatData);
+
+        if (seat.available || this.allAvailable)
+        {
+            seatChartClicked = true;
+
+            if (seat['selected'] || seat.progress)
+            {
+                this.seatInfoShow(seatID, true);
+                this.cancelSeat();
+            }
+            else
+                this.tryToAddSeat(seatID);
+        }
+    };
+
+    this.cancelSeat = function ()
+    {
+        if (!this.seatInfoID)
+            return;
+
+        this.tryToRemoveSeat(this.seatInfoID);
+    }
+
+    this.checkIfSeatsAreLoded = function (viewName)
+    {
+        var currentView = '';
+
+        var activeSections = [];
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'seat')
+                {
+
+                    var elementSectionID = key.split('_')[1];
+                    var section = this.sections['section_' + elementSectionID];
+
+                    if (section.name == viewName || section.view == viewName)
+                    {
+                        if (activeSections.indexOf(elementSectionID) == -1)
+                            activeSections.push(elementSectionID);
+                    }
+                }
+            }
+        }
+
+        var sectionsToBeLoaded = [];
+
+        activeSections.forEach(function (e)
+        {
+            var section = this.sections['section_' + e];
+            if (!section.loaded && !section.loading)
+            {
+                section.loading = true;
+                sectionsToBeLoaded.push(e);
+            }
+        });
+
+        if (sectionsToBeLoaded.length > 0)
+        {
+            $('#sectorLoaderWrapper').fadeIn(1000);
+            var sectorIDs = sectionsToBeLoaded.join(',');
+            var url = availableSeatsURL.replace('sectors=-1', 'sectors=' + sectorIDs);
+            this.loadAvailableSeats(url, sectionsToBeLoaded, viewName);
+
+        }
+        else
+            this.setActiveView(viewName);
+    }
+
+    this.loadAvailableSeats = function (url, sectionsToBeLoaded, viewName)
+    {
+        var currentSeatingChart = this;
+
+        if (isBooker)
+            url += '&booker=' + bookerName + '&tsid=' + tsCookie;
+
+        console.log(url);
+        $.getJSON(url, function (data)
+        {
+            console.log(data);
+
+            for (var key in data.seats)
+            {
+                if (data.seats.hasOwnProperty(key))
+                {
+                    var element = data.seats[key];
+
+                    var alternativeID = element.alternativeID;
+                    if (currentSeatingChart.chartData.hasOwnProperty(alternativeID))
+                        var k = alternativeID;
+                    else
+                        var k = key;
+
+                    currentSeatingChart.seatsData.seats[k] = element;
+                }
+
+            }
+
+            sectionsToBeLoaded.forEach(function (e)
+            {
+                var section = this.sections['section_' + e];
+                section.loaded = true;
+                section.loading = false;
+            });
+
+            currentSeatingChart.getSeatSize();
+            currentSeatingChart.markAvailableSeats();
+
+            currentSeatingChart.setActiveView(viewName);
+            $('#sectorLoaderWrapper').fadeOut(1000);
+
+        }).fail(function ()
+        {
+            showMessageBox($('#translation-communication-error').val(),
+                backToInitialScreen,
+                [
+                    [$('#translation-try-again').val(), function () { currentSeatingChart.loadAvailableSeats(url, sectionsToBeLoaded, viewName) }],
+                    [$('#translation-close').val(), backToInitialScreen]
+                ]);
+        });
+    }
+
+
+    this.updateSelectedSeats = function ()
+    {
+        this.selectedSeats = [];
+        this.selectedSections = [];
+        this.selectedAreas = [];
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'seat')
+                {
+                    if (element.selected)
+                    {
+                        this.selectedSeats.push(key);
+                        var rowID = this.getRowID(key);
+                        var sectionID = this.getSectionID(rowID);
+
+                        var b = false;
+
+                        this.selectedSections.forEach(function (e)
+                        {
+                            if (e == sectionID)
+                                b = true;
+                        });
+
+                        if (!b)
+                        {
+                            this.selectedSections.push(sectionID);
+                            var area = this.getAreaBySection(this.chartData[sectionID].name);
+                            this.selectedAreas.push(area);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        var emptyTickets = this.selectedSeats.length == 0;
+
+        var top = $(window).scrollTop();
+
+        if (isBooker)
+            window.top.postMessage({ action: 'activate-button', active: !emptyTickets }, '*');
+
+        if (emptyTickets)
+        {
+            $('.add-to-cart.red').removeClass('red').addClass('grey');
+            if ($(document).width() <= mobileWidth)
+                $('.add-to-cart.red-background').removeClass('unhide-hidden');
+        }
+        else
+        {
+            $('.add-to-cart.grey').removeClass('grey').addClass('red');
+            if ($(document).width() <= mobileWidth)
+                $('.add-to-cart.red-background').addClass('unhide-hidden');
+        }
+
+    }
+
+    this.tryToRemoveSeat = function (seatID, ticketID)
+    {
+        var seat = this.chartData[seatID];
+
+        if (seat)
+        {
+            seat.deleteProgress = true;
+            seat.priceProgress = false;
+        }
+
+        var removeSeatURL = ts_url + 'api/cart/ticket-remove' + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : '');
+
+        var currentSeatingChart = this;
+        currentSeatingChart.seatInfoShow(seatID);
+
+        $('#row-' + escapeSeatID(seatID)).addClass('remove-progress');
+        $('#remove-' + +escapeSeatID(seatID)).addClass('remove-progress');
+
+        if (!ticketID)
+            ticketID = seat.ticketID;
+
+        var data = { ticketId: ticketID };
+
+        console.log(data);
+
+        $.ajax({
+            url: removeSeatURL,
+            method: 'POST',
+            data: JSON.stringify(data),
+            success: function (response)
+            {
+                console.log(response);
+                
+                updateCartCounter(response.cartData);
+
+                
+                if (response.result == 'OK')
+                    currentSeatingChart.removeSeat(seatID);
+                else
+                {                   
+                    if (response.message)
+                        showMessageBox(response.message, function () { currentSeatingChart.cancelSeatRemoval(seatID) });
+                    else
+                        currentSeatingChart.cancelSeatRemoval(seatID);
+
+                    currentSeatingChart.updateSelectedSeats();
+                }
+            },
+            error: function (response)
+            {
+                console.log(response);
+                if (seat)
+                    seat.deleteProgress = false;
+            }
+        });
+
+    }
+
+    this.cancelSeatRemoval = function(seatID)
+    {
+        var seat = this.chartData[seatID];
+
+        $('#row-' + escapeSeatID(seatID)).removeClass('remove-progress');
+        $('#remove-' + +escapeSeatID(seatID)).removeClass('remove-progress');
+
+        if (seat)
+        {
+            seat.deleteProgress = false;
+            seat.priceProgress = false;
+        }
+    }
+
+
+    this.markReservedSeat = function (seatID, ticketID, priceID)
+    {
+        var seatData = this.seatsData.seats[seatID];
+        var seat = this.getChartDataSeat(seatID, seatData.alternativeID);
+
+        if (seat)
+        {
+            seat.error = false;
+            seat.ticketID = ticketID;
+        }
+
+        if (seatData);
+            this.addSeat(seatData.alternativeID || seatID, priceID, ticketID);
+    }
+
+    this.tryToAddSeat = function (seatID)
+    {
+        var seat = this.chartData[seatID];
+        var seatData = this.seatsData.seats[seatID];
+
+        this.seatInfoPriceID = seatData.prices[0];
+        seatID_DB = seatData.id;
+
+        seat.progress = true;
+        this.seatsInProgress.push(seatID);
+
+        var reserveSeatURL = ts_url + 'api/cart/ticket-add' + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : '');
+
+        var currentSeatingChart = this;
+        currentSeatingChart.seatInfoShow(seatID, true);
+
+        var requestSuccess = false;
+
+        var data = [];
+
+        var dataItem =
+            {
+                performanceId: this.performanceID,
+                sectorId: 1,
+                seatId: seatID_DB,
+                amount: 1,
+                priceId: this.seatInfoPriceID
+            }
+
+        data[0] = dataItem;
+
+        seat.errorMessage = null;
+
+        console.log(data);
+
+        try
+        {
+            $.ajax({
+                url: reserveSeatURL,
+                method: 'POST',
+                data: JSON.stringify(data),
+                success: function (response)
+                {
+                    seat.progress = false;
+
+                    console.log(response);
+
+                    if (response.tickets_added == 1)
+                    {
+                        seat.error = false;
+                        seat.ticketID = response.tickets[0];
+                        updateCartCounter(response.cartInfo);
+                        currentSeatingChart.addSeat(seatID);
+                    }
+                    else
+                    {
+                        seat.error = true;
+                        seat.errorMessage = response.message;
+                        currentSeatingChart.seatInfoShow(seatID, true);
+                        showMessageBox(response.message, currentSeatingChart.loadCartSeats); 
+                    }
+
+                    requestSuccess = true;
+
+                },
+                error: function (response)
+                {
+                    seat.progress = false;
+                },
+                complete: function ()
+                {
+                    if (!requestSuccess)
+                    {
+                        seat.error = true;
+                        seat.progress = false;
+                        currentSeatingChart.seatInfoShow(seatID, true);
+                        showMessageBox($('#translation-communication-error').val(), currentSeatingChart.loadCartSeats);
+                    }
+                }
+            });
+        }
+        catch (e)
+        {
+            seat.error = true;
+            seat.progress = false;
+            currentSeatingChart.seatInfoShow(seatID, true);
+            showMessageBox($('#translation-communication-error').val(), currentSeatingChart.loadCartSeats);
+        }
+
+    }
+
+
+    this.seatInfoShow = function (seatID, popup, rollOutPrices)
+    {
+        this.seatInfoID = seatID;
+
+        if (!this.showSeatInfo)
+            return;
+
+        if (this.seatInfoHideTimeout)
+        {
+            window.clearTimeout(this.seatInfoHideTimeout);
+            this.seatInfoHideTimeout = null;
+        }
+
+        var seat = this.chartData[seatID];
+
+        if (!seat)
+            return;
+
+        var infoBox = $('#seat-info');
+        var arrow = $('#seat-info-arrow');
+
+        var seatData = this.seatsData.seats[seatID];
+
+        if (!seatData)
+            return;
+
+        var rowID = this.getRowID(seatID);
+        var sectionID = this.getSectionID(rowID);
+
+        var row = this.chartData[rowID];
+        var section = this.chartData[sectionID];
+
+        var priceID = seat.priceID;
+
+        var categoryData = this.seatsData.price_areas[seatData.area];
+
+        $('#seat-info-sector').text(section.name);
+
+        $('#seat-info-row').text(seatData.row_number);
+        $('#seat-info-row').parent().toggle(seatData.row_number != '');
+
+        $('#seat-info-seat').text(seat.number);
+
+        $('#seat-info-category').text(seatData.area);
+
+        $('#seat-info-category-color').css('background-color', categoryData.color)
+
+        var priceSelect = $('#seat-info-price-select');
+        priceSelect.empty();
+
+        if (seatData.prices.length == 1)
+        {
+            var priceDataDetail = this.seatsData.prices[seatData.prices[0]];
+            this.selectedPriceDetail = priceDataDetail;
+            $('#seat-info-price-category').text(priceDataDetail.name);
+            $('#seat-info-price').text(formatMoney(priceDataDetail.value));
+
+            $('#seat-info-price-wrapper').show();
+            $('#seat-info-price-select-wrapper').hide();
+        }
+        else
+        {
+            $('#seat-info-price-wrapper').hide();
+
+            seatData.prices.forEach(function (e)
+            {
+                var priceDataDetail = this.seatsData.prices[e];
+
+                var priceOption = $('<option>')
+                    .val(e)
+                    .text(priceDataDetail.name + ' ~ ' + formatMoney(priceDataDetail.value));
+
+                if (priceID == e)
+                {
+                    priceOption.prop('selected', true);
+                    this.selectedPriceDetail = priceDataDetail;
+                }
+                priceSelect.append(priceOption);
+
+            });
+
+            if (this.selectedPriceDetail == null)
+                this.selectedPriceDetail = this.seatsData.prices[seatData.prices[0]];
+
+            $('#seat-info-price-select').niceSelect('update');
+            $('#seat-info-price-select-wrapper').show();
+
+            if (rollOutPrices)
+            {
+                setTimeout(function ()
+                {
+                    $('#seat-info-price-select + div.nice-select').first().click();
+                }, 500);
+            }
+        }
+
+        this.showOrHideAdditionalPriceInfo(true);
+
+        $('#seat-info-hover').hide();
+        $('#seat-info-sold').hide();
+        $('#seat-info-reserved').hide();
+        $('#seat-info-error').hide();
+        $('#seat-info-progress').hide();
+        $('#seat-info-delete-progress').hide();
+
+        priceSelect.next().removeClass('progress');
+        priceSelect.next().removeClass('open');
+
+        if (seat.progress)
+        {
+            $('#seat-info-progress').show();
+            $('#seat-info-price-select-wrapper').hide();
+        }
+        else
+        {
+            if (seat.priceProgress)
+            {
+                priceSelect.next().addClass('progress');
+                $('#seat-info-reserved').show();
+            }
+            else
+            {
+                if (seat.deleteProgress)
+                    $('#seat-info-delete-progress').show();
+                else
+                {
+                    if (seat.sold)
+                        $('#seat-info-sold').show();
+                    else
+                    {
+                        if (seat.selected)
+                            $('#seat-info-reserved').show();
+                        else
+                        {
+
+                            if (seat.error)
+                            {
+                                $('#seat-info-error').show();
+                                $('#seat-info-price-select-wrapper').hide();
+
+                                $('#seat-info-error').text(seat.errorMessage ? seat.errorMessage : this.genericErrorMessage);
+                            }
+                            else
+                            {
+                                $('#seat-info-hover').show();
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            $('.popup-ticket-count').text(formatTicketCount(cartItemsCount));
+        }
+
+        window.setTimeout(function ()
+        {
+            if (this.seatInfoMove(true, false))
+            {
+                if (popup)
+                {
+                    $('#seat-info-wrapper').show();
+                    this.seatInfoMove(false, false);
+                    this.lastSeatInfoID = this.seatInfoID;
+                }
+            }
+
+        }, 100);
+
+
+        window.setTimeout(function ()
+        {
+            scaleDropdownFont('#seat-info');
+        }, 200);
+    }  
+
+    this.seatInfoMove = function (afterShow, animate)
+    {
+        if (!this.showSeatInfo)
+            return;
+
+        if (!this.seatInfoID)
+            return false;
+
+        var chart = $('#seating-chart');
+        var infoBox = $('#seat-info');
+        var arrow = $('#seat-info-arrow');
+
+        var seat = this.chartData[this.seatInfoID];
+        var x = ((this.offsetX + seat.x - (seat.ss - this.seatMargin) / 2) * this.zoom) / this.ratio + chart.offset().left;
+        var y = (Math.floor((this.offsetY + seat.y) * this.zoom) / this.ratio + chart.offset().top - infoBox.height() - 60);
+
+        if (iFrameOnlyBooker)
+        {
+            y -= 60 - $('#seatingchart-popup .iframe-scroller').scrollTop();
+            x -= $('#seatingchart-popup .iframe-scroller').offset().left;
+        }
+
+        var arrowX = x + ((seat.ss - this.seatMargin) * this.zoom) / this.ratio - arrow.width() / 2;
+        var arrowY = y + infoBox.height() + 31;
+
+        if (arrowX - 5 < chart.offset().left || arrowX + 55 > chart.offset().left + chart.width()
+            || arrowY + 30 < chart.offset().top || arrowY + 30 > chart.offset().top + chart.height())
+        {
+            this.seatInfoHide(afterShow);
+            return false;
+        }
+
+        if (x + infoBox.width() + 70 > chart.offset().left + chart.width())
+            x = chart.offset().left + chart.width() - infoBox.width() - 70;
+
+        if (x < chart.offset().left)
+            x = chart.offset().left + 5;
+
+        if (animate)
+        {
+            infoBox.animate({ left: x, top: y }, 500);
+            arrow.animate({ left: (arrowX - x - 25) + 'px' }, 500);
+        }
+        else
+        {
+            infoBox.css({ left: x, top: y });
+            arrow.css({ left: (arrowX - x - 25) + 'px' });
+        }
+
+        return true;
+    }
+
+    this.seatInfoHide = function (fast, force)
+    {
+        if (!this.showSeatInfo)
+            return;
+
+        if (!force)
+        {
+            if (this.seatPopupAboutToShow)
+            {
+                this.seatPopupAboutToShow = false;
+                return;
+            }
+
+            if (messageBoxVisible)
+                return;
+        }
+
+        var currentSeatingChart = this;
+
+        $('#seat-info-price-select').next().removeClass('open');
+
+        if (fast)
+        {
+            $('#seat-info-wrapper').hide();
+            currentSeatingChart.seatInfoID = null;
+        }
+        else
+            $('#seat-info-wrapper').fadeOut(400, function () { currentSeatingChart.seatInfoID = null; });
+    }
+
+    this.tryToChangeSeatPrice = function (priceID, seatID)
+    {
+        var currentSeatingChart = this;
+
+        var seatSpecified = true;
+
+        if (!seatID)
+        {
+            seatSpecified = false;
+            seatID = seatInfoID;
+        }
+
+        var originalPriceID = currentSeatingChart.getSeatPriceID(seatID);
+
+        if (originalPriceID == priceID)
+            return;
+
+        var seatData = this.seatsData.seats[seatID];
+        var seat = this.chartData[seatID]; 
+
+        if (!seatSpecified)
+        {
+            if (!seat.selected)
+                return;
+        }
+
+        var ticketID = null;
+
+        if (seat)
+            ticketID = seat.ticketID;
+        else
+        {
+            var reservedSeat = this.getReservedSeat(seatID);
+            ticketID = reservedSeat.ticket_id;
+        }
+
+        $('#seat-info-price-select').next().addClass('progress').removeClass('open');
+        $('#price-select-' + escapeSeatID(seatID)).next().addClass('progress').removeClass('open');
+        
+        $('#price-display-' + escapeSeatID(seatID)).addClass('hidden');
+        $('#price-progress-' + escapeSeatID(seatID)).removeClass('hidden').addClass('nice-select progress');
+
+        if (seat)
+        {
+            seat.deleteProgress = false;
+            seat.priceProgress = true;
+        }
+
+        var changePriceURL = ts_url + 'api/cart/ticket-change-price' + (isBooker ? '?booker=' + bookerName + '&tsid=' + tsCookie : '');
+
+        var data =
+            {
+                ticketId: parseInt(ticketID),
+                priceId: parseInt(priceID)
+            };
+
+        console.log(data);
+
+        $.ajax({
+            url: changePriceURL,
+            method: 'POST',
+            data: JSON.stringify(data),
+            success: function (response)
+            {
+                console.log(response);
+
+                if (response.result == 'OK')
+                {
+                    currentSeatingChart.changeSeatPrice(seatID, priceID);
+                }
+                else
+                {
+                    if (seat)
+                        seat.priceProgress = false;
+                  
+                    $('#price-select-' + currentSeatingChart.escapeSeatID(seatID))
+                            .val(originalPriceID)
+                            .niceSelect('update')
+                            .next().removeClass('progress open');
+
+                    if (currentSeatingChart.seatInfoID == seatID)
+                    {
+                        $('#seat-info-price-select')
+                            .val(originalPriceID)
+                            .niceSelect('update')
+                            .next().removeClass('progress open');
+                    }
+
+                    if (seat)
+                        seat.priceID = originalPriceID;
+
+                    $('#price-select-' + currentSeatingChart.escapeSeatID(seatID)).val(originalPriceID);
+
+                    showMessageBox(response.message, function ()
+                    {
+                        $('#price-display-' + escapeSeatID(seatID)).removeClass('hidden');
+                        $('#price-progress-' + escapeSeatID(seatID)).addClass('hidden').removeClass('nice-select progress');
+                    });
+                }
+            },
+            error: function (response)
+            {
+                showMessageBox($('#seat-info-error').val());
+                seat.priceProgress = false;
+            }
+        });
+
+    };
+
+    this.showOrHideAdditionalPriceInfo = function (quick, forceHide)
+    {
+        var currentSeatingChart = this;
+
+        if (this.selectedPriceDetail != null)
+        {
+            if (this.selectedPriceDetail.description == null || forceHide)
+                $('#seat-info-price-additional-info').slideUp(quick ? 0 : 700, function () { currentSeatingChart.seatInfoMove(true, !quick) });
+            else
+                $('#seat-info-price-additional-info').slideDown(quick ? 0 : 700, function () { currentSeatingChart.seatInfoMove(true, !quick) });
+        }
+    }
+
+    this.showAdditionalInfo = function ()
+    {
+        showMessageBox(this.selectedPriceDetail.description);
+    }
+
+
+    this.changeSeatPrice = function (seatID, priceID)
+    {
+        var seat = this.chartData[seatID];
+        var seatData = this.seatsData.seats[seatID];
+
+        var priceData = this.seatsData.prices[priceID];
+
+        this.selectedPriceDetail = priceData;
+
+        this.showOrHideAdditionalPriceInfo(false);
+
+        if (seat)
+        {
+            seat.priceProgress = false;
+            seat.priceID = priceID;
+        }
+
+        var reservedSeat = this.getReservedSeat(seatID);
+
+        if (reservedSeat)
+            reservedSeat.price_id = priceID;
+
+        $('#price-display-name-' + escapeSeatID(seatID)).text(priceData.name);
+        $('#price-display-value-' + escapeSeatID(seatID)).text(formatMoney(Number(priceData.value)));
+
+        $('#price-display-' + escapeSeatID(seatID)).removeClass('hidden');
+        $('#price-progress-' + escapeSeatID(seatID)).addClass('hidden').removeClass('nice-select progress');
+
+        scaleDropdownFont('#seatingchart-tickets');
+    };
+
+    this.getChartDataSeat = function (seatID, alternativeID)
+    {
+        if (alternativeID)
+            var seat = this.chartData[alternativeID];
+
+        if (!seat)
+            var seat = this.chartData[seatID];
+
+        return seat;
+    }
+
+    this.addSeat = function (seatID, priceID, ticketID)
+    {
+
+        console.log(seatID, priceID);
+
+        $('#seatingchart-tickets-wrapper').show();
+
+        var seatData = this.seatsData.seats[seatID];
+
+        var seat = this.getChartDataSeat(seatData.originalID, seatData.alternativeID);
+        console.log(seatData);
+        console.log(seat);
+
+        var rowID = this.getRowID(seatID);
+
+        if (rowID)
+        {
+            var sectionID = this.getSectionID(rowID);
+            var row = this.chartData[rowID];
+        }
+        else
+            var sectionID = seatID.split('_')[1];
+
+        var section = this.chartData[sectionID];
+
+        var ticketRow = $('<div>').attr('id', 'ticket-' + escapeSeatID(seatID)).hide();
+
+        var currentSeatingChart = this;
+
+        $('#seatingchart-tickets').prepend(ticketRow);
+
+        var ticketRowInside = $('<div>');
+        ticketRow.append(ticketRowInside);
+
+        var priceElement;
+        var priceDropdown = null;
+        var priceLabelID;
+
+        console.log(priceID);
+        console.log(seatData);
+
+        if (!priceID)
+            priceID = seatData.prices[0];
+
+        if (this.seatInfoID == seatID)
+            priceID = this.seatInfoPriceID;
+
+        console.log(priceID);
+
+        if (seat)
+            seat.priceID = priceID;
+
+        var selectedPriceDataDetail = null
+
+        if (seatData.prices.length == 1)
+        {
+            var priceDataDetail = this.seatsData.prices[seatData.prices[0]];
+            selectedPriceDataDetail = priceDataDetail;
+            priceElement = $('<span>').append
+            (
+                $('<b>')
+                    .addClass('right')
+                    .text(formatMoney(priceDataDetail.value)),
+                $('<span>')
+                    .addClass('resize')
+                    .addClass('left')
+                    .text(priceDataDetail.name)
+            );
+            priceLabelID = '#price-caption';
+        }
+        else
+        {
+            priceDropdownParent = $('<div>').addClass('row no-padding');
+            priceDropdown = $('<select>')
+                .attr('id', 'price-select-' + escapeSeatID(seatID))
+                .addClass('price-dropdown-list hide-arrow')
+                .data('progress-text', $('#seat-info-price-select').data('progress-text'));
+
+            seatData.prices.forEach(function (e)
+            {
+                var priceDataDetail = this.seatsData.prices[e];
+
+                var priceOption = $('<option>')
+                    .text(priceDataDetail.name + ' ~ ' + formatMoney(priceDataDetail.value))
+                    .val(e);
+
+                if (e == priceID)
+                {
+                    priceOption.prop('selected', true);
+                    selectedPriceDataDetail = priceDataDetail;
+                }
+
+                priceDropdown.append(priceOption);
+            });
+
+            if (selectedPriceDataDetail == null)
+                selectedPriceDataDetail = this.seatsData.prices[seatData.prices[0]];
+
+            priceDropdown.change(function ()
+            {
+                currentSeatingChart.tryToChangeSeatPrice($(this).val(), seatID);
+            });
+
+            priceDropdownParent.append
+            (
+                    $('<div>')
+                        .attr('id', 'price-display-' + escapeSeatID(seatID))
+                        .addClass('col-40 single-price')
+                        .append($('<span>')
+                            .addClass('resize')
+                            .attr('id', 'price-display-name-' + escapeSeatID(seatID))
+                            .text(selectedPriceDataDetail.name))
+                        .append($('<span>')
+                            .attr('id', 'price-display-value-' + escapeSeatID(seatID))
+                            .text(formatMoney(Number(selectedPriceDataDetail.value)))),
+                    $('<div>')
+                        .attr('id', 'price-progress-' + escapeSeatID(seatID))
+                        .addClass('col-40 hidden')
+                        .append($('<div>')
+                            .addClass('progress-info')
+                            .text($('#translation-setting-price').val())
+                            ),
+
+                $('<div>')
+                    .addClass('col-20 right price-button')
+                    .append($('<button>')
+                        .addClass('small')
+                        .text($('#translation-price-change').val()))
+                        .click(function ()
+                        {
+                            var priceID = currentSeatingChart.getSeatPriceID(seatID);
+                            changeSeatPricePopup(seatData, currentSeatingChart.seatsData, seatID, ticketID, priceID, currentSeatingChart);
+                        })
+            );
+
+            priceElement = priceDropdownParent;
+            priceLabelID = '#price-select-caption';
+        }
+
+        if (seat)
+            var seatUnnumbered = !seat.numbered;
+        else
+            var seatUnnumbered = seatData.row_number == '0';
+
+        var rowUnnumbered = seatUnnumbered || seatData.row_number == '';
+
+        if (section)
+            var sectionName = section.name;
+        else
+            var sectionName = 'test';
+
+        ticketRowInside.append
+        (
+            $('<div>')
+                .addClass('cross')
+                .append
+                ($('<button>')
+                        .attr('id', 'remove-' + seatID)
+                        .click(function () { currentSeatingChart.tryToRemoveSeat(seatID, ticketID) }),
+                    $('<div>')
+                        .addClass('loader small')
+                ),
+            $('<div>')
+                .addClass('row performance-detail')
+                .attr('id', 'row-' + seatID)
+                .append
+                (
+                    seatData.row_number == '' ? null :
+                        $('<div>')
+                            .addClass('col-7' + (rowUnnumbered ? ' hidden' : ''))
+                            .addClass('resize')
+                            .append
+                            (
+                                $('<label>').text($('#row-caption').val()),
+                                $('<span>').text(seatData.row_number)
+                            ),
+                    $('<div>')
+                        .addClass(seatUnnumbered ? 'hidden' : (rowUnnumbered ? 'col-14' : 'col-7'))
+                        .addClass('resize')
+                        .append
+                        (
+                            $('<label>').text($('#seat-caption').val()),
+                            $('<span>').text(seat ? seat.number : '')
+                        ),
+                    $('<div>')
+                        .addClass(seatUnnumbered ? 'col-30' : 'col-16')
+                        .addClass('resize')
+                        .append
+                        (
+                            $('<label>').text($('#section-caption').val()),
+                            $('<span>').text(sectionName)
+                        ),
+                    $('<div>')
+                        .addClass('col-10')
+                        .addClass('resize')
+                        .append
+                        (
+                            $('<label>').text($('#category-caption').val()),
+                            $('<span>').text(seatData.area)
+                        ),
+
+                    $('<div>')
+                        .addClass('col-20 price-column')
+                        .append
+                        (
+                            $('<label>').text($(priceLabelID).val()),
+                            priceElement
+                        )
+                )
+        );
+
+        if (priceDropdown)
+            priceDropdown.niceSelect();
+
+        window.setTimeout(function ()
+        {
+            scaleDropdownFont('#seatingchart-tickets');
+        }, 1000);
+
+        if (seat)
+            seat['selected'] = true;
+
+        this.updateSelectedSeats();
+        this.draw();
+
+        if (!this.landscape)
+            ticketRow.show(700);
+
+        this.seatPopupAboutToShow = true;
+
+        if (this.seatInfoID == seatID)
+            this.seatInfoShow(seatID, false, true);
+
+        $('#seatingchart-no-tickets').slideUp();
+    };
+
+    this.removeSeat = function (seatID)
+    {
+        this.seatPopupAboutToShow = false;
+        this.seatInfoHide(false, true);
+
+        var seat = this.chartData[seatID];
+
+        if (seat)
+        {
+            seat.ticketID = null;
+            seat.deleteProgress = false;
+            seat.selected = false;
+        }
+
+        $('#ticket-' + escapeSeatID(seatID)).hide(400, function () { this.remove() });
+
+        this.updateSelectedSeats();
+        this.draw();
+
+        if (this.selectedSeats.length == 0)
+        {
+            $('#seatingchart-tickets-wrapper').hide();
+            $('#seatingchart-no-tickets').fadeTo(1000, 1);
+        }
+    };
+
+    this.getRowID = function (seatID)
+    {
+        var seatData = this.seatsData.seats[seatID];
+        var alternativeID = seatData.alternativeID;
+        var originalID = seatData.originalID;
+
+        var selectedRow = null;
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'row')
+                {
+                    element.seats.forEach(function (rowSeatID)
+                    {
+                        if (alternativeID)
+                        {
+                            if (alternativeID == rowSeatID)
+                            {
+                                selectedRow = key;
+                                return;
+                            }
+                        }
+
+                        if (originalID)
+                        {
+                            if (originalID == rowSeatID)
+                            {
+                                selectedRow = key;
+                                return;
+                            }
+                        }
+
+                        if (rowSeatID == seatID)
+                        {
+                            selectedRow = key;
+                            return;
+                        }
+                    });
+                }
+            }
+
+            if (selectedRow)
+                break;
+        }
+
+        return selectedRow;
+    }
+
+    this.getSectionID = function (rowID)
+    {
+        var selectedSection = null;
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'section')
+                {
+                    element.rows.forEach(function (sectionSeatID)
+                    {
+                        if (sectionSeatID == rowID)
+                        {
+                            selectedSection = key;
+                            return;
+                        }
+                    });
+                }
+            }
+
+            if (selectedSection)
+                break;
+        }
+
+        if (!selectedSection && rowID)
+            selectedSection = 'section_' + rowID.split('_')[1];
+
+        return selectedSection;
+    }
+
+    this.getSectionIDByKey = function (sectionKey)
+    {
+        for (var key in this.sections)
+        {
+            if (this.sections.hasOwnProperty(key))
+            {
+                var section = this.sections[key];
+
+                if (section.name == sectionKey || section.view == sectionKey)
+                {
+                    return section.id;
+                }
+            }
+        }
+    }
+
+    this.getSectionIDByView = function (viewName)
+    {
+        var selectedSection = null;
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'section')
+                {
+                    if (element.view == viewName)
+                    {
+                        return element.id;
+                    }
+                }
+            }
+        }
+    }
+
+
+    this.getAreaSize = function (area)
+    {
+        var total = 0;
+
+        var xs = area.lx.split(',');
+        var ys = area.ly.split(',');
+
+        var nx = area.x;
+        var ny = area.y;
+
+        var xj = null;
+        var yj = null;
+
+        for (var i = 0; i <= xs.length; i++)
+        {
+            if (i == xs.length)
+            {
+                var nx = area.x;
+                var ny = area.y;
+            }
+
+            nx += Number(xs[i % xs.length]);
+            ny += Number(ys[i % ys.length]);
+
+            var xi = (nx + this.offsetX) * this.zoom;
+            var yi = (ny + this.offsetY) * this.zoom;
+
+            if (xj != null && yj != null)
+            {
+                total += (xj * yi * 0.5);
+                total -= (xi * yj * 0.5);
+            }
+
+            xj = xi;
+            yj = yi;
+        }
+
+        return Math.abs(total);
+    }
+
+    this.getAreaBySection = function (sectionID)
+    {
+        for (var key in this.areas)
+        {
+            if (this.areas.hasOwnProperty(key))
+            {
+                var area = this.areas[key];
+                if (area.target == sectionID)
+                    return area;
+            }
+        }
+
+        return null;
+    }
+
+    this.getAreaByLocation = function (x, y)
+    {
+        for (var key in this.areas)
+        {
+            if (this.areas.hasOwnProperty(key))
+            {
+                var area = this.areas[key];
+
+                var inside = false;
+
+                var xs = area.lx.split(',');
+                var ys = area.ly.split(',');
+
+                var nx = area.x;
+                var ny = area.y;
+
+                var xj = null;
+                var yj = null;
+
+                for (var i = 0; i <= xs.length; i++)
+                {
+
+                    if (i == xs.length)
+                    {
+                        var nx = area.x;
+                        var ny = area.y;
+                    }
+
+                    nx += Number(xs[i % xs.length]);
+                    ny += Number(ys[i % ys.length]);
+
+                    var xi = (nx + this.offsetX) * this.zoom;
+                    var yi = (ny + this.offsetY) * this.zoom;
+
+                    if (xj != null && yj != null)
+                    {
+                        var intersect = ((yi > y) != (yj > y))
+                            && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+
+                        if (intersect)
+                            inside = !inside;
+                    }
+
+                    xj = xi;
+                    yj = yi;
+
+                }
+
+                if (inside)
+                    return area;
+            }
+        }
+    }
+
+
+    this.getSeatByLocation = function (clickX, clickY, minDistance)
+    {
+        if (!minDistance)
+            minDistance = Math.sqrt(Math.pow((this.seatMinClickDistance * this.zoom) / 2, 2) + Math.pow((this.seatMinClickDistance * this.zoom) / 2, 2));
+
+        var nearestElement;
+        var nearestDistance = this.bigNumber;
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+
+                var elementType = key.split('_')[0];
+
+                var elementSectionID = key.split('_')[1];
+                var section = this.sections['section_' + elementSectionID];
+
+                if (section)
+                    currentView = this.views[section.view];
+
+                var numbered = true;
+
+                if (element.numbered != undefined)
+                    numbered = element.numbered;
+
+                if (elementType == 'seat'
+                    && (currentView && (currentView.name == this.activeView)))
+                {
+
+                    var x1 = (element.x + this.offsetX) * this.zoom;
+                    var y1 = (element.y + this.offsetY) * this.zoom;
+
+                    if (element.angle == 0)
+                    {
+                        var x2 = x1 + element.ss * this.zoom;
+                        var y2 = y1 + element.ss * this.zoom;
+
+                        if (x1 <= clickX && x2 >= clickX && y1 <= clickY && y2 >= clickY)
+                        {
+                            var seat = this.chartData[key];
+                            if (seat)
+                            {
+                                var seatData = this.seatsData.seats[key];
+
+                                if (seat.available || this.allAvailable)
+                                    return key;
+                            }
+                        }
+                    }
+
+                    var centerX = x1 + (element.ss / 2) * this.zoom;
+                    var centerY = y1 + (element.ss / 2) * this.zoom;
+
+                    var distance = Math.sqrt(Math.pow(clickX - centerX, 2) + Math.pow(clickY - centerY, 2));
+
+                    if (distance < nearestDistance)
+                    {
+                        nearestDistance = distance;
+                        nearestElement = key;
+                    }
+
+                }
+
+            }
+        }
+
+        if (nearestDistance <= minDistance)
+            return nearestElement;
+        else
+            return null;
+
+    };
+
+
+    this.initViews = function ()
+    {
+        $('#seating-chart-sector-title').text('');
+        $('#seating-chart-sector-title').removeClass('active');
+
+        this.views = [];
+        this.areas = [];
+        this.sections = [];
+
+        this.viewCount = 0;
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'view')
+                {
+                    this.views[element.name] = element;
+                    element.minX = this.bigNumber;
+                    element.minY = this.bigNumber;
+                    element.maxX = -this.bigNumber;
+                    element.maxY = -this.bigNumber;
+                    element.unnumbered = false;
+                    element.hasSeats = false;
+
+                    var sectionFound = false;
+
+                    for (var key2 in this.chartData)
+                    {
+                        if (this.chartData.hasOwnProperty(key2))
+                        {
+                            var element2 = this.chartData[key2];
+                            var elementType2 = key.split('_')[0];
+
+                            if (element2.type == 'section')
+                            {
+                                if (element2.name == element.name)
+                                {
+                                    this.views[element.name].section = element2;
+                                    if (element2.rowCount == 1 && element2.colCount == 1)
+                                        this.views[element.name].unnumbered = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (element.bg)
+                        this.assets['view_' + element.name] = element;
+
+                    var currentView = element;
+
+                    this.viewCount++;
+                }
+                else if (elementType == 'area')
+                {
+                    this.areas[element.target] = element;
+                    this.hasAreas = true;
+                }
+                else if (elementType == 'section')
+                {
+                    this.sections[element.id] = element;
+                }
+
+                if (elementType == 'asset')
+                {
+                    this.assets[element.id] = element;
+                }
+                else if (element.name == 'Main')
+                {
+                    this.mainElement = element;
+                }
+                else if (elementType == 'text')
+                {
+                    element.value = element.value.replace(/<\/?[^>]+(>|$)/g, ' ');
+                    element.value = element.value.replace(/\s+/g, ' ');
+                    element.value = element.value.replaceAll('&nbsp;', '_');
+                    element.value = element.value.trim();
+                }
+            }
+        }
+    }
+
+    this.getSeatSize = function ()
+    {
+
+        var currentView = null;
+
+        var lastX = this.bigNumber;
+        var lastY = this.bigNumber;
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (element.type != 'view')
+                {
+
+                    var elementSectionID = key.split('_')[1];
+
+                    var section = this.sections['section_' + elementSectionID];
+
+                    currentView = false;
+
+                    if (section)
+                    {
+                        currentView = this.views[section.view];
+                    }
+                    else
+                    {
+                        if (element.view)
+                            currentView = this.views[element.view];
+                    }
+
+                    var numbered = true;
+
+                    if (element.numbered != undefined)
+                        numbered = element.numbered;
+
+                    if (currentView)
+                    {
+                        if (!currentView.elements)
+                            currentView.elements = [];
+
+                        currentView.elements[key] = element;
+
+                        if (elementType == 'seat' && numbered && element.number != undefined && element.color != undefined && !currentView.unnumbered)
+                        {
+                            var seatData = this.seatsData.seats[key];
+                            element.dataExists = seatData != undefined;
+
+                            if (seatData)
+                                var elementRowID = seatData.originalID.split('_')[2];
+                            else
+                                var elementRowID = key.split('_')[2];
+
+                            element.row = elementRowID;
+
+                            if (!$.isNumeric(element.row))
+                                element.row = 0;
+
+                            if (!element.ss)
+                            {
+                                var keySplit = key.split('_');
+                                var rowID = 'row_' + keySplit[1] + '_' + keySplit[2];
+                                var rowElement = chartData[rowID];
+
+                                if (rowElement.ss)
+                                    element.ss = rowElement.ss;
+                                else
+                                {
+                                    if (section.ss)
+                                    {
+                                        element.ss = section.ss;
+                                        rowElement.ss = section.ss;
+                                    }
+                                }
+                            }
+
+                            if (!currentView.minSeatSize)
+                                currentView.minSeatSize = element.ss;
+                            else if (currentView.minSeatSize > element.ss)
+                                currentView.minSeatSize = element.ss;
+
+                            if (element.row < this.maxRow)
+                                currentView.hasSeats = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    this.initImages = function ()
+    {
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+
+                if (element.type)
+                    var elementType = element.type;
+                else
+                    var elementType = key.split('_')[0];
+
+                if (elementType == 'asset' || elementType == 'view')
+                {
+                    var src = element.src;
+
+                    if (!src)
+                        src = element.bg;
+
+                    if (src)
+                    {
+                        var elementID = this.getImageKey(src);
+
+                        if (!$('#' + elementID).length)
+                        {
+                            var url = this.getImageUrl(src);
+
+                            console.log(url);
+
+                            this.imageCount++;
+
+                            var img = $('<img>');
+                           
+                            $('#images').append(img);
+
+                            img.attr('src', url);
+                            img.attr('id', elementID);
+
+                            img.onload = this.imageLoaded(this);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    this.imageLoaded = function (seatingChart)
+    {
+        seatingChart.loadedImages++;
+
+        if (seatingChart.loadedImages == seatingChart.imageCount)
+            seatingChart.draw();
+
+    }
+
+    this.getBrightness = function (hexCode)
+    {
+        hexCode = hexCode.replace('#', '');
+
+        var c_r = parseInt(hexCode.substr(0, 2), 16);
+        var c_g = parseInt(hexCode.substr(2, 2), 16);
+        var c_b = parseInt(hexCode.substr(4, 2), 16);
+
+        return ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+    }
+
+    this.loadSeatsData = function (url)
+    {
+        var currentSeatingChart = this;
+
+        if (isBooker)
+            url += '&booker=' + bookerName + '&tsid=' + tsCookie;
+
+        console.log(url);
+        $.getJSON(url, function (data)
+        {
+            console.log(data);
+
+            if (data.seats.length == 0 && data.price_areas.length == 0 && data.prices.length == 0)
+            {
+                backToInitialScreen();
+                var msg = $('#translation-tickets-not-on-sale').val();
+                showMessageBox(msg);
+                return;
+            }
+
+            currentSeatingChart.seatsData = data;
+            currentSeatingChart.getSeatSize();
+
+            currentSeatingChart.resize();
+
+            $('.seating-chart-wrapper').hide();
+            $('#seatingchart-loader').hide();
+            $('.seating-chart-wrapper').fadeIn(1200);
+
+            if (currentSeatingChart.views['Main'].hasSeats)
+            {
+                currentSeatingChart.checkIfSeatsAreLoded('Main');
+            }
+
+            $('#sectorLoaderWrapper').fadeIn(1000);
+
+            currentSeatingChart.loadCartSeats(availableSeatsURL);
+        });
+    };
+
+
+    this.loadCartSeats = function (url)
+    {
+
+        if (!url)
+            url = availableSeatsURL;
+
+        var currentSeatingChart = this;
+
+        if (isBooker)
+            url += '&booker=' + bookerName + '&tsid=' + tsCookie;
+
+        console.log(url); 
+
+        //load only those seats that are already in cart
+        $.getJSON(url, function (data)
+        {
+            console.log(data);
+
+            currentSeatingChart.seatsData.reserved_seats = data.reserved_seats;
+
+            for (var key in data.seats)
+            {
+                if (data.seats.hasOwnProperty(key))
+                {
+                    var element = data.seats[key]
+                    var alternativeID = element.alternativeID;
+
+                    currentSeatingChart.seatsData.seats[key] = element;
+
+                    if (key != alternativeID)
+                        currentSeatingChart.seatsData.seats[alternativeID] = element;
+                }
+            }
+
+            $('#sectorLoaderWrapper').fadeOut(1000);
+
+            currentSeatingChart.markAvailableSeats();
+            currentSeatingChart.getChartSize();
+        }).fail(function ()
+        {
+            showMessageBox($('#translation-communication-error').val(),
+                backToInitialScreen,
+                [
+                    [$('#translation-try-again').val(), function () { currentSeatingChart.loadCartSeats(url) }],
+                    [$('#translation-close').val(), backToInitialScreen]
+                ]);
+        });;
+
+    }
+
+    this.markAvailableSeats = function ()
+    {
+        $('#seatingchart-tickets').empty();
+
+        var currentSeatingChart = this;
+
+        
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (element.type == 'seat')
+                {
+                    ///!!!!!!! TODO: Manolo/klus reseni,
+
+                    if  (
+                             currentSeatingChart.performanceID == 1091660   // silvestr na spilce
+                            || currentSeatingChart.performanceID == 1098496 // beneficni ples pro skolu v Kashitu
+                        ) 
+
+                        element.numbered = false;
+
+
+                    else
+                    {
+
+                        var elementSection = key.split('_')[1];
+
+                        var sectionData = this.seatsData.sections['section_' + elementSection];
+                        if (sectionData != undefined)
+                            element.numbered = sectionData.numbered;
+                        else
+                        {
+                            sectionData = this.sections['section_' + elementSection];
+
+                            if (sectionData == undefined)
+                                element.numbered = true;
+                            else
+                            {
+                                var rows = sectionData.rows;
+
+                                if (rows)
+                                {
+                                    if (rows.length == 1)
+                                        element.numbered = rows[0].split('_')[2] != -1;
+                                    else
+                                        element.numbered = true
+                                }
+                                else
+                                    element.numbered = true
+                            }
+                        }
+                        if (this.seatsData.seats[key] || this.allAvailable)
+                            element.available = true;
+                        else
+                            element.available = false;
+                    }
+                }
+            }
+        }
+
+        this.seatsData.reserved_seats.forEach(function (e)
+        {
+            currentSeatingChart.markReservedSeat(e.seat_id, e.ticket_id, e.price_id);
+        });
+
+        $('#seatingchart-tickets-wrapper').append($('<div>').addClass('filler')); 
+
+        this.draw();
+    }
+
+    this.showCategoryLegend = function ()
+    {
+
+        if (!this.seatsData)
+            return;
+
+        var activePriceCategories = [];
+
+        for (var key in this.chartData)
+        {
+            if (this.chartData.hasOwnProperty(key))
+            {
+                var element = this.chartData[key];
+                var elementType = key.split('_')[0];
+
+                if (elementType == 'seat')
+                {
+                    if (element.numbered)
+                    {
+                        if (this.seatsData.seats[key])
+                        {
+                            var elementSectionID = key.split('_')[1];
+                            var section = this.sections['section_' + elementSectionID];
+
+                            if (section.view == this.activeView)
+                            {
+                                var seatData = this.seatsData.seats[key];
+                                var priceCategory = seatData.area;
+
+
+                                if (activePriceCategories.indexOf(priceCategory) == -1)
+                                    activePriceCategories.push(priceCategory);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        var parentElement = $('#prices-overview-content')
+        parentElement.empty();
+
+        for (var key in this.seatsData.price_areas)
+        {
+            if (this.seatsData.price_areas.hasOwnProperty(key))
+            {
+                var element = this.seatsData.price_areas[key];
+
+                if (activePriceCategories.indexOf(key) > -1)
+                {
+                    parentElement.append
+                    (
+                        $('<div>')
+                            .addClass('price')
+                            .text(key + ': ' + formatMoneyRange(element.min_price, element.max_price))
+                            .append
+                            (
+                                $('<span>').css('background-color', element.color)
+                            )
+                    );
+                }
+            }
+        }
+    }
+
+    this.prepareSectorList = function (viewName)
+    {
+
+        var sectorsCount = 0;
+        $('#sectors-overview-content').empty();
+
+        $('#seatingchart-legend').animate({
+            height: $('#sectors-overview').height()
+        }, 1);
+
+        var currentSeatingChart = this;
+
+        for (var key in this.views)
+        {
+            if (this.views.hasOwnProperty(key))
+            {
+                var view = this.views[key];
+            }
+        }
+
+        var mainView = this.views['Main'];
+
+        var displayedSectionKeys = [];
+
+        if (viewName == 'Main')
+        {
+            for (var key in this.views)
+            {
+                if (this.views.hasOwnProperty(key))
+                {
+                    if (key != 'Main')
+                    {
+
+                        var sectionID = this.getSectionIDByKey(key);
+                        var sectionData = this.seatsData.sections[sectionID];
+
+                        var sectionData2 = this.sections[sectionID];
+
+                        var sections = this.getViewSectionData(key);
+
+                        if (sections.length > 0)
+                        {
+                            var availableCategoriesCount = Sum(sections, 'available_categories');
+
+                            if (availableCategoriesCount > 0)
+                            {
+                                displayedSectionKeys.push(key);
+                                this.chartHasSections = true;
+
+                                var pricesArray = [];
+
+                                sections.forEach(function (e)
+                                {
+                                    var arr = getPricesArray(e.prices, this.seatsData.prices);
+                                    arr.forEach(function (f)
+                                    {
+                                        pricesArray.push(f);
+                                    });
+                                });
+
+                                var minPrice = Min(pricesArray, 'value');
+                                var maxPrice = Max(pricesArray, 'value');
+
+                                var view = this.views[key];
+                                var area = currentSeatingChart.areas[key];
+
+                                var item = $('<div>').addClass('sector-info');
+
+                                var sectorLink = $('<a>')
+                                    .data('area-id', key)
+                                    .click(function ()
+                                    {
+                                        var areaID = $(this).data('area-id');
+                                        var area = currentSeatingChart.areas[areaID];
+                                        scrollToAnimation(0, 1000);
+                                        currentSeatingChart.selectArea(area, true);
+                                    })
+                                    .append
+                                    (
+                                        $('<h5>').text(key)
+                                    )
+
+
+                                item.append
+                                (
+                                    sectorLink,
+                                    $('<span>').text(formatMoneyRange(minPrice, maxPrice))
+                                );
+
+                                $('#sectors-overview-content').append(item);
+                                sectorsCount++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        var unnumberedCount = 0;
+
+        for (var key in this.sections)
+        {
+            if (this.sections.hasOwnProperty(key))
+            {
+                var sectionItem = this.sections[key];
+
+                if (sectionItem.view == this.activeView)
+                {
+                    if (sectionItem.view != sectionItem.name)
+                    {
+                        if (!displayedSectionKeys.includes(sectionItem.view))
+                        {
+                            var sectionData = this.getUnnumberedData(key);
+
+                            if (sectionData)
+                            {
+                                var section = this.seatsData.sections[key];
+                                var sectorName = sectionItem.name;
+
+                                var item = $('<div>').addClass('sector-info');
+
+                                var sectionTemp = [];
+                                sectionTemp.push(sectionData);
+
+                                var pricesArray = getPricesArray(sectionTemp, this.pricesData);
+
+                                var minPrice = Min(pricesArray, 'price', 'content');
+                                var maxPrice = Max(pricesArray, 'price', 'content');
+                                var available = Sum(pricesArray, 'available', 'content');
+
+                                var sectorLink = $('<a>')
+                                    .data('section-id', sectionItem.sectionId)
+                                    .click(function ()
+                                    {
+                                        var areaKey = $(this).data('section-id');
+                                        var area = currentSeatingChart.areas[areaKey];
+
+                                        if (!area)
+                                            currentSeatingChart.showUnnumberedView(null, areaKey);
+                                        else
+                                            currentSeatingChart.selectArea(area, true);
+                                    })
+                                    .append
+                                    (
+                                        $('<h5>').text(sectorName)
+                                    )
+
+                                item.append
+                                (
+                                    sectorLink,
+                                    $('<span>').text(formatMoneyRange(minPrice, maxPrice))
+                                );
+
+                                $('#sectors-overview-content').append(item);
+                                unnumberedCount++;
+                                sectorsCount++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $('#sectors-overview').toggle(sectorsCount > 0);
+        $('#sectors-overview').toggleClass('padding-top-less', sectorsCount > 0 && $('#prices-overview-content').children().length > 0);
+
+        if (unnumberedCount > 0)
+            this.chartHasUnnumberedSections = true;
+
+    }
+
+    this.sectionExists = function (viewID)
+    {
+        var result = [];
+
+        for (var key in this.sections)
+        {
+            if (this.sections.hasOwnProperty(key))
+            {
+                var section = this.sections[key]
+                if (section.view == viewID)
+                {
+                    if (this.seatsData.sections[section.id])
+                    {
+                        if (this.seatsData.sections[section.id].available_categories > 0)
+                            return true; 
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+    this.getViewSectionData = function (viewID)
+    {
+        var result = [];
+
+        for (var key in this.sections)
+        {
+            if (this.sections.hasOwnProperty(key))
+            {
+                var section = this.sections[key]
+
+                if (section.view == viewID)
+                {
+                    var sectionData = this.seatsData.sections[key];
+
+                    if (sectionData)
+                        result.push(sectionData);
+                }
+            }
+        }
+
+        return result;
+    };
+
+
+    this.getReservedSeat = function (seatID)
+    {
+        var s = currentSeatingChart.seatsData.seats[seatID];
+        var dbID = s.id;
+
+        var seat = null; 
+
+        currentSeatingChart.seatsData.reserved_seats.forEach(function (e)
+        {
+            if (dbID == e.seat_db_id)
+                seat = e; 
+        });
+
+        return seat; 
+    }
+
+
+    this.getSeatPriceID = function (seatID)
+    {
+        var seat = this.getReservedSeat(seatID);
+
+        var priceID = null;
+
+        if (seat)
+            priceID = seat.price_id;
+
+        if (!priceID)
+            var priceID = currentSeatingChart.chartData[seatID].priceID;
+
+        return priceID;
+    };
+
+
+    this.getViewSectionDataUnnumbered = function (viewID)
+    {
+        var result = [];
+
+        for (var key in this.sections)
+        {
+            if (this.sections.hasOwnProperty(key))
+            {
+                var section = this.sections[key]
+
+                if (section.view == viewID)
+                {
+                    var sectionData = this.getUnnumberedData(key);
+                    if (sectionData)
+                        result.push(sectionData);
+                }
+            }
+        }
+
+        return result;
+    };
+
+
+    this.getImageUrl = function (src)
+    {
+        var url;
+
+        src = src.replace(' ', '%20');
+
+        if (this.vectorAssets.indexOf(src) == -1)
+            url = 'https://www.ticketstream.cz/booker/seatchart/charts/' + this.chartID + '/assets/' + src;
+        else
+            url = 'http://www.prokopic.cz/' + src.replace('.jpg', '.svg');
+
+        return url;
+    }
+
+
+    this.getImageKey = function (src)
+    {
+        return 'img_' + src.replace(/[^a-zA-Z 0-9]+/g, '');
+    }
+
+    this.expire = function ()
+    {
+        var currentSeatingChart = this;
+
+        this.selectedSeats.forEach(function (key)
+        {
+            currentSeatingChart.removeSeat(key);
+        });
+    }
+
+    this.printChart = function ()
+    {
+        this.printing = true; 
+        this.beforePrintRatio = this.ratio;
+
+        var viewData = this.views[this.activeView];
+
+        $('body').addClass('hide-all');
+
+        var img = $('<img>')
+                    .attr('id', 'canvas-print')
+                    .addClass('canvas-print')
+                    .addClass('full-width')
+
+        $('body').append
+        (
+            $('<div>')
+                .attr('id', 'canvas-print-parent')
+                .addClass('hide-all-exception')
+                .addClass('padding-top')
+                .append(img)
+        );
+
+
+        var legend = $('<div>')
+            .addClass('content')
+            .append($('#prices-overview').clone());
+
+        $('#canvas-print-parent').append(legend);
+        var legendHeight = legend.height();
+
+        var w = viewData.maxX - viewData.minX;
+        var h = viewData.maxY - viewData.minY - legendHeight * 3;
+
+        var aspectRatio = w / h;
+
+        console.log(aspectRatio);
+
+        this.headStyle = null;
+
+        if (aspectRatio < .8)
+            aspectRatio = .8;
+
+        if (aspectRatio > 1.5)
+        {
+            if (aspectRatio < 1.8)
+                aspectRatio = 1.8;
+
+            this.headStyle = $('<style>').text('@page{size: landscape;}');
+            $('head').append(this.headStyle);
+            $('#seating-chart').css('width', w + 'px');
+            $('#seating-chart').css('height', w / aspectRatio + 'px');
+
+        }
+        else
+        {
+            $('#seating-chart').css('width', (h * aspectRatio) + 'px');
+            $('#seating-chart').css('height', h + 'px');
+        }
+
+        var CurrentSeatingChart = this;
+
+        this.ratio = 5;
+
+        this.getChartSize();
+        this.setDefaultZoom();
+
+        this.context.font = '600 10px Fira Sans';        
+        this.draw();
+
+      
+        img.on('load', function ()
+        {
+            CurrentSeatingChart.printingInvoked = true;
+            window.print();
+        });
+
+        $('#canvas-print')
+            .attr('src', this.canvas.toDataURL('image/png'))
+
+    }
+    
+    this.afterPrint = function()
+    {
+        if (this.headStyle)
+            this.headStyle.remove();
+
+        $('#canvas-print-parent').remove();
+        $('body').removeClass('hide-all');
+
+        this.ratio = this.beforePrintRatio;
+
+        $('#seating-chart').css('width', '');
+        $('#seating-chart').css('height', '');
+
+        this.printing = false;
+        this.getChartSize();
+        this.setDefaultZoom();
+        this.draw();
+
+        this.printingInvoked = false; 
+    }
+
+    this.seatingChartHeadline = $('#sectors-headline').text();
+
+    $('#seatingchart-tickets').empty();
+
+    this.setAlpha(1);
+    this.context.fillStyle = this.backgroundColor;
+    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.genericErrorMessage = $('#seat-info-error').text();
+
+    $('#prices-overview-content').empty();
+    $('#prices-overview').hide();
+
+    $('#sectors-overview-content').empty();
+    $('#sectors-overview').hide();
+
+    $('#seatingchart-loader').show();
+    $('.seating-chart-wrapper').hide();
+
+    $('#seat-info').click(function ()
+    {
+        hideSeatChartInfoBox = false;
+    });
+
+    $('#seat-info').mousemove(function ()
+    {
+        if (currentSeatingChart.seatInfoHideTimeout)
+        {
+            window.clearTimeout(currentSeatingChart.seatInfoHideTimeout);
+            currentSeatingChart.seatInfoHideTimeout = null;
+        }
+    });
+
+    this.loadSeatsData(availableSectorsAndPricesURL);
+
+    this.lastResizeCanvasW = $('#seating-chart').innerWidth();
+    this.lastResizeCanvasH = $('#seating-chart').innerHeight();
+
+    this.initViews();
+    this.initImages();
+
+    this.pointerReset();
+
+    var currentSeatingChart = this;
+
+    $(window).resize(function () { currentSeatingChart.resize() });
+
+    this.checkRequestAnimationFrame();
+    requestAnimationFrame(this.animate.bind(this));
+
+    window.setInterval(function () { currentSeatingChart.draw() }, 1000);
+
+    $('#seat-info-price-select').change(function ()
+    {
+        currentSeatingChart.tryToChangeSeatPrice($(this).val());
+    });
+
+    this.debugDone = false;
+
+    var legendHeightBefore = $('#seatingchart-legend-inside').height();
+
+    if (isBooker)
+        $('select').niceSelect();
+
+    $(window).on('beforeprint', function (e)
+    {
+        e.preventDefault();
+
+        if (currentSeatingChart.printingInvoked)
+            return;
+
+        currentSeatingChart.printChart();
+    });
+
+    $(window).on('afterprint', function ()
+    {
+        currentSeatingChart.afterPrint();
+    });
+
+    this.mainDomain = window.location.hostname == 'www.ticketstream.cz';
+
+    return this;
+
+}
+

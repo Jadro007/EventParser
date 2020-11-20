@@ -1,0 +1,1202 @@
+﻿var g_id_performance = 0;
+var g_count_basket = 0;
+var g_performance = null;
+
+var animationName = "fadeIn";
+var animationNameTien = "flash";
+var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+function ZrusPerformanceURL() {
+    if (typeof (window.history.pushState) != "undefined") {
+        window.history.replaceState('object or string', document.title, window.location.pathname);
+    }
+}
+
+// Otvorenie vyskakovacie okna pre n-predstavenie
+function NPerformance_load(id_performance, count_basket) {
+
+    if (location.href.indexOf("iframe") == -1) {
+        if (location.href.indexOf("utm_source") == -1) {
+            if (typeof (window.history.pushState) != "undefined") {
+                window.history.replaceState('object or string', document.title, window.location.pathname + '?idp=' + id_performance);
+            }
+        }
+    }
+    else {
+        //if (!(QueryString["fb"] == "")) {
+        if ($("#performance_link_" + id_performance).length != 0) {
+            var _top = $("#performance_link_" + id_performance).offset().top;
+            if (_top < 300) _top = 300;
+
+            $("#modalVyberPocetMiest20 .modal-dialog").css({ top: _top - 300 });
+        }
+        //}
+    }
+
+    $.ajax({
+        url: absoluteUri + "Event/PerformanceUser/" + id_performance,
+        dataType: "json",
+        cache: false,
+        statusCode: {
+            404: function () { alert('Page not found.'); },
+            500: function () { alert('Internal server error.'); }
+        }
+    }).done(function (data) {
+
+        if (data.Succeeded) {
+
+            if (typeof (ga) != "undefined") {
+                ga('set', 'page', window.location.pathname + "#performance");
+                ga('send', 'pageview');
+            }
+
+            // Tu treba spracovat priority
+            if (SpracujPriority(data.ReturnedObject) == true) {
+                window["PriorityData"] = data.ReturnedObject;
+                //window["PriorityCountBasket"]
+                return;
+            }
+            else {
+                $('#modalVyberPocetMiest20').modal('show');
+            }
+            var performance = data.ReturnedObject;
+            g_performance = performance;
+            g_id_performance = performance.ID;
+            g_count_basket = 0;
+
+            $('#NPerformance_Name').html(performance.Event.Name);
+            $('#NPerformance_date').html(performance.FormattedDatetimeDescription);
+            $('#NPerformance_venue').html(performance.Venue.Name);
+            //$('#NPerformance_priceSeat').html(Format_mena(performance.PriceCategories[0].Price));
+
+            if (typeof (count_basket) == "undefined")
+                count_basket = 0;
+
+            if (count_basket != 0) {
+                $("#NPerformance_count_" + count_basket).addClass("active");
+                $("#NPerformance_SumPrice").html("" + count_basket + lang["lbKusov"] + " = " + Format_mena(performance.PriceCategories[0].Price * count_basket));
+                $("#NPerformance_SumPrice")[0].style.color = "";
+
+                var $zaplatitBtn = $('.modal-footer .pokracuj-kosik-btn');
+                var $sumar = $(".spolu-sumar");
+
+                $zaplatitBtn.removeAttr("disabled");
+                $sumar.parent().addClass("text-zlta");
+
+                $sumar.addClass("animated " + animationName).one(animationEnd, function () {
+                    //sem co sa stane po animacii
+                    $sumar.removeClass(animationName)
+                });
+
+                $sumar.addClass("animated " + animationName).one(animationEnd, function () {
+                    //sem co sa stane po animacii
+                    $sumar.removeClass(animationName)
+                });
+
+                g_count_basket = count_basket;
+            }
+            else {
+                $("#NPerformance_SumPrice").html("1" + lang["lbKusov"] + " = " + Format_mena(performance.PriceCategories[0].Price));
+                $("#NPerformance_SumPrice")[0].style.color = "black";
+            }
+
+            if (typeof (minSeatCount) != 'undefined' && typeof (maxSeatCount) != "undefined") {
+
+                var max = g_performance.MaxRezWWW < maxSeatCount ? g_performance.MaxRezWWW : maxSeatCount;
+
+                for (var i = 1; i <= 8; i++) {
+                    if (i <= max && i >= minSeatCount)
+                        $("#NPerformance_count_" + i).removeAttr("disabled");
+                    else
+                        $("#NPerformance_count_" + i).attr("disabled", "disabled");
+                }
+            }
+            else {
+                for (var i = 1; i <= 8; i++) {
+                    if (i <= g_performance.MaxRezWWW)
+                        $("#NPerformance_count_" + i).removeAttr("disabled");
+                    else
+                        $("#NPerformance_count_" + i).attr("disabled", "disabled");
+                }
+            }
+        }
+        else {
+            alert(data.Message);
+        }
+    });
+}
+
+function oznac_spravny_pocet(pocet) {
+    $("#modalVyberPocetMiest20 .btn.btn-default.active").removeClass("active");
+    $("#NPerformance_count_" + pocet).addClass("active");
+}
+
+function NPerformance_setCount(count) {
+
+    //alert("Pre plánovanú odstávku systému nie je možne označovať miesta do košíka.");
+    //return;
+
+    var pocet_teraz = 0;
+
+    if (typeof (Basket) != "undefined")
+        if (isnull(Basket[g_id_performance]) == false)
+            pocet_teraz = Basket[g_id_performance].length;
+
+    if (typeof ($("#NPerformance_count_" + count).attr("disabled")) != "undefined" && $("#NPerformance_count_" + count).attr("disabled") == "disabled") {
+        setTimeout("oznac_spravny_pocet(" + pocet_teraz + ");", 10);
+
+        if (typeof (event) != "undefined" && typeof (event.stopPropagation) != "undefined")
+            event.stopPropagation();
+
+        return false;
+    }
+
+    if (count == 8) {
+        $("#modalVyberPocetMiest20_8msg").removeClass("hidden");
+    }
+    else {
+        $("#modalVyberPocetMiest20_8msg").addClass("hidden");
+    }
+
+    $.ajax({
+        url: absoluteUri + "Event/SetNSeats/" + g_id_performance + "/" + count,
+        dataType: "json",
+        cache: false,
+        statusCode: {
+            404: function () { alert('Page not found.'); },
+            500: function () { alert('Internal server error.'); }
+        }
+    }).done(function (data) {
+
+        if (data.Succeeded == true) {
+
+            ReloadBasket(data.ReturnedObject.Basket);
+            $('#basketko').html('<i class="fa fa-shopping-cart"></i><span class="basket-counter" data-count="0">' + data.ReturnedObject.NumberOfBasket + '</span>');
+
+            if (g_count_basket != 0)
+                $("#NPerformance_count_" + g_count_basket).removeClass("active");
+
+            $("#NPerformance_count_" + data.ReturnedObject.NumberOfPerformance).addClass("active");
+            $("#NPerformance_SumPrice").html("" + data.ReturnedObject.NumberOfPerformance + lang["lbKusov"] + " = " + Format_mena(g_performance.PriceCategories[0].Price * data.ReturnedObject.NumberOfPerformance));
+            $("#NPerformance_SumPrice")[0].style.color = "";
+            animuj("#NPerformance_SumPrice", "flipInX", false);
+            //$("#NPerformance_SumPrice").addClass("animated flipInX");
+
+
+            var cena = g_performance.PriceCategories[0].Price * data.ReturnedObject.NumberOfPerformance;
+            var mena = lokalita == 'sk' ? "EUR" : (lokalita == 'cz' ? "CZK" : (lokalita == 'pl' ? "PLN" : "HUF"));
+            if (typeof (fbq) != "undefined") {
+                fbq('track', 'AddToCart', {
+                    content_name: g_performance.EventName,
+                    //content_category: 'Apparel & Accessories > Shoes',
+                    content_ids: [g_performance.Event.EventOut.ID_Out],
+                    content_type: 'product',
+                    value: cena,
+                    currency: mena
+                });
+            }
+
+            if (typeof (exponea) != "undefined" && typeof (exponea.track) != "undefined") {
+                exponea.track('AddToCart', {
+                    'EventName': g_performance.Event.Name,
+                    'EventPlace': g_performance.Venue.Name,
+                    'EventCity': g_performance.Venue.City.Name,
+                    'EventNote': g_performance.FormattedDatetimeDescription
+                });
+            }
+            exponea_cart_update(data.ReturnedObject.ID_mp, data.ReturnedObject.akcia);
+
+
+            if (g_count_basket == 0) {
+                var $zaplatitBtn = $('.modal-footer .pokracuj-kosik-btn');
+                var $sumar = $(".spolu-sumar");
+
+                $zaplatitBtn.removeAttr("disabled");
+                $sumar.parent().addClass("text-zlta");
+
+                $sumar.addClass("animated " + animationName).one(animationEnd, function () {
+                    //sem co sa stane po animacii
+                    $sumar.removeClass(animationName)
+                });
+            }
+            changeBasketValue();
+            g_count_basket = data.ReturnedObject.NumberOfPerformance;
+
+
+        }
+        else {
+            if (data.Message != "NONE")
+                alert(data.Message);
+        }
+    });
+}
+
+var H_max_x = 0;
+var H_max_y = 0;
+var iDnes_msg = "";
+
+function createA(url, name) {
+    return "<a style='text-decoration:underline' target='_blank' href='" + (isnull(url) ? "" : (url.indexOf('http') == -1 ? 'http://' + url : url)) + "'>" + name + "</a>";
+}
+
+function FormatPocetMiest(pocet) {
+    if (pocet == 1) return "1 " + lang["Miesto"].toLowerCase();
+    if (pocet > 1 && pocet < 5) return pocet + " " + lang["2az4Miesta"].toLowerCase();
+    return pocet + " " + lang["5aViacMiest"].toLowerCase();
+}
+
+function SpracujPriority(data, wd) {
+    window["TFP_Price"] = null;
+    window["seatMsgCount"] = "";
+    window["PriorityIbaNaPartnerskej"] = true;
+
+    // Ak nema priority
+    if (data.Priority == null || data.Priority.length == 0 || wd == true) {
+        //$("#modalHladisko").modal('show');
+        return false;
+    } else {
+
+
+        var UserVerified = false;
+        var isPartnerVerified = false;
+        var isPrioritySektor = false;
+        var ibaPartner = true;
+        var priority_verified = null;
+
+
+        for (var i in data.Priority) {
+            if (data.Priority.hasOwnProperty(i)) {
+                if (data.Priority[i].UserVerified) {
+                    UserVerified = true;
+                    priority_verified = data.Priority[i];
+                }
+                if (data.Priority[i].PrioritySektors != null && data.Priority[i].PrioritySektors.length > 0) {
+                    isPrioritySektor = true;
+                }
+                if (data.Priority[i].Partners != null) {                 // Preskakovanie partnerov
+                    for (var j in data.Priority[i].Partners) {
+                        if (data.Priority[i].Partners.hasOwnProperty(j)) {
+                            if (data.Priority[i].Partners[j].Skip == true && data.Priority[i].Partners[j].ID_Partner == data.UserIDPartner) {
+                                data.Priority[i].UserVerified = true;
+                                priority_verified = data.Priority[i];
+                                UserVerified = true;
+                                isPartnerVerified = true;
+                                ibaPartner = false;
+
+                                if (isnull(data.Priority[i].Partners[j].minSeatCount) == false) {
+                                    priority_verified.minSeatCount = data.Priority[i].Partners[j].minSeatCount;
+                                }
+                                if (isnull(data.Priority[i].Partners[j].maxSeatCount) == false) {
+                                    priority_verified.maxSeatCount = data.Priority[i].Partners[j].maxSeatCount;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        if (UserVerified) {
+
+            // Zobrazi login dialog
+            if (uil == false) {
+                $("#modalLoginRegNewPasswNewEmail").modal("show");
+                $("#login-js-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close danger" data-dismiss="alert" aria-hidden="true">×</button>' + lang["priority_prihlasenie_msg"] + '</div>');
+                return true;
+            }
+
+            if (isnull(window["minSeatCount_TFP"]) == false && isnull(window["maxSeatCount_TFP"]) == false) {
+                priority_verified.maxSeatCount = window["maxSeatCount_TFP"];
+                priority_verified.minSeatCount = window["minSeatCount_TFP"];
+            }
+
+
+            if (priority_verified.maxSeatCount == null && priority_verified.minSeatCount != null)
+                seatMsgCount = lang["VybMin"] + " " + FormatPocetMiest(priority_verified.minSeatCount);
+            if (priority_verified.maxSeatCount != null && priority_verified.minSeatCount == null)
+                seatMsgCount = lang["VybMax"] + " " + FormatPocetMiest(priority_verified.maxSeatCount);
+            if (priority_verified.maxSeatCount != null && priority_verified.minSeatCount != null) {
+                if (priority_verified.maxSeatCount == priority_verified.minSeatCount)
+                    seatMsgCount = lang["Vyberte"] + " " + FormatPocetMiest(priority_verified.maxSeatCount);
+                else
+                    seatMsgCount = lang["Vyberte"] + " " + priority_verified.minSeatCount + " " + lang["Lbaz"] + " " + FormatPocetMiest(priority_verified.maxSeatCount);
+            }
+
+            if (seatMsgCount != "")
+                seatMsgCount = "<span id='modal_hladisko_priority_msg' style='color:red; float:right;'>" + seatMsgCount + "</span>";
+
+            $("#hladisko-basket-btn").attr("disabled", "disabled");
+
+            window["minSeatCount"] = priority_verified.minSeatCount;
+            window["maxSeatCount"] = priority_verified.maxSeatCount;
+
+            if (priority_verified.TFP_Price != null && priority_verified.TFP_Price != "null" && priority_verified.TFP_Price != 0)
+                window["TFP_Price"] = priority_verified.TFP_Price;
+        }
+
+        // Pouzivatel ma overene heslo a zaroven na priority nie je zadany sektor
+        if (UserVerified && isPrioritySektor == false) {
+
+            // Zobrazi login dialog
+            if (uil == false) {
+                $("#modalLoginRegNewPasswNewEmail").modal("show");
+                $("#login-js-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close danger" data-dismiss="alert" aria-hidden="true">×</button>' + lang["priority_prihlasenie_msg"] + '</div>');
+                return true;
+            }
+
+            //$("#modalHladisko").modal('show');
+            return false;
+        }
+
+        // Pouzivatel ma verifikovane heslo ale zaroven existuje priority ktore zaheslovava iba zvolene sektory
+        if (UserVerified && isPrioritySektor == true) {
+            // Zobrazi login dialog
+            if (uil == false) {
+                $("#modalLoginRegNewPasswNewEmail").modal("show");
+                $("#login-js-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close danger" data-dismiss="alert" aria-hidden="true">×</button>' + lang["priority_prihlasenie_msg"] + '</div>');
+                return true;
+            }
+
+            var ibaZvolenySektor = false;
+  
+
+            for (var i in data.Priority) {
+                if (data.Priority[i].UserVerified == true && data.Priority[i].PrioritySektors != null && data.Priority[i].IbaZvolenySektor) {
+                    ibaZvolenySektor = true;
+                }
+            }
+
+            var dic_povolene = new Array();
+
+            if (ibaZvolenySektor == false) {
+                for (var i in data.Priority[0].PerformanceSektors) {
+                    dic_povolene[data.Priority[0].PerformanceSektors[i]] = 1;
+                }
+            }
+
+            for (var i in data.Priority) {
+                if (data.Priority[i].UserVerified == false && data.Priority[i].PrioritySektors != null) {
+                    for (var j in data.Priority[i].PrioritySektors)
+                        delete dic_povolene[data.Priority[i].PrioritySektors[j]];
+                }
+            }
+
+            for (var i in data.Priority) {
+                if (data.Priority[i].UserVerified == true && data.Priority[i].PrioritySektors != null) {
+                    for (var j in data.Priority[i].PrioritySektors) {
+                        if (data.Priority[i].PrioritySektors.hasOwnProperty(j)) {
+                            dic_povolene[data.Priority[i].PrioritySektors[j]] = 1;
+                        }
+                    }
+                }
+            }
+
+            window["PovoleneSektory"] = dic_povolene;
+            //$("#modalHladisko").modal('show');
+            return false;
+        }
+
+        //Idnes Kod
+        if (!UserVerified && typeof (iDnesKod) != "undefined" && iDnesKod != null) {
+            var ikod = iDnesKod;
+            iDnesKod = null;
+            window["PriorityData"] = data;
+            var id_priority = 0;
+
+            for (var i in data.Priority) {
+                for (var j in data.Priority[i].Partners) {
+                    if (data.Priority[i].Partners[j].ID_Partner == 338)
+                        id_priority = data.Priority[i].ID;
+                }
+            }
+
+            if (id_priority == 0) id_priority = data.Priority[0].ID;
+
+            priority_error = "-1" + "|" + lang["PriorityIdnesInePredstavenie"] + " " + data.EventName + " " + data.DatetimeDescription;
+            OdosliPriorityIDnes(data.ID, id_priority, ikod);
+            return;
+        }
+
+        // Ak su vsetky priority pre partnerov, a zaroven nie som ten partner a niektore sektory nie su zaheslovane
+        if (!UserVerified && isPrioritySektor == true) {
+            var zobrazSektory = true;
+
+            for (var i in data.Priority) {
+                if (data.Priority[i].PrioritySektors == null)
+                    zobrazSektory = false;
+                if (data.Priority[i].Partners == null)
+                    zobrazSektory = false;
+                for (var j in data.Priority[i].Partners) {
+                    if (data.Priority[i].Partners[j].ID_Partner == data.UserIDPartner)
+                        zobrazSektory = false;
+                }
+            }
+
+            if (zobrazSektory)
+                window["PrioritySektorPreskocit"] = true;
+        }
+
+        // Vsetky priority su na sektory, ide zobrazit ostatne sektory
+        if (window.PrioritySektorPreskocit == true) {
+            var allPrioritySektor = true;
+            for (var i in data.Priority) {
+                if (data.Priority.hasOwnProperty(i)) {
+                    if (!(data.Priority[i].PrioritySektors != null && data.Priority[i].PrioritySektors.length > 0))
+                        allPrioritySektor = false;
+                }
+            }
+
+            if (allPrioritySektor) {
+                var dic_povolene = new Array();
+                for (var i in data.Priority[0].PerformanceSektors) {
+                    if (data.Priority[0].PerformanceSektors.hasOwnProperty(i)) {
+                        dic_povolene[data.Priority[0].PerformanceSektors[i]] = 1;
+                    }
+                }
+
+                var povolVsetkoPreWWW = false;
+                if (data.UserIDPartner != 338) {
+                    for (var i in data.Priority) {
+                        if (data.Priority[i].ID == 1491 || data.Priority[i].ID == 1489 || data.Priority[i].ID == 1490 || data.Priority[i].ID == 1496 || data.Priority[i].ID == 1377 || data.Priority[i].ID == 1378 || data.Priority[i].ID == 1379 || data.Priority[i].ID == 1393 || data.Priority[i].ID == 1394 || data.Priority[i].ID == 1339 || data.Priority[i].ID == 1549) {
+                            povolVsetkoPreWWW = true;
+                        }
+                    }
+                }
+
+                if (povolVsetkoPreWWW == false) { 
+                    for (var i in data.Priority) {
+                        if (data.Priority.hasOwnProperty(i)) {
+                            if (data.Priority[i].UserVerified == false && data.Priority[i].PrioritySektors != null) {
+                                for (var j in data.Priority[i].PrioritySektors) {
+                                    if (data.Priority[i].PrioritySektors.hasOwnProperty(j)) {
+                                        delete dic_povolene[data.Priority[i].PrioritySektors[j]];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                window["PovoleneSektory"] = dic_povolene;
+                //$("#modalHladisko").modal('show');
+                return false;
+            }
+        }
+
+        
+
+        // Zobrazi login dialog
+        if (uil == false) {
+            $("#modalLoginRegNewPasswNewEmail").modal("show");
+            $("#login-js-message").html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close danger" data-dismiss="alert" aria-hidden="true">×</button>' + lang["priority_prihlasenie_msg"] + '</div>');
+            return true;
+        }
+
+        // Pouzivatel nema overene heslo pre priority
+        if (!UserVerified) {
+
+            // Zistit ci nie je nahodene priority pre reklamneho partnera ineho ako ma pouzivatel a ten reklamny partner ma preskakovat == false
+            for (var i in data.Priority) {
+                if (data.Priority.hasOwnProperty(i)) {
+                    data.Priority[i]["LockPartner"] = false;
+                    data.Priority[i]["LockPartnerWWW"] = '';
+                    if (data.Priority[i].Partners != null) {
+                        for (var j in data.Priority[i].Partners) {
+                            if (data.Priority[i].Partners.hasOwnProperty(j)) {
+                                if (data.Priority[i].Partners[j].Skip == false && data.Priority[i].Partners[j].ID_Partner != data.UserIDPartner) {
+                                    data.Priority[i].LockPartner = true;
+                                    data.Priority[i].LockPartnerWWW += (data.Priority[i].LockPartnerWWW == '' ? createA(data.Priority[i].Partners[j].PartnerWeb, data.Priority[i].Partners[j].Name) : ', ' + createA(data.Priority[i].Partners[j].PartnerWeb, data.Priority[i].Partners[j].Name));
+                                }
+                                if (/*data.Priority[i].Partners[j].Skip == false &&*/ data.Priority[i].Partners[j].ID_Partner == data.UserIDPartner) {
+                                    data.Priority[i].LockPartner = false;
+                                    data.Priority[i].LockPartnerWWW = '';
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            var LockAllPartners = true;
+            var wwwLockPartners = '';
+            for (var i in data.Priority) {
+                if (data.Priority.hasOwnProperty(i)) {
+                    if (data.Priority[i].LockPartner == false)
+                        LockAllPartners = false;
+                    else
+                        wwwLockPartners += (wwwLockPartners == '' ? data.Priority[i].LockPartnerWWW : ', ' + data.Priority[i].LockPartnerWWW);
+                }
+            }
+
+            var HTML = [];
+
+            var poradie = 1;
+
+            if (LockAllPartners) {
+                GenerujPriorityPartnerWarrning(HTML, wwwLockPartners);
+            }
+            else {
+
+                for (var i in data.Priority) {
+                    if (data.Priority.hasOwnProperty(i)) {
+                        if (!(data.Priority[i].LockPartner == true))
+                            GenerujPriority(data.Priority[i], HTML, poradie++, data.Priority.length);
+                    }
+                }
+
+                var onlySektorspriority = true;
+                for (var i in data.Priority) {
+                    if (data.Priority.hasOwnProperty(i)) {
+                        if (data.Priority[i].PrioritySektors == null)
+                            onlySektorspriority = false;
+                    }
+                    if (data.Priority[i].ZakazBezpPiority)
+                        onlySektorspriority = false;
+                }
+
+                if (onlySektorspriority)
+                    GenerujPriorityBezSektorPriority(HTML);
+
+                window["PriorityIbaNaPartnerskej"] = false;
+            }
+
+            if (window["PriorityIbaNaPartnerskej"] == true)
+                $("#modalPriorityTickets button.btn-success").html(lang["PriorityOnlyPartnerBtn"]);
+            else
+                $("#modalPriorityTickets button.btn-success").html(lang["btnPotvrdit"]);
+
+            for (var i in data.Priority) {
+                if (data.Priority.hasOwnProperty(i)) {
+                    data.Priority[i].ValidDateJSON = JsonToolsToDate(data.Priority[i].ValidDateJSON);
+                }
+            }
+
+            var maxValidDate = new Date(0);
+            for (var i in data.Priority) {
+                if (data.Priority.hasOwnProperty(i)) {
+                    if (data.Priority[i].ValidDateJSON > maxValidDate)
+                        maxValidDate = data.Priority[i].ValidDateJSON;
+                }
+            }
+
+            $("#PriorityTopInfoMessage").html($("#PriorityTopInfoMessage").html().replace('%ValidDate%', DateToString(maxValidDate, true)));
+
+            $("#modalPriorityTickets").find("#accordion").html(HTML.join('\r\n'));
+            $("#modalPriorityTickets").modal('show');
+
+            if (poradie == 2) {
+                $("#modalPriorityTickets #collapse1").addClass("in");
+            }
+            return true;
+        }
+    }
+}
+
+var pocet_fronta = 0, id_performance_fronta = 0, count_basket_fronta = 0, T_reload_fronta = 30;
+
+
+function ZobrazFrontu(pocet, id_performance, count_basket) {
+    $("#waiting-queue").modal("show");
+    $("#queue-order").html(pocet);
+    $("#queue-order-2").html(pocet);
+
+    pocet_fronta = pocet;
+    id_performance_fronta = id_performance;
+    count_basket = count_basket;
+
+    setTimeout("reload_fronta();", T_reload_fronta * 1000);
+}
+
+function reload_fronta() {
+
+    var url = "https://static.ticketportal." + lokalita + "/fronta.ashx?typ=3&idp=" + id_performance_fronta + "&id=" + FrontID;
+    if (lokalita == "empik")
+        url = "https://static.empikbilety.pl/fronta.ashx?typ=3&idp=" + id_performance_fronta + "&id=" + FrontID;
+
+    $.ajax({
+        url: url,
+        dataType: "text",
+        cache: false,
+        statusCode: {
+            404: function () { alert('Page not found.'); },
+            500: function () { alert('Internal server error.'); }
+        }
+    }).done(function (data) {
+
+        if (typeof (ga) != "undefined") {
+            ga('send', 'pageview');
+        }
+
+        if (data != "null") {
+            if (data.split(" ")[0] == "False") {
+                if (Number(data.split(" ")[1]) == -1) {
+                    $("#waiting-queue .btn-danger").html(lang["ReloadPage"]);
+                    $("#fronta_errbox").removeClass("hidden");
+                    $("#fronta_errbox").html(lang["frontaError1"]);
+                    $("#fronta_errbox").css({ "position": "absolute", "top": "275px", "font-weight" : "bold", "color": "red" });
+                    $("#fronta_cnt_poradie").addClass("hidden");
+                    $("#waiting-queue .btn-danger").removeAttr("onclick");
+                    $("#queue-order").html("-");
+                    $("#queue-order-2").html("-");
+                    $("#waiting-queue .btn-danger").click(function () {
+                        location.reload();
+                    });
+                    return;
+                }
+
+                $("#queue-order").html(Number(data.split(" ")[1]));
+                $("#queue-order-2").html(Number(data.split(" ")[1]));
+                Refresh_cookie();
+                setTimeout("reload_fronta();", T_reload_fronta * 1000);
+            }
+            else {
+                $("#waiting-queue").modal("hide");
+                Performance_load(id_performance_fronta, count_basket_fronta);
+            }
+        }
+        else {
+            $("#waiting-queue").modal("hide");
+            Performance_load(id_performance_fronta, count_basket_fronta);
+        }
+    });
+}
+
+function Refresh_cookie() {
+
+    var url = "https://www.ticketportal." + lokalita + "/Event/Empty/" + FrontID;
+    if (lokalita == "empik")
+        url = "https://www.empikbilety.pl/Event/Empty/" + FrontID;
+
+    $.ajax({
+        url: url,
+        dataType: "text",
+        cache: false,
+        statusCode: {
+            404: function () { alert('Page not found.'); },
+            500: function () { alert('Internal server error.'); }
+        }
+    }).done(function (data) { });
+}
+
+var _wd = false;
+
+function remove_hash_from_url() {
+    var uri = window.location.toString();
+    if (uri.indexOf("#") > 0) {
+        var clean_uri = uri.substring(0, uri.indexOf("#"));
+        window.history.replaceState({}, document.title, clean_uri);
+    }
+}
+
+function ParseQuery() {
+    var d = window.location.href.split("?");
+    var ret = new Array();
+    if (d.length > 1 && d[1].length != 0) {
+        var query = d[1].split("&");
+
+        for (var i in query) {
+            var s = query[i].split("=");
+            if (s.length == 2)
+                ret[s[0]] = s[1];
+            else
+                ret[s[0]] = "";
+        }
+    }
+    return ret;
+}
+
+
+function Performance_load(id_performance, count_basket, dom, wd) {
+
+    if (isnull(wd))
+        _wd = false;
+    else
+        _wd = wd;
+    if (_wd == true)
+        count_basket = 0;
+    else
+        $("#modal-control-body").css("display", "");
+
+    var query = ParseQuery();
+
+    if (window.location.href.indexOf("reloadperformance") == -1) {
+        if (location.href.indexOf("iframe") == -1) {
+            if (location.href.indexOf("utm_source") == -1) {
+                if (typeof (window.history.pushState) != "undefined" && _wd == false && IsMobile() == false) {
+                    window.history.replaceState('object or string', document.title, window.location.pathname + '?idp=' + id_performance + (bid != null ? "&bid=" + bid : "") + (isnull(query["t"]) == false ? "&t=" + query["t"] : ""));
+                }
+            }
+        } else {
+            if (!(QueryString["fb"] == "") && !(QueryString["noembeded"] == "")) {
+                if ($("#performance_link_" + dom).length != 0) {
+                    var _top = $("#performance_link_" + dom).offset().top;
+                }
+                else {
+
+                }
+                if (_top < 400) _top = 400;
+                $("#modalHladisko .modal-dialog").css({ top: _top - 400 });
+                $("#modalPriorityTickets").css({ top: _top - 400 });
+                ScrollPorthole(_top - 460);
+            }
+        }
+    }
+
+    reset_hladisko();
+
+    delete window["minSeatCount"];
+    delete window["maxSeatCount"];
+    delete window["PovoleneSektory"];
+
+    var url_fronta = "https://static.ticketportal." + lokalita + "/fronta.ashx?typ=2&idp=" + id_performance + "&id=" + FrontID;
+    if (lokalita == "empik")
+        url_fronta = "https://static.empikbilety.pl/fronta.ashx?typ=2&idp=" + id_performance + "&id=" + FrontID;
+
+    $.ajax({
+        url: url_fronta,
+        dataType: "text",
+        cache: false,
+        statusCode: {
+            404: function () { alert('Page not found.'); },
+            500: function () { alert('Internal server error.'); }
+        }
+    }).done(function (data) {
+
+        if (data != "null") {
+            if (data.split(" ")[0] == "False") {
+                ZobrazFrontu(Number(data.split(" ")[1]), id_performance, count_basket);
+                return;
+            }
+        }
+
+        $.ajax({
+            url: absoluteUri + "Event/Performance/" + id_performance + (_wd == true ? "?wd=1" : ""),
+            dataType: "json",
+            cache: false,
+            statusCode: {
+                404: function () { alert('Page not found.'); },
+                500: function () { alert('Internal server error.'); }
+            }
+        }).done(function (data) {
+
+            if (typeof (ga) != "undefined" && _wd == false) {
+                ga('set', 'page', window.location.pathname + "#performance");
+                ga('send', 'pageview');
+            }
+
+            if (data.Succeeded) {
+
+                data = data.ReturnedObject;
+
+                if (data.IsNSeatVenue)
+                    return NPerformance_load(data.ID, count_basket);
+
+                var preskoc = false;
+                if (data.ID == 1353832 && id_reklamny_partner == 0) {
+                    preskoc = true;
+                    window["seatMsgCount"] = "";
+                }
+
+                // Tu treba spracovat priority
+                if (preskoc == false && SpracujPriority(data, _wd) == true) {
+                    window["PriorityData"] = data;
+                    //window["PriorityCountBasket"]
+
+                    setTimeout('$(".modal-body.modal-body-priority .panel-body .form-group div.col-md-6").addClass("hidden-xs");', 200);
+                    return;
+                } else {
+
+                    // Ak je mobil a iframe -> Redirect
+                    if ((navigator.userAgent.match(/Android/i)
+                        || navigator.userAgent.match(/iPhone/i)
+                        || navigator.userAgent.match(/iPad/i)
+                        || navigator.userAgent.match(/iPod/i)
+                        || navigator.userAgent.match(/BlackBerry/i)
+                        || navigator.userAgent.match(/webOS/i)) && location.href.indexOf("iframe") && _wd == false)
+                    {
+                        //window.location = linkIframe(absoluteUri + "Performance/" + id_performance);
+                        //return;
+                    }
+                    
+
+                    $("#modalHladisko").modal('show');
+                }
+
+                g_performance = data;
+                var wd_html = "";
+                if (data.WD_EnableForPrevadzkovatel == true && (data.WD_EnableForCateg == true || data.WD_EnableForSectors) && data.WD_EnableForFree)
+                {
+                    var wd_html = GenerujWatchdog(data.ID);
+                }
+
+                $('#myModalHladiskoLabel').html(data.Event.Name + "<br /> <small class=\"datum\">" + data.FormattedDatetimeDescription + "</small>, <small class=\"adresa-hladiska\">" + (data.Venue.Name.indexOf(data.Venue.City.Name) == -1 ? data.Venue.Name : data.Venue.Name.replace(data.Venue.City.Name, '')) + ", " + data.Venue.Address + " " + (data.Venue.Address.indexOf(data.Venue.City.Name) == -1 ? data.Venue.City.Name : "") + "</small>" + seatMsgCount + wd_html);
+
+                var reset = window.location.href.indexOf("reloadperformance") > 0 ? "?reset" : "";
+
+                if (data.Venue.HasSvg && typeof SVGRect != "undefined") {
+                    $.ajax({
+                        url: absoluteUri + "Event/VenueSvgData/" + data.Venue.ID + "/0" + reset,
+                        dataType: "json",
+                        cache: false,
+                        statusCode: {
+                            404: function () { alert('Page not found.'); },
+                            500: function () { alert('Internal server error.'); }
+                        }
+                    }).done(function (svg_data) {
+                        if (svg_data.Succeeded) {
+
+                            H_max_x = svg_data.ReturnedObject.Rozmer_x;
+                            H_max_y = svg_data.ReturnedObject.Rozmer_y;
+
+                            if (svg_data.ReturnedObject.Sektory == null) {
+                                if (svg_data.ReturnedObject.SVG[0] == '?')
+                                    svg_data.ReturnedObject.SVG = svg_data.ReturnedObject.SVG.substring(1);
+
+                                $('#hladisko-canvas-container').html("<canvas id='canvas' width='100px' height='100px' style='position:absolute;top:0px;left:0px;'></canvas>" + svg_data.ReturnedObject.SVG);
+                            }
+                            else {
+                                $('#hladisko-canvas-container').html("<canvas id='canvas' width='100px' height='100px' style='position:absolute;top:0px;left:0px;'></canvas><svg id='_svg' width='1000' height='1000' style='position:absolute;top:0px;left:0px' xmlns='http://www.w3.org/2000/svg' version='1.2'>" + svg_data.ReturnedObject.Kategorie + svg_data.ReturnedObject.Sektory + svg_data.ReturnedObject.Grafika1 + svg_data.ReturnedObject.Grafika2 + svg_data.ReturnedObject.Foto + "</svg>");
+                            }
+
+
+                            //--- Nacitanie info o obrazkoch  v galerii ---
+                            $.ajax({
+                                url: absoluteUri + "Event/VenueSvgFoto/" + data.Venue.ID,
+                                cache: false,
+                                statusCode: {
+                                    404: function () { alert('Page not found.'); },
+                                    500: function () { alert('Internal server error.'); }
+                                }
+                            }).done(function (svg_gallery_data) {
+                                eval(svg_gallery_data);
+                            });
+                            //---- end ---
+
+
+
+
+
+                            Performance_read_data("HasLayoutHasImage");
+                        }
+                        else {
+                            alert('Internal server error.');
+                        }
+                    });
+                } else {
+
+                    if (data.Venue.VenueViewType == "NoLayoutHasImage" || data.Venue.VenueViewType == "HasLayoutHasImage") {
+                        Image_x = data.Venue.Image_x;
+                        Image_y = data.Venue.Image_y;
+                        $('#hladisko-canvas-container').html("<canvas id='canvas' width='100px' height='100px' style='position:absolute;top:0px;left:0px;display:none'></canvas><img id='imgMap' usemap='#stage' src='" + data.Venue.Image + "' width='" + data.Venue.Image_x + "' height='" + data.Venue.Image_y + "'><map name='stage'>" + GenerateMap() + "</map><button onclick='ZobrazCeleHladisko_obrazok();' type='button' class='btn btn-link visible-xs hidden' id='ZobrazCeleHladisko_obrazok_link2' style='z-index:10000000; position:absolute;'><i class='fa fa-close hidden'></i> <span class='hidden-sm'>" + lang["lbHladiskoZobrazitCele"] + "</span></button>");
+                        Performance_read_data(g_performance.Venue.VenueViewType);
+                    }
+
+                    if (data.Venue.VenueViewType == "NoLayoutNoImage" || data.Venue.VenueViewType == "HasLayoutNoImage") {
+                        $('#hladisko-canvas-container').html("<canvas id='canvas' width='100px' height='100px' style='position:absolute;top:0px;left:0px;'></canvas>");
+                        Performance_read_data(g_performance.Venue.VenueViewType);
+                    }
+                }
+            }
+        });
+    });
+}
+
+function Performance_read_data(nastavenie) {
+
+    var reset = window.location.href.indexOf("reloadperformance") > 0 ? "&reset" : "";
+
+    $.ajax({
+        url: absoluteUri + "Event/VenueData/" + g_performance.Venue.ID + "?NastavenieHladiska=" + nastavenie + (_wd ? "&wd=1" : "") + reset,
+        cache: false,
+        statusCode: {
+            404: function () { alert('Page not found.'); },
+            500: function () { alert('Internal server error.'); }
+        }
+    }).done(function (javisko_data) {
+        eval(javisko_data);
+
+        var maVyz = (g_performance.Venue.HasLayout == false ? "1" : "0")
+        if (g_performance.Venue.VenueViewType.indexOf("NoLayout") != -1)
+            maVyz = "1";
+
+        window["linkmiesta"] = absoluteUri + "Event/VenueSeatStateData/" + g_performance.ID + "?noVyzor=" + maVyz + (_wd ? "&wd=1" : "");
+
+        $.ajax({
+            url: absoluteUri + "Event/VenueSeatStateData/" + g_performance.ID + "?noVyzor=" + maVyz + (_wd ? "&wd=1" : ""),
+            cache: false,
+            statusCode: {
+                404: function () { alert('Page not found.'); },
+                500: function () { alert('Internal server error.'); }
+            }
+        }).done(function (predstavenie_data) {
+            eval(predstavenie_data);
+
+
+            $.ajax({
+                url: absoluteUri + "Event/BasketSimple",
+                cache: false,
+                statusCode: {
+                    404: function () { alert('Page not found.'); },
+                    500: function () { alert('Internal server error.'); }
+                }
+            }).done(function (basket_data) {
+
+                GenerujBasket(basket_data);
+                Generate_kateg();
+                remove_hash_from_url();
+
+                if (g_performance.Venue.HasSvg && typeof SVGRect != "undefined")
+                    JaviskoSVG_init();
+                else {
+                    if (g_performance.Venue.VenueViewType == "NoLayoutHasImage" || g_performance.Venue.VenueViewType == "HasLayoutHasImage")
+                        JaviskoObrazokInit();
+                    else {
+                        if (g_performance.Venue.VenueViewType == "NoLayoutNoImage" || g_performance.Venue.VenueViewType == "HasLayoutNoImage")
+                            JaviskoSmallinit();
+                    }
+                }
+
+                if (typeof (isQuickPurcharse) != "undefined" && isQuickPurcharse == true && qp_bascent_count == 0)
+                    SpracujRychlyNakup(null);
+
+                if (typeof (isQuickPurcharse) != "undefined" && isQuickPurcharse == true && __isIframe__)
+                    document.getElementById("modalRychlaPlatba316").style.display = "none";
+            });
+        });
+    });
+}
+
+var k_all = new Array();
+var k_nezobrazovat = new Array();
+var oznacene = new Array();
+
+
+function GenerujBasket(basket_data) {
+
+    if (basket_data.ResultStatus == 1) {
+        Basket = new Array();
+        var pocet = 0;
+
+        if (basket_data.ReturnedObject.Count != 0) {
+            for (var i in basket_data.ReturnedObject.items) {
+                if (basket_data.ReturnedObject.items.hasOwnProperty(i)) {
+                    var item = basket_data.ReturnedObject.items[i];
+
+                    if (typeof (Basket[item.ID_Predstavenie]) == 'undefined' || Basket[item.ID_Predstavenie] == null)
+                        Basket[item.ID_Predstavenie] = new Array();
+
+                    Basket[item.ID_Predstavenie].push({ id_predstavenie: item.ID_Predstavenie, ID_Miesto_Javisko: item.ID_Miesto_Javisko, Cena: item.Cena, ID_Miesto_sluzba: item.ID_Miesto_sluzba });
+                    pocet++;
+                }
+            }
+        }
+
+        if (is_mobile) {
+            if (pocet > 0) {
+                var $infoKosik = $('.kosik-box');
+                var $vyberPocetVst = $('.vyber-pocet-vst');
+                $infoKosik.removeClass("hidden").removeClass($vyberPocetVst).addClass("animated " + animationNameKosik).one(animationEnd, function () { });
+                $("#hladisko_basket_2").html("<i class='fa fa-shopping-cart'><span> " + pocet + " </span></i>");
+            }
+        }
+        else {
+            $('#hladisko-basket-all-count').html("&nbsp;(" + pocet + ")");
+
+            if (pocet > 0)
+                $("#hladisko-basket-btn").removeClass("disabled");
+        }
+    }
+}
+
+function Generate_kateg() {
+    k_all = new Array();
+
+    for (var i in g_performance.PriceCategories) {
+        if (g_performance.PriceCategories.hasOwnProperty(i)) {
+            k_all[g_performance.PriceCategories[i].ID] = [g_performance.PriceCategories[i].Color, g_performance.PriceCategories[i].Name, g_performance.PriceCategories[i].Price, 1]; //??? 1?
+        }
+    }
+
+    var buff = new Array();
+    for (var i in g_performance.PriceCategories) {
+        if (g_performance.PriceCategories.hasOwnProperty(i)) {
+            buff.push(g_performance.PriceCategories[i]);
+        }
+    }
+
+    g_performance.PriceCategories = new Array();
+
+    for (var i in buff) {
+        if (buff.hasOwnProperty(i)) {
+            g_performance.PriceCategories[buff[i].ID] = buff[i];
+        }
+    }
+
+    for (var i in g_performance.PriceCategories) {
+        if (g_performance.PriceCategories.hasOwnProperty(i)) {
+            k_nezobrazovat[g_performance.PriceCategories[i].ID] = g_performance.PriceCategories[i].DonNotShowCateg == true ? 0 : 1;
+        }
+    }
+
+
+    oznacene = new Array();
+    var pocet = 0;
+    var cena = 0;
+    for (var i in Basket[g_performance.ID]) {
+        if (Basket[g_performance.ID].hasOwnProperty(i)) {
+            var obj = Basket[g_performance.ID][i];
+
+            if (obj.ID_Miesto_sluzba == null) {
+                oznacene[obj.ID_Miesto_Javisko] = 1;
+                pocet++;
+                cena += obj.Cena;
+            }
+        }
+    }
+
+    // Priority kontrola
+    if (typeof (minSeatCount) != 'undefined' && typeof (maxSeatCount) != "undefined") {
+        ok = true;
+
+        if (minSeatCount != null && pocet < minSeatCount)
+            ok = false;
+
+        if (maxSeatCount != null && pocet > maxSeatCount)
+            ok = false;
+
+        if (ok) {
+            $("#hladisko-basket-btn").removeAttr("disabled");
+            $("#modal_hladisko_priority_msg")[0].style.color = "green";
+        }
+        else {
+            $("#hladisko-basket-btn").attr("disabled", "disabled");
+            $("#modal_hladisko_priority_msg")[0].style.color = "red";
+        }
+    }
+    //
+
+    if (is_mobile) {
+        $('#hladisko-nsektor-basket-pocet').html("" + pocet);
+        $('#hladisko-nsektor-basket-cena').html(Format_mena(cena));
+    }
+    else {
+        $('#hladisko-pocet').html("" + pocet);
+        $('#hladisko-cena').html(Format_mena(cena));
+    }
+}
+
+function zavry_sektory() {
+    $("#miniHladisko-box").hide("fast", function () {
+        if ($('#press-unpack').hasClass("unpack")) {
+            $('#press-unpack').removeClass("unpack");
+            $('#press-unpack').addClass("pack");
+        }
+    });
+}
+
+$(function () {
+    // ak klik na tab tak init masonry
+    $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+        console.log(e.target) // activated tab
+        $(".grid").masonry();
+    })
+
+    $('.modalVyberPocetMiest .btn-group label').on('click', function () {
+        var $zaplatitBtn = $('.modal-footer .pokracuj-kosik-btn');
+        var $sumar = $(".spolu-sumar");
+
+        $zaplatitBtn.removeAttr("disabled");
+        $sumar.parent().addClass("text-zlta");
+
+        $sumar.addClass("animated " + animationName).one(animationEnd, function () {
+            //sem co sa stane po animacii
+            $sumar.removeClass(animationName)
+        });
+    })
+
+    $(".modal-body.hladisko-body").scroll(function () {
+        $(".modal-body.control-body").addClass("scrollTop");
+    });
+
+
+    /* klasiske bootstrap navbar menu v mobile namiesto tabs (nahradzujem za responsive-tabs)
+
+    $('#navbarDetail-selectVal').text($('#navbarDetail ul li.active a').text())
+
+    $('#navbarDetail-selectVal').text(function () {
+       this.text() = "aaaa"
+    })
+    */
+})
+
+function AnimateBasket() {
+    var $tienModalneho = $('.modal-backdrop.fade.in');
+    var $navbarHeight = $('.navigacia-only-back').outerHeight();
+    //$('.zrusit-vyber').toggleClass('hidden')
+    // odsunie backdrop modalneho okna
+    $tienModalneho.css({
+        // 'margin-top': $navbarHeight
+    })
+
+    // zablika s kosikom v hornej liste
+    $('#basketko').addClass("animated " + animationNameTien).one(animationEnd, function () {
+        // ked doblika tak uprace po sebe
+        $('#basketko').removeClass("animated " + animationNameTien);
+    });;
+
+    $('#hladisko-basket-btn').addClass("animated" + animationNameTien).one(animationEnd, function () {
+        $('#hladisko-basket-btn').removeClass("animated " + animationNameTien);
+    })
+}
+
+// rotacia chevron(sipka) ked klik na .vyber-sektor
+$('.vyber-sektor').on('click', function () {
+    if ($('.list-group-item.select i').hasClass("fa-chevron-down")) {
+        $('.list-group-item.select i').removeClass("fa-chevron-down");
+        $('.list-group-item.select i').addClass("fa-chevron-up");
+    } else {
+        $('.list-group-item.select i').removeClass("fa-chevron-up");
+        $('.list-group-item.select i').addClass("fa-chevron-down");
+    }
+})
+
+// zobrazit/zmazat krizik (ked ma byt sruseny vyber sektora)
+$('.zoznam-sektorov a.list-group-item').on('click', function () {
+    $('.vyber-sektor .vyber-sektor-zrusit').removeClass('hidden')
+})
+
+
+function GenerujWatchdog(id_performance)
+{
+    var html = '<div onclick="Performance_WatchdogInit(' + id_performance + ')" class="wd-icon-2"><svg viewBox="0 0 110 110" class="watchdog-svg"><path d="M103.29 36.363c-3.334-4.908-12.568-4.473-18.212-6.55-2.564-7.866-4.77-16.09-4.27-27.03h-.567c-5.426 2.35-6.907 8.65-7.965 15.375-2.964.438-6.41 1.938-8.818 1.984-.623-5.346-.775-11.178-.86-17.078-8.448 2.188-10.493 10.754-10.52 21.352-6.457 6.674-5.87 22.64-2.56 32.44-3.848 1.394-8.004 2.65-12.527 3.702-4.21.97-9.824 2.87-13.942 2.264-1.573-.232-4.283-1.863-5.977-2.842-6.046-3.453-8.75-9.123-11.95-14.793-1.194 14.463 6.773 19.776 15.366 24.467-2.667 12.703-5.818 24.92-8.54 37.563h5.976c3.338-13.355 11.268-22.113 28.174-21.91.647 7.31 1.518 14.41 1.99 21.91h5.406c.037-5.383.546-10.018 1.706-15.072.896-3.895 2.292-10.74 6.26-10.818 3.745-.07 6 7.08 7.114 10.818 1.573 5.248 2.176 10.014 3.132 15.072h4.834c-1.32-15.268-3.092-30.1-4.266-45.52 3.514 1.148 8.813 1.148 10.814-1.44-7.664-.567-13.203-3.292-13.665-11.095 2.27 2.684 5.01 6.85 9.68 7.973 7.62 1.826 16.224.354 19.343-4.912-.665-1.412-1.052-3.254-1.13-5.61-3.31-.483-7.028-.567-9.68-1.706-.44-.17-.936-2.615-.283-3.135 4.04-2.615 9.14-4.14 15.654-4.27 1.7 4.574-4.33 8.436-4.49 9.123-.296 1.367-.367 3.328.794 5.395 6.63-.163 6.76-11.555 3.98-15.657zm-35.14.62c-2.06 0-3.735-1.67-3.735-3.737 0-2.045 1.675-3.73 3.734-3.73 2.06 0 3.73 1.685 3.73 3.73 0 2.067-1.67 3.736-3.73 3.736z"></path></svg><span>' + lang["WD_Objednat"] + '</span>';
+    return html;
+}
+function Performance_WatchdogInit(id_performance)
+{
+    if (uil == false) {
+        if (typeof (sessionStorage) != "undefined")
+            sessionStorage["kode"] = "WatchDogInit(" + id_performance + ")";
+    }
+
+    $("#modalHladisko").modal("hide");
+    WatchDogInit(id_performance);
+}
+
+var neotvarajHladisko = false;
+
+if (typeof (sessionStorage) != "undefined") {
+    if (typeof (sessionStorage) != "undefined") {
+        if (isnull(sessionStorage["kode"]) == false) {
+            neotvarajHladisko = true;
+
+            $(document).ready(function () {
+                eval(sessionStorage["kode"]);
+                sessionStorage.removeItem("kode");
+            });
+        }
+    }
+}
+
