@@ -7,11 +7,14 @@ from bs4 import BeautifulSoup
 from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
 from src.dto.Title import Title
+from src.utils.Utils import Utils
 
 
 class TitleFinder:
     @staticmethod
-    def find(soup) -> Optional[Title]:
+    def find(soup, is_single_event=False) -> Optional[Title]:
+        if is_single_event:
+            return TitleFinder._find_internal_single_event(soup)
 
         return TitleFinder._find_internal(soup, True)
 
@@ -41,3 +44,39 @@ class TitleFinder:
         return Title(text, title)
 
 
+    @staticmethod
+    def _find_internal_single_event(soup):
+        container = soup
+        parent = soup.parent
+        while parent is not None:
+            container = parent
+            parent = parent.parent
+
+        titles = container.find_all(["h1", "h2", "h3", "h4"])
+
+        lowest_score = 999
+        title = None
+        for t in titles:
+            score = Utils.get_depth(t)
+            if t.name == "h1":
+                score += 1
+            if t.name == "h2":
+                score += 2
+            if t.name == "h3":
+                score += 3
+            if t.name == "h4":
+                score += 4
+
+            if score < lowest_score and t.getText() is not "":
+                lowest_score = score
+                title = t
+
+        if title is None:
+            title = soup.find("title")
+
+        if title is None:
+            return None
+
+        text = title.getText()
+
+        return Title(text, title)

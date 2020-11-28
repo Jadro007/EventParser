@@ -21,8 +21,12 @@ class GroupEnhancer:
         # group[0] is date container (=element) common for dates in the group (initially the date container)
         groups = {}
         for date in dates:
+            date.group = None  # remove groups if there are any assigned already
             container_repr = repr(date.container)
             groups[container_repr] = [[date], date.container]
+
+        if len(dates) == 1:  # if there is only one date, we do not care about grouping
+            return
 
         groups = GroupEnhancer.__parse_groups(groups)
         for key, group in groups.items():

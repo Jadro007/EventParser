@@ -5,23 +5,24 @@ from bs4 import BeautifulSoup
 from config.config import verbose
 from src.dto.Date import Date
 import dateparser
+import datetime
 
 from src.enhancer.GroupEnhancer import GroupEnhancer
 
 
 class DateFinder:
-    january = ["led\.", "led", "january"]
-    february = ["unor", "únor", "february"]
-    march = ["brez", "břez", "march"]
-    april = ["dub", "april"]
-    may = ["květ", "kvet", "may"]
-    june = ["červen", "června", "červnu", "červnem", "cerven", "cervna", "cervnu", "cerven", "june"]
-    july = ["červe", "cerve", "july"]
-    august = ["srp", "august"]
-    september = ["září", "zari", "september"]
-    october = ["Říj\.", "říj", "rij", "october"]
-    november = ["listopad", "november"]
-    december = ["prosin", "december"]
+    january = ["led", "jan", "january"]
+    february = ["uno", "úno", "feb", "unor", "únor", "february"]
+    march = ["bre", "bře", "mar", "brez", "břez", "march"]
+    april = ["dub", "april", "apr"]
+    may = ["kvě", "kve", "květ", "kvet", "may"]
+    june = ["cvc", "čvc", "jun", "červen", "června", "červnu", "červnem", "cerven", "cervna", "cervnu", "cerven", "june"]
+    july = ["čvn", "cvn", "jul", "červe", "cerve", "july"]
+    august = ["srp", "aug", "august"]
+    september = ["zar", "zář", "sep", "září", "zari", "september"]
+    october = ["říj", "rij", "oct", "october"]
+    november = ["lis", "nov", "listopad", "november"]
+    december = ["pro", "dec", "prosin", "december"]
 
     niceMonthNames = [
         *january,
@@ -48,8 +49,8 @@ class DateFinder:
     @staticmethod
     def find(soup):
         dates = []
-        if verbose > 2:
-            print("Regex for dates: " + DateFinder.dateRegex)
+        # if verbose > 2:
+        #     print("Regex for dates: " + DateFinder.dateRegex)
 
         if DateFinder.date_regex_compiled is None:
             DateFinder.date_regex_compiled = re.compile(DateFinder.dateRegex, flags=re.IGNORECASE)
@@ -57,7 +58,7 @@ class DateFinder:
         matches = soup.find_all(text=DateFinder.date_regex_compiled)
 
         if verbose > 2:
-            print("Matched dates: ")
+            print("Found dates: ")
             print(matches)
 
         for match in matches:
@@ -69,9 +70,20 @@ class DateFinder:
             month = parsed[2]
             year = parsed[3]
             normalised = day + "/" + month + "/" + year
-            datetime = dateparser.parse(normalised, languages=["cs"])
+            datetime_value = dateparser.parse(normalised, languages=["cs"])
+            if datetime_value is None:
+                if verbose > 2:
+                    print("Invalid date", day, month, year)
+                continue
 
-            dates.append(Date(datetime, real_value, match))
+            now = datetime.datetime.now()
+
+            if datetime_value > datetime.datetime(now.year + 10, now.month, now.day):
+                if verbose > 2:
+                    print("Date too much in the future, skipping: ", real_value)
+                continue
+
+            dates.append(Date(datetime_value, real_value, match))
 
         GroupEnhancer.set_groups(dates)
 

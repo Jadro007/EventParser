@@ -1,6 +1,7 @@
 from unittest import TestCase
 from bs4 import BeautifulSoup
 
+from src.finder.DateFinder import DateFinder
 from src.parser.SingleEventParser import SingleEventParser
 
 
@@ -14,7 +15,7 @@ class TestSingleEventParser(TestCase):
                "</html>"
         soup = BeautifulSoup(html, 'html.parser')
 
-        event = SingleEventParser.parse(soup)
+        event = SingleEventParser.parse(soup, DateFinder.find(soup)[0])
 
         self.assertEqual(event.date.realValue, "21.12.2020")
         self.assertEqual(event.place.city, "Jihlava")
