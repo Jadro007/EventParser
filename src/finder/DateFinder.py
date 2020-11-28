@@ -61,7 +61,7 @@ class DateFinder:
             print(matches)
 
         for match in matches:
-
+            # todo: support multiple dates in one match (including daterange)
             parsed = DateFinder.date_regex_compiled.findall(repr(match))[0]
 
             real_value = parsed[0]
