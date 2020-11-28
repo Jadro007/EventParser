@@ -43,15 +43,18 @@ class DateFinder:
     separatorRegex = "[\.|\-|/|\s]\s?"
     dateRegex = "((\d{1,2})" + separatorRegex + "(\d{1,2}|"+regexMonthsNames+")" + separatorRegex + "(\d{4}))"
 
+    date_regex_compiled = None
+
     @staticmethod
     def find(soup):
         dates = []
         if verbose > 2:
             print("Regex for dates: " + DateFinder.dateRegex)
 
-        date_regex_compiled = re.compile(DateFinder.dateRegex, flags=re.IGNORECASE)
+        if DateFinder.date_regex_compiled is None:
+            DateFinder.date_regex_compiled = re.compile(DateFinder.dateRegex, flags=re.IGNORECASE)
 
-        matches = soup.find_all(text=date_regex_compiled)
+        matches = soup.find_all(text=DateFinder.date_regex_compiled)
 
         if verbose > 2:
             print("Matched dates: ")
@@ -59,7 +62,7 @@ class DateFinder:
 
         for match in matches:
 
-            parsed = date_regex_compiled.findall(repr(match))[0]
+            parsed = DateFinder.date_regex_compiled.findall(repr(match))[0]
 
             real_value = parsed[0]
             day = parsed[1]

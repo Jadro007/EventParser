@@ -3,6 +3,7 @@ import re
 
 from config.config import verbose
 from src.dto.Event import Event
+from src.finder.PriceFinder import PriceFinder
 from src.finder.DateFinder import DateFinder
 from src.finder.PlaceFinder import PlaceFinder
 
@@ -26,9 +27,11 @@ class SingleEventParser:
                 print("Found event without place with date: " + date.realValue + ", skipping")
             return None
 
+        price_range = PriceFinder.find(soup)
+
         soup.extract()  # event was successfully found, we can now safely remove it
 
-        return Event("", date, "", place, 0, soup)
+        return Event("", date, "", place, price_range, soup)
 
 
 

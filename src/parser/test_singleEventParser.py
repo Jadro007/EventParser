@@ -9,7 +9,7 @@ class TestSingleEventParser(TestCase):
 
         html = "<html>" \
                    "<body>" \
-                       "<div>21.12.2020, Jihlava</div>" \
+                       "<div>21.12.2020, Jihlava, 100 Kč, 200 Kč</div>" \
                     "</body>" \
                "</html>"
         soup = BeautifulSoup(html, 'html.parser')
@@ -18,4 +18,6 @@ class TestSingleEventParser(TestCase):
 
         self.assertEqual(event.date.realValue, "21.12.2020")
         self.assertEqual(event.place.city, "Jihlava")
+        self.assertEqual(event.priceRange.priceFrom.text, "100 Kč")
+        self.assertEqual(event.priceRange.priceTo.text, "200 Kč")
 
