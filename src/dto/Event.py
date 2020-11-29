@@ -1,10 +1,11 @@
 from src.dto.Date import Date
+from src.dto.DateRange import DateRange
 from src.dto.Place import Place
 from src.dto.PriceRange import PriceRange
 
 
 class Event:
-    def __init__(self, title, date: Date, time, place: Place, price_range: PriceRange, container):
+    def __init__(self, title, date: DateRange, time, place: Place, price_range: PriceRange, container):
         self.title = title
         self.date = date
         self.time = time

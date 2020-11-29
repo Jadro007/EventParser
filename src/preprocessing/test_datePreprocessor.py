@@ -5,7 +5,25 @@ from src.preprocessing.DatePreprocessor import DatePreprocessor
 
 
 class TestDatePreprocessor(TestCase):
-    def test_find_single_title_h1(self):
+    def test_fix_dates_with_month_and_year_in_same_field(self):
+        html = "<html>" \
+                "<body>" \
+                    "<li>" \
+                        "<div>20</div>" \
+                        "<div>Říj. 2020</div>" \
+                        "<div>19:30</div>" \
+                    "</li>" \
+                "</body>" \
+                "</html>"
+
+        soup = BeautifulSoup(html, 'html.parser')
+
+        soup = DatePreprocessor.fix_dates(soup)
+
+        dates = soup.find_all("li")
+        self.assertNotEqual(dates[0].find(text="20 Říj 2020"), None)
+
+    def test_fix_dates_with_month_and_day_separated(self):
         html = "<html>" \
                "<body>" \
                "<div><div>" \
@@ -53,7 +71,7 @@ class TestDatePreprocessor(TestCase):
         soup = DatePreprocessor.fix_dates(soup)
 
         dates = soup.find_all("li")
-        print(repr(dates))
+
         self.assertNotEqual(dates[0].find(text="1 Led 2020"), None)
         self.assertNotEqual(dates[1].find(text="3 úno 2020"), None)
         self.assertNotEqual(dates[2].find(text="5 bře 2020"), None)

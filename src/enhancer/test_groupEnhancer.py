@@ -133,7 +133,7 @@ class TestGroupEnhancer(TestCase):
         html = "<html>" \
                "<body>" \
                        "<div>" \
-                            "21.12.2020, Jihlava" \
+                            "20.12.2020, Jihlava" \
                        "</div>" \
                        "<div id=\"group1\">" \
                            "<li>21.12.2020, Jihlava</li>" \
@@ -332,3 +332,57 @@ class TestGroupEnhancer(TestCase):
             self.assertEqual(dates[6].group.container, soup.find(id="group2"))
             self.assertEqual(dates[7].group.container, soup.find(id="group2"))
 
+    def test_parse_groups_single_list_multiple_dates_per_element(self):
+        html = "<html>" \
+                   "<body>" \
+                       "<div id=\"group1\">" \
+                           "<li>21.12.2020 - 31.12.2020, Jihlava</li>" \
+                           "<li>22.12.2020, Brno</li>" \
+                           "<li>23.12.2020, Praha</li>" \
+                           "<li>24.12.2020, Třebíč</li>" \
+                       "</div>" \
+                    "</body>" \
+               "</html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        dates = DateFinder.find(soup)
+
+        GroupEnhancer.set_groups(dates)
+
+        self.assertEqual(dates[0].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[1].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[2].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[3].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[4].group.container, soup.find(id="group1"))
+
+    def test_parse_groups_single_list_multiple_dates_per_element_mixed_with_single_dates(self):
+        html = "<html>" \
+               "<body>" \
+               "<div id=\"group1\">" \
+                   "<div>" \
+                        "<div>14.11.2020</div>" \
+                    "</div>" \
+                    "<div>" \
+                     "<div>16.10.2020 18.10.2020</div>" \
+                    "</div>" \
+                    "<div>" \
+                        "<div>8.7.2020 11.7.2020</div>" \
+                    "</div>" \
+                    "<div>" \
+                        "<div>28.11.2020</div>" \
+                    "</div>" \
+               "</div>" \
+               "</body>" \
+               "</html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        dates = DateFinder.find(soup)
+
+        GroupEnhancer.set_groups(dates)
+
+        self.assertEqual(dates[0].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[1].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[2].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[3].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[4].group.container, soup.find(id="group1"))
+        self.assertEqual(dates[5].group.container, soup.find(id="group1"))

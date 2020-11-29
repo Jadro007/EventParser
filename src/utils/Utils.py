@@ -24,3 +24,18 @@ class Utils:
             first_parent = first_parent.parent
 
         return None
+
+    @staticmethod
+    def clean(string):
+        try:
+            string = string.replace("\xa08", "8")
+            string = string.replace("r\xa0", " ")
+            string = string.replace("\xa0", " ")
+            string = string.replace(r'\n', '')
+            string = string.replace("\n", '')
+            string = string.replace(r'\t', '')
+            string = string.replace("\t", '')
+            # string = string.replace('\xa', '')
+            return string.strip(" '")
+        except TypeError:
+            return ""

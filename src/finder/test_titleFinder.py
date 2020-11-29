@@ -57,6 +57,26 @@ class TestTitleFinder(TestCase):
 
         self.assertEqual(results.value, "This is Patrick")
 
+    def test_list_events_find_single_title_link_without_url(self):
+        html = "<html><body><div>" \
+               "<li><a>This is not resource Patrick</a></li>" \
+               "</div></body></html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        results = TitleFinder.find(soup)
+
+        self.assertEqual(results.value, "This is not resource Patrick")
+
+    def test_list_events_find_single_title_link_with_url(self):
+        html = "<html><body><div>" \
+               "<li><a>This is resource www.patrick.com</a></li>" \
+               "</div></body></html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        results = TitleFinder.find(soup)
+
+        self.assertEqual(results, None)
+
     def test_list_events_find_single_title_in_title(self):
         html = "<html><title>This is title</title><body><div>" \
                "<li>This is nothing</li>" \
@@ -234,4 +254,26 @@ class TestTitleFinder(TestCase):
         results = TitleFinder.find(soup.find(id="znojmo"), True)
 
         self.assertEqual(results.value, "This is parent h1")
+        self.assertEqual(results.container, soup.find("h1"))
+
+    def test_list_event_find_takes_correct_title_when_it_is_contained_in_the_event(self):
+        # this is here to test that it will not take titles from other events
+        html = "<html>" \
+                   "<head></head>" \
+                   "<body>" \
+                       "<div><div><h1>This is title</h1></div></div>" \
+                       "<div><div><div><div><div><h1>This is parent h1</h1><div id=\"group1\">" \
+                           "<li><h1>This is h1</h1>21.12.2020, Jihlava, 100 Kč, 130 Kč</li>" \
+                           "<li><h2>This is h2</h2>22.12.2020, Brno, 200 Kč</li>" \
+                           "<li><h3>This is h3</h3>23.12.2020, Praha, 150 Kč</li>" \
+                           "<li id=\"trebic\">This is title 24.12.2020, Třebíč</li>" \
+                       "</div></div></div></div></div></div>" \
+                       "<div id=\"znojmo\">31.12.2020, Znojmo, 300 Kč</div>" \
+                   "</body>" \
+               "</html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        results = TitleFinder.find(soup.find(id="trebic"))
+
+        self.assertEqual(results.value, "This is title")
         self.assertEqual(results.container, soup.find("h1"))

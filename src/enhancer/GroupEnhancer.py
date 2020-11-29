@@ -23,16 +23,20 @@ class GroupEnhancer:
         for date in dates:
             date.group = None  # remove groups if there are any assigned already
             container_repr = repr(date.container)
-            groups[container_repr] = [[date], date.container]
+            if container_repr in groups:
+                groups[container_repr][0].append(date)
+            else:
+                groups[container_repr] = [[date], date.container]
 
-        if len(dates) == 1:  # if there is only one date, we do not care about grouping
+        if len(dates) <= 1:  # if there is only one date, we do not care about grouping
             return
 
         groups = GroupEnhancer.__parse_groups(groups)
         for key, group in groups.items():
             group_dto = DateGroup(group[1], group[0])
             for date in group[0]:
-                date.set_group(group_dto)
+                if len(group[0]) > 1:
+                    date.set_group(group_dto)
 
     @staticmethod
     def __parse_groups(groups):
@@ -41,17 +45,28 @@ class GroupEnhancer:
         should_end = False
         for key, group in groups.copy().items():
 
-            if len(group[0]) > 1: # if the group contains more date, we are happy with that group and leave it as is
-                continue
-
             if group[1].parent is None:
                 should_end = True
                 continue
 
+            does_group_contains_more_events_with_different_parents = False
+            for date in group[0]:
+                for date2 in group[0]:
+                    if date != date2 and date.container != date2.container:
+                        does_group_contains_more_events_with_different_parents = True
+
+
+            if len(group[0]) > 1 and does_group_contains_more_events_with_different_parents:
+                # if the group contains more date, we are happy with that group and leave it as is
+                # but the dates must have different parent element
+                continue
+
+
+
             parent = group[1].parent
             parent_repr = repr(parent)
             if parent_repr in groups:  # for each group, we check if parent is already existing
-                groups[parent_repr][0].append(*group[0]) # if yes, we add all dates from our group
+                groups[parent_repr][0].extend(group[0]) # if yes, we add all dates from our group
                 del groups[repr(group[1])]
             else:
                 groups[parent_repr] = group # if this is first occurrence of the parent, we move the group there
@@ -60,8 +75,14 @@ class GroupEnhancer:
 
         is_finished = True # all groups are finished once there are more then one date in each group
         for key, group in groups.items():
-            if len(group[0]) == 1:
+            does_group_contains_more_events_with_different_parents = False
+            for date in group[0]:
+                for date2 in group[0]:
+                    if date != date2 and date.container != date2.container:
+                        does_group_contains_more_events_with_different_parents = True
+            if len(group[0]) <= 1 or does_group_contains_more_events_with_different_parents == False:
                 is_finished = False
+
 
         # if there would be just one date in the group, it works fine thanks to bs4 magic
         # on line 36 (parent = group[1].parent)

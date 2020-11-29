@@ -17,7 +17,8 @@ class TestSingleEventParser(TestCase):
 
         event = SingleEventParser.parse(soup, DateFinder.find(soup)[0])
 
-        self.assertEqual(event.date.realValue, "21.12.2020")
+        self.assertEqual(event.date.dateFrom.realValue, "21.12.2020")
+        self.assertEqual(event.date.dateTo.realValue, "21.12.2020")
         self.assertEqual(event.place.city, "Jihlava")
         self.assertEqual(event.priceRange.priceFrom.text, "100 Kč")
         self.assertEqual(event.priceRange.priceTo.text, "200 Kč")

@@ -10,7 +10,7 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká"]
+    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík"]
     regex_for_cities = None
 
     @staticmethod
@@ -27,6 +27,9 @@ class PlaceFinder:
                               # for example Bilov because of Bilovec
             regex_for_cities = '|'.join(cities)
             PlaceFinder.regex_for_cities = re.compile(regex_for_cities, flags=re.IGNORECASE)
+
+        if soup.__class__.__name__ == "NavigableString":
+            soup = soup.parent
 
         matched_cities = soup.find_all(text=PlaceFinder.regex_for_cities)
         places = []

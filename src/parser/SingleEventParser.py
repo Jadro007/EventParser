@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import re
 
 from config.config import verbose
+from src.dto.DateRange import DateRange
 from src.dto.Event import Event
 from src.finder.PriceFinder import PriceFinder
 from src.finder.DateFinder import DateFinder
@@ -18,12 +19,18 @@ class SingleEventParser:
         is_single_event = not date.group
 
         # todo: support multiple dates events (including date range)
-        # try:
-        #     date = DateFinder.find(soup)[0]
-        # except IndexError:
-        #     if verbose > 2:
-        #         print("Found event without date, skipping")
-        #     return None
+        try:
+            dates = DateFinder.find(soup, False)
+        except AttributeError:
+            return
+
+        first_date = date
+        last_date = date
+        for d in dates:
+            if d.datetime < first_date.datetime:
+                first_date = d
+            if d.datetime > last_date.datetime:
+                last_date = d
 
         # try to find place that is closest to the date
         # Currently it just checks depth
@@ -48,8 +55,12 @@ class SingleEventParser:
 
         # we want to be able to find the most relevant title for event, so we will start with container that contains
         # both date and place, so there is quite chance there will be also the title
-        container = Utils.lowest_common_ancestor(date.container, place.container)
-        title = TitleFinder.find(container.parent, is_single_event)
+        if is_single_event:
+            container = Utils.lowest_common_ancestor(date.container, place.container).parent
+        else:
+            container = soup
+
+        title = TitleFinder.find(container, is_single_event)
         if title is None:
             if verbose > 2:
                 print("Found event without title (date: " + date.realValue + ", place: " + place.city + "), skipping")
@@ -57,7 +68,7 @@ class SingleEventParser:
 
         soup.extract()  # event was successfully found, we can now safely remove it
 
-        return Event(title, date, "", place, price_range, soup)
+        return Event(title, DateRange(first_date, last_date, soup), "", place, price_range, soup)
 
 
 

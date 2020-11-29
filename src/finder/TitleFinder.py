@@ -16,7 +16,17 @@ class TitleFinder:
         if is_single_event:
             return TitleFinder._find_internal_single_event(soup)
 
-        return TitleFinder._find_internal(soup, True)
+        # sometimes list events do not have proper title
+        # so if the event container is content of main title, it is likely name of the event
+        # todo: this operation is quite resource heavy, might be good idea to cache it for each site
+        main_title = TitleFinder._find_internal_single_event(soup)
+        if main_title is not None:
+            main_title_regex_compiled = re.compile(main_title.value, flags=re.IGNORECASE)
+            if soup.find(text=main_title_regex_compiled) is not None:
+                return main_title
+
+        title_from_list = TitleFinder._find_internal(soup, True)
+        return title_from_list
 
     @staticmethod
     def _find_internal(soup, recursive):
@@ -27,6 +37,12 @@ class TitleFinder:
                 title = soup.find("h3", recursive=recursive)
                 if title is None:
                     title = soup.find("h4", recursive=recursive)
+                    if title is None:
+                        # for list event, it is possible to contain link to event and usually there is either
+                        # event name (we want that) or just url (we do not want that)
+                        link = soup.find("a", recursive=recursive)
+                        if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText():
+                            title = link
 
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
         # That could accidentally get title from other event.
