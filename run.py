@@ -6,7 +6,7 @@ from src.EventParser import EventParser
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
-path = "./data/test/3 Kudy z nudy - Vánoční výstava v Galerii Mariette ve Vizovicích.html"
+path = "./data/test/10 MSV - Veletrhy Brno - m.bvv.cz.html"
 html = open(path, 'r', errors='ignore', encoding="utf-8").read()
 
 events = EventParser.parse(html)

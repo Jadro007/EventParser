@@ -21,7 +21,7 @@ total_results = []
 
 for filename in os.listdir(path):
 
-    # if not filename.startswith("3 "):
+    # if not filename.startswith("10 "):
     #     continue
 
     if not filename.endswith(".html"):
@@ -131,6 +131,9 @@ for filename in os.listdir(path):
                         found_date is not None and found_date_value2 == expected_date
                     )
             ):
+                print("FOUND MATCH: ")
+                print("Name: " + found_title + ", date: " + found_date_value + ", place: " + found_location)
+
                 found_counter += 1
                 expected_results.remove(expected)
                 break

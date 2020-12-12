@@ -111,3 +111,38 @@ class TestDatePreprocessor(TestCase):
         self.assertNotEqual(dates[34].find(text="21 Lis 2021"), None)
         self.assertNotEqual(dates[35].find(text="23 pro 2021"), None)
 
+    def test_prepare_date_ranges(self):
+        html = "<html>" \
+               "<body>" \
+               "<div><div>" \
+               "<li>13.-17. 9. 2021</li>" \
+               "<li>tady 13.-17. 9. 2021 tam</li>" \
+               "<li>13.-17. červen 2021</li>" \
+               "<li>13. - 17. červen 2021</li>" \
+               "<li>13. 9. - 17. 10. 2021</li>" \
+               "<li>1. září - 20. říjen 2021</li>" \
+               "<li>Termín konání: 13.–17. 12. 2021</li>" \
+               "<li>1.2.2020 - 2.2.2021</li>" \
+               "<li>1.2.2020 2.2.2021</li>" \
+               "<li>30.12.2020 - 31.12.2020</li>" \
+               "<li>30.12.2020 - 31.12.2020, Znojmo, 300 Kč</li>" \
+               "</div></div>" \
+               "</body>" \
+               "</html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        soup = DatePreprocessor.prepare_date_ranges(soup)
+
+        dates = soup.find_all("li")
+
+        self.assertNotEqual(dates[0].find(text="13. 9. 2021##17. 9. 2021"), None)
+        self.assertNotEqual(dates[1].find(text="tady 13. 9. 2021##17. 9. 2021 tam"), None)
+        self.assertNotEqual(dates[2].find(text="13. červen 2021##17. červen 2021"), None)
+        self.assertNotEqual(dates[3].find(text="13. červen 2021##17. červen 2021"), None)
+        self.assertNotEqual(dates[4].find(text="13. 9. 2021##17. 10. 2021"), None)
+        self.assertNotEqual(dates[5].find(text="1. září 2021##20. říjen 2021"), None)
+        self.assertNotEqual(dates[6].find(text="Termín konání: 13. 12. 2021##17. 12. 2021"), None)
+        self.assertNotEqual(dates[7].find(text="1.2.2020 - 2.2.2021"), None)
+        self.assertNotEqual(dates[8].find(text="1.2.2020 2.2.2021"), None)
+        self.assertNotEqual(dates[9].find(text="30.12.2020 - 31.12.2020"), None)
+

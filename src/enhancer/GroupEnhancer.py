@@ -56,7 +56,7 @@ class GroupEnhancer:
                         does_group_contains_more_events_with_different_parents = True
 
 
-            if len(group[0]) > 1 and does_group_contains_more_events_with_different_parents:
+            if len(group[0]) > 2 and does_group_contains_more_events_with_different_parents:
                 # if the group contains more date, we are happy with that group and leave it as is
                 # but the dates must have different parent element
                 continue
@@ -80,7 +80,7 @@ class GroupEnhancer:
                 for date2 in group[0]:
                     if date != date2 and date.container != date2.container:
                         does_group_contains_more_events_with_different_parents = True
-            if len(group[0]) <= 1 or does_group_contains_more_events_with_different_parents == False:
+            if len(group[0]) <= 2 or does_group_contains_more_events_with_different_parents == False:
                 is_finished = False
 
 

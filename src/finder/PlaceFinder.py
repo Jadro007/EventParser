@@ -10,7 +10,7 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík"]
+    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík", "Diváky", "Ostrov"]
     regex_for_cities = None
 
     @staticmethod

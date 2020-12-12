@@ -27,6 +27,8 @@ class EventParser:
 
         print("FIXING BROKEN DATES")
         soup = DatePreprocessor.fix_dates(soup)
+        print("PREPARING DATE RANGES")
+        soup = DatePreprocessor.prepare_date_ranges(soup)
 
         print("UNWRAPPING ELEMENTS")
         soup = RemovalPreprocessor.unwrap(soup)
@@ -48,7 +50,10 @@ class EventParser:
         dates = DateFinder.find(soup)
         for date in dates:
             if date.group is None:
-                events.append(SingleEventParser.parse(soup, date))
+                single_event = SingleEventParser.parse(soup, date)
+                if single_event is not None:
+                    events.append(single_event)
+
 
         YearPostprocessor.fix_year(events)
 

@@ -19,6 +19,7 @@ class TestEventParser(TestCase):
                        "<div>" \
                        "<li>26.12.2020, Mikulov, 500 Kč</li>" \
                        "<li>27.12.2020, Lednice</li>" \
+                       "<li>29.12.2020, Hustopeče</li>" \
                        "</div>" \
                        "<div>30.12.2020 - 31.12.2020, Znojmo, 300 Kč</div>" \
                    "</body>" \
@@ -64,11 +65,17 @@ class TestEventParser(TestCase):
         self.assertEqual(events[5].priceRange, None)
         self.assertEqual(events[5].title.value, "This is title")
 
-        self.assertEqual(events[6].date.dateFrom.realValue, "30.12.2020")
-        self.assertEqual(events[6].date.dateTo.realValue, "31.12.2020")
-        self.assertEqual(events[6].place.city, "Znojmo")
-        self.assertEqual(events[6].priceRange.priceFrom.text, "300 Kč")
-        self.assertEqual(events[6].priceRange.priceTo.text, "300 Kč")
-        self.assertEqual(events[6].title.value, "This is parent h1")
+        self.assertEqual(events[6].date.dateFrom.realValue, "29.12.2020")
+        self.assertEqual(events[6].date.dateTo.realValue, "29.12.2020")
+        self.assertEqual(events[6].place.city, "Hustopeče")
+        self.assertEqual(events[6].priceRange, None)
+        self.assertEqual(events[6].title.value, "This is title")
 
-        self.assertEqual(len(events), 7)
+        self.assertEqual(events[7].date.dateFrom.realValue, "30.12.2020")
+        self.assertEqual(events[7].date.dateTo.realValue, "31.12.2020")
+        self.assertEqual(events[7].place.city, "Znojmo")
+        self.assertEqual(events[7].priceRange.priceFrom.text, "300 Kč")
+        self.assertEqual(events[7].priceRange.priceTo.text, "300 Kč")
+        self.assertEqual(events[7].title.value, "This is parent h1")
+
+        self.assertEqual(len(events), 8)

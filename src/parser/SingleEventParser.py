@@ -24,6 +24,8 @@ class SingleEventParser:
         except AttributeError:
             return
 
+        # todo: fix date range when last date overlaps to next year
+        #       currently it would just swap the dates here, we should prefer the order of dates in html structure
         first_date = date
         last_date = date
         for d in dates:

@@ -11,6 +11,9 @@ from src.utils.Utils import Utils
 
 
 class TitleFinder:
+
+    title_blacklist = ["Odběr novinek", "Nejbližší uvedení", "Říjen", "všechnapředstavení"]
+
     @staticmethod
     def find(soup, is_single_event=False) -> Optional[Title]:
         if is_single_event:
@@ -31,13 +34,13 @@ class TitleFinder:
     @staticmethod
     def _find_internal(soup, recursive):
         title = soup.find(["h1"], recursive=recursive)
-        if title is None:
+        if title is None or title.getText() in TitleFinder.title_blacklist:
             title = soup.find("h2", recursive=recursive)
-            if title is None:
+            if title is None or title.getText() in TitleFinder.title_blacklist:
                 title = soup.find("h3", recursive=recursive)
-                if title is None:
+                if title is None or title.getText() in TitleFinder.title_blacklist:
                     title = soup.find("h4", recursive=recursive)
-                    if title is None:
+                    if title is None or title.getText() in TitleFinder.title_blacklist:
                         # for list event, it is possible to contain link to event and usually there is either
                         # event name (we want that) or just url (we do not want that)
                         link = soup.find("a", recursive=recursive)
@@ -46,13 +49,13 @@ class TitleFinder:
 
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
         # That could accidentally get title from other event.
-        if title is None and soup.parent is not None:
+        if (title is None or title.getText() in TitleFinder.title_blacklist) and soup.parent is not None:
             return TitleFinder._find_internal(soup.parent, False)
 
-        if title is None:
+        if title is None or title.getText() in TitleFinder.title_blacklist:
             title = soup.find("title")
 
-        if title is None:
+        if title is None or title.getText() in TitleFinder.title_blacklist:
             return None
 
         text = title.getText()
@@ -62,6 +65,11 @@ class TitleFinder:
 
     @staticmethod
     def _find_internal_single_event(soup):
+        sibling = soup.find_next_sibling()
+        if sibling is not None:
+            soup_next_sibling_sourceline = sibling.sourceline
+        else:
+            soup_next_sibling_sourceline = 999999
         container = soup
         parent = soup.parent
         while parent is not None:
@@ -73,15 +81,23 @@ class TitleFinder:
         lowest_score = 999
         title = None
         for t in titles:
+            # we are only interested in headings before the container, that is achieved by calculating the
+            # sourceline of next sibling to the soup
+            if t.sourceline > soup_next_sibling_sourceline:
+                continue
+
+            if t.getText() in TitleFinder.title_blacklist:
+                continue
+
             score = Utils.get_depth(t)
             if t.name == "h1":
                 score += 1
             if t.name == "h2":
-                score += 2
+                score += 5
             if t.name == "h3":
-                score += 3
+                score += 10
             if t.name == "h4":
-                score += 4
+                score += 15
 
             if score < lowest_score and t.getText() is not "":
                 lowest_score = score

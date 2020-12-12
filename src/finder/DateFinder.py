@@ -1,8 +1,10 @@
 import re
+import unicodedata
 
 from bs4 import BeautifulSoup
 
 from config.config import verbose
+from src.utils.Utils import Utils
 from src.dto.Date import Date
 import dateparser
 import datetime
@@ -48,8 +50,9 @@ class DateFinder:
 
     # [^0-9] means not a number, so we do not find same events again
     date_without_year_separator_regex = "[\.|\/]\s?"
+    date_without_year_separator_after_month_regex = "[\.|\/|\s]\s?"
 
-    date_without_year_regex = "((\d{1,2})" + date_without_year_separator_regex + "(\d{1,2}|"+regexMonthsNames+")" + date_without_year_separator_regex + ")"
+    date_without_year_regex = "((\d{1,2})" + date_without_year_separator_regex + "(\d{1,2}|"+regexMonthsNames+")" + date_without_year_separator_after_month_regex + ")"
     date_without_year_regex_compiled = None
 
     @staticmethod
@@ -85,7 +88,9 @@ class DateFinder:
 
         for match in matches:
             try:
-                specific_dates = DateFinder.date_regex_compiled.findall(repr(match))
+                repr_match = repr(match)
+                repr_match = Utils.clean(repr_match)
+                specific_dates = DateFinder.date_regex_compiled.findall(repr_match)
             except IndexError:
                 continue
 
@@ -121,7 +126,10 @@ class DateFinder:
 
         for match in matches:
             try:
-                specific_dates = DateFinder.date_without_year_regex_compiled.findall(repr(match))
+                repr_match = repr(match)
+                repr_match = Utils.clean(repr_match)
+
+                specific_dates = DateFinder.date_without_year_regex_compiled.findall(repr_match)
             except IndexError:
                 continue
             except AttributeError:

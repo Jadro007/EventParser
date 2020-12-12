@@ -63,4 +63,54 @@ class DatePreprocessor:
 
         return soup
 
+    @staticmethod
+    def prepare_date_ranges(soup):
+        # and also prepare date ranges with different months
+        # e.g. 13.10.-15.11. 2021
 
+        date_range_with_different_months_regex = DateFinder.date_without_year_regex + "\s?\-\s?" + DateFinder.dateRegex
+
+        print(date_range_with_different_months_regex)
+
+        date_range_regex_with_different_months_compiled = re.compile(date_range_with_different_months_regex, flags=re.IGNORECASE)
+        date_range_matches = soup.find_all(text=date_range_regex_with_different_months_compiled)
+        for date_range_match in date_range_matches:
+            match = date_range_regex_with_different_months_compiled.search(date_range_match)
+            range_text = match.group(0)
+            from_date_day_and_month = match.group(1)
+            year = match.group(7)
+            to_date_text = match.group(4)
+            fixed_text = date_range_match.replace(range_text, from_date_day_and_month + year + "##" + to_date_text)
+            date_range_match.replace_with(fixed_text)
+            print("PREPARED DATE RANGE " + fixed_text)
+
+        # we want to also prepare date ranges here
+        # e.g., 13.-17. 9. 2021
+        # note: that [\-|–] "-" (dash) and "–" (hyphen) are two different signs (which is fun to debug)
+        date_range_regex = "(\d{1,2})" + DateFinder.separatorRegex + "\s?[\-|–]\s?" + DateFinder.dateRegex
+        print(date_range_regex)
+
+        date_range_regex_compiled = re.compile(date_range_regex, flags=re.IGNORECASE)
+        date_range_matches = soup.find_all(text=date_range_regex_compiled)
+        for date_range_match in date_range_matches:
+            match = date_range_regex_compiled.search(date_range_match)
+            range_text = match.group(0)
+
+            # this is fix for case of 1.2.2020 - 2.2.2021 - it finds 20 - 2.2.2021 as a date range by accident,
+            # so we check whether before the date range is number - if yes, it was part of other date a we ignore it
+            # match_position > 0 ignores when not found or it starts with the match
+            match_position = date_range_match.find(range_text)
+            if match_position > 0 and date_range_match[match_position - 1].isnumeric() == True:
+                continue
+
+            from_date_day = match.group(1)
+            to_date_text = match.group(2)
+            to_date_day = match.group(3)
+
+            from_date_text = from_date_day + to_date_text.lstrip(to_date_day)
+
+            fixed_text = date_range_match.replace(range_text, from_date_text + "##" + to_date_text)
+            date_range_match.replace_with(fixed_text)
+            print("PREPARED DATE RANGE " + fixed_text)
+
+        return soup
