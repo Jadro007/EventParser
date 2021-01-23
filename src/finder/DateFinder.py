@@ -18,7 +18,8 @@ class DateFinder:
     march = ["bre", "bře", "mar", "brez", "břez", "march", "březen"]
     april = ["dub", "april", "apr", "duben"]
     may = ["kvě", "kve", "květ", "kvet", "květen", "may"]
-    june = ["cvc", "čvc", "jun", "červen", "června", "červnu", "červnem", "cerven", "cervna", "cervnu", "cerven", "june"]
+    june = ["cvc", "čvc", "jun", "červen", "června", "červnu", "červnem", "cerven", "cervna", "cervnu", "cerven",
+            "june"]
     july = ["čvn", "cvn", "jul", "červe", "cerve", "červenec", "july"]
     august = ["srp", "srpen", "aug", "august"]
     september = ["zar", "zář", "sep", "září", "zari", "september"]
@@ -44,7 +45,7 @@ class DateFinder:
     regexMonthsNames = "[a-z]*|".join(niceMonthNames) + "[a-z]*"
 
     separatorRegex = "[\.|\-|\/|\s]\s?"
-    dateRegex = "((\d{1,2})" + separatorRegex + "(\d{1,2}|"+regexMonthsNames+")" + separatorRegex + "(\d{4}))"
+    dateRegex = "((\d{1,2})" + separatorRegex + "(\d{1,2}|" + regexMonthsNames + ")" + separatorRegex + "(\d{4}))"
 
     date_regex_compiled = None
 
@@ -52,7 +53,7 @@ class DateFinder:
     date_without_year_separator_regex = "[\.|\/]\s?"
     date_without_year_separator_after_month_regex = "[\.|\/|\s]\s?"
 
-    date_without_year_regex = "((\d{1,2})" + date_without_year_separator_regex + "(\d{1,2}|"+regexMonthsNames+")" + date_without_year_separator_after_month_regex + ")"
+    date_without_year_regex = "((\d{1,2})" + date_without_year_separator_regex + "(\d{1,2}|" + regexMonthsNames + ")" + date_without_year_separator_after_month_regex + ")"
     date_without_year_regex_compiled = None
 
     @staticmethod
@@ -106,8 +107,6 @@ class DateFinder:
                         print("Invalid date", day, month, year)
                     continue
 
-
-
                 if datetime_value > datetime.datetime(now.year + 10, now.month, now.day):
                     if verbose > 2:
                         print("Date too much in the future, skipping: ", real_value)
@@ -116,7 +115,8 @@ class DateFinder:
                 dates.append(Date(datetime_value, real_value, match))
 
         if DateFinder.date_without_year_regex_compiled is None:
-            DateFinder.date_without_year_regex_compiled = re.compile(DateFinder.date_without_year_regex, flags=re.IGNORECASE)
+            DateFinder.date_without_year_regex_compiled = re.compile(DateFinder.date_without_year_regex,
+                                                                     flags=re.IGNORECASE)
 
         matches = soup.find_all(text=DateFinder.date_without_year_regex_compiled)
 
@@ -154,8 +154,14 @@ class DateFinder:
                         print("Date too much in the future, skipping: ", real_value)
                     continue
                 contains_current_date = False
+                # When the date was already found previously (with proper year), it is likely to be found here again.
+                # In case the event has different year than current year, it would cause to create date range.
+                # So we do not check for year to ignore dates like this.
                 for already_found_date in dates:
-                    if already_found_date.datetime == datetime_value and already_found_date.container == match:
+                    if (already_found_date.datetime.month == datetime_value.month
+                            and already_found_date.datetime.day == datetime_value.day
+                            and already_found_date.container == match
+                    ):
                         contains_current_date = True
                         break
                 if contains_current_date == False:
