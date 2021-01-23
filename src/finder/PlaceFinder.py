@@ -10,7 +10,7 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík", "Diváky", "Ostrov"]
+    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík", "Diváky", "Ostrov", "Řeka", "Pátek"]
     regex_for_cities = None
 
     @staticmethod
@@ -23,6 +23,7 @@ class PlaceFinder:
                 for row in spamreader:
                     if row[1] not in PlaceFinder.forbidden_cities:
                         cities.append(row[1])
+            cities.extend(["facebook", "online", "on-line"])
             cities.reverse()  # this is here because the list of cities is ascending and we would not find some cities,
                               # for example Bilov because of Bilovec
             regex_for_cities = '|'.join(cities)

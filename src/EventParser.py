@@ -3,6 +3,7 @@ import re
 
 from bs4 import BeautifulSoup
 
+from src.dto.Event import Event
 from src.finder.DateFinder import DateFinder
 from src.finder.PlaceFinder import PlaceFinder
 from src.parser.ListEventParser import ListEventParser
@@ -16,7 +17,7 @@ from src.preprocessing.RemovalPreprocessor import RemovalPreprocessor
 class EventParser:
 
     @staticmethod
-    def parse(html):
+    def parse(html) -> [Event]:
         print("WELCOME")
         soup = BeautifulSoup(html, 'html.parser')
 

@@ -12,7 +12,7 @@ from src.utils.Utils import Utils
 
 class TitleFinder:
 
-    title_blacklist = ["Odběr novinek", "Nejbližší uvedení", "Říjen", "všechnapředstavení"]
+    title_blacklist = ["Odběr novinek", "Nejbližší uvedení", "Říjen", "všechnapředstavení", "Menu", "Hledání", "Podrobné nastavení", "Back Button Back", "Vaše soukromí"]
 
     @staticmethod
     def find(soup, is_single_event=False) -> Optional[Title]:
@@ -34,17 +34,17 @@ class TitleFinder:
     @staticmethod
     def _find_internal(soup, recursive):
         title = soup.find(["h1"], recursive=recursive)
-        if title is None or title.getText() in TitleFinder.title_blacklist:
+        if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
             title = soup.find("h2", recursive=recursive)
-            if title is None or title.getText() in TitleFinder.title_blacklist:
+            if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
                 title = soup.find("h3", recursive=recursive)
-                if title is None or title.getText() in TitleFinder.title_blacklist:
+                if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
                     title = soup.find("h4", recursive=recursive)
-                    if title is None or title.getText() in TitleFinder.title_blacklist:
+                    if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
                         # for list event, it is possible to contain link to event and usually there is either
                         # event name (we want that) or just url (we do not want that)
                         link = soup.find("a", recursive=recursive)
-                        if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText():
+                        if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "":
                             title = link
 
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
@@ -52,15 +52,25 @@ class TitleFinder:
         if (title is None or title.getText() in TitleFinder.title_blacklist) and soup.parent is not None:
             return TitleFinder._find_internal(soup.parent, False)
 
-        if title is None or title.getText() in TitleFinder.title_blacklist:
+        if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
             title = soup.find("title")
 
         if title is None or title.getText() in TitleFinder.title_blacklist:
             return None
 
-        text = title.getText()
+        text = Utils.clean(title.getText())
+        aleternative_text = ""
+        if len(text) < 50:
+            container = soup
+            parent = soup.parent
+            while parent is not None:
+                container = parent
+                parent = parent.parent
+            h1 = container.find(["h1"], recursive=recursive)
+            if h1 is not None and h1.getText() not in TitleFinder.title_blacklist and Utils.clean(h1.getText()) != "":
+                aleternative_text = Utils.clean(h1.getText()) + " - " + text
 
-        return Title(text, title)
+        return Title(text, aleternative_text, title)
 
 
     @staticmethod
@@ -86,7 +96,7 @@ class TitleFinder:
             if t.sourceline > soup_next_sibling_sourceline:
                 continue
 
-            if t.getText() in TitleFinder.title_blacklist:
+            if Utils.clean(t.getText()) in TitleFinder.title_blacklist or Utils.clean(t.getText()) == "":
                 continue
 
             score = Utils.get_depth(t)
@@ -109,6 +119,6 @@ class TitleFinder:
         if title is None:
             return None
 
-        text = title.getText()
+        text = Utils.clean(title.getText())
 
-        return Title(text, title)
+        return Title(text, "", title)

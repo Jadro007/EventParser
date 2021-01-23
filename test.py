@@ -10,8 +10,8 @@ import pickle
 
 from src.EventParser import EventParser
 
-sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
 verbose = 3
 
@@ -21,7 +21,7 @@ total_results = []
 
 for filename in os.listdir(path):
 
-    # if not filename.startswith("10 "):
+    # if not filename.startswith("22 "):
     #     continue
 
     if not filename.endswith(".html"):
@@ -37,7 +37,10 @@ for filename in os.listdir(path):
     result_filename = new_filename = Path(filename).stem + ".txt"
     if verbose > 1:
         print("Found results")
-        print(parsed_events)
+
+        for parsed_event in parsed_events:
+            print([parsed_event.title.value, parsed_event.date.dateFrom.realValue, parsed_event.date.dateTo.realValue,
+                   parsed_event.place.city])
     # print(result_filename)
 
     expected_results = []
@@ -49,7 +52,8 @@ for filename in os.listdir(path):
 
     if verbose > 1:
         print("Expected results")
-        print(expected_results)
+        for expected_result in expected_results:
+            print(expected_result)
 
     # parsed_events.sort()
     expected_results.sort()
@@ -61,23 +65,30 @@ for filename in os.listdir(path):
 
     for found in parsed_events:
         found_title = found.title.value.lower().strip()
+        found_alternative_title = found.title.alternative_value.lower().strip()
+        if found_alternative_title == "":
+            found_alternative_title = found_title
+
         found_date = found.date
         found_time = ""
         found_location = found.place.city.lower().strip()
 
-        found_date_value = '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + '{:02d}'.format(found_date.dateFrom.datetime.month) + ". " + str(found_date.dateFrom.datetime.year)
+        found_date_value = '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + '{:02d}'.format(
+            found_date.dateFrom.datetime.month) + ". "
         found_date_value2 = found_date_value
         if found_date.dateFrom.datetime != found_date.dateTo.datetime:
             found_date_value = (
-                '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + '{:02d}'.format(found_date.dateFrom.datetime.month) + ". - " +
-                '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(found_date.dateTo.datetime.month) + ". " + str(found_date.dateTo.datetime.year)
+                    '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + '{:02d}'.format(
+                found_date.dateFrom.datetime.month) + ". - " +
+                    '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(
+                found_date.dateTo.datetime.month) + ". "
             )
 
             found_date_value2 = (
-                '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + "- " +
-                '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(found_date.dateTo.datetime.month) + ". " + str(found_date.dateTo.datetime.year)
+                    '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + "- " +
+                    '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(
+                found_date.dateTo.datetime.month) + ". "
             )
-
 
         # found_price = found[4]
 
@@ -118,18 +129,25 @@ for filename in os.listdir(path):
                 # print(found_date.realValue + " / " + expected_date + " = " + repr(found_date.realValue == expected_date))
                 # print(repr(found_date.datetime) + " / " + repr(expected_date_parsed) + " = " + repr(found_date.datetime == expected_date_parsed))
                 # print(repr(found_date.datetime) + " / " + repr(expected_date_parsed2) + " = " + repr(found_date.datetime == expected_date_parsed2))
-                print(repr(found_date.dateFrom.datetime) + " / " + repr(expected_date) + " = " + repr(found_date.dateFrom.realValue == expected_date))
-                print(repr(found_date.dateTo.datetime) + " / " + repr(expected_date) + " = " + repr(found_date.dateTo.realValue == expected_date))
-                print(repr(found_date_value) + " / " + repr(expected_date) + " = " + repr(found_date_value == expected_date))
-                print(repr(found_date_value2) + " / " + repr(expected_date) + " = " + repr(found_date_value2 == expected_date))
+                print(repr(found_date.dateFrom.datetime) + " / " + repr(expected_date) + " = " + repr(
+                    found_date.dateFrom.realValue == expected_date))
+                print(repr(found_date.dateTo.datetime) + " / " + repr(expected_date) + " = " + repr(
+                    found_date.dateTo.realValue == expected_date))
+                print(repr(found_date_value) + " / " + repr(expected_date) + " = " + repr(
+                    found_date_value == expected_date))
+                print(repr(found_date_value2) + " / " + repr(expected_date) + " = " + repr(
+                    found_date_value2 == expected_date))
                 print("test\n")
 
             if (
-                    found_title in expected_title and
-                    found_location in expected_location and (
-                        found_date is not None and found_date_value == expected_date or
-                        found_date is not None and found_date_value2 == expected_date
+                    (found_title in expected_title or expected_title in found_title
+                     or found_alternative_title in expected_title or expected_title in found_alternative_title
                     )
+                    and found_location in expected_location
+                    and (
+                    found_date is not None and found_date_value in expected_date or
+                    found_date is not None and found_date_value2 in expected_date
+            )
             ):
                 print("FOUND MATCH: ")
                 print("Name: " + found_title + ", date: " + found_date_value + ", place: " + found_location)
@@ -140,10 +158,13 @@ for filename in os.listdir(path):
 
     total_results.append([filename, found_counter, expected_results_count])
 
+    print("NOT FOUND")
+    for expected_result in expected_results:
+        print(expected_result)
 
-print ("PREVIOUS TOTAL RESULTS")
+print("PREVIOUS TOTAL RESULTS")
 try:
-    with open ('outfile', 'rb') as fp:
+    with open('outfile', 'rb') as fp:
         itemlist = pickle.load(fp)
         for item in itemlist:
             print('\t'.join(map(str, item)))
@@ -162,4 +183,5 @@ for result in total_results:
 with open('outfile', 'wb') as fp:
     pickle.dump(total_results, fp)
 
-print("TOTAL PERCENTAGE: " + repr(total_found) + "/" + repr(total_expected) + " = " + repr(round(total_found / total_expected * 100, 2)) + "%")
+print("TOTAL PERCENTAGE: " + repr(total_found) + "/" + repr(total_expected) + " = " + repr(
+    round(total_found / total_expected * 100, 2)) + "%")

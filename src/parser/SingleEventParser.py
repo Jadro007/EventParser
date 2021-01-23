@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 import re
 
 from config.config import verbose
@@ -31,21 +31,32 @@ class SingleEventParser:
         for d in dates:
             if d.datetime < first_date.datetime:
                 first_date = d
-            if d.datetime > last_date.datetime:
+            if d.datetime > last_date.datetime and last_date.isYearGuessed:
                 last_date = d
 
+        # if event is in different year than current year, we might have guessed the year wrong, so if day and month match, lets ignore it
+        if last_date.isYearGuessed == True and first_date.datetime.day == last_date.datetime.day and first_date.datetime.month == last_date.datetime.month:
+            last_date = first_date
+
         # try to find place that is closest to the date
-        # Currently it just checks depth
-        # todo: Could be improved by checking closeness in HTML structure
         # todo: write test for it
         places = PlaceFinder.find(soup)
-        date_depth = Utils.get_depth(date.container)
-        depth_diff = 999999
         place = None
+        sourceline_diff = 999999
+        if isinstance(date.container, NavigableString):
+            date_sourceline = date.container.parent.sourceline
+        else:
+            date_sourceline = date.container.sourceline
+
         for p in places:
-            diff = abs(Utils.get_depth(p.container) - date_depth)
-            if diff < depth_diff:
-                depth_diff = diff
+            if isinstance(p.container, NavigableString):
+                place_sourceline = p.container.parent.sourceline
+            else:
+                place_sourceline = p.container.sourceline
+
+            diff = abs(place_sourceline - date_sourceline)
+            if diff < sourceline_diff:
+                sourceline_diff = diff
                 place = p
 
         if place is None:
@@ -60,7 +71,12 @@ class SingleEventParser:
         if is_single_event:
             container = Utils.lowest_common_ancestor(date.container, place.container).parent
         else:
-            container = soup
+            # in case that date and place are in the same container, it might happen that title will not be there,
+            # so we increase search container to parent
+            if date.container == place.container and soup.parent is not None:
+                container = soup.parent
+            else:
+                container = soup
 
         title = TitleFinder.find(container, is_single_event)
         if title is None:
