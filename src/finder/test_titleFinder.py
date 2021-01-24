@@ -262,7 +262,7 @@ class TestTitleFinder(TestCase):
                    "<head></head>" \
                    "<body>" \
                        "<div><div><h1>This is title</h1></div></div>" \
-                       "<div><div><div><div><div><h1>This is parent h1</h1><div id=\"group1\">" \
+                       "<div><div><div><div><div><h1 id=\"parentH1\">This is parent h1</h1><div id=\"group1\">" \
                            "<li><h1>This is h1</h1>21.12.2020, Jihlava, 100 Kč, 130 Kč</li>" \
                            "<li><h2>This is h2</h2>22.12.2020, Brno, 200 Kč</li>" \
                            "<li><h3>This is h3</h3>23.12.2020, Praha, 150 Kč</li>" \
@@ -275,5 +275,6 @@ class TestTitleFinder(TestCase):
 
         results = TitleFinder.find(soup.find(id="trebic"))
 
-        self.assertEqual(results.value, "This is title")
-        self.assertEqual(results.container, soup.find("h1"))
+        self.assertEqual(results.value, "This is parent h1")
+        self.assertEqual(results.alternative_value, "This is title")
+        self.assertEqual(results.container, soup.find(id="parentH1"))

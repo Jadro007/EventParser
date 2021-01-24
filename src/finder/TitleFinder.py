@@ -7,12 +7,13 @@ from bs4 import BeautifulSoup
 from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
 from src.dto.Title import Title
+from src.finder.DateFinder import DateFinder
 from src.utils.Utils import Utils
 
 
 class TitleFinder:
 
-    title_blacklist = ["Odběr novinek", "Nejbližší uvedení", "Říjen", "všechnapředstavení", "Menu", "Hledání", "Podrobné nastavení", "Back Button Back", "Vaše soukromí"]
+    title_blacklist = ["Odběr novinek", "Nejbližší uvedení", "Říjen", "všechnapředstavení", "Menu", "Hledání", "Podrobné nastavení", "Back Button Back", "Vaše soukromí", "Více informací", "Koncerty", "Připravované koncerty", "kapela", "Back to the top"]
 
     @staticmethod
     def find(soup, is_single_event=False) -> Optional[Title]:
@@ -23,28 +24,32 @@ class TitleFinder:
         # so if the event container is content of main title, it is likely name of the event
         # todo: this operation is quite resource heavy, might be good idea to cache it for each site
         main_title = TitleFinder._find_internal_single_event(soup)
+        use_main_title = False
         if main_title is not None:
             main_title_regex_compiled = re.compile(main_title.value, flags=re.IGNORECASE)
             if soup.find(text=main_title_regex_compiled) is not None:
-                return main_title
+                use_main_title = True
 
         title_from_list = TitleFinder._find_internal(soup, True)
+        if use_main_title:
+            title_from_list.alternative_value = main_title.value
+
         return title_from_list
 
     @staticmethod
     def _find_internal(soup, recursive):
         title = soup.find(["h1"], recursive=recursive)
-        if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
+        if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "" or TitleFinder.__title_contains_only_date(title):
             title = soup.find("h2", recursive=recursive)
-            if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
+            if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "" or TitleFinder.__title_contains_only_date(title):
                 title = soup.find("h3", recursive=recursive)
-                if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
+                if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "" or TitleFinder.__title_contains_only_date(title):
                     title = soup.find("h4", recursive=recursive)
-                    if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
+                    if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "" or TitleFinder.__title_contains_only_date(title):
                         # for list event, it is possible to contain link to event and usually there is either
                         # event name (we want that) or just url (we do not want that)
                         link = soup.find("a", recursive=recursive)
-                        if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "":
+                        if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "" and TitleFinder.__title_contains_only_date(link) is False:
                             title = link
 
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
@@ -71,6 +76,21 @@ class TitleFinder:
                 aleternative_text = Utils.clean(h1.getText()) + " - " + text
 
         return Title(text, aleternative_text, title)
+
+    @staticmethod
+    def __title_contains_only_date(title):
+        text = title.getText()
+        if len(text) < 5:
+            return False
+        dates = DateFinder.find(title)
+        for date in dates:
+            text = text.replace(date.realValue, "")
+
+        text = Utils.clean(text)
+        if len(text) < 5:
+            return True
+
+        return False
 
 
     @staticmethod

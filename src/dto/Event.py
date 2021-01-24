@@ -5,6 +5,8 @@ from src.dto.PriceRange import PriceRange
 
 
 class Event:
+    score = 100
+
     def __init__(self, title, date: DateRange, time, place: Place, price_range: PriceRange, container):
         self.title = title
         self.date = date

@@ -42,6 +42,7 @@ class RemovalPreprocessor:
 
     def remove_script_and_style_tag(soup):
         [x.extract() for x in soup.findAll(['script', 'style', 'br'])]
+        [x.extract() for x in soup.findAll(attrs={"role": "dialog"})]
         # for item in soup.contents:
         #     if isinstance(item, Doctype):
         #         item.extract()

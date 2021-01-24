@@ -4,6 +4,7 @@ import re
 from config.config import verbose
 from src.dto.DateRange import DateRange
 from src.dto.Event import Event
+from src.dto.Place import Place
 from src.finder.PriceFinder import PriceFinder
 from src.finder.DateFinder import DateFinder
 from src.finder.PlaceFinder import PlaceFinder
@@ -11,10 +12,12 @@ from src.finder.TitleFinder import TitleFinder
 from src.utils.Utils import Utils
 
 
+
 class SingleEventParser:
+    NO_PLACE_REASON = 'no-place'
 
     @staticmethod
-    def parse(soup, date):
+    def parse(soup, date, allow_external_place=False, force_place_if_none=None):
 
         is_single_event = not date.group
 
@@ -29,9 +32,9 @@ class SingleEventParser:
         first_date = date
         last_date = date
         for d in dates:
-            if d.datetime < first_date.datetime:
+            if d.datetime < first_date.datetime and date.container.parent.sourceline - d.container.parent.sourceline < 20:
                 first_date = d
-            if d.datetime > last_date.datetime and last_date.isYearGuessed:
+            if d.datetime > last_date.datetime:
                 last_date = d
 
         # if event is in different year than current year, we might have guessed the year wrong, so if day and month match, lets ignore it
@@ -59,10 +62,35 @@ class SingleEventParser:
                 sourceline_diff = diff
                 place = p
 
+        # Some websites do not have location, because they present specific venue.
+        # This could be improved by further investigating other pages of the website (e.g. contact or about page)
+        # Here we try to find some location in some places where it could be (e.g. title), however it lowers scoring.
+        # This only happens when all events do not have place to correctly eliminate false positive events.
+        if place is None and allow_external_place:
+            previous_parent = date.container
+            parent = date.container
+            while parent is not None:
+                previous_parent = parent
+                parent = parent.parent
+
+            website_title = previous_parent.find("title")
+            if website_title is not None:
+                places = PlaceFinder.find(website_title)
+                if len(places) > 0:
+                    place = places[0]
+                    place.is_external_place = True
+
+        if place is None and force_place_if_none is not None:
+            place = Place(force_place_if_none.city, force_place_if_none.container)
+            place.is_forced = True
+
         if place is None:
+
             if verbose > 2:
                 print("Found event without place with date: " + date.realValue + ", skipping")
-            return None
+            return SingleEventParser.NO_PLACE_REASON
+
+
 
         price_range = PriceFinder.find(soup)
 

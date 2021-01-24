@@ -112,6 +112,11 @@ class DateFinder:
                         print("Date too much in the future, skipping: ", real_value)
                     continue
 
+                if datetime_value < datetime.datetime(now.year - 10, now.month, now.day):
+                    if verbose > 2:
+                        print("Date too much in the past, skipping: ", real_value)
+                    continue
+
                 dates.append(Date(datetime_value, real_value, match))
 
         if DateFinder.date_without_year_regex_compiled is None:
@@ -152,6 +157,11 @@ class DateFinder:
                 if datetime_value > datetime.datetime(now.year + 10, now.month, now.day):
                     if verbose > 2:
                         print("Date too much in the future, skipping: ", real_value)
+                    continue
+
+                if datetime_value < datetime.datetime(now.year - 10, now.month, now.day):
+                    if verbose > 2:
+                        print("Date too much in the past, skipping: ", real_value)
                     continue
                 contains_current_date = False
                 # When the date was already found previously (with proper year), it is likely to be found here again.

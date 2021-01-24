@@ -10,7 +10,7 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík", "Diváky", "Ostrov", "Řeka", "Pátek"]
+    forbidden_cities = ["Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík", "Diváky", "Ostrov", "Řeka", "Pátek", "Hory", "Černá", "Louka"]
     regex_for_cities = None
 
     @staticmethod
@@ -33,6 +33,7 @@ class PlaceFinder:
             soup = soup.parent
 
         matched_cities = soup.find_all(text=PlaceFinder.regex_for_cities)
+
         places = []
         for match in matched_cities:
             result = PlaceFinder.regex_for_cities.search(match)

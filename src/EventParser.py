@@ -12,6 +12,7 @@ from src.postprocessing.DuplicateEventsPostprocessor import DuplicateEventPostpr
 from src.postprocessing.YearPostprocessor import YearPostprocessor
 from src.preprocessing.DatePreprocessor import DatePreprocessor
 from src.preprocessing.RemovalPreprocessor import RemovalPreprocessor
+from src.scoring.EventScoring import EventScoring
 
 
 class EventParser:
@@ -49,16 +50,34 @@ class EventParser:
         events = ListEventParser.parse(soup, dates)
 
         dates = DateFinder.find(soup)
+        single_event_without_place_counter = 0
+        single_event_counter = 0
+        # todo: refactor this
+        # go through all single events
+        # If all of them do not have place, allow usage of external place
         for date in dates:
             if date.group is None:
+                single_event_counter += 1
                 single_event = SingleEventParser.parse(soup, date)
+                if single_event == SingleEventParser.NO_PLACE_REASON:
+                    single_event_without_place_counter += 1
+                    continue
                 if single_event is not None:
                     events.append(single_event)
-
+        if single_event_without_place_counter == single_event_counter:
+            for date in dates:
+                if date.group is None:
+                    single_event = SingleEventParser.parse(soup, date, True)
+                    if single_event == SingleEventParser.NO_PLACE_REASON:
+                        continue
+                    if single_event is not None:
+                        events.append(single_event)
 
         YearPostprocessor.fix_year(events)
 
         events = DuplicateEventPostprocessor.filter_duplicates(events)
+
+        EventScoring.score_events(events)
 
         return events
 

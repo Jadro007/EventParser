@@ -18,11 +18,13 @@ verbose = 3
 path = './data/test/'
 
 total_results = []
+total_events = 0
+total_events_under_score_limit = 0
 
 for filename in os.listdir(path):
 
-    # if not filename.startswith("22 "):
-    #     continue
+    if not filename.startswith("29 "):
+        continue
 
     if not filename.endswith(".html"):
         continue
@@ -40,7 +42,7 @@ for filename in os.listdir(path):
 
         for parsed_event in parsed_events:
             print([parsed_event.title.value, parsed_event.date.dateFrom.realValue, parsed_event.date.dateTo.realValue,
-                   parsed_event.place.city])
+                   parsed_event.place.city, "score: " + str(parsed_event.score)])
     # print(result_filename)
 
     expected_results = []
@@ -64,6 +66,10 @@ for filename in os.listdir(path):
     expected_results_count = len(expected_results)
 
     for found in parsed_events:
+        total_events += 1
+        if found.score < 50:
+            total_events_under_score_limit += 1
+
         found_title = found.title.value.lower().strip()
         found_alternative_title = found.title.alternative_value.lower().strip()
         if found_alternative_title == "":
@@ -134,9 +140,9 @@ for filename in os.listdir(path):
                 print(repr(found_date.dateTo.datetime) + " / " + repr(expected_date) + " = " + repr(
                     found_date.dateTo.realValue == expected_date))
                 print(repr(found_date_value) + " / " + repr(expected_date) + " = " + repr(
-                    found_date_value == expected_date))
+                    found_date_value in expected_date))
                 print(repr(found_date_value2) + " / " + repr(expected_date) + " = " + repr(
-                    found_date_value2 == expected_date))
+                    found_date_value2 in expected_date))
                 print("test\n")
 
             if (
@@ -147,7 +153,7 @@ for filename in os.listdir(path):
                     and (
                     found_date is not None and found_date_value in expected_date or
                     found_date is not None and found_date_value2 in expected_date
-            )
+            ) and found.score > 50
             ):
                 print("FOUND MATCH: ")
                 print("Name: " + found_title + ", date: " + found_date_value + ", place: " + found_location)
@@ -185,3 +191,6 @@ with open('outfile', 'wb') as fp:
 
 print("TOTAL PERCENTAGE: " + repr(total_found) + "/" + repr(total_expected) + " = " + repr(
     round(total_found / total_expected * 100, 2)) + "%")
+
+print("TOTAL (included fake positive) found " + str(total_events))
+print("TOTAL under limit found" + str(total_events_under_score_limit))
