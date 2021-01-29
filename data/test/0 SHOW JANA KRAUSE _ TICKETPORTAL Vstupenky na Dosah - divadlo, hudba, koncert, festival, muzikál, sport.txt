@@ -1,6 +1,0 @@
-SHOW JANA KRAUSE; 06. 10. 2020 - 21. 12. 2021;; Divadlo Archa, Na Poříčí 26; Praha 1;
-SHOW JANA KRAUSE; 06. 10. 2020; 17:00; Divadlo Archa, Na Poříčí 26 1 PRAHA;
-SHOW JANA KRAUSE; 06. 10. 2020; 19:30; Divadlo Archa, Na Poříčí 26 1 PRAHA;
-SHOW JANA KRAUSE; 20. 10. 2020; 19:30; Divadlo Archa, Na Poříčí 26 1 PRAHA;
-SHOW JANA KRAUSE; 27. 10. 2020; 19:30; Divadlo Archa, Na Poříčí 26 1 PRAHA;
-SHOW JANA KRAUSE; 03. 11. 2020; 19:30; Divadlo Archa, Na Poříčí 26 1 PRAHA;

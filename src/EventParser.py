@@ -47,7 +47,15 @@ class EventParser:
         dates = DateFinder.find(soup)
         print("FOUND", len(dates), "DATES")
 
-        events = ListEventParser.parse(soup, dates)
+        # try to parse Events separated in groups
+        groups = {}
+        for date in dates:
+            if date.group is not None:
+                groups[repr(date.group)] = date.group
+
+        events = []
+        for group in groups:
+            events.extend(ListEventParser.parse(soup, groups[group].dates))
 
         dates = DateFinder.find(soup)
         single_event_without_place_counter = 0

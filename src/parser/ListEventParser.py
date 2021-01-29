@@ -72,7 +72,6 @@ class ListEventParser:
         # This piece of code would force place to events without please for list event.
         # Logic behind this is only one place in all events, other will have the some.
         # However, this has not yet proven really effective and it increases false positive events.
-        # Could be improved by forcing place on just places within the same list.
         if config.experimental_force_place_to_all_events_when_same_on_all_events:
             previous_place = None
             all_events_have_same_place = True

@@ -1,17 +1,25 @@
 import io
 import sys
+import requests
 
 from src.EventParser import EventParser
 
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
-path = "./data/test/10 MSV - Veletrhy Brno - m.bvv.cz.html"
-html = open(path, 'r', errors='ignore', encoding="utf-8").read()
+
+
+if __name__ == '__main__':
+    url = sys.argv[1]
+    r = requests.get(url, allow_redirects=True)
+    html = r.content
+else:
+    path = "./data/test/10 MSV - Veletrhy Brno - m.bvv.cz.html"
+    html = open(path, 'r', errors='ignore', encoding="utf-8").read()
 
 events = EventParser.parse(html)
 
-print("HELLOOOOO")
+print("FOUND EVENTS")
 
 for event in events:
     price = "none"
@@ -26,4 +34,6 @@ for event in events:
                 '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(found_date.dateTo.datetime.month) + ". " + str(found_date.dateTo.datetime.year)
         )
 
-    print("Name: " + event.title.value + ", date: " + found_date_value + ", place: " + event.place.city, "price: " + price)
+    print("Name: " + event.title.value + "("+event.title.alternative_value+"), ",
+             "date: " + found_date_value + ", place: " + event.place.city,
+          "price: " + price, "score:" + str(event.score))

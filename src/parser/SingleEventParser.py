@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup, NavigableString
 import re
 
+from config import config
 from config.config import verbose
 from src.dto.DateRange import DateRange
 from src.dto.Event import Event
@@ -22,10 +23,24 @@ class SingleEventParser:
         is_single_event = not date.group
 
         # todo: support multiple dates events (including date range)
-        try:
-            dates = DateFinder.find(soup, False)
-        except AttributeError:
-            return
+        if is_single_event is True:
+            try:
+                # For single event, soup is whole page (not sure if that is useful really).
+                # So we limit finding other dates close to the main date (to prevent creating range with some random dates on page)
+                date_container = date.container
+                if date_container.parent is not None:
+                    date_container = date.container.parent
+                if date_container.parent is not None:
+                    date_container = date.container.parent
+
+                dates = DateFinder.find(date_container, False)
+            except AttributeError:
+                return
+        else:
+            try:
+                dates = DateFinder.find(soup, False)
+            except AttributeError:
+                return
 
         # todo: fix date range when last date overlaps to next year
         #       currently it would just swap the dates here, we should prefer the order of dates in html structure
@@ -80,6 +95,17 @@ class SingleEventParser:
                     place = places[0]
                     place.is_external_place = True
 
+            if place is None and config.allow_place_from_footer:
+                website_footer = previous_parent.find("footer")
+                if website_footer is not None:
+                    places = PlaceFinder.find(website_footer)
+                    for p in places:
+                        if p.city.lower() == "facebook":
+                            continue
+                        place = p
+                        place.is_external_place = True
+                        break
+
         if place is None and force_place_if_none is not None:
             place = Place(force_place_if_none.city, force_place_if_none.container)
             place.is_forced = True
@@ -106,7 +132,7 @@ class SingleEventParser:
             else:
                 container = soup
 
-        title = TitleFinder.find(container, is_single_event)
+        title = TitleFinder.find(container, is_single_event, [first_date.container, place.container])
         if title is None:
             if verbose > 2:
                 print("Found event without title (date: " + date.realValue + ", place: " + place.city + "), skipping")
