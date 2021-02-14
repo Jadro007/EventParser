@@ -1,3 +1,6 @@
+from bs4 import NavigableString
+
+
 class Utils:
 
     @staticmethod
@@ -41,6 +44,24 @@ class Utils:
             return string.strip(" '")
         except TypeError:
             return ""
+
+    @staticmethod
+    def getTag(element):
+        if isinstance(element, NavigableString):
+            return element.parent
+
+        return element
+
+    @staticmethod
+    def getCustomId(element):
+        # this is workaround for NavigableString because it does not have assigned custom_id
+        if isinstance(element, NavigableString) and element.parent is not None and element.parent.custom_id is not None:
+            element.custom_id = 100000 + element.parent.custom_id
+
+        try:
+            return element.custom_id
+        except AttributeError:
+            return repr(element)
 
     @staticmethod
     def getCSSPath(element):

@@ -78,8 +78,10 @@ class DateFinder:
             DateFinder.date_regex_compiled = re.compile(DateFinder.dateRegex, flags=re.IGNORECASE)
 
         body = soup.find("body")
-        if body is not None:
+        if body is not None and body != -1:
             soup = body
+
+        soup = Utils.getTag(soup)
 
         matches = soup.find_all(text=DateFinder.date_regex_compiled)
 

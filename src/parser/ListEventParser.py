@@ -43,7 +43,7 @@ class ListEventParser:
             # what we are looking for. So we traverse there from the date to have correct part of the tree.
             previous_parent = None
             parent = date.container
-            while parent is not None and repr(parent) != repr(date.group.container):
+            while parent is not None and Utils.getCustomId(parent) != Utils.getCustomId(date.group.container):
                 previous_parent = parent
                 parent = parent.parent
 

@@ -9,13 +9,16 @@ import dateparser
 import pickle
 
 from src.EventParser import EventParser
+import time
 
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
+start_time = time.time()
+
 verbose = 3
 
-path = './data/test2/'
+path = './data/test/'
 
 total_results = []
 total_events = 0
@@ -23,7 +26,7 @@ total_events_under_score_limit = 0
 
 for filename in os.listdir(path):
 
-    # if not filename.startswith("32 "):
+    # if not filename.startswith("5 "):
     #     continue
 
     if not filename.endswith(".html"):
@@ -194,3 +197,4 @@ print("TOTAL PERCENTAGE: " + repr(total_found) + "/" + repr(total_expected) + " 
 
 print("TOTAL (included fake positive) found " + str(total_events))
 print("TOTAL under limit found" + str(total_events_under_score_limit))
+print("--- %s seconds ---" % (time.time() - start_time))

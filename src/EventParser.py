@@ -16,6 +16,8 @@ from src.scoring.EventScoring import EventScoring
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from config import shared
+from src.utils.Utils import Utils
+
 
 class EventParser:
 
@@ -50,6 +52,11 @@ class EventParser:
         # reloading the tree helps for some reason
         soup = BeautifulSoup(str(soup), 'html.parser')
 
+        i = 1
+        for tag in soup.findAll(True):
+            tag.custom_id = i
+            i += 1
+
         # print("WRITING OUTPUT FOR DEBUGGING TO test.html")
         # with open("test.html", 'w', errors='ignore', encoding="utf-8") as file:
         #     file.write(str(soup))
@@ -63,7 +70,7 @@ class EventParser:
         groups = {}
         for date in dates:
             if date.group is not None:
-                groups[repr(date.group)] = date.group
+                groups[Utils.getCustomId(date.group.container)] = date.group
 
         events = []
         for group in groups:

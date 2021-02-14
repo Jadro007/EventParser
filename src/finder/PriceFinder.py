@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 
 from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
+from src.utils.Utils import Utils
 
 
 class PriceFinder:
@@ -18,7 +19,7 @@ class PriceFinder:
             PriceFinder.regex_for_price = re.compile("((\d+)\s*(kc|kč|Kč|,-))")
 
         # we try to find all prices in the soup using regex
-        matched_prices = soup.find_all(text=PriceFinder.regex_for_price)
+        matched_prices = Utils.getTag(soup).find_all(text=PriceFinder.regex_for_price)
         prices = []
 
         # it is possible that there are no prices

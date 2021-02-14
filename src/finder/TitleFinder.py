@@ -18,7 +18,8 @@ class TitleFinder:
     title_blacklist = ["Odběr novinek", "Nejbližší uvedení", "Říjen", "všechnapředstavení", "Menu", "Hledání",
                        "Podrobné nastavení", "Back Button Back", "Vaše soukromí", "Více informací", "Koncerty",
                        "Připravované koncerty", "kapela", "Back to the top", "doprovodný program",
-                       "Praha", "Vstupenky", "Koupit", "Termíny", "Kontakty"
+                       "Praha", "Vstupenky", "Koupit", "Termíny", "Kontakty", "Mapa", "Doprava",
+                       "Termíny"
                        ]
 
     @staticmethod
@@ -53,8 +54,9 @@ class TitleFinder:
             biggest_font_size = 0
             biggest_font_size_element = None
             for elem in elems:
-                font_size = int(elem.value_of_css_property("fontSize").strip("px"))
-                if font_size > biggest_font_size and elem.text != "":
+                font_size = int(float(elem.value_of_css_property("fontSize").strip("px")))
+                cleaned_text = Utils.clean(elem.text)
+                if font_size > biggest_font_size and cleaned_text != "" and cleaned_text not in TitleFinder.title_blacklist:
                     biggest_font_size = font_size
                     biggest_font_size_element = elem
 
@@ -80,13 +82,13 @@ class TitleFinder:
 
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
         # That could accidentally get title from other event.
-        if (title is None or title.getText() in TitleFinder.title_blacklist) and soup.parent is not None:
+        if (title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist) and soup.parent is not None:
             return TitleFinder._find_internal(soup.parent, False)
 
-        if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
+        if title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
             title = soup.find("title")
 
-        if title is None or title.getText() in TitleFinder.title_blacklist:
+        if title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist:
             return None
 
         text = Utils.clean(title.getText())
@@ -98,7 +100,7 @@ class TitleFinder:
                 container = parent
                 parent = parent.parent
             h1 = container.find(["h1"], recursive=recursive)
-            if h1 is not None and h1.getText() not in TitleFinder.title_blacklist and Utils.clean(h1.getText()) != "":
+            if h1 is not None and Utils.clean(h1.getText()) not in TitleFinder.title_blacklist and Utils.clean(h1.getText()) != "":
                 aleternative_text = Utils.clean(h1.getText()) + " - " + text
 
         return Title(text, aleternative_text, title)

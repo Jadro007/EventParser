@@ -22,7 +22,7 @@ class GroupEnhancer:
         groups = {}
         for date in dates:
             date.group = None  # remove groups if there are any assigned already
-            container_repr = repr(date.container)
+            container_repr = Utils.getCustomId(date.container)
             if container_repr in groups:
                 groups[container_repr][0].append(date)
             else:
@@ -61,16 +61,14 @@ class GroupEnhancer:
                 # but the dates must have different parent element
                 continue
 
-
-
             parent = group[1].parent
-            parent_repr = repr(parent)
+            parent_repr = Utils.getCustomId(parent)
             if parent_repr in groups:  # for each group, we check if parent is already existing
                 groups[parent_repr][0].extend(group[0]) # if yes, we add all dates from our group
-                del groups[repr(group[1])]
+                del groups[Utils.getCustomId(group[1])]
             else:
                 groups[parent_repr] = group # if this is first occurrence of the parent, we move the group there
-                del groups[repr(group[1])]
+                del groups[Utils.getCustomId(group[1])]
                 group[1] = parent
 
         is_finished = True # all groups are finished once there are more then one date in each group
