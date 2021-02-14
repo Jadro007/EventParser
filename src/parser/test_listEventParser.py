@@ -39,18 +39,18 @@ class TestListEventParser(TestCase):
         self.assertEqual(events[1].place.city, "Brno")
         self.assertEqual(events[1].priceRange.priceFrom.text, "200 Kč")
         self.assertEqual(events[1].priceRange.priceTo.text, "200 Kč")
-        self.assertEqual(events[1].title.value, "This is h2")
+        self.assertEqual(events[1].title.value, "This is h1")
 
         self.assertEqual(events[2].date.dateFrom.realValue, "23.12.2020")
         self.assertEqual(events[2].date.dateTo.realValue, "23.12.2020")
         self.assertEqual(events[2].place.city, "Praha")
         self.assertEqual(events[2].priceRange.priceFrom.text, "150 Kč")
         self.assertEqual(events[2].priceRange.priceTo.text, "150 Kč")
-        self.assertEqual(events[2].title.value, "This is h3")
+        self.assertEqual(events[2].title.value, "This is h1")
 
         self.assertEqual(events[3].date.dateFrom.realValue, "24.12.2020")
         self.assertEqual(events[3].date.dateTo.realValue, "24.12.2020")
         self.assertEqual(events[3].place.city, "Třebíč")
         self.assertEqual(events[3].priceRange, None)
-        self.assertEqual(events[3].title.value, "This is title")
+        self.assertEqual(events[3].title.value, "This is h1")
 

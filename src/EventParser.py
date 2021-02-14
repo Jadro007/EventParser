@@ -13,9 +13,21 @@ from src.postprocessing.YearPostprocessor import YearPostprocessor
 from src.preprocessing.DatePreprocessor import DatePreprocessor
 from src.preprocessing.RemovalPreprocessor import RemovalPreprocessor
 from src.scoring.EventScoring import EventScoring
-
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
+from config import shared
 
 class EventParser:
+
+    @staticmethod
+    def parse_url(url) -> [Event]:
+        options = Options()
+        options.headless = True
+        shared.driver = Chrome(options=options, executable_path='lib/chromedriver.exe')
+        shared.driver.get(url)
+
+        html = shared.driver.page_source
+        return EventParser.parse(html)
 
     @staticmethod
     def parse(html) -> [Event]:
@@ -87,6 +99,8 @@ class EventParser:
 
         EventScoring.score_events(events)
 
+        if shared.driver is not None:
+            shared.driver.close()
         return events
 
 

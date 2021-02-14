@@ -41,3 +41,28 @@ class Utils:
             return string.strip(" '")
         except TypeError:
             return ""
+
+    @staticmethod
+    def getCSSPath(element):
+        return Utils.__get_css_path(element)
+
+    @staticmethod
+    def __get_element(node):
+        # for XPATH we have to count only for nodes with same type!
+        length = 1
+        for sibling in node.previous_siblings:
+            if sibling.name == node.name:
+                length += 1
+        if (length) > 1:
+            return '%s:nth-of-type(%s)' % (node.name, length)
+        else:
+            return node.name
+
+    @staticmethod
+    def __get_css_path(node):
+        path = [Utils.__get_element(node)]
+        for parent in node.parents:
+            if parent.name == 'body':
+                break
+            path.insert(0, Utils.__get_element(parent))
+        return "html > body > " + (' > '.join(path))

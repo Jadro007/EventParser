@@ -138,7 +138,8 @@ class SingleEventParser:
                 print("Found event without title (date: " + date.realValue + ", place: " + place.city + "), skipping")
             return None
 
-        soup.extract()  # event was successfully found, we can now safely remove it
+        # we cannot remove the event, because it could break selectors created for Selenium
+        # soup.extract()  # event was successfully found, we can now safely remove it
 
         return Event(title, DateRange(first_date, last_date, soup), "", place, price_range, soup)
 

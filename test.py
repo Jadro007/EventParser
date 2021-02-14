@@ -15,7 +15,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
 verbose = 3
 
-path = './data/test/'
+path = './data/test2/'
 
 total_results = []
 total_events = 0
@@ -23,8 +23,8 @@ total_events_under_score_limit = 0
 
 for filename in os.listdir(path):
 
-    if not filename.startswith("32 "):
-        continue
+    # if not filename.startswith("32 "):
+    #     continue
 
     if not filename.endswith(".html"):
         continue

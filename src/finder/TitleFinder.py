@@ -9,7 +9,8 @@ from src.dto.Price import Price
 from src.dto.Title import Title
 from src.finder.DateFinder import DateFinder
 from src.utils.Utils import Utils
-
+from config import shared
+from selenium.webdriver import Chrome
 
 class TitleFinder:
 
@@ -35,14 +36,32 @@ class TitleFinder:
             if soup.find(text=main_title_regex_compiled) is not None:
                 use_main_title = True
 
-        title_from_list = TitleFinder._find_internal(soup, True)
+        title_from_list = TitleFinder._find_internal(soup, True, True)
         if use_main_title:
             title_from_list.alternative_value = main_title.value
 
         return title_from_list
 
     @staticmethod
-    def _find_internal(soup, recursive):
+    def _find_internal(soup, recursive, try_headless=False):
+        driver = shared.driver
+        if try_headless is True and driver is not None:
+            # assert "Python" in driver.title
+            css_path = Utils.getCSSPath(soup)
+            print(css_path)
+            elems = driver.find_elements_by_css_selector(css_path + " *")
+            biggest_font_size = 0
+            biggest_font_size_element = None
+            for elem in elems:
+                font_size = int(elem.value_of_css_property("fontSize").strip("px"))
+                if font_size > biggest_font_size and elem.text != "":
+                    biggest_font_size = font_size
+                    biggest_font_size_element = elem
+
+            if biggest_font_size_element is not None and biggest_font_size > 15:
+                text = Utils.clean(biggest_font_size_element.text)
+                return Title(text, "", None)
+
         title = soup.find(["h1"], recursive=recursive)
         if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "" or TitleFinder.__title_contains_only_date(title):
             title = soup.find("h2", recursive=recursive)
