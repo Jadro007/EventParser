@@ -1,0 +1,651 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="440817675" lat="48.8099441" lon="14.3158478" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817676" lat="48.8101285" lon="14.3157222" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817677" lat="48.8101171" lon="14.3156405" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817678" lat="48.8099154" lon="14.3157345" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817679" lat="48.8101146" lon="14.315617" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817680" lat="48.809936" lon="14.3155255" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817682" lat="48.809896" lon="14.3155479" version="4" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817686" lat="48.8099238" lon="14.31565" version="3" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="440817733" lat="48.8104881" lon="14.3155392" version="3" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="440817735" lat="48.8104235" lon="14.3155063" version="3" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="440817736" lat="48.8104105" lon="14.3155653" version="3" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="440817737" lat="48.8103866" lon="14.3155482" version="3" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="440817741" lat="48.8102549" lon="14.3154133" version="3" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="440817742" lat="48.8104253" lon="14.3158191" version="2" timestamp="2017-04-17T15:42:53Z" changeset="0"/>
+	<node id="440817743" lat="48.8103621" lon="14.3157887" version="2" timestamp="2017-04-17T15:42:53Z" changeset="0"/>
+	<node id="440817744" lat="48.8101633" lon="14.3154894" version="2" timestamp="2017-04-17T15:42:53Z" changeset="0"/>
+	<node id="440817747" lat="48.8101555" lon="14.3153104" version="3" timestamp="2020-01-19T16:39:53Z" changeset="0"/>
+	<node id="440817748" lat="48.8101763" lon="14.3153507" version="2" timestamp="2017-04-17T15:42:53Z" changeset="0"/>
+	<node id="440817749" lat="48.8102905" lon="14.315477" version="3" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="588374925" lat="49.2431566" lon="16.5795862" version="4" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="588374926" lat="49.2432568" lon="16.5795012" version="4" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="588461030" lat="49.2429515" lon="16.579023" version="3" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="588461031" lat="49.2428978" lon="16.5790682" version="3" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="588461040" lat="49.2430072" lon="16.5791758" version="3" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="614123959" lat="50.9258538" lon="15.2304534" version="2" timestamp="2018-01-04T09:17:08Z" changeset="0"/>
+	<node id="614123967" lat="50.9259064" lon="15.2308503" version="3" timestamp="2018-01-04T09:17:08Z" changeset="0"/>
+	<node id="633401886" lat="50.0712186" lon="14.4734676" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401891" lat="50.0712588" lon="14.4736657" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401893" lat="50.0712439" lon="14.473593" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401895" lat="50.0712332" lon="14.4735979" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401897" lat="50.0712229" lon="14.4735484" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401899" lat="50.0712342" lon="14.4735434" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401990" lat="50.0715656" lon="14.4732966" version="2" timestamp="2016-12-15T14:13:57Z" changeset="0"/>
+	<node id="633401992" lat="50.0716053" lon="14.4734947" version="3" timestamp="2016-12-15T15:07:43Z" changeset="0"/>
+	<node id="651324035" lat="50.9258132" lon="15.2307835" version="2" timestamp="2018-01-04T09:17:11Z" changeset="0"/>
+	<node id="656347156" lat="50.4822513" lon="16.1821038" version="3" timestamp="2020-04-11T16:45:40Z" changeset="0">
+		<tag k="name" v="Základní Umělecká Škola"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="addr:place" v="Hronov"/>
+		<tag k="addr:street" v="Komenského náměstí"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="54931"/>
+		<tag k="ref:ruian:addr" v="7465530"/>
+		<tag k="addr:housenumber" v="8"/>
+		<tag k="addr:conscriptionnumber" v="8"/>
+	</node>
+	<node id="661676222" lat="50.0723804" lon="14.488544" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676233" lat="50.0724666" lon="14.4885181" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676242" lat="50.0724062" lon="14.4887182" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676255" lat="50.0725018" lon="14.4886588" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676257" lat="50.072484" lon="14.4886639" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676259" lat="50.0724875" lon="14.4886941" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676261" lat="50.0724751" lon="14.4887127" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676263" lat="50.0724478" lon="14.4887071" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676264" lat="50.0724732" lon="14.4885738" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="661676265" lat="50.0724915" lon="14.4885685" version="2" timestamp="2016-10-20T15:13:44Z" changeset="0"/>
+	<node id="939471899" lat="50.0825616" lon="16.7576222" version="2" timestamp="2015-12-30T10:16:48Z" changeset="0"/>
+	<node id="939474941" lat="50.0823888" lon="16.7577851" version="2" timestamp="2015-12-30T10:16:53Z" changeset="0"/>
+	<node id="939475192" lat="50.0823872" lon="16.7577991" version="2" timestamp="2015-12-30T10:16:54Z" changeset="0"/>
+	<node id="939477350" lat="50.0826705" lon="16.7576625" version="2" timestamp="2015-12-30T10:16:58Z" changeset="0"/>
+	<node id="939477616" lat="50.0824495" lon="16.7576585" version="2" timestamp="2015-12-30T10:16:58Z" changeset="0"/>
+	<node id="939480252" lat="50.0822934" lon="16.7577593" version="2" timestamp="2015-12-30T10:17:03Z" changeset="0"/>
+	<node id="939480538" lat="50.0826529" lon="16.7578254" version="2" timestamp="2015-12-30T10:17:04Z" changeset="0"/>
+	<node id="939482734" lat="50.082517" lon="16.757663" version="2" timestamp="2015-12-30T10:17:08Z" changeset="0"/>
+	<node id="939482939" lat="50.0825146" lon="16.7576799" version="2" timestamp="2015-12-30T10:17:08Z" changeset="0"/>
+	<node id="939484627" lat="50.0826278" lon="16.7578199" version="2" timestamp="2015-12-30T10:17:14Z" changeset="0"/>
+	<node id="939485642" lat="50.0825556" lon="16.7576739" version="2" timestamp="2015-12-30T10:17:18Z" changeset="0"/>
+	<node id="939485753" lat="50.082409" lon="16.7576296" version="2" timestamp="2015-12-30T10:17:18Z" changeset="0"/>
+	<node id="939488262" lat="50.0824518" lon="16.7576415" version="2" timestamp="2015-12-30T10:17:28Z" changeset="0"/>
+	<node id="939491921" lat="50.0823169" lon="16.7575466" version="2" timestamp="2015-12-30T10:17:39Z" changeset="0"/>
+	<node id="939495396" lat="50.0824157" lon="16.7575722" version="2" timestamp="2015-12-30T10:17:49Z" changeset="0"/>
+	<node id="939495551" lat="50.0826238" lon="16.7578637" version="2" timestamp="2015-12-30T10:17:50Z" changeset="0"/>
+	<node id="1124068536" lat="49.5190747" lon="16.258042" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124069361" lat="49.5190599" lon="16.2579442" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124070109" lat="49.5191632" lon="16.2580115" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124071722" lat="49.5191794" lon="16.2581431" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124072652" lat="49.5192171" lon="16.2582369" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124073521" lat="49.5192022" lon="16.2581352" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124074316" lat="49.5189237" lon="16.2583386" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124075091" lat="49.5188738" lon="16.2581112" version="2" timestamp="2019-06-18T12:50:08Z" changeset="0"/>
+	<node id="1124075797" lat="49.5189078" lon="16.2582065" version="2" timestamp="2019-06-18T12:50:09Z" changeset="0"/>
+	<node id="1124077056" lat="49.5188888" lon="16.258213" version="2" timestamp="2019-06-18T12:50:09Z" changeset="0"/>
+	<node id="1124077774" lat="49.5189925" lon="16.257967" version="2" timestamp="2019-06-18T12:50:09Z" changeset="0"/>
+	<node id="1196315418" lat="49.7753714" lon="17.7527778" version="2" timestamp="2018-06-11T08:20:34Z" changeset="0"/>
+	<node id="1196316411" lat="49.7752446" lon="17.7526802" version="2" timestamp="2018-06-11T08:20:35Z" changeset="0"/>
+	<node id="1196317934" lat="49.7753647" lon="17.7523903" version="2" timestamp="2018-06-11T08:20:37Z" changeset="0"/>
+	<node id="1196319128" lat="49.7754658" lon="17.752488" version="2" timestamp="2018-06-11T08:20:38Z" changeset="0"/>
+	<node id="1196320131" lat="49.7753085" lon="17.7525106" version="2" timestamp="2018-06-11T08:20:39Z" changeset="0"/>
+	<node id="1196321179" lat="49.7753141" lon="17.7525156" version="2" timestamp="2018-06-11T08:20:40Z" changeset="0"/>
+	<node id="1280454891" lat="50.0857371" lon="14.1295277" version="3" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="1280455063" lat="50.0857523" lon="14.1293782" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="1280455066" lat="50.0855544" lon="14.1293042" version="3" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="1280455480" lat="50.0856395" lon="14.1293352" version="1" timestamp="2011-05-11T17:48:11Z" changeset="0"/>
+	<node id="1280455724" lat="50.085648" lon="14.1294936" version="3" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="1280455777" lat="50.0854814" lon="14.129693" version="3" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="1280455942" lat="50.0857553" lon="14.1293794" version="3" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="1361900834" lat="50.6033738" lon="15.3376311" version="2" timestamp="2017-06-17T20:56:48Z" changeset="0"/>
+	<node id="1361905302" lat="50.6034608" lon="15.3376968" version="2" timestamp="2017-06-17T20:56:48Z" changeset="0"/>
+	<node id="1361914452" lat="50.6034988" lon="15.3375867" version="2" timestamp="2017-06-17T20:56:49Z" changeset="0"/>
+	<node id="1361916624" lat="50.6033739" lon="15.3373071" version="2" timestamp="2017-06-17T20:56:49Z" changeset="0"/>
+	<node id="1361920352" lat="50.603288" lon="15.3375503" version="2" timestamp="2017-06-17T20:56:49Z" changeset="0"/>
+	<node id="1361922925" lat="50.6034319" lon="15.3375297" version="2" timestamp="2017-06-17T20:56:49Z" changeset="0"/>
+	<node id="1361929171" lat="50.6034771" lon="15.3373982" version="2" timestamp="2017-06-17T20:56:49Z" changeset="0"/>
+	<node id="2786168480" lat="49.5467463" lon="16.5723785" version="2" timestamp="2018-05-08T18:39:30Z" changeset="0">
+		<tag k="name" v="ZUŠ Letovice"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="addr:place" v="Letovice"/>
+		<tag k="addr:street" v="Masarykovo náměstí"/>
+		<tag k="addr:postcode" v="67961"/>
+		<tag k="ref:ruian:addr" v="2024900"/>
+		<tag k="addr:housenumber" v="203/29"/>
+		<tag k="addr:streetnumber" v="29"/>
+		<tag k="addr:conscriptionnumber" v="203"/>
+	</node>
+	<node id="2864562144" lat="49.3039743" lon="15.0742543" version="3" timestamp="2018-04-14T21:02:36Z" changeset="0">
+		<tag k="name" v="Základní umělecká škola Kamenice nad Lipou"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="addr:place" v="Kamenice nad Lipou"/>
+		<tag k="addr:street" v="Pelhřimovská"/>
+		<tag k="addr:postcode" v="39470"/>
+		<tag k="ref:ruian:addr" v="8923256"/>
+		<tag k="addr:housenumber" v="127"/>
+		<tag k="addr:conscriptionnumber" v="127"/>
+	</node>
+	<node id="3756306339" lat="48.8099608" lon="14.315836" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="3815698047" lat="50.063051" lon="14.5107285" version="3" timestamp="2017-01-03T16:26:21Z" changeset="0"/>
+	<node id="3815698066" lat="50.0633653" lon="14.5109033" version="3" timestamp="2017-01-03T16:26:22Z" changeset="0"/>
+	<node id="3815698067" lat="50.0633511" lon="14.5109498" version="3" timestamp="2017-01-03T16:26:22Z" changeset="0"/>
+	<node id="3815698070" lat="50.0635772" lon="14.5110606" version="3" timestamp="2017-01-03T16:26:22Z" changeset="0"/>
+	<node id="3815698071" lat="50.063628" lon="14.5108969" version="3" timestamp="2017-01-03T16:26:22Z" changeset="0"/>
+	<node id="3890089766" lat="49.6521001" lon="13.288818" version="1" timestamp="2015-12-13T09:58:46Z" changeset="0"/>
+	<node id="3890089772" lat="49.6521172" lon="13.2889055" version="1" timestamp="2015-12-13T09:58:46Z" changeset="0"/>
+	<node id="3890089806" lat="49.6521713" lon="13.2884881" version="1" timestamp="2015-12-13T09:58:46Z" changeset="0"/>
+	<node id="3890089839" lat="49.6522187" lon="13.2889571" version="1" timestamp="2015-12-13T09:58:47Z" changeset="0"/>
+	<node id="3890089849" lat="49.6522344" lon="13.2885215" version="1" timestamp="2015-12-13T09:58:47Z" changeset="0"/>
+	<node id="3890089850" lat="49.6522348" lon="13.2885194" version="1" timestamp="2015-12-13T09:58:47Z" changeset="0"/>
+	<node id="3890089975" lat="49.6522856" lon="13.288654" version="1" timestamp="2015-12-13T09:58:47Z" changeset="0"/>
+	<node id="3890089988" lat="49.6523029" lon="13.2886631" version="1" timestamp="2015-12-13T09:58:47Z" changeset="0"/>
+	<node id="3890089998" lat="49.652323" lon="13.2885673" version="1" timestamp="2015-12-13T09:58:48Z" changeset="0"/>
+	<node id="3918238640" lat="50.0826312" lon="16.7576512" version="1" timestamp="2015-12-30T10:14:17Z" changeset="0"/>
+	<node id="3918238641" lat="50.0826322" lon="16.7576426" version="1" timestamp="2015-12-30T10:14:17Z" changeset="0"/>
+	<node id="4259646106" lat="50.0407956" lon="14.4280756" version="3" timestamp="2021-02-08T06:40:45Z" changeset="0">
+		<tag k="amenity" v="music_school"/>
+		<tag k="name" v="Konzervatoř a Vyšší odborná škola Jaroslava Ježka"/>
+		<tag k="website" v="kjj.cz"/>
+		<tag k="wikidata" v="Q6160599"/>
+	</node>
+	<node id="4456590854" lat="50.0723924" lon="14.4886445" version="1" timestamp="2016-10-20T15:13:15Z" changeset="0"/>
+	<node id="4456590855" lat="50.0723973" lon="14.4886431" version="1" timestamp="2016-10-20T15:13:15Z" changeset="0"/>
+	<node id="4456590861" lat="50.0724583" lon="14.4887167" version="1" timestamp="2016-10-20T15:13:15Z" changeset="0"/>
+	<node id="4456590863" lat="50.0724831" lon="14.4886962" version="1" timestamp="2016-10-20T15:13:15Z" changeset="0"/>
+	<node id="4555652563" lat="50.0712259" lon="14.4734641" version="1" timestamp="2016-12-15T14:13:52Z" changeset="0"/>
+	<node id="4555652564" lat="50.0712235" lon="14.4734646" version="1" timestamp="2016-12-15T14:13:52Z" changeset="0"/>
+	<node id="4587361040" lat="50.0634159" lon="14.510738" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4587361041" lat="50.063403" lon="14.5107798" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4587361042" lat="50.063275" lon="14.5106854" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4587361043" lat="50.0632892" lon="14.5106397" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4587361044" lat="50.0632314" lon="14.5105976" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4587361045" lat="50.0632183" lon="14.5106435" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4587361046" lat="50.0631029" lon="14.5105584" version="1" timestamp="2017-01-03T16:26:11Z" changeset="0"/>
+	<node id="4686572966" lat="50.0855175" lon="14.1294632" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572967" lat="50.085521" lon="14.1294647" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572968" lat="50.0855175" lon="14.1294857" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572969" lat="50.0855139" lon="14.1294842" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572970" lat="50.0855008" lon="14.1295627" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572971" lat="50.0855038" lon="14.129564" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572972" lat="50.0854986" lon="14.1295943" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572973" lat="50.0854955" lon="14.129593" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572974" lat="50.0854841" lon="14.1296615" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572975" lat="50.0854867" lon="14.1296626" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4686572976" lat="50.0854788" lon="14.1296919" version="2" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="4799152375" lat="48.8103431" lon="14.3157601" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152376" lat="48.8103641" lon="14.3157865" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152394" lat="48.8103007" lon="14.3154488" version="2" timestamp="2020-06-25T17:23:45Z" changeset="0"/>
+	<node id="4799152494" lat="48.8101257" lon="14.315705" version="1" timestamp="2017-04-17T15:42:08Z" changeset="0"/>
+	<node id="4799152495" lat="48.8101316" lon="14.315703" version="1" timestamp="2017-04-17T15:42:08Z" changeset="0"/>
+	<node id="4799152496" lat="48.8101275" lon="14.315661" version="1" timestamp="2017-04-17T15:42:08Z" changeset="0"/>
+	<node id="4799152497" lat="48.8101212" lon="14.3156628" version="1" timestamp="2017-04-17T15:42:08Z" changeset="0"/>
+	<node id="4799152498" lat="48.8099309" lon="14.3157262" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="4799152499" lat="48.810119" lon="14.3156156" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="4799152500" lat="48.8099107" lon="14.3156589" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="4799152504" lat="48.8099122" lon="14.3155379" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="4799152505" lat="48.8101065" lon="14.3154952" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="4799152532" lat="48.8102189" lon="14.3153839" version="1" timestamp="2017-04-17T15:42:06Z" changeset="0"/>
+	<node id="4799152535" lat="48.8101125" lon="14.3153587" version="2" timestamp="2020-01-19T16:39:53Z" changeset="0"/>
+	<node id="4799152536" lat="48.8101644" lon="14.3154872" version="1" timestamp="2017-04-17T15:42:06Z" changeset="0"/>
+	<node id="4799152537" lat="48.8101827" lon="14.3155186" version="1" timestamp="2017-04-17T15:42:06Z" changeset="0"/>
+	<node id="4799152538" lat="48.8101815" lon="14.3155203" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152539" lat="48.8101986" lon="14.3155463" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152540" lat="48.8101998" lon="14.3155444" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152541" lat="48.810326" lon="14.3157342" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152542" lat="48.8103247" lon="14.3157361" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4799152543" lat="48.8103419" lon="14.315762" version="1" timestamp="2017-04-17T15:42:07Z" changeset="0"/>
+	<node id="4962350073" lat="49.8304109" lon="18.2532866" version="1" timestamp="2017-07-10T17:41:25Z" changeset="0">
+		<tag k="name" v="Lidová konzervatoř a Múzická škola"/>
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="5036595423" lat="50.0905391" lon="14.4157914" version="2" timestamp="2021-02-08T06:40:30Z" changeset="0">
+		<tag k="addr:conscriptionnumber" v="77"/>
+		<tag k="addr:housenumber" v="77/1"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:street" v="Na Rejdišti"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="name" v="Pražská konzervatoř"/>
+		<tag k="start_date" v="1808"/>
+		<tag k="website" v="www.prgcons.cz"/>
+		<tag k="wikidata" v="Q927373"/>
+	</node>
+	<node id="5053155672" lat="49.7437173" lon="13.3339473" version="1" timestamp="2017-08-23T09:44:39Z" changeset="0">
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="5250909241" lat="48.9764989" lon="14.4781548" version="1" timestamp="2017-11-27T19:50:40Z" changeset="0">
+		<tag k="name" v="Yamaha"/>
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="5319903872" lat="50.9258079" lon="15.2307853" version="1" timestamp="2018-01-04T09:16:45Z" changeset="0"/>
+	<node id="5319903873" lat="50.9258235" lon="15.2308646" version="1" timestamp="2018-01-04T09:16:45Z" changeset="0"/>
+	<node id="5319903874" lat="50.9258411" lon="15.2308586" version="1" timestamp="2018-01-04T09:16:45Z" changeset="0"/>
+	<node id="5319903875" lat="50.9258428" lon="15.2308715" version="1" timestamp="2018-01-04T09:16:45Z" changeset="0"/>
+	<node id="5319903879" lat="50.9258026" lon="15.230748" version="1" timestamp="2018-01-04T09:16:45Z" changeset="0"/>
+	<node id="5319903880" lat="50.925766" lon="15.2304821" version="1" timestamp="2018-01-04T09:16:45Z" changeset="0"/>
+	<node id="5372702708" lat="49.4132261" lon="14.6571312" version="1" timestamp="2018-01-30T14:56:43Z" changeset="0">
+		<tag k="name" v="Městský hudební ústav O. Nedbala"/>
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="5678923903" lat="50.0371152" lon="14.5025036" version="1" timestamp="2018-06-10T05:33:24Z" changeset="0">
+		<tag k="name" v="ZUŠ Music Art"/>
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="5681370426" lat="49.7752834" lon="17.7525771" version="1" timestamp="2018-06-11T08:19:08Z" changeset="0"/>
+	<node id="5681370427" lat="49.7752819" lon="17.7525758" version="1" timestamp="2018-06-11T08:19:08Z" changeset="0"/>
+	<node id="5681370428" lat="49.7752661" lon="17.7526176" version="1" timestamp="2018-06-11T08:19:08Z" changeset="0"/>
+	<node id="5681370429" lat="49.7752676" lon="17.7526191" version="1" timestamp="2018-06-11T08:19:08Z" changeset="0"/>
+	<node id="6402556686" lat="50.0941071" lon="12.2411165" version="1" timestamp="2019-04-13T16:22:27Z" changeset="0">
+		<tag k="name" v="Musikschule Schirnding-Hohenberg a.d. Eger"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="addr:city" v="Schirnding"/>
+		<tag k="addr:street" v="Fischern"/>
+		<tag k="addr:country" v="DE"/>
+		<tag k="addr:postcode" v="95706"/>
+		<tag k="addr:housenumber" v="13"/>
+	</node>
+	<node id="6555281708" lat="49.518912" lon="16.2582358" version="1" timestamp="2019-06-18T12:50:07Z" changeset="0"/>
+	<node id="6555281709" lat="49.5189089" lon="16.2582368" version="1" timestamp="2019-06-18T12:50:07Z" changeset="0"/>
+	<node id="6555281710" lat="49.5191752" lon="16.2581141" version="1" timestamp="2019-06-18T12:50:07Z" changeset="0"/>
+	<node id="6555281711" lat="49.5191782" lon="16.258113" version="1" timestamp="2019-06-18T12:50:07Z" changeset="0"/>
+	<node id="6555281712" lat="49.519007" lon="16.2580649" version="1" timestamp="2019-06-18T12:50:07Z" changeset="0"/>
+	<node id="6735507008" lat="49.1808737" lon="16.5947269" version="1" timestamp="2019-08-22T13:59:45Z" changeset="0">
+		<tag k="name" v="Základní umělecká škola Františka Jílka"/>
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="6934029929" lat="49.2430541" lon="16.5789447" version="1" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="6934029936" lat="49.2429536" lon="16.5792213" version="1" timestamp="2019-10-31T06:11:40Z" changeset="0"/>
+	<node id="6979410742" lat="50.0856027" lon="14.1297414" version="1" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="6979410756" lat="50.0854784" lon="14.1297102" version="1" timestamp="2019-11-15T10:48:36Z" changeset="0"/>
+	<node id="6984912540" lat="48.8104604" lon="14.3156682" version="3" timestamp="2020-01-19T16:39:53Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="6996192794" lat="48.8101295" lon="14.3156813" version="1" timestamp="2019-11-21T12:39:43Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="7119951007" lat="48.8101096" lon="14.3155193" version="2" timestamp="2020-02-02T09:34:25Z" changeset="0"/>
+	<node id="7160997153" lat="48.8102501" lon="14.3156224" version="1" timestamp="2020-01-26T19:47:47Z" changeset="0"/>
+	<node id="7160997154" lat="48.8103327" lon="14.3157481" version="1" timestamp="2020-01-26T19:47:47Z" changeset="0">
+		<tag k="entrance" v="main"/>
+	</node>
+	<node id="7160997155" lat="48.8101908" lon="14.3155344" version="1" timestamp="2020-01-26T19:47:47Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="7211833282" lat="48.810114" lon="14.315564" version="3" timestamp="2020-08-28T09:46:09Z" changeset="0">
+		<tag k="historic" v="memorial"/>
+		<tag k="material" v="bronze"/>
+		<tag k="memorial" v="plaque"/>
+	</node>
+	<node id="7545740240" lat="49.201507" lon="16.6024042" version="1" timestamp="2020-05-21T17:30:13Z" changeset="0">
+		<tag k="name" v="Základní umělecká škola varhanická"/>
+		<tag k="amenity" v="music_school"/>
+	</node>
+	<node id="7968429179" lat="48.7384691" lon="14.4906407" version="1" timestamp="2020-10-03T10:54:10Z" changeset="0">
+		<tag k="addr:city" v="Kaplice"/>
+		<tag k="addr:housenumber" v="334"/>
+		<tag k="addr:postcode" v="38241"/>
+		<tag k="addr:street" v="Linecká"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="email" v="reditel@zuskaplice.cz"/>
+		<tag k="name" v="ZUŠ Kaplice"/>
+		<tag k="phone" v="+420 728 582 727"/>
+		<tag k="website" v="https://www.zuskaplice.cz"/>
+	</node>
+	<way id="37606698" version="8" timestamp="2020-02-02T09:34:25Z" changeset="0">
+		<nd ref="440817678"/>
+		<nd ref="4799152498"/>
+		<nd ref="440817677"/>
+		<nd ref="4799152497"/>
+		<nd ref="4799152496"/>
+		<nd ref="6996192794"/>
+		<nd ref="4799152495"/>
+		<nd ref="4799152494"/>
+		<nd ref="440817676"/>
+		<nd ref="3756306339"/>
+		<nd ref="440817675"/>
+		<nd ref="440817678"/>
+		<tag k="name" v="ZUŠ Český Krumlov"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="website" v="http://www.zus-ceskykrumlov.cz"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Český Krumlov"/>
+		<tag k="addr:street" v="Kostelní"/>
+		<tag k="addr:postcode" v="381 01"/>
+		<tag k="ref:ruian:building" v="26304988"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="37606699" version="6" timestamp="2020-05-13T13:28:41Z" changeset="0">
+		<nd ref="4799152500"/>
+		<nd ref="440817686"/>
+		<nd ref="440817682"/>
+		<nd ref="4799152504"/>
+		<nd ref="440817680"/>
+		<nd ref="4799152505"/>
+		<nd ref="7119951007"/>
+		<nd ref="7211833282"/>
+		<nd ref="4799152499"/>
+		<nd ref="440817679"/>
+		<nd ref="440817677"/>
+		<nd ref="4799152498"/>
+		<nd ref="4799152500"/>
+		<tag k="name" v="ZUŠ Český Krumlov"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="addr:city" v="Český Krumlov"/>
+		<tag k="start_date" v="2006-04-27"/>
+		<tag k="addr:street" v="Kostelní"/>
+		<tag k="building:levels" v="4"/>
+		<tag k="ref:ruian:building" v="26304996"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="37606711" version="12" timestamp="2020-06-25T17:23:45Z" changeset="0">
+		<nd ref="440817742"/>
+		<nd ref="4799152376"/>
+		<nd ref="440817743"/>
+		<nd ref="4799152375"/>
+		<nd ref="4799152543"/>
+		<nd ref="7160997154"/>
+		<nd ref="4799152542"/>
+		<nd ref="4799152541"/>
+		<nd ref="7160997153"/>
+		<nd ref="4799152540"/>
+		<nd ref="4799152539"/>
+		<nd ref="7160997155"/>
+		<nd ref="4799152538"/>
+		<nd ref="4799152537"/>
+		<nd ref="440817744"/>
+		<nd ref="4799152536"/>
+		<nd ref="4799152535"/>
+		<nd ref="440817747"/>
+		<nd ref="440817748"/>
+		<nd ref="4799152532"/>
+		<nd ref="440817741"/>
+		<nd ref="4799152394"/>
+		<nd ref="440817749"/>
+		<nd ref="440817737"/>
+		<nd ref="440817736"/>
+		<nd ref="440817735"/>
+		<nd ref="440817733"/>
+		<nd ref="6984912540"/>
+		<nd ref="440817742"/>
+		<tag k="name" v="ZUŠ Český Krumlov"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="website" v="http://www.zus-ceskykrumlov.cz"/>
+		<tag k="building" v="civic"/>
+		<tag k="addr:city" v="Český Krumlov"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="addr:street" v="Kostelní"/>
+		<tag k="addr:postcode" v="381 01"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="building:levels" v="3"/>
+		<tag k="addr:housenumber" v="163"/>
+		<tag k="ref:ruian:building" v="8711097"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="46148729" version="5" timestamp="2019-10-31T06:11:40Z" changeset="0">
+		<nd ref="6934029929"/>
+		<nd ref="588374926"/>
+		<nd ref="588374925"/>
+		<nd ref="588461040"/>
+		<nd ref="6934029936"/>
+		<nd ref="588461031"/>
+		<nd ref="588461030"/>
+		<nd ref="6934029929"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="education" v="music"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="26243253"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="48345710" version="4" timestamp="2018-01-04T09:19:17Z" changeset="0">
+		<nd ref="614123967"/>
+		<nd ref="5319903875"/>
+		<nd ref="5319903874"/>
+		<nd ref="5319903873"/>
+		<nd ref="651324035"/>
+		<nd ref="5319903872"/>
+		<nd ref="5319903879"/>
+		<nd ref="5319903880"/>
+		<nd ref="614123959"/>
+		<nd ref="614123967"/>
+		<tag k="name" v="Základní umělecká škola Nové Město pod Smrkem"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="14803615"/>
+		<tag k="building:ruian:type" v="15"/>
+	</way>
+	<way id="49849865" version="4" timestamp="2020-11-03T17:26:34Z" changeset="0">
+		<nd ref="633401990"/>
+		<nd ref="633401992"/>
+		<nd ref="633401891"/>
+		<nd ref="633401893"/>
+		<nd ref="633401895"/>
+		<nd ref="633401897"/>
+		<nd ref="633401899"/>
+		<nd ref="633401886"/>
+		<nd ref="4555652564"/>
+		<nd ref="4555652563"/>
+		<nd ref="633401990"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:housenumber" v="11"/>
+		<tag k="addr:postcode" v="10000"/>
+		<tag k="addr:street" v="Bajkalská"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="building:ruian:type" v="15"/>
+		<tag k="name" v="ZUŠ Bajkalská"/>
+		<tag k="ref:ruian:building" v="25039415"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="start_date" v="2002-02-04"/>
+		<tag k="website" v="http://www.zus-bajkalska.cz/"/>
+	</way>
+	<way id="51858858" version="3" timestamp="2020-11-03T17:29:56Z" changeset="0">
+		<nd ref="661676264"/>
+		<nd ref="661676265"/>
+		<nd ref="661676255"/>
+		<nd ref="661676257"/>
+		<nd ref="661676259"/>
+		<nd ref="4456590863"/>
+		<nd ref="661676261"/>
+		<nd ref="4456590861"/>
+		<nd ref="661676263"/>
+		<nd ref="661676242"/>
+		<nd ref="4456590855"/>
+		<nd ref="4456590854"/>
+		<nd ref="661676222"/>
+		<nd ref="661676233"/>
+		<nd ref="661676264"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:housenumber" v="3"/>
+		<tag k="addr:postcode" v="10000"/>
+		<tag k="addr:street" v="U Nových vil"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="building:ruian:type" v="3"/>
+		<tag k="name" v="ZUŠ Olešská - pobočka"/>
+		<tag k="ref:ruian:building" v="22339744"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="website" v="https://www.zus-olesska.cz/"/>
+	</way>
+	<way id="80532055" version="3" timestamp="2016-07-18T14:25:25Z" changeset="0">
+		<nd ref="939495396"/>
+		<nd ref="939485753"/>
+		<nd ref="939488262"/>
+		<nd ref="939477616"/>
+		<nd ref="939482939"/>
+		<nd ref="939482734"/>
+		<nd ref="939485642"/>
+		<nd ref="939471899"/>
+		<nd ref="3918238641"/>
+		<nd ref="3918238640"/>
+		<nd ref="939477350"/>
+		<nd ref="939480538"/>
+		<nd ref="939484627"/>
+		<nd ref="939495551"/>
+		<nd ref="939475192"/>
+		<nd ref="939474941"/>
+		<nd ref="939480252"/>
+		<nd ref="939491921"/>
+		<nd ref="939495396"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:flats" v="2"/>
+		<tag k="building:levels" v="3"/>
+		<tag k="ref:ruian:building" v="5577471"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="97031648" version="8" timestamp="2019-06-18T12:50:10Z" changeset="0">
+		<nd ref="1124075797"/>
+		<nd ref="1124077056"/>
+		<nd ref="1124075091"/>
+		<nd ref="6555281712"/>
+		<nd ref="1124077774"/>
+		<nd ref="1124069361"/>
+		<nd ref="1124068536"/>
+		<nd ref="1124070109"/>
+		<nd ref="6555281711"/>
+		<nd ref="6555281710"/>
+		<nd ref="1124071722"/>
+		<nd ref="1124073521"/>
+		<nd ref="1124072652"/>
+		<nd ref="1124074316"/>
+		<nd ref="6555281709"/>
+		<nd ref="6555281708"/>
+		<nd ref="1124075797"/>
+		<tag k="name" v="Lidová škola umění"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="start_date" v="2012-05-31"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="ref:ruian:building" v="78706912"/>
+		<tag k="building:ruian:type" v="15"/>
+	</way>
+	<way id="103613086" version="3" timestamp="2018-06-11T08:21:49Z" changeset="0">
+		<nd ref="1196319128"/>
+		<nd ref="1196315418"/>
+		<nd ref="1196316411"/>
+		<nd ref="5681370429"/>
+		<nd ref="5681370428"/>
+		<nd ref="5681370427"/>
+		<nd ref="5681370426"/>
+		<nd ref="1196320131"/>
+		<nd ref="1196321179"/>
+		<nd ref="1196317934"/>
+		<nd ref="1196319128"/>
+		<tag k="name" v="Základní umělecká škola"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="start_date" v="2000-05-31"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="24761796"/>
+		<tag k="building:ruian:type" v="15"/>
+	</way>
+	<way id="112699927" version="4" timestamp="2019-11-15T10:48:36Z" changeset="0">
+		<nd ref="1280455066"/>
+		<nd ref="1280455480"/>
+		<nd ref="1280455063"/>
+		<nd ref="1280455942"/>
+		<nd ref="1280454891"/>
+		<nd ref="1280455724"/>
+		<nd ref="6979410742"/>
+		<nd ref="6979410756"/>
+		<nd ref="1280455777"/>
+		<nd ref="4686572976"/>
+		<nd ref="4686572974"/>
+		<nd ref="4686572975"/>
+		<nd ref="4686572972"/>
+		<nd ref="4686572973"/>
+		<nd ref="4686572970"/>
+		<nd ref="4686572971"/>
+		<nd ref="4686572968"/>
+		<nd ref="4686572969"/>
+		<nd ref="4686572966"/>
+		<nd ref="4686572967"/>
+		<nd ref="1280455066"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="residential"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="5976464"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="121746804" version="4" timestamp="2017-06-17T20:58:04Z" changeset="0">
+		<nd ref="1361916624"/>
+		<nd ref="1361929171"/>
+		<nd ref="1361922925"/>
+		<nd ref="1361914452"/>
+		<nd ref="1361905302"/>
+		<nd ref="1361900834"/>
+		<nd ref="1361920352"/>
+		<nd ref="1361916624"/>
+		<tag k="name" v="Základní umělecká škola"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="16840984"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="378151848" version="3" timestamp="2020-11-03T17:25:12Z" changeset="0">
+		<nd ref="4587361046"/>
+		<nd ref="4587361045"/>
+		<nd ref="4587361044"/>
+		<nd ref="4587361043"/>
+		<nd ref="4587361042"/>
+		<nd ref="4587361041"/>
+		<nd ref="4587361040"/>
+		<nd ref="3815698071"/>
+		<nd ref="3815698070"/>
+		<nd ref="3815698066"/>
+		<nd ref="3815698067"/>
+		<nd ref="3815698047"/>
+		<nd ref="4587361046"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:housenumber" v="2295/16"/>
+		<tag k="addr:postcode" v="10000"/>
+		<tag k="addr:street" v="Olešská"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="building:ruian:type" v="15"/>
+		<tag k="name" v="ZUŠ Olešská"/>
+		<tag k="ref:ruian:building" v="22352007"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="website" v="https://www.zus-olesska.cz/"/>
+	</way>
+	<way id="385673716" version="3" timestamp="2019-05-18T04:40:31Z" changeset="0">
+		<nd ref="3890089806"/>
+		<nd ref="3890089850"/>
+		<nd ref="3890089849"/>
+		<nd ref="3890089998"/>
+		<nd ref="3890089988"/>
+		<nd ref="3890089975"/>
+		<nd ref="3890089839"/>
+		<nd ref="3890089772"/>
+		<nd ref="3890089766"/>
+		<nd ref="3890089806"/>
+		<tag k="name" v="Umělecká Škola J. S. Bacha"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="music_school"/>
+		<tag k="name:en" v="Art School J. S. Bach"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="1053728"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+</osm>

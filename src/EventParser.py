@@ -76,7 +76,7 @@ class EventParser:
         for group in groups:
             events.extend(ListEventParser.parse(soup, groups[group].dates))
 
-        dates = DateFinder.find(soup)
+        # dates = DateFinder.find(soup)
         single_event_without_place_counter = 0
         single_event_counter = 0
         # todo: refactor this

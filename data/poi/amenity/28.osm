@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="421789203" lat="50.1333432" lon="15.1023568" version="3" timestamp="2018-12-11T08:26:29Z" changeset="0"/>
+	<node id="1448308522" lat="49.8943238" lon="13.3790525" version="4" timestamp="2021-02-04T10:12:03Z" changeset="0">
+		<tag k="addr:conscriptionnumber" v="104"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="104"/>
+		<tag k="addr:place" v="Kaznějov"/>
+		<tag k="addr:postcode" v="33151"/>
+		<tag k="addr:street" v="K Sídlišti"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="name" v="Kino Kaznějov"/>
+		<tag k="ref:ruian:addr" v="623482"/>
+	</node>
+	<node id="2151907234" lat="48.8357186" lon="17.0693208" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907247" lat="48.8357445" lon="17.0693918" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907253" lat="48.8357562" lon="17.069337" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907284" lat="48.8358004" lon="17.0689176" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907299" lat="48.8358423" lon="17.0694364" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907300" lat="48.8358469" lon="17.0689347" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907305" lat="48.8358532" lon="17.0689023" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907308" lat="48.8358532" lon="17.0693817" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907364" lat="48.8358924" lon="17.0693966" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907375" lat="48.8359087" lon="17.0693159" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907421" lat="48.8359044" lon="17.0693133" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907436" lat="48.8359311" lon="17.0689722" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907438" lat="48.835937" lon="17.0689402" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2151907459" lat="48.8359754" lon="17.0689929" version="2" timestamp="2017-07-18T11:21:49Z" changeset="0"/>
+	<node id="2718275063" lat="49.9464448" lon="15.2623288" version="1" timestamp="2014-03-15T02:18:06Z" changeset="0"/>
+	<node id="2718275066" lat="49.9464498" lon="15.2626163" version="1" timestamp="2014-03-15T02:18:06Z" changeset="0"/>
+	<node id="2718275160" lat="49.9465409" lon="15.2623258" version="1" timestamp="2014-03-15T02:18:10Z" changeset="0"/>
+	<node id="2718275161" lat="49.946542" lon="15.2624063" version="1" timestamp="2014-03-15T02:18:10Z" changeset="0"/>
+	<node id="2718275276" lat="49.9466509" lon="15.2624025" version="1" timestamp="2014-03-15T02:18:17Z" changeset="0"/>
+	<node id="2718275277" lat="49.9466539" lon="15.2626093" version="1" timestamp="2014-03-15T02:18:17Z" changeset="0"/>
+	<node id="2941200944" lat="49.6025365" lon="18.5274377" version="1" timestamp="2014-06-30T22:06:14Z" changeset="0"/>
+	<node id="2941200951" lat="49.6025637" lon="18.5272617" version="1" timestamp="2014-06-30T22:06:14Z" changeset="0"/>
+	<node id="2941200954" lat="49.6025862" lon="18.5274559" version="1" timestamp="2014-06-30T22:06:14Z" changeset="0"/>
+	<node id="2941200963" lat="49.6026136" lon="18.5272795" version="1" timestamp="2014-06-30T22:06:14Z" changeset="0"/>
+	<node id="3207574700" lat="50.1334163" lon="15.1023403" version="2" timestamp="2018-12-11T08:27:24Z" changeset="0"/>
+	<node id="3207574704" lat="50.1334207" lon="15.1023813" version="2" timestamp="2018-12-11T08:27:24Z" changeset="0"/>
+	<node id="3207574711" lat="50.133429" lon="15.1023793" version="2" timestamp="2018-12-11T08:27:24Z" changeset="0"/>
+	<node id="3207574715" lat="50.1334374" lon="15.1025575" version="2" timestamp="2018-12-11T08:27:25Z" changeset="0"/>
+	<node id="3207574719" lat="50.1334454" lon="15.1025559" version="2" timestamp="2018-12-11T08:27:25Z" changeset="0"/>
+	<node id="3661213927" lat="50.1333661" lon="15.1026192" version="2" timestamp="2018-12-11T08:27:54Z" changeset="0"/>
+	<node id="3661213928" lat="50.1334411" lon="15.1026033" version="2" timestamp="2018-12-11T08:27:54Z" changeset="0"/>
+	<node id="4576954823" lat="49.8310304" lon="18.2732007" version="3" timestamp="2021-01-01T10:29:37Z" changeset="0">
+		<tag k="amenity" v="events_venue"/>
+		<tag k="name" v="Dům kultury města Ostravy"/>
+		<tag k="wikidata" v="Q31501129"/>
+	</node>
+	<node id="4969055218" lat="50.0698983" lon="14.4421026" version="3" timestamp="2019-10-08T14:57:48Z" changeset="0">
+		<tag k="name" v="IDDE design studio"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="website" v="http://www.studioidde.cz/"/>
+		<tag k="operator" v="K10"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Vinohrady"/>
+		<tag k="addr:street" v="Koperníkova"/>
+		<tag k="addr:postcode" v="12000"/>
+		<tag k="ref:ruian:addr" v="21757151"/>
+		<tag k="internet_access" v="yes"/>
+		<tag k="addr:housenumber" v="2204/10"/>
+		<tag k="addr:streetnumber" v="10"/>
+		<tag k="addr:conscriptionnumber" v="2204"/>
+	</node>
+	<node id="4977196013" lat="48.8357777" lon="17.0690298" version="1" timestamp="2017-07-18T11:21:12Z" changeset="0"/>
+	<node id="4977196014" lat="48.8357813" lon="17.0690324" version="1" timestamp="2017-07-18T11:21:12Z" changeset="0"/>
+	<node id="4977196015" lat="48.8357387" lon="17.0692413" version="1" timestamp="2017-07-18T11:21:12Z" changeset="0"/>
+	<node id="4977196016" lat="48.8357348" lon="17.0692394" version="1" timestamp="2017-07-18T11:21:12Z" changeset="0"/>
+	<node id="4977196017" lat="48.8359473" lon="17.0691051" version="1" timestamp="2017-07-18T11:21:12Z" changeset="0"/>
+	<node id="4977196018" lat="48.8359516" lon="17.0691072" version="1" timestamp="2017-07-18T11:21:12Z" changeset="0"/>
+	<node id="5164709721" lat="50.9711558" lon="14.5983224" version="2" timestamp="2019-02-25T18:20:58Z" changeset="0">
+		<tag k="name" v="Jacobimarkt"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="website" v="https://jacobimarkt.de/"/>
+		<tag k="loc_name" v="Gierschdurfer Schiss&#39;n"/>
+	</node>
+	<node id="5841699166" lat="49.7354564" lon="16.7206078" version="1" timestamp="2018-08-19T12:43:41Z" changeset="0"/>
+	<node id="5841699587" lat="49.7351949" lon="16.720439" version="1" timestamp="2018-08-19T12:43:41Z" changeset="0"/>
+	<node id="5841699588" lat="49.7350105" lon="16.7203996" version="1" timestamp="2018-08-19T12:43:41Z" changeset="0"/>
+	<node id="5841699589" lat="49.7350704" lon="16.7210499" version="1" timestamp="2018-08-19T12:43:41Z" changeset="0"/>
+	<node id="5841699590" lat="49.7352574" lon="16.7212074" version="1" timestamp="2018-08-19T12:43:41Z" changeset="0"/>
+	<node id="7565571549" lat="49.2082651" lon="15.9908347" version="1" timestamp="2020-05-28T09:37:24Z" changeset="0">
+		<tag k="amenity" v="events_venue"/>
+	</node>
+	<node id="7924745560" lat="50.4741221" lon="16.0935176" version="1" timestamp="2020-09-20T06:10:50Z" changeset="0">
+		<tag k="amenity" v="events_venue"/>
+		<tag k="email" v="mksck@mksck.cz"/>
+		<tag k="name" v="Městské kulturní středisko Červený Kostelec"/>
+		<tag k="phone" v="+420491465919"/>
+	</node>
+	<way id="161889099" version="5" timestamp="2021-01-26T22:22:56Z" changeset="0">
+		<nd ref="2718275063"/>
+		<nd ref="2718275160"/>
+		<nd ref="2718275161"/>
+		<nd ref="2718275276"/>
+		<nd ref="2718275277"/>
+		<nd ref="2718275066"/>
+		<nd ref="2718275063"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="building:ruian:type" v="3"/>
+		<tag k="name" v="Štábní domek GASK"/>
+		<tag k="operator" v="Galerie Středočeského kraje"/>
+		<tag k="ref:ruian:building" v="11544520"/>
+		<tag k="source" v="cuzk:ruian"/>
+	</way>
+	<way id="204922436" version="3" timestamp="2018-09-15T16:59:14Z" changeset="0">
+		<nd ref="2941200951"/>
+		<nd ref="2941200963"/>
+		<nd ref="2941200954"/>
+		<nd ref="2941200944"/>
+		<nd ref="2941200951"/>
+		<tag k="fixme" v="wedding/celebration house"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="building" v="civic"/>
+		<tag k="ref:ruian:building" v="42257298"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="205217059" version="3" timestamp="2020-11-06T08:11:58Z" changeset="0">
+		<nd ref="2151907459"/>
+		<nd ref="4977196018"/>
+		<nd ref="4977196017"/>
+		<nd ref="2151907421"/>
+		<nd ref="2151907375"/>
+		<nd ref="2151907364"/>
+		<nd ref="2151907308"/>
+		<nd ref="2151907299"/>
+		<nd ref="2151907247"/>
+		<nd ref="2151907253"/>
+		<nd ref="2151907234"/>
+		<nd ref="4977196016"/>
+		<nd ref="4977196015"/>
+		<nd ref="4977196014"/>
+		<nd ref="4977196013"/>
+		<nd ref="2151907284"/>
+		<nd ref="2151907300"/>
+		<nd ref="2151907305"/>
+		<nd ref="2151907438"/>
+		<nd ref="2151907436"/>
+		<nd ref="2151907459"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="building:ruian:type" v="15"/>
+		<tag k="name" v="Sokolovna"/>
+		<tag k="ref:ruian:building" v="13371606"/>
+		<tag k="source" v="cuzk:ruian"/>
+	</way>
+	<way id="314708936" version="5" timestamp="2018-12-11T08:28:43Z" changeset="0">
+		<nd ref="3207574700"/>
+		<nd ref="3207574704"/>
+		<nd ref="3207574711"/>
+		<nd ref="3207574719"/>
+		<nd ref="3207574715"/>
+		<nd ref="3661213928"/>
+		<nd ref="3661213927"/>
+		<nd ref="421789203"/>
+		<nd ref="3207574700"/>
+		<tag k="name" v="Obřadní síň"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="events_venue"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="40085384"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="618010194" version="1" timestamp="2018-08-19T12:43:42Z" changeset="0">
+		<nd ref="5841699166"/>
+		<nd ref="5841699587"/>
+		<nd ref="5841699588"/>
+		<nd ref="5841699589"/>
+		<nd ref="5841699590"/>
+		<nd ref="5841699166"/>
+		<tag k="name" v="kulturní areál"/>
+		<tag k="amenity" v="events_venue"/>
+	</way>
+</osm>

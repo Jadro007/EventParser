@@ -1,0 +1,869 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="281627761" lat="49.3982921" lon="14.6807724" version="1" timestamp="2008-07-28T00:59:09Z" changeset="0"/>
+	<node id="281627763" lat="49.3981007" lon="14.680741" version="1" timestamp="2008-07-28T00:59:09Z" changeset="0"/>
+	<node id="281627764" lat="49.398084" lon="14.680838" version="1" timestamp="2008-07-28T00:59:09Z" changeset="0"/>
+	<node id="281627765" lat="49.3980914" lon="14.6810978" version="1" timestamp="2008-07-28T00:59:09Z" changeset="0"/>
+	<node id="281627766" lat="49.398093" lon="14.6815936" version="2" timestamp="2019-08-02T10:36:08Z" changeset="0"/>
+	<node id="281627767" lat="49.3984184" lon="14.6812148" version="1" timestamp="2008-07-28T00:59:10Z" changeset="0"/>
+	<node id="281627768" lat="49.3985447" lon="14.6812006" version="1" timestamp="2008-07-28T00:59:10Z" changeset="0"/>
+	<node id="281627769" lat="49.3985298" lon="14.6808209" version="1" timestamp="2008-07-28T00:59:10Z" changeset="0"/>
+	<node id="284985493" lat="49.8163552" lon="16.111667" version="2" timestamp="2014-11-02T09:15:24Z" changeset="0"/>
+	<node id="284985499" lat="49.8159952" lon="16.1116766" version="2" timestamp="2014-11-02T09:15:24Z" changeset="0"/>
+	<node id="284985504" lat="49.8160098" lon="16.1113842" version="2" timestamp="2014-11-02T09:15:24Z" changeset="0"/>
+	<node id="284985535" lat="49.8166451" lon="16.1114753" version="2" timestamp="2014-11-02T09:15:24Z" changeset="0"/>
+	<node id="285371362" lat="49.262946" lon="16.5333422" version="3" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="285546387" lat="49.262683" lon="16.5338412" version="2" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="285819944" lat="50.0476223" lon="14.37151" version="3" timestamp="2015-08-24T17:07:25Z" changeset="0"/>
+	<node id="285843782" lat="49.2612118" lon="16.5328349" version="2" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="285847935" lat="49.2625456" lon="16.5347737" version="3" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="308513513" lat="50.1363606" lon="14.3948726" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513514" lat="50.1364499" lon="14.3945608" version="3" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513515" lat="50.1365965" lon="14.3946658" version="3" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513516" lat="50.1366076" lon="14.3946274" version="3" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513518" lat="50.1370352" lon="14.3949242" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513519" lat="50.136968" lon="14.3952084" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513520" lat="50.1366496" lon="14.3949837" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513521" lat="50.1366219" lon="14.3950506" version="3" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513524" lat="50.1367222" lon="14.3951239" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513527" lat="50.1366639" lon="14.3952691" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513594" lat="50.1364141" lon="14.3950937" version="3" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="308513595" lat="50.1364498" lon="14.3949663" version="4" timestamp="2018-03-05T09:13:36Z" changeset="0"/>
+	<node id="375820757" lat="50.0469793" lon="14.3707858" version="1" timestamp="2009-04-14T16:23:41Z" changeset="0"/>
+	<node id="375820774" lat="50.0468638" lon="14.3717044" version="1" timestamp="2009-04-14T16:23:44Z" changeset="0"/>
+	<node id="375820791" lat="50.0468292" lon="14.3717826" version="2" timestamp="2011-02-06T16:53:40Z" changeset="0"/>
+	<node id="375820853" lat="50.0467702" lon="14.3721807" version="1" timestamp="2009-04-14T16:23:51Z" changeset="0"/>
+	<node id="445998827" lat="50.0637992" lon="14.4751056" version="3" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="445998830" lat="50.0639903" lon="14.4751257" version="3" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="445998831" lat="50.0640988" lon="14.4751927" version="3" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="566621767" lat="49.2400811" lon="16.6066521" version="3" timestamp="2013-01-20T21:14:42Z" changeset="0"/>
+	<node id="566621768" lat="49.2402299" lon="16.6063093" version="3" timestamp="2013-01-20T21:14:42Z" changeset="0"/>
+	<node id="566621770" lat="49.2399776" lon="16.6054055" version="2" timestamp="2013-01-20T21:14:42Z" changeset="0"/>
+	<node id="566621821" lat="49.2396736" lon="16.6053764" version="3" timestamp="2013-01-20T21:14:43Z" changeset="0"/>
+	<node id="566621823" lat="49.2396557" lon="16.6055171" version="3" timestamp="2013-01-20T21:14:43Z" changeset="0"/>
+	<node id="566621824" lat="49.2396588" lon="16.6061072" version="3" timestamp="2013-01-20T21:14:43Z" changeset="0"/>
+	<node id="566621826" lat="49.2398404" lon="16.6063368" version="2" timestamp="2013-01-20T21:14:43Z" changeset="0"/>
+	<node id="571622982" lat="49.2613174" lon="16.5329979" version="2" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="571622995" lat="49.2621576" lon="16.5344223" version="2" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="653840916" lat="50.9273124" lon="15.1873149" version="2" timestamp="2013-02-14T19:55:01Z" changeset="0"/>
+	<node id="703876877" lat="50.1394053" lon="14.4139595" version="1" timestamp="2010-04-22T19:50:40Z" changeset="0"/>
+	<node id="703876882" lat="50.1395038" lon="14.4138394" version="1" timestamp="2010-04-22T19:50:40Z" changeset="0"/>
+	<node id="703876926" lat="50.1394005" lon="14.4138504" version="1" timestamp="2010-04-22T19:50:42Z" changeset="0"/>
+	<node id="703876929" lat="50.1395086" lon="14.4139486" version="1" timestamp="2010-04-22T19:50:42Z" changeset="0"/>
+	<node id="929271518" lat="49.2401465" lon="16.6060555" version="2" timestamp="2013-01-20T21:14:44Z" changeset="0"/>
+	<node id="1131543820" lat="49.9567367" lon="12.6924873" version="3" timestamp="2018-11-02T17:50:22Z" changeset="0"/>
+	<node id="1131543848" lat="49.9564077" lon="12.6924219" version="3" timestamp="2018-11-02T17:50:22Z" changeset="0"/>
+	<node id="1131543898" lat="49.9566448" lon="12.6926857" version="3" timestamp="2018-11-02T17:50:22Z" changeset="0"/>
+	<node id="1131543918" lat="49.9564993" lon="12.6922254" version="3" timestamp="2018-11-02T17:50:22Z" changeset="0"/>
+	<node id="1139403271" lat="50.0474652" lon="14.3710576" version="3" timestamp="2015-08-24T17:07:25Z" changeset="0"/>
+	<node id="1261557434" lat="50.1792483" lon="14.4052429" version="2" timestamp="2017-01-15T15:39:36Z" changeset="0"/>
+	<node id="1261558158" lat="50.1792858" lon="14.4055985" version="2" timestamp="2017-01-15T15:39:42Z" changeset="0"/>
+	<node id="1261558410" lat="50.1793837" lon="14.4052098" version="2" timestamp="2017-01-15T15:39:44Z" changeset="0"/>
+	<node id="1261558880" lat="50.1794211" lon="14.4055651" version="2" timestamp="2017-01-15T15:39:48Z" changeset="0"/>
+	<node id="1596284893" lat="49.306162" lon="16.6660373" version="2" timestamp="2020-10-30T19:17:01Z" changeset="0"/>
+	<node id="1596284895" lat="49.306146" lon="16.6657688" version="2" timestamp="2020-10-30T19:17:01Z" changeset="0"/>
+	<node id="1596284903" lat="49.3065376" lon="16.6651655" version="2" timestamp="2020-10-30T19:17:01Z" changeset="0"/>
+	<node id="1596284908" lat="49.3065952" lon="16.6669437" version="2" timestamp="2020-10-30T19:17:01Z" changeset="0"/>
+	<node id="1596284911" lat="49.3067723" lon="16.6668742" version="2" timestamp="2020-10-30T19:17:01Z" changeset="0"/>
+	<node id="2093300832" lat="49.6750479" lon="17.2399002" version="1" timestamp="2013-01-03T12:10:00Z" changeset="0">
+		<tag k="name" v="Záchytný útulek KAIRA pro opuštěná zvířata"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="2154910419" lat="50.926949" lon="15.1877435" version="1" timestamp="2013-02-14T19:54:59Z" changeset="0"/>
+	<node id="2154910421" lat="50.9269819" lon="15.1878" version="1" timestamp="2013-02-14T19:54:59Z" changeset="0"/>
+	<node id="2154910424" lat="50.9272794" lon="15.1872584" version="1" timestamp="2013-02-14T19:54:59Z" changeset="0"/>
+	<node id="2455139933" lat="49.1988389" lon="14.32528" version="2" timestamp="2013-09-16T09:10:38Z" changeset="0">
+		<tag k="name" v="Záchranná stanice pro handicapované živočichy"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://www.zoohluboka.cz/zachranna-stanice.html"/>
+		<tag k="operator" v="ZOO Hluboká"/>
+		<tag k="animal_shelter" v="wildlife"/>
+		<tag k="animal_shelter:release" v="yes"/>
+	</node>
+	<node id="2527995063" lat="49.6854176" lon="14.6543874" version="1" timestamp="2013-11-11T14:33:00Z" changeset="0"/>
+	<node id="2831676617" lat="49.6069895" lon="18.1759343" version="3" timestamp="2016-12-11T14:53:40Z" changeset="0"/>
+	<node id="2831676623" lat="49.6068261" lon="18.1755004" version="3" timestamp="2016-12-11T14:53:40Z" changeset="0"/>
+	<node id="2831676625" lat="49.606468" lon="18.1760041" version="3" timestamp="2016-12-11T14:53:40Z" changeset="0"/>
+	<node id="2831676626" lat="49.606608" lon="18.1763363" version="3" timestamp="2016-12-11T14:53:40Z" changeset="0"/>
+	<node id="2846818876" lat="49.5922349" lon="17.212228" version="2" timestamp="2018-03-19T21:03:57Z" changeset="0"/>
+	<node id="2905359366" lat="49.6636767" lon="14.2941266" version="1" timestamp="2014-06-08T09:28:42Z" changeset="0"/>
+	<node id="2905359371" lat="49.6637998" lon="14.2938834" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359375" lat="49.6638557" lon="14.2943566" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359376" lat="49.6638857" lon="14.2945999" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359380" lat="49.6639487" lon="14.2936623" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359387" lat="49.6640675" lon="14.2946529" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359392" lat="49.6642178" lon="14.2934102" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359398" lat="49.6643337" lon="14.2945667" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359400" lat="49.6643452" lon="14.2933836" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359801" lat="49.6643609" lon="14.2931293" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359802" lat="49.6644024" lon="14.2931293" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359807" lat="49.6645499" lon="14.2930188" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359808" lat="49.6645656" lon="14.2941841" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359810" lat="49.6645713" lon="14.2929679" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359818" lat="49.66462" lon="14.2928905" version="1" timestamp="2014-06-08T09:28:43Z" changeset="0"/>
+	<node id="2905359823" lat="49.6646572" lon="14.2923885" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359828" lat="49.6646844" lon="14.2928794" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359829" lat="49.6646873" lon="14.2926826" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359842" lat="49.6647603" lon="14.293932" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359847" lat="49.6647989" lon="14.2924902" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359850" lat="49.6648232" lon="14.2938812" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359852" lat="49.6648347" lon="14.2925477" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359858" lat="49.6648872" lon="14.2927897" version="1" timestamp="2014-06-08T09:28:44Z" changeset="0"/>
+	<node id="2905359862" lat="49.6649363" lon="14.2938347" version="1" timestamp="2014-06-08T09:28:45Z" changeset="0"/>
+	<node id="2905359873" lat="49.6650511" lon="14.2933589" version="1" timestamp="2014-06-08T09:28:45Z" changeset="0"/>
+	<node id="2905359876" lat="49.6650809" lon="14.2938569" version="1" timestamp="2014-06-08T09:28:45Z" changeset="0"/>
+	<node id="2905359878" lat="49.6650835" lon="14.2936341" version="1" timestamp="2014-06-08T09:28:45Z" changeset="0"/>
+	<node id="2905359885" lat="49.6651238" lon="14.293806" version="1" timestamp="2014-06-08T09:28:45Z" changeset="0"/>
+	<node id="3098500866" lat="49.8155513" lon="16.1101618" version="1" timestamp="2014-09-27T11:34:01Z" changeset="0"/>
+	<node id="3098500887" lat="49.8156011" lon="16.1106624" version="1" timestamp="2014-09-27T11:34:02Z" changeset="0"/>
+	<node id="3162493528" lat="49.8156932" lon="16.1114211" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493529" lat="49.8160679" lon="16.1099038" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493530" lat="49.8161587" lon="16.1098922" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493534" lat="49.8165158" lon="16.1114252" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493537" lat="49.8166319" lon="16.1104094" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493539" lat="49.8166518" lon="16.1102531" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493541" lat="49.8166681" lon="16.1115547" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493546" lat="49.8166991" lon="16.110776" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493547" lat="49.8166991" lon="16.1110327" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493548" lat="49.8166991" lon="16.1113511" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3162493549" lat="49.8167019" lon="16.1115419" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="3162493551" lat="49.8167203" lon="16.1115344" version="1" timestamp="2014-11-02T09:15:21Z" changeset="0"/>
+	<node id="3175126218" lat="49.0992538" lon="16.7550141" version="1" timestamp="2014-11-08T17:36:48Z" changeset="0"/>
+	<node id="3175126224" lat="49.099306" lon="16.7550381" version="1" timestamp="2014-11-08T17:36:48Z" changeset="0"/>
+	<node id="3429816812" lat="49.0991936" lon="16.7552084" version="1" timestamp="2015-04-01T09:18:28Z" changeset="0"/>
+	<node id="3590704647" lat="50.0638244" lon="14.4754104" version="1" timestamp="2015-06-12T21:10:35Z" changeset="0">
+		<tag k="access" v="private"/>
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="3590704648" lat="50.0638311" lon="14.4754627" version="1" timestamp="2015-06-12T21:10:35Z" changeset="0"/>
+	<node id="3590704651" lat="50.0638503" lon="14.4756452" version="1" timestamp="2015-06-12T21:10:35Z" changeset="0"/>
+	<node id="3590704653" lat="50.0638715" lon="14.4764077" version="2" timestamp="2020-04-27T10:35:04Z" changeset="0"/>
+	<node id="3799471912" lat="50.1370058" lon="14.3950264" version="3" timestamp="2018-03-05T09:13:44Z" changeset="0"/>
+	<node id="3799471915" lat="50.1370179" lon="14.3950348" version="2" timestamp="2018-03-05T09:13:44Z" changeset="0"/>
+	<node id="4425556178" lat="50.1363798" lon="14.394918" version="2" timestamp="2018-03-05T09:13:45Z" changeset="0"/>
+	<node id="4425556180" lat="50.1364318" lon="14.3949539" version="2" timestamp="2018-03-05T09:13:45Z" changeset="0"/>
+	<node id="4456336324" lat="50.0638567" lon="14.4757217" version="2" timestamp="2019-05-30T10:15:59Z" changeset="0"/>
+	<node id="4549307846" lat="49.6065115" lon="18.1761089" version="1" timestamp="2016-12-11T14:53:40Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="4549307847" lat="49.6064743" lon="18.1760213" version="1" timestamp="2016-12-11T14:53:40Z" changeset="0"/>
+	<node id="4912245021" lat="49.553566" lon="17.2500973" version="1" timestamp="2017-06-13T08:18:01Z" changeset="0">
+		<tag k="name" v="Bivak"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="4928732911" lat="50.9321462" lon="15.111249" version="2" timestamp="2017-06-30T22:20:37Z" changeset="0">
+		<tag k="name" v="AzylPes - útulek pro psy"/>
+		<tag k="phone" v="+420 606 345 536"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://azylpes.cz"/>
+		<tag k="operator" v="Azyl pes Krásný Les, z. s."/>
+		<tag k="wikidata" v="Q22121457"/>
+		<tag k="addr:city" v="Krásný Les"/>
+		<tag k="wikipedia" v="cs:Azyl pes Krásný Les"/>
+		<tag k="addr:place" v="Krásný Les"/>
+		<tag k="addr:postcode" v="46401"/>
+		<tag k="animal_shelter" v="dog;cat"/>
+		<tag k="addr:housenumber" v="3"/>
+	</node>
+	<node id="4936017322" lat="49.6857099" lon="14.6537931" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017323" lat="49.6855433" lon="14.6537072" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017324" lat="49.6852587" lon="14.6536482" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017325" lat="49.6851841" lon="14.6542115" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017326" lat="49.6852049" lon="14.6542195" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017327" lat="49.685185" lon="14.6544642" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017328" lat="49.6853203" lon="14.6545075" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017329" lat="49.6853523" lon="14.6543967" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017330" lat="49.6854566" lon="14.6543215" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017331" lat="49.6856301" lon="14.6543536" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017332" lat="49.6857082" lon="14.6542464" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017333" lat="49.6857359" lon="14.6540345" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="4936017348" lat="49.6851873" lon="14.6544359" version="1" timestamp="2017-06-25T19:29:34Z" changeset="0"/>
+	<node id="5047615326" lat="49.0249198" lon="14.7743986" version="1" timestamp="2017-08-21T09:02:33Z" changeset="0">
+		<tag k="name" v="posed"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="5078941059" lat="49.0993268" lon="16.7554401" version="1" timestamp="2017-09-04T13:09:48Z" changeset="0"/>
+	<node id="5078941060" lat="49.0993999" lon="16.7551978" version="1" timestamp="2017-09-04T13:09:48Z" changeset="0"/>
+	<node id="5203678398" lat="50.683574" lon="14.5537775" version="1" timestamp="2017-11-01T07:33:22Z" changeset="0"/>
+	<node id="5203678399" lat="50.6836211" lon="14.5537772" version="2" timestamp="2018-03-17T18:24:07Z" changeset="0"/>
+	<node id="5203678400" lat="50.6836185" lon="14.5536461" version="2" timestamp="2018-03-17T18:24:07Z" changeset="0"/>
+	<node id="5203678401" lat="50.683571" lon="14.5536489" version="1" timestamp="2017-11-01T07:33:22Z" changeset="0"/>
+	<node id="5211319631" lat="50.3029182" lon="12.9670913" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="5211319638" lat="50.3030104" lon="12.9674761" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319639" lat="50.3028821" lon="12.9675977" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319640" lat="50.3027239" lon="12.9675626" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319641" lat="50.3025296" lon="12.967344" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319642" lat="50.302503" lon="12.9673402" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319643" lat="50.3023725" lon="12.9672892" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319644" lat="50.3022808" lon="12.9671451" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319645" lat="50.3022287" lon="12.966989" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319646" lat="50.3020288" lon="12.9667238" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319647" lat="50.3018923" lon="12.9666411" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319648" lat="50.3017667" lon="12.9665501" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319649" lat="50.3017412" lon="12.9663616" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319650" lat="50.302207" lon="12.9661918" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319651" lat="50.3021678" lon="12.9658685" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319652" lat="50.3022322" lon="12.9658236" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319653" lat="50.3023148" lon="12.9665698" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319654" lat="50.3025233" lon="12.9665068" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319655" lat="50.3025905" lon="12.9670147" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5211319656" lat="50.3028565" lon="12.9668339" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0"/>
+	<node id="5227390668" lat="50.1638905" lon="15.1568393" version="1" timestamp="2017-11-14T03:15:28Z" changeset="0">
+		<tag k="name" v="Záchranná stanice pro zraněné živočichy v Pátku"/>
+		<tag k="email" v="vanek.l@seznam.cz"/>
+		<tag k="phone" v="+420 603864822"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="operator" v="Základní organizace Českého svazu ochránců přírody Polabí"/>
+		<tag k="contact:name" v="Luboš Vaněk"/>
+	</node>
+	<node id="5261948559" lat="50.3354099" lon="12.9426509" version="1" timestamp="2017-12-03T13:42:43Z" changeset="0">
+		<tag k="name" v="Ostrovský Macík"/>
+		<tag k="email" v="macik.simkova@seznam.cz"/>
+		<tag k="phone" v="+420776669084"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://www.macik.websnadno.cz/"/>
+		<tag k="addr:city" v="Ostrov"/>
+		<tag k="addr:place" v="Horní Žďár"/>
+		<tag k="description" v="Domov pro stará, nemocná a hendikepovaná zvířata v Horním Žďáru"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="36301"/>
+		<tag k="addr:housenumber" v="50"/>
+		<tag k="addr:conscriptionnumber" v="50"/>
+	</node>
+	<node id="5285033736" lat="50.0643605" lon="14.4753778" version="3" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="5285033737" lat="50.0642549" lon="14.4759797" version="2" timestamp="2020-04-27T10:35:04Z" changeset="0"/>
+	<node id="5456159613" lat="50.1364545" lon="14.3952964" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159614" lat="50.1364971" lon="14.395152" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159615" lat="50.1366878" lon="14.3951877" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159616" lat="50.1367363" lon="14.3952214" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159617" lat="50.136738" lon="14.3952166" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159618" lat="50.136711" lon="14.3951973" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159619" lat="50.1367151" lon="14.3951834" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159620" lat="50.1367065" lon="14.3951772" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159621" lat="50.136638" lon="14.3949973" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159622" lat="50.1366442" lon="14.3950018" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159623" lat="50.1363088" lon="14.3948365" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159624" lat="50.1363001" lon="14.3948631" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159625" lat="50.1364664" lon="14.3951292" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159626" lat="50.1363778" lon="14.3954355" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159627" lat="50.1364069" lon="14.3954548" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159628" lat="50.1363946" lon="14.3954968" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159629" lat="50.136425" lon="14.3955182" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159630" lat="50.1364343" lon="14.3954865" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159631" lat="50.1365799" lon="14.3955896" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159632" lat="50.136576" lon="14.3956029" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159633" lat="50.1365931" lon="14.3956149" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159634" lat="50.136597" lon="14.3956016" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159635" lat="50.1366084" lon="14.3956098" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5456159636" lat="50.1366579" lon="14.3954404" version="1" timestamp="2018-03-05T09:13:32Z" changeset="0"/>
+	<node id="5469668565" lat="49.9230045" lon="18.3665228" version="1" timestamp="2018-03-10T18:40:20Z" changeset="0">
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter" v="dog"/>
+	</node>
+	<node id="5489601771" lat="49.5920407" lon="17.2114599" version="1" timestamp="2018-03-19T21:03:55Z" changeset="0"/>
+	<node id="5489601772" lat="49.5917981" lon="17.2114437" version="1" timestamp="2018-03-19T21:03:55Z" changeset="0">
+		<tag k="name" v="Liga na ochranu zvířat ČR místní organizace Olomouc"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://www.olomouckyutulek.cz/"/>
+	</node>
+	<node id="5489601773" lat="49.5920038" lon="17.211306" version="1" timestamp="2018-03-19T21:03:56Z" changeset="0"/>
+	<node id="5489601774" lat="49.5922574" lon="17.2123223" version="1" timestamp="2018-03-19T21:03:56Z" changeset="0"/>
+	<node id="5489601775" lat="49.5920549" lon="17.2124698" version="1" timestamp="2018-03-19T21:03:56Z" changeset="0"/>
+	<node id="5516604486" lat="48.8628155" lon="17.1103516" version="1" timestamp="2018-03-30T15:48:32Z" changeset="0">
+		<tag k="name" v="Psí útulek"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="5643577445" lat="49.2281482" lon="16.5438035" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577446" lat="49.2281132" lon="16.5438116" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577447" lat="49.2274703" lon="16.5439966" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577448" lat="49.2273039" lon="16.5440905" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577449" lat="49.2271655" lon="16.5442005" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577450" lat="49.227169" lon="16.5443212" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577451" lat="49.2273057" lon="16.5446082" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577452" lat="49.2273267" lon="16.5448067" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577453" lat="49.2272987" lon="16.545276" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577454" lat="49.2282113" lon="16.5455657" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577455" lat="49.2282585" lon="16.5453646" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577456" lat="49.2283234" lon="16.5444097" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577457" lat="49.2283181" lon="16.5442246" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5643577458" lat="49.2281955" lon="16.5437043" version="1" timestamp="2018-05-26T10:39:01Z" changeset="0"/>
+	<node id="5747807391" lat="49.1842565" lon="15.4483752" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807392" lat="49.1837715" lon="15.4481095" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807393" lat="49.1842565" lon="15.4473813" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807394" lat="49.184499" lon="15.4471981" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807395" lat="49.1846397" lon="15.4470607" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807396" lat="49.1846827" lon="15.447095" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807397" lat="49.1844819" lon="15.4477311" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="5747807398" lat="49.1842838" lon="15.4483886" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0"/>
+	<node id="6335625686" lat="49.5945975" lon="17.0358551" version="1" timestamp="2019-03-13T14:37:53Z" changeset="0">
+		<tag k="name" v="Keller"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="6335644385" lat="49.5943864" lon="17.0356663" version="1" timestamp="2019-03-13T14:37:52Z" changeset="0">
+		<tag k="name" v="Keller"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="6510866402" lat="50.0638285" lon="14.4754425" version="1" timestamp="2019-05-30T10:15:59Z" changeset="0"/>
+	<node id="6673871902" lat="49.3983633" lon="14.6812138" version="1" timestamp="2019-08-02T10:36:08Z" changeset="0"/>
+	<node id="6673871903" lat="49.3983614" lon="14.6815288" version="1" timestamp="2019-08-02T10:36:08Z" changeset="0"/>
+	<node id="6702562010" lat="49.350888" lon="16.6460021" version="1" timestamp="2019-08-12T07:33:33Z" changeset="0"/>
+	<node id="6702562011" lat="49.3505467" lon="16.6463859" version="1" timestamp="2019-08-12T07:33:33Z" changeset="0"/>
+	<node id="6702562012" lat="49.3504365" lon="16.6461233" version="1" timestamp="2019-08-12T07:33:33Z" changeset="0"/>
+	<node id="6702562013" lat="49.350652" lon="16.6456058" version="1" timestamp="2019-08-12T07:33:33Z" changeset="0"/>
+	<node id="6702562014" lat="49.3507095" lon="16.6456298" version="1" timestamp="2019-08-12T07:33:33Z" changeset="0"/>
+	<node id="6778249395" lat="49.72188" lon="13.33151" version="1" timestamp="2019-09-06T20:50:38Z" changeset="0">
+		<tag k="amenity" v="animal_shelter"/>
+	</node>
+	<node id="6873297909" lat="50.0641252" lon="12.2924514" version="2" timestamp="2020-09-15T09:28:31Z" changeset="0"/>
+	<node id="6873297910" lat="50.0636104" lon="12.2932266" version="2" timestamp="2020-09-15T09:28:31Z" changeset="0"/>
+	<node id="6873297911" lat="50.0640374" lon="12.2935645" version="2" timestamp="2020-09-15T09:28:31Z" changeset="0"/>
+	<node id="6873297912" lat="50.0644937" lon="12.2925131" version="2" timestamp="2020-09-15T09:28:31Z" changeset="0"/>
+	<node id="6873297913" lat="50.0643159" lon="12.2923235" version="2" timestamp="2020-09-15T09:28:31Z" changeset="0"/>
+	<node id="6898229124" lat="49.2627296" lon="16.5332852" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229125" lat="49.2623454" lon="16.5330639" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229126" lat="49.2623375" lon="16.5329942" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229127" lat="49.2623314" lon="16.532958" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229128" lat="49.26232" lon="16.5329258" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229129" lat="49.2622911" lon="16.5328909" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229130" lat="49.2620014" lon="16.5326455" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229131" lat="49.2611428" lon="16.5326267" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229132" lat="49.2611183" lon="16.5326643" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229410" lat="49.2616032" lon="16.5334609" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229411" lat="49.2619095" lon="16.5341073" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229412" lat="49.2620048" lon="16.5344619" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229413" lat="49.2623068" lon="16.5346599" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229414" lat="49.2624959" lon="16.5353358" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229415" lat="49.262832" lon="16.5359312" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229416" lat="49.2627462" lon="16.535958" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229417" lat="49.262895" lon="16.5358937" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229418" lat="49.2626309" lon="16.5347692" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="6898229419" lat="49.2628258" lon="16.5338941" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0"/>
+	<node id="7004761416" lat="50.0628863" lon="14.2280879" version="1" timestamp="2019-11-23T20:26:53Z" changeset="0"/>
+	<node id="7004761417" lat="50.0630289" lon="14.2281345" version="1" timestamp="2019-11-23T20:26:53Z" changeset="0"/>
+	<node id="7004761418" lat="50.0633298" lon="14.227788" version="1" timestamp="2019-11-23T20:26:53Z" changeset="0"/>
+	<node id="7004761419" lat="50.0630873" lon="14.2274681" version="1" timestamp="2019-11-23T20:26:53Z" changeset="0"/>
+	<node id="7004761420" lat="50.0629918" lon="14.2275703" version="1" timestamp="2019-11-23T20:26:53Z" changeset="0"/>
+	<node id="7079846014" lat="49.8164301" lon="16.111603" version="1" timestamp="2019-12-23T13:29:16Z" changeset="0"/>
+	<node id="7079846015" lat="49.8162694" lon="16.111696" version="1" timestamp="2019-12-23T13:29:16Z" changeset="0"/>
+	<node id="7468310213" lat="50.7715611" lon="15.0289555" version="1" timestamp="2020-04-30T20:11:42Z" changeset="0">
+		<tag k="name" v="Centrum pro zvířata v nouzi"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://archa.zooliberec.cz/cz/utulek"/>
+		<tag k="addr:city" v="Liberec"/>
+		<tag k="addr:street" v="Ostašovská"/>
+		<tag k="addr:postcode" v="46001"/>
+		<tag k="addr:housenumber" v="570"/>
+	</node>
+	<node id="7622189993" lat="49.4875468" lon="14.337018" version="1" timestamp="2020-06-15T09:08:32Z" changeset="0"/>
+	<node id="7622189994" lat="49.4875451" lon="14.3370717" version="1" timestamp="2020-06-15T09:08:32Z" changeset="0"/>
+	<node id="7622189995" lat="49.4875224" lon="14.337069" version="1" timestamp="2020-06-15T09:08:32Z" changeset="0"/>
+	<node id="7622189996" lat="49.4875224" lon="14.337018" version="1" timestamp="2020-06-15T09:08:32Z" changeset="0"/>
+	<node id="7711063096" lat="49.8856357" lon="15.4835647" version="1" timestamp="2020-07-13T15:17:45Z" changeset="0">
+		<tag k="name" v="Záchranná stanice Lipec - Obora Žleby"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="operator" v="Záchranná stanice Lipec, z.s"/>
+		<tag k="animal_shelter" v="bird;wildlife"/>
+	</node>
+	<node id="8033296553" lat="50.0473506" lon="14.3730333" version="1" timestamp="2020-10-21T19:54:26Z" changeset="0"/>
+	<node id="8066526429" lat="49.3065984" lon="16.6656429" version="1" timestamp="2020-10-30T19:17:01Z" changeset="0"/>
+	<node id="8319119045" lat="50.0641237" lon="14.4744109" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119046" lat="50.0637751" lon="14.4744229" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119047" lat="50.0637931" lon="14.4741654" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119048" lat="50.0639257" lon="14.4737698" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119049" lat="50.0639705" lon="14.4737926" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119050" lat="50.0640109" lon="14.4737832" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119051" lat="50.0641633" lon="14.4743425" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119052" lat="50.0642606" lon="14.4746979" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119053" lat="50.0643596" lon="14.4752115" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119054" lat="50.0643286" lon="14.4750211" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<node id="8319119055" lat="50.0639929" lon="14.4751887" version="1" timestamp="2021-01-13T15:58:50Z" changeset="0"/>
+	<way id="25820088" version="3" timestamp="2019-08-02T10:36:08Z" changeset="0">
+		<nd ref="281627761"/>
+		<nd ref="281627763"/>
+		<nd ref="281627764"/>
+		<nd ref="281627765"/>
+		<nd ref="281627766"/>
+		<nd ref="6673871903"/>
+		<nd ref="6673871902"/>
+		<nd ref="281627767"/>
+		<nd ref="281627768"/>
+		<nd ref="281627769"/>
+		<nd ref="281627761"/>
+		<tag k="name" v="Útulek pro psy a kočky"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="barrier" v="fence"/>
+		<tag k="building" v="yes"/>
+		<tag k="animal_shelter" v="dog;cat"/>
+	</way>
+	<way id="28090801" version="6" timestamp="2021-02-14T12:43:34Z" changeset="0">
+		<nd ref="5456159636"/>
+		<nd ref="5456159635"/>
+		<nd ref="5456159634"/>
+		<nd ref="5456159633"/>
+		<nd ref="5456159632"/>
+		<nd ref="5456159631"/>
+		<nd ref="5456159630"/>
+		<nd ref="5456159629"/>
+		<nd ref="5456159628"/>
+		<nd ref="5456159627"/>
+		<nd ref="5456159626"/>
+		<nd ref="5456159625"/>
+		<nd ref="308513594"/>
+		<nd ref="308513595"/>
+		<nd ref="4425556180"/>
+		<nd ref="4425556178"/>
+		<nd ref="5456159624"/>
+		<nd ref="5456159623"/>
+		<nd ref="308513513"/>
+		<nd ref="308513514"/>
+		<nd ref="308513515"/>
+		<nd ref="308513516"/>
+		<nd ref="308513518"/>
+		<nd ref="3799471912"/>
+		<nd ref="3799471915"/>
+		<nd ref="308513519"/>
+		<nd ref="308513520"/>
+		<nd ref="5456159622"/>
+		<nd ref="5456159621"/>
+		<nd ref="308513521"/>
+		<nd ref="308513524"/>
+		<nd ref="5456159620"/>
+		<nd ref="5456159619"/>
+		<nd ref="5456159618"/>
+		<nd ref="5456159617"/>
+		<nd ref="5456159616"/>
+		<nd ref="5456159615"/>
+		<nd ref="308513527"/>
+		<nd ref="5456159614"/>
+		<nd ref="5456159613"/>
+		<nd ref="5456159636"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter" v="dog"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="building:ruian:type" v="15"/>
+		<tag k="layer" v="1"/>
+		<tag k="name" v="Útulek pro opuštěná zvířata a odchyt"/>
+		<tag k="operator" v="Městská policie Praha"/>
+		<tag k="ref:ruian:building" v="22162801"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="website" v="http://utulky.mppraha.info/index.php/utulek-troja"/>
+	</way>
+	<way id="33177876" version="6" timestamp="2020-10-21T19:54:26Z" changeset="0">
+		<nd ref="285819944"/>
+		<nd ref="1139403271"/>
+		<nd ref="375820757"/>
+		<nd ref="375820774"/>
+		<nd ref="375820791"/>
+		<nd ref="375820853"/>
+		<nd ref="8033296553"/>
+		<nd ref="285819944"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter" v="wildlife"/>
+		<tag k="animal_shelter:adoption" v="no"/>
+		<tag k="animal_shelter:release" v="yes"/>
+		<tag k="landuse" v="farmyard"/>
+		<tag k="name" v="Záchranná stanice hl. m. Prahy pro volně žijící živočichy"/>
+		<tag k="operator" v="Lesy hl. m. Prahy"/>
+		<tag k="start_date" v="2012"/>
+		<tag k="website" v="https://www.lhmp.cz/stanice/zs/"/>
+	</way>
+	<way id="44636433" version="3" timestamp="2013-01-20T21:14:36Z" changeset="0">
+		<nd ref="566621770"/>
+		<nd ref="566621821"/>
+		<nd ref="566621823"/>
+		<nd ref="566621824"/>
+		<nd ref="566621826"/>
+		<nd ref="566621767"/>
+		<nd ref="566621768"/>
+		<nd ref="929271518"/>
+		<nd ref="566621770"/>
+		<tag k="source" v="cuzk:km"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="barrier" v="fence"/>
+		<tag k="description" v="útulek pro psy a koně"/>
+		<tag k="animal_shelter" v="dog;horse"/>
+	</way>
+	<way id="56080406" version="2" timestamp="2018-12-11T08:50:33Z" changeset="0">
+		<nd ref="703876926"/>
+		<nd ref="703876882"/>
+		<nd ref="703876929"/>
+		<nd ref="703876877"/>
+		<nd ref="703876926"/>
+		<tag k="name" v="Kočičí útulek"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="roof:shape" v="gabled"/>
+		<tag k="animal_shelter" v="cat"/>
+		<tag k="building:levels" v="1"/>
+	</way>
+	<way id="97755582" version="3" timestamp="2018-11-02T18:04:55Z" changeset="0">
+		<nd ref="1131543820"/>
+		<nd ref="1131543898"/>
+		<nd ref="1131543848"/>
+		<nd ref="1131543918"/>
+		<nd ref="1131543820"/>
+		<tag k="source" v="cuzk:ruian;local knowledge"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="44616627"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="110478133" version="4" timestamp="2018-12-11T08:50:33Z" changeset="0">
+		<nd ref="1261558410"/>
+		<nd ref="1261558880"/>
+		<nd ref="1261558158"/>
+		<nd ref="1261557434"/>
+		<nd ref="1261558410"/>
+		<tag k="name" v="Kocour Felix"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="animal_shelter" v="cat"/>
+		<tag k="ref:ruian:building" v="30162696"/>
+		<tag k="building:ruian:type" v="11"/>
+	</way>
+	<way id="146360880" version="3" timestamp="2020-11-03T11:18:14Z" changeset="0">
+		<nd ref="1596284893"/>
+		<nd ref="1596284895"/>
+		<nd ref="1596284903"/>
+		<nd ref="8066526429"/>
+		<nd ref="1596284911"/>
+		<nd ref="1596284908"/>
+		<nd ref="1596284893"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter" v="dog"/>
+		<tag k="animal_shelter:adoption" v="yes"/>
+		<tag k="source" v="bing"/>
+	</way>
+	<way id="205528980" version="1" timestamp="2013-02-14T19:54:59Z" changeset="0">
+		<nd ref="653840916"/>
+		<nd ref="2154910421"/>
+		<nd ref="2154910419"/>
+		<nd ref="2154910424"/>
+		<nd ref="653840916"/>
+		<tag k="name" v="Útulek pro psy Hajniště"/>
+		<tag k="source" v="cuzk:km;bing"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://www.utulekhajniste.estranky.cz/"/>
+		<tag k="building" v="yes"/>
+		<tag k="animal_shelter" v="dog"/>
+	</way>
+	<way id="278875416" version="4" timestamp="2016-12-11T14:59:32Z" changeset="0">
+		<nd ref="2831676623"/>
+		<nd ref="2831676617"/>
+		<nd ref="2831676626"/>
+		<nd ref="4549307846"/>
+		<nd ref="4549307847"/>
+		<nd ref="2831676625"/>
+		<nd ref="2831676623"/>
+		<tag k="name" v="Útulek pro psy Kopřivnice - Vlčovice"/>
+		<tag k="phone" v="+420556812747;+420604142244;+420737859343;+420734 522 976"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="barrier" v="fence"/>
+		<tag k="leisure" v="garden"/>
+		<tag k="website" v="http://www.koprivnice.cz/index.php?id=utulek-pro-psy-koprivnice"/>
+		<tag k="adoption" v="yes"/>
+		<tag k="opening_hours" v="Mo-Fr 17:00-18:30; Sa,Su 10:00-11:30"/>
+		<tag k="animal_shelter" v="dog"/>
+	</way>
+	<way id="286857239" version="4" timestamp="2020-10-17T00:56:15Z" changeset="0">
+		<nd ref="2905359858"/>
+		<nd ref="2905359852"/>
+		<nd ref="2905359847"/>
+		<nd ref="2905359823"/>
+		<nd ref="2905359829"/>
+		<nd ref="2905359828"/>
+		<nd ref="2905359818"/>
+		<nd ref="2905359810"/>
+		<nd ref="2905359807"/>
+		<nd ref="2905359802"/>
+		<nd ref="2905359801"/>
+		<nd ref="2905359400"/>
+		<nd ref="2905359392"/>
+		<nd ref="2905359380"/>
+		<nd ref="2905359371"/>
+		<nd ref="2905359366"/>
+		<nd ref="2905359375"/>
+		<nd ref="2905359376"/>
+		<nd ref="2905359387"/>
+		<nd ref="2905359398"/>
+		<nd ref="2905359808"/>
+		<nd ref="2905359842"/>
+		<nd ref="2905359850"/>
+		<nd ref="2905359862"/>
+		<nd ref="2905359876"/>
+		<nd ref="2905359885"/>
+		<nd ref="2905359878"/>
+		<nd ref="2905359873"/>
+		<nd ref="2905359858"/>
+		<tag k="addr:city" v="Svatý Jan"/>
+		<tag k="addr:housenumber" v="13"/>
+		<tag k="addr:postcode" v="26256"/>
+		<tag k="addr:street" v="Hrachov"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter" v="bird"/>
+		<tag k="name" v="Ochrana fauny a Domov fauny"/>
+		<tag k="opening_hours" v="24/7"/>
+		<tag k="website" v="http://www.ochranafauny.cz"/>
+	</way>
+	<way id="310763857" version="3" timestamp="2019-12-26T09:52:15Z" changeset="0">
+		<nd ref="3162493549"/>
+		<nd ref="3162493541"/>
+		<nd ref="284985535"/>
+		<nd ref="3162493534"/>
+		<nd ref="7079846014"/>
+		<nd ref="284985493"/>
+		<nd ref="7079846015"/>
+		<nd ref="284985499"/>
+		<nd ref="284985504"/>
+		<nd ref="3162493528"/>
+		<nd ref="3098500887"/>
+		<nd ref="3098500866"/>
+		<nd ref="3162493529"/>
+		<nd ref="3162493530"/>
+		<nd ref="3162493539"/>
+		<nd ref="3162493537"/>
+		<nd ref="3162493546"/>
+		<nd ref="3162493547"/>
+		<nd ref="3162493548"/>
+		<nd ref="3162493551"/>
+		<nd ref="3162493549"/>
+		<tag k="name" v="záchranná stanice Pasíčka"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</way>
+	<way id="503258281" version="2" timestamp="2020-10-10T15:22:40Z" changeset="0">
+		<nd ref="4936017322"/>
+		<nd ref="4936017323"/>
+		<nd ref="4936017324"/>
+		<nd ref="4936017325"/>
+		<nd ref="4936017326"/>
+		<nd ref="4936017348"/>
+		<nd ref="4936017327"/>
+		<nd ref="4936017328"/>
+		<nd ref="4936017329"/>
+		<nd ref="2527995063"/>
+		<nd ref="4936017330"/>
+		<nd ref="4936017331"/>
+		<nd ref="4936017332"/>
+		<nd ref="4936017333"/>
+		<nd ref="4936017322"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</way>
+	<way id="521243647" version="1" timestamp="2017-09-04T13:09:48Z" changeset="0">
+		<nd ref="3175126224"/>
+		<nd ref="3175126218"/>
+		<nd ref="3429816812"/>
+		<nd ref="5078941059"/>
+		<nd ref="5078941060"/>
+		<nd ref="3175126224"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="animal_shelter" v="dog"/>
+	</way>
+	<way id="537344288" version="2" timestamp="2018-03-17T18:10:14Z" changeset="0">
+		<nd ref="5203678401"/>
+		<nd ref="5203678400"/>
+		<nd ref="5203678399"/>
+		<nd ref="5203678398"/>
+		<nd ref="5203678401"/>
+		<tag k="name" v="Záchytné kotce města Česká Lípa"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="operator" v="Město Česká Lípa"/>
+		<tag k="addr:city" v="Česká Lípa"/>
+		<tag k="start_date" v="2016-07-29"/>
+		<tag k="addr:street" v="Liberecká"/>
+		<tag k="addr:postcode" v="47001"/>
+		<tag k="animal_shelter" v="dog"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="addr:housenumber" v="129"/>
+		<tag k="ref:ruian:building" v="83566660"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="538383649" version="1" timestamp="2017-11-04T23:29:41Z" changeset="0">
+		<nd ref="5211319638"/>
+		<nd ref="5211319631"/>
+		<nd ref="5211319656"/>
+		<nd ref="5211319655"/>
+		<nd ref="5211319654"/>
+		<nd ref="5211319653"/>
+		<nd ref="5211319652"/>
+		<nd ref="5211319651"/>
+		<nd ref="5211319650"/>
+		<nd ref="5211319649"/>
+		<nd ref="5211319648"/>
+		<nd ref="5211319647"/>
+		<nd ref="5211319646"/>
+		<nd ref="5211319645"/>
+		<nd ref="5211319644"/>
+		<nd ref="5211319643"/>
+		<nd ref="5211319642"/>
+		<nd ref="5211319641"/>
+		<nd ref="5211319640"/>
+		<nd ref="5211319639"/>
+		<nd ref="5211319638"/>
+		<tag k="name" v="Útulek Bety"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="barrier" v="fence"/>
+	</way>
+	<way id="546942456" version="4" timestamp="2021-01-13T15:58:50Z" changeset="0">
+		<nd ref="445998831"/>
+		<nd ref="8319119045"/>
+		<nd ref="8319119046"/>
+		<nd ref="8319119047"/>
+		<nd ref="8319119048"/>
+		<nd ref="8319119049"/>
+		<nd ref="8319119050"/>
+		<nd ref="8319119051"/>
+		<nd ref="8319119052"/>
+		<nd ref="8319119054"/>
+		<nd ref="8319119053"/>
+		<nd ref="5285033736"/>
+		<nd ref="5285033737"/>
+		<nd ref="3590704653"/>
+		<nd ref="4456336324"/>
+		<nd ref="3590704651"/>
+		<nd ref="3590704648"/>
+		<nd ref="6510866402"/>
+		<nd ref="3590704647"/>
+		<nd ref="445998827"/>
+		<nd ref="445998830"/>
+		<nd ref="8319119055"/>
+		<nd ref="445998831"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="name" v="Výcvik psů"/>
+	</way>
+	<way id="571097349" version="2" timestamp="2018-03-21T09:15:03Z" changeset="0">
+		<nd ref="5489601772"/>
+		<nd ref="5489601773"/>
+		<nd ref="5489601771"/>
+		<nd ref="2846818876"/>
+		<nd ref="5489601774"/>
+		<nd ref="5489601775"/>
+		<nd ref="5489601772"/>
+		<tag k="area" v="yes"/>
+		<tag k="name" v="Liga na ochranu zvířat ČR"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="website" v="http://www.olomouckyutulek.cz/"/>
+	</way>
+	<way id="591178663" version="2" timestamp="2021-02-11T23:31:37Z" changeset="0">
+		<nd ref="5643577458"/>
+		<nd ref="5643577457"/>
+		<nd ref="5643577456"/>
+		<nd ref="5643577455"/>
+		<nd ref="5643577454"/>
+		<nd ref="5643577453"/>
+		<nd ref="5643577452"/>
+		<nd ref="5643577451"/>
+		<nd ref="5643577450"/>
+		<nd ref="5643577449"/>
+		<nd ref="5643577448"/>
+		<nd ref="5643577447"/>
+		<nd ref="5643577446"/>
+		<nd ref="5643577445"/>
+		<nd ref="5643577458"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter:purpose" v="adoption"/>
+		<tag k="name" v="Útulek pro zvířata městské policie"/>
+		<tag k="operator" v="Městská policie Brno"/>
+		<tag k="source" v="cuzk:km"/>
+	</way>
+	<way id="606151431" version="1" timestamp="2018-07-08T20:40:51Z" changeset="0">
+		<nd ref="5747807391"/>
+		<nd ref="5747807392"/>
+		<nd ref="5747807393"/>
+		<nd ref="5747807394"/>
+		<nd ref="5747807395"/>
+		<nd ref="5747807396"/>
+		<nd ref="5747807397"/>
+		<nd ref="5747807398"/>
+		<nd ref="5747807391"/>
+		<tag k="name" v="Záchranná stanice pro volně žijící živočichy Telč"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="animal_shelter" v="wildlife"/>
+		<tag k="animal_shelter:release" v="yes"/>
+	</way>
+	<way id="712975496" version="1" timestamp="2019-08-12T07:33:33Z" changeset="0">
+		<nd ref="6702562010"/>
+		<nd ref="6702562011"/>
+		<nd ref="6702562012"/>
+		<nd ref="6702562013"/>
+		<nd ref="6702562014"/>
+		<nd ref="6702562010"/>
+		<tag k="name" v="Psí útulek"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+		<tag k="operator" v="Služby Blansko, s. r. o."/>
+		<tag k="animal_shelter" v="dog"/>
+	</way>
+	<way id="733890119" version="2" timestamp="2020-09-15T09:28:31Z" changeset="0">
+		<nd ref="6873297909"/>
+		<nd ref="6873297910"/>
+		<nd ref="6873297911"/>
+		<nd ref="6873297912"/>
+		<nd ref="6873297913"/>
+		<nd ref="6873297909"/>
+		<tag k="amenity" v="animal_shelter"/>
+	</way>
+	<way id="736791890" version="1" timestamp="2019-10-19T13:56:16Z" changeset="0">
+		<nd ref="285371362"/>
+		<nd ref="6898229419"/>
+		<nd ref="285546387"/>
+		<nd ref="6898229418"/>
+		<nd ref="285847935"/>
+		<nd ref="6898229417"/>
+		<nd ref="6898229415"/>
+		<nd ref="6898229416"/>
+		<nd ref="6898229414"/>
+		<nd ref="6898229413"/>
+		<nd ref="571622995"/>
+		<nd ref="6898229412"/>
+		<nd ref="6898229411"/>
+		<nd ref="6898229410"/>
+		<nd ref="571622982"/>
+		<nd ref="285843782"/>
+		<nd ref="6898229132"/>
+		<nd ref="6898229131"/>
+		<nd ref="6898229130"/>
+		<nd ref="6898229129"/>
+		<nd ref="6898229128"/>
+		<nd ref="6898229127"/>
+		<nd ref="6898229126"/>
+		<nd ref="6898229125"/>
+		<nd ref="6898229124"/>
+		<nd ref="285371362"/>
+		<tag k="name" v="Záchranná stanice Jinačovice"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="operator" v="ZOO Brno"/>
+		<tag k="animal_shelter" v="wildlife"/>
+		<tag k="animal_shelter:release" v="yes"/>
+		<tag k="animal_shelter:adoption" v="no"/>
+	</way>
+	<way id="749059670" version="3" timestamp="2020-11-19T20:03:29Z" changeset="0">
+		<nd ref="7004761416"/>
+		<nd ref="7004761417"/>
+		<nd ref="7004761418"/>
+		<nd ref="7004761419"/>
+		<nd ref="7004761420"/>
+		<nd ref="7004761416"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="animal_shelter" v="goat;sheep"/>
+	</way>
+	<way id="816132104" version="1" timestamp="2020-06-15T09:08:32Z" changeset="0">
+		<nd ref="7622189993"/>
+		<nd ref="7622189994"/>
+		<nd ref="7622189995"/>
+		<nd ref="7622189996"/>
+		<nd ref="7622189993"/>
+		<tag k="amenity" v="animal_shelter"/>
+		<tag k="building" v="yes"/>
+	</way>
+</osm>

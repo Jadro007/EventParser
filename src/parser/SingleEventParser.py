@@ -21,13 +21,13 @@ class SingleEventParser:
     def parse(soup, date, allow_external_place=False, force_place_if_none=None):
 
         is_single_event = not date.group
+        date_container = date.container
 
         # todo: support multiple dates events (including date range)
         if is_single_event is True:
             try:
                 # For single event, soup is whole page (not sure if that is useful really).
                 # So we limit finding other dates close to the main date (to prevent creating range with some random dates on page)
-                date_container = date.container
                 if date_container.parent is not None:
                     date_container = date.container.parent
                 if date_container.parent is not None:
@@ -58,7 +58,9 @@ class SingleEventParser:
 
         # try to find place that is closest to the date
         # todo: write test for it
-        places = PlaceFinder.find(soup)
+        places = PlaceFinder.find(date_container)
+        if len(places) == 0:
+            places = PlaceFinder.find(soup)
         place = None
         sourceline_diff = 999999
         if isinstance(date.container, NavigableString):
@@ -123,7 +125,10 @@ class SingleEventParser:
         # we want to be able to find the most relevant title for event, so we will start with container that contains
         # both date and place, so there is quite chance there will be also the title
         if is_single_event:
-            container = Utils.lowest_common_ancestor(date.container, place.container).parent
+            container = Utils.lowest_common_ancestor(date.container, place.container)
+            if container is None:
+                return None
+            container = container.parent
         else:
             # in case that date and place are in the same container, it might happen that title will not be there,
             # so we increase search container to parent

@@ -5,3 +5,4 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + ".."  # Th
 experimental_force_place_to_all_events_when_same_on_all_events = False
 allow_place_from_footer = True
 allow_selenium = False
+allow_poi = False

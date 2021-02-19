@@ -10,7 +10,9 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    forbidden_cities = ["Výsluní", "Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly", "Košík", "Diváky", "Ostrov", "Řeka", "Pátek", "Hory", "Černá", "Louka", "Veselé"]
+    forbidden_cities = ["Výsluní", "Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly",
+                        "Košík", "Diváky", "Ostrov", "Řeka", "Pátek", "Hory", "Černá", "Louka", "Veselé", "Železnice",
+                        "Lety", "Kruh"]
     regex_for_cities = None
 
     @staticmethod
@@ -18,14 +20,23 @@ class PlaceFinder:
 
         if PlaceFinder.regex_for_cities is None:
             cities = []
-            with open(config.ROOT_DIR + os.path.sep + 'data'+os.path.sep+'cities.csv', newline='', encoding='utf-8', errors='ignore') as csvfile:
-                spamreader = csv.reader(csvfile, delimiter=',', quotechar='|', )
-                for row in spamreader:
-                    if row[1] not in PlaceFinder.forbidden_cities:
-                        cities.append(row[1])
+            with open(config.ROOT_DIR + os.path.sep + 'data'+os.path.sep+'cities_list.txt', newline='', encoding='utf-8', errors='ignore') as f:
+                for city in f:
+                    city = city.strip()
+                    if city not in PlaceFinder.forbidden_cities:
+                        cities.append(re.escape(city))
+
             cities.extend(["facebook", "online", "on-line"])
             cities.reverse()  # this is here because the list of cities is ascending and we would not find some cities,
                               # for example Bilov because of Bilovec
+
+            if config.allow_poi:
+                with open(config.ROOT_DIR + os.path.sep + 'data'+os.path.sep + 'poi'+os.path.sep +'poi.txt', newline='', encoding='utf-8', errors='ignore') as f:
+                    poi = f.readlines()
+
+                poi = [re.escape(x.strip()) for x in poi]
+                cities.extend(poi)
+
             regex_for_cities = '|'.join(cities)
             PlaceFinder.regex_for_cities = re.compile(regex_for_cities, flags=re.IGNORECASE)
 

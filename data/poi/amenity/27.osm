@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="2378081448" lat="49.0826962" lon="17.9709933" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081449" lat="49.0826719" lon="17.9709605" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081450" lat="49.0826351" lon="17.9709518" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081451" lat="49.0826065" lon="17.9709656" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081452" lat="49.0825822" lon="17.9710144" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081453" lat="49.0825831" lon="17.9710749" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081454" lat="49.0826036" lon="17.9711113" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081455" lat="49.0826428" lon="17.9711354" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081456" lat="49.0826786" lon="17.9711194" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081457" lat="49.0826981" lon="17.9710946" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081458" lat="49.0827048" lon="17.9710385" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081459" lat="49.0826194" lon="17.9711281" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081460" lat="49.0825908" lon="17.9710968" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="2378081461" lat="49.0825798" lon="17.9710414" version="1" timestamp="2013-07-08T15:25:34Z" changeset="0"/>
+	<node id="3314157564" lat="50.7773266" lon="15.0809748" version="1" timestamp="2015-01-27T11:09:38Z" changeset="0">
+		<tag k="name" v="Experimentální studio"/>
+		<tag k="amenity" v="music_venue"/>
+		<tag k="note:cs" v="Čát kulturního centra. Konají se tu koncerty, ale i divadlo, fotky z cest apod."/>
+		<tag k="note:en" v="Part of the community/cultural centre; hosts not just music, but also slideshows, theatre etc."/>
+	</node>
+	<node id="5053279898" lat="50.0867964" lon="14.4036621" version="1" timestamp="2017-08-23T10:43:21Z" changeset="0">
+		<tag k="name" v="U Malého Glena"/>
+		<tag k="level" v="-1"/>
+		<tag k="phone" v="+420 257 531 717"/>
+		<tag k="amenity" v="music_venue"/>
+		<tag k="website" v="http://malyglen.cz/cz/show/jazz-blues-club"/>
+		<tag k="capacity" v="25"/>
+		<tag k="description" v="Jazz &#38; Blues Club"/>
+		<tag k="opening_hours" v="Mo-Su 19:30-02:00"/>
+	</node>
+	<node id="7871562440" lat="49.137764" lon="16.7312562" version="1" timestamp="2020-09-03T07:51:48Z" changeset="0"/>
+	<node id="7871562441" lat="49.1378897" lon="16.7312268" version="1" timestamp="2020-09-03T07:51:48Z" changeset="0"/>
+	<node id="7871562442" lat="49.1378692" lon="16.7310298" version="1" timestamp="2020-09-03T07:51:48Z" changeset="0"/>
+	<node id="7871562443" lat="49.1377432" lon="16.7310526" version="1" timestamp="2020-09-03T07:51:48Z" changeset="0"/>
+	<way id="229181241" version="2" timestamp="2019-11-18T12:59:27Z" changeset="0">
+		<nd ref="2378081448"/>
+		<nd ref="2378081449"/>
+		<nd ref="2378081450"/>
+		<nd ref="2378081451"/>
+		<nd ref="2378081452"/>
+		<nd ref="2378081461"/>
+		<nd ref="2378081453"/>
+		<nd ref="2378081460"/>
+		<nd ref="2378081454"/>
+		<nd ref="2378081459"/>
+		<nd ref="2378081455"/>
+		<nd ref="2378081456"/>
+		<nd ref="2378081457"/>
+		<nd ref="2378081458"/>
+		<nd ref="2378081448"/>
+		<tag k="name" v="výletiště Popov"/>
+		<tag k="amenity" v="music_venue"/>
+		<tag k="leisure" v="dance"/>
+		<tag k="building" v="yes"/>
+	</way>
+	<way id="843827858" version="2" timestamp="2020-10-04T08:54:39Z" changeset="0">
+		<nd ref="7871562440"/>
+		<nd ref="7871562441"/>
+		<nd ref="7871562442"/>
+		<nd ref="7871562443"/>
+		<nd ref="7871562440"/>
+		<tag k="amenity" v="music_venue"/>
+		<tag k="area" v="yes"/>
+		<tag k="leisure" v="dance"/>
+		<tag k="noname" v="yes"/>
+		<tag k="surface" v="concrete"/>
+	</way>
+</osm>

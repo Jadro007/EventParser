@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="4397552662" lat="49.471702" lon="17.9691702" version="2" timestamp="2016-09-12T13:51:46Z" changeset="0">
+		<tag k="name" v="M-klub"/>
+		<tag k="phone" v="+420 571 684 558"/>
+		<tag k="amenity" v="club"/>
+		<tag k="website" v="mklub.kzvalmez.cz"/>
+		<tag k="addr:city" v="Valašské Meziříčí"/>
+		<tag k="amenity_1" v="music_venue"/>
+		<tag k="amenity_2" v="bar"/>
+		<tag k="addr:street" v="Komenského"/>
+		<tag k="addr:postcode" v="75701"/>
+		<tag k="addr:housenumber" v="1"/>
+	</node>
+</osm>

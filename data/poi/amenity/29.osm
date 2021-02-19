@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="157243829" lat="50.2581695" lon="14.5164581" version="6" timestamp="2012-03-22T19:37:06Z" changeset="0">
+		<tag k="name" v="Baronova Chata"/>
+		<tag k="shop" v="tea"/>
+		<tag k="amenity" v="tearoom"/>
+		<tag k="website" v="http://www.baronka.cz"/>
+		<tag k="opening_hours" v="Mo-Fr 09:00-12:00,14:30-17:00; Sa 09:00-11:30"/>
+	</node>
+</osm>

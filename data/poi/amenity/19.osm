@@ -1,0 +1,2672 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="153065291" lat="49.5939068" lon="17.2622604" version="4" timestamp="2018-12-06T10:55:19Z" changeset="0">
+		<tag k="name" v="S klub"/>
+		<tag k="phone" v="+420 777 799 107"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="no"/>
+		<tag k="website" v="https://www.s-klub.cz/"/>
+	</node>
+	<node id="296446060" lat="49.194357" lon="16.6099774" version="8" timestamp="2015-04-20T07:43:52Z" changeset="0">
+		<tag k="name" v="7. nebe"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="source:loc" v="cuzk:km"/>
+		<tag k="addr:street" v="Jánská"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:housenumber" v="9"/>
+		<tag k="addr:streetnumber" v="7"/>
+		<tag k="uir_adr:ADRESA_KOD" v="19098341"/>
+		<tag k="addr:conscriptionnumber" v="452"/>
+	</node>
+	<node id="296487048" lat="50.0868992" lon="14.4518108" version="3" timestamp="2017-08-12T11:05:44Z" changeset="0">
+		<tag k="name" v="Incognito Music Bar"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="outside"/>
+		<tag k="website" v="https://princongito.wixsite.com/incognito"/>
+		<tag k="addr:street" v="Prokopova"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="addr:postcode" v="13000"/>
+		<tag k="addr:housenumber" v="147/18"/>
+		<tag k="addr:streetnumber" v="18"/>
+		<tag k="uir_adr:ADRESA_KOD" v="21768501"/>
+		<tag k="addr:conscriptionnumber" v="147"/>
+	</node>
+	<node id="296585828" lat="50.0843653" lon="14.4187391" version="6" timestamp="2019-03-12T19:06:29Z" changeset="0">
+		<tag k="name" v="Jazz Republic"/>
+		<tag k="email" v="info@JazzRepublic.cz"/>
+		<tag k="phone" v="+420 221 183 552"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.jazzrepublic.cz/"/>
+		<tag k="addr:street" v="Jilská"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Su 20:00-00:00"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="addr:housenumber" v="361/1"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="uir_adr:ADRESA_KOD" v="21718954"/>
+		<tag k="addr:conscriptionnumber" v="361"/>
+	</node>
+	<node id="296638137" lat="49.1921173" lon="16.6059704" version="10" timestamp="2021-02-03T15:28:54Z" changeset="0">
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:conscriptionnumber" v="283"/>
+		<tag k="addr:housenumber" v="283/1"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:street" v="Biskupská"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="internet_access:fee" v="no"/>
+		<tag k="name" v="Two Faces Music Club"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="source:position" v="cuzk:km"/>
+		<tag k="uir_adr:ADRESA_KOD" v="19096500"/>
+		<tag k="website" v="http://www.twofaces.cz"/>
+		<tag k="wheelchair" v="no"/>
+	</node>
+	<node id="296654245" lat="49.194719" lon="16.6100114" version="7" timestamp="2019-03-29T14:29:35Z" changeset="0">
+		<tag k="name" v="Metro music club"/>
+		<tag k="phone" v="+420 739 616 594"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.metromusic.cz/"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Poštovská"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="opening_hours" v="Mo-Sa 19:00-05:00"/>
+		<tag k="addr:housenumber" v="450/6"/>
+		<tag k="addr:streetnumber" v="6"/>
+		<tag k="uir_adr:ADRESA_KOD" v="19098324"/>
+		<tag k="addr:conscriptionnumber" v="450"/>
+	</node>
+	<node id="296774771" lat="49.7414538" lon="13.3799302" version="5" timestamp="2020-04-03T18:34:19Z" changeset="0">
+		<tag k="name" v="Pantheon Music Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="Pantheon Music Club"/>
+		<tag k="addr:street" v="Anglické nábřeží"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="addr:postcode" v="30100"/>
+		<tag k="addr:housenumber" v="2744/17"/>
+		<tag k="addr:streetnumber" v="17"/>
+		<tag k="uir_adr:ADRESA_KOD" v="24557323"/>
+		<tag k="addr:conscriptionnumber" v="2744"/>
+	</node>
+	<node id="309257247" lat="49.9928898" lon="14.6588299" version="1" timestamp="2008-11-01T21:09:47Z" changeset="0">
+		<tag k="name" v="Maka bar"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="316333231" lat="49.1835897" lon="16.391486" version="1" timestamp="2008-12-03T00:41:59Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="316333235" lat="49.179999" lon="16.3876046" version="2" timestamp="2016-08-27T21:49:57Z" changeset="0">
+		<tag k="name" v="#69"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="330200788" lat="50.1062287" lon="14.3690501" version="1" timestamp="2009-01-08T13:33:35Z" changeset="0">
+		<tag k="name" v="U Rafa"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="331956704" lat="50.0854385" lon="14.4130786" version="7" timestamp="2016-12-20T16:38:07Z" changeset="0">
+		<tag k="name" v="Klub lávka"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:fr" v="Café lávka"/>
+		<tag k="website" v="http://www.lavka-nights.cz"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Novotného lávka"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:housenumber" v="1"/>
+	</node>
+	<node id="334363004" lat="50.0815953" lon="14.4047388" version="5" timestamp="2016-11-24T15:30:39Z" changeset="0">
+		<tag k="name" v="Klub Újezd"/>
+		<tag k="phone" v="+420 251 510 873"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.klubujezd.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/Klub-Újezd-45884353772/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Malá Strana"/>
+		<tag k="wheelchair" v="limited"/>
+		<tag k="addr:street" v="Újezd"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11800"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-04:00,14:00-24:00"/>
+		<tag k="ref:ruian:addr" v="21698864"/>
+		<tag k="addr:housenumber" v="422/18"/>
+		<tag k="addr:streetnumber" v="18"/>
+		<tag k="toilets:wheelchair" v="no"/>
+		<tag k="addr:conscriptionnumber" v="422"/>
+	</node>
+	<node id="339605677" lat="49.2969883" lon="17.4006454" version="2" timestamp="2016-03-11T08:25:01Z" changeset="0"/>
+	<node id="339605678" lat="49.2970475" lon="17.4009039" version="2" timestamp="2016-03-11T08:25:01Z" changeset="0"/>
+	<node id="339605679" lat="49.2967704" lon="17.4010539" version="2" timestamp="2016-03-11T08:25:01Z" changeset="0"/>
+	<node id="339605708" lat="49.2967098" lon="17.4007956" version="2" timestamp="2016-03-11T08:25:02Z" changeset="0"/>
+	<node id="340388651" lat="50.2503384" lon="14.3154449" version="1" timestamp="2009-02-04T14:05:19Z" changeset="0">
+		<tag k="name" v="U Živce"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="356645209" lat="49.2218901" lon="15.8874194" version="3" timestamp="2014-02-24T12:36:19Z" changeset="0"/>
+	<node id="356645210" lat="49.2218295" lon="15.8876903" version="3" timestamp="2014-02-24T12:36:19Z" changeset="0"/>
+	<node id="356645211" lat="49.2218948" lon="15.8877248" version="3" timestamp="2014-02-24T12:36:19Z" changeset="0"/>
+	<node id="356645212" lat="49.2219563" lon="15.8874524" version="3" timestamp="2014-02-24T12:36:20Z" changeset="0"/>
+	<node id="357339931" lat="49.2225489" lon="15.884315" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357339937" lat="49.2223749" lon="15.8841413" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357339962" lat="49.2223005" lon="15.8843169" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357339969" lat="49.2222523" lon="15.8842679" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357340042" lat="49.2221862" lon="15.8844084" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357340047" lat="49.2221721" lon="15.8843939" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357340104" lat="49.2221598" lon="15.8844207" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357340108" lat="49.2223996" lon="15.8846654" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="357340111" lat="49.2224358" lon="15.8845827" version="4" timestamp="2019-01-17T09:00:44Z" changeset="0"/>
+	<node id="360764853" lat="49.5912164" lon="17.2509238" version="4" timestamp="2017-09-07T19:05:53Z" changeset="0">
+		<tag k="name" v="Belmondo"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://club.djscapella.cz/"/>
+	</node>
+	<node id="360975472" lat="49.2130395" lon="15.8850556" version="2" timestamp="2017-11-03T08:34:46Z" changeset="0">
+		<tag k="name" v="SEN"/>
+		<tag k="source" v="cuzk:km"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="created_by" v="Merkaartor 0.12"/>
+		<tag k="wheelchair" v="no"/>
+	</node>
+	<node id="360976044" lat="49.2120102" lon="15.8847874" version="3" timestamp="2017-11-03T08:31:07Z" changeset="0">
+		<tag k="name" v="Znojemka"/>
+		<tag k="source" v="cuzk:km"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="wheelchair" v="no"/>
+	</node>
+	<node id="363825690" lat="49.2187754" lon="15.893316" version="3" timestamp="2017-11-03T09:25:17Z" changeset="0">
+		<tag k="name" v="Disko Kavárna"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="wheelchair" v="no"/>
+	</node>
+	<node id="369989130" lat="49.8278023" lon="18.1892329" version="2" timestamp="2014-03-21T19:27:56Z" changeset="0">
+		<tag k="name" v="Koruna"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="370681704" lat="50.2191132" lon="12.181491" version="1" timestamp="2009-04-07T21:50:23Z" changeset="0">
+		<tag k="name" v="Labelle"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="created_by" v="Potlatch 0.10f"/>
+	</node>
+	<node id="383242218" lat="49.2088684" lon="16.7915156" version="2" timestamp="2018-11-04T20:56:26Z" changeset="0"/>
+	<node id="383242221" lat="49.2086699" lon="16.7916132" version="2" timestamp="2018-06-08T15:20:13Z" changeset="0"/>
+	<node id="431152675" lat="50.0317465" lon="14.5271395" version="1" timestamp="2009-06-30T13:17:16Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="451798326" lat="49.216336" lon="15.8805817" version="3" timestamp="2017-11-03T08:39:46Z" changeset="0">
+		<tag k="name" v="Golem"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="yes"/>
+		<tag k="addr:city" v="Třebíč"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="addr:street" v="Karlovo nám."/>
+		<tag k="addr:postcode" v="67401"/>
+		<tag k="addr:housenumber" v="19/13"/>
+	</node>
+	<node id="475379711" lat="50.1082927" lon="14.4432281" version="18" timestamp="2020-10-09T07:03:33Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:conscriptionnumber" v="1096"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="1096/23"/>
+		<tag k="addr:place" v="Holešovice"/>
+		<tag k="addr:postcode" v="17000"/>
+		<tag k="addr:street" v="Plynární"/>
+		<tag k="addr:streetnumber" v="23"/>
+		<tag k="addr:suburb" v="Praha 7"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="contact:facebook" v="http://www.facebook.com/pages/_/197705090250861"/>
+		<tag k="contact:foursquare" v="https://foursquare.com/v/_/4b055110f964a520b75722e3"/>
+		<tag k="contact:website" v="http://www.crossclub.cz/"/>
+		<tag k="contact:yelp" v="http://www.qype.co.uk/place/1588216"/>
+		<tag k="name" v="Cross Club"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-05:00,18:00-24:00; Fr,Sa 00:00-07:00,18:00-24:00"/>
+		<tag k="ref:ruian:addr" v="22306935"/>
+		<tag k="smoking" v="yes"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="wikidata" v="Q19902165"/>
+	</node>
+	<node id="534367670" lat="50.0739755" lon="14.4078157" version="5" timestamp="2019-03-12T03:07:46Z" changeset="0">
+		<tag k="name" v="Futurum"/>
+		<tag k="phone" v="+420 257 328 571"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://futurum.musicbar.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Smíchov"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Zborovská"/>
+		<tag k="addr:suburb" v="Praha 5"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="15000"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-01:00,20:00-24:00"/>
+		<tag k="ref:ruian:addr" v="22075232"/>
+		<tag k="addr:housenumber" v="82/7"/>
+		<tag k="addr:streetnumber" v="7"/>
+		<tag k="addr:conscriptionnumber" v="82"/>
+	</node>
+	<node id="605478648" lat="49.7476708" lon="13.3688548" version="2" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="605478669" lat="49.7480352" lon="13.3688465" version="2" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="605478684" lat="49.7480302" lon="13.368904" version="2" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="605478806" lat="49.7477911" lon="13.3690511" version="2" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="605478831" lat="49.7479854" lon="13.3690457" version="2" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="605478835" lat="49.7480181" lon="13.3690452" version="2" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="623126619" lat="50.0863067" lon="14.4465116" version="5" timestamp="2020-01-03T20:01:25Z" changeset="0">
+		<tag k="name" v="R3 Bar"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:en" v="R3 Bar"/>
+		<tag k="addr:street" v="Orebitská"/>
+		<tag k="addr:housenumber" v="5"/>
+	</node>
+	<node id="625125416" lat="50.6042367" lon="15.5127653" version="6" timestamp="2020-03-14T11:28:28Z" changeset="0">
+		<tag k="name" v="ZIP"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="640389392" lat="50.579408" lon="15.5303934" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389393" lat="50.5794713" lon="15.5300674" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389395" lat="50.5794318" lon="15.5304602" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389396" lat="50.5795982" lon="15.5301258" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389397" lat="50.5795728" lon="15.5302769" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389399" lat="50.5794429" lon="15.5304101" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389402" lat="50.5797354" lon="15.5303715" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="640389820" lat="50.6060627" lon="15.5098184" version="2" timestamp="2010-07-06T16:50:45Z" changeset="0">
+		<tag k="name" v="Továrna"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="653356449" lat="49.7385167" lon="13.3696021" version="2" timestamp="2015-12-10T07:33:54Z" changeset="0"/>
+	<node id="653356450" lat="49.7384485" lon="13.3695857" version="2" timestamp="2015-12-10T07:33:54Z" changeset="0"/>
+	<node id="653356451" lat="49.7385326" lon="13.369584" version="2" timestamp="2015-12-10T07:33:54Z" changeset="0"/>
+	<node id="653356452" lat="49.7385188" lon="13.3695807" version="2" timestamp="2015-12-10T07:33:54Z" changeset="0"/>
+	<node id="653356453" lat="49.7384583" lon="13.369451" version="2" timestamp="2015-12-10T07:33:54Z" changeset="0"/>
+	<node id="653356457" lat="49.7384507" lon="13.3695638" version="2" timestamp="2015-12-10T07:33:54Z" changeset="0"/>
+	<node id="653356505" lat="49.7386578" lon="13.3694921" version="2" timestamp="2015-12-10T07:33:55Z" changeset="0"/>
+	<node id="653356531" lat="49.7386427" lon="13.369705" version="2" timestamp="2015-12-10T07:33:55Z" changeset="0"/>
+	<node id="671322347" lat="49.3942745" lon="15.584225" version="1" timestamp="2010-03-21T12:48:16Z" changeset="0">
+		<tag k="name" v="Dělňák"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="702023473" lat="49.4051192" lon="15.5834701" version="2" timestamp="2012-06-18T20:26:20Z" changeset="0">
+		<tag k="name" v="Ponorka"/>
+		<tag k="source" v="knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="864974918" lat="49.7576111" lon="16.6626604" version="2" timestamp="2016-07-31T08:51:08Z" changeset="0"/>
+	<node id="864975116" lat="49.7577307" lon="16.6626675" version="2" timestamp="2016-07-31T08:51:08Z" changeset="0"/>
+	<node id="864975368" lat="49.7576096" lon="16.6627353" version="2" timestamp="2016-07-31T08:51:08Z" changeset="0"/>
+	<node id="864975900" lat="49.7575617" lon="16.6627322" version="2" timestamp="2016-07-31T08:51:09Z" changeset="0"/>
+	<node id="864976519" lat="49.7575572" lon="16.6625539" version="2" timestamp="2016-07-31T08:51:09Z" changeset="0"/>
+	<node id="866150171" lat="49.2204933" lon="17.6524728" version="1" timestamp="2010-08-18T07:10:37Z" changeset="0">
+		<tag k="name" v="MUSIC LAND A"/>
+		<tag k="source" v="knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="878560915" lat="48.8529761" lon="16.0526627" version="3" timestamp="2018-02-17T14:12:48Z" changeset="0"/>
+	<node id="878563146" lat="48.85299" lon="16.0526826" version="3" timestamp="2018-02-17T14:12:50Z" changeset="0"/>
+	<node id="878563481" lat="48.853041" lon="16.0526715" version="3" timestamp="2018-02-17T14:12:51Z" changeset="0"/>
+	<node id="878564422" lat="48.8530298" lon="16.0525786" version="3" timestamp="2018-02-17T14:12:52Z" changeset="0"/>
+	<node id="878566342" lat="48.8529784" lon="16.0525958" version="3" timestamp="2018-02-17T14:12:54Z" changeset="0"/>
+	<node id="879347698" lat="48.8664378" lon="16.0890873" version="1" timestamp="2010-08-25T19:40:25Z" changeset="0">
+		<tag k="name" v="Disco Split"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="884209392" lat="50.5144927" lon="16.0207474" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884209702" lat="50.5145552" lon="16.0209286" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884209833" lat="50.5146028" lon="16.0208904" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884209962" lat="50.5146058" lon="16.020899" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884209967" lat="50.5147736" lon="16.0207454" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884210023" lat="50.514728" lon="16.0207841" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884210079" lat="50.514731" lon="16.0207927" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="884210084" lat="50.5147097" lon="16.0205624" version="2" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="895743096" lat="50.5341996" lon="14.124175" version="1" timestamp="2010-09-04T14:57:35Z" changeset="0">
+		<tag k="name" v="Semafor"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="904803256" lat="49.224438" lon="17.6605863" version="1" timestamp="2010-09-10T05:13:47Z" changeset="0">
+		<tag k="name" v="Flip"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="911988892" lat="50.5344736" lon="14.1268309" version="3" timestamp="2011-12-01T12:10:51Z" changeset="0">
+		<tag k="name" v="Dynamo"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="912084871" lat="50.4313322" lon="14.9219053" version="2" timestamp="2015-09-14T15:53:07Z" changeset="0"/>
+	<node id="912088152" lat="50.4309657" lon="14.9223244" version="2" timestamp="2015-09-14T15:53:08Z" changeset="0"/>
+	<node id="912088829" lat="50.4308736" lon="14.9219308" version="2" timestamp="2015-09-14T15:53:08Z" changeset="0"/>
+	<node id="912092566" lat="50.4311583" lon="14.9224671" version="2" timestamp="2015-09-14T15:53:08Z" changeset="0"/>
+	<node id="912094083" lat="50.4308064" lon="14.9222001" version="2" timestamp="2015-09-14T15:53:08Z" changeset="0"/>
+	<node id="912094560" lat="50.4309133" lon="14.9218054" version="2" timestamp="2015-09-14T15:53:08Z" changeset="0"/>
+	<node id="912097857" lat="50.4310467" lon="14.9223851" version="2" timestamp="2015-09-14T15:53:09Z" changeset="0"/>
+	<node id="912100416" lat="50.4309278" lon="14.9218166" version="2" timestamp="2015-09-14T15:53:09Z" changeset="0"/>
+	<node id="912104642" lat="50.4310384" lon="14.9224116" version="2" timestamp="2015-09-14T15:53:10Z" changeset="0"/>
+	<node id="912106675" lat="50.4309888" lon="14.9216361" version="2" timestamp="2015-09-14T15:53:10Z" changeset="0"/>
+	<node id="912109132" lat="50.4309577" lon="14.9223496" version="2" timestamp="2015-09-14T15:53:11Z" changeset="0"/>
+	<node id="912109609" lat="50.4308879" lon="14.9219421" version="2" timestamp="2015-09-14T15:53:11Z" changeset="0"/>
+	<node id="981634485" lat="50.5710851" lon="14.6690966" version="4" timestamp="2019-03-08T10:34:24Z" changeset="0">
+		<tag k="name" v="Bílý Kámen"/>
+		<tag k="phone" v="+420 487 872 489"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.bilykamen.net"/>
+		<tag k="addr:city" v="Doksy"/>
+		<tag k="addr:postcode" v="47201"/>
+		<tag k="ref:ruian:addr" v="26871076"/>
+	</node>
+	<node id="1046614093" lat="50.5051327" lon="16.0720734" version="2" timestamp="2013-02-23T16:00:43Z" changeset="0">
+		<tag k="name" v="U Mikšů"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1066503340" lat="50.360153" lon="12.4703626" version="1" timestamp="2010-12-26T20:16:35Z" changeset="0"/>
+	<node id="1066503486" lat="50.3599109" lon="12.4703293" version="1" timestamp="2010-12-26T20:16:38Z" changeset="0"/>
+	<node id="1066503569" lat="50.3601646" lon="12.4701561" version="1" timestamp="2010-12-26T20:16:40Z" changeset="0"/>
+	<node id="1066503641" lat="50.3599224" lon="12.4701228" version="1" timestamp="2010-12-26T20:16:42Z" changeset="0"/>
+	<node id="1082469350" lat="50.6669059" lon="14.0299486" version="1" timestamp="2011-01-04T17:07:12Z" changeset="0">
+		<tag k="name" v="Družba"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1086657861" lat="49.2618014" lon="13.8942674" version="2" timestamp="2016-11-09T13:44:43Z" changeset="0"/>
+	<node id="1086662396" lat="49.2617974" lon="13.8943003" version="2" timestamp="2016-11-09T13:44:43Z" changeset="0"/>
+	<node id="1086675066" lat="49.2617712" lon="13.8942833" version="2" timestamp="2016-11-09T13:44:46Z" changeset="0"/>
+	<node id="1086689660" lat="49.2617602" lon="13.893718" version="2" timestamp="2016-11-09T13:44:48Z" changeset="0"/>
+	<node id="1086709340" lat="49.2618162" lon="13.8942142" version="2" timestamp="2016-11-09T13:44:50Z" changeset="0"/>
+	<node id="1086714119" lat="49.2618344" lon="13.8943217" version="2" timestamp="2016-11-09T13:44:51Z" changeset="0"/>
+	<node id="1086727450" lat="49.2617794" lon="13.8942539" version="2" timestamp="2016-11-09T13:44:53Z" changeset="0"/>
+	<node id="1086738829" lat="49.261966" lon="13.8938517" version="2" timestamp="2016-11-09T13:44:55Z" changeset="0"/>
+	<node id="1086753283" lat="49.2616515" lon="13.8941066" version="2" timestamp="2016-11-09T13:44:58Z" changeset="0"/>
+	<node id="1187014880" lat="50.5365266" lon="14.1286339" version="2" timestamp="2015-07-25T11:47:09Z" changeset="0">
+		<tag k="name" v="Shaker Bar"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="wheelchair" v="no"/>
+	</node>
+	<node id="1224182702" lat="49.2006758" lon="16.6028289" version="3" timestamp="2016-05-12T09:06:39Z" changeset="0">
+		<tag k="name" v="Moulin Rouge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.moulinrougebrno.cz/"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Slovákova"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:housenumber" v="12"/>
+	</node>
+	<node id="1229052820" lat="50.0863674" lon="14.4220734" version="5" timestamp="2017-04-09T17:54:47Z" changeset="0">
+		<tag k="name" v="AghaRTA Jazz Centrum"/>
+		<tag k="phone" v="+420 222 211 275"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.agharta.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Železná"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-01:00,19:00-24:00"/>
+		<tag k="ref:ruian:addr" v="21720592"/>
+		<tag k="addr:housenumber" v="491/16"/>
+		<tag k="addr:streetnumber" v="16"/>
+		<tag k="addr:conscriptionnumber" v="491"/>
+	</node>
+	<node id="1229057545" lat="50.0905163" lon="14.4202726" version="3" timestamp="2020-10-31T18:40:20Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="artwork_type" v="music"/>
+		<tag k="name" v="Aloha Wave Lounge"/>
+		<tag k="phone" v="+420 602 251 392"/>
+		<tag k="website" v="www.alohapraha.cz"/>
+	</node>
+	<node id="1229086344" lat="50.0896854" lon="14.4235127" version="4" timestamp="2019-10-04T10:37:45Z" changeset="0">
+		<tag k="name" v="Harley&#39;s bar"/>
+		<tag k="phone" v="+420 602 419 111"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.harleys.cz"/>
+		<tag k="addr:city" v="Praha 1"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="addr:street" v="Dlouhá"/>
+		<tag k="artwork_type" v="music"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:housenumber" v="18"/>
+	</node>
+	<node id="1229086352" lat="50.0877571" lon="14.4233251" version="5" timestamp="2019-03-12T19:16:40Z" changeset="0">
+		<tag k="name" v="Jazz klub Ungelt"/>
+		<tag k="phone" v="+420 608 904 224"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://jazzungelt.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="addr:street" v="Týn"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="ref:ruian:addr" v="21722731"/>
+		<tag k="addr:housenumber" v="640/2"/>
+		<tag k="addr:streetnumber" v="2"/>
+		<tag k="addr:conscriptionnumber" v="640"/>
+	</node>
+	<node id="1229108524" lat="50.08805" lon="14.4246505" version="9" timestamp="2020-01-31T20:04:47Z" changeset="0">
+		<tag k="name" v="Chapeau Rouge"/>
+		<tag k="phone" v="+420 222 316 328"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.chapeaurouge.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Jakubská"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="music_genre" v="RnB, hip hop"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-04:00,21:00-24:00; Fr,Sa 00:00-06:00,21:00-24:00"/>
+		<tag k="ref:ruian:addr" v="21722846"/>
+		<tag k="addr:housenumber" v="647/2"/>
+		<tag k="addr:streetnumber" v="2"/>
+		<tag k="addr:conscriptionnumber" v="647"/>
+	</node>
+	<node id="1229108525" lat="50.0857063" lon="14.4209226" version="6" timestamp="2015-06-26T17:27:16Z" changeset="0">
+		<tag k="name" v="Popocafepetl"/>
+		<tag k="phone" v="+420 224 248 594"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.popocafepetl.eu"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Melantrichova"/>
+		<tag k="music_genre" v="pop"/>
+		<tag k="artwork_type" v="music"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:housenumber" v="10"/>
+	</node>
+	<node id="1229108526" lat="50.0853237" lon="14.4198327" version="6" timestamp="2015-12-19T11:57:24Z" changeset="0">
+		<tag k="name" v="Popocafepetl"/>
+		<tag k="phone" v="+420 224 240 637"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.popocafepetl.eu/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Michalská"/>
+		<tag k="artwork_type" v="music"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Su 16:00-04:00"/>
+		<tag k="addr:housenumber" v="15"/>
+	</node>
+	<node id="1232845928" lat="50.535491" lon="14.1302046" version="1" timestamp="2011-04-04T19:34:24Z" changeset="0">
+		<tag k="name" v="Baronka"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1261055296" lat="50.0991307" lon="14.4689168" version="2" timestamp="2015-10-09T18:01:04Z" changeset="0">
+		<tag k="name" v="Rita Club U Pusinky"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Sokolovská"/>
+		<tag k="addr:postcode" v="18000"/>
+		<tag k="addr:housenumber" v="142"/>
+	</node>
+	<node id="1268808455" lat="50.0995054" lon="14.3998824" version="3" timestamp="2017-10-05T06:25:07Z" changeset="0">
+		<tag k="name" v="La Fuente"/>
+		<tag k="phone" v="739 400 918"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.lafuente.cz"/>
+		<tag k="addr:city" v="Praha 6"/>
+		<tag k="addr:street" v="Národní obrany"/>
+		<tag k="addr:postcode" v="16000"/>
+		<tag k="opening_hours" v="We 20:00-03:00, Fr,Sa 22:00-04:00"/>
+		<tag k="addr:streetnumber" v="13"/>
+	</node>
+	<node id="1268819683" lat="50.0724457" lon="14.319102" version="2" timestamp="2013-09-30T07:50:36Z" changeset="0">
+		<tag k="name" v="Music Club V.I.P."/>
+		<tag k="phone" v="+420 722 664 234"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.musicclubvip.cz"/>
+		<tag k="addr:city" v="Praha 6"/>
+	</node>
+	<node id="1268889585" lat="50.0809467" lon="14.392565" version="2" timestamp="2011-05-01T17:53:37Z" changeset="0">
+		<tag k="name" v="Klub 007 Strahov"/>
+		<tag k="phone" v="775 260 071"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.klub007strahov.cz"/>
+		<tag k="addr:city" v="Praha 6"/>
+		<tag k="addr:street" v="Chaloupeckého"/>
+		<tag k="addr:postcode" v="16900"/>
+		<tag k="addr:streetnumber" v="7"/>
+	</node>
+	<node id="1270094816" lat="50.0881069" lon="14.4300611" version="4" timestamp="2017-08-24T17:51:16Z" changeset="0">
+		<tag k="name" v="Club Celnice"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1270663146" lat="50.0853954" lon="14.4138645" version="5" timestamp="2017-05-15T23:45:21Z" changeset="0">
+		<tag k="name" v="Karlovy lázně"/>
+		<tag k="phone" v="+420 222 220 502"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.karlovylazne.cz"/>
+		<tag k="wikidata" v="Q6372564"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Smetanovo nábřeží"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:housenumber" v="1"/>
+	</node>
+	<node id="1270697652" lat="50.0819453" lon="14.418616" version="8" timestamp="2017-04-09T17:54:51Z" changeset="0">
+		<tag k="name" v="Rock Café"/>
+		<tag k="email" v="tereza@rockcafe.cz"/>
+		<tag k="phone" v="+420 224 933 947"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.rockcafe.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/rockcafepragueofficial/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Nové Město"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Národní"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Th 00:00-03:00,12:00-24:00; Fr 00:00-04:00,12:00-24:00; Sa 00:00-04:00,17:00-24:00; Su 00:00-01:00,17:00-24:00"/>
+		<tag k="ref:ruian:addr" v="21701822"/>
+		<tag k="addr:housenumber" v="116/20"/>
+		<tag k="addr:streetnumber" v="20"/>
+		<tag k="addr:conscriptionnumber" v="116"/>
+	</node>
+	<node id="1271002097" lat="50.0907594" lon="14.4258932" version="6" timestamp="2019-03-12T03:58:37Z" changeset="0">
+		<tag k="name" v="Roxy"/>
+		<tag k="email" v="info@roxy.cz"/>
+		<tag k="phone" v="+420 602 691 015"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:fr" v="Roxy"/>
+		<tag k="website" v="https://www.roxy.cz/"/>
+	</node>
+	<node id="1271002105" lat="50.0824067" lon="14.4268404" version="6" timestamp="2019-03-13T19:18:12Z" changeset="0">
+		<tag k="name" v="Duplex"/>
+		<tag k="email" v="info@duplex.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.duplex.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Václavské náměstí"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Tu-Sa 22:00-5:00"/>
+		<tag k="addr:housenumber" v="21"/>
+	</node>
+	<node id="1271002121" lat="50.0858267" lon="14.4140017" version="4" timestamp="2015-03-09T14:58:20Z" changeset="0">
+		<tag k="name" v="Kamenný most music club"/>
+		<tag k="email" v="kamennymost@m-club.cz"/>
+		<tag k="phone" v="+420 224 097 100"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.kamennymost.cz"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Smetanovo nábřeží"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="18:00-4:00"/>
+		<tag k="addr:housenumber" v="5"/>
+	</node>
+	<node id="1271444214" lat="50.0930167" lon="14.4147692" version="2" timestamp="2017-03-07T10:00:00Z" changeset="0">
+		<tag k="name" v="Občanská plovárna"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.obcanskaplovarna.cz"/>
+		<tag k="addr:city" v="Praha 1"/>
+		<tag k="addr:street" v="U Plovárny"/>
+		<tag k="addr:housenumber" v="337/8"/>
+		<tag k="addr:streetnumber" v="8"/>
+		<tag k="addr:conscriptionnumber" v="337"/>
+	</node>
+	<node id="1271444224" lat="50.0844665" lon="14.4218491" version="7" timestamp="2016-10-31T10:40:50Z" changeset="0">
+		<tag k="name" v="Cafe - Cafe"/>
+		<tag k="email" v="info@cafe-cafe.cz"/>
+		<tag k="phone" v="+420 224 210 597"/>
+		<tag k="source" v="local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.cafe-cafe.cz"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="wheelchair" v="limited"/>
+		<tag k="addr:street" v="Rytířská"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo - Su 10:00 - 23:00"/>
+		<tag k="ref:ruian:addr" v="21719543"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="addr:housenumber" v="406/10"/>
+		<tag k="addr:streetnumber" v="10"/>
+		<tag k="addr:conscriptionnumber" v="406"/>
+	</node>
+	<node id="1271726767" lat="50.0749885" lon="14.4422478" version="4" timestamp="2019-03-12T18:56:41Z" changeset="0">
+		<tag k="name" v="Peach Pit"/>
+		<tag k="phone" v="+420 605 974 907"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.peachpit.cz/"/>
+		<tag k="addr:city" v="Praha 2"/>
+		<tag k="addr:street" v="Budečská"/>
+		<tag k="opening_hours" v="Mo - Fr 16:00 -3:00, Sa - Su 16:00 - 02:00"/>
+		<tag k="addr:housenumber" v="933/22"/>
+		<tag k="addr:streetnumber" v="22"/>
+		<tag k="addr:conscriptionnumber" v="933"/>
+	</node>
+	<node id="1271726769" lat="50.0774573" lon="14.4401755" version="7" timestamp="2021-02-08T07:18:31Z" changeset="0">
+		<tag k="addr:city" v="Praha 2"/>
+		<tag k="addr:conscriptionnumber" v="1128"/>
+		<tag k="addr:housenumber" v="1128/47"/>
+		<tag k="addr:street" v="Vinohradská"/>
+		<tag k="addr:streetnumber" v="47"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="techtlemechtle@email.cz"/>
+		<tag k="name" v="Techtle Mechtle"/>
+		<tag k="opening_hours" v="Mo - Tu 17:00 - 04:00, Fr - Sa 18:00 - 5:00"/>
+		<tag k="website" v="www.techtle-mechtle.cz"/>
+		<tag k="wikidata" v="Q97925369"/>
+	</node>
+	<node id="1290539099" lat="50.0833434" lon="14.4219902" version="8" timestamp="2019-03-12T19:08:15Z" changeset="0">
+		<tag k="name" v="Jazz Republic"/>
+		<tag k="email" v="info@JazzRepublic.cz"/>
+		<tag k="phone" v="+420 224 282 235"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.jazzrepublic.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="addr:street" v="28. října"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:housenumber" v="371/1"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="addr:conscriptionnumber" v="371"/>
+	</node>
+	<node id="1314039385" lat="50.0734161" lon="14.4306958" version="3" timestamp="2014-11-09T20:26:30Z" changeset="0">
+		<tag k="name" v="Club Sabotage"/>
+		<tag k="email" v="legerova@club-sabotage.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.club-sabotage.cz"/>
+	</node>
+	<node id="1314039386" lat="50.0790847" lon="14.4352957" version="7" timestamp="2021-01-14T09:07:44Z" changeset="0">
+		<tag k="addr:city" v="Praha 2"/>
+		<tag k="addr:conscriptionnumber" v="752"/>
+		<tag k="addr:housenumber" v="752/23"/>
+		<tag k="addr:street" v="Balbínova"/>
+		<tag k="addr:streetnumber" v="23"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="leclanprague@gmail.com"/>
+		<tag k="name" v="Le Clan"/>
+		<tag k="opening_hours" v="Tu 02:00-12:00, Fr-Su 02:00-10:00"/>
+		<tag k="website" v="www.leclan.cz"/>
+	</node>
+	<node id="1314039389" lat="50.0759012" lon="14.4323598" version="5" timestamp="2019-03-12T03:56:27Z" changeset="0">
+		<tag k="name" v="Radost Fx"/>
+		<tag k="email" v="vectif@vectif.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://radostfx.cz/"/>
+		<tag k="addr:city" v="Praha 2"/>
+		<tag k="addr:street" v="Bělehradská"/>
+		<tag k="addr:postcode" v="12000"/>
+		<tag k="addr:housenumber" v="234/120"/>
+		<tag k="addr:streetnumber" v="120"/>
+		<tag k="addr:conscriptionnumber" v="234"/>
+	</node>
+	<node id="1314039390" lat="50.0765976" lon="14.4271008" version="2" timestamp="2014-04-27T20:32:09Z" changeset="0">
+		<tag k="name" v="Jampa Dampa"/>
+		<tag k="email" v="info@jampadampa.cz"/>
+		<tag k="phone" v="+ 420 739 592 099; + 420 603 260 678"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.jampadampa.cz"/>
+		<tag k="opening_hours" v="Mo-Tu 16:00-03:00;Fr-Sa 18:00-06:00;Su 18:00-01:00"/>
+	</node>
+	<node id="1314039392" lat="50.0747509" lon="14.4313936" version="4" timestamp="2017-03-07T10:00:03Z" changeset="0">
+		<tag k="name" v="Le Mirage"/>
+		<tag k="email" v="lemirage@centrum.cz"/>
+		<tag k="phone" v="222511186"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.lemirage.cz"/>
+		<tag k="addr:city" v="Praha 2"/>
+		<tag k="addr:street" v="Lublaňská"/>
+		<tag k="addr:postcode" v="12000"/>
+		<tag k="opening_hours" v="Mo-Sa 17:00-02:00; Su 17:00-24:00"/>
+		<tag k="addr:housenumber" v="647/48"/>
+		<tag k="addr:streetnumber" v="48"/>
+		<tag k="addr:conscriptionnumber" v="647"/>
+	</node>
+	<node id="1314084711" lat="50.0845116" lon="14.4506383" version="6" timestamp="2018-09-30T17:59:13Z" changeset="0">
+		<tag k="name" v="La Pantera"/>
+		<tag k="email" v="restaurace.ambrozie@seznam.cz"/>
+		<tag k="phone" v="603 293 107"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.lapantera.cz"/>
+		<tag k="addr:city" v="Praha 3"/>
+		<tag k="addr:street" v="Milíčova"/>
+		<tag k="opening_hours" v="Mo,Tu 20:00-03:00; We 20:00-05:00, Tu-Sa 20:00-06:00; Su 21:00+"/>
+		<tag k="addr:housenumber" v="413/1"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="addr:conscriptionnumber" v="413"/>
+	</node>
+	<node id="1314084712" lat="50.0830838" lon="14.4447011" version="4" timestamp="2019-03-12T04:00:09Z" changeset="0">
+		<tag k="name" v="Sedm vlků"/>
+		<tag k="email" v="info@sedmvlku.cz"/>
+		<tag k="phone" v="2227 11 725"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.sedmvlku.cz/"/>
+		<tag k="opening_hours" v="Mo-Sa 17:00-03:00"/>
+	</node>
+	<node id="1314084713" lat="50.0875412" lon="14.4548586" version="2" timestamp="2017-03-07T10:00:03Z" changeset="0">
+		<tag k="name" v="MATRIX club"/>
+		<tag k="email" v="matrixklub@centrum.cz"/>
+		<tag k="phone" v="776 611042"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.matrixklub.cz"/>
+		<tag k="addr:city" v="Praha 3"/>
+		<tag k="addr:street" v="Koněvova"/>
+		<tag k="addr:housenumber" v="1730/13"/>
+		<tag k="addr:streetnumber" v="13"/>
+		<tag k="addr:conscriptionnumber" v="1730"/>
+	</node>
+	<node id="1314214334" lat="50.0529678" lon="14.4291741" version="8" timestamp="2021-01-14T09:07:44Z" changeset="0">
+		<tag k="addr:city" v="Praha 4"/>
+		<tag k="addr:conscriptionnumber" v="772"/>
+		<tag k="addr:housenumber" v="772/12"/>
+		<tag k="addr:street" v="Na Lysině"/>
+		<tag k="addr:streetnumber" v="12"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="centrummadona@seznam.cz"/>
+		<tag k="name" v="Madona"/>
+		<tag k="opening_hours" v="Tu 18:00-02:00; Fr-Sa 18:00-05:00"/>
+		<tag k="phone" v="777 066 902"/>
+		<tag k="website" v="https://www.madona.cz/"/>
+	</node>
+	<node id="1316889817" lat="50.0195872" lon="14.496105" version="6" timestamp="2019-03-12T03:40:13Z" changeset="0">
+		<tag k="name" v="El Mágico"/>
+		<tag k="email" v="elmagico@elmagico.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.elmagico.cz/"/>
+		<tag k="addr:city" v="Praha 4"/>
+		<tag k="addr:street" v="Chemická"/>
+		<tag k="addr:postcode" v="14800"/>
+		<tag k="opening_hours" v="Mo-Tu 11:00-02:00;Fr-Su 11:00-03:00"/>
+		<tag k="addr:housenumber" v="953"/>
+	</node>
+	<node id="1316889819" lat="50.0620897" lon="14.4292916" version="8" timestamp="2020-09-21T11:49:19Z" changeset="0">
+		<tag k="addr:city" v="Praha 4"/>
+		<tag k="addr:conscriptionnumber" v="1640"/>
+		<tag k="addr:housenumber" v="1640/65"/>
+		<tag k="addr:street" v="5. května"/>
+		<tag k="addr:streetnumber" v="65"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="info@ockopraha.cz"/>
+		<tag k="fee" v="yes"/>
+		<tag k="name" v="Óčko Music Club Praha"/>
+		<tag k="opening_hours" v="We-Tu 21:00-06:00"/>
+		<tag k="phone" v="+420 773 299 992"/>
+		<tag k="website" v="www.ockopraha.cz"/>
+	</node>
+	<node id="1316908986" lat="50.0675564" lon="14.4072223" version="5" timestamp="2017-03-07T10:00:04Z" changeset="0">
+		<tag k="name" v="Dogs Bollocks"/>
+		<tag k="email" v="nadrazni@dogsbollocks.cz"/>
+		<tag k="phone" v="775 736 030"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.dogsbollocks.cz"/>
+		<tag k="addr:city" v="Praha 5"/>
+		<tag k="addr:street" v="Nádražní"/>
+		<tag k="opening_hours" v="Fr-Sa 17:00-04:00"/>
+		<tag k="addr:housenumber" v="42/82"/>
+		<tag k="addr:streetnumber" v="82"/>
+		<tag k="addr:conscriptionnumber" v="42"/>
+	</node>
+	<node id="1317040210" lat="50.1007685" lon="14.42614" version="6" timestamp="2020-10-09T07:03:33Z" changeset="0">
+		<tag k="addr:city" v="Praha 7"/>
+		<tag k="addr:conscriptionnumber" v="826"/>
+		<tag k="addr:housenumber" v="826/61"/>
+		<tag k="addr:street" v="Veletržní"/>
+		<tag k="addr:streetnumber" v="61"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="info@mischmasch.cz"/>
+		<tag k="name" v="Misch Masch"/>
+		<tag k="opening_hours" v="We-Tu 20:00-04:00; Fr-Sa 20:00-06:00"/>
+		<tag k="phone" v="603 272 227"/>
+		<tag k="website" v="www.mischmasch.cz"/>
+	</node>
+	<node id="1317040213" lat="50.1052347" lon="14.4476912" version="5" timestamp="2019-03-12T19:41:13Z" changeset="0">
+		<tag k="name" v="Mecca"/>
+		<tag k="email" v="mecca@mecca.cz"/>
+		<tag k="phone" v="283 870 522"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.mecca.cz/"/>
+		<tag k="opening_hours" v="Fr-Sa 22:00-06:00"/>
+		<tag k="contact:twitter" v="https://twitter.com/MeccaClubPrague"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/mecca.club"/>
+	</node>
+	<node id="1317072361" lat="50.1113419" lon="14.4654724" version="3" timestamp="2014-04-01T00:31:08Z" changeset="0">
+		<tag k="name" v="Prostor Abaton"/>
+		<tag k="email" v="abatonproduction@seznam.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.prostorabaton.cz"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Libeň"/>
+		<tag k="addr:street" v="Na Košince"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="18000"/>
+		<tag k="ref:ruian:addr" v="22726071"/>
+		<tag k="addr:housenumber" v="2175/8"/>
+		<tag k="addr:streetnumber" v="8"/>
+		<tag k="addr:conscriptionnumber" v="2175"/>
+	</node>
+	<node id="1317190662" lat="50.107328" lon="14.4889724" version="6" timestamp="2017-03-07T10:00:04Z" changeset="0">
+		<tag k="name" v="Mayday club"/>
+		<tag k="email" v="maydayclub@email.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.maydayclub.cz"/>
+		<tag k="addr:city" v="Praha 9"/>
+		<tag k="addr:street" v="Sokolovská"/>
+		<tag k="opening_hours" v="Mo-Tu 17:00-00:00;Fr-Sa 19:00-02:00;Su 19:00-00:00"/>
+		<tag k="addr:housenumber" v="971/195"/>
+		<tag k="addr:streetnumber" v="195"/>
+		<tag k="addr:conscriptionnumber" v="971"/>
+	</node>
+	<node id="1317190675" lat="50.0718445" lon="14.4512092" version="4" timestamp="2019-04-05T03:21:05Z" changeset="0">
+		<tag k="name" v="Ambrózie"/>
+		<tag k="email" v="restaurace.ambrozie@seznam.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.ambrozie.cz/"/>
+		<tag k="addr:city" v="Praha 10"/>
+		<tag k="addr:street" v="Moskevská"/>
+		<tag k="addr:postcode" v="10100"/>
+		<tag k="addr:housenumber" v="1"/>
+	</node>
+	<node id="1340065902" lat="50.099467" lon="14.4938795" version="3" timestamp="2019-08-31T18:51:28Z" changeset="0">
+		<tag k="name" v="Modrá Vopice"/>
+		<tag k="email" v="produkce@modravopice.eu"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.modravopice.eu/"/>
+		<tag k="addr:city" v="Praha 9"/>
+		<tag k="addr:street" v="K Žižkovu"/>
+		<tag k="addr:postcode" v="190 00"/>
+	</node>
+	<node id="1360442564" lat="49.666335" lon="18.6746923" version="1" timestamp="2011-07-13T15:21:33Z" changeset="0">
+		<tag k="name" v="Crazy Club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1369050747" lat="49.018244" lon="15.569148" version="1" timestamp="2011-07-21T13:48:42Z" changeset="0"/>
+	<node id="1369050766" lat="49.018246" lon="15.569016" version="1" timestamp="2011-07-21T13:48:43Z" changeset="0"/>
+	<node id="1369050942" lat="49.018369" lon="15.569186" version="1" timestamp="2011-07-21T13:48:45Z" changeset="0"/>
+	<node id="1369050956" lat="49.018391" lon="15.569005" version="1" timestamp="2011-07-21T13:48:46Z" changeset="0"/>
+	<node id="1462354482" lat="49.8648188" lon="16.309145" version="3" timestamp="2020-07-10T13:54:49Z" changeset="0">
+		<tag k="name" v="Dance Klub U Kolji"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="source:loc" v="cuzk:km"/>
+		<tag k="addr:street" v="Mařákova"/>
+		<tag k="source:addr" v="mvcr:adresa"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="364"/>
+		<tag k="addr:conscriptionnumber" v="364"/>
+	</node>
+	<node id="1548655190" lat="49.3242282" lon="13.6916418" version="4" timestamp="2014-12-20T08:19:40Z" changeset="0">
+		<tag k="name" v="MC Houba"/>
+		<tag k="sport" v="10pin"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1566428278" lat="49.4561787" lon="17.1118067" version="4" timestamp="2018-01-09T00:39:43Z" changeset="0"/>
+	<node id="1566428285" lat="49.4562001" lon="17.1116977" version="3" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="1566428290" lat="49.4562063" lon="17.1118208" version="3" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="1566428292" lat="49.4562058" lon="17.1118045" version="4" timestamp="2018-01-09T00:39:43Z" changeset="0"/>
+	<node id="1566428294" lat="49.4562958" lon="17.1116898" version="3" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="1566428295" lat="49.4563001" lon="17.1118131" version="3" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="1589492752" lat="50.5361653" lon="14.1296457" version="2" timestamp="2017-02-26T12:49:30Z" changeset="0">
+		<tag k="name" v="La Habaňero"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1589492753" lat="50.5446245" lon="14.1235248" version="1" timestamp="2012-01-14T11:38:49Z" changeset="0">
+		<tag k="name" v="Roxbury"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1614708366" lat="49.2030321" lon="16.6007356" version="3" timestamp="2016-05-21T12:06:10Z" changeset="0">
+		<tag k="name" v="Melodka"/>
+		<tag k="level" v="1"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://melodka.cz/"/>
+	</node>
+	<node id="1615991468" lat="49.4561779" lon="17.1117838" version="3" timestamp="2018-01-09T00:39:43Z" changeset="0"/>
+	<node id="1695240431" lat="48.8501438" lon="17.1279" version="4" timestamp="2020-07-11T09:27:51Z" changeset="0">
+		<tag k="name" v="Hudební Club Nautilus"/>
+		<tag k="source" v="local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:place" v="Hodonín"/>
+		<tag k="source:loc" v="cuzk:km"/>
+		<tag k="addr:street" v="Národní třída"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="69501"/>
+		<tag k="addr:housename" v="Hudební Club Nautilus"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="addr:housenumber" v="263/6"/>
+		<tag k="addr:streetnumber" v="6"/>
+		<tag k="internet_access:fee" v="no"/>
+		<tag k="addr:conscriptionnumber" v="263"/>
+	</node>
+	<node id="1848018721" lat="50.6914488" lon="14.5340344" version="2" timestamp="2014-05-17T22:26:00Z" changeset="0">
+		<tag k="name" v="Klub Luxor"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1916696821" lat="49.5955382" lon="17.2488785" version="1" timestamp="2012-09-16T07:49:21Z" changeset="0">
+		<tag k="name" v="Metro"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="1925406555" lat="49.6745428" lon="12.5583568" version="2" timestamp="2019-01-07T14:11:13Z" changeset="0"/>
+	<node id="1925406578" lat="49.6745115" lon="12.5587555" version="2" timestamp="2019-01-07T14:11:13Z" changeset="0"/>
+	<node id="1925406613" lat="49.6744355" lon="12.5586754" version="2" timestamp="2019-01-07T14:11:13Z" changeset="0"/>
+	<node id="1925406637" lat="49.6745922" lon="12.5584119" version="2" timestamp="2019-01-07T14:11:13Z" changeset="0"/>
+	<node id="2020248959" lat="48.8698517" lon="16.7511524" version="1" timestamp="2012-11-18T18:29:37Z" changeset="0">
+		<tag k="name" v="Retro music Club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2021418032" lat="50.0826785" lon="12.3826593" version="4" timestamp="2019-09-30T05:28:18Z" changeset="0">
+		<tag k="name" v="Luna"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Cheb"/>
+		<tag k="addr:place" v="Cheb"/>
+		<tag k="addr:street" v="Truhlářská"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="35002"/>
+		<tag k="opening_hours" v="17:00-05:00"/>
+		<tag k="ref:ruian:addr" v="20909861"/>
+		<tag k="addr:housenumber" v="1721/2"/>
+		<tag k="addr:streetnumber" v="2"/>
+		<tag k="addr:conscriptionnumber" v="1721"/>
+	</node>
+	<node id="2043644996" lat="50.2313244" lon="14.0822737" version="4" timestamp="2012-12-01T16:48:01Z" changeset="0">
+		<tag k="name" v="Bat. Music Space"/>
+		<tag k="wifi" v="no"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2060220362" lat="49.3863447" lon="14.6847458" version="3" timestamp="2019-03-13T19:08:25Z" changeset="0">
+		<tag k="name" v="Apollo"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.discoapollo.cz/"/>
+	</node>
+	<node id="2070481531" lat="49.465477" lon="18.1369336" version="1" timestamp="2012-12-16T19:50:51Z" changeset="0">
+		<tag k="name" v="Rampa"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2098271712" lat="50.6513442" lon="13.3689793" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271713" lat="50.6513514" lon="13.3690347" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271714" lat="50.6513603" lon="13.3689868" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271720" lat="50.6513877" lon="13.3691226" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271723" lat="50.6513998" lon="13.369057" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271724" lat="50.6514087" lon="13.3686318" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271729" lat="50.6514379" lon="13.3686453" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271734" lat="50.6514671" lon="13.3684882" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271753" lat="50.651583" lon="13.3688352" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2098271757" lat="50.6516332" lon="13.3685649" version="2" timestamp="2014-06-07T07:47:20Z" changeset="0"/>
+	<node id="2113059182" lat="50.0281" lon="15.2069342" version="2" timestamp="2020-02-15T20:11:47Z" changeset="0">
+		<tag k="name" v="Staré lázně"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2118897561" lat="49.748875" lon="18.6310981" version="3" timestamp="2015-12-29T00:39:09Z" changeset="0">
+		<tag k="name" v="Retro Club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2142835394" lat="49.3860544" lon="16.6322452" version="4" timestamp="2020-05-31T19:29:58Z" changeset="0">
+		<tag k="name" v="Klub Mlýn"/>
+		<tag k="email" v="info@klubmlyn.cz"/>
+		<tag k="phone" v="+420 516 414 344"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://klubmlyn.cz/"/>
+		<tag k="addr:place" v="Dolní Lhota"/>
+		<tag k="addr:postcode" v="67801"/>
+		<tag k="opening_hours" v="Fr 22:30-24:00; Sa 00:00-05:00,22:30-24:00; Su 00:00-05:00"/>
+		<tag k="ref:ruian:addr" v="15188311"/>
+		<tag k="addr:housenumber" v="123"/>
+		<tag k="addr:conscriptionnumber" v="123"/>
+	</node>
+	<node id="2166048749" lat="50.0038971" lon="14.4663907" version="5" timestamp="2020-12-12T12:52:48Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:housenumber" v="999"/>
+		<tag k="addr:postcode" v="14200"/>
+		<tag k="addr:street" v="V Lužích"/>
+		<tag k="addr:unit" v="1"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="designation" v="****"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="internet_access:fee" v="no"/>
+		<tag k="name" v="Lifestyle Karaoke"/>
+	</node>
+	<node id="2169009349" lat="50.0290152" lon="16.2226712" version="2" timestamp="2013-02-23T16:04:31Z" changeset="0">
+		<tag k="name" v="ROXET"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2180926242" lat="49.8443027" lon="18.2776997" version="1" timestamp="2013-03-02T07:40:33Z" changeset="0">
+		<tag k="name" v="Fabric"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2181215162" lat="49.2977979" lon="17.3943186" version="1" timestamp="2013-03-02T11:54:12Z" changeset="0">
+		<tag k="name" v="TA-BU music club"/>
+		<tag k="wifi" v="yes"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.tabuclub.cz"/>
+		<tag k="addr:street" v="Křižná"/>
+		<tag k="addr:postcode" v="76701"/>
+	</node>
+	<node id="2183930119" lat="49.0263535" lon="17.6410689" version="3" timestamp="2020-06-30T12:32:49Z" changeset="0">
+		<tag k="name" v="Tropic Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="opening_hours" v="Fr-Sa 21:00-05:00"/>
+	</node>
+	<node id="2194606149" lat="50.5119894" lon="13.2495299" version="1" timestamp="2013-03-10T17:42:11Z" changeset="0">
+		<tag k="name" v="Sauna Superclub"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2195924759" lat="49.7615522" lon="16.6621526" version="1" timestamp="2013-03-11T15:56:55Z" changeset="0">
+		<tag k="name" v="DukuDuku"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="yes"/>
+	</node>
+	<node id="2206586415" lat="50.3685986" lon="15.6320049" version="1" timestamp="2013-03-17T11:44:09Z" changeset="0">
+		<tag k="name" v="Nightclub Music"/>
+		<tag k="wifi" v="no"/>
+		<tag k="source" v="local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:street" v="Husova"/>
+		<tag k="addr:postcode" v="508 01"/>
+		<tag k="addr:housenumber" v="154"/>
+	</node>
+	<node id="2207147296" lat="49.5601479" lon="15.9392895" version="3" timestamp="2014-06-15T01:38:29Z" changeset="0">
+		<tag k="name" v="Numberlll"/>
+		<tag k="wifi" v="free"/>
+		<tag k="source" v="Local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2207157155" lat="49.5629768" lon="15.9403087" version="4" timestamp="2018-07-13T08:37:30Z" changeset="0">
+		<tag k="name" v="MAX MUSIC CLUB"/>
+		<tag k="wifi" v="free"/>
+		<tag k="email" v="info@clubmax.cz"/>
+		<tag k="phone" v="+420 605 781 239"/>
+		<tag k="source" v="Local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.clubmax.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/clubmaxzr/"/>
+	</node>
+	<node id="2242731864" lat="49.2143006" lon="16.5734337" version="2" timestamp="2019-03-29T14:26:29Z" changeset="0">
+		<tag k="name" v="Matahari night club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.matahariclub.cz/"/>
+		<tag k="addr:street" v="Blatného"/>
+		<tag k="addr:postcode" v="616 00"/>
+		<tag k="addr:housename" v="Matahari night club"/>
+		<tag k="addr:housenumber" v="3091/2"/>
+	</node>
+	<node id="2244997602" lat="49.7557389" lon="16.4660862" version="1" timestamp="2013-04-02T15:06:20Z" changeset="0">
+		<tag k="name" v="AMD"/>
+		<tag k="source" v="local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="designation" v="bar, bowling"/>
+	</node>
+	<node id="2257922973" lat="49.1973751" lon="16.6096091" version="1" timestamp="2013-04-08T10:52:15Z" changeset="0">
+		<tag k="name" v="Caribic"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2257950352" lat="49.1928909" lon="16.6061388" version="2" timestamp="2014-11-02T19:34:42Z" changeset="0">
+		<tag k="name" v="Bastila"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Dominikánská"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:housenumber" v="15"/>
+	</node>
+	<node id="2261574309" lat="49.1942184" lon="16.6084256" version="2" timestamp="2015-08-27T10:45:59Z" changeset="0">
+		<tag k="name" v="Abajo"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2268051017" lat="48.8568876" lon="17.113641" version="1" timestamp="2013-04-15T09:19:49Z" changeset="0">
+		<tag k="name" v="Music Club Bejkárna"/>
+		<tag k="source" v="Local knowledge"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.bejkarnahodonin.cz/d3-diskoteka-hodonin-music-klub-bejkarna.html"/>
+		<tag k="addr:street" v="P. Jilemnického"/>
+		<tag k="addr:postcode" v="69501"/>
+		<tag k="addr:housename" v="Music Club Bejkárna"/>
+		<tag k="addr:housenumber" v="3858/8"/>
+	</node>
+	<node id="2272067464" lat="49.2967389" lon="17.4013572" version="1" timestamp="2013-04-18T20:44:32Z" changeset="0">
+		<tag k="name" v="Cabras"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2286007879" lat="49.2056016" lon="16.6609697" version="3" timestamp="2017-01-09T12:23:15Z" changeset="0">
+		<tag k="name" v="Lenfer sound club"/>
+		<tag k="level" v="1"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Pálavské náměstí"/>
+		<tag k="addr:postcode" v="62800"/>
+		<tag k="addr:housenumber" v="5"/>
+	</node>
+	<node id="2321711968" lat="50.0770302" lon="14.4029175" version="5" timestamp="2017-06-20T06:10:45Z" changeset="0">
+		<tag k="name" v="Punto Azul"/>
+		<tag k="phone" v="+420 777 599 797"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://punto-praha.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/punto.praha/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Smíchov"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Kroftova"/>
+		<tag k="addr:suburb" v="Praha 5"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="15000"/>
+		<tag k="opening_hours" v="Mo-Th 00:00-02:00,17:00-24:00; Fr 00:00-04:00,17:00-24:00; Sa 00:00-04:00,18:00-24:00"/>
+		<tag k="ref:ruian:addr" v="22077766"/>
+		<tag k="addr:housenumber" v="329/1"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="addr:conscriptionnumber" v="329"/>
+	</node>
+	<node id="2322640828" lat="50.4063971" lon="14.0458749" version="3" timestamp="2020-06-26T12:23:41Z" changeset="0">
+		<tag k="name" v="Hrad"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Libochovice"/>
+		<tag k="ref:ruian" v="16716027"/>
+		<tag k="addr:street" v="Riegrova"/>
+		<tag k="source:addr" v="ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="41117"/>
+		<tag k="addr:housenumber" v="123"/>
+		<tag k="addr:conscriptionnumber" v="123"/>
+	</node>
+	<node id="2327744190" lat="50.5418373" lon="13.7771037" version="1" timestamp="2013-06-01T00:11:02Z" changeset="0">
+		<tag k="name" v="Pražanka"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2348333455" lat="49.884675" lon="15.057692" version="3" timestamp="2020-07-07T07:49:16Z" changeset="0">
+		<tag k="name" v="Shabo"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Uhlířské Janovice"/>
+		<tag k="ref:ruian" v="11550660"/>
+		<tag k="addr:street" v="28. října"/>
+		<tag k="source:addr" v="ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="28504"/>
+		<tag k="addr:housenumber" v="787"/>
+		<tag k="addr:conscriptionnumber" v="787"/>
+	</node>
+	<node id="2388237402" lat="50.8798453" lon="14.5944169" version="1" timestamp="2013-07-18T08:36:04Z" changeset="0">
+		<tag k="name" v="Eva"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2392510767" lat="49.7905081" lon="17.6397836" version="1" timestamp="2013-07-22T08:18:40Z" changeset="0">
+		<tag k="name" v="Modrá laguna"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2408661352" lat="50.08725" lon="14.4439535" version="3" timestamp="2013-08-08T10:02:21Z" changeset="0">
+		<tag k="name" v="Rock Club Kain"/>
+		<tag k="source" v="www"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.kain.cz/"/>
+	</node>
+	<node id="2411699501" lat="48.9026836" lon="13.7180647" version="3" timestamp="2019-07-05T19:32:04Z" changeset="0">
+		<tag k="name" v="Nigth Club Luna - Diskrete Zone"/>
+		<tag k="lgbtq" v="primary"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Strážný"/>
+		<tag k="addr:place" v="Strážný"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="38443"/>
+		<tag k="ref:ruian:addr" v="25295446"/>
+		<tag k="addr:housenumber" v="29"/>
+		<tag k="addr:conscriptionnumber" v="29"/>
+	</node>
+	<node id="2422188607" lat="49.1453998" lon="15.0082773" version="1" timestamp="2013-08-17T19:18:23Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2422190123" lat="49.1429399" lon="15.0349975" version="1" timestamp="2013-08-17T19:20:21Z" changeset="0">
+		<tag k="name" v="KC Jitka"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2423069549" lat="49.1601622" lon="15.2050821" version="1" timestamp="2013-08-18T16:18:20Z" changeset="0">
+		<tag k="name" v="KD Strmilov"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2459457882" lat="50.0881174" lon="14.4252451" version="4" timestamp="2020-01-31T20:04:47Z" changeset="0">
+		<tag k="name" v="Dejavu Music Club Prague"/>
+		<tag k="email" v="info@dejavuclub.cz"/>
+		<tag k="phone" v="+420222311743"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://www.dejavuclub.cz/"/>
+		<tag k="opening_hours" v="Tu-Th 20:00-03:00 open &#34;Club and bar&#34;; Fr-Sa 20:00-04:00 open &#34;Club and bar&#34; || Su-Mo 18:00-02:00 open &#34;bar&#34; || Tu-Th 18:00-03:00 open &#34;bar&#34; || Fr-Sa 18:00-04:00 open &#34;bar&#34;"/>
+	</node>
+	<node id="2498780671" lat="49.4021832" lon="15.6018768" version="1" timestamp="2013-10-16T19:39:55Z" changeset="0">
+		<tag k="name" v="Fine club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2498780693" lat="49.4017338" lon="15.6018966" version="1" timestamp="2013-10-16T19:39:55Z" changeset="0">
+		<tag k="name" v="Jupík"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2498780733" lat="49.4017151" lon="15.6013656" version="1" timestamp="2013-10-16T19:39:56Z" changeset="0">
+		<tag k="name" v="Xanadu"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2516199028" lat="49.5148265" lon="17.0589454" version="1" timestamp="2013-11-01T14:10:56Z" changeset="0">
+		<tag k="name" v="Tiky"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2564451854" lat="48.8465143" lon="17.1262624" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451856" lat="48.8465137" lon="17.1261686" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451864" lat="48.846538" lon="17.1261862" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451869" lat="48.8465837" lon="17.1262779" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451873" lat="48.8465997" lon="17.1262303" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451885" lat="48.8466711" lon="17.1263399" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451887" lat="48.846687" lon="17.1262924" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451893" lat="48.846723" lon="17.1254951" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451895" lat="48.8467242" lon="17.1264126" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451899" lat="48.8467486" lon="17.1263363" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451906" lat="48.8467728" lon="17.1263538" version="2" timestamp="2015-05-30T14:07:29Z" changeset="0"/>
+	<node id="2564451915" lat="48.8468036" lon="17.1255731" version="2" timestamp="2015-05-30T14:07:30Z" changeset="0"/>
+	<node id="2564451917" lat="48.846809" lon="17.1255566" version="2" timestamp="2015-05-30T14:07:30Z" changeset="0"/>
+	<node id="2564451929" lat="48.8468907" lon="17.1256355" version="2" timestamp="2015-05-30T14:07:30Z" changeset="0"/>
+	<node id="2564451931" lat="48.8468962" lon="17.1256185" version="2" timestamp="2015-05-30T14:07:30Z" changeset="0"/>
+	<node id="2564451941" lat="48.8469818" lon="17.1256803" version="2" timestamp="2015-05-30T14:07:30Z" changeset="0"/>
+	<node id="2573085922" lat="49.8402023" lon="18.2919191" version="1" timestamp="2013-12-09T14:46:26Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2616104991" lat="49.7461424" lon="13.3793951" version="3" timestamp="2020-07-01T14:37:15Z" changeset="0">
+		<tag k="name" v="Oldies disco Club"/>
+		<tag k="phone" v="+420 723 106 565"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.oldiesdiscoclub.cz/"/>
+		<tag k="addr:city" v="Plzeň"/>
+		<tag k="addr:street" v="Zbrojnická"/>
+		<tag k="dance:style" v="disco"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="30100"/>
+		<tag k="opening_hours" v="Fr 19:00-02:00, Sa 19:00-02:00"/>
+		<tag k="addr:housenumber" v="312/8"/>
+	</node>
+	<node id="2624594858" lat="49.7942183" lon="17.6268736" version="1" timestamp="2014-01-16T11:54:05Z" changeset="0">
+		<tag k="name" v="Klub Šatlava"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2633868240" lat="49.5933664" lon="18.0128685" version="1" timestamp="2014-01-23T15:56:25Z" changeset="0">
+		<tag k="name" v="Majnl Dance Hall"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2635054047" lat="50.0994322" lon="12.3176691" version="1" timestamp="2014-01-24T12:49:36Z" changeset="0"/>
+	<node id="2635054049" lat="50.0994679" lon="12.3176094" version="1" timestamp="2014-01-24T12:49:36Z" changeset="0"/>
+	<node id="2635054052" lat="50.0994788" lon="12.3176239" version="1" timestamp="2014-01-24T12:49:36Z" changeset="0"/>
+	<node id="2635054056" lat="50.099501" lon="12.317581" version="1" timestamp="2014-01-24T12:49:37Z" changeset="0"/>
+	<node id="2635054060" lat="50.0995095" lon="12.3177832" version="1" timestamp="2014-01-24T12:49:37Z" changeset="0"/>
+	<node id="2635054071" lat="50.0995677" lon="12.317676" version="3" timestamp="2020-10-03T23:26:18Z" changeset="0">
+		<tag k="addr:city" v="Cheb"/>
+		<tag k="addr:conscriptionnumber" v="14"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="14"/>
+		<tag k="addr:place" v="Klest"/>
+		<tag k="addr:postcode" v="35002"/>
+		<tag k="ref:ruian" v="20853432"/>
+		<tag k="source:addr" v="ruian"/>
+	</node>
+	<node id="2687098452" lat="49.1249072" lon="13.8835184" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098458" lat="49.1249419" lon="13.8836624" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098460" lat="49.1249453" lon="13.883417" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098461" lat="49.1249505" lon="13.8836585" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098464" lat="49.1249625" lon="13.8834879" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098465" lat="49.1249796" lon="13.883817" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098467" lat="49.1249881" lon="13.8838126" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098477" lat="49.1250071" lon="13.8839295" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098493" lat="49.1250579" lon="13.8833559" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098495" lat="49.1250618" lon="13.8838993" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098499" lat="49.1250627" lon="13.8839026" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098514" lat="49.1251114" lon="13.8835768" version="1" timestamp="2014-02-23T18:02:38Z" changeset="0"/>
+	<node id="2687098526" lat="49.125175" lon="13.88384" version="1" timestamp="2014-02-23T18:02:39Z" changeset="0"/>
+	<node id="2688327070" lat="49.2218355" lon="15.8876934" version="1" timestamp="2014-02-24T12:36:12Z" changeset="0"/>
+	<node id="2688327075" lat="49.2218527" lon="15.8875084" version="1" timestamp="2014-02-24T12:36:12Z" changeset="0"/>
+	<node id="2688327077" lat="49.2218607" lon="15.8874657" version="1" timestamp="2014-02-24T12:36:12Z" changeset="0"/>
+	<node id="2688327079" lat="49.2218691" lon="15.8875168" version="1" timestamp="2014-02-24T12:36:12Z" changeset="0"/>
+	<node id="2688327081" lat="49.2218776" lon="15.8874734" version="1" timestamp="2014-02-24T12:36:12Z" changeset="0"/>
+	<node id="2688327084" lat="49.2219415" lon="15.8875182" version="1" timestamp="2014-02-24T12:36:12Z" changeset="0"/>
+	<node id="2688899300" lat="49.2222267" lon="15.8843127" version="2" timestamp="2019-01-17T09:00:45Z" changeset="0"/>
+	<node id="2688899301" lat="49.2222314" lon="15.8843174" version="2" timestamp="2019-01-17T09:00:45Z" changeset="0"/>
+	<node id="2688899307" lat="49.2222639" lon="15.8842796" version="2" timestamp="2019-01-17T09:00:45Z" changeset="0"/>
+	<node id="2688899334" lat="49.2223443" lon="15.8842133" version="2" timestamp="2019-01-17T09:00:45Z" changeset="0"/>
+	<node id="2690685455" lat="49.2185886" lon="15.893648" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685456" lat="49.2185867" lon="15.8933421" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685457" lat="49.2185891" lon="15.8936262" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685458" lat="49.2186387" lon="15.893649" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685463" lat="49.2186361" lon="15.8938894" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685464" lat="49.2185838" lon="15.8936262" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685467" lat="49.2186962" lon="15.8933484" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685468" lat="49.2186975" lon="15.8931528" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685484" lat="49.2188082" lon="15.8938944" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2690685485" lat="49.2188145" lon="15.8931557" version="3" timestamp="2017-06-04T18:49:24Z" changeset="0"/>
+	<node id="2793102447" lat="50.0950138" lon="14.4362582" version="2" timestamp="2015-11-19T14:25:42Z" changeset="0"/>
+	<node id="2793102450" lat="50.0950348" lon="14.4365198" version="2" timestamp="2015-11-19T14:25:43Z" changeset="0"/>
+	<node id="2793102452" lat="50.0954097" lon="14.4361814" version="2" timestamp="2015-11-19T14:25:43Z" changeset="0"/>
+	<node id="2793102473" lat="50.0954306" lon="14.436443" version="2" timestamp="2015-11-19T14:25:43Z" changeset="0"/>
+	<node id="2821281212" lat="50.0844832" lon="14.4774708" version="2" timestamp="2018-10-10T08:20:04Z" changeset="0">
+		<tag k="name" v="Theremin"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://theremin.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Žižkov"/>
+		<tag k="addr:street" v="Jana Želivského"/>
+		<tag k="addr:postcode" v="13000"/>
+		<tag k="ref:ruian:addr" v="22704264"/>
+		<tag k="addr:housenumber" v="2702"/>
+		<tag k="addr:conscriptionnumber" v="2702"/>
+	</node>
+	<node id="2848838070" lat="49.484442" lon="16.6626166" version="2" timestamp="2017-08-02T19:15:01Z" changeset="0">
+		<tag k="name" v="Jízdárna"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.klubjizdarna.cz/"/>
+		<tag k="opening_hours" v="Fr-Sa 21:00-04:00"/>
+	</node>
+	<node id="2848848829" lat="49.4765164" lon="17.1170418" version="1" timestamp="2014-05-10T19:03:38Z" changeset="0">
+		<tag k="name" v="DCM"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="2903831579" lat="50.6515161" lon="13.3691819" version="1" timestamp="2014-06-07T07:47:19Z" changeset="0"/>
+	<node id="2903831580" lat="50.6515589" lon="13.3689516" version="1" timestamp="2014-06-07T07:47:19Z" changeset="0"/>
+	<node id="2903831581" lat="50.6516554" lon="13.3689962" version="1" timestamp="2014-06-07T07:47:19Z" changeset="0"/>
+	<node id="2903831582" lat="50.6516773" lon="13.3688787" version="1" timestamp="2014-06-07T07:47:19Z" changeset="0"/>
+	<node id="3045866297" lat="50.583275" lon="14.3272837" version="1" timestamp="2014-08-27T14:16:16Z" changeset="0">
+		<tag k="name" v="Laguna"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="3132699714" lat="49.9812362" lon="14.7412395" version="2" timestamp="2019-03-12T04:34:56Z" changeset="0">
+		<tag k="name" v="Music Bar Kravín"/>
+		<tag k="phone" v="+420 602 551 242"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="https://kravin-srbin.cz/"/>
+		<tag k="addr:city" v="Srbín"/>
+		<tag k="addr:street" v="Na Dolách"/>
+		<tag k="addr:postcode" v="25162"/>
+		<tag k="addr:housenumber" v="1"/>
+	</node>
+	<node id="3164309255" lat="50.0595969" lon="14.409767" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309256" lat="50.0596153" lon="14.4100539" version="2" timestamp="2016-06-17T08:37:31Z" changeset="0"/>
+	<node id="3164309257" lat="50.0596193" lon="14.4100534" version="2" timestamp="2016-06-17T08:37:31Z" changeset="0"/>
+	<node id="3164309259" lat="50.0596356" lon="14.4103083" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309260" lat="50.0596573" lon="14.409936" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309261" lat="50.059675" lon="14.4102009" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309264" lat="50.0596912" lon="14.4099935" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309265" lat="50.0596974" lon="14.4100823" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309266" lat="50.0597053" lon="14.4099215" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309267" lat="50.0597094" lon="14.409987" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309268" lat="50.0597146" lon="14.40973" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309271" lat="50.0597295" lon="14.4098858" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309273" lat="50.059734" lon="14.4099826" version="2" timestamp="2016-06-17T08:37:31Z" changeset="0"/>
+	<node id="3164309275" lat="50.0597393" lon="14.4100686" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309277" lat="50.0597465" lon="14.4101873" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3164309278" lat="50.0597533" lon="14.4102985" version="1" timestamp="2014-11-03T10:45:41Z" changeset="0"/>
+	<node id="3170814951" lat="48.7970512" lon="16.6323928" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170814952" lat="48.7970468" lon="16.632417" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170814953" lat="48.7970123" lon="16.6324518" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170814954" lat="48.7969876" lon="16.6324518" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170814955" lat="48.7969567" lon="16.6324237" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170814956" lat="48.7969461" lon="16.6323955" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170815765" lat="48.7970482" lon="16.6323359" version="3" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170815772" lat="48.796969" lon="16.6324398" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170815773" lat="48.7970353" lon="16.6324384" version="2" timestamp="2017-06-19T19:54:55Z" changeset="0"/>
+	<node id="3170815811" lat="48.8005796" lon="16.6301428" version="3" timestamp="2019-08-05T12:13:34Z" changeset="0"/>
+	<node id="3170815812" lat="48.8004141" lon="16.6304737" version="3" timestamp="2019-08-05T12:13:34Z" changeset="0"/>
+	<node id="3170815813" lat="48.8003016" lon="16.6303441" version="3" timestamp="2019-08-05T12:13:34Z" changeset="0"/>
+	<node id="3170815814" lat="48.8004671" lon="16.6300132" version="3" timestamp="2019-08-05T12:13:34Z" changeset="0"/>
+	<node id="3170815817" lat="48.8004619" lon="16.630378" version="3" timestamp="2019-08-05T12:13:34Z" changeset="0"/>
+	<node id="3170829612" lat="48.8003595" lon="16.6302285" version="2" timestamp="2019-08-05T12:13:34Z" changeset="0"/>
+	<node id="3221039436" lat="49.2235161" lon="16.59327" version="5" timestamp="2018-03-02T15:23:45Z" changeset="0">
+		<tag k="name" v="Nightclub Piranha"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="addr:street" v="Husitská"/>
+		<tag k="addr:postcode" v="61200"/>
+		<tag k="opening_hours" v="Mo-Su 21:00-06:00"/>
+		<tag k="addr:housenumber" v="11"/>
+	</node>
+	<node id="3253806185" lat="49.2080846" lon="16.6044152" version="1" timestamp="2014-12-26T15:57:40Z" changeset="0">
+		<tag k="name" v="Nightclub Paris"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Štefánikova"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:housenumber" v="4"/>
+	</node>
+	<node id="3253806186" lat="49.2080671" lon="16.6044716" version="3" timestamp="2017-10-10T07:23:43Z" changeset="0">
+		<tag k="name" v="Disco Chihuahua"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Štefánikova"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="contact:phone" v="+4520 733 284 330"/>
+		<tag k="opening_hours" v="Tu-Th 19:00-04:00, Fr-Sa 19:00-06:00"/>
+		<tag k="addr:housenumber" v="4"/>
+	</node>
+	<node id="3274424038" lat="50.081269" lon="14.4253203" version="5" timestamp="2021-02-08T06:43:56Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:conscriptionnumber" v="704"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="704/36"/>
+		<tag k="addr:place" v="Nové Město"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:street" v="Vodičkova"/>
+		<tag k="addr:streetnumber" v="36"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="tickets@musicbar.cz"/>
+		<tag k="facebook" v="https://www.facebook.com/lucernamusicbar"/>
+		<tag k="name" v="Lucerna Music Bar"/>
+		<tag k="phone" v="+420 224 217 108"/>
+		<tag k="ref:ruian:addr" v="21704970"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="url" v="http://www.lucerna.cz/"/>
+		<tag k="website" v="https://www.musicbar.cz/"/>
+		<tag k="wikidata" v="Q42422181"/>
+	</node>
+	<node id="3291151973" lat="49.608293" lon="15.577623" version="2" timestamp="2016-01-14T09:49:31Z" changeset="0">
+		<tag k="name" v="Klub Oko"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Havlíčkův Brod"/>
+		<tag k="addr:place" v="Havlíčkův Brod"/>
+		<tag k="addr:street" v="Smetanovo náměstí"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="58001"/>
+		<tag k="ref:ruian:addr" v="9588531"/>
+		<tag k="addr:housenumber" v="30"/>
+		<tag k="addr:conscriptionnumber" v="30"/>
+	</node>
+	<node id="3291239963" lat="49.6023749" lon="15.5771494" version="1" timestamp="2015-01-15T22:14:00Z" changeset="0">
+		<tag k="name" v="Roxor"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Havlíčkův Brod"/>
+		<tag k="addr:street" v="Masarykova"/>
+		<tag k="addr:postcode" v="58001"/>
+		<tag k="addr:housenumber" v="1283"/>
+	</node>
+	<node id="3357371150" lat="50.1021184" lon="14.4254177" version="2" timestamp="2017-05-25T14:04:22Z" changeset="0">
+		<tag k="name" v="Kontrast Bar"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.kontrast-bar.cz"/>
+		<tag k="addr:city" v="Praha 7"/>
+		<tag k="addr:street" v="Malířská"/>
+		<tag k="addr:postcode" v="17000"/>
+		<tag k="opening_hours" v="Mo-Su 17:00-03:00"/>
+		<tag k="addr:housenumber" v="14"/>
+	</node>
+	<node id="3389998002" lat="49.1947203" lon="16.6113496" version="3" timestamp="2017-12-25T10:07:43Z" changeset="0">
+		<tag k="name" v="WATT Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="no"/>
+		<tag k="website" v="http://www.wattclub.cz/"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Jánská"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:housenumber" v="14"/>
+	</node>
+	<node id="3401436568" lat="49.0561922" lon="13.782683" version="4" timestamp="2020-12-11T13:01:07Z" changeset="0">
+		<tag k="addr:city" v="Vimperk"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="477"/>
+		<tag k="addr:postcode" v="38501"/>
+		<tag k="addr:street" v="1. máje"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name" v="Disco club Calypso"/>
+		<tag k="opening_hours" v="Fr,Sa 20:00-04:00"/>
+		<tag k="website" v="http://www.clubcalypso.cz/"/>
+	</node>
+	<node id="3449468786" lat="49.2103987" lon="16.5856578" version="2" timestamp="2016-04-11T19:39:54Z" changeset="0">
+		<tag k="name" v="Mersey Music Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Minská"/>
+		<tag k="addr:postcode" v="61600"/>
+		<tag k="addr:housenumber" v="15"/>
+	</node>
+	<node id="3462485654" lat="49.1928673" lon="16.6092884" version="2" timestamp="2016-05-11T16:47:21Z" changeset="0">
+		<tag k="name" v="Esperanza Havana Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Zelný trh"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:housenumber" v="20"/>
+	</node>
+	<node id="3535207221" lat="50.0822912" lon="14.4182136" version="3" timestamp="2017-04-09T17:55:30Z" changeset="0">
+		<tag k="name" v="VagonMusic Club"/>
+		<tag k="phone" v="+420 733 737 301"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://mujweb.cz/triffid/"/>
+		<tag k="facebook" v="https://www.facebook.com/klubvagon/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Národní"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Th 00:00-05:00,19:00-24:00; Fr,Sa 00:00-06:00,19:00-24:00; Su 00:00-01:00,19:00-24:00"/>
+		<tag k="ref:ruian:addr" v="21726019"/>
+		<tag k="addr:housenumber" v="961/25"/>
+		<tag k="addr:streetnumber" v="25"/>
+		<tag k="addr:conscriptionnumber" v="961"/>
+	</node>
+	<node id="3558501834" lat="48.8465182" lon="17.1262652" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501836" lat="48.8465196" lon="17.126261" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501842" lat="48.8465779" lon="17.1259609" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501843" lat="48.8465792" lon="17.1259618" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501845" lat="48.8465796" lon="17.1262751" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501856" lat="48.8466596" lon="17.1256989" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501857" lat="48.8466611" lon="17.1256998" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501871" lat="48.8467202" lon="17.1264096" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501872" lat="48.8467217" lon="17.1264052" version="1" timestamp="2015-05-30T14:05:26Z" changeset="0"/>
+	<node id="3558501898" lat="48.8468357" lon="17.1261459" version="1" timestamp="2015-05-30T14:05:27Z" changeset="0"/>
+	<node id="3558501899" lat="48.8468369" lon="17.1261468" version="1" timestamp="2015-05-30T14:05:27Z" changeset="0"/>
+	<node id="3587738554" lat="49.4200989" lon="14.6505594" version="1" timestamp="2015-06-11T11:31:25Z" changeset="0">
+		<tag k="name" v="Milenium Tábor"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="3607696494" lat="49.4116773" lon="14.6557362" version="1" timestamp="2015-06-20T18:31:18Z" changeset="0">
+		<tag k="name" v="Kotnov"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="3620123113" lat="50.08583" lon="14.4149664" version="1" timestamp="2015-06-26T14:51:36Z" changeset="0">
+		<tag k="name" v="Zlatý strom"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:street" v="Karlova"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="addr:housenumber" v="6"/>
+	</node>
+	<node id="3667876809" lat="48.801242" lon="16.6296347" version="2" timestamp="2015-12-02T17:49:04Z" changeset="0">
+		<tag k="name" v="Cabaret"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://cabaret-mikulov.cz/"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-05:00,19:00-24:00"/>
+	</node>
+	<node id="3707143770" lat="49.7919884" lon="13.9786804" version="3" timestamp="2017-06-02T12:26:15Z" changeset="0">
+		<tag k="name" v="Disco Safari Jince"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="facebook" v="https://www.facebook.com/Disco-Safari-Jince-215663725204122/"/>
+		<tag k="addr:city" v="Jince"/>
+		<tag k="addr:place" v="Jince"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="26223"/>
+		<tag k="ref:ruian:addr" v="22877061"/>
+		<tag k="addr:housenumber" v="86"/>
+		<tag k="addr:conscriptionnumber" v="86"/>
+	</node>
+	<node id="3715523833" lat="49.2098583" lon="16.6036326" version="1" timestamp="2015-08-26T16:04:38Z" changeset="0">
+		<tag k="name" v="Klub Netopýr"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:street" v="Štefánikova"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="opening_hours" v="Mo-Su 20:00-03:30"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="addr:housenumber" v="24"/>
+	</node>
+	<node id="3722044221" lat="50.0723106" lon="14.4081866" version="2" timestamp="2019-05-07T08:09:12Z" changeset="0">
+		<tag k="name" v="Light Music Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="no"/>
+		<tag k="operator" v="Light Music Club"/>
+		<tag k="addr:city" v="Praha 5"/>
+		<tag k="addr:street" v="Svornosti"/>
+		<tag k="addr:postcode" v="15000"/>
+		<tag k="opening_hours" v="Mo-Sa 18:00-05:00"/>
+		<tag k="addr:housenumber" v="37"/>
+	</node>
+	<node id="3742910833" lat="50.4309843" lon="14.9216394" version="1" timestamp="2015-09-14T15:48:53Z" changeset="0"/>
+	<node id="3742910872" lat="50.4313348" lon="14.9219146" version="1" timestamp="2015-09-14T15:48:54Z" changeset="0"/>
+	<node id="3782258988" lat="50.0757122" lon="12.3734946" version="1" timestamp="2015-10-11T17:40:08Z" changeset="0">
+		<tag k="name" v="Amnesia Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Cheb"/>
+		<tag k="addr:street" v="Svobody"/>
+		<tag k="addr:postcode" v="35002"/>
+		<tag k="addr:housenumber" v="23"/>
+	</node>
+	<node id="3885718307" lat="49.7385295" lon="13.3696288" version="1" timestamp="2015-12-10T07:32:40Z" changeset="0"/>
+	<node id="3885718309" lat="49.7385321" lon="13.3696821" version="1" timestamp="2015-12-10T07:32:40Z" changeset="0"/>
+	<node id="3885718310" lat="49.7385358" lon="13.3696299" version="1" timestamp="2015-12-10T07:32:40Z" changeset="0"/>
+	<node id="3894973228" lat="50.2680419" lon="14.4922621" version="3" timestamp="2020-09-09T15:00:14Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="revival.swing@seznam.cz"/>
+		<tag k="name" v="Jazzová zahrada"/>
+		<tag k="phone" v="+420603441769;+420603477801"/>
+		<tag k="website" v="https://www.jazzova-zahrada.cz/"/>
+	</node>
+	<node id="3899636828" lat="48.9756117" lon="14.4734276" version="1" timestamp="2015-12-19T12:17:56Z" changeset="0">
+		<tag k="name" v="Dance bar PARADOX"/>
+		<tag k="phone" v="+420 602 443 170"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="www.bar-paradox.cz"/>
+		<tag k="addr:city" v="České Budějovice"/>
+		<tag k="addr:street" v="Krajinská"/>
+		<tag k="addr:postcode" v="37001"/>
+		<tag k="addr:housenumber" v="5"/>
+	</node>
+	<node id="3926243571" lat="49.5620972" lon="13.1973582" version="1" timestamp="2016-01-03T23:59:42Z" changeset="0">
+		<tag k="name" v="Rokáč"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="3932523601" lat="50.4062787" lon="14.0443565" version="1" timestamp="2016-01-07T18:03:41Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="3969709475" lat="49.261875" lon="13.8941768" version="2" timestamp="2016-11-09T13:45:02Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="3973326072" lat="50.3539597" lon="14.4728791" version="1" timestamp="2016-01-28T10:24:00Z" changeset="0">
+		<tag k="name" v="Disco Era"/>
+		<tag k="phone" v="+420 603 382 895"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.disco-era.cz/"/>
+		<tag k="opening_hours" v="Fr-Sa 19:00-05:00"/>
+	</node>
+	<node id="3993267005" lat="49.8363506" lon="18.2961434" version="2" timestamp="2019-03-31T15:49:29Z" changeset="0">
+		<tag k="name" v="Barrák Music Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="yes"/>
+		<tag k="website" v="https://www.barrak-club.cz/"/>
+	</node>
+	<node id="4054160291" lat="49.2967333" lon="17.4008974" version="1" timestamp="2016-03-11T08:23:01Z" changeset="0"/>
+	<node id="4171015386" lat="50.0986181" lon="14.4429154" version="2" timestamp="2021-02-08T06:42:13Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:housenumber" v="1"/>
+		<tag k="addr:postcode" v="17000"/>
+		<tag k="addr:street" v="Argentinská"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="name" v="AZ.ZA Music club"/>
+		<tag k="opening_hours" v="We-Th 21:00-01:00; Fr-Sa 21:00-05:00"/>
+		<tag k="phone" v="+420 728 722 185"/>
+		<tag k="wikidata" v="Q22074725"/>
+	</node>
+	<node id="4171120558" lat="50.0859437" lon="14.439484" version="3" timestamp="2021-01-14T22:04:46Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:housenumber" v="3"/>
+		<tag k="addr:postcode" v="13000"/>
+		<tag k="addr:street" v="Seifertova"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="lgbtq" v="primary"/>
+		<tag k="name" v="UP &#38; DOWN"/>
+		<tag k="opening_hours" v="Mo-Th 14:00-03:00; Fr-Sa 11:00-06:00; Su 11:00-03:00"/>
+		<tag k="phone" v="+420 777 106 308"/>
+		<tag k="website" v="http://www.updownbarprague.cz/"/>
+	</node>
+	<node id="4263188196" lat="49.8708828" lon="18.4278472" version="1" timestamp="2016-06-24T18:49:29Z" changeset="0">
+		<tag k="name" v="Kavárna"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4280807012" lat="50.0746312" lon="14.4147552" version="1" timestamp="2016-07-03T17:56:58Z" changeset="0">
+		<tag k="name" v="Heaven-gay cinema bar"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.heaven.cz"/>
+		<tag k="addr:street" v="Gorazdova"/>
+		<tag k="addr:postcode" v="12800"/>
+		<tag k="addr:housenumber" v="11"/>
+	</node>
+	<node id="4293692585" lat="48.8529709" lon="16.0526217" version="2" timestamp="2018-02-17T14:13:12Z" changeset="0"/>
+	<node id="4293692586" lat="48.8530046" lon="16.0525847" version="2" timestamp="2018-02-17T14:13:12Z" changeset="0"/>
+	<node id="4305967882" lat="49.7886509" lon="18.2252883" version="1" timestamp="2016-07-16T13:37:15Z" changeset="0">
+		<tag k="name" v="Disco Alexandria"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="opening_hours" v="Fr 20:00-24:00; Sa 00:00-05:30,20:00-24:00; Su 00:00-05:30"/>
+	</node>
+	<node id="4312616918" lat="50.4658764" lon="14.9439659" version="1" timestamp="2016-07-20T11:43:38Z" changeset="0">
+		<tag k="name" v="Night Club Na Zámečku"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4319319089" lat="50.4340947" lon="15.358754" version="1" timestamp="2016-07-25T10:42:31Z" changeset="0">
+		<tag k="name" v="Tančák club"/>
+		<tag k="email" v="tancak@tancak.cz"/>
+		<tag k="phone" v="+420724312137"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.tancak.cz"/>
+		<tag k="addr:street" v="Denisova"/>
+		<tag k="addr:postcode" v="50601"/>
+		<tag k="opening_hours" v="Fr-Sa 21:00-04:00"/>
+		<tag k="addr:housenumber" v="504"/>
+	</node>
+	<node id="4329110301" lat="49.7577323" lon="16.6625571" version="1" timestamp="2016-07-31T08:49:46Z" changeset="0"/>
+	<node id="4347123090" lat="49.5631999" lon="15.9390567" version="1" timestamp="2016-08-12T10:40:14Z" changeset="0">
+		<tag k="name" v="RICCO bar"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4355120928" lat="49.5915143" lon="17.2650017" version="1" timestamp="2016-08-18T07:44:00Z" changeset="0">
+		<tag k="name" v="U-Klub"/>
+		<tag k="source" v="Bing"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4359106991" lat="48.8614085" lon="16.0449599" version="2" timestamp="2020-10-26T10:58:58Z" changeset="0">
+		<tag k="addr:city" v="Znojmo"/>
+		<tag k="addr:housenumber" v="1599/19"/>
+		<tag k="addr:postcode" v="66902"/>
+		<tag k="addr:street" v="Pražská"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name" v="Gogoklub"/>
+		<tag k="name:cs" v="Gogoklub"/>
+		<tag k="name:de" v="Gogoklub"/>
+		<tag k="website" v="http://www.gogoklub.com"/>
+	</node>
+	<node id="4451906434" lat="50.0850893" lon="14.4167381" version="2" timestamp="2019-10-04T09:51:11Z" changeset="0">
+		<tag k="name" v="Blues sklep"/>
+		<tag k="phone" v="+420 608 848 074"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.bluessklep.cz/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Staré Město"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="addr:street" v="Liliová"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Su 00:00-02:30,19:00-24:00"/>
+		<tag k="ref:ruian:addr" v="21717354"/>
+		<tag k="addr:housenumber" v="247/10"/>
+		<tag k="addr:streetnumber" v="10"/>
+		<tag k="addr:conscriptionnumber" v="247"/>
+	</node>
+	<node id="4451906441" lat="50.0823577" lon="14.4488616" version="2" timestamp="2017-04-09T17:55:56Z" changeset="0">
+		<tag k="name" v="Palác Akropolis"/>
+		<tag k="phone" v="+420 296 330 913"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.palacakropolis.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/Palac.Akropolis.klub/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Žižkov"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Kubelíkova"/>
+		<tag k="addr:suburb" v="Praha 3"/>
+		<tag k="description" v="Pokladna v Kavárně Paláce Akropolis"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="13000"/>
+		<tag k="ref:ruian:addr" v="21783519"/>
+		<tag k="addr:housenumber" v="1548/27"/>
+		<tag k="addr:streetnumber" v="27"/>
+		<tag k="addr:conscriptionnumber" v="1548"/>
+	</node>
+	<node id="4496885689" lat="50.7659653" lon="15.0517704" version="1" timestamp="2016-11-12T14:56:37Z" changeset="0">
+		<tag k="name" v="Maddox"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="Maddox"/>
+		<tag k="name:en" v="Maddox"/>
+	</node>
+	<node id="4513926292" lat="50.4960384" lon="13.6319603" version="1" timestamp="2016-11-21T16:56:57Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4580240177" lat="49.9576551" lon="12.7003697" version="2" timestamp="2019-11-15T13:25:32Z" changeset="0">
+		<tag k="name" v="D-club"/>
+		<tag k="level" v="-1"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="yes"/>
+		<tag k="outdoor_seating" v="no"/>
+	</node>
+	<node id="4621961397" lat="49.3545621" lon="12.8516792" version="1" timestamp="2017-01-21T14:00:37Z" changeset="0">
+		<tag k="name" v="Club"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="Club"/>
+	</node>
+	<node id="4704469264" lat="50.1586817" lon="16.2763227" version="2" timestamp="2017-02-25T14:58:55Z" changeset="0">
+		<tag k="name" v="Typos cz"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4705276922" lat="50.1717795" lon="16.2784219" version="2" timestamp="2017-02-25T14:57:51Z" changeset="0">
+		<tag k="name" v="Dance Pivovar"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="separated"/>
+	</node>
+	<node id="4742235382" lat="49.2100919" lon="16.6033277" version="2" timestamp="2018-09-14T12:48:37Z" changeset="0">
+		<tag k="name" v="Balkan Bar"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4799904802" lat="50.0853068" lon="14.4140363" version="1" timestamp="2017-04-17T22:39:12Z" changeset="0">
+		<tag k="name" v="Night Gym"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4809680221" lat="49.2205214" lon="16.6532773" version="1" timestamp="2017-04-22T12:36:09Z" changeset="0">
+		<tag k="name" v="Bella Vista"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:street" v="Jarní"/>
+		<tag k="addr:housenumber" v="27/54"/>
+	</node>
+	<node id="4850534028" lat="49.1925167" lon="16.6061551" version="2" timestamp="2020-10-09T11:15:28Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name" v="Vibe Club"/>
+		<tag k="wheelchair" v="no"/>
+	</node>
+	<node id="4853548738" lat="50.0686757" lon="14.4938526" version="2" timestamp="2017-10-12T07:21:15Z" changeset="0">
+		<tag k="name" v="Repro bar &#38; music club"/>
+		<tag k="wifi" v="yes"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="yes"/>
+		<tag k="website" v="http://www.reproclub.cz/"/>
+		<tag k="opening_hours" v="Mo-Th 20:00-04:00, Fr-Sa 20:00-06:00"/>
+	</node>
+	<node id="4907150022" lat="49.7573892" lon="16.4672074" version="1" timestamp="2017-06-10T07:45:45Z" changeset="0">
+		<tag k="name" v="Winx"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="Winx"/>
+	</node>
+	<node id="4907150821" lat="49.7575949" lon="16.4695567" version="1" timestamp="2017-06-10T07:45:44Z" changeset="0">
+		<tag k="name" v="Moo"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="Moo"/>
+	</node>
+	<node id="4924977060" lat="48.796919" lon="16.6320309" version="1" timestamp="2017-06-19T19:54:42Z" changeset="0"/>
+	<node id="4924977061" lat="48.7970274" lon="16.6320133" version="1" timestamp="2017-06-19T19:54:42Z" changeset="0"/>
+	<node id="4924977062" lat="48.7970476" lon="16.6323256" version="1" timestamp="2017-06-19T19:54:42Z" changeset="0"/>
+	<node id="4924977063" lat="48.7969444" lon="16.6323721" version="1" timestamp="2017-06-19T19:54:42Z" changeset="0"/>
+	<node id="4966769349" lat="50.6908076" lon="14.5483681" version="1" timestamp="2017-07-12T20:04:41Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4991156172" lat="50.5677084" lon="14.657649" version="1" timestamp="2017-07-24T20:38:04Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="4997465840" lat="50.0771133" lon="14.4429056" version="1" timestamp="2017-07-27T14:50:09Z" changeset="0">
+		<tag k="name" v="Factory Club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="5019922223" lat="49.1920178" lon="16.6039821" version="2" timestamp="2019-01-26T21:38:23Z" changeset="0">
+		<tag k="name" v="Lemon Music Club"/>
+		<tag k="phone" v="+420777951619"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:street" v="Pekařská"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="opening_hours" v="Fr-Sa 20:00-05:00"/>
+		<tag k="addr:housenumber" v="7"/>
+	</node>
+	<node id="5031035123" lat="50.1375144" lon="15.9114611" version="2" timestamp="2019-01-27T10:15:53Z" changeset="0">
+		<tag k="name" v="Noční bar Dallas"/>
+		<tag k="phone" v="608507705"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="Noční bar Dallas"/>
+		<tag k="name:en" v="Night bar Dallas"/>
+		<tag k="website" v="http://www.penziondallas.cz"/>
+		<tag k="addr:place" v="Býšť"/>
+		<tag k="addr:postcode" v="53322"/>
+		<tag k="opening_hours" v="Mo-Su 21:00-05:00"/>
+		<tag k="addr:housenumber" v="183"/>
+	</node>
+	<node id="5043628023" lat="49.6034892" lon="13.8681013" version="1" timestamp="2017-08-18T20:18:24Z" changeset="0">
+		<tag k="name" v="Hudební klub Altán"/>
+		<tag k="email" v="info@klub-altan.cz"/>
+		<tag k="phone" v="+420 318 666 121"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.klub-altan.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/Music-club-ALTÁN-1653666671571459/"/>
+		<tag k="addr:city" v="Rožmitál pod Třemšínem"/>
+		<tag k="addr:street" v="Komenského"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="26242"/>
+		<tag k="opening_hours" v="Fr,Sa 00:00-06:00,21:00-24:00"/>
+		<tag k="addr:housenumber" v="299"/>
+	</node>
+	<node id="5043723777" lat="49.7407643" lon="13.5989438" version="1" timestamp="2017-08-18T21:33:11Z" changeset="0">
+		<tag k="name" v="Music Club No. 1"/>
+		<tag k="phone" v="+420 775 934 585"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://no-1.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/Music-Club-No-1-162186493804476/"/>
+		<tag k="addr:city" v="Rokycany"/>
+		<tag k="addr:place" v="Nové Město"/>
+		<tag k="addr:street" v="Jiráskova"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="33701"/>
+		<tag k="opening_hours" v="Fr,Sa 00:00-05:00,21:00-24:00"/>
+		<tag k="ref:ruian:addr" v="20771703"/>
+		<tag k="addr:housenumber" v="1"/>
+		<tag k="addr:conscriptionnumber" v="1"/>
+	</node>
+	<node id="5107062900" lat="49.0673693" lon="17.461874" version="5" timestamp="2020-11-03T13:36:04Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+		<tag k="internet_access:fee" v="no"/>
+		<tag k="name" v="Club No.6"/>
+		<tag k="opening_hours" v="We 21:00-03:00, Fr,Sa 21:00-06:00"/>
+	</node>
+	<node id="5153705531" lat="48.8353878" lon="16.0690092" version="1" timestamp="2017-10-07T15:01:39Z" changeset="0">
+		<tag k="name" v="show girls"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:cs" v="show girls"/>
+		<tag k="name:en" v="show girls"/>
+	</node>
+	<node id="5243468784" lat="50.0925935" lon="14.4897903" version="1" timestamp="2017-11-22T22:16:56Z" changeset="0">
+		<tag k="name" v="Nová Chmelnice"/>
+		<tag k="phone" v="+420602172830"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.novachmelnice.cz/"/>
+	</node>
+	<node id="5327756608" lat="50.1298002" lon="14.4514912" version="1" timestamp="2018-01-08T17:32:58Z" changeset="0">
+		<tag k="name" v="Fleapit"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="5328258088" lat="49.4561688" lon="17.1117661" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258089" lat="49.4561686" lon="17.111759" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258090" lat="49.4561744" lon="17.11174" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258091" lat="49.4561706" lon="17.1117733" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258092" lat="49.4561732" lon="17.1117788" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258094" lat="49.4561787" lon="17.1117363" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258095" lat="49.4562014" lon="17.1117344" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258096" lat="49.4561699" lon="17.1117501" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258097" lat="49.4561752" lon="17.1117814" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5328258099" lat="49.4561716" lon="17.1117447" version="1" timestamp="2018-01-09T00:39:42Z" changeset="0"/>
+	<node id="5366164721" lat="50.0772903" lon="14.431439" version="1" timestamp="2018-01-27T15:52:39Z" changeset="0">
+		<tag k="name" v="Yes club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="5552506523" lat="50.078995" lon="14.4535635" version="1" timestamp="2018-04-14T13:37:33Z" changeset="0">
+		<tag k="name" v="Fermé"/>
+		<tag k="phone" v="777 755 241"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:en" v="Ferme"/>
+		<tag k="website" v="http://www.ferme.cz"/>
+		<tag k="addr:street" v="Lucemburská"/>
+		<tag k="addr:postcode" v="13000"/>
+		<tag k="addr:housenumber" v="1492/11"/>
+	</node>
+	<node id="5566466940" lat="50.0754938" lon="14.4625595" version="1" timestamp="2018-04-20T11:11:34Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:en" v="AAA Exclusive Club"/>
+	</node>
+	<node id="5569540021" lat="50.0897737" lon="14.4278045" version="1" timestamp="2018-04-21T16:56:43Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:en" v="Epic"/>
+	</node>
+	<node id="5675761846" lat="49.2087559" lon="16.7913586" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761847" lat="49.2086273" lon="16.791422" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761848" lat="49.2088825" lon="16.7915087" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761849" lat="49.2088548" lon="16.7913452" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761850" lat="49.2087827" lon="16.7913797" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761851" lat="49.2087796" lon="16.7913618" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761852" lat="49.208777" lon="16.7913628" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761853" lat="49.208751" lon="16.7912729" version="1" timestamp="2018-06-08T15:19:30Z" changeset="0"/>
+	<node id="5675761854" lat="49.2087394" lon="16.7912783" version="1" timestamp="2018-06-08T15:19:31Z" changeset="0"/>
+	<node id="5678915774" lat="50.0372787" lon="14.515116" version="1" timestamp="2018-06-10T05:28:14Z" changeset="0">
+		<tag k="name" v="Music Club Jižák"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="5793613608" lat="49.9656627" lon="16.97371" version="1" timestamp="2018-07-29T10:12:38Z" changeset="0">
+		<tag k="name" v="Apsara"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="5969573579" lat="49.4578074" lon="17.4498046" version="3" timestamp="2019-01-28T20:39:28Z" changeset="0">
+		<tag k="name" v="Disco Porto"/>
+		<tag k="email" v="discoportocz@gmail.com"/>
+		<tag k="phone" v="+420 604 308 624"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.discoporto.cz/"/>
+		<tag k="addr:city" v="Přerov"/>
+		<tag k="addr:street" v="Za Mlýnem"/>
+		<tag k="addr:postcode" v="75002"/>
+		<tag k="opening_hours" v="Fr-Sa 21:00-06:00"/>
+		<tag k="addr:housenumber" v="602/2"/>
+	</node>
+	<node id="5983966300" lat="49.0672682" lon="17.4690192" version="1" timestamp="2018-10-14T20:06:51Z" changeset="0">
+		<tag k="name" v="Dance bar Hvězda"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="6151073059" lat="49.3181768" lon="18.1470713" version="1" timestamp="2018-12-21T07:59:27Z" changeset="0">
+		<tag k="name" v="Moštárna club"/>
+		<tag k="email" v="club.mostarna@seznam.cz"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Halenkov"/>
+		<tag k="addr:postcode" v="75603"/>
+		<tag k="addr:housenumber" v="24"/>
+	</node>
+	<node id="6189960858" lat="49.6744553" lon="12.5585426" version="1" timestamp="2019-01-07T14:11:03Z" changeset="0"/>
+	<node id="6189960859" lat="49.6744715" lon="12.5585607" version="1" timestamp="2019-01-07T14:11:03Z" changeset="0"/>
+	<node id="6189960860" lat="49.6744585" lon="12.5585885" version="1" timestamp="2019-01-07T14:11:03Z" changeset="0"/>
+	<node id="6189960861" lat="49.6744703" lon="12.5586017" version="1" timestamp="2019-01-07T14:11:03Z" changeset="0"/>
+	<node id="6189960862" lat="49.6746088" lon="12.5585496" version="1" timestamp="2019-01-07T14:11:03Z" changeset="0"/>
+	<node id="6189960863" lat="49.6745565" lon="12.5584936" version="1" timestamp="2019-01-07T14:11:03Z" changeset="0"/>
+	<node id="6486378785" lat="50.0877012" lon="14.4535136" version="1" timestamp="2019-05-20T18:28:09Z" changeset="0">
+		<tag k="name" v="Storm Club"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="6499578011" lat="50.0638256" lon="14.4570935" version="1" timestamp="2019-05-25T12:45:11Z" changeset="0">
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name:en" v="Ankali"/>
+		<tag k="addr:street" v="Lopuchová"/>
+		<tag k="addr:housenumber" v="58"/>
+	</node>
+	<node id="6519019887" lat="50.0864175" lon="12.3828016" version="1" timestamp="2019-06-03T20:43:17Z" changeset="0">
+		<tag k="name" v="Klub Alternativa"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="6595122985" lat="49.745392" lon="13.3772759" version="1" timestamp="2019-07-07T19:39:10Z" changeset="0">
+		<tag k="name" v="Anděl Music Bar"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="nightclub"/>
+	</node>
+	<node id="6680293446" lat="50.1546759" lon="12.2800543" version="1" timestamp="2019-08-03T17:27:45Z" changeset="0">
+		<tag k="name" v="Mabuhay"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="addr:city" v="Hazlov"/>
+		<tag k="addr:postcode" v="35132"/>
+		<tag k="opening_hours" v="Non Stop"/>
+		<tag k="addr:housenumber" v="494"/>
+	</node>
+	<node id="6760659872" lat="49.7477851" lon="13.3688521" version="1" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="6760659888" lat="49.7476737" lon="13.3690548" version="1" timestamp="2019-08-30T22:15:54Z" changeset="0"/>
+	<node id="6762226274" lat="50.0655415" lon="14.4074768" version="1" timestamp="2019-08-31T18:51:28Z" changeset="0">
+		<tag k="name" v="Underdogs"/>
+		<tag k="email" v="info@underdogsprague.org"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://underdogsprague.org/"/>
+		<tag k="addr:city" v="Praha 5"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="addr:street" v="Nádražní"/>
+		<tag k="addr:postcode" v="15000"/>
+		<tag k="addr:housenumber" v="349/3"/>
+	</node>
+	<node id="6801723552" lat="49.1011847" lon="17.7590373" version="1" timestamp="2019-09-17T09:57:43Z" changeset="0">
+		<tag k="ele" v="1"/>
+		<tag k="name" v="Elektra"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="outside"/>
+		<tag k="payment:cash" v="yes"/>
+	</node>
+	<node id="7079569022" lat="50.5794734" lon="15.530483" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569023" lat="50.5794852" lon="15.5304303" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569024" lat="50.5797567" lon="15.5305605" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569025" lat="50.5797883" lon="15.5303933" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569026" lat="50.5797279" lon="15.5304159" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569027" lat="50.5796332" lon="15.5303765" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569028" lat="50.5796418" lon="15.5303259" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569029" lat="50.5796174" lon="15.5303158" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569030" lat="50.5796201" lon="15.5302995" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569031" lat="50.5795993" lon="15.5302908" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569032" lat="50.5795965" lon="15.5303072" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569033" lat="50.5795852" lon="15.5303025" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7079569034" lat="50.5795884" lon="15.5302834" version="1" timestamp="2019-12-23T10:49:26Z" changeset="0"/>
+	<node id="7184114921" lat="50.5146441" lon="16.0206164" version="1" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="7184114922" lat="50.5146371" lon="16.0205932" version="1" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="7184114923" lat="50.5145484" lon="16.0206691" version="1" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="7184114924" lat="50.514556" lon="16.0206927" version="1" timestamp="2020-02-04T12:23:30Z" changeset="0"/>
+	<node id="7804667531" lat="49.8224983" lon="18.2781158" version="1" timestamp="2020-08-11T18:47:57Z" changeset="0">
+		<tag k="name" v="Heligonka"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="outside"/>
+	</node>
+	<node id="8039404685" lat="50.6957427" lon="15.7378193" version="1" timestamp="2020-10-23T10:13:40Z" changeset="0">
+		<tag k="addr:housenumber" v="139"/>
+		<tag k="addr:postcode" v="54221"/>
+		<tag k="addr:street" v="Pec pod Sněžkou"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="email" v="info@klondikeklub.cz"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="name" v="KlonDike music club"/>
+		<tag k="phone" v="728502738"/>
+		<tag k="website" v="https://klondikeklub.cz/html/index.html"/>
+	</node>
+	<node id="8298717017" lat="49.1909088" lon="16.6155244" version="1" timestamp="2021-01-07T03:12:18Z" changeset="0">
+		<tag k="addr:housenumber" v="7"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:street" v="Mlýnská"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="name" v="alibaba"/>
+	</node>
+	<way id="30707908" version="5" timestamp="2017-06-11T11:27:35Z" changeset="0">
+		<nd ref="339605678"/>
+		<nd ref="339605679"/>
+		<nd ref="4054160291"/>
+		<nd ref="339605708"/>
+		<nd ref="339605677"/>
+		<nd ref="339605678"/>
+		<tag k="name" v="Diskotéka Cabras"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="residential"/>
+		<tag k="building:flats" v="92"/>
+		<tag k="building:levels" v="10"/>
+		<tag k="ref:ruian:building" v="10321047"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="31856117" version="3" timestamp="2017-10-28T23:34:58Z" changeset="0">
+		<nd ref="356645209"/>
+		<nd ref="2688327081"/>
+		<nd ref="2688327077"/>
+		<nd ref="2688327075"/>
+		<nd ref="2688327079"/>
+		<nd ref="356645210"/>
+		<nd ref="2688327070"/>
+		<nd ref="356645211"/>
+		<nd ref="2688327084"/>
+		<nd ref="356645212"/>
+		<nd ref="356645209"/>
+		<tag k="source" v="cuzk:km"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+		<tag k="wheelchair" v="yes"/>
+	</way>
+	<way id="31858185" version="6" timestamp="2017-11-03T09:25:22Z" changeset="0">
+		<nd ref="2690685468"/>
+		<nd ref="2690685485"/>
+		<nd ref="2690685484"/>
+		<nd ref="2690685463"/>
+		<nd ref="2690685458"/>
+		<nd ref="2690685455"/>
+		<nd ref="2690685457"/>
+		<nd ref="2690685464"/>
+		<nd ref="2690685456"/>
+		<nd ref="2690685467"/>
+		<nd ref="2690685468"/>
+		<tag k="name" v="DON"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="wheelchair" v="limited"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="18626777"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="31902106" version="5" timestamp="2019-01-17T09:00:47Z" changeset="0">
+		<nd ref="357339937"/>
+		<nd ref="357339931"/>
+		<nd ref="357340111"/>
+		<nd ref="357340108"/>
+		<nd ref="357340104"/>
+		<nd ref="357340047"/>
+		<nd ref="357340042"/>
+		<nd ref="2688899300"/>
+		<nd ref="2688899301"/>
+		<nd ref="357339969"/>
+		<nd ref="2688899307"/>
+		<nd ref="357339962"/>
+		<nd ref="2688899334"/>
+		<nd ref="357339937"/>
+		<tag k="name" v="Roxy Club"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="ref:ruian:building" v="18628117"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="33562443" version="6" timestamp="2018-11-04T20:56:40Z" changeset="0">
+		<nd ref="5675761854"/>
+		<nd ref="5675761853"/>
+		<nd ref="5675761852"/>
+		<nd ref="5675761851"/>
+		<nd ref="5675761850"/>
+		<nd ref="5675761849"/>
+		<nd ref="5675761848"/>
+		<nd ref="383242218"/>
+		<nd ref="383242221"/>
+		<nd ref="5675761847"/>
+		<nd ref="5675761846"/>
+		<nd ref="5675761854"/>
+		<tag k="name" v="Zámeček"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:place" v="Pozořice"/>
+		<tag k="addr:street" v="V Zámku"/>
+		<tag k="addr:postcode" v="66407"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="ref:ruian:addr" v="24645869"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="addr:housenumber" v="2"/>
+		<tag k="ref:ruian:building" v="24212814"/>
+		<tag k="building:ruian:type" v="4"/>
+		<tag k="addr:conscriptionnumber" v="2"/>
+	</way>
+	<way id="47585759" version="3" timestamp="2019-08-30T22:15:54Z" changeset="0">
+		<nd ref="605478669"/>
+		<nd ref="605478684"/>
+		<nd ref="605478835"/>
+		<nd ref="605478831"/>
+		<nd ref="605478806"/>
+		<nd ref="6760659888"/>
+		<nd ref="605478648"/>
+		<nd ref="6760659872"/>
+		<nd ref="605478669"/>
+		<tag k="name" v="Buena Vista Club"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+		<tag k="building:flats" v="13"/>
+		<tag k="ref:ruian:building" v="24108235"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="49356811" version="5" timestamp="2016-06-17T08:37:18Z" changeset="0">
+		<nd ref="3164309257"/>
+		<nd ref="3164309256"/>
+		<nd ref="3164309255"/>
+		<nd ref="3164309268"/>
+		<nd ref="3164309271"/>
+		<nd ref="3164309273"/>
+		<nd ref="3164309275"/>
+		<nd ref="3164309265"/>
+		<nd ref="3164309264"/>
+		<nd ref="3164309267"/>
+		<nd ref="3164309266"/>
+		<nd ref="3164309260"/>
+		<nd ref="3164309261"/>
+		<nd ref="3164309277"/>
+		<nd ref="3164309278"/>
+		<nd ref="3164309259"/>
+		<nd ref="3164309257"/>
+		<tag k="name" v="Privat Attentione"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="residential"/>
+		<tag k="addr:street" v="Nádražní"/>
+		<tag k="source:addr" v="uir_adr"/>
+		<tag k="addr:postcode" v="15000"/>
+		<tag k="building:flats" v="4"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="addr:housenumber" v="285/18"/>
+		<tag k="addr:streetnumber" v="18"/>
+		<tag k="ref:ruian:building" v="21913641"/>
+		<tag k="uir_adr:ADRESA_KOD" v="22077324"/>
+		<tag k="building:ruian:type" v="6"/>
+		<tag k="addr:conscriptionnumber" v="285"/>
+	</way>
+	<way id="50404887" version="2" timestamp="2019-12-23T10:49:26Z" changeset="0">
+		<nd ref="640389396"/>
+		<nd ref="640389397"/>
+		<nd ref="7079569034"/>
+		<nd ref="7079569033"/>
+		<nd ref="7079569032"/>
+		<nd ref="7079569031"/>
+		<nd ref="7079569030"/>
+		<nd ref="7079569029"/>
+		<nd ref="7079569028"/>
+		<nd ref="7079569027"/>
+		<nd ref="7079569026"/>
+		<nd ref="640389402"/>
+		<nd ref="7079569025"/>
+		<nd ref="7079569024"/>
+		<nd ref="7079569023"/>
+		<nd ref="7079569022"/>
+		<nd ref="640389395"/>
+		<nd ref="640389399"/>
+		<nd ref="640389392"/>
+		<nd ref="640389393"/>
+		<nd ref="640389396"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="15021343"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="51207632" version="3" timestamp="2015-12-10T07:32:49Z" changeset="0">
+		<nd ref="653356505"/>
+		<nd ref="653356531"/>
+		<nd ref="3885718309"/>
+		<nd ref="3885718310"/>
+		<nd ref="3885718307"/>
+		<nd ref="653356451"/>
+		<nd ref="653356452"/>
+		<nd ref="653356449"/>
+		<nd ref="653356450"/>
+		<nd ref="653356457"/>
+		<nd ref="653356453"/>
+		<nd ref="653356505"/>
+		<tag k="name" v="Divadlo pod Lampou"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="residential"/>
+		<tag k="ref:ruian:building" v="24113301"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="72881171" version="8" timestamp="2016-07-31T08:50:24Z" changeset="0">
+		<nd ref="864975368"/>
+		<nd ref="864975900"/>
+		<nd ref="864976519"/>
+		<nd ref="4329110301"/>
+		<nd ref="864975116"/>
+		<nd ref="864974918"/>
+		<nd ref="864975368"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="addr:city" v="Moravská Třebová"/>
+		<tag k="addr:place" v="Město"/>
+		<tag k="addr:street" v="Cihlářova"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="57101"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="ref:ruian:addr" v="15970710"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="addr:housenumber" v="191/2a"/>
+		<tag k="addr:streetnumber" v="2a"/>
+		<tag k="ref:ruian:building" v="15856135"/>
+		<tag k="building:ruian:type" v="5"/>
+		<tag k="addr:conscriptionnumber" v="191"/>
+	</way>
+	<way id="74317098" version="7" timestamp="2018-11-06T16:49:08Z" changeset="0">
+		<nd ref="878566342"/>
+		<nd ref="4293692586"/>
+		<nd ref="878564422"/>
+		<nd ref="878563481"/>
+		<nd ref="878563146"/>
+		<nd ref="878560915"/>
+		<nd ref="4293692585"/>
+		<nd ref="878566342"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="commercial"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="34261834"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="74863913" version="3" timestamp="2020-02-04T12:23:30Z" changeset="0">
+		<nd ref="884210023"/>
+		<nd ref="884210079"/>
+		<nd ref="884209962"/>
+		<nd ref="884209833"/>
+		<nd ref="884209702"/>
+		<nd ref="884209392"/>
+		<nd ref="7184114924"/>
+		<nd ref="7184114923"/>
+		<nd ref="7184114922"/>
+		<nd ref="7184114921"/>
+		<nd ref="884210084"/>
+		<nd ref="884209967"/>
+		<nd ref="884210023"/>
+		<tag k="name" v="Klub Dlouhé Záhony"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:flats" v="2"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="15070956"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="77497162" version="4" timestamp="2015-12-23T12:59:06Z" changeset="0">
+		<nd ref="3742910833"/>
+		<nd ref="912106675"/>
+		<nd ref="912084871"/>
+		<nd ref="3742910872"/>
+		<nd ref="912092566"/>
+		<nd ref="912097857"/>
+		<nd ref="912104642"/>
+		<nd ref="912109132"/>
+		<nd ref="912088152"/>
+		<nd ref="912094083"/>
+		<nd ref="912109609"/>
+		<nd ref="912088829"/>
+		<nd ref="912094560"/>
+		<nd ref="912100416"/>
+		<nd ref="3742910833"/>
+		<tag k="name" v="Disco Forum"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="21011729"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="91768193" version="4" timestamp="2021-02-05T09:43:29Z" changeset="0">
+		<nd ref="1066503569"/>
+		<nd ref="1066503340"/>
+		<nd ref="1066503486"/>
+		<nd ref="1066503641"/>
+		<nd ref="1066503569"/>
+		<tag k="addr:city" v="Klingenthal"/>
+		<tag k="addr:country" v="DE"/>
+		<tag k="addr:housenumber" v="44"/>
+		<tag k="addr:postcode" v="08248"/>
+		<tag k="addr:street" v="Auerbacher Straße"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+		<tag k="name" v="Gambrinus"/>
+	</way>
+	<way id="93656778" version="3" timestamp="2016-11-09T13:45:20Z" changeset="0">
+		<nd ref="1086689660"/>
+		<nd ref="1086738829"/>
+		<nd ref="3969709475"/>
+		<nd ref="1086714119"/>
+		<nd ref="1086662396"/>
+		<nd ref="1086675066"/>
+		<nd ref="1086727450"/>
+		<nd ref="1086657861"/>
+		<nd ref="1086709340"/>
+		<nd ref="1086753283"/>
+		<nd ref="1086689660"/>
+		<tag k="name" v="music club Inferno"/>
+		<tag k="phone" v="+420 608 065 685"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.haistrakonice.cz/music-club-inferno"/>
+		<tag k="building" v="civic"/>
+		<tag k="start_date" v="2003-07-01"/>
+		<tag k="opening_hours" v="Sa 21:00-04:00"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="25308726"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="122542341" version="2" timestamp="2012-08-19T14:18:09Z" changeset="0">
+		<nd ref="1369050942"/>
+		<nd ref="1369050747"/>
+		<nd ref="1369050766"/>
+		<nd ref="1369050956"/>
+		<nd ref="1369050942"/>
+		<tag k="name" v="Cotton Club"/>
+		<tag k="source" v="cuzk:km"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+	</way>
+	<way id="143142869" version="5" timestamp="2018-01-09T00:39:43Z" changeset="0">
+		<nd ref="1566428294"/>
+		<nd ref="1566428295"/>
+		<nd ref="1566428290"/>
+		<nd ref="1566428292"/>
+		<nd ref="1566428278"/>
+		<nd ref="1615991468"/>
+		<nd ref="5328258097"/>
+		<nd ref="5328258092"/>
+		<nd ref="5328258091"/>
+		<nd ref="5328258088"/>
+		<nd ref="5328258089"/>
+		<nd ref="5328258096"/>
+		<nd ref="5328258099"/>
+		<nd ref="5328258090"/>
+		<nd ref="5328258094"/>
+		<nd ref="5328258095"/>
+		<nd ref="1566428285"/>
+		<nd ref="1566428294"/>
+		<tag k="name" v="Porto Rico"/>
+		<tag k="email" v="club.portorico@seznam.cz"/>
+		<tag k="phone" v="+420733202001"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.clubportorico.cz/"/>
+		<tag k="building" v="hotel"/>
+		<tag k="opening_hours" v="20:00-5:00"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="ref:ruian:building" v="30671728"/>
+		<tag k="building:ruian:type" v="11"/>
+	</way>
+	<way id="182195841" version="4" timestamp="2019-01-07T14:11:46Z" changeset="0">
+		<nd ref="1925406637"/>
+		<nd ref="6189960863"/>
+		<nd ref="6189960862"/>
+		<nd ref="1925406578"/>
+		<nd ref="1925406613"/>
+		<nd ref="6189960861"/>
+		<nd ref="6189960860"/>
+		<nd ref="6189960859"/>
+		<nd ref="6189960858"/>
+		<nd ref="1925406555"/>
+		<nd ref="1925406637"/>
+		<tag k="name" v="La Corte"/>
+		<tag k="email" v="info@lacorte.cz"/>
+		<tag k="phone" v="+420 773 177 060"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.lacorte.cz/"/>
+		<tag k="building" v="hotel"/>
+		<tag k="addr:city" v="Rozvadov"/>
+		<tag k="opening_hours" v="17:00-05:00"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="20572051"/>
+		<tag k="building:ruian:type" v="11"/>
+	</way>
+	<way id="199829928" version="5" timestamp="2014-10-01T18:39:50Z" changeset="0">
+		<nd ref="2098271753"/>
+		<nd ref="2098271757"/>
+		<nd ref="2098271734"/>
+		<nd ref="2098271729"/>
+		<nd ref="2098271724"/>
+		<nd ref="2098271712"/>
+		<nd ref="2098271714"/>
+		<nd ref="2098271713"/>
+		<nd ref="2098271723"/>
+		<nd ref="2098271720"/>
+		<nd ref="2903831579"/>
+		<nd ref="2903831580"/>
+		<nd ref="2903831581"/>
+		<nd ref="2903831582"/>
+		<nd ref="2098271753"/>
+		<tag k="fax" v="+49 37360 71123"/>
+		<tag k="name" v="Fay´s Musik &#38; Gastro KG, Halle Olbenhau"/>
+		<tag k="email" v="info@halle-olbernhau.de"/>
+		<tag k="phone" v="+49 37360 12823"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://www.halle-olbernhau.de"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Olbernhau"/>
+		<tag k="addr:street" v="Grünthaler Straße"/>
+		<tag k="addr:country" v="DE"/>
+		<tag k="phone:mobile" v="0172 3613267"/>
+		<tag k="addr:postcode" v="09526"/>
+		<tag k="addr:housenumber" v="125"/>
+	</way>
+	<way id="249908241" version="2" timestamp="2015-05-30T14:07:19Z" changeset="0">
+		<nd ref="2564451941"/>
+		<nd ref="3558501898"/>
+		<nd ref="3558501899"/>
+		<nd ref="2564451906"/>
+		<nd ref="2564451899"/>
+		<nd ref="2564451895"/>
+		<nd ref="3558501871"/>
+		<nd ref="3558501872"/>
+		<nd ref="2564451885"/>
+		<nd ref="2564451887"/>
+		<nd ref="2564451873"/>
+		<nd ref="2564451869"/>
+		<nd ref="3558501845"/>
+		<nd ref="3558501836"/>
+		<nd ref="3558501834"/>
+		<nd ref="2564451854"/>
+		<nd ref="2564451864"/>
+		<nd ref="2564451856"/>
+		<nd ref="3558501842"/>
+		<nd ref="3558501843"/>
+		<nd ref="3558501857"/>
+		<nd ref="3558501856"/>
+		<nd ref="2564451893"/>
+		<nd ref="2564451917"/>
+		<nd ref="2564451915"/>
+		<nd ref="2564451929"/>
+		<nd ref="2564451931"/>
+		<nd ref="2564451941"/>
+		<tag k="name" v="Palladium"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="smoking" v="yes"/>
+		<tag k="building" v="civic"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="ref:ruian:building" v="22837078"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="258094860" version="3" timestamp="2019-08-05T18:38:38Z" changeset="0">
+		<nd ref="2635054056"/>
+		<nd ref="2635054071"/>
+		<nd ref="2635054060"/>
+		<nd ref="2635054047"/>
+		<nd ref="2635054049"/>
+		<nd ref="2635054052"/>
+		<nd ref="2635054056"/>
+		<tag k="name" v="Vila"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="20616040"/>
+		<tag k="building:ruian:type" v="7"/>
+	</way>
+	<way id="263087495" version="2" timestamp="2016-02-01T04:04:43Z" changeset="0">
+		<nd ref="2687098526"/>
+		<nd ref="2687098499"/>
+		<nd ref="2687098495"/>
+		<nd ref="2687098477"/>
+		<nd ref="2687098465"/>
+		<nd ref="2687098467"/>
+		<nd ref="2687098461"/>
+		<nd ref="2687098458"/>
+		<nd ref="2687098452"/>
+		<nd ref="2687098464"/>
+		<nd ref="2687098460"/>
+		<nd ref="2687098493"/>
+		<nd ref="2687098514"/>
+		<nd ref="2687098526"/>
+		<tag k="name" v="Kulturní dům"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:flats" v="1"/>
+		<tag k="ref:ruian:building" v="18248918"/>
+	</way>
+	<way id="274617182" version="4" timestamp="2020-01-03T20:05:57Z" changeset="0">
+		<nd ref="2793102450"/>
+		<nd ref="2793102447"/>
+		<nd ref="2793102452"/>
+		<nd ref="2793102473"/>
+		<nd ref="2793102450"/>
+		<tag k="name" v="Fuchs 2 / Bike Jesus"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Praha 7"/>
+		<tag k="roof:shape" v="flat"/>
+		<tag k="addr:street" v="Ostrov Štvanice"/>
+		<tag k="roof:colour" v="dark_gray"/>
+		<tag k="addr:postcode" v="17000"/>
+		<tag k="roof:material" v="tar_paper"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="addr:housenumber" v="1125"/>
+		<tag k="ref:ruian:building" v="22144536"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="311433308" version="2" timestamp="2017-06-19T19:55:15Z" changeset="0">
+		<nd ref="3170815765"/>
+		<nd ref="3170814951"/>
+		<nd ref="3170814952"/>
+		<nd ref="3170815773"/>
+		<nd ref="3170814953"/>
+		<nd ref="3170814954"/>
+		<nd ref="3170815772"/>
+		<nd ref="3170814955"/>
+		<nd ref="3170814956"/>
+		<nd ref="4924977063"/>
+		<nd ref="4924977060"/>
+		<nd ref="4924977061"/>
+		<nd ref="4924977062"/>
+		<nd ref="3170815765"/>
+		<tag k="name" v="Admirál"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="building:part" v="yes"/>
+	</way>
+	<way id="311433328" version="5" timestamp="2019-11-13T20:02:54Z" changeset="0">
+		<nd ref="3170815811"/>
+		<nd ref="3170815817"/>
+		<nd ref="3170815812"/>
+		<nd ref="3170815813"/>
+		<nd ref="3170829612"/>
+		<nd ref="3170815814"/>
+		<nd ref="3170815811"/>
+		<tag k="name" v="Casanova"/>
+		<tag k="amenity" v="nightclub"/>
+		<tag k="website" v="http://casanova-mikulov.cz/"/>
+		<tag k="building" v="retail"/>
+	</way>
+</osm>

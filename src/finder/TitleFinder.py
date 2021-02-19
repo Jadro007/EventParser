@@ -19,7 +19,9 @@ class TitleFinder:
                        "Podrobné nastavení", "Back Button Back", "Vaše soukromí", "Více informací", "Koncerty",
                        "Připravované koncerty", "kapela", "Back to the top", "doprovodný program",
                        "Praha", "Vstupenky", "Koupit", "Termíny", "Kontakty", "Mapa", "Doprava",
-                       "Termíny"
+                       "Termíny", "Profil", "Tento měsíc", "Základní informace", "Štítky", "RSS", "příspěvky",
+                       "Nejnovější příspěvky", "Rubriky", "Děkujeme za podporu", "Aktuality", "Naše akce",
+                       "Registrační podmínky"
                        ]
 
     @staticmethod
@@ -33,7 +35,7 @@ class TitleFinder:
         main_title = TitleFinder._find_internal_single_event(soup, near_containers)
         use_main_title = False
         if main_title is not None:
-            main_title_regex_compiled = re.compile(main_title.value, flags=re.IGNORECASE)
+            main_title_regex_compiled = re.compile(re.escape(main_title.value), flags=re.IGNORECASE)
             if soup.find(text=main_title_regex_compiled) is not None:
                 use_main_title = True
 

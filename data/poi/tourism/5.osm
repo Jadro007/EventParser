@@ -1,0 +1,1208 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="296815903" lat="48.9776816" lon="14.4724426" version="6" timestamp="2020-10-03T23:19:56Z" changeset="0">
+		<tag k="addr:city" v="České Budějovice"/>
+		<tag k="addr:conscriptionnumber" v="205"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="205/1"/>
+		<tag k="addr:postcode" v="37001"/>
+		<tag k="addr:street" v="Panská"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="name" v="Galerie 1"/>
+		<tag k="ref:ruian" v="23341971"/>
+		<tag k="source:addr" v="ruian"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="358488350" lat="50.0806936" lon="14.4166585" version="2" timestamp="2020-06-23T15:20:50Z" changeset="0">
+		<tag k="name" v="Galerie Nová síň"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="opening_hours" v="Tu-Su 11:00-18:00"/>
+	</node>
+	<node id="360039683" lat="50.0989305" lon="14.4076469" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039685" lat="50.0989447" lon="14.4077363" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039688" lat="50.098937" lon="14.4077392" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039691" lat="50.098956" lon="14.4078586" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039693" lat="50.0989634" lon="14.4078557" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039695" lat="50.0989776" lon="14.4079452" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039700" lat="50.0989978" lon="14.4079363" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039703" lat="50.0990052" lon="14.4079825" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039709" lat="50.099095" lon="14.4079478" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039710" lat="50.0990877" lon="14.4079015" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039711" lat="50.0991087" lon="14.4078949" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039712" lat="50.0990773" lon="14.4076794" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039714" lat="50.0990749" lon="14.4076803" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039715" lat="50.0990619" lon="14.4075984" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039716" lat="50.0990139" lon="14.4076161" version="3" timestamp="2017-04-23T20:46:34Z" changeset="0"/>
+	<node id="360039717" lat="50.0990126" lon="14.4076079" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039723" lat="50.0989771" lon="14.4076211" version="2" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="360039724" lat="50.0989784" lon="14.4076292" version="3" timestamp="2017-04-23T20:46:34Z" changeset="0"/>
+	<node id="574266896" lat="49.7479775" lon="13.3798141" version="2" timestamp="2017-03-28T14:34:00Z" changeset="0"/>
+	<node id="574267036" lat="49.7481765" lon="13.3799725" version="2" timestamp="2017-03-28T14:34:01Z" changeset="0"/>
+	<node id="574267037" lat="49.748183" lon="13.3798598" version="2" timestamp="2017-03-28T14:34:01Z" changeset="0"/>
+	<node id="574267161" lat="49.7479579" lon="13.3800366" version="2" timestamp="2017-03-28T14:34:03Z" changeset="0"/>
+	<node id="574267163" lat="49.7482314" lon="13.3801038" version="2" timestamp="2017-03-28T14:34:03Z" changeset="0"/>
+	<node id="574267165" lat="49.7482466" lon="13.3799899" version="2" timestamp="2017-03-28T14:34:03Z" changeset="0"/>
+	<node id="574295303" lat="49.7473412" lon="13.3799014" version="1" timestamp="2009-11-29T10:30:00Z" changeset="0"/>
+	<node id="574295312" lat="49.7472745" lon="13.3800237" version="1" timestamp="2009-11-29T10:30:00Z" changeset="0"/>
+	<node id="574295525" lat="49.7476039" lon="13.3804743" version="1" timestamp="2009-11-29T10:30:04Z" changeset="0"/>
+	<node id="574295532" lat="49.7476785" lon="13.3803603" version="1" timestamp="2009-11-29T10:30:05Z" changeset="0"/>
+	<node id="667788591" lat="49.9403858" lon="17.9033069" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788592" lat="49.9403874" lon="17.9032949" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788594" lat="49.9403493" lon="17.903296" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788599" lat="49.9404799" lon="17.9033227" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788601" lat="49.9404784" lon="17.9033347" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788602" lat="49.9405419" lon="17.9033539" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788604" lat="49.9405331" lon="17.9034013" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788605" lat="49.9405722" lon="17.9034146" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788623" lat="49.9402816" lon="17.903889" version="2" timestamp="2016-02-21T18:15:04Z" changeset="0"/>
+	<node id="667788682" lat="49.9405291" lon="17.9039518" version="2" timestamp="2016-02-21T18:15:05Z" changeset="0"/>
+	<node id="770916627" lat="49.9923586" lon="14.6677176" version="2" timestamp="2015-11-12T08:13:28Z" changeset="0"/>
+	<node id="770916634" lat="49.9924126" lon="14.6678103" version="2" timestamp="2015-11-12T08:13:28Z" changeset="0"/>
+	<node id="770916641" lat="49.9925278" lon="14.6676651" version="2" timestamp="2015-11-12T08:13:28Z" changeset="0"/>
+	<node id="770916649" lat="49.9925551" lon="14.6676676" version="2" timestamp="2015-11-12T08:13:29Z" changeset="0"/>
+	<node id="770916653" lat="49.9923704" lon="14.667421" version="2" timestamp="2015-11-12T08:13:29Z" changeset="0"/>
+	<node id="770916673" lat="49.9923005" lon="14.6677996" version="2" timestamp="2015-11-12T08:13:29Z" changeset="0"/>
+	<node id="770916681" lat="49.9925472" lon="14.6678652" version="2" timestamp="2015-11-12T08:13:29Z" changeset="0"/>
+	<node id="770916689" lat="49.9924042" lon="14.6678513" version="2" timestamp="2015-11-12T08:13:29Z" changeset="0"/>
+	<node id="770916695" lat="49.9925393" lon="14.6674345" version="2" timestamp="2015-11-12T08:13:29Z" changeset="0"/>
+	<node id="770916704" lat="49.992304" lon="14.6677123" version="2" timestamp="2015-11-12T08:13:30Z" changeset="0"/>
+	<node id="925738978" lat="50.41013" lon="14.9010192" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739004" lat="50.4101125" lon="14.9011136" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739006" lat="50.409995" lon="14.9009042" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739028" lat="50.4100353" lon="14.9011052" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739060" lat="50.4099188" lon="14.9009469" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739074" lat="50.4102248" lon="14.9010794" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739101" lat="50.410113" lon="14.9011088" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739105" lat="50.41003" lon="14.9009218" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739113" lat="50.4099256" lon="14.9008601" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739134" lat="50.4100181" lon="14.9011109" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739138" lat="50.4102162" lon="14.9011646" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739160" lat="50.4099134" lon="14.9009435" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739183" lat="50.4100652" lon="14.9010859" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739188" lat="50.4100256" lon="14.9009365" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739219" lat="50.4099186" lon="14.9010732" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739226" lat="50.4101347" lon="14.9009998" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739259" lat="50.4101687" lon="14.9011467" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739263" lat="50.4100009" lon="14.9008842" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="925739288" lat="50.4100605" lon="14.9011064" version="2" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="1188234111" lat="50.7735164" lon="15.0677162" version="2" timestamp="2015-10-06T14:45:07Z" changeset="0"/>
+	<node id="1188234243" lat="50.7735343" lon="15.0681858" version="2" timestamp="2015-10-06T14:45:07Z" changeset="0"/>
+	<node id="1188234460" lat="50.7736022" lon="15.0673463" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188234488" lat="50.7734664" lon="15.0674564" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188234597" lat="50.7736597" lon="15.0673442" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188234661" lat="50.7733708" lon="15.0676757" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188234719" lat="50.7734665" lon="15.0681406" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188234791" lat="50.7734528" lon="15.0679964" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188234995" lat="50.7735139" lon="15.0675722" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188235128" lat="50.7735348" lon="15.0677797" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188235253" lat="50.7735224" lon="15.0681489" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188235339" lat="50.7734521" lon="15.0681201" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188235413" lat="50.7738706" lon="15.0679124" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188235704" lat="50.7737682" lon="15.0676928" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188235876" lat="50.7734764" lon="15.0675917" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188236128" lat="50.7734675" lon="15.0679761" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188236511" lat="50.7735064" lon="15.0675783" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188236727" lat="50.7736133" lon="15.0673812" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188236899" lat="50.7735711" lon="15.0677507" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188236988" lat="50.773497" lon="15.0681559" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188237087" lat="50.7734386" lon="15.068053" version="2" timestamp="2015-10-06T14:45:08Z" changeset="0"/>
+	<node id="1188237577" lat="50.7737949" lon="15.0676752" version="2" timestamp="2015-10-06T14:45:09Z" changeset="0"/>
+	<node id="1188237773" lat="50.7734987" lon="15.0676613" version="2" timestamp="2015-10-06T14:45:09Z" changeset="0"/>
+	<node id="1245573005" lat="49.963128" lon="14.073073" version="3" timestamp="2017-02-18T18:41:16Z" changeset="0"/>
+	<node id="1245576339" lat="49.9629557" lon="14.0731" version="2" timestamp="2015-08-10T07:52:59Z" changeset="0"/>
+	<node id="1245580827" lat="49.9630575" lon="14.0730391" version="2" timestamp="2015-08-10T07:53:09Z" changeset="0"/>
+	<node id="1245585587" lat="49.9629017" lon="14.0731034" version="2" timestamp="2015-08-10T07:53:19Z" changeset="0"/>
+	<node id="1245587754" lat="49.9629227" lon="14.073194" version="2" timestamp="2015-08-10T07:53:26Z" changeset="0"/>
+	<node id="1245589408" lat="49.962951" lon="14.07308" version="2" timestamp="2015-08-10T07:53:30Z" changeset="0"/>
+	<node id="1302056868" lat="50.082931" lon="14.4195333" version="4" timestamp="2017-04-04T18:42:29Z" changeset="0">
+		<tag k="name" v="Galerie Havelka"/>
+		<tag k="phone" v="+420 235 513 556"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.galeriehavelka.cz"/>
+		<tag k="opening_hours" v="Mo-Sa 11:00-18:00"/>
+	</node>
+	<node id="1306180759" lat="48.8546833" lon="15.8593183" version="2" timestamp="2018-08-22T07:56:07Z" changeset="0">
+		<tag k="name" v="Galerie Kulturpunkt Hardegg"/>
+		<tag k="fixme" v="auf Existenz prüfen"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="addr:city" v="Hardegg"/>
+		<tag k="addr:street" v="Hardegg"/>
+		<tag k="information" v="office"/>
+		<tag k="addr:postcode" v="2082"/>
+		<tag k="addr:housenumber" v="68"/>
+	</node>
+	<node id="1345962726" lat="50.3032049" lon="12.9381191" version="4" timestamp="2018-02-05T06:14:12Z" changeset="0"/>
+	<node id="1345962727" lat="50.3029893" lon="12.9382137" version="4" timestamp="2018-02-05T06:14:12Z" changeset="0"/>
+	<node id="1345962729" lat="50.3029298" lon="12.9378761" version="4" timestamp="2018-02-05T06:14:12Z" changeset="0"/>
+	<node id="1345962731" lat="50.3031453" lon="12.9377812" version="4" timestamp="2018-02-05T06:14:12Z" changeset="0"/>
+	<node id="1384352509" lat="50.585885" lon="13.2415676" version="1" timestamp="2011-08-03T12:07:06Z" changeset="0"/>
+	<node id="1384352514" lat="50.5859095" lon="13.2413996" version="2" timestamp="2019-04-18T09:02:04Z" changeset="0"/>
+	<node id="1384352536" lat="50.5860622" lon="13.2416335" version="1" timestamp="2011-08-03T12:07:08Z" changeset="0"/>
+	<node id="1384352539" lat="50.5860855" lon="13.2414782" version="2" timestamp="2019-04-18T09:02:04Z" changeset="0"/>
+	<node id="1562445351" lat="49.3511803" lon="16.4313926" version="3" timestamp="2019-04-12T08:36:26Z" changeset="0">
+		<tag k="name" v="Galerie Art Periscope"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="addr:city" v="Tišnov"/>
+		<tag k="addr:street" v="Na Honech"/>
+		<tag k="description" v="Galerie vystavuje aktuální umělecká díla."/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="66601"/>
+		<tag k="addr:housenumber" v="1769"/>
+		<tag k="addr:conscriptionnumber" v="1769"/>
+	</node>
+	<node id="1977821256" lat="50.0870009" lon="14.4213856" version="2" timestamp="2017-04-02T15:58:43Z" changeset="0">
+		<tag k="name" v="Galerie art"/>
+		<tag k="ref:ico" v="48117421"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="official_name" v="Aukční dům Gallerie Art Praha"/>
+	</node>
+	<node id="2179922658" lat="50.3449248" lon="16.151261" version="3" timestamp="2016-09-15T12:15:40Z" changeset="0">
+		<tag k="name" v="Galerie Zázvorka"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="2609977953" lat="50.0873518" lon="14.4170299" version="1" timestamp="2014-01-04T20:39:16Z" changeset="0">
+		<tag k="name" v="Galerie hlavního města Prahy"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="2622144474" lat="49.4869417" lon="16.6612704" version="2" timestamp="2015-07-19T11:03:03Z" changeset="0">
+		<tag k="name" v="Galerie"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="2702513393" lat="50.64452" lon="13.8277194" version="1" timestamp="2014-03-05T14:06:23Z" changeset="0">
+		<tag k="name" v="Galerie ústeckého kraje"/>
+		<tag k="source" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="opening_hours" v="Tu-Fr 10:00-17:00"/>
+		<tag k="source:opening_hours" v="survey 2014-03-05"/>
+	</node>
+	<node id="2723832323" lat="49.9476586" lon="15.6687" version="1" timestamp="2014-03-17T17:35:15Z" changeset="0"/>
+	<node id="2723832493" lat="49.947735" lon="15.6685761" version="1" timestamp="2014-03-17T17:35:17Z" changeset="0"/>
+	<node id="2723832558" lat="49.9477692" lon="15.6686287" version="1" timestamp="2014-03-17T17:35:18Z" changeset="0"/>
+	<node id="2723832642" lat="49.9477803" lon="15.6686112" version="1" timestamp="2014-03-17T17:35:19Z" changeset="0"/>
+	<node id="2723832647" lat="49.9477869" lon="15.6688932" version="1" timestamp="2014-03-17T17:35:19Z" changeset="0"/>
+	<node id="2723832682" lat="49.9478087" lon="15.6687126" version="1" timestamp="2014-03-17T17:35:20Z" changeset="0"/>
+	<node id="2723832750" lat="49.9478274" lon="15.668683" version="1" timestamp="2014-03-17T17:35:21Z" changeset="0"/>
+	<node id="2723832797" lat="49.9478515" lon="15.6687736" version="1" timestamp="2014-03-17T17:35:21Z" changeset="0"/>
+	<node id="3124544657" lat="48.8107904" lon="14.3158475" version="10" timestamp="2020-06-28T13:30:20Z" changeset="0">
+		<tag k="name" v="Dům fotografie"/>
+		<tag k="phone" v="+420 380 712 206"/>
+		<tag k="name:en" v="House of photography"/>
+		<tag k="name:ru" v="Дом фотографии"/>
+		<tag k="name:zh" v="庫倫洛夫區博物館"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.dumfotografiekrumlov.cz/"/>
+		<tag k="addr:city" v="Český Krumlov"/>
+		<tag k="addr:place" v="Vnitřní Město"/>
+		<tag k="addr:street" v="Šatlavská"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="payment:cash" v="yes"/>
+		<tag k="addr:postcode" v="38101"/>
+		<tag k="ref:ruian:addr" v="8761949"/>
+		<tag k="addr:housenumber" v="141"/>
+		<tag k="payment:credit_cards" v="yes"/>
+		<tag k="addr:conscriptionnumber" v="141"/>
+	</node>
+	<node id="3163773995" lat="49.6372788" lon="16.2258456" version="1" timestamp="2014-11-02T22:23:29Z" changeset="0">
+		<tag k="name" v="Merán"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="3350699310" lat="49.5922662" lon="18.3573818" version="1" timestamp="2015-02-14T21:10:34Z" changeset="0">
+		<tag k="name" v="Galerie uměleckého smaltu a litiny a Památník Ferdiše Duši"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="3376355793" lat="48.7424622" lon="16.7574462" version="3" timestamp="2019-03-29T14:41:18Z" changeset="0">
+		<tag k="name" v="Galerie Reistna"/>
+		<tag k="email" v="galerie@reistna.cz"/>
+		<tag k="phone" v="+420 602 734 742;+420 724 302 589"/>
+		<tag k="amenity" v="cafe"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://reistna.cz/"/>
+		<tag k="opening_hours" v="Th-Fr 13:00-18:00; Sa-Su 13:00-21:00"/>
+	</node>
+	<node id="3384309136" lat="50.0879393" lon="14.4195066" version="2" timestamp="2019-04-25T19:53:54Z" changeset="0">
+		<tag k="fee" v="100"/>
+		<tag k="name" v="galerie umění pro děti"/>
+		<tag k="shop" v="art"/>
+		<tag k="name:en" v="gallery art for children"/>
+		<tag k="name:es" v="Galería de Arte para Niños"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="alt_name" v="galerie GUD"/>
+		<tag k="fee:child" v="50"/>
+		<tag k="short_name" v="GUD"/>
+		<tag k="opening_hours" v="Tu-Fr 14:00-18:00; Sa,Su 10:00-18:00"/>
+		<tag k="contact:website" v="http://www.galeriegud.cz/"/>
+	</node>
+	<node id="3429772772" lat="50.0693957" lon="14.4813595" version="3" timestamp="2017-04-09T17:55:27Z" changeset="0">
+		<tag k="name" v="Galerie PRE"/>
+		<tag k="phone" v="+420 267 053 634"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.pre.cz/cs/profil-spolecnosti/dalsi-aktivity-pre/kultura-pre/galerie-pre/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Vršovice"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:street" v="Na hroudě"/>
+		<tag k="addr:suburb" v="Praha 10"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="10000"/>
+		<tag k="ref:ruian:addr" v="22763350"/>
+		<tag k="addr:housenumber" v="1492/4"/>
+		<tag k="addr:streetnumber" v="4"/>
+		<tag k="addr:conscriptionnumber" v="1492"/>
+	</node>
+	<node id="3467326710" lat="49.1945623" lon="16.6129523" version="4" timestamp="2020-08-24T06:43:31Z" changeset="0">
+		<tag k="addr:city" v="Brno"/>
+		<tag k="addr:housenumber" v="27"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="addr:street" v="Orlí"/>
+		<tag k="name" v="Galerie M.K."/>
+		<tag k="opening_hours" v="Mo-Fr 10:00-12:00,13:00-17:00"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wheelchair" v="limited"/>
+	</node>
+	<node id="3488788324" lat="50.584359" lon="14.3396239" version="3" timestamp="2019-03-05T09:54:49Z" changeset="0">
+		<tag k="name" v="Galerie U brány"/>
+		<tag k="phone" v="+420 416 731 643"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.galerie-ubrany.cz/"/>
+		<tag k="addr:city" v="Úštěk"/>
+		<tag k="addr:place" v="Úštěk-České Předměstí"/>
+		<tag k="addr:street" v="1. máje"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="41145"/>
+		<tag k="ref:ruian:addr" v="24326461"/>
+		<tag k="addr:housenumber" v="52"/>
+		<tag k="addr:conscriptionnumber" v="52"/>
+	</node>
+	<node id="3702253316" lat="49.0505225" lon="14.4374024" version="1" timestamp="2015-08-18T04:55:23Z" changeset="0">
+		<tag k="name" v="Galerie Knížecí dvůr"/>
+		<tag k="email" v="galerie@knizecidvur.cz"/>
+		<tag k="phone" v="+420 387 965 710"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.knizecidvur.cz"/>
+		<tag k="opening_hours" v="Mo-Su 12:00-16:00"/>
+	</node>
+	<node id="3745220802" lat="50.0990958" lon="14.4078131" version="1" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="3745220803" lat="50.0990983" lon="14.4078122" version="1" timestamp="2015-09-16T09:09:51Z" changeset="0"/>
+	<node id="3775088926" lat="50.7734209" lon="15.0678311" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088927" lat="50.7734233" lon="15.0678292" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088931" lat="50.7734391" lon="15.0680735" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088932" lat="50.7734407" lon="15.0680327" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088933" lat="50.7734424" lon="15.0680934" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088935" lat="50.7734451" lon="15.0681029" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088936" lat="50.7734456" lon="15.0680135" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088937" lat="50.773455" lon="15.0679372" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088938" lat="50.7734572" lon="15.0679888" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088939" lat="50.7734582" lon="15.0679378" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088940" lat="50.7734612" lon="15.0681346" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088942" lat="50.773478" lon="15.0681498" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088943" lat="50.7734842" lon="15.0681529" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088946" lat="50.77351" lon="15.0681545" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088948" lat="50.773525" lon="15.0677495" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088950" lat="50.7735267" lon="15.0677481" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088951" lat="50.7735423" lon="15.0673948" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088954" lat="50.7735617" lon="15.0681612" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088955" lat="50.7735624" lon="15.0681632" version="1" timestamp="2015-10-06T14:44:47Z" changeset="0"/>
+	<node id="3775088965" lat="50.7736853" lon="15.0674335" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088966" lat="50.7736877" lon="15.0674316" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088967" lat="50.7737263" lon="15.0680292" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088968" lat="50.773727" lon="15.0680312" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088969" lat="50.7737758" lon="15.0676867" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088970" lat="50.7737767" lon="15.0676895" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088971" lat="50.7738526" lon="15.0679269" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3775088972" lat="50.7738534" lon="15.0679298" version="1" timestamp="2015-10-06T14:44:48Z" changeset="0"/>
+	<node id="3823947269" lat="49.7390377" lon="15.9729734" version="1" timestamp="2015-11-08T07:05:18Z" changeset="0">
+		<tag k="name" v="Galerie Antonína Slavíčka"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="3832200492" lat="49.9924044" lon="14.667847" version="1" timestamp="2015-11-12T08:09:34Z" changeset="0"/>
+	<node id="3832200493" lat="49.9924111" lon="14.6678478" version="1" timestamp="2015-11-12T08:09:34Z" changeset="0"/>
+	<node id="3924243287" lat="49.6228897" lon="18.2227017" version="1" timestamp="2016-01-02T19:51:17Z" changeset="0">
+		<tag k="name" v="Pamětní síň Leoše Janáčka"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="3931987831" lat="50.0870963" lon="14.4029207" version="4" timestamp="2021-02-08T06:47:16Z" changeset="0">
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:conscriptionnumber" v="370"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:housenumber" v="370/5"/>
+		<tag k="addr:place" v="Malá Strana"/>
+		<tag k="addr:postcode" v="11800"/>
+		<tag k="addr:street" v="Tržiště"/>
+		<tag k="addr:streetnumber" v="5"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="name" v="Millennium"/>
+		<tag k="phone" v="+420 257 534 584"/>
+		<tag k="ref:ruian:addr" v="21698309"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.gallerymillennium.cz/"/>
+		<tag k="wikidata" v="Q67028195"/>
+	</node>
+	<node id="3955585462" lat="49.7481871" lon="13.3772655" version="1" timestamp="2016-01-19T18:13:33Z" changeset="0">
+		<tag k="name" v="Galerie Jiřího Trnky"/>
+		<tag k="source" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="operator" v="Unie výtvarných umělců plzeňské oblasti"/>
+		<tag k="opening_hours" v="Tu 10:00-12:00,13:00-17:00"/>
+		<tag k="contact:website" v="http://www.uvu-plzen.cz/galerie.php"/>
+	</node>
+	<node id="3955585463" lat="49.7481992" lon="13.3770969" version="1" timestamp="2016-01-19T18:13:33Z" changeset="0">
+		<tag k="name" v="Galerie města Plzně"/>
+		<tag k="source" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="operator" v="Galerie města Plzně o.p.s."/>
+		<tag k="opening_hours" v="Tu 10:00-12:00,12:30-18:00"/>
+		<tag k="contact:website" v="http://www.galerie-plzen.cz/"/>
+	</node>
+	<node id="4016973329" lat="50.0905688" lon="14.4208934" version="4" timestamp="2019-03-12T19:17:41Z" changeset="0">
+		<tag k="name" v="Galerie Roberta Guttmanna"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.jewishmuseum.cz/"/>
+		<tag k="operator" v="Židovské muzeum v Praze"/>
+		<tag k="wikidata" v="Q20892814"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="wikipedia" v="cs:Galerie Roberta Guttmanna"/>
+		<tag k="addr:place" v="Josefov"/>
+		<tag k="addr:street" v="U staré školy"/>
+		<tag k="addr:suburb" v="Praha 1"/>
+		<tag k="source:addr" v="cuzk:ruian"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="ref:ruian:addr" v="21693757"/>
+		<tag k="addr:housenumber" v="153/3"/>
+		<tag k="addr:streetnumber" v="3"/>
+		<tag k="addr:conscriptionnumber" v="153"/>
+	</node>
+	<node id="4018265992" lat="49.9402717" lon="17.9039114" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018265993" lat="49.9402735" lon="17.903912" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018265994" lat="49.9402789" lon="17.9039137" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018265999" lat="49.9403155" lon="17.9035846" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018266002" lat="49.9404052" lon="17.9036148" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018266004" lat="49.9404118" lon="17.903505" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018266005" lat="49.9404215" lon="17.9033958" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018266007" lat="49.9404421" lon="17.9036272" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018266008" lat="49.9404568" lon="17.9034081" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4018266010" lat="49.9405397" lon="17.9038397" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0"/>
+	<node id="4111940102" lat="49.814058" lon="15.4781869" version="1" timestamp="2016-04-10T15:48:45Z" changeset="0">
+		<tag k="name" v="Galerie Goltzova tvrz"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4159455630" lat="49.3514002" lon="16.4341993" version="4" timestamp="2019-03-06T08:17:37Z" changeset="0">
+		<tag k="name" v="Galerie PATRIOT"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="addr:place" v="Tišnov"/>
+		<tag k="addr:street" v="Štěpánova"/>
+		<tag k="description" v="mineralogické muzeum"/>
+		<tag k="addr:postcode" v="66601"/>
+		<tag k="ref:ruian:addr" v="74857380"/>
+		<tag k="addr:housenumber" v="1964"/>
+		<tag k="addr:conscriptionnumber" v="1964"/>
+	</node>
+	<node id="4229620281" lat="49.2037735" lon="16.6219637" version="1" timestamp="2016-06-07T06:54:18Z" changeset="0">
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4234150035" lat="48.808228" lon="16.636812" version="1" timestamp="2016-06-09T16:46:40Z" changeset="0">
+		<tag k="name" v="Galerie Závodný"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4248384796" lat="50.0989948" lon="14.4076145" version="2" timestamp="2017-04-23T20:46:34Z" changeset="0">
+		<tag k="entrance" v="main"/>
+	</node>
+	<node id="4255405789" lat="49.9514871" lon="15.7954726" version="5" timestamp="2019-03-31T15:25:19Z" changeset="0">
+		<tag k="name" v="Galerie ART Chrudim"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.galerieart.cz/"/>
+		<tag k="opening_hours" v="Mo-Fr 14:00-17:30; Sa 09:00-11:30"/>
+	</node>
+	<node id="4257497027" lat="49.462265" lon="18.1419877" version="1" timestamp="2016-06-21T20:12:27Z" changeset="0">
+		<tag k="name" v="CreArs"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4316222000" lat="50.086126" lon="14.3562034" version="3" timestamp="2019-03-12T02:59:55Z" changeset="0">
+		<tag k="name" v="Galerie Entrance"/>
+		<tag k="source" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://entrancegallery.com/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Břevnov"/>
+		<tag k="addr:suburb" v="Praha 6"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="16900"/>
+	</node>
+	<node id="4360419724" lat="50.5110678" lon="14.1485039" version="1" timestamp="2016-08-21T18:16:23Z" changeset="0">
+		<tag k="name" v="magazín"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4366550489" lat="50.0899659" lon="14.4277338" version="2" timestamp="2017-07-03T20:35:57Z" changeset="0">
+		<tag k="name" v="Dům fotografie"/>
+		<tag k="name:en" v="House of Photography"/>
+		<tag k="name:es" v="Casa de las fotografías"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.ghmp.cz/dum-fotografie/"/>
+		<tag k="operator" v="Galerie hlavního města Prahy"/>
+		<tag k="addr:city" v="Praha 1"/>
+		<tag k="addr:street" v="Revoluční"/>
+		<tag k="artwork_type" v="photo"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Tu-We 10:00-18:00, Th 10:00-20:00, Fr-Su 10:00-18:00"/>
+		<tag k="addr:housenumber" v="5"/>
+	</node>
+	<node id="4450083660" lat="50.050727" lon="14.3491966" version="4" timestamp="2021-02-08T06:43:35Z" changeset="0">
+		<tag k="name" v="Czech Photo Center"/>
+		<tag k="note" v="position approximative"/>
+		<tag k="operator" v="Trigema"/>
+		<tag k="start_date" v="2016-10-13"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wikidata" v="Q35555761"/>
+	</node>
+	<node id="4529088632" lat="49.7473728" lon="13.3749577" version="1" timestamp="2016-11-29T20:42:08Z" changeset="0">
+		<tag k="name" v="Galerie Ladislava Sutnara"/>
+		<tag k="source" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="contact:email" v="galerie@fdu.zcu.cz"/>
+		<tag k="opening_hours" v="Tu-Fr 11:00-18:00; Sa 10:00-15:00"/>
+	</node>
+	<node id="4583839512" lat="50.085676" lon="14.4051639" version="1" timestamp="2017-01-01T13:38:33Z" changeset="0">
+		<tag k="name" v="Kotrba"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4585304757" lat="50.0988169" lon="14.4477838" version="3" timestamp="2019-03-13T19:23:04Z" changeset="0">
+		<tag k="name" v="Trafo Gallery"/>
+		<tag k="phone" v="+420 739 517 758"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://trafogallery.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/trafogalerie/"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="addr:place" v="Holešovice"/>
+		<tag k="addr:suburb" v="Praha 7"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="17000"/>
+	</node>
+	<node id="4640472416" lat="50.0856234" lon="14.4229967" version="1" timestamp="2017-01-28T19:23:35Z" changeset="0">
+		<tag k="name" v="V Rytířské"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4640473323" lat="50.0844262" lon="14.4210835" version="1" timestamp="2017-01-28T19:23:35Z" changeset="0">
+		<tag k="name" v="U Vavrysů"/>
+		<tag k="phone" v="+420224228250;+420724083018"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="opening_hours" v="Mo-Su 13:00-18:00"/>
+	</node>
+	<node id="4650297943" lat="50.7747841" lon="14.2003231" version="1" timestamp="2017-01-31T23:40:12Z" changeset="0">
+		<tag k="name" v="Ukradená galerie"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4692574004" lat="49.9631103" lon="14.0730061" version="1" timestamp="2017-02-18T18:41:16Z" changeset="0"/>
+	<node id="4705591153" lat="50.0826928" lon="14.4476947" version="2" timestamp="2017-03-01T06:45:05Z" changeset="0">
+		<tag k="name" v="hunt kastner"/>
+		<tag k="email" v="galerie@huntkastner.com"/>
+		<tag k="phone" v="+420 222 969 887"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://huntkastner.com/"/>
+		<tag k="operator" v="Katherine Kastner &#38; Camille Hunt"/>
+		<tag k="addr:city" v="Praha 3"/>
+		<tag k="addr:street" v="Bořivojova"/>
+		<tag k="addr:postcode" v="13000"/>
+		<tag k="opening_hours" v="Tu-Fr 13:00-18:00, We 14:00-18:00"/>
+		<tag k="addr:housenumber" v="85"/>
+	</node>
+	<node id="4747882016" lat="50.0637564" lon="14.4423699" version="1" timestamp="2017-03-21T23:19:36Z" changeset="0">
+		<tag k="name" v="Galerie ES"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4759862868" lat="49.7476602" lon="13.3803879" version="1" timestamp="2017-03-28T14:33:46Z" changeset="0"/>
+	<node id="4759862869" lat="49.7476205" lon="13.3804473" version="1" timestamp="2017-03-28T14:33:46Z" changeset="0"/>
+	<node id="4759862973" lat="49.7480311" lon="13.3800499" version="1" timestamp="2017-03-28T14:33:47Z" changeset="0"/>
+	<node id="4759862974" lat="49.7480661" lon="13.3800624" version="1" timestamp="2017-03-28T14:33:47Z" changeset="0"/>
+	<node id="4759862975" lat="49.7481513" lon="13.3800821" version="1" timestamp="2017-03-28T14:33:47Z" changeset="0"/>
+	<node id="4759862976" lat="49.7481618" lon="13.3800881" version="1" timestamp="2017-03-28T14:33:47Z" changeset="0"/>
+	<node id="4759862977" lat="49.7482311" lon="13.3801064" version="1" timestamp="2017-03-28T14:33:47Z" changeset="0"/>
+	<node id="4795449086" lat="50.0891819" lon="14.4049578" version="1" timestamp="2017-04-15T17:13:14Z" changeset="0">
+		<tag k="name" v="Navrátil"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4883032742" lat="50.5870607" lon="15.1577264" version="1" timestamp="2017-05-29T08:10:04Z" changeset="0">
+		<tag k="name" v="Galerie Granát"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.granat.eu/cesky-granat/galerie-granat"/>
+		<tag k="opening_hours" v="Mo-Fr 09:00-17:00"/>
+	</node>
+	<node id="4908357056" lat="50.0414898" lon="15.7772979" version="1" timestamp="2017-06-11T03:17:43Z" changeset="0">
+		<tag k="name" v="Východočeská galerie v Pardubicích"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="4949604472" lat="50.0828531" lon="14.4042881" version="1" timestamp="2017-07-03T20:01:48Z" changeset="0">
+		<tag k="name" v="Nikon Photo Gallery"/>
+		<tag k="note" v="Vstup zdarma"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.nikonphotogallery.cz/"/>
+		<tag k="addr:city" v="Praha 1"/>
+		<tag k="addr:street" v="Újezd"/>
+		<tag k="artwork_type" v="photo"/>
+		<tag k="addr:postcode" v="11800"/>
+		<tag k="opening_hours" v="Tu-Su 12:00-19:00"/>
+		<tag k="addr:housenumber" v="19"/>
+	</node>
+	<node id="4949693904" lat="50.0843943" lon="14.4135891" version="1" timestamp="2017-07-03T20:35:57Z" changeset="0">
+		<tag k="name" v="Galerie Hollar"/>
+		<tag k="phone" v="+420 737 288310"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://hollar.cz/"/>
+		<tag k="addr:city" v="Praha 1"/>
+		<tag k="addr:street" v="Smetanovo nábřeží"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Tu-Su 10:00-12:00, Tu-Su 13:00-18:00"/>
+		<tag k="addr:housenumber" v="6"/>
+	</node>
+	<node id="4949811274" lat="50.0815863" lon="14.4140348" version="5" timestamp="2020-05-14T15:16:59Z" changeset="0">
+		<tag k="fee" v="no"/>
+		<tag k="name" v="Věda a umění"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.avcr.cz/cs/pro-verejnost/vystavy/vystavy-v-budove-av-cr/"/>
+		<tag k="addr:city" v="Praha 1"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="addr:street" v="Národní"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="opening_hours" v="Mo-Fr 10:00-18:00"/>
+		<tag k="addr:housenumber" v="3"/>
+		<tag k="wheelchair:description" v="entrance through Národní 5"/>
+	</node>
+	<node id="4975613436" lat="50.0830279" lon="14.4227059" version="1" timestamp="2017-07-17T15:47:59Z" changeset="0">
+		<tag k="name" v="Galerie Petr Brandl"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="5079039550" lat="49.8382363" lon="13.9063721" version="2" timestamp="2017-09-04T20:06:11Z" changeset="0">
+		<tag k="name" v="Galerie Starý zámek Hořovice"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="5108999761" lat="49.8430085" lon="13.8991372" version="1" timestamp="2017-09-16T08:36:11Z" changeset="0">
+		<tag k="name" v="Galerie nádraží Hořovice"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="5112543114" lat="49.0683941" lon="17.459325" version="3" timestamp="2017-10-11T15:03:08Z" changeset="0">
+		<tag k="name" v="Galerie Zeman"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wheelchair" v="no"/>
+		<tag k="opening_hours" v="Mo-Fr 10:00-17:00"/>
+	</node>
+	<node id="5114415441" lat="49.0707092" lon="17.4595856" version="2" timestamp="2018-01-04T15:43:26Z" changeset="0">
+		<tag k="name" v="Galerie U Zeleného stromu"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="opening_hours" v="Mo-Fr 09:00-17:30, Sa 09:00-11:30"/>
+	</node>
+	<node id="5203095680" lat="49.0121708" lon="13.9975013" version="3" timestamp="2017-11-09T07:46:16Z" changeset="0">
+		<tag k="name" v="Otto Herberta Hajeka"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="addr:city" v="Prachatice"/>
+		<tag k="addr:street" v="Velké náměstí"/>
+		<tag k="addr:postcode" v="38301"/>
+		<tag k="addr:housenumber" v="184"/>
+	</node>
+	<node id="5229488277" lat="50.1431505" lon="14.1892333" version="1" timestamp="2017-11-15T03:30:26Z" changeset="0">
+		<tag k="name" v="Lidická galerie"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="5231123475" lat="50.0729815" lon="14.4179712" version="2" timestamp="2020-02-05T12:00:28Z" changeset="0">
+		<tag k="fee" v="no"/>
+		<tag k="name" v="CAMP - Centrum architektury a městského plánování"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://praha.camp"/>
+		<tag k="operator" v="Prague city"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="addr:street" v="Vyšehradská"/>
+		<tag k="opening_hours" v="Tu-Su 09:00-21:00"/>
+		<tag k="addr:housenumber" v="51"/>
+	</node>
+	<node id="5313520514" lat="49.0680736" lon="17.4652516" version="2" timestamp="2019-06-17T14:32:35Z" changeset="0">
+		<tag k="name" v="Baila"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="opening_hours" v="Th 14:00-18:00; Fr 15:00-18:00; Sa 09:00-12:00"/>
+	</node>
+	<node id="5314009650" lat="49.2062778" lon="16.6149231" version="1" timestamp="2017-12-31T19:55:12Z" changeset="0">
+		<tag k="name" v="Galerie Celnice"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="addr:city" v="Brno"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="addr:street" v="Drobného"/>
+		<tag k="addr:postcode" v="60200"/>
+		<tag k="opening_hours" v="Tu-Su 10:00-18:00"/>
+		<tag k="addr:housenumber" v="22"/>
+	</node>
+	<node id="5551104241" lat="49.8365981" lon="18.2807119" version="2" timestamp="2020-11-05T16:45:53Z" changeset="0">
+		<tag k="contact:email" v="info@plato-ostrava.cz"/>
+		<tag k="contact:facebook" v="https://facebook.com/platoostrava"/>
+		<tag k="contact:phone" v="+420 702 206 099"/>
+		<tag k="contact:twitter" v="https://twitter.com/platoostrava"/>
+		<tag k="contact:website" v="https://plato-ostrava.cz"/>
+		<tag k="name" v="PLATO"/>
+		<tag k="opening_hours" v="Tu,Th-Su 10:00-18:00; We 10:00-20:00"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="6207113644" lat="49.7488392" lon="13.3782428" version="1" timestamp="2019-01-14T07:31:42Z" changeset="0">
+		<tag k="name" v="Galerie Azyl"/>
+		<tag k="level" v="0"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="arts_centre"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="6316787842" lat="50.0528591" lon="14.4083216" version="1" timestamp="2019-03-04T18:44:52Z" changeset="0">
+		<tag k="name" v="Kostka Gallery"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="6341334812" lat="50.5859736" lon="13.2416006" version="1" timestamp="2019-03-16T13:05:11Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="6363269011" lat="50.1103398" lon="14.5107964" version="1" timestamp="2019-03-26T18:47:35Z" changeset="0">
+		<tag k="name" v="The White Room"/>
+		<tag k="level" v="1"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.pragovka.com/en/the-white-rooom-gallery"/>
+	</node>
+	<node id="6363269012" lat="50.1103416" lon="14.5103618" version="1" timestamp="2019-03-26T18:47:35Z" changeset="0">
+		<tag k="ele" v="0"/>
+		<tag k="name" v="Pragovka Gallery"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.pragovka.com/en/pragovka-gallery"/>
+	</node>
+	<node id="6379418060" lat="49.3199453" lon="16.4222176" version="1" timestamp="2019-04-02T20:04:24Z" changeset="0">
+		<tag k="name" v="Galerie Skleněnka"/>
+		<tag k="phone" v="+420 777668990"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.tisnov.cz/galerie-sklenenka"/>
+	</node>
+	<node id="6413650433" lat="50.5860058" lon="13.2414426" version="1" timestamp="2019-04-18T09:02:04Z" changeset="0"/>
+	<node id="6466507661" lat="50.1080174" lon="14.4456931" version="1" timestamp="2019-05-11T13:12:15Z" changeset="0">
+		<tag k="name" v="Del arte gallery"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="6476525551" lat="49.365993" lon="16.257534" version="2" timestamp="2020-05-08T17:35:12Z" changeset="0">
+		<tag k="name" v="Galerie MF Rojetín"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="operator" v="Martina Fialová"/>
+		<tag k="contact:email" v="martuli68@seznam.cz"/>
+		<tag k="contact:phone" v="+420 724 740 363"/>
+		<tag k="contact:website" v="https://www.jizni-morava.cz/objekt/40091-galerie-rojetin"/>
+	</node>
+	<node id="6558525307" lat="48.8567307" lon="14.4883881" version="1" timestamp="2019-06-19T21:23:09Z" changeset="0">
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="6638720639" lat="49.4400288" lon="16.3623271" version="1" timestamp="2019-07-22T20:03:50Z" changeset="0">
+		<tag k="name" v="Galerie z ruky"/>
+		<tag k="email" v="galeriezruky@seznam.cz"/>
+		<tag k="phone" v="+420 566 566 494"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.galeriezruky.cz/"/>
+	</node>
+	<node id="6644514411" lat="50.0858868" lon="14.4146037" version="1" timestamp="2019-07-24T18:25:31Z" changeset="0">
+		<tag k="name" v="Galerie hlavního města Prahy"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="6810975575" lat="50.0813247" lon="14.4000703" version="1" timestamp="2019-09-20T08:18:27Z" changeset="0">
+		<tag k="name" v="Magická jeskyně"/>
+		<tag k="name:de" v="Magische Höhle"/>
+		<tag k="name:en" v="Magical Cavern"/>
+		<tag k="name:es" v="La Cueva mágica"/>
+		<tag k="name:pl" v="Magiczna jaskinia"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://reon.cz/"/>
+		<tag k="description" v="Galerie malíře Reona Argondiana a muzeum vysněné země Argondie"/>
+		<tag k="opening_hours" v="Mo-Su 10:00-22:00"/>
+		<tag k="description:de" v="Galerie des Malers Reon Argondian"/>
+		<tag k="description:en" v="Gallery of painter Reon Argondian"/>
+		<tag k="description:pl" v="Galeria malarza Reona Argondiana"/>
+	</node>
+	<node id="6908188893" lat="50.1045211" lon="14.4076513" version="1" timestamp="2019-10-23T08:27:25Z" changeset="0">
+		<tag k="name" v="Arthouse Hejtmánek"/>
+		<tag k="phone" v="+420 734 311 861"/>
+		<tag k="source" v="survey"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.arthousehejtmanek.cz/"/>
+	</node>
+	<node id="6976354153" lat="48.8101866" lon="14.31683" version="2" timestamp="2019-11-17T19:43:32Z" changeset="0">
+		<tag k="name" v="Městská galerie"/>
+		<tag k="phone" v="+420 380 766 314"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="addr:city" v="Český Krumlov"/>
+		<tag k="addr:street" v="Horní"/>
+		<tag k="addr:postcode" v="381 01"/>
+		<tag k="addr:housenumber" v="155"/>
+	</node>
+	<node id="7023193241" lat="48.8110664" lon="14.3147232" version="4" timestamp="2020-06-22T15:18:32Z" changeset="0">
+		<tag k="name" v="Salomatova"/>
+		<tag k="email" v="info@marinasalomatova.cz"/>
+		<tag k="phone" v="+420 723 662 114"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.marinasalomatova.cz"/>
+		<tag k="operator" v="Marina Salomatova"/>
+		<tag k="addr:city" v="Český Krumlov"/>
+		<tag k="addr:street" v="Panská"/>
+		<tag k="addr:postcode" v="381 01"/>
+		<tag k="addr:housenumber" v="16"/>
+		<tag k="opening_hours:signed" v="no"/>
+	</node>
+	<node id="7033784746" lat="48.8116159" lon="14.3172205" version="1" timestamp="2019-12-04T16:55:32Z" changeset="0">
+		<tag k="name" v="Midnight gallery"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7043045148" lat="50.2290677" lon="16.168311" version="1" timestamp="2019-12-09T06:03:26Z" changeset="0">
+		<tag k="name" v="Galerie H"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://sdhhoudkovice.estranky.cz/clanky/galerie-h/"/>
+		<tag k="operator" v="Hlinovský"/>
+		<tag k="addr:city" v="Houdkovice"/>
+		<tag k="addr:postcode" v="51801"/>
+		<tag k="addr:housenumber" v="29"/>
+	</node>
+	<node id="7043400034" lat="50.4099125" lon="14.9009939" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400035" lat="50.4099773" lon="14.9010957" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400036" lat="50.409977" lon="14.9010994" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400037" lat="50.4099968" lon="14.9011076" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400038" lat="50.4099972" lon="14.9011032" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400039" lat="50.4100192" lon="14.9011047" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400040" lat="50.4100233" lon="14.9011028" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400041" lat="50.4100433" lon="14.9010983" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400042" lat="50.4102123" lon="14.9011638" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400043" lat="50.4101938" lon="14.9010673" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400044" lat="50.4099923" lon="14.9008789" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7043400045" lat="50.4099907" lon="14.9008842" version="1" timestamp="2019-12-09T08:56:15Z" changeset="0"/>
+	<node id="7176060508" lat="50.0880907" lon="14.4249798" version="2" timestamp="2021-02-08T06:46:34Z" changeset="0">
+		<tag k="name" v="Galerie Jakubská"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wikidata" v="Q64995804"/>
+	</node>
+	<node id="7317076481" lat="49.254932" lon="16.7399913" version="1" timestamp="2020-03-21T22:30:12Z" changeset="0">
+		<tag k="phone" v="+420 773 487 444"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="opening_hours" v="Sa 10:00-16:00"/>
+	</node>
+	<node id="7450354190" lat="50.5554715" lon="15.1599178" version="1" timestamp="2020-04-26T21:40:55Z" changeset="0">
+		<tag k="name" v="Skalní galerie Vojtěcha Kopice"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wikidata" v="Q12030187"/>
+		<tag k="wikipedia" v="cs:Kopicův statek"/>
+	</node>
+	<node id="7472885600" lat="50.3580968" lon="13.7961808" version="1" timestamp="2020-05-02T06:45:09Z" changeset="0">
+		<tag k="name" v="Galerie Benedikta Rejta"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wikidata" v="Q56236120"/>
+		<tag k="wikipedia" v="cs:Galerie Benedikta Rejta"/>
+	</node>
+	<node id="7474062443" lat="49.0926984" lon="16.401128" version="1" timestamp="2020-05-02T17:03:07Z" changeset="0">
+		<tag k="name" v="Galerie Stříbský mlýn"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7515448204" lat="49.4715796" lon="17.9689135" version="1" timestamp="2020-05-13T17:37:46Z" changeset="0">
+		<tag k="name" v="Galerie Sýpka"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7553275634" lat="48.9774134" lon="14.4718759" version="2" timestamp="2020-10-03T23:26:20Z" changeset="0">
+		<tag k="addr:city" v="České Budějovice"/>
+		<tag k="addr:conscriptionnumber" v="205"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="37001"/>
+		<tag k="addr:street" v="Panská"/>
+		<tag k="addr:streetnumber" v="1"/>
+		<tag k="name" v="Galerie U Schellů"/>
+		<tag k="ref:ruian" v="23341971"/>
+		<tag k="source:addr" v="ruian"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7630141308" lat="48.9765701" lon="14.476018" version="1" timestamp="2020-06-17T18:51:48Z" changeset="0">
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7640684312" lat="50.105947" lon="14.4731683" version="1" timestamp="2020-06-21T18:20:58Z" changeset="0">
+		<tag k="name" v="Studentská galerie Světova 1"/>
+		<tag k="email" v="kurator@svetova1.cz"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="http://www.svetova1.cz/"/>
+		<tag k="addr:city" v="Praha 8"/>
+		<tag k="addr:street" v="Světova"/>
+		<tag k="addr:housenumber" v="523/1"/>
+	</node>
+	<node id="7736569198" lat="50.1426444" lon="15.1169671" version="1" timestamp="2020-07-22T10:16:49Z" changeset="0">
+		<tag k="name" v="Galerie G18"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7802342623" lat="50.2331641" lon="13.505809" version="1" timestamp="2020-08-11T00:51:51Z" changeset="0">
+		<tag k="name" v="Galerie Kafka"/>
+		<tag k="phone" v="+420 774 335510"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="operator" v="Siřem Franze Kafky z.s."/>
+		<tag k="addr:city" v="Blšany"/>
+		<tag k="addr:street" v="Siřem"/>
+		<tag k="addr:postcode" v="438 01"/>
+		<tag k="opening_hours" v="po telefonické domluvě"/>
+		<tag k="addr:housenumber" v="7"/>
+	</node>
+	<node id="7837385487" lat="50.3048358" lon="15.1696817" version="1" timestamp="2020-08-23T14:45:27Z" changeset="0">
+		<tag k="name" v="Galerie Melantrich"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="7862027391" lat="49.8496597" lon="18.2727355" version="1" timestamp="2020-08-31T14:23:37Z" changeset="0">
+		<tag k="addr:city" v="Ostrava"/>
+		<tag k="addr:housenumber" v="2"/>
+		<tag k="addr:postcode" v="70200"/>
+		<tag k="addr:street" v="U Tiskárny"/>
+		<tag k="name" v="Klubovna Jeden Tag &#38; Galerie Nibiru"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="8069409686" lat="48.9470211" lon="16.7990944" version="1" timestamp="2020-10-31T18:15:52Z" changeset="0">
+		<tag k="name" v="Galerie Antonín Vojtek"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="8225568667" lat="49.9477435" lon="15.6687276" version="1" timestamp="2020-12-13T21:25:26Z" changeset="0">
+		<tag k="name" v="Městská galerie Cyrany"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<node id="8360746007" lat="50.0710975" lon="14.3996271" version="1" timestamp="2021-01-25T12:20:22Z" changeset="0">
+		<tag k="name" v="400 ASA"/>
+		<tag k="tourism" v="gallery"/>
+	</node>
+	<way id="32073006" version="6" timestamp="2021-02-08T06:42:53Z" changeset="0">
+		<nd ref="360039695"/>
+		<nd ref="360039693"/>
+		<nd ref="360039691"/>
+		<nd ref="360039688"/>
+		<nd ref="360039685"/>
+		<nd ref="360039683"/>
+		<nd ref="360039724"/>
+		<nd ref="360039723"/>
+		<nd ref="4248384796"/>
+		<nd ref="360039717"/>
+		<nd ref="360039716"/>
+		<nd ref="360039715"/>
+		<nd ref="360039714"/>
+		<nd ref="360039712"/>
+		<nd ref="3745220803"/>
+		<nd ref="3745220802"/>
+		<nd ref="360039711"/>
+		<nd ref="360039710"/>
+		<nd ref="360039709"/>
+		<nd ref="360039703"/>
+		<nd ref="360039700"/>
+		<nd ref="360039695"/>
+		<tag k="building" v="residential"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="building:ruian:type" v="3"/>
+		<tag k="name" v="Pelléova vila"/>
+		<tag k="ref:ruian:building" v="22094300"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="wikidata" v="Q31465846"/>
+	</way>
+	<way id="45235481" version="4" timestamp="2019-01-25T12:13:56Z" changeset="0">
+		<nd ref="574266896"/>
+		<nd ref="574267037"/>
+		<nd ref="574267036"/>
+		<nd ref="574267165"/>
+		<nd ref="574267163"/>
+		<nd ref="4759862977"/>
+		<nd ref="4759862976"/>
+		<nd ref="4759862975"/>
+		<nd ref="4759862974"/>
+		<nd ref="4759862973"/>
+		<nd ref="574267161"/>
+		<nd ref="574266896"/>
+		<tag k="name" v="Výstavní síň „13“"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="residential"/>
+		<tag k="operator" v="Západočeská galerie v Plzni"/>
+		<tag k="official_name" v="Západočeská galerie v Plzni - Výstavní síň „13“"/>
+		<tag k="opening_hours" v="Tu-Su 10:00-18:00"/>
+		<tag k="contact:website" v="http://www.zpc-galerie.cz/"/>
+		<tag k="ref:ruian:building" v="24141861"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="45238321" version="6" timestamp="2018-10-05T14:35:02Z" changeset="0">
+		<nd ref="574295532"/>
+		<nd ref="574295303"/>
+		<nd ref="574295312"/>
+		<nd ref="574295525"/>
+		<nd ref="4759862869"/>
+		<nd ref="4759862868"/>
+		<nd ref="574295532"/>
+		<tag k="name" v="Masné krámy"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="civic"/>
+		<tag k="operator" v="Západočeská galerie v Plzni"/>
+		<tag k="wikidata" v="Q38048070"/>
+		<tag k="official_name" v="Západočeská galerie v Plzni - Výstavní síň Masné krámy"/>
+		<tag k="opening_hours" v="Tu-Su 10:00-18:00"/>
+		<tag k="contact:website" v="http://www.zpc-galerie.cz/"/>
+		<tag k="ref:ruian:building" v="24144142"/>
+		<tag k="building:ruian:type" v="5"/>
+	</way>
+	<way id="52564156" version="2" timestamp="2016-02-21T18:14:50Z" changeset="0">
+		<nd ref="667788594"/>
+		<nd ref="667788591"/>
+		<nd ref="667788592"/>
+		<nd ref="667788599"/>
+		<nd ref="667788601"/>
+		<nd ref="667788602"/>
+		<nd ref="667788604"/>
+		<nd ref="667788605"/>
+		<nd ref="4018266010"/>
+		<nd ref="667788682"/>
+		<nd ref="667788623"/>
+		<nd ref="4018265994"/>
+		<nd ref="4018265993"/>
+		<nd ref="4018265992"/>
+		<nd ref="4018265999"/>
+		<nd ref="667788594"/>
+		<tag k="source" v="cuzk:km"/>
+	</way>
+	<way id="61856727" version="3" timestamp="2020-04-27T07:39:12Z" changeset="0">
+		<nd ref="770916653"/>
+		<nd ref="770916695"/>
+		<nd ref="770916641"/>
+		<nd ref="770916649"/>
+		<nd ref="770916681"/>
+		<nd ref="770916689"/>
+		<nd ref="3832200492"/>
+		<nd ref="3832200493"/>
+		<nd ref="770916634"/>
+		<nd ref="770916673"/>
+		<nd ref="770916704"/>
+		<nd ref="770916627"/>
+		<nd ref="770916653"/>
+		<tag k="name" v="Galerie Kotelna"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="yes"/>
+		<tag k="wikidata" v="Q12018038"/>
+		<tag k="wikipedia" v="cs:Galerie Kotelna"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="12659029"/>
+		<tag k="building:ruian:type" v="20"/>
+	</way>
+	<way id="64563962" version="6" timestamp="2020-12-13T21:25:26Z" changeset="0">
+		<nd ref="2723832647"/>
+		<nd ref="2723832323"/>
+		<nd ref="2723832493"/>
+		<nd ref="2723832558"/>
+		<nd ref="2723832642"/>
+		<nd ref="2723832750"/>
+		<nd ref="2723832682"/>
+		<nd ref="2723832797"/>
+		<nd ref="2723832647"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:levels" v="2"/>
+		<tag k="building:ruian:type" v="3"/>
+		<tag k="description" v="Židovská škola. V současné době zde sídlí městská galerie Cyrany"/>
+		<tag k="name" v="Židovská škola"/>
+		<tag k="ref:ruian:building" v="7144482"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+	</way>
+	<way id="79264021" version="3" timestamp="2019-12-09T08:56:15Z" changeset="0">
+		<nd ref="925739160"/>
+		<nd ref="925739113"/>
+		<nd ref="7043400045"/>
+		<nd ref="7043400044"/>
+		<nd ref="925739263"/>
+		<nd ref="925739006"/>
+		<nd ref="925739105"/>
+		<nd ref="925739188"/>
+		<nd ref="925739226"/>
+		<nd ref="925738978"/>
+		<nd ref="7043400043"/>
+		<nd ref="925739074"/>
+		<nd ref="925739138"/>
+		<nd ref="7043400042"/>
+		<nd ref="925739259"/>
+		<nd ref="925739004"/>
+		<nd ref="925739101"/>
+		<nd ref="925739183"/>
+		<nd ref="925739288"/>
+		<nd ref="7043400041"/>
+		<nd ref="925739028"/>
+		<nd ref="7043400040"/>
+		<nd ref="7043400039"/>
+		<nd ref="925739134"/>
+		<nd ref="7043400038"/>
+		<nd ref="7043400037"/>
+		<nd ref="7043400036"/>
+		<nd ref="7043400035"/>
+		<nd ref="925739219"/>
+		<nd ref="7043400034"/>
+		<nd ref="925739060"/>
+		<nd ref="925739160"/>
+		<tag k="name" v="Městský palác Templ"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="residential"/>
+		<tag k="ref:ruian:building" v="30478065"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="102900195" version="8" timestamp="2020-11-22T09:59:48Z" changeset="0">
+		<nd ref="1188235128"/>
+		<nd ref="1188236899"/>
+		<nd ref="1188234995"/>
+		<nd ref="1188236511"/>
+		<nd ref="1188234488"/>
+		<nd ref="3775088951"/>
+		<nd ref="1188234460"/>
+		<nd ref="1188236727"/>
+		<nd ref="1188234597"/>
+		<nd ref="3775088966"/>
+		<nd ref="3775088965"/>
+		<nd ref="1188235704"/>
+		<nd ref="3775088969"/>
+		<nd ref="3775088970"/>
+		<nd ref="1188237577"/>
+		<nd ref="1188235413"/>
+		<nd ref="3775088971"/>
+		<nd ref="3775088972"/>
+		<nd ref="3775088968"/>
+		<nd ref="3775088967"/>
+		<nd ref="3775088954"/>
+		<nd ref="3775088955"/>
+		<nd ref="1188234243"/>
+		<nd ref="1188235253"/>
+		<nd ref="3775088946"/>
+		<nd ref="1188236988"/>
+		<nd ref="3775088943"/>
+		<nd ref="3775088942"/>
+		<nd ref="1188234719"/>
+		<nd ref="3775088940"/>
+		<nd ref="1188235339"/>
+		<nd ref="3775088935"/>
+		<nd ref="3775088933"/>
+		<nd ref="3775088931"/>
+		<nd ref="1188237087"/>
+		<nd ref="3775088932"/>
+		<nd ref="3775088936"/>
+		<nd ref="1188234791"/>
+		<nd ref="3775088938"/>
+		<nd ref="1188236128"/>
+		<nd ref="3775088937"/>
+		<nd ref="3775088939"/>
+		<nd ref="3775088927"/>
+		<nd ref="3775088926"/>
+		<nd ref="1188234661"/>
+		<nd ref="1188235876"/>
+		<nd ref="1188237773"/>
+		<nd ref="1188234111"/>
+		<nd ref="3775088950"/>
+		<nd ref="3775088948"/>
+		<nd ref="1188235128"/>
+		<tag k="addr:city" v="Liberec"/>
+		<tag k="addr:postcode" v="46001"/>
+		<tag k="addr:street" v="Masarykova"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:flats" v="3"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="building:ruian:type" v="15"/>
+		<tag k="heritage" v="yes"/>
+		<tag k="heritage:operator" v="npu"/>
+		<tag k="heritage:ref" v="43949/5-5233"/>
+		<tag k="heritage:website" v="https://pamatkovykatalog.cz/uskp/podle-relevance/1/seznam?uskp=43949/5-5233"/>
+		<tag k="name" v="Oblastní galerie Liberec"/>
+		<tag k="name:de" v="Museum Europäische Kunst im ehem. Kaiser-Franz-Joseph-Bad"/>
+		<tag k="name:en" v="Museum of European Art"/>
+		<tag k="old_name" v="Městské lázně"/>
+		<tag k="old_name:de" v="Kaiser-Franz-Joseph-Bad"/>
+		<tag k="opening_hours" v="Tu-We 10:00-17:00; Th 10:00-19:00; Fr-Su 10:00-17:00"/>
+		<tag k="ref:ruian:building" v="23286253"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.ogl.cz/"/>
+		<tag k="wikidata" v="Q12041925"/>
+		<tag k="wikimedia_commons" v="https://commons.wikimedia.org/wiki/Category:Kaiser-Franz-Joseph-Bad_in_Liberec"/>
+		<tag k="wikipedia" v="cs:Oblastní galerie Liberec"/>
+	</way>
+	<way id="108598200" version="5" timestamp="2017-02-18T18:41:16Z" changeset="0">
+		<nd ref="1245587754"/>
+		<nd ref="1245585587"/>
+		<nd ref="1245589408"/>
+		<nd ref="1245576339"/>
+		<nd ref="1245580827"/>
+		<nd ref="4692574004"/>
+		<nd ref="1245573005"/>
+		<nd ref="1245587754"/>
+		<tag k="name" v="Výstavní síň Konírna"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="yes"/>
+		<tag k="operator" v="Muzeum Českého krasu, příspěvková organizace, Beroun"/>
+		<tag k="addr:city" v="Beroun"/>
+		<tag k="addr:street" v="Slapská"/>
+		<tag k="addr:postcode" v="266 01"/>
+		<tag k="ref:ruian:building" v="40555747"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="119935665" version="4" timestamp="2018-02-05T06:15:18Z" changeset="0">
+		<nd ref="1345962726"/>
+		<nd ref="1345962727"/>
+		<nd ref="1345962729"/>
+		<nd ref="1345962731"/>
+		<nd ref="1345962726"/>
+		<tag k="name" v="Letohrádek"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="residential"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="11964561"/>
+		<tag k="building:ruian:type" v="3"/>
+	</way>
+	<way id="124355342" version="4" timestamp="2019-04-18T09:02:04Z" changeset="0">
+		<nd ref="1384352536"/>
+		<nd ref="6341334812"/>
+		<nd ref="1384352509"/>
+		<nd ref="1384352514"/>
+		<nd ref="6413650433"/>
+		<nd ref="1384352539"/>
+		<nd ref="1384352536"/>
+		<tag k="name" v="Atelierhaus Kühnhaide"/>
+		<tag k="source" v="bing"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="website" v="https://www.atelierhaus-kuehnhaide.de/"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Marienberg"/>
+		<tag k="addr:street" v="Mitteldorfstraße"/>
+		<tag k="addr:suburb" v="Kühnhaide"/>
+		<tag k="addr:country" v="DE"/>
+		<tag k="addr:postcode" v="09496"/>
+		<tag k="addr:housenumber" v="16"/>
+	</way>
+	<way id="399087395" version="1" timestamp="2016-02-21T18:14:48Z" changeset="0">
+		<nd ref="4018266004"/>
+		<nd ref="4018266002"/>
+		<nd ref="4018266007"/>
+		<nd ref="4018266008"/>
+		<nd ref="4018266005"/>
+		<nd ref="4018266004"/>
+	</way>
+	<relation id="5995065" version="2" timestamp="2016-12-20T11:10:42Z" changeset="0">
+		<member type="way" ref="52564156" role="outer"/>
+		<member type="way" ref="399087395" role="inner"/>
+		<tag k="name" v="Dům umění"/>
+		<tag k="type" v="multipolygon"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="gallery"/>
+		<tag k="building" v="yes"/>
+		<tag k="operator" v="Opavská kulturní organizace"/>
+		<tag k="addr:city" v="Opava"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="addr:street" v="Pekařská"/>
+		<tag k="artwork_type" v="installation"/>
+		<tag k="addr:postcode" v="74601"/>
+		<tag k="contact:email" v="dum.umeni@oko-opava.cz"/>
+		<tag k="contact:phone" v="+420 734 862 481"/>
+		<tag k="opening_hours" v="10:00-17:00"/>
+		<tag k="building:levels" v="3"/>
+		<tag k="contact:website" v="www.oko-opava.cz"/>
+		<tag k="addr:housenumber" v="417/12"/>
+		<tag k="ref:ruian:building" v="23964201"/>
+		<tag k="building:ruian:type" v="5"/>
+	</relation>
+</osm>

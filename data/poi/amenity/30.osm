@@ -1,0 +1,1481 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="175426903" lat="49.5896485" lon="17.2554181" version="2" timestamp="2010-03-20T22:01:50Z" changeset="0"/>
+	<node id="175426907" lat="49.5892105" lon="17.2549742" version="2" timestamp="2010-03-20T22:01:49Z" changeset="0"/>
+	<node id="175426911" lat="49.588972" lon="17.2555341" version="2" timestamp="2010-03-20T22:01:49Z" changeset="0"/>
+	<node id="175426914" lat="49.58941" lon="17.2559781" version="2" timestamp="2010-03-20T22:01:49Z" changeset="0"/>
+	<node id="296550105" lat="50.0839226" lon="14.4243952" version="5" timestamp="2014-04-28T23:40:24Z" changeset="0">
+		<tag k="source" v="eyes"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="addr:place" v="Nové Město"/>
+		<tag k="addr:street" v="Václavské náměstí"/>
+		<tag k="addr:postcode" v="11000"/>
+		<tag k="ref:ruian:addr" v="21706468"/>
+		<tag k="addr:housenumber" v="841/3"/>
+		<tag k="addr:streetnumber" v="3"/>
+		<tag k="addr:conscriptionnumber" v="841"/>
+	</node>
+	<node id="410726423" lat="50.0996716" lon="14.4459841" version="3" timestamp="2012-03-20T07:28:39Z" changeset="0">
+		<tag k="name" v="Holešovická tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="457045357" lat="49.4510928" lon="17.4539322" version="1" timestamp="2009-08-05T18:33:14Z" changeset="0"/>
+	<node id="493597386" lat="49.0689312" lon="17.4637583" version="4" timestamp="2019-05-29T12:42:37Z" changeset="0"/>
+	<node id="493597387" lat="49.0688238" lon="17.4637363" version="3" timestamp="2019-05-29T12:42:37Z" changeset="0"/>
+	<node id="493898104" lat="49.0687089" lon="17.463698" version="1" timestamp="2009-09-12T05:35:36Z" changeset="0"/>
+	<node id="493898108" lat="49.068735" lon="17.4634894" version="2" timestamp="2019-05-29T12:42:37Z" changeset="0"/>
+	<node id="493898109" lat="49.0687337" lon="17.463477" version="2" timestamp="2019-05-29T12:42:37Z" changeset="0"/>
+	<node id="493898153" lat="49.0689234" lon="17.4632968" version="3" timestamp="2020-02-23T13:28:40Z" changeset="0"/>
+	<node id="495271458" lat="49.068746" lon="17.4634119" version="2" timestamp="2020-02-23T13:28:40Z" changeset="0"/>
+	<node id="631106844" lat="49.2262365" lon="16.5915639" version="2" timestamp="2019-03-05T21:28:13Z" changeset="0"/>
+	<node id="631106853" lat="49.2262939" lon="16.5917685" version="2" timestamp="2019-03-05T21:28:13Z" changeset="0"/>
+	<node id="631106885" lat="49.2264461" lon="16.5914364" version="2" timestamp="2019-03-05T21:28:14Z" changeset="0"/>
+	<node id="631106887" lat="49.2264236" lon="16.5914506" version="2" timestamp="2019-03-05T21:28:14Z" changeset="0"/>
+	<node id="631106898" lat="49.2263657" lon="16.5920288" version="1" timestamp="2010-02-05T22:11:02Z" changeset="0"/>
+	<node id="631106899" lat="49.2263774" lon="16.5920713" version="1" timestamp="2010-02-05T22:11:02Z" changeset="0"/>
+	<node id="631106901" lat="49.2263224" lon="16.5918703" version="1" timestamp="2010-02-05T22:11:02Z" changeset="0"/>
+	<node id="631107210" lat="49.2264071" lon="16.5921806" version="2" timestamp="2019-03-05T21:28:16Z" changeset="0"/>
+	<node id="631107211" lat="49.2264221" lon="16.5922335" version="2" timestamp="2019-03-05T21:28:16Z" changeset="0"/>
+	<node id="631107221" lat="49.2266298" lon="16.5925233" version="2" timestamp="2019-03-05T21:28:16Z" changeset="0"/>
+	<node id="631107223" lat="49.2265218" lon="16.5925967" version="2" timestamp="2019-03-05T21:28:16Z" changeset="0"/>
+	<node id="631107234" lat="49.2267279" lon="16.5924608" version="2" timestamp="2019-03-05T21:28:16Z" changeset="0"/>
+	<node id="635101303" lat="49.1926032" lon="16.6081459" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="635101304" lat="49.1926174" lon="16.6081433" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="635101305" lat="49.1925976" lon="16.60796" version="3" timestamp="2019-05-23T19:45:22Z" changeset="0"/>
+	<node id="635101316" lat="49.1927484" lon="16.6079253" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="635101322" lat="49.1927953" lon="16.6085581" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="635101323" lat="49.1927628" lon="16.6082529" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="635101324" lat="49.1927893" lon="16.608249" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="635101416" lat="49.1926488" lon="16.6086543" version="2" timestamp="2017-12-17T12:23:04Z" changeset="0"/>
+	<node id="637026878" lat="50.7735217" lon="15.0626975" version="4" timestamp="2020-08-27T16:21:59Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="649788386" lat="50.4976036" lon="13.6394485" version="1" timestamp="2010-02-21T23:06:31Z" changeset="0"/>
+	<node id="649788400" lat="50.4978833" lon="13.6392148" version="2" timestamp="2010-07-25T22:39:58Z" changeset="0"/>
+	<node id="649788402" lat="50.4977119" lon="13.6390832" version="2" timestamp="2010-07-25T22:39:58Z" changeset="0"/>
+	<node id="649788498" lat="50.4977763" lon="13.6395785" version="1" timestamp="2010-02-21T23:06:33Z" changeset="0"/>
+	<node id="660816099" lat="50.7741494" lon="15.0644036" version="2" timestamp="2012-05-26T14:59:38Z" changeset="0"/>
+	<node id="660816125" lat="50.7747569" lon="15.0645067" version="2" timestamp="2012-05-26T14:59:38Z" changeset="0"/>
+	<node id="660816130" lat="50.7733431" lon="15.0653532" version="1" timestamp="2010-03-05T20:38:26Z" changeset="0"/>
+	<node id="660816162" lat="50.7744751" lon="15.0661688" version="2" timestamp="2011-03-05T23:43:33Z" changeset="0"/>
+	<node id="660816163" lat="50.7743628" lon="15.0658222" version="2" timestamp="2011-03-05T23:43:37Z" changeset="0"/>
+	<node id="660816172" lat="50.773777" lon="15.066715" version="2" timestamp="2012-05-26T14:59:38Z" changeset="0"/>
+	<node id="660816175" lat="50.7749965" lon="15.0652599" version="2" timestamp="2012-05-26T14:59:37Z" changeset="0"/>
+	<node id="663843562" lat="48.9739531" lon="14.4874956" version="2" timestamp="2016-07-27T16:27:53Z" changeset="0"/>
+	<node id="663843565" lat="48.9739584" lon="14.4875212" version="2" timestamp="2016-07-27T16:27:53Z" changeset="0"/>
+	<node id="663843566" lat="48.9739354" lon="14.48741" version="2" timestamp="2016-07-27T16:27:53Z" changeset="0"/>
+	<node id="663843574" lat="48.9741056" lon="14.487236" version="2" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="663843575" lat="48.973984" lon="14.4872881" version="2" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="663843576" lat="48.9739976" lon="14.487353" version="2" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="663843577" lat="48.9739868" lon="14.4873608" version="2" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="663843578" lat="48.973994" lon="14.487382" version="1" timestamp="2010-03-10T21:26:03Z" changeset="0"/>
+	<node id="663843579" lat="48.9742547" lon="14.4872288" version="2" timestamp="2016-07-27T16:27:53Z" changeset="0"/>
+	<node id="663843580" lat="48.9742105" lon="14.4872534" version="2" timestamp="2016-07-27T16:27:53Z" changeset="0"/>
+	<node id="663843584" lat="48.9741431" lon="14.4874557" version="2" timestamp="2010-06-08T18:23:38Z" changeset="0"/>
+	<node id="663843585" lat="48.974209" lon="14.487431" version="1" timestamp="2010-03-10T21:26:03Z" changeset="0"/>
+	<node id="667898798" lat="49.377165" lon="17.6985417" version="4" timestamp="2015-12-04T09:10:38Z" changeset="0"/>
+	<node id="667898802" lat="49.3771067" lon="17.6985206" version="4" timestamp="2015-12-04T09:10:38Z" changeset="0"/>
+	<node id="667898803" lat="49.3768609" lon="17.6981433" version="4" timestamp="2015-12-04T09:06:41Z" changeset="0"/>
+	<node id="667898804" lat="49.376924" lon="17.6981682" version="4" timestamp="2015-12-04T09:06:41Z" changeset="0"/>
+	<node id="678766906" lat="50.0132175" lon="14.4816223" version="3" timestamp="2015-04-24T09:47:36Z" changeset="0"/>
+	<node id="712717936" lat="49.471384" lon="17.1118085" version="3" timestamp="2014-01-20T15:08:14Z" changeset="0"/>
+	<node id="712719138" lat="49.4712162" lon="17.1118428" version="2" timestamp="2014-01-20T15:08:16Z" changeset="0"/>
+	<node id="717837930" lat="49.5893256" lon="17.2546584" version="2" timestamp="2012-08-30T07:50:55Z" changeset="0"/>
+	<node id="717837945" lat="49.5897905" lon="17.2551292" version="2" timestamp="2012-08-30T07:50:55Z" changeset="0"/>
+	<node id="717837961" lat="49.589679" lon="17.2553911" version="2" timestamp="2012-08-30T07:50:55Z" changeset="0"/>
+	<node id="717837979" lat="49.5892141" lon="17.2549203" version="2" timestamp="2012-08-30T07:50:55Z" changeset="0"/>
+	<node id="783019448" lat="49.2257179" lon="17.6648244" version="4" timestamp="2020-01-25T15:49:52Z" changeset="0"/>
+	<node id="783019470" lat="49.2252201" lon="17.6641511" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="783019517" lat="49.2255309" lon="17.6646539" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="783019523" lat="49.2246151" lon="17.6629666" version="4" timestamp="2020-02-02T18:34:32Z" changeset="0"/>
+	<node id="783019530" lat="49.2256335" lon="17.6648493" version="4" timestamp="2020-01-25T15:49:52Z" changeset="0"/>
+	<node id="783019554" lat="49.2252032" lon="17.6641726" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="783019572" lat="49.2248803" lon="17.6633292" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="783019577" lat="49.2254904" lon="17.6647052" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="783019599" lat="49.2248171" lon="17.663404" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="783019611" lat="49.2246546" lon="17.6629109" version="3" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="843112216" lat="49.2246561" lon="17.6631055" version="2" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="843112225" lat="49.2250472" lon="17.6636386" version="2" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="843112227" lat="49.225397" lon="17.6642481" version="2" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="843112228" lat="49.224731" lon="17.6630524" version="2" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="843112230" lat="49.2254002" lon="17.6642441" version="2" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="843112231" lat="49.2250629" lon="17.6636188" version="2" timestamp="2020-01-25T13:48:51Z" changeset="0"/>
+	<node id="1073774089" lat="49.5245549" lon="16.2592845" version="4" timestamp="2015-05-23T08:03:28Z" changeset="0">
+		<tag k="name" v="Cukrárna"/>
+		<tag k="shop" v="confectionery"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1073787872" lat="49.5239" lon="16.2592475" version="3" timestamp="2014-06-15T01:38:24Z" changeset="0">
+		<tag k="name" v="Drogerie"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="addr:place" v="Bystřice nad Pernštejnem"/>
+		<tag k="addr:street" v="Masarykovo náměstí"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="59301"/>
+		<tag k="ref:ruian:addr" v="3437086"/>
+		<tag k="addr:housenumber" v="54"/>
+		<tag k="addr:conscriptionnumber" v="54"/>
+	</node>
+	<node id="1073789201" lat="49.52393" lon="16.26005" version="3" timestamp="2014-06-15T01:38:24Z" changeset="0">
+		<tag k="name" v="Drogerie DM"/>
+		<tag k="shop" v="chemist"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="addr:place" v="Bystřice nad Pernštejnem"/>
+		<tag k="addr:street" v="Masarykovo náměstí"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="59301"/>
+		<tag k="ref:ruian:addr" v="3436624"/>
+		<tag k="addr:housenumber" v="6"/>
+		<tag k="addr:conscriptionnumber" v="6"/>
+	</node>
+	<node id="1073796857" lat="49.524965" lon="16.2574275" version="3" timestamp="2014-06-15T01:38:31Z" changeset="0">
+		<tag k="name" v="Průmyslové zboží"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="addr:place" v="Bystřice nad Pernštejnem"/>
+		<tag k="addr:street" v="Masarykovo náměstí"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="59301"/>
+		<tag k="ref:ruian:addr" v="3436977"/>
+		<tag k="addr:housenumber" v="43"/>
+		<tag k="addr:conscriptionnumber" v="43"/>
+	</node>
+	<node id="1083935885" lat="49.3059391" lon="14.1507248" version="2" timestamp="2016-02-15T06:19:05Z" changeset="0"/>
+	<node id="1083936982" lat="49.3059266" lon="14.1507574" version="2" timestamp="2016-02-15T06:19:06Z" changeset="0"/>
+	<node id="1083948908" lat="49.3058458" lon="14.1506443" version="2" timestamp="2016-02-15T06:19:11Z" changeset="0"/>
+	<node id="1102132002" lat="49.5893094" lon="17.2550745" version="1" timestamp="2011-01-13T15:21:46Z" changeset="0"/>
+	<node id="1106904133" lat="49.1875551" lon="16.6519184" version="2" timestamp="2015-12-20T19:57:49Z" changeset="0"/>
+	<node id="1106904184" lat="49.1879004" lon="16.6521159" version="2" timestamp="2015-12-20T19:57:49Z" changeset="0"/>
+	<node id="1106904607" lat="49.187924" lon="16.6520047" version="2" timestamp="2015-12-20T19:57:52Z" changeset="0"/>
+	<node id="1200641300" lat="50.7999947" lon="14.420246" version="2" timestamp="2018-03-13T08:36:17Z" changeset="0"/>
+	<node id="1223258710" lat="50.4174046" lon="16.1638052" version="4" timestamp="2020-10-14T10:03:09Z" changeset="0"/>
+	<node id="1223258798" lat="50.41742" lon="16.1634111" version="3" timestamp="2020-10-14T10:03:09Z" changeset="0"/>
+	<node id="1223258816" lat="50.4173478" lon="16.1636873" version="3" timestamp="2020-10-14T10:03:09Z" changeset="0"/>
+	<node id="1223259338" lat="50.4172729" lon="16.1635995" version="2" timestamp="2012-12-26T00:10:55Z" changeset="0"/>
+	<node id="1223259949" lat="50.4172995" lon="16.1635548" version="3" timestamp="2020-10-14T10:03:09Z" changeset="0"/>
+	<node id="1223260824" lat="50.4173353" lon="16.1637022" version="3" timestamp="2020-10-14T10:03:09Z" changeset="0"/>
+	<node id="1232845923" lat="50.5361041" lon="14.1319108" version="1" timestamp="2011-04-04T19:34:24Z" changeset="0">
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1238703455" lat="50.440615" lon="14.9271438" version="5" timestamp="2020-07-03T11:21:24Z" changeset="0">
+		<tag k="name" v="OC Kvartet"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="source:loc" v="cuzk:km"/>
+		<tag k="addr:street" v="Debřská"/>
+		<tag k="source:addr" v="mvcr:adresa"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="opening_hours" v="Mo-Fr 08:00-17:00; Sa 08:00-11:00"/>
+		<tag k="addr:housenumber" v="1000"/>
+		<tag k="addr:conscriptionnumber" v="1000"/>
+	</node>
+	<node id="1240284667" lat="50.6869135" lon="13.9900611" version="1" timestamp="2011-04-10T20:00:21Z" changeset="0">
+		<tag k="name" v="Ústecká burza"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1279996983" lat="50.2624421" lon="17.3970164" version="3" timestamp="2019-06-07T08:24:13Z" changeset="0"/>
+	<node id="1279997202" lat="50.2624176" lon="17.3967723" version="2" timestamp="2012-02-12T10:34:46Z" changeset="0"/>
+	<node id="1279997361" lat="50.2626627" lon="17.3966969" version="2" timestamp="2012-02-12T10:34:53Z" changeset="0"/>
+	<node id="1279997420" lat="50.2626811" lon="17.3970716" version="3" timestamp="2019-06-07T08:24:13Z" changeset="0"/>
+	<node id="1302793354" lat="50.7735677" lon="15.0626568" version="2" timestamp="2020-08-27T16:21:59Z" changeset="0"/>
+	<node id="1407012498" lat="50.0843858" lon="14.4205125" version="3" timestamp="2017-09-03T09:44:17Z" changeset="0"/>
+	<node id="1407012500" lat="50.0844183" lon="14.4204551" version="3" timestamp="2017-09-03T09:44:17Z" changeset="0"/>
+	<node id="1407012509" lat="50.0851263" lon="14.4215319" version="3" timestamp="2017-09-03T09:44:17Z" changeset="0"/>
+	<node id="1407012511" lat="50.0851588" lon="14.4214745" version="3" timestamp="2017-09-03T09:44:17Z" changeset="0"/>
+	<node id="1476487143" lat="50.3064273" lon="12.3800536" version="1" timestamp="2011-10-22T15:43:32Z" changeset="0">
+		<tag k="name" v="euwaweb"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="designation" v="EDV-Service Webdesign"/>
+	</node>
+	<node id="1533722563" lat="48.9078953" lon="13.7236183" version="3" timestamp="2021-01-10T23:07:46Z" changeset="0"/>
+	<node id="1533722564" lat="48.9073551" lon="13.7238666" version="3" timestamp="2021-01-10T23:07:46Z" changeset="0"/>
+	<node id="1533722565" lat="48.9078907" lon="13.72388" version="3" timestamp="2021-01-10T23:07:46Z" changeset="0"/>
+	<node id="1533722566" lat="48.9073664" lon="13.7235987" version="3" timestamp="2021-01-10T23:07:46Z" changeset="0"/>
+	<node id="1561428927" lat="49.594985" lon="18.0084962" version="4" timestamp="2016-12-11T20:03:33Z" changeset="0"/>
+	<node id="1570755649" lat="49.471131" lon="17.111816" version="1" timestamp="2011-12-31T09:51:38Z" changeset="0"/>
+	<node id="1570755654" lat="49.471189" lon="17.111708" version="1" timestamp="2011-12-31T09:51:38Z" changeset="0"/>
+	<node id="1570755657" lat="49.471218" lon="17.112811" version="1" timestamp="2011-12-31T09:51:38Z" changeset="0"/>
+	<node id="1570755679" lat="49.471355" lon="17.1127763" version="1" timestamp="2011-12-31T09:51:38Z" changeset="0"/>
+	<node id="1570755682" lat="49.471375" lon="17.111679" version="1" timestamp="2011-12-31T09:51:39Z" changeset="0"/>
+	<node id="1583705240" lat="49.9119592" lon="16.6126951" version="1" timestamp="2012-01-09T13:14:50Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1711198187" lat="48.760352" lon="16.993733" version="1" timestamp="2012-04-11T09:18:17Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1722142462" lat="50.147399" lon="16.0735401" version="2" timestamp="2018-07-02T09:03:13Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1755420846" lat="49.6792212" lon="18.6691572" version="1" timestamp="2012-05-16T23:23:47Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1766265507" lat="50.7734612" lon="15.0627453" version="2" timestamp="2020-08-27T16:21:59Z" changeset="0"/>
+	<node id="1766265510" lat="50.7737025" lon="15.0664442" version="1" timestamp="2012-05-26T14:59:37Z" changeset="0"/>
+	<node id="1766265512" lat="50.7736619" lon="15.0662929" version="1" timestamp="2012-05-26T14:59:37Z" changeset="0"/>
+	<node id="1766265535" lat="50.7740231" lon="15.064579" version="1" timestamp="2012-05-26T14:59:37Z" changeset="0"/>
+	<node id="1802529643" lat="49.2793465" lon="16.9991097" version="1" timestamp="2012-06-26T09:36:38Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="1922090985" lat="49.595331" lon="18.0086851" version="2" timestamp="2017-05-29T17:44:50Z" changeset="0"/>
+	<node id="1922090987" lat="49.5953711" lon="18.008244" version="2" timestamp="2017-10-03T18:48:09Z" changeset="0"/>
+	<node id="1922090988" lat="49.5953729" lon="18.008247" version="2" timestamp="2017-10-03T18:48:09Z" changeset="0"/>
+	<node id="1922091041" lat="49.5952009" lon="18.0085077" version="2" timestamp="2017-05-29T17:44:50Z" changeset="0"/>
+	<node id="1928743782" lat="49.0095813" lon="17.1256852" version="1" timestamp="2012-09-23T10:55:32Z" changeset="0"/>
+	<node id="1928743804" lat="49.0096237" lon="17.1257101" version="1" timestamp="2012-09-23T10:55:32Z" changeset="0"/>
+	<node id="1928743806" lat="49.0096333" lon="17.1252434" version="1" timestamp="2012-09-23T10:55:32Z" changeset="0"/>
+	<node id="1928743809" lat="49.0096527" lon="17.1251935" version="1" timestamp="2012-09-23T10:55:32Z" changeset="0"/>
+	<node id="1928743829" lat="49.0096794" lon="17.1251709" version="1" timestamp="2012-09-23T10:55:33Z" changeset="0"/>
+	<node id="1928743846" lat="49.0097091" lon="17.1251765" version="1" timestamp="2012-09-23T10:55:33Z" changeset="0"/>
+	<node id="1928743855" lat="49.0097374" lon="17.1251969" version="1" timestamp="2012-09-23T10:55:33Z" changeset="0"/>
+	<node id="1928743869" lat="49.0097515" lon="17.12524" version="1" timestamp="2012-09-23T10:55:34Z" changeset="0"/>
+	<node id="1928743873" lat="49.009753" lon="17.1252898" version="1" timestamp="2012-09-23T10:55:34Z" changeset="0"/>
+	<node id="1998997057" lat="49.7916696" lon="18.2368134" version="1" timestamp="2012-11-05T18:22:10Z" changeset="0"/>
+	<node id="1998997058" lat="49.7917353" lon="18.2374204" version="1" timestamp="2012-11-05T18:22:10Z" changeset="0"/>
+	<node id="1998997061" lat="49.791893" lon="18.2367554" version="1" timestamp="2012-11-05T18:22:10Z" changeset="0"/>
+	<node id="1998997064" lat="49.7919587" lon="18.2373624" version="1" timestamp="2012-11-05T18:22:10Z" changeset="0"/>
+	<node id="2040113511" lat="50.2305421" lon="14.0841723" version="2" timestamp="2012-12-01T14:05:43Z" changeset="0">
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2060183609" lat="49.4597498" lon="18.1434106" version="2" timestamp="2019-04-09T11:17:35Z" changeset="0"/>
+	<node id="2070141803" lat="49.4598925" lon="18.1437787" version="1" timestamp="2012-12-16T17:52:46Z" changeset="0"/>
+	<node id="2082793550" lat="50.4172696" lon="16.16359" version="2" timestamp="2013-05-10T19:15:45Z" changeset="0"/>
+	<node id="2082793551" lat="50.4174074" lon="16.1638119" version="1" timestamp="2012-12-26T00:10:51Z" changeset="0"/>
+	<node id="2082793552" lat="50.4174223" lon="16.1634118" version="2" timestamp="2013-05-10T19:15:45Z" changeset="0"/>
+	<node id="2082793553" lat="50.4175352" lon="16.1636434" version="2" timestamp="2013-05-10T19:15:45Z" changeset="0"/>
+	<node id="2100410735" lat="49.4712936" lon="17.1127404" version="2" timestamp="2014-01-20T15:08:12Z" changeset="0"/>
+	<node id="2100410740" lat="49.4713505" lon="17.1127288" version="2" timestamp="2014-01-20T15:08:12Z" changeset="0"/>
+	<node id="2101901711" lat="50.0783093" lon="14.449408" version="2" timestamp="2017-02-26T11:31:52Z" changeset="0">
+		<tag k="name" v="Farmářské tržiště Jiřák"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="http://www.farmarsketrziste.cz/jirak"/>
+		<tag k="opening_hours" v="We-Fr 08:00-18:00; Sa 08:00-14:00"/>
+	</node>
+	<node id="2119008406" lat="49.7465221" lon="18.630612" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008409" lat="49.7465545" lon="18.630707" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008411" lat="49.7465892" lon="18.630558" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008422" lat="49.7466386" lon="18.6307051" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008437" lat="49.7466864" lon="18.6305308" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008446" lat="49.7467218" lon="18.6306428" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008462" lat="49.74679" lon="18.6304543" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008465" lat="49.7469173" lon="18.6303605" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008478" lat="49.7469904" lon="18.6303072" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008483" lat="49.7470272" lon="18.6304765" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008487" lat="49.7470597" lon="18.6298464" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008493" lat="49.7471451" lon="18.6303987" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008498" lat="49.7471566" lon="18.6302376" version="1" timestamp="2013-01-19T11:06:21Z" changeset="0"/>
+	<node id="2119008500" lat="49.7471615" lon="18.6302557" version="2" timestamp="2013-09-26T08:04:45Z" changeset="0"/>
+	<node id="2171549304" lat="50.476006" lon="16.0926801" version="1" timestamp="2013-02-24T14:43:41Z" changeset="0"/>
+	<node id="2171549312" lat="50.4761391" lon="16.0921034" version="1" timestamp="2013-02-24T14:43:41Z" changeset="0"/>
+	<node id="2171549314" lat="50.4761036" lon="16.0926847" version="1" timestamp="2013-02-24T14:43:41Z" changeset="0"/>
+	<node id="2171549328" lat="50.4759087" lon="16.0920792" version="1" timestamp="2013-02-24T14:43:41Z" changeset="0"/>
+	<node id="2203172425" lat="50.0509062" lon="14.4395223" version="3" timestamp="2016-02-29T20:08:11Z" changeset="0">
+		<tag k="name" v="Farmářské trhy"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="http://farmarivpraze.cz/pankrac/"/>
+		<tag k="opening_hours" v="We 8:00-18:00"/>
+	</node>
+	<node id="2239853291" lat="49.6402212" lon="17.9362718" version="2" timestamp="2015-09-14T16:22:14Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2274418135" lat="49.3058174" lon="14.1510714" version="2" timestamp="2016-02-15T06:19:25Z" changeset="0"/>
+	<node id="2274418140" lat="49.305882" lon="14.1508966" version="2" timestamp="2016-02-15T06:19:25Z" changeset="0"/>
+	<node id="2274418141" lat="49.3059308" lon="14.1507617" version="2" timestamp="2016-02-15T06:19:25Z" changeset="0"/>
+	<node id="2284155795" lat="49.8536009" lon="18.5447074" version="1" timestamp="2013-04-28T11:53:52Z" changeset="0"/>
+	<node id="2284155805" lat="49.8536598" lon="18.5447339" version="2" timestamp="2014-01-22T15:40:17Z" changeset="0"/>
+	<node id="2284155823" lat="49.853741" lon="18.5442557" version="2" timestamp="2014-01-22T15:40:17Z" changeset="0"/>
+	<node id="2284155834" lat="49.8536528" lon="18.5442246" version="1" timestamp="2013-04-28T11:53:52Z" changeset="0"/>
+	<node id="2298685168" lat="50.417296" lon="16.1636326" version="2" timestamp="2020-10-14T10:03:09Z" changeset="0"/>
+	<node id="2298685177" lat="50.4174259" lon="16.1634116" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685178" lat="50.4174374" lon="16.1637707" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685179" lat="50.4174395" lon="16.1637757" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685180" lat="50.4174838" lon="16.1635301" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685181" lat="50.4174992" lon="16.1635711" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685182" lat="50.4175017" lon="16.1635686" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685183" lat="50.4175125" lon="16.1636738" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2298685184" lat="50.4175133" lon="16.1636767" version="1" timestamp="2013-05-10T19:15:34Z" changeset="0"/>
+	<node id="2300672824" lat="50.5036628" lon="13.6399339" version="3" timestamp="2013-07-31T10:45:43Z" changeset="0">
+		<tag k="name" v="Trhy"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="opening_hours" v="Tu"/>
+	</node>
+	<node id="2314533464" lat="50.7747528" lon="14.197512" version="1" timestamp="2013-05-21T13:53:23Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2328217746" lat="49.6605837" lon="18.356313" version="2" timestamp="2013-06-03T19:48:14Z" changeset="0"/>
+	<node id="2328217753" lat="49.6606664" lon="18.3562503" version="2" timestamp="2013-06-03T19:48:14Z" changeset="0"/>
+	<node id="2329909156" lat="49.6606901" lon="18.3562307" version="2" timestamp="2013-06-03T19:48:14Z" changeset="0"/>
+	<node id="2330992229" lat="49.6604914" lon="18.3563053" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992232" lat="49.6605139" lon="18.3563581" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992234" lat="49.6605279" lon="18.3563851" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992255" lat="49.6606848" lon="18.3561055" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992263" lat="49.6607428" lon="18.3561166" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992266" lat="49.660777" lon="18.3560207" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992267" lat="49.6607927" lon="18.3560713" version="1" timestamp="2013-06-03T19:48:02Z" changeset="0"/>
+	<node id="2330992279" lat="49.6611444" lon="18.3557128" version="1" timestamp="2013-06-03T19:48:03Z" changeset="0"/>
+	<node id="2330992284" lat="49.6611844" lon="18.3558213" version="1" timestamp="2013-06-03T19:48:03Z" changeset="0"/>
+	<node id="2332160404" lat="49.7435624" lon="15.7048303" version="1" timestamp="2013-06-04T19:22:19Z" changeset="0">
+		<tag k="name" v="Potraviny"/>
+		<tag k="source" v="own knowledge"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="designation" v="shop with foods"/>
+	</node>
+	<node id="2370865377" lat="50.0321978" lon="15.6177246" version="1" timestamp="2013-07-02T16:08:52Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2378070317" lat="50.765256" lon="15.0544325" version="1" timestamp="2013-07-08T15:19:41Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2421883288" lat="49.1477886" lon="15.0018045" version="1" timestamp="2013-08-17T13:24:21Z" changeset="0">
+		<tag k="name" v="Svět kabelek"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2421931312" lat="49.1461754" lon="15.0045996" version="1" timestamp="2013-08-17T14:08:44Z" changeset="0">
+		<tag k="name" v="Live market - TETA drogerie"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="2471818453" lat="49.7462943" lon="18.6299842" version="2" timestamp="2016-10-06T06:50:06Z" changeset="0"/>
+	<node id="2471818456" lat="49.7464518" lon="18.6307803" version="2" timestamp="2013-09-26T08:30:35Z" changeset="0"/>
+	<node id="2471818531" lat="49.7470523" lon="18.6298148" version="1" timestamp="2013-09-26T08:04:40Z" changeset="0"/>
+	<node id="2471818604" lat="49.747195" lon="18.6303666" version="1" timestamp="2013-09-26T08:04:41Z" changeset="0"/>
+	<node id="2606089069" lat="50.1001522" lon="14.4450376" version="3" timestamp="2019-03-12T19:39:31Z" changeset="0">
+		<tag k="name" v="Holešovické trhy"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="https://www.prazska-trznice.cz/"/>
+		<tag k="facebook" v="https://www.facebook.com/farmarskytrh/"/>
+		<tag k="opening_hours" v="Mo-Fr 07:30-17:00; Sa 07:30-14:00"/>
+	</node>
+	<node id="2624380802" lat="49.7489779" lon="18.6311947" version="2" timestamp="2020-04-25T16:35:01Z" changeset="0"/>
+	<node id="2624380803" lat="49.7490113" lon="18.6310812" version="2" timestamp="2020-04-25T16:35:01Z" changeset="0"/>
+	<node id="2624380804" lat="49.7492299" lon="18.6313584" version="2" timestamp="2020-04-25T16:35:01Z" changeset="0"/>
+	<node id="2624380805" lat="49.7492637" lon="18.6312448" version="2" timestamp="2020-04-25T16:35:01Z" changeset="0"/>
+	<node id="2632444123" lat="49.8536796" lon="18.5446172" version="1" timestamp="2014-01-22T15:40:08Z" changeset="0"/>
+	<node id="2825463715" lat="49.5950123" lon="18.0085432" version="3" timestamp="2016-12-11T20:03:33Z" changeset="0"/>
+	<node id="2825463731" lat="49.5949479" lon="18.0086561" version="3" timestamp="2016-12-11T20:03:34Z" changeset="0"/>
+	<node id="2984957249" lat="50.5401746" lon="14.5407203" version="5" timestamp="2017-04-10T13:36:07Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+		<tag k="seasonal" v="summer"/>
+		<tag k="addr:city" v="Dubá"/>
+		<tag k="addr:place" v="Dubá"/>
+		<tag k="source:loc" v="survey"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="47141"/>
+		<tag k="opening_hours" v="Jul-Aug Tu,Sa 06:00-12:00"/>
+	</node>
+	<node id="3077043369" lat="49.594918" lon="18.0085995" version="2" timestamp="2016-12-11T20:03:34Z" changeset="0"/>
+	<node id="3084413464" lat="49.4536551" lon="17.4528355" version="2" timestamp="2016-02-20T10:10:17Z" changeset="0"/>
+	<node id="3084413468" lat="49.453759" lon="17.4527036" version="1" timestamp="2014-09-18T10:16:51Z" changeset="0"/>
+	<node id="3084413469" lat="49.4538041" lon="17.4528579" version="2" timestamp="2016-02-20T10:39:17Z" changeset="0"/>
+	<node id="3101139191" lat="49.6076328" lon="15.5763538" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139192" lat="49.6075706" lon="15.5767371" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139193" lat="49.6076307" lon="15.5767604" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139194" lat="49.607693" lon="15.5763771" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139195" lat="49.6079159" lon="15.5758705" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139196" lat="49.6080858" lon="15.5759284" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139197" lat="49.6081118" lon="15.5757468" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3101139198" lat="49.6079418" lon="15.5756889" version="1" timestamp="2014-09-28T21:56:54Z" changeset="0"/>
+	<node id="3148062470" lat="49.4712575" lon="17.112801" version="1" timestamp="2014-10-24T20:16:46Z" changeset="0"/>
+	<node id="3148062472" lat="49.4713168" lon="17.1127357" version="1" timestamp="2014-10-24T20:16:46Z" changeset="0"/>
+	<node id="3148062473" lat="49.4713209" lon="17.112785" version="1" timestamp="2014-10-24T20:16:46Z" changeset="0"/>
+	<node id="3148062476" lat="49.4713627" lon="17.1118129" version="1" timestamp="2014-10-24T20:16:46Z" changeset="0"/>
+	<node id="3148062478" lat="49.4713789" lon="17.1117354" version="1" timestamp="2014-10-24T20:16:46Z" changeset="0"/>
+	<node id="3164465779" lat="48.7268212" lon="14.4783951" version="1" timestamp="2014-11-03T13:33:14Z" changeset="0"/>
+	<node id="3164465780" lat="48.7268413" lon="14.479871" version="1" timestamp="2014-11-03T13:33:14Z" changeset="0"/>
+	<node id="3164465781" lat="48.7269818" lon="14.4773604" version="1" timestamp="2014-11-03T13:33:14Z" changeset="0"/>
+	<node id="3164465782" lat="48.727564" lon="14.4770865" version="1" timestamp="2014-11-03T13:33:14Z" changeset="0"/>
+	<node id="3164465783" lat="48.7281165" lon="14.4800795" version="2" timestamp="2018-02-18T10:40:04Z" changeset="0"/>
+	<node id="3164465784" lat="48.7278392" lon="14.4773314" version="2" timestamp="2018-02-18T10:40:04Z" changeset="0"/>
+	<node id="3223905689" lat="49.9324815" lon="17.2714972" version="1" timestamp="2014-12-07T19:50:19Z" changeset="0"/>
+	<node id="3223905690" lat="49.9326188" lon="17.2710452" version="1" timestamp="2014-12-07T19:50:19Z" changeset="0"/>
+	<node id="3223905691" lat="49.9325363" lon="17.2709727" version="1" timestamp="2014-12-07T19:50:19Z" changeset="0"/>
+	<node id="3223905692" lat="49.9323939" lon="17.2714356" version="1" timestamp="2014-12-07T19:50:19Z" changeset="0"/>
+	<node id="3274536827" lat="48.9532586" lon="17.3835545" version="1" timestamp="2015-01-07T14:12:58Z" changeset="0"/>
+	<node id="3274536828" lat="48.9526579" lon="17.3846052" version="2" timestamp="2017-09-28T08:29:23Z" changeset="0"/>
+	<node id="3274536829" lat="48.9524522" lon="17.3844622" version="2" timestamp="2017-09-28T08:29:23Z" changeset="0"/>
+	<node id="3274536830" lat="48.9528323" lon="17.3832845" version="1" timestamp="2015-01-07T14:12:58Z" changeset="0"/>
+	<node id="3351384840" lat="49.591073" lon="18.3578958" version="1" timestamp="2015-02-15T08:18:42Z" changeset="0">
+		<tag k="name" v="tržiště"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="3374741592" lat="49.1982707" lon="16.6069009" version="2" timestamp="2018-12-15T10:20:02Z" changeset="0"/>
+	<node id="3374742394" lat="49.198273" lon="16.6069172" version="2" timestamp="2018-12-15T10:20:02Z" changeset="0"/>
+	<node id="3374742397" lat="49.1983035" lon="16.6070726" version="2" timestamp="2018-12-15T10:20:02Z" changeset="0"/>
+	<node id="3374742398" lat="49.1983063" lon="16.6070883" version="2" timestamp="2018-12-15T10:20:02Z" changeset="0"/>
+	<node id="3374742419" lat="49.1985321" lon="16.6068085" version="2" timestamp="2018-12-15T10:20:02Z" changeset="0"/>
+	<node id="3374742420" lat="49.1985348" lon="16.6068242" version="2" timestamp="2018-12-15T10:20:02Z" changeset="0"/>
+	<node id="3374742423" lat="49.1985595" lon="16.6069703" version="2" timestamp="2018-12-15T10:20:03Z" changeset="0"/>
+	<node id="3374742424" lat="49.1985629" lon="16.6069851" version="2" timestamp="2018-12-15T10:20:03Z" changeset="0"/>
+	<node id="3374742484" lat="49.1988481" lon="16.6067152" version="2" timestamp="2018-12-15T10:20:03Z" changeset="0"/>
+	<node id="3374742495" lat="49.1988725" lon="16.6068445" version="2" timestamp="2018-12-15T10:20:03Z" changeset="0"/>
+	<node id="3393683807" lat="49.9426581" lon="15.4007274" version="1" timestamp="2015-03-11T12:37:12Z" changeset="0"/>
+	<node id="3393683808" lat="49.9444338" lon="15.4024408" version="1" timestamp="2015-03-11T12:37:12Z" changeset="0"/>
+	<node id="3393683815" lat="49.9431919" lon="15.3994001" version="1" timestamp="2015-03-11T12:37:13Z" changeset="0"/>
+	<node id="3393683822" lat="49.9439781" lon="15.4035888" version="1" timestamp="2015-03-11T12:37:13Z" changeset="0"/>
+	<node id="3393683827" lat="49.9421892" lon="15.4018793" version="1" timestamp="2015-03-11T12:37:13Z" changeset="0"/>
+	<node id="3393683836" lat="49.944962" lon="15.4011212" version="1" timestamp="2015-03-11T12:37:13Z" changeset="0"/>
+	<node id="3406044759" lat="50.7736829" lon="15.066371" version="1" timestamp="2015-03-18T20:18:19Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="3406044764" lat="50.7733551" lon="15.0653887" version="1" timestamp="2015-03-18T20:18:19Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="3406056136" lat="50.7739493" lon="15.064663" version="2" timestamp="2015-03-31T07:41:17Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="3449493328" lat="49.3044815" lon="15.6776085" version="1" timestamp="2015-04-10T22:37:56Z" changeset="0">
+		<tag k="source" v="local knowledge"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="3469671240" lat="50.0713259" lon="14.4784003" version="2" timestamp="2017-02-26T12:05:37Z" changeset="0">
+		<tag k="name" v="Farmářské Trhy"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="https://www.farmarsketrhyp10.cz/"/>
+		<tag k="opening_hours" v="Mar 23-Dec 24: Mo-Fr 08:00-18:00; Mar 23-Dec 24: Sa 08:00-14:00"/>
+	</node>
+	<node id="3473251709" lat="50.7706008" lon="15.0612858" version="1" timestamp="2015-04-23T13:44:37Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="3474691193" lat="50.013187" lon="14.4812985" version="1" timestamp="2015-04-24T09:47:35Z" changeset="0"/>
+	<node id="3474691194" lat="50.0130897" lon="14.4816539" version="1" timestamp="2015-04-24T09:47:36Z" changeset="0"/>
+	<node id="3474691195" lat="50.0130606" lon="14.4813272" version="1" timestamp="2015-04-24T09:47:36Z" changeset="0"/>
+	<node id="3475290870" lat="49.4514825" lon="17.4534378" version="1" timestamp="2015-04-24T17:55:37Z" changeset="0"/>
+	<node id="3475307814" lat="49.4515652" lon="17.4535372" version="1" timestamp="2015-04-24T17:57:43Z" changeset="0"/>
+	<node id="3475307815" lat="49.4511592" lon="17.4540437" version="1" timestamp="2015-04-24T17:57:43Z" changeset="0"/>
+	<node id="3506539894" lat="49.9469644" lon="15.6664496" version="2" timestamp="2015-05-11T12:57:48Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+		<tag k="opening_hours" v="Sa 07:00-12:00"/>
+	</node>
+	<node id="3520977651" lat="49.1920757" lon="16.6085416" version="2" timestamp="2015-06-15T07:27:34Z" changeset="0"/>
+	<node id="3520977652" lat="49.1922265" lon="16.6093327" version="2" timestamp="2015-06-15T07:27:35Z" changeset="0"/>
+	<node id="3520977657" lat="49.192488" lon="16.6083576" version="2" timestamp="2015-06-15T07:27:35Z" changeset="0"/>
+	<node id="3520977661" lat="49.1926387" lon="16.6091487" version="2" timestamp="2015-06-15T07:27:35Z" changeset="0"/>
+	<node id="3596305765" lat="50.1272072" lon="14.4696432" version="1" timestamp="2015-06-15T12:31:44Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="3614636355" lat="48.854609" lon="16.0494507" version="2" timestamp="2020-12-06T19:26:10Z" changeset="0"/>
+	<node id="3614636356" lat="48.8547119" lon="16.0493436" version="2" timestamp="2020-12-06T19:26:10Z" changeset="0"/>
+	<node id="3614636357" lat="48.8546838" lon="16.0496168" version="2" timestamp="2020-12-06T19:26:10Z" changeset="0"/>
+	<node id="3614636358" lat="48.8547867" lon="16.0495097" version="2" timestamp="2020-12-06T19:26:10Z" changeset="0"/>
+	<node id="3674208910" lat="49.3057592" lon="14.1507346" version="1" timestamp="2015-07-30T23:54:38Z" changeset="0"/>
+	<node id="3674208911" lat="49.305677" lon="14.1509013" version="1" timestamp="2015-07-30T23:54:38Z" changeset="0"/>
+	<node id="3674208912" lat="49.3056041" lon="14.1510192" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3674208913" lat="49.3055365" lon="14.1510802" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3674208914" lat="49.305506" lon="14.1512388" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3674208915" lat="49.3054901" lon="14.1513506" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3674208916" lat="49.3056333" lon="14.1514014" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3674208917" lat="49.3057221" lon="14.1513404" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3674208918" lat="49.3058029" lon="14.1511066" version="1" timestamp="2015-07-30T23:54:39Z" changeset="0"/>
+	<node id="3689839735" lat="50.0727507" lon="14.4146548" version="2" timestamp="2017-07-11T21:11:43Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="http://www.farmarsketrhy-praha.cz/"/>
+		<tag k="opening_hours" v="Mo,Th 08:00-18:00"/>
+	</node>
+	<node id="3725156103" lat="49.1927712" lon="16.6081107" version="3" timestamp="2019-05-23T19:45:25Z" changeset="0"/>
+	<node id="3725156104" lat="49.1927749" lon="16.6081086" version="2" timestamp="2017-12-17T12:23:23Z" changeset="0"/>
+	<node id="3751377586" lat="50.1016608" lon="14.3934357" version="2" timestamp="2019-03-13T18:12:39Z" changeset="0">
+		<tag k="name" v="Farmářské trhy na Kulaťáku"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="opening_hours" v="Mar-Dec: Sa 08:00-14:00"/>
+	</node>
+	<node id="3761514047" lat="49.1861178" lon="16.6539904" version="2" timestamp="2016-08-22T17:25:38Z" changeset="0"/>
+	<node id="3761514087" lat="49.1866601" lon="16.6516009" version="1" timestamp="2015-09-27T14:52:50Z" changeset="0"/>
+	<node id="3761514089" lat="49.18667" lon="16.6517354" version="1" timestamp="2015-09-27T14:52:50Z" changeset="0"/>
+	<node id="3761514100" lat="49.1867669" lon="16.6511596" version="1" timestamp="2015-09-27T14:52:50Z" changeset="0"/>
+	<node id="3761514104" lat="49.1868257" lon="16.6508164" version="1" timestamp="2015-09-27T14:52:50Z" changeset="0"/>
+	<node id="3761514106" lat="49.1868328" lon="16.6506775" version="1" timestamp="2015-09-27T14:52:50Z" changeset="0"/>
+	<node id="3761514108" lat="49.1868516" lon="16.651858" version="1" timestamp="2015-09-27T14:52:51Z" changeset="0"/>
+	<node id="3761514136" lat="49.1871533" lon="16.6494298" version="1" timestamp="2015-09-27T14:52:51Z" changeset="0"/>
+	<node id="3761514155" lat="49.1873305" lon="16.6520977" version="1" timestamp="2015-09-27T14:52:51Z" changeset="0"/>
+	<node id="3761514156" lat="49.1873314" lon="16.649487" version="1" timestamp="2015-09-27T14:52:51Z" changeset="0"/>
+	<node id="3761514159" lat="49.1873661" lon="16.6520051" version="1" timestamp="2015-09-27T14:52:51Z" changeset="0"/>
+	<node id="3761514167" lat="49.1873964" lon="16.6544623" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514171" lat="49.1874489" lon="16.6488032" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514178" lat="49.1874997" lon="16.652065" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514179" lat="49.1875023" lon="16.6487188" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514182" lat="49.187513" lon="16.6485826" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514185" lat="49.1875317" lon="16.6519043" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514207" lat="49.1879599" lon="16.6519033" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514208" lat="49.1880382" lon="16.6513939" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514213" lat="49.1881165" lon="16.6487215" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514219" lat="49.1881753" lon="16.6503969" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514220" lat="49.1881913" lon="16.6499256" version="1" timestamp="2015-09-27T14:52:52Z" changeset="0"/>
+	<node id="3761514223" lat="49.1884156" lon="16.6488632" version="1" timestamp="2015-09-27T14:52:53Z" changeset="0"/>
+	<node id="3761514230" lat="49.1886507" lon="16.6506339" version="1" timestamp="2015-09-27T14:52:53Z" changeset="0"/>
+	<node id="3761514232" lat="49.1887326" lon="16.6501871" version="1" timestamp="2015-09-27T14:52:53Z" changeset="0"/>
+	<node id="3780928025" lat="50.0881093" lon="14.4294148" version="2" timestamp="2021-02-09T17:04:05Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="3781833263" lat="49.7442258" lon="13.3717618" version="3" timestamp="2020-06-29T18:23:53Z" changeset="0">
+		<tag k="name" v="U Práce"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="opening_hours:signed" v="no"/>
+	</node>
+	<node id="3829767403" lat="50.1244799" lon="14.456386" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0">
+		<tag k="barrier" v="gate"/>
+	</node>
+	<node id="3829767404" lat="50.1245196" lon="14.4564251" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767405" lat="50.124412" lon="14.4566563" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767406" lat="50.12434" lon="14.4569527" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767407" lat="50.1242722" lon="14.456912" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767408" lat="50.1242429" lon="14.4568241" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767409" lat="50.1242815" lon="14.456658" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767410" lat="50.1243108" lon="14.456658" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767411" lat="50.1244027" lon="14.4563942" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767412" lat="50.1244465" lon="14.4564023" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3829767413" lat="50.1244549" lon="14.4563665" version="1" timestamp="2015-11-10T20:19:35Z" changeset="0"/>
+	<node id="3838681258" lat="50.3879342" lon="13.1869829" version="1" timestamp="2015-11-16T10:45:39Z" changeset="0">
+		<tag k="shop" v="department_store"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="3875888883" lat="49.376853" lon="17.6981936" version="1" timestamp="2015-12-04T09:04:50Z" changeset="0"/>
+	<node id="3875888900" lat="49.3769162" lon="17.698218" version="1" timestamp="2015-12-04T09:04:50Z" changeset="0"/>
+	<node id="3875896243" lat="49.3771001" lon="17.6985665" version="1" timestamp="2015-12-04T09:10:30Z" changeset="0"/>
+	<node id="3875896254" lat="49.3771582" lon="17.6985901" version="1" timestamp="2015-12-04T09:10:30Z" changeset="0"/>
+	<node id="3918680609" lat="50.0657491" lon="14.4536928" version="1" timestamp="2015-12-30T15:07:06Z" changeset="0"/>
+	<node id="3918680612" lat="50.0658283" lon="14.454508" version="1" timestamp="2015-12-30T15:07:06Z" changeset="0"/>
+	<node id="3918680616" lat="50.0659633" lon="14.453632" version="1" timestamp="2015-12-30T15:07:06Z" changeset="0"/>
+	<node id="3918680618" lat="50.0660515" lon="14.4544594" version="1" timestamp="2015-12-30T15:07:06Z" changeset="0"/>
+	<node id="3997359843" lat="49.717305" lon="15.6695134" version="1" timestamp="2016-02-09T12:41:40Z" changeset="0"/>
+	<node id="3997359844" lat="49.7173119" lon="15.6696441" version="1" timestamp="2016-02-09T12:41:40Z" changeset="0"/>
+	<node id="3997359845" lat="49.7174773" lon="15.6694915" version="1" timestamp="2016-02-09T12:41:40Z" changeset="0"/>
+	<node id="3997359846" lat="49.7174843" lon="15.6696222" version="1" timestamp="2016-02-09T12:41:40Z" changeset="0"/>
+	<node id="4016223596" lat="49.4536424" lon="17.4527999" version="3" timestamp="2016-02-20T17:01:23Z" changeset="0"/>
+	<node id="4016223597" lat="49.4536881" lon="17.4529364" version="1" timestamp="2016-02-20T10:39:17Z" changeset="0"/>
+	<node id="4320880305" lat="50.0988142" lon="14.4452836" version="1" timestamp="2016-07-26T09:23:51Z" changeset="0"/>
+	<node id="4320880306" lat="50.0991499" lon="14.4453025" version="1" timestamp="2016-07-26T09:23:51Z" changeset="0"/>
+	<node id="4320880307" lat="50.0991796" lon="14.4440196" version="1" timestamp="2016-07-26T09:23:51Z" changeset="0"/>
+	<node id="4320880308" lat="50.0988439" lon="14.4440007" version="1" timestamp="2016-07-26T09:23:51Z" changeset="0"/>
+	<node id="4349891098" lat="49.1275434" lon="13.2157038" version="1" timestamp="2016-08-14T16:28:32Z" changeset="0">
+		<tag k="name" v="Asia Market"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="4361845452" lat="49.1871336" lon="16.6544632" version="1" timestamp="2016-08-22T17:25:38Z" changeset="0"/>
+	<node id="4361845453" lat="49.1857598" lon="16.6558526" version="1" timestamp="2016-08-22T17:25:38Z" changeset="0"/>
+	<node id="4361845454" lat="49.1869866" lon="16.6562947" version="1" timestamp="2016-08-22T17:25:38Z" changeset="0"/>
+	<node id="4361845455" lat="49.1874528" lon="16.6545196" version="1" timestamp="2016-08-22T17:25:38Z" changeset="0"/>
+	<node id="4433816044" lat="49.7463783" lon="18.630409" version="1" timestamp="2016-10-06T06:50:06Z" changeset="0"/>
+	<node id="4456038205" lat="50.0990154" lon="14.4469308" version="5" timestamp="2017-03-07T10:01:06Z" changeset="0">
+		<tag k="name" v="MINT: Weekend Market"/>
+		<tag k="email" v="info@mintmarket.cz"/>
+		<tag k="phone" v="+420728230430"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="https://www.mintmarket.cz/"/>
+		<tag k="operator" v="MINT market"/>
+		<tag k="addr:city" v="Praha"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="addr:street" v="Bubenské nábřeží"/>
+		<tag k="description" v="Alternative fair MINT: Weekend Market brings authentic collections of design, clothing, accessories and jewelry, accompanied with creative workshops and original food and beverages. It opens every Saturday. Admission is free and wheelchair accessible."/>
+		<tag k="addr:postcode" v="17004"/>
+		<tag k="opening_hours" v="Sa 09:00-18:00"/>
+		<tag k="addr:housenumber" v="306/13"/>
+		<tag k="addr:streetnumber" v="13"/>
+		<tag k="addr:conscriptionnumber" v="306"/>
+	</node>
+	<node id="4535007514" lat="49.6605136" lon="18.3562823" version="1" timestamp="2016-12-02T22:53:48Z" changeset="0"/>
+	<node id="4549757823" lat="49.5950526" lon="18.0084877" version="1" timestamp="2016-12-11T20:03:33Z" changeset="0"/>
+	<node id="4549757833" lat="49.5949475" lon="18.0086516" version="1" timestamp="2016-12-11T20:03:33Z" changeset="0"/>
+	<node id="4585472305" lat="50.0892794" lon="14.3485755" version="3" timestamp="2018-01-08T13:12:26Z" changeset="0">
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="description" v="venkovní tržiště, sezónní ovoce a zelenina"/>
+	</node>
+	<node id="4692271266" lat="49.4515129" lon="17.4534743" version="1" timestamp="2017-02-18T15:11:11Z" changeset="0"/>
+	<node id="4706421690" lat="50.0724407" lon="14.4137568" version="1" timestamp="2017-02-26T11:18:49Z" changeset="0">
+		<tag k="name" v="Farmářské tržiště Náplavka"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="http://www.farmarsketrziste.cz/naplavka"/>
+		<tag k="opening_hours" v="Sa 08:00-14:00"/>
+	</node>
+	<node id="4787480644" lat="50.0891675" lon="14.422774" version="1" timestamp="2017-04-11T03:39:17Z" changeset="0">
+		<tag k="name" v="Food Story"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="4857988146" lat="49.067468" lon="17.4575462" version="1" timestamp="2017-05-16T15:38:01Z" changeset="0"/>
+	<node id="4857988147" lat="49.067532" lon="17.4577335" version="1" timestamp="2017-05-16T15:38:01Z" changeset="0"/>
+	<node id="4862109897" lat="49.0678937" lon="17.4574394" version="1" timestamp="2017-05-18T15:17:41Z" changeset="0"/>
+	<node id="4874652659" lat="50.7234061" lon="15.1747271" version="2" timestamp="2017-06-17T09:18:56Z" changeset="0">
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="4880496943" lat="50.9161827" lon="14.6076428" version="2" timestamp="2019-03-23T22:19:58Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+		<tag k="addr:city" v="Varnsdorf"/>
+		<tag k="addr:postcode" v="40747"/>
+	</node>
+	<node id="5018617755" lat="50.8000898" lon="14.4202517" version="1" timestamp="2017-08-06T19:32:27Z" changeset="0"/>
+	<node id="5018617756" lat="50.79998" lon="14.4201276" version="1" timestamp="2017-08-06T19:32:27Z" changeset="0"/>
+	<node id="5018617765" lat="50.8000722" lon="14.4201031" version="1" timestamp="2017-08-06T19:32:27Z" changeset="0"/>
+	<node id="5145765497" lat="49.5951549" lon="18.0086034" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765498" lat="49.5950367" lon="18.0087888" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765499" lat="49.5949886" lon="18.0086961" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765500" lat="49.5949811" lon="18.0087141" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765501" lat="49.5951063" lon="18.0084141" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765505" lat="49.5954679" lon="18.0084058" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765506" lat="49.59548" lon="18.0084253" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765507" lat="49.5954895" lon="18.0084458" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765508" lat="49.5954166" lon="18.0085534" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765512" lat="49.5951979" lon="18.008536" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5145765514" lat="49.5951513" lon="18.0084744" version="1" timestamp="2017-10-03T18:48:07Z" changeset="0"/>
+	<node id="5183785121" lat="50.073218" lon="14.4136251" version="3" timestamp="2020-12-31T17:08:29Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+		<tag k="fixme" v="verify"/>
+		<tag k="name:de" v="Bauernmarkt"/>
+	</node>
+	<node id="5194027906" lat="49.4512162" lon="17.4539025" version="1" timestamp="2017-10-27T13:01:31Z" changeset="0"/>
+	<node id="5194027907" lat="49.4512358" lon="17.4539366" version="1" timestamp="2017-10-27T13:01:31Z" changeset="0"/>
+	<node id="5194027908" lat="49.4511663" lon="17.454031" version="1" timestamp="2017-10-27T13:01:31Z" changeset="0"/>
+	<node id="5194027909" lat="49.4511468" lon="17.453997" version="1" timestamp="2017-10-27T13:01:31Z" changeset="0"/>
+	<node id="5289625994" lat="49.1926156" lon="16.6084231" version="1" timestamp="2017-12-17T12:22:51Z" changeset="0"/>
+	<node id="5289625995" lat="49.1926353" lon="16.6085885" version="1" timestamp="2017-12-17T12:22:51Z" changeset="0"/>
+	<node id="5289625996" lat="49.1926657" lon="16.6086482" version="1" timestamp="2017-12-17T12:22:51Z" changeset="0"/>
+	<node id="5293754932" lat="50.1283904" lon="14.4904034" version="1" timestamp="2017-12-19T13:17:12Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="5419876066" lat="48.7282232" lon="14.4799655" version="1" timestamp="2018-02-18T10:40:02Z" changeset="0"/>
+	<node id="5419876067" lat="48.728183" lon="14.4786874" version="1" timestamp="2018-02-18T10:40:02Z" changeset="0"/>
+	<node id="5419876068" lat="48.7280793" lon="14.4781326" version="1" timestamp="2018-02-18T10:40:02Z" changeset="0"/>
+	<node id="5582747802" lat="50.0130779" lon="14.4815214" version="1" timestamp="2018-04-27T16:22:15Z" changeset="0"/>
+	<node id="5614117476" lat="49.5951329" lon="18.0084497" version="1" timestamp="2018-05-12T20:48:20Z" changeset="0"/>
+	<node id="5614117478" lat="49.5949728" lon="18.0086996" version="1" timestamp="2018-05-12T20:48:20Z" changeset="0"/>
+	<node id="5695437405" lat="49.4288322" lon="18.2175408" version="1" timestamp="2018-06-16T20:41:31Z" changeset="0"/>
+	<node id="5695437406" lat="49.4287432" lon="18.2180303" version="1" timestamp="2018-06-16T20:41:31Z" changeset="0"/>
+	<node id="5695437407" lat="49.4288845" lon="18.2180746" version="1" timestamp="2018-06-16T20:41:31Z" changeset="0"/>
+	<node id="5695437408" lat="49.4289865" lon="18.2176146" version="1" timestamp="2018-06-16T20:41:31Z" changeset="0"/>
+	<node id="5829351853" lat="49.6879828" lon="13.6584758" version="2" timestamp="2018-08-15T20:49:32Z" changeset="0">
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="description" v="Otevřeno jaro-podzim každou středu od 9:00"/>
+	</node>
+	<node id="6191679756" lat="50.2182515" lon="12.177274" version="2" timestamp="2019-01-10T02:25:15Z" changeset="0">
+		<tag k="source" v="bing;cuzk:km;local_knowledge"/>
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="6237762178" lat="50.0131579" lon="14.4813051" version="1" timestamp="2019-01-26T10:50:08Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="6237762181" lat="50.0132041" lon="14.4814803" version="1" timestamp="2019-01-26T10:50:08Z" changeset="0">
+		<tag k="entrance" v="yes"/>
+	</node>
+	<node id="6393475917" lat="49.4599901" lon="18.143632" version="1" timestamp="2019-04-09T11:17:33Z" changeset="0"/>
+	<node id="6393475919" lat="49.4598102" lon="18.1433586" version="1" timestamp="2019-04-09T11:17:33Z" changeset="0"/>
+	<node id="6411125360" lat="49.5949834" lon="18.0087085" version="1" timestamp="2019-04-17T08:17:24Z" changeset="0"/>
+	<node id="6429124469" lat="50.2624468" lon="17.3971033" version="1" timestamp="2019-04-25T19:25:25Z" changeset="0"/>
+	<node id="7158928584" lat="49.2249853" lon="17.6635239" version="1" timestamp="2020-01-25T15:55:39Z" changeset="0"/>
+	<node id="7179547913" lat="49.2254791" lon="17.6646842" version="1" timestamp="2020-02-02T18:34:32Z" changeset="0"/>
+	<node id="7179547918" lat="49.2247175" lon="17.6632194" version="1" timestamp="2020-02-02T18:34:32Z" changeset="0"/>
+	<node id="7236702093" lat="49.0689185" lon="17.4632816" version="1" timestamp="2020-02-23T13:28:40Z" changeset="0"/>
+	<node id="7236717535" lat="49.0687547" lon="17.4634054" version="1" timestamp="2020-02-23T13:29:48Z" changeset="0"/>
+	<node id="7236964889" lat="49.0679444" lon="17.4571351" version="1" timestamp="2020-02-23T15:05:39Z" changeset="0"/>
+	<node id="7236964890" lat="49.0679925" lon="17.457308" version="1" timestamp="2020-02-23T15:05:39Z" changeset="0"/>
+	<node id="7236964891" lat="49.0679259" lon="17.457353" version="1" timestamp="2020-02-23T15:05:39Z" changeset="0"/>
+	<node id="7386101122" lat="50.1021917" lon="14.5184437" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101123" lat="50.1021805" lon="14.5191707" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101124" lat="50.1014125" lon="14.5191152" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101125" lat="50.1013417" lon="14.519115" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101126" lat="50.1013741" lon="14.5189424" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101127" lat="50.1014002" lon="14.5186728" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101128" lat="50.1014029" lon="14.5182741" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101129" lat="50.1013716" lon="14.5177446" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101130" lat="50.1012684" lon="14.5164357" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101131" lat="50.1011928" lon="14.5156274" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101132" lat="50.1012055" lon="14.5151185" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101133" lat="50.1011528" lon="14.5145508" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101134" lat="50.1010793" lon="14.5137598" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101135" lat="50.1015112" lon="14.5143487" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101136" lat="50.1016748" lon="14.5131933" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101137" lat="50.1010271" lon="14.5135536" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101138" lat="50.1009507" lon="14.5128157" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101139" lat="50.1010191" lon="14.5118023" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101140" lat="50.1008652" lon="14.512081" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101141" lat="50.1006001" lon="14.5108429" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101142" lat="50.1013531" lon="14.5124181" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101143" lat="50.1016211" lon="14.5129631" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101144" lat="50.1016146" lon="14.5133631" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101145" lat="50.1017226" lon="14.5142942" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101146" lat="50.1016338" lon="14.5158477" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101147" lat="50.1017554" lon="14.5173367" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101148" lat="50.1018666" lon="14.5185084" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101175" lat="50.1018139" lon="14.5191554" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101176" lat="50.1012836" lon="14.5166284" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101177" lat="50.1011473" lon="14.5144916" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101178" lat="50.1007114" lon="14.5113629" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101179" lat="50.1007528" lon="14.5111927" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101180" lat="50.1014945" lon="14.512664" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101181" lat="50.1017003" lon="14.5141019" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101196" lat="50.1019307" lon="14.5187804" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101197" lat="50.1018229" lon="14.5188082" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101198" lat="50.10184" lon="14.5190799" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101199" lat="50.1018318" lon="14.5191219" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101200" lat="50.1019919" lon="14.5189574" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101201" lat="50.1020089" lon="14.5191214" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101202" lat="50.1020339" lon="14.5191489" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101207" lat="50.1019232" lon="14.5187823" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7386101247" lat="50.1022443" lon="14.5191519" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0"/>
+	<node id="7654787941" lat="49.2110751" lon="16.6335154" version="1" timestamp="2020-06-26T05:11:38Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+	</node>
+	<node id="7830681555" lat="49.1926155" lon="16.6081257" version="1" timestamp="2020-08-20T21:51:55Z" changeset="0">
+		<tag k="camera:angle" v="30"/>
+		<tag k="camera:direction" v="210"/>
+		<tag k="camera:mount" v="wall"/>
+		<tag k="camera:type" v="fixed"/>
+		<tag k="height" v="4"/>
+		<tag k="man_made" v="surveillance"/>
+		<tag k="surveillance" v="public"/>
+		<tag k="surveillance:type" v="camera"/>
+	</node>
+	<node id="7850982670" lat="49.737366" lon="13.3712791" version="1" timestamp="2020-08-27T19:38:48Z" changeset="0"/>
+	<node id="7850982671" lat="49.7373158" lon="13.3712709" version="1" timestamp="2020-08-27T19:38:48Z" changeset="0"/>
+	<node id="7850982672" lat="49.7373472" lon="13.3708084" version="1" timestamp="2020-08-27T19:38:48Z" changeset="0"/>
+	<node id="7850982673" lat="49.7373974" lon="13.3708165" version="1" timestamp="2020-08-27T19:38:48Z" changeset="0"/>
+	<node id="8289509771" lat="48.9758757" lon="14.47225" version="1" timestamp="2021-01-04T12:50:35Z" changeset="0">
+		<tag k="amenity" v="marketplace"/>
+		<tag k="name" v="Trhy na Piaristickém náměstí"/>
+		<tag k="opening_hours" v="Th;Sa 07:00-10:00"/>
+	</node>
+	<node id="8299613711" lat="48.9741188" lon="14.4873055" version="1" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="8299623124" lat="48.9739758" lon="14.4876054" version="1" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="8299623125" lat="48.9741532" lon="14.4875248" version="1" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<node id="8299623126" lat="48.9742896" lon="14.4873967" version="1" timestamp="2021-01-07T10:56:08Z" changeset="0"/>
+	<way id="16914580" version="4" timestamp="2016-05-31T09:50:41Z" changeset="0">
+		<nd ref="175426903"/>
+		<nd ref="1102132002"/>
+		<nd ref="175426907"/>
+		<nd ref="175426911"/>
+		<nd ref="175426914"/>
+		<nd ref="175426903"/>
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="building" v="yes"/>
+	</way>
+	<way id="40751674" version="3" timestamp="2020-02-23T13:29:48Z" changeset="0">
+		<nd ref="493898104"/>
+		<nd ref="493597387"/>
+		<nd ref="493597386"/>
+		<nd ref="493898153"/>
+		<nd ref="7236702093"/>
+		<nd ref="7236717535"/>
+		<nd ref="495271458"/>
+		<nd ref="493898109"/>
+		<nd ref="493898108"/>
+		<nd ref="493898104"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="49635433" version="4" timestamp="2019-03-05T21:28:42Z" changeset="0">
+		<nd ref="631107223"/>
+		<nd ref="631107211"/>
+		<nd ref="631107210"/>
+		<nd ref="631106899"/>
+		<nd ref="631106898"/>
+		<nd ref="631106901"/>
+		<nd ref="631106853"/>
+		<nd ref="631106844"/>
+		<nd ref="631106887"/>
+		<nd ref="631106885"/>
+		<nd ref="631107234"/>
+		<nd ref="631107221"/>
+		<nd ref="631107223"/>
+		<tag k="name" v="Kartouzská tržnice"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="building" v="warehouse"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="19488963"/>
+		<tag k="building:ruian:type" v="16"/>
+	</way>
+	<way id="50002028" version="9" timestamp="2020-08-20T21:51:55Z" changeset="0">
+		<nd ref="635101322"/>
+		<nd ref="5289625996"/>
+		<nd ref="635101416"/>
+		<nd ref="5289625995"/>
+		<nd ref="5289625994"/>
+		<nd ref="635101303"/>
+		<nd ref="635101304"/>
+		<nd ref="7830681555"/>
+		<nd ref="635101305"/>
+		<nd ref="635101316"/>
+		<nd ref="3725156104"/>
+		<nd ref="3725156103"/>
+		<nd ref="635101324"/>
+		<nd ref="635101323"/>
+		<nd ref="635101322"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="building" v="civic"/>
+		<tag k="building:levels" v="4"/>
+		<tag k="building:ruian:type" v="15"/>
+		<tag k="name" v="Tržnice Brno"/>
+		<tag k="official_name" v="Městská tržnice Brno"/>
+		<tag k="opening_hours" v="Mo-Fr 07:00-19:00; Sa 07:00-13:00"/>
+		<tag k="ref:ruian:building" v="18945678"/>
+		<tag k="source" v="cuzk:ruian"/>
+	</way>
+	<way id="50956404" version="1" timestamp="2010-02-21T23:06:41Z" changeset="0">
+		<nd ref="649788400"/>
+		<nd ref="649788402"/>
+		<nd ref="649788386"/>
+		<nd ref="649788498"/>
+		<nd ref="649788400"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="52572416" version="4" timestamp="2015-12-04T09:10:36Z" changeset="0">
+		<nd ref="667898802"/>
+		<nd ref="667898798"/>
+		<nd ref="3875896254"/>
+		<nd ref="3875896243"/>
+		<nd ref="667898802"/>
+		<tag k="name" v="Kramářské boudy"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="41878761"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="52572417" version="4" timestamp="2015-12-04T09:05:56Z" changeset="0">
+		<nd ref="667898804"/>
+		<nd ref="3875888900"/>
+		<nd ref="3875888883"/>
+		<nd ref="667898803"/>
+		<nd ref="667898804"/>
+		<tag k="name" v="Kramářské boudy"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="41640187"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="57858060" version="4" timestamp="2016-03-08T11:51:40Z" changeset="0">
+		<nd ref="717837945"/>
+		<nd ref="717837930"/>
+		<nd ref="717837979"/>
+		<nd ref="717837961"/>
+		<nd ref="717837945"/>
+		<tag k="area" v="yes"/>
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="bicycle" v="yes"/>
+		<tag k="highway" v="pedestrian"/>
+	</way>
+	<way id="62941121" version="6" timestamp="2020-02-02T18:34:32Z" changeset="0">
+		<nd ref="783019611"/>
+		<nd ref="783019523"/>
+		<nd ref="843112216"/>
+		<nd ref="7179547918"/>
+		<nd ref="783019599"/>
+		<nd ref="783019470"/>
+		<nd ref="783019554"/>
+		<nd ref="7179547913"/>
+		<nd ref="783019577"/>
+		<nd ref="783019517"/>
+		<nd ref="783019530"/>
+		<nd ref="783019448"/>
+		<nd ref="843112227"/>
+		<nd ref="843112230"/>
+		<nd ref="843112231"/>
+		<nd ref="843112225"/>
+		<nd ref="7158928584"/>
+		<nd ref="783019572"/>
+		<nd ref="843112228"/>
+		<nd ref="783019611"/>
+		<tag k="name" v="Tržiště Pod kaštany"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="127055677" version="3" timestamp="2021-02-08T06:43:04Z" changeset="0">
+		<nd ref="1407012500"/>
+		<nd ref="1407012498"/>
+		<nd ref="1407012509"/>
+		<nd ref="1407012511"/>
+		<nd ref="1407012500"/>
+		<tag k="alt_name" v="Havelský trh"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="name" v="Havelské tržiště"/>
+		<tag k="wikidata" v="Q31519093"/>
+	</way>
+	<way id="139961876" version="1" timestamp="2011-12-06T07:43:51Z" changeset="0">
+		<nd ref="1533722563"/>
+		<nd ref="1533722566"/>
+		<nd ref="1533722564"/>
+		<nd ref="1533722565"/>
+		<nd ref="1533722563"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="143539843" version="5" timestamp="2014-10-24T20:16:49Z" changeset="0">
+		<nd ref="1570755679"/>
+		<nd ref="3148062473"/>
+		<nd ref="3148062470"/>
+		<nd ref="1570755657"/>
+		<nd ref="1570755649"/>
+		<nd ref="1570755654"/>
+		<nd ref="1570755682"/>
+		<nd ref="3148062478"/>
+		<nd ref="712717936"/>
+		<nd ref="3148062476"/>
+		<nd ref="712719138"/>
+		<nd ref="2100410735"/>
+		<nd ref="3148062472"/>
+		<nd ref="2100410740"/>
+		<nd ref="1570755679"/>
+		<tag k="name" v="Tržnice"/>
+		<tag k="source" v="cuzk:km"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="182515284" version="2" timestamp="2020-04-10T19:50:41Z" changeset="0">
+		<nd ref="1928743804"/>
+		<nd ref="1928743873"/>
+		<nd ref="1928743869"/>
+		<nd ref="1928743855"/>
+		<nd ref="1928743846"/>
+		<nd ref="1928743829"/>
+		<nd ref="1928743809"/>
+		<nd ref="1928743806"/>
+		<nd ref="1928743782"/>
+		<nd ref="1928743804"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="surface" v="paving_stones"/>
+	</way>
+	<way id="189255488" version="1" timestamp="2012-11-05T18:22:10Z" changeset="0">
+		<nd ref="1998997061"/>
+		<nd ref="1998997064"/>
+		<nd ref="1998997058"/>
+		<nd ref="1998997057"/>
+		<nd ref="1998997061"/>
+		<tag k="name" v="Náměstí SNP - prodej ovoce a zeleniny"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="196720114" version="4" timestamp="2019-04-09T11:17:38Z" changeset="0">
+		<nd ref="2070141803"/>
+		<nd ref="2060183609"/>
+		<nd ref="6393475919"/>
+		<nd ref="6393475917"/>
+		<nd ref="2070141803"/>
+		<tag k="name" v="Městská tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="197576697" version="4" timestamp="2020-12-18T10:58:36Z" changeset="0">
+		<nd ref="1302793354"/>
+		<nd ref="637026878"/>
+		<nd ref="1766265507"/>
+		<nd ref="1766265535"/>
+		<nd ref="3406056136"/>
+		<nd ref="660816130"/>
+		<nd ref="3406044764"/>
+		<nd ref="1766265512"/>
+		<nd ref="3406044759"/>
+		<nd ref="1766265510"/>
+		<nd ref="660816172"/>
+		<nd ref="660816162"/>
+		<nd ref="660816163"/>
+		<nd ref="660816175"/>
+		<nd ref="660816125"/>
+		<nd ref="660816099"/>
+		<nd ref="1302793354"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="commercial"/>
+		<tag k="name" v="Liberecké výstaviště (LVT)"/>
+	</way>
+	<way id="198097528" version="2" timestamp="2013-05-10T19:15:38Z" changeset="0">
+		<nd ref="1223258798"/>
+		<nd ref="2082793552"/>
+		<nd ref="2298685177"/>
+		<nd ref="2298685180"/>
+		<nd ref="2298685182"/>
+		<nd ref="2298685181"/>
+		<nd ref="2082793553"/>
+		<nd ref="2298685183"/>
+		<nd ref="2298685184"/>
+		<nd ref="2298685178"/>
+		<nd ref="2298685179"/>
+		<nd ref="2082793551"/>
+		<nd ref="1223258710"/>
+		<nd ref="1223258816"/>
+		<nd ref="1223260824"/>
+		<nd ref="2298685168"/>
+		<nd ref="1223259338"/>
+		<nd ref="2082793550"/>
+		<nd ref="1223259949"/>
+		<nd ref="1223258798"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="207014114" version="1" timestamp="2013-02-24T14:43:41Z" changeset="0">
+		<nd ref="2171549328"/>
+		<nd ref="2171549312"/>
+		<nd ref="2171549314"/>
+		<nd ref="2171549304"/>
+		<nd ref="2171549328"/>
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="219223905" version="2" timestamp="2014-01-22T15:40:16Z" changeset="0">
+		<nd ref="2284155823"/>
+		<nd ref="2284155834"/>
+		<nd ref="2284155795"/>
+		<nd ref="2284155805"/>
+		<nd ref="2632444123"/>
+		<nd ref="2284155823"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="224280321" version="2" timestamp="2016-12-02T22:53:56Z" changeset="0">
+		<nd ref="2330992279"/>
+		<nd ref="2330992284"/>
+		<nd ref="2329909156"/>
+		<nd ref="2328217753"/>
+		<nd ref="2328217746"/>
+		<nd ref="2330992234"/>
+		<nd ref="2330992232"/>
+		<nd ref="2330992229"/>
+		<nd ref="4535007514"/>
+		<nd ref="2330992255"/>
+		<nd ref="2330992263"/>
+		<nd ref="2330992267"/>
+		<nd ref="2330992266"/>
+		<nd ref="2330992279"/>
+		<tag k="name" v="Sezónní tržiště"/>
+		<tag k="source" v="cuzk:km;survey"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="retail"/>
+		<tag k="description" v="Prodej ovoce a zeleniny, květin, trpaslíků..."/>
+	</way>
+	<way id="227020575" version="2" timestamp="2019-04-25T19:25:43Z" changeset="0">
+		<nd ref="1279997420"/>
+		<nd ref="1279997361"/>
+		<nd ref="1279997202"/>
+		<nd ref="1279996983"/>
+		<nd ref="6429124469"/>
+		<nd ref="1279997420"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="239390536" version="2" timestamp="2016-10-06T06:50:06Z" changeset="0">
+		<nd ref="2471818453"/>
+		<nd ref="2471818531"/>
+		<nd ref="2119008487"/>
+		<nd ref="2119008498"/>
+		<nd ref="2119008500"/>
+		<nd ref="2471818604"/>
+		<nd ref="2119008493"/>
+		<nd ref="2119008483"/>
+		<nd ref="2119008478"/>
+		<nd ref="2119008465"/>
+		<nd ref="2119008462"/>
+		<nd ref="2119008437"/>
+		<nd ref="2119008446"/>
+		<nd ref="2119008422"/>
+		<nd ref="2119008411"/>
+		<nd ref="2119008406"/>
+		<nd ref="2119008409"/>
+		<nd ref="2471818456"/>
+		<nd ref="4433816044"/>
+		<nd ref="2471818453"/>
+		<tag k="name" v="Juwenia"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="retail"/>
+	</way>
+	<way id="256804782" version="1" timestamp="2014-01-16T07:35:26Z" changeset="0">
+		<nd ref="2624380803"/>
+		<nd ref="2624380802"/>
+		<nd ref="2624380804"/>
+		<nd ref="2624380805"/>
+		<nd ref="2624380803"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="305483052" version="1" timestamp="2014-09-28T21:56:55Z" changeset="0">
+		<nd ref="3101139191"/>
+		<nd ref="3101139192"/>
+		<nd ref="3101139193"/>
+		<nd ref="3101139194"/>
+		<nd ref="3101139191"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="305483053" version="1" timestamp="2014-09-28T21:56:55Z" changeset="0">
+		<nd ref="3101139195"/>
+		<nd ref="3101139196"/>
+		<nd ref="3101139197"/>
+		<nd ref="3101139198"/>
+		<nd ref="3101139195"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="310945400" version="4" timestamp="2018-10-09T17:43:04Z" changeset="0">
+		<nd ref="3164465784"/>
+		<nd ref="5419876068"/>
+		<nd ref="5419876067"/>
+		<nd ref="5419876066"/>
+		<nd ref="3164465783"/>
+		<nd ref="3164465780"/>
+		<nd ref="3164465779"/>
+		<nd ref="3164465781"/>
+		<nd ref="3164465782"/>
+		<nd ref="3164465784"/>
+		<tag k="name" v="Tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="316276767" version="1" timestamp="2014-12-07T19:50:19Z" changeset="0">
+		<nd ref="3223905689"/>
+		<nd ref="3223905690"/>
+		<nd ref="3223905691"/>
+		<nd ref="3223905692"/>
+		<nd ref="3223905689"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="operator" v="Město Rýmařov"/>
+	</way>
+	<way id="320806636" version="1" timestamp="2015-01-07T14:12:59Z" changeset="0">
+		<nd ref="3274536827"/>
+		<nd ref="3274536828"/>
+		<nd ref="3274536829"/>
+		<nd ref="3274536830"/>
+		<nd ref="3274536827"/>
+		<tag k="name" v="Městská tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="332257250" version="2" timestamp="2017-03-22T14:48:03Z" changeset="0">
+		<nd ref="3393683836"/>
+		<nd ref="3393683808"/>
+		<nd ref="3393683822"/>
+		<nd ref="3393683827"/>
+		<nd ref="3393683807"/>
+		<nd ref="3393683815"/>
+		<nd ref="3393683836"/>
+		<tag k="shop" v="car_parts"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="340255203" version="4" timestamp="2021-02-08T06:48:24Z" changeset="0">
+		<nd ref="3474691193"/>
+		<nd ref="6237762181"/>
+		<nd ref="678766906"/>
+		<nd ref="3474691194"/>
+		<nd ref="5582747802"/>
+		<nd ref="3474691195"/>
+		<nd ref="6237762178"/>
+		<nd ref="3474691193"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="building" v="yes"/>
+		<tag k="name" v="Kunratická stodola"/>
+		<tag k="wikidata" v="Q94633859"/>
+	</way>
+	<way id="340313227" version="4" timestamp="2019-04-10T12:10:01Z" changeset="0">
+		<nd ref="3475290870"/>
+		<nd ref="4692271266"/>
+		<nd ref="3475307814"/>
+		<nd ref="3475307815"/>
+		<nd ref="457045357"/>
+		<nd ref="3475290870"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="wheelchair" v="yes"/>
+	</way>
+	<way id="345412286" version="5" timestamp="2018-11-27T20:09:28Z" changeset="0">
+		<nd ref="3520977657"/>
+		<nd ref="3520977661"/>
+		<nd ref="3520977652"/>
+		<nd ref="3520977651"/>
+		<nd ref="3520977657"/>
+		<tag k="name" v="Zelný trh"/>
+		<tag k="source" v="survey"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="covered" v="no"/>
+		<tag k="name:de" v="Krautmarkt"/>
+		<tag k="loc_name" v="Zelňák"/>
+		<tag k="operator" v="MMB"/>
+		<tag k="xmas:name" v="Vánoční trhy na Zelném trhu"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="xmas:feature" v="market"/>
+		<tag k="opening_hours" v="Mar-Oct: Mo-Fr 06:00-18:00; Mar-Oct: Sa 06:00-14:00; Nov-Feb: Mo-Fr 07:00-16:30; Nov-Feb: Sa 07:00-14:00"/>
+	</way>
+	<way id="353775378" version="5" timestamp="2020-02-02T15:34:03Z" changeset="0">
+		<nd ref="3374742484"/>
+		<nd ref="3374742495"/>
+		<nd ref="3374742423"/>
+		<nd ref="3374742424"/>
+		<nd ref="3374742398"/>
+		<nd ref="3374742397"/>
+		<nd ref="3374742394"/>
+		<nd ref="3374741592"/>
+		<nd ref="3374742419"/>
+		<nd ref="3374742420"/>
+		<nd ref="3374742484"/>
+		<tag k="name" v="Moravské náměstí"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="covered" v="no"/>
+		<tag k="name:de" v="Mährischer Platz"/>
+		<tag k="operator" v="MMB"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="opening_hours" v="Mar-Oct: Mo-Fr 06:00-18:00; Mar-Oct: Sa 06:00-14:00; Nov-Feb: Mo-Fr 07:00-16:30; Nov-Feb: Sa 07:00-14:00"/>
+	</way>
+	<way id="355957362" version="1" timestamp="2015-06-24T09:06:27Z" changeset="0">
+		<nd ref="3614636356"/>
+		<nd ref="3614636355"/>
+		<nd ref="3614636357"/>
+		<nd ref="3614636358"/>
+		<nd ref="3614636356"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="363240276" version="3" timestamp="2020-10-05T15:19:09Z" changeset="0">
+		<nd ref="3674208916"/>
+		<nd ref="3674208917"/>
+		<nd ref="3674208918"/>
+		<nd ref="2274418135"/>
+		<nd ref="2274418140"/>
+		<nd ref="2274418141"/>
+		<nd ref="1083936982"/>
+		<nd ref="1083935885"/>
+		<nd ref="1083948908"/>
+		<nd ref="3674208910"/>
+		<nd ref="3674208911"/>
+		<nd ref="3674208912"/>
+		<nd ref="3674208913"/>
+		<nd ref="3674208914"/>
+		<nd ref="3674208915"/>
+		<nd ref="3674208916"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="372595194" version="5" timestamp="2018-12-12T18:37:19Z" changeset="0">
+		<nd ref="3761514089"/>
+		<nd ref="3761514087"/>
+		<nd ref="3761514100"/>
+		<nd ref="3761514104"/>
+		<nd ref="3761514106"/>
+		<nd ref="3761514136"/>
+		<nd ref="3761514156"/>
+		<nd ref="3761514171"/>
+		<nd ref="3761514179"/>
+		<nd ref="3761514182"/>
+		<nd ref="3761514213"/>
+		<nd ref="3761514223"/>
+		<nd ref="3761514220"/>
+		<nd ref="3761514232"/>
+		<nd ref="3761514230"/>
+		<nd ref="3761514219"/>
+		<nd ref="3761514208"/>
+		<nd ref="3761514207"/>
+		<nd ref="1106904607"/>
+		<nd ref="1106904184"/>
+		<nd ref="1106904133"/>
+		<nd ref="3761514185"/>
+		<nd ref="3761514178"/>
+		<nd ref="3761514159"/>
+		<nd ref="3761514155"/>
+		<nd ref="3761514108"/>
+		<nd ref="3761514089"/>
+		<tag k="name" v="Vinamo"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="commercial"/>
+		<tag k="opening_hours" v="Tu-Su 09:00-19:00"/>
+	</way>
+	<way id="379649760" version="3" timestamp="2017-02-26T11:26:05Z" changeset="0">
+		<nd ref="3829767403"/>
+		<nd ref="3829767404"/>
+		<nd ref="3829767405"/>
+		<nd ref="3829767406"/>
+		<nd ref="3829767407"/>
+		<nd ref="3829767408"/>
+		<nd ref="3829767409"/>
+		<nd ref="3829767410"/>
+		<nd ref="3829767411"/>
+		<nd ref="3829767412"/>
+		<nd ref="3829767413"/>
+		<nd ref="3829767403"/>
+		<tag k="name" v="Dvůr"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="website" v="http://www.nasdvur.cz/"/>
+		<tag k="opening_hours" v="Tu-Fr 08:00-18:00"/>
+	</way>
+	<way id="388703224" version="1" timestamp="2015-12-30T15:07:06Z" changeset="0">
+		<nd ref="3918680609"/>
+		<nd ref="3918680616"/>
+		<nd ref="3918680618"/>
+		<nd ref="3918680612"/>
+		<nd ref="3918680609"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="396891557" version="1" timestamp="2016-02-09T12:41:40Z" changeset="0">
+		<nd ref="3997359845"/>
+		<nd ref="3997359846"/>
+		<nd ref="3997359844"/>
+		<nd ref="3997359843"/>
+		<nd ref="3997359845"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="398887025" version="1" timestamp="2016-02-20T10:39:17Z" changeset="0">
+		<nd ref="3084413468"/>
+		<nd ref="4016223596"/>
+		<nd ref="3084413464"/>
+		<nd ref="4016223597"/>
+		<nd ref="3084413469"/>
+		<nd ref="3084413468"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="433243247" version="1" timestamp="2016-07-26T09:23:51Z" changeset="0">
+		<nd ref="4320880306"/>
+		<nd ref="4320880305"/>
+		<nd ref="4320880308"/>
+		<nd ref="4320880307"/>
+		<nd ref="4320880306"/>
+		<tag k="lit" v="yes"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="438440340" version="1" timestamp="2016-08-22T17:25:38Z" changeset="0">
+		<nd ref="3761514047"/>
+		<nd ref="4361845453"/>
+		<nd ref="4361845454"/>
+		<nd ref="4361845455"/>
+		<nd ref="3761514167"/>
+		<nd ref="4361845452"/>
+		<nd ref="3761514047"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="commercial"/>
+	</way>
+	<way id="513383620" version="1" timestamp="2017-08-06T19:32:28Z" changeset="0">
+		<nd ref="5018617765"/>
+		<nd ref="5018617755"/>
+		<nd ref="1200641300"/>
+		<nd ref="5018617756"/>
+		<nd ref="5018617765"/>
+		<tag k="name" v="Tržiště"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="retail"/>
+	</way>
+	<way id="529763458" version="5" timestamp="2019-04-18T08:28:14Z" changeset="0">
+		<nd ref="5145765512"/>
+		<nd ref="5145765514"/>
+		<nd ref="5614117476"/>
+		<nd ref="5145765501"/>
+		<nd ref="4549757823"/>
+		<nd ref="2825463715"/>
+		<nd ref="1561428927"/>
+		<nd ref="3077043369"/>
+		<nd ref="4549757833"/>
+		<nd ref="2825463731"/>
+		<nd ref="5614117478"/>
+		<nd ref="5145765500"/>
+		<nd ref="6411125360"/>
+		<nd ref="5145765499"/>
+		<nd ref="5145765498"/>
+		<nd ref="5145765497"/>
+		<nd ref="5145765512"/>
+		<tag k="area" v="yes"/>
+		<tag k="noname" v="yes"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="covered" v="yes"/>
+		<tag k="highway" v="pedestrian"/>
+	</way>
+	<way id="529763459" version="2" timestamp="2017-10-03T19:47:22Z" changeset="0">
+		<nd ref="1922091041"/>
+		<nd ref="1922090985"/>
+		<nd ref="5145765508"/>
+		<nd ref="5145765507"/>
+		<nd ref="5145765506"/>
+		<nd ref="5145765505"/>
+		<nd ref="1922090988"/>
+		<nd ref="1922090987"/>
+		<nd ref="1922091041"/>
+		<tag k="name" v="Vietnamská tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="covered" v="yes"/>
+	</way>
+	<way id="536076217" version="1" timestamp="2017-10-27T13:01:31Z" changeset="0">
+		<nd ref="5194027906"/>
+		<nd ref="5194027907"/>
+		<nd ref="5194027908"/>
+		<nd ref="5194027909"/>
+		<nd ref="5194027906"/>
+		<tag k="amenity" v="marketplace"/>
+	</way>
+	<way id="598405863" version="1" timestamp="2018-06-16T20:41:40Z" changeset="0">
+		<nd ref="5695437408"/>
+		<nd ref="5695437407"/>
+		<nd ref="5695437406"/>
+		<nd ref="5695437405"/>
+		<nd ref="5695437408"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="landuse" v="retail"/>
+	</way>
+	<way id="775734170" version="4" timestamp="2020-02-26T15:22:25Z" changeset="0">
+		<nd ref="4857988146"/>
+		<nd ref="4857988147"/>
+		<nd ref="4862109897"/>
+		<nd ref="7236964891"/>
+		<nd ref="7236964890"/>
+		<nd ref="7236964889"/>
+		<nd ref="4857988146"/>
+		<tag k="name" v="Městská tržnice"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="opening_hours" v="Mar-Nov: We,Sa 04:30-11:30"/>
+	</way>
+	<way id="790002519" version="1" timestamp="2020-04-09T16:08:48Z" changeset="0">
+		<nd ref="7386101122"/>
+		<nd ref="7386101247"/>
+		<nd ref="7386101123"/>
+		<nd ref="7386101202"/>
+		<nd ref="7386101201"/>
+		<nd ref="7386101200"/>
+		<nd ref="7386101196"/>
+		<nd ref="7386101207"/>
+		<nd ref="7386101197"/>
+		<nd ref="7386101198"/>
+		<nd ref="7386101199"/>
+		<nd ref="7386101175"/>
+		<nd ref="7386101124"/>
+		<nd ref="7386101125"/>
+		<nd ref="7386101126"/>
+		<nd ref="7386101127"/>
+		<nd ref="7386101128"/>
+		<nd ref="7386101129"/>
+		<nd ref="7386101176"/>
+		<nd ref="7386101130"/>
+		<nd ref="7386101131"/>
+		<nd ref="7386101132"/>
+		<nd ref="7386101133"/>
+		<nd ref="7386101177"/>
+		<nd ref="7386101134"/>
+		<nd ref="7386101137"/>
+		<nd ref="7386101138"/>
+		<nd ref="7386101140"/>
+		<nd ref="7386101178"/>
+		<nd ref="7386101141"/>
+		<nd ref="7386101179"/>
+		<nd ref="7386101139"/>
+		<nd ref="7386101142"/>
+		<nd ref="7386101180"/>
+		<nd ref="7386101143"/>
+		<nd ref="7386101136"/>
+		<nd ref="7386101144"/>
+		<nd ref="7386101181"/>
+		<nd ref="7386101145"/>
+		<nd ref="7386101135"/>
+		<nd ref="7386101146"/>
+		<nd ref="7386101147"/>
+		<nd ref="7386101148"/>
+		<nd ref="7386101122"/>
+		<tag k="name" v="Bleší Trhy"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="operator" v="http://blesitrhy.cz/"/>
+	</way>
+	<way id="841466214" version="1" timestamp="2020-08-27T19:38:48Z" changeset="0">
+		<nd ref="7850982673"/>
+		<nd ref="7850982672"/>
+		<nd ref="7850982671"/>
+		<nd ref="7850982670"/>
+		<nd ref="7850982673"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="source" v="survey"/>
+	</way>
+	<way id="892996834" version="1" timestamp="2021-01-07T10:56:08Z" changeset="0">
+		<nd ref="663843579"/>
+		<nd ref="8299623126"/>
+		<nd ref="663843585"/>
+		<nd ref="663843584"/>
+		<nd ref="8299623125"/>
+		<nd ref="8299623124"/>
+		<nd ref="663843565"/>
+		<nd ref="663843562"/>
+		<nd ref="663843566"/>
+		<nd ref="663843578"/>
+		<nd ref="663843577"/>
+		<nd ref="663843576"/>
+		<nd ref="663843575"/>
+		<nd ref="663843574"/>
+		<nd ref="8299613711"/>
+		<nd ref="663843580"/>
+		<nd ref="663843579"/>
+		<tag k="amenity" v="marketplace"/>
+		<tag k="note" v="stabilní prodejní stánky"/>
+	</way>
+</osm>

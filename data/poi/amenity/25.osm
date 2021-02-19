@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="459757096" lat="49.0024348" lon="14.7508877" version="1" timestamp="2009-08-09T15:54:56Z" changeset="0">
+		<tag k="amenity" v="spa"/>
+	</node>
+	<node id="980883959" lat="50.3395438" lon="16.3834268" version="3" timestamp="2015-01-24T00:42:04Z" changeset="0"/>
+	<node id="980884052" lat="50.3395924" lon="16.3836381" version="3" timestamp="2015-01-24T00:42:04Z" changeset="0"/>
+	<node id="980884091" lat="50.3392818" lon="16.3835747" version="3" timestamp="2015-01-24T00:42:04Z" changeset="0"/>
+	<node id="980884419" lat="50.3393304" lon="16.3837861" version="3" timestamp="2015-01-24T00:42:04Z" changeset="0"/>
+	<node id="1133643999" lat="50.0085134" lon="12.6341" version="2" timestamp="2013-08-12T21:06:51Z" changeset="0"/>
+	<node id="1133644006" lat="50.0081612" lon="12.6343154" version="3" timestamp="2018-01-08T09:17:06Z" changeset="0"/>
+	<node id="1133644010" lat="50.0082427" lon="12.6344712" version="3" timestamp="2018-01-08T09:17:06Z" changeset="0"/>
+	<node id="1133644015" lat="50.0085289" lon="12.6341277" version="3" timestamp="2018-01-08T09:17:06Z" changeset="0"/>
+	<node id="1133644036" lat="50.0084491" lon="12.633968" version="3" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645975" lat="50.0087403" lon="12.6321172" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645980" lat="50.0088476" lon="12.6320545" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645984" lat="50.0086396" lon="12.6316775" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645987" lat="50.0088071" lon="12.6317616" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645989" lat="50.0085992" lon="12.6317021" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645993" lat="50.0086355" lon="12.6318606" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133645997" lat="50.0086759" lon="12.6318413" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133646003" lat="50.0087694" lon="12.6316013" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133646005" lat="50.0087817" lon="12.6317759" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133646008" lat="50.0087442" lon="12.6316156" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133646013" lat="50.0086786" lon="12.6313359" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1133646016" lat="50.0085731" lon="12.6313985" version="2" timestamp="2018-01-08T09:17:07Z" changeset="0"/>
+	<node id="1158920794" lat="49.5622052" lon="17.0960368" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="1158920796" lat="49.5621927" lon="17.0963074" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="1158920797" lat="49.5620849" lon="17.0964472" version="2" timestamp="2015-06-29T07:56:58Z" changeset="0"/>
+	<node id="1158920799" lat="49.5626374" lon="17.0959318" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="1158920801" lat="49.5625169" lon="17.096343" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="1158920802" lat="49.562608" lon="17.0965057" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="1158920805" lat="49.5625306" lon="17.0960726" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="1267338100" lat="49.9392556" lon="16.9099551" version="1" timestamp="2011-04-30T14:47:41Z" changeset="0"/>
+	<node id="1267338613" lat="49.9404821" lon="16.9084078" version="1" timestamp="2011-04-30T14:47:46Z" changeset="0"/>
+	<node id="1267339982" lat="49.939058" lon="16.9100577" version="1" timestamp="2011-04-30T14:47:59Z" changeset="0"/>
+	<node id="1267340476" lat="49.9418934" lon="16.9102476" version="1" timestamp="2011-04-30T14:48:03Z" changeset="0"/>
+	<node id="1267341826" lat="49.9384422" lon="16.9082256" version="1" timestamp="2011-04-30T14:48:15Z" changeset="0"/>
+	<node id="1267342339" lat="49.9396379" lon="16.9114459" version="1" timestamp="2011-04-30T14:48:20Z" changeset="0"/>
+	<node id="1267342852" lat="49.9397996" lon="16.9075097" version="1" timestamp="2011-04-30T14:48:25Z" changeset="0"/>
+	<node id="1305643984" lat="49.0064322" lon="14.7703991" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305643995" lat="49.0062031" lon="14.7702192" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644060" lat="49.0063675" lon="14.7706627" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644080" lat="49.0062774" lon="14.7701746" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644083" lat="49.0063348" lon="14.7702817" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644125" lat="49.0060701" lon="14.7705019" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644179" lat="49.00642" lon="14.7702777" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644268" lat="49.0063191" lon="14.7702198" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644306" lat="49.005914" lon="14.770426" version="1" timestamp="2011-05-30T10:03:14Z" changeset="0"/>
+	<node id="1305644361" lat="49.0058996" lon="14.7704201" version="2" timestamp="2015-08-10T06:34:32Z" changeset="0"/>
+	<node id="1305644371" lat="49.0063098" lon="14.7703937" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644462" lat="49.0063257" lon="14.7703608" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644464" lat="49.0063094" lon="14.7700659" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644606" lat="49.0062878" lon="14.7704178" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644622" lat="49.0063805" lon="14.7701589" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644718" lat="49.0060349" lon="14.7702135" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644847" lat="49.0060194" lon="14.7703302" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644882" lat="49.0059626" lon="14.769841" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305644903" lat="49.0062626" lon="14.7704306" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645066" lat="49.0060711" lon="14.7702219" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645075" lat="49.0060941" lon="14.7698234" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645240" lat="49.0062356" lon="14.7704315" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645252" lat="49.0064109" lon="14.7705584" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645449" lat="49.0060733" lon="14.7701975" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645576" lat="49.0063451" lon="14.770633" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1305645610" lat="49.0062075" lon="14.7701557" version="2" timestamp="2015-08-10T06:34:33Z" changeset="0"/>
+	<node id="1849861524" lat="50.81632" lon="14.9491146" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861526" lat="50.8163236" lon="14.9489361" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861535" lat="50.8164253" lon="14.9486461" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861537" lat="50.8164267" lon="14.9485874" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861542" lat="50.8164483" lon="14.9491802" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861543" lat="50.8164494" lon="14.9491212" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861547" lat="50.8164528" lon="14.9489426" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861553" lat="50.8164587" lon="14.9486478" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861554" lat="50.8164602" lon="14.9485801" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861555" lat="50.81646" lon="14.948589" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861640" lat="50.8166104" lon="14.9491882" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861647" lat="50.8166627" lon="14.9491319" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861656" lat="50.8166855" lon="14.9491331" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861668" lat="50.816689" lon="14.948955" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861671" lat="50.8166962" lon="14.9485945" version="2" timestamp="2018-03-21T09:53:20Z" changeset="0"/>
+	<node id="1849861698" lat="50.8167438" lon="14.9491055" version="2" timestamp="2018-03-21T09:53:21Z" changeset="0"/>
+	<node id="1849861702" lat="50.8167491" lon="14.9489578" version="2" timestamp="2018-03-21T09:53:21Z" changeset="0"/>
+	<node id="2081385036" lat="49.2983957" lon="14.4760949" version="1" timestamp="2012-12-24T17:10:15Z" changeset="0">
+		<tag k="name" v="Lázně Bechyně"/>
+		<tag k="amenity" v="spa"/>
+	</node>
+	<node id="2083954376" lat="49.5627685" lon="17.0966949" version="2" timestamp="2014-07-19T22:18:31Z" changeset="0"/>
+	<node id="2083961592" lat="49.5623348" lon="17.0964752" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="2416921999" lat="50.0082676" lon="12.6341267" version="2" timestamp="2018-01-08T09:17:25Z" changeset="0"/>
+	<node id="2416922001" lat="50.0082841" lon="12.6341593" version="2" timestamp="2018-01-08T09:17:25Z" changeset="0"/>
+	<node id="2416922002" lat="50.0083107" lon="12.6340756" version="2" timestamp="2018-01-08T09:17:25Z" changeset="0"/>
+	<node id="2416922006" lat="50.0083262" lon="12.634108" version="2" timestamp="2018-01-08T09:17:25Z" changeset="0"/>
+	<node id="2970778780" lat="49.5603796" lon="17.0957356" version="2" timestamp="2015-04-23T15:39:38Z" changeset="0"/>
+	<node id="2970778792" lat="49.5603996" lon="17.0960791" version="2" timestamp="2015-04-23T15:39:38Z" changeset="0"/>
+	<node id="2970778810" lat="49.5604171" lon="17.0960752" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778816" lat="49.5604212" lon="17.0956735" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778820" lat="49.5604238" lon="17.0957295" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778824" lat="49.5604274" lon="17.0962531" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778858" lat="49.560478" lon="17.095722" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778870" lat="49.5605019" lon="17.0960655" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778930" lat="49.5605876" lon="17.0956498" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778931" lat="49.5605907" lon="17.0957039" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778957" lat="49.5606386" lon="17.0960439" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970778959" lat="49.5606494" lon="17.0962237" version="2" timestamp="2015-04-23T15:39:39Z" changeset="0"/>
+	<node id="2970779717" lat="49.5621135" lon="17.0958747" version="2" timestamp="2015-06-29T07:56:47Z" changeset="0"/>
+	<node id="2970779906" lat="49.5626221" lon="17.0968878" version="2" timestamp="2015-06-29T07:53:11Z" changeset="0"/>
+	<node id="2970779910" lat="49.5626332" lon="17.0967024" version="2" timestamp="2015-06-29T07:53:11Z" changeset="0"/>
+	<node id="2970779958" lat="49.5627663" lon="17.0967214" version="2" timestamp="2015-06-29T07:53:11Z" changeset="0"/>
+	<node id="2970779959" lat="49.562774" lon="17.0965085" version="1" timestamp="2014-07-19T22:16:30Z" changeset="0"/>
+	<node id="2970779960" lat="49.5627808" lon="17.0963097" version="1" timestamp="2014-07-19T22:16:30Z" changeset="0"/>
+	<node id="2970779961" lat="49.5627812" lon="17.0965096" version="1" timestamp="2014-07-19T22:16:30Z" changeset="0"/>
+	<node id="2970779962" lat="49.5627873" lon="17.0963108" version="1" timestamp="2014-07-19T22:16:30Z" changeset="0"/>
+	<node id="2970779963" lat="49.5627895" lon="17.0961928" version="1" timestamp="2014-07-19T22:16:30Z" changeset="0"/>
+	<node id="2970779967" lat="49.562795" lon="17.0961937" version="1" timestamp="2014-07-19T22:16:31Z" changeset="0"/>
+	<node id="2970779972" lat="49.5628078" lon="17.0959979" version="1" timestamp="2014-07-19T22:16:31Z" changeset="0"/>
+	<node id="2970779973" lat="49.562814" lon="17.0959989" version="1" timestamp="2014-07-19T22:16:31Z" changeset="0"/>
+	<node id="2970779974" lat="49.562817" lon="17.0969155" version="2" timestamp="2015-06-29T07:53:11Z" changeset="0"/>
+	<node id="2970779975" lat="49.562822" lon="17.0958546" version="1" timestamp="2014-07-19T22:16:31Z" changeset="0"/>
+	<node id="2970779978" lat="49.5628312" lon="17.096705" version="1" timestamp="2014-07-19T22:16:31Z" changeset="0"/>
+	<node id="2970779991" lat="49.5628831" lon="17.0958652" version="1" timestamp="2014-07-19T22:16:31Z" changeset="0"/>
+	<node id="3473383152" lat="49.5604867" lon="17.0958071" version="1" timestamp="2015-04-23T15:39:06Z" changeset="0"/>
+	<node id="3529803773" lat="49.8303474" lon="18.2869348" version="1" timestamp="2015-05-20T06:47:32Z" changeset="0">
+		<tag k="name" v="Babor beauty spa"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="payment:cash" v="yes"/>
+		<tag k="contact:email" v="info@babor-beautyspa-ostrava.cz"/>
+		<tag k="opening_hours" v="Mo 12:00-18:30; Tu-Fr 09:00-18:30"/>
+		<tag k="contact:website" v="www.babor-beautyspa-ostrava.cz"/>
+		<tag k="payment:debit_cards" v="yes"/>
+		<tag k="payment:credit_cards" v="yes"/>
+	</node>
+	<node id="3624591282" lat="49.5628279" lon="17.0967332" version="1" timestamp="2015-06-29T07:53:10Z" changeset="0"/>
+	<node id="3624591283" lat="49.5628281" lon="17.0967302" version="1" timestamp="2015-06-29T07:53:10Z" changeset="0"/>
+	<node id="3688877203" lat="49.0059404" lon="14.7701017" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877206" lat="49.0059932" lon="14.7698043" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877212" lat="49.0060967" lon="14.7698198" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877215" lat="49.0061609" lon="14.7698856" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877217" lat="49.0062069" lon="14.7699161" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877219" lat="49.0062315" lon="14.7699277" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877220" lat="49.0062356" lon="14.7698804" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877221" lat="49.0062873" lon="14.7699445" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877222" lat="49.0063009" lon="14.770194" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877223" lat="49.0063066" lon="14.7698994" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877224" lat="49.0063092" lon="14.7702037" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877725" lat="49.0063341" lon="14.7703224" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877726" lat="49.0063392" lon="14.7699532" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877727" lat="49.0063416" lon="14.7699453" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877728" lat="49.0063419" lon="14.7699521" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877729" lat="49.0063509" lon="14.7701076" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877730" lat="49.0063843" lon="14.7706301" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877731" lat="49.0064023" lon="14.7702133" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877732" lat="49.0064205" lon="14.7705203" version="1" timestamp="2015-08-10T06:34:29Z" changeset="0"/>
+	<node id="3688877733" lat="49.006427" lon="14.7703174" version="1" timestamp="2015-08-10T06:34:30Z" changeset="0"/>
+	<node id="3688877734" lat="49.0064274" lon="14.7704806" version="1" timestamp="2015-08-10T06:34:30Z" changeset="0"/>
+	<node id="3688877735" lat="49.0064312" lon="14.7704398" version="1" timestamp="2015-08-10T06:34:30Z" changeset="0"/>
+	<node id="4483040788" lat="50.8164547" lon="14.9488492" version="2" timestamp="2019-03-22T07:26:55Z" changeset="0"/>
+	<node id="4483040789" lat="50.8164562" lon="14.9487727" version="2" timestamp="2019-03-22T07:26:55Z" changeset="0"/>
+	<node id="4584505069" lat="50.3381445" lon="16.3879686" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505070" lat="50.3381453" lon="16.3880822" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505071" lat="50.3381301" lon="16.3880824" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505072" lat="50.3381314" lon="16.3882732" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505073" lat="50.3380631" lon="16.3882744" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505074" lat="50.3380629" lon="16.3882484" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505075" lat="50.3379332" lon="16.3882507" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505076" lat="50.3379319" lon="16.3880771" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505077" lat="50.3379851" lon="16.3880761" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="4584505078" lat="50.3379843" lon="16.3879714" version="1" timestamp="2017-01-01T22:58:13Z" changeset="0"/>
+	<node id="5038807272" lat="49.686061" lon="14.651809" version="2" timestamp="2018-06-24T15:13:08Z" changeset="0"/>
+	<node id="5177802969" lat="50.2300686" lon="17.204001" version="2" timestamp="2018-01-28T10:21:18Z" changeset="0">
+		<tag k="name" v="Malé lázně"/>
+		<tag k="phone" v="+420 775 381 537"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="website" v="http://malelazne.cz/"/>
+	</node>
+	<node id="5277608614" lat="49.0063318" lon="14.7700884" version="1" timestamp="2017-12-11T13:28:30Z" changeset="0"/>
+	<node id="5327046232" lat="50.0083528" lon="12.6340844" version="1" timestamp="2018-01-08T09:15:52Z" changeset="0"/>
+	<node id="5327046233" lat="50.0083501" lon="12.634079" version="1" timestamp="2018-01-08T09:15:52Z" changeset="0"/>
+	<node id="5327046234" lat="50.0082558" lon="12.6341936" version="1" timestamp="2018-01-08T09:15:52Z" changeset="0"/>
+	<node id="5327046235" lat="50.0082583" lon="12.6341984" version="1" timestamp="2018-01-08T09:15:52Z" changeset="0"/>
+	<node id="5327046973" lat="50.0088441" lon="12.6320434" version="1" timestamp="2018-01-08T09:16:00Z" changeset="0"/>
+	<node id="5327046974" lat="50.0088699" lon="12.6320289" version="1" timestamp="2018-01-08T09:16:00Z" changeset="0"/>
+	<node id="5327046975" lat="50.0088683" lon="12.6320217" version="1" timestamp="2018-01-08T09:16:00Z" changeset="0"/>
+	<node id="5327046976" lat="50.0088425" lon="12.6320362" version="1" timestamp="2018-01-08T09:16:00Z" changeset="0"/>
+	<node id="5327046977" lat="50.0086831" lon="12.6313562" version="1" timestamp="2018-01-08T09:16:00Z" changeset="0"/>
+	<node id="5327046978" lat="50.0087084" lon="12.6313419" version="1" timestamp="2018-01-08T09:16:01Z" changeset="0"/>
+	<node id="5327046979" lat="50.0087062" lon="12.6313323" version="1" timestamp="2018-01-08T09:16:01Z" changeset="0"/>
+	<node id="5327046980" lat="50.0086808" lon="12.6313466" version="1" timestamp="2018-01-08T09:16:01Z" changeset="0"/>
+	<node id="5401354976" lat="50.0979244" lon="14.4022029" version="1" timestamp="2018-02-09T15:03:45Z" changeset="0">
+		<tag k="name" v="Pivní lázně Pramen"/>
+		<tag k="amenity" v="spa"/>
+	</node>
+	<node id="5715556589" lat="49.6860385" lon="14.6520152" version="1" timestamp="2018-06-24T15:13:06Z" changeset="0"/>
+	<node id="5715556590" lat="49.6858348" lon="14.6519623" version="1" timestamp="2018-06-24T15:13:06Z" changeset="0"/>
+	<node id="5715556591" lat="49.6858573" lon="14.651756" version="1" timestamp="2018-06-24T15:13:06Z" changeset="0"/>
+	<node id="5715556592" lat="49.6858485" lon="14.6518377" version="1" timestamp="2018-06-24T15:13:06Z" changeset="0"/>
+	<node id="5715556593" lat="49.6858435" lon="14.6518774" version="1" timestamp="2018-06-24T15:13:07Z" changeset="0"/>
+	<way id="84360020" version="3" timestamp="2017-01-03T18:17:09Z" changeset="0">
+		<nd ref="980883959"/>
+		<nd ref="980884052"/>
+		<nd ref="980884419"/>
+		<nd ref="980884091"/>
+		<nd ref="980883959"/>
+		<tag k="name" v="Hanka Relax&#38;Spa"/>
+		<tag k="phone" v="+48 74 866 04 36"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="tourism" v="guest_house"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Duszniki-Zdrój"/>
+		<tag k="addr:street" v="Zieleniec"/>
+		<tag k="addr:postcode" v="57-340"/>
+		<tag k="addr:housenumber" v="17"/>
+	</way>
+	<way id="97945569" version="4" timestamp="2018-01-08T09:17:32Z" changeset="0">
+		<nd ref="1133644036"/>
+		<nd ref="1133643999"/>
+		<nd ref="1133644015"/>
+		<nd ref="1133644010"/>
+		<nd ref="1133644006"/>
+		<nd ref="5327046235"/>
+		<nd ref="5327046234"/>
+		<nd ref="2416922001"/>
+		<nd ref="2416921999"/>
+		<nd ref="2416922002"/>
+		<nd ref="2416922006"/>
+		<nd ref="5327046233"/>
+		<nd ref="5327046232"/>
+		<nd ref="1133644036"/>
+		<tag k="name" v="Orlík"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="20627572"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="97945809" version="3" timestamp="2018-01-08T09:17:33Z" changeset="0">
+		<nd ref="5327046980"/>
+		<nd ref="5327046979"/>
+		<nd ref="5327046978"/>
+		<nd ref="5327046977"/>
+		<nd ref="1133646008"/>
+		<nd ref="1133646003"/>
+		<nd ref="1133645987"/>
+		<nd ref="1133646005"/>
+		<nd ref="5327046976"/>
+		<nd ref="5327046975"/>
+		<nd ref="5327046974"/>
+		<nd ref="5327046973"/>
+		<nd ref="1133645980"/>
+		<nd ref="1133645975"/>
+		<nd ref="1133645997"/>
+		<nd ref="1133645993"/>
+		<nd ref="1133645989"/>
+		<nd ref="1133645984"/>
+		<nd ref="1133646016"/>
+		<nd ref="1133646013"/>
+		<nd ref="5327046980"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="yes"/>
+		<tag k="ref:ruian:building" v="20627742"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+	<way id="100270196" version="3" timestamp="2015-06-29T07:56:46Z" changeset="0">
+		<nd ref="1158920794"/>
+		<nd ref="1158920796"/>
+		<nd ref="1158920801"/>
+		<nd ref="1158920805"/>
+		<nd ref="1158920794"/>
+		<tag k="source" v="cuzk:km"/>
+	</way>
+	<way id="111178805" version="2" timestamp="2017-02-05T20:43:30Z" changeset="0">
+		<nd ref="1267342852"/>
+		<nd ref="1267341826"/>
+		<nd ref="1267339982"/>
+		<nd ref="1267338100"/>
+		<nd ref="1267342339"/>
+		<nd ref="1267340476"/>
+		<nd ref="1267338613"/>
+		<nd ref="1267342852"/>
+		<tag k="name" v="Státní léčebné lázně Bludov"/>
+		<tag k="amenity" v="spa"/>
+	</way>
+	<way id="115604455" version="2" timestamp="2015-08-10T06:34:30Z" changeset="0">
+		<nd ref="1305645610"/>
+		<nd ref="1305643995"/>
+		<nd ref="1305645449"/>
+		<nd ref="1305645066"/>
+		<nd ref="1305644718"/>
+		<nd ref="1305644847"/>
+		<nd ref="1305645240"/>
+		<nd ref="1305644903"/>
+		<nd ref="1305644606"/>
+		<nd ref="1305644371"/>
+		<nd ref="1305644462"/>
+		<nd ref="3688877725"/>
+		<nd ref="1305644083"/>
+		<nd ref="1305644268"/>
+		<nd ref="3688877224"/>
+		<nd ref="3688877222"/>
+		<nd ref="1305644080"/>
+		<nd ref="1305645610"/>
+	</way>
+	<way id="115604570" version="4" timestamp="2017-12-11T13:28:33Z" changeset="0">
+		<nd ref="1305644882"/>
+		<nd ref="3688877206"/>
+		<nd ref="1305645075"/>
+		<nd ref="3688877212"/>
+		<nd ref="3688877215"/>
+		<nd ref="3688877217"/>
+		<nd ref="3688877219"/>
+		<nd ref="3688877220"/>
+		<nd ref="3688877223"/>
+		<nd ref="3688877221"/>
+		<nd ref="3688877727"/>
+		<nd ref="3688877728"/>
+		<nd ref="3688877726"/>
+		<nd ref="1305644464"/>
+		<nd ref="5277608614"/>
+		<nd ref="3688877729"/>
+		<nd ref="1305644622"/>
+		<nd ref="3688877731"/>
+		<nd ref="1305644179"/>
+		<nd ref="3688877733"/>
+		<nd ref="1305643984"/>
+		<nd ref="3688877735"/>
+		<nd ref="3688877734"/>
+		<nd ref="3688877732"/>
+		<nd ref="1305645252"/>
+		<nd ref="3688877730"/>
+		<nd ref="1305644060"/>
+		<nd ref="1305645576"/>
+		<nd ref="1305644125"/>
+		<nd ref="1305644306"/>
+		<nd ref="1305644361"/>
+		<nd ref="3688877203"/>
+		<nd ref="1305644882"/>
+		<tag k="source" v="cuzk:km"/>
+	</way>
+	<way id="174301030" version="6" timestamp="2019-03-22T07:27:00Z" changeset="0">
+		<nd ref="1849861640"/>
+		<nd ref="1849861542"/>
+		<nd ref="1849861543"/>
+		<nd ref="1849861524"/>
+		<nd ref="1849861526"/>
+		<nd ref="1849861547"/>
+		<nd ref="4483040788"/>
+		<nd ref="4483040789"/>
+		<nd ref="1849861553"/>
+		<nd ref="1849861535"/>
+		<nd ref="1849861537"/>
+		<nd ref="1849861555"/>
+		<nd ref="1849861554"/>
+		<nd ref="1849861671"/>
+		<nd ref="1849861668"/>
+		<nd ref="1849861702"/>
+		<nd ref="1849861698"/>
+		<nd ref="1849861656"/>
+		<nd ref="1849861647"/>
+		<nd ref="1849861640"/>
+		<tag k="name" v="Termální lázně Chrastava"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="name:de" v="Thermalbad Kratzau"/>
+		<tag k="name:en" v="Thermal Spa Chrastava"/>
+		<tag k="building" v="civic"/>
+		<tag k="addr:city" v="Chrastava"/>
+		<tag k="start_date" v="2011-12-30"/>
+		<tag k="addr:street" v="Bílokostelecká"/>
+		<tag k="addr:country" v="CZ"/>
+		<tag k="addr:postcode" v="46331"/>
+		<tag k="opening_hours" v="Mo-Su 09:00-21:00; Fr,Sa 09:00-23:00"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="addr:housenumber" v="128"/>
+		<tag k="ref:ruian:building" v="86958909"/>
+		<tag k="building:ruian:type" v="15"/>
+	</way>
+	<way id="198236428" version="3" timestamp="2015-06-29T07:53:10Z" changeset="0">
+		<nd ref="2970779906"/>
+		<nd ref="2970779910"/>
+		<nd ref="2970779958"/>
+		<nd ref="3624591283"/>
+		<nd ref="3624591282"/>
+		<nd ref="2970779974"/>
+		<nd ref="2970779906"/>
+		<tag k="name" v="Lázeňský dům Mánes II"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="house"/>
+		<tag k="roof:shape" v="flat"/>
+		<tag k="roof:levels" v="0"/>
+		<tag k="building:colour" v="orange"/>
+		<tag k="building:levels" v="4"/>
+		<tag k="ref:ruian:building" v="16139127"/>
+		<tag k="building:ruian:type" v="7"/>
+	</way>
+	<way id="198236433" version="3" timestamp="2015-04-23T15:39:24Z" changeset="0">
+		<nd ref="2970778780"/>
+		<nd ref="2970778820"/>
+		<nd ref="2970778816"/>
+		<nd ref="2970778930"/>
+		<nd ref="2970778931"/>
+		<nd ref="2970778858"/>
+		<nd ref="3473383152"/>
+		<nd ref="2970778870"/>
+		<nd ref="2970778957"/>
+		<nd ref="2970778959"/>
+		<nd ref="2970778824"/>
+		<nd ref="2970778810"/>
+		<nd ref="2970778792"/>
+		<nd ref="2970778780"/>
+		<tag k="name" v="Lázeňský dům Balnea"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="civic"/>
+		<tag k="ref:ruian:building" v="47368195"/>
+		<tag k="building:ruian:type" v="15"/>
+	</way>
+	<way id="198236450" version="2" timestamp="2014-07-19T22:17:23Z" changeset="0">
+		<nd ref="2970779978"/>
+		<nd ref="2083954376"/>
+		<nd ref="2970779961"/>
+		<nd ref="2970779959"/>
+		<nd ref="2970779962"/>
+		<nd ref="2970779960"/>
+		<nd ref="2970779963"/>
+		<nd ref="2970779967"/>
+		<nd ref="2970779972"/>
+		<nd ref="2970779973"/>
+		<nd ref="2970779975"/>
+		<nd ref="2970779991"/>
+		<nd ref="2970779978"/>
+		<tag k="name" v="Lázeňský dům Mánes I"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="house"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="16138228"/>
+		<tag k="building:ruian:type" v="7"/>
+	</way>
+	<way id="293476734" version="3" timestamp="2015-06-29T07:56:58Z" changeset="0">
+		<nd ref="1158920802"/>
+		<nd ref="2083961592"/>
+		<nd ref="1158920797"/>
+		<nd ref="2970779717"/>
+		<nd ref="1158920799"/>
+		<nd ref="1158920802"/>
+	</way>
+	<way id="463140294" version="3" timestamp="2019-03-31T15:27:30Z" changeset="0">
+		<nd ref="4584505069"/>
+		<nd ref="4584505070"/>
+		<nd ref="4584505071"/>
+		<nd ref="4584505072"/>
+		<nd ref="4584505073"/>
+		<nd ref="4584505074"/>
+		<nd ref="4584505075"/>
+		<nd ref="4584505076"/>
+		<nd ref="4584505077"/>
+		<nd ref="4584505078"/>
+		<nd ref="4584505069"/>
+		<tag k="name" v="Orlicka Skała"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="tourism" v="guest_house"/>
+		<tag k="website" v="https://www.orlickaskala.pl/"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Duszniki-Zdrój"/>
+		<tag k="amenity_1" v="swimming_pool"/>
+		<tag k="addr:street" v="Zieleniec"/>
+		<tag k="addr:postcode" v="57-340"/>
+		<tag k="addr:housenumber" v="3a"/>
+	</way>
+	<way id="601332190" version="1" timestamp="2018-06-24T15:13:07Z" changeset="0">
+		<nd ref="5038807272"/>
+		<nd ref="5715556589"/>
+		<nd ref="5715556590"/>
+		<nd ref="5715556593"/>
+		<nd ref="5715556592"/>
+		<nd ref="5715556591"/>
+		<nd ref="5038807272"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="yes"/>
+	</way>
+	<relation id="1605882" version="3" timestamp="2017-12-11T13:28:37Z" changeset="0">
+		<member type="way" ref="115604570" role="outer"/>
+		<member type="way" ref="115604455" role="inner"/>
+		<tag k="name" v="Bertiny lázně"/>
+		<tag k="type" v="multipolygon"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="civic"/>
+		<tag k="ref:ruian:building" v="14720213"/>
+		<tag k="building:ruian:type" v="15"/>
+	</relation>
+	<relation id="3899563" version="2" timestamp="2015-06-29T07:56:46Z" changeset="0">
+		<member type="way" ref="293476734" role="outer"/>
+		<member type="way" ref="100270196" role="inner"/>
+		<tag k="name" v="Lázeňský dům Morava"/>
+		<tag k="type" v="multipolygon"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="amenity" v="spa"/>
+		<tag k="building" v="house"/>
+		<tag k="roof:shape" v="gabled"/>
+		<tag k="roof:colour" v="red"/>
+		<tag k="roof:levels" v="1"/>
+		<tag k="building:colour" v="white"/>
+		<tag k="building:levels" v="1"/>
+		<tag k="ref:ruian:building" v="16136403"/>
+		<tag k="building:ruian:type" v="7"/>
+	</relation>
+</osm>

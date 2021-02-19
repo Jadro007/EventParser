@@ -41,7 +41,7 @@ class Utils:
             string = string.replace(r'\t', '')
             string = string.replace("\t", '')
             # string = string.replace('\xa', '')
-            return string.strip(" '")
+            return string.strip(" ':")
         except TypeError:
             return ""
 

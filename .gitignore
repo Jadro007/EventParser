@@ -1,2 +1,5 @@
 
 *.pyc
+data/poi/czech_republic-2021-02-14.osm
+data/poi/czech_republic-2021-02-14.osm.pbf
+data/poi/amenity/amenity.osm

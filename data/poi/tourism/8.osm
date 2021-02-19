@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="osmfilter 1.4.5">
+	<bounds minlat="48.54292" minlon="12.08477" maxlat="51.06426" maxlon="18.86321"/>
+	<node id="2379491247" lat="50.5391196" lon="14.0650806" version="1" timestamp="2013-07-09T20:20:12Z" changeset="0">
+		<tag k="name" v="Žernosecké vinařství s.r.o."/>
+		<tag k="shop" v="winery"/>
+		<tag k="tourism" v="wine_cellar"/>
+	</node>
+	<node id="3592293077" lat="48.8755976" lon="16.6688563" version="2" timestamp="2019-11-13T10:25:18Z" changeset="0">
+		<tag k="name" v="Venuše - Pálavská Galerie Vín"/>
+		<tag k="shop" v="wine"/>
+		<tag k="phone" v="+420 602 160 996"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.palavskagalerievin.cz/"/>
+		<tag k="operator" v="Proqin Pavlov s.r.o."/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="252"/>
+	</node>
+	<node id="3592293079" lat="48.8729787" lon="16.6677378" version="2" timestamp="2019-11-12T18:12:14Z" changeset="0">
+		<tag k="name" v="Vinařství Topolanský"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="topolanskyvilda@tiscali.cz"/>
+		<tag k="phone" v="+420 724 263 561"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.vinarstvitopolansky.cz/"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="79"/>
+	</node>
+	<node id="3763561969" lat="48.975178" lon="17.2627722" version="3" timestamp="2020-07-26T06:36:23Z" changeset="0">
+		<tag k="name" v="Zámecké vinařství bzenec"/>
+		<tag k="shop" v="wine"/>
+		<tag k="craft" v="winery"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.zameckevinarstvi.cz/"/>
+		<tag k="opening_hours" v="Mo-Fr 15:00-21:30; Sa,Su 11:00-21:30"/>
+	</node>
+	<node id="4011763815" lat="48.8651395" lon="16.8157374" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763816" lat="48.8651445" lon="16.8156384" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763817" lat="48.8651445" lon="16.8156822" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763818" lat="48.8651483" lon="16.8158097" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763819" lat="48.8651495" lon="16.8157088" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763821" lat="48.8651596" lon="16.8156099" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763822" lat="48.8651633" lon="16.815783" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763823" lat="48.8651733" lon="16.8158611" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763824" lat="48.8651846" lon="16.8155433" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763826" lat="48.8651946" lon="16.8155661" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763829" lat="48.8654187" lon="16.8155585" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763830" lat="48.8654462" lon="16.8156004" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763834" lat="48.8654675" lon="16.8152065" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763835" lat="48.8654825" lon="16.8155109" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763836" lat="48.8654963" lon="16.8155395" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763837" lat="48.8655" lon="16.8152617" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763838" lat="48.8655238" lon="16.8154291" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763839" lat="48.8655301" lon="16.8152274" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763840" lat="48.8655326" lon="16.8154443" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763841" lat="48.8655564" lon="16.8152788" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763843" lat="48.8655801" lon="16.8152579" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4011763845" lat="48.8656114" lon="16.8153188" version="1" timestamp="2016-02-17T21:11:24Z" changeset="0"/>
+	<node id="4202085587" lat="50.0671723" lon="14.3987647" version="5" timestamp="2019-03-12T03:05:05Z" changeset="0">
+		<tag k="name" v="Vinný sklep U Stárků"/>
+		<tag k="shop" v="alcohol"/>
+		<tag k="email" v="vinny.sklep@ustarku.cz"/>
+		<tag k="level" v="-1"/>
+		<tag k="phone" v="251 565 174"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.ustarku.cz/"/>
+		<tag k="addr:city" v="Praha 5"/>
+		<tag k="drink:wine" v="yes"/>
+		<tag k="addr:street" v="U Nikolajky"/>
+		<tag k="addr:postcode" v="15000"/>
+		<tag k="opening_hours" v="Tu-Th 14:00-21:30; Fr 13:30-19:00"/>
+		<tag k="addr:housenumber" v="12"/>
+	</node>
+	<node id="4460577191" lat="48.8728486" lon="16.667033" version="2" timestamp="2019-11-12T18:05:57Z" changeset="0">
+		<tag k="name" v="Vinařství Garčic"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="info@garcicovi.cz"/>
+		<tag k="phone" v="+420 728 746 500"/>
+		<tag k="name:cs" v="Vinařství Garčic"/>
+		<tag k="name:en" v="Vinery Garcic"/>
+		<tag k="name:sk" v="Vinárstvo Garčic"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Vinařská"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="237"/>
+	</node>
+	<node id="5151398525" lat="49.89181" lon="13.7825501" version="1" timestamp="2017-10-06T10:14:32Z" changeset="0"/>
+	<node id="5151398526" lat="49.8918004" lon="13.7825963" version="1" timestamp="2017-10-06T10:14:32Z" changeset="0"/>
+	<node id="5151398527" lat="49.8918491" lon="13.7826209" version="1" timestamp="2017-10-06T10:14:32Z" changeset="0"/>
+	<node id="5151398528" lat="49.8918587" lon="13.7825746" version="1" timestamp="2017-10-06T10:14:32Z" changeset="0"/>
+	<node id="5948939394" lat="48.8752436" lon="16.6688677" version="1" timestamp="2018-10-02T15:01:49Z" changeset="0"/>
+	<node id="5948939395" lat="48.8752591" lon="16.668939" version="1" timestamp="2018-10-02T15:01:49Z" changeset="0"/>
+	<node id="5948939396" lat="48.8752941" lon="16.6689238" version="1" timestamp="2018-10-02T15:01:49Z" changeset="0"/>
+	<node id="5948939397" lat="48.8752783" lon="16.6688526" version="1" timestamp="2018-10-02T15:01:49Z" changeset="0"/>
+	<node id="6834749624" lat="48.8737118" lon="16.6753166" version="3" timestamp="2019-11-19T15:32:33Z" changeset="0">
+		<tag k="name" v="Vinárna U Bednářů"/>
+		<tag k="phone" v="+420519515110"/>
+		<tag k="amenity" v="restaurant"/>
+		<tag k="cuisine" v="regional;wine"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="www.penzionubednaru.cz"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="drink:wine" v="yes"/>
+		<tag k="wheelchair" v="limited"/>
+		<tag k="addr:street" v="Družstevní"/>
+		<tag k="reservation" v="yes"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="opening_hours" v="Jul,Aug: Mo-Sa 17:00-23:00; Apr-Jun,Sep-Nov: We-Sa 17:00-22:00; Feb,Mar: Sa,Su 17:00-22:00"/>
+		<tag k="outdoor_seating" v="no"/>
+		<tag k="addr:housenumber" v="218"/>
+	</node>
+	<node id="6929445730" lat="48.7397733" lon="16.7569682" version="1" timestamp="2019-10-30T06:22:52Z" changeset="0">
+		<tag k="name" v="Zámecký sklep A.D. 1430"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="sekretariat@vsvaltice.cz"/>
+		<tag k="phone" v="+420 606 309 959"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.vsvaltice.cz/vinne-sklepy/zamecky-sklep-a-d-1430/"/>
+		<tag k="operator" v="CHÂTEAU VALTICE - Vinné sklepy Valtice, a. s."/>
+		<tag k="addr:city" v="Valtice"/>
+		<tag k="addr:street" v="Zámek"/>
+		<tag k="reservation" v="recommended"/>
+		<tag k="addr:postcode" v="69142"/>
+		<tag k="opening_hours" v="May-Jun,Sep: Sa-Su 10:00-18:00; Jul-Aug: 10:00-18:00; Oct: Sa-Su &#34;call us&#34;"/>
+		<tag k="addr:housenumber" v="1"/>
+	</node>
+	<node id="6964537332" lat="48.8596992" lon="16.897958" version="1" timestamp="2019-11-10T17:43:21Z" changeset="0">
+		<tag k="name" v="Vinotéka u staré hrušky"/>
+		<tag k="shop" v="wine"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="addr:city" v="Velké Bílovice"/>
+		<tag k="addr:street" v="Pod Předníma"/>
+		<tag k="addr:postcode" v="69102"/>
+		<tag k="addr:housenumber" v="368"/>
+	</node>
+	<node id="6966452462" lat="48.8757528" lon="16.67659" version="2" timestamp="2019-11-11T13:13:14Z" changeset="0">
+		<tag k="name" v="Vinařství Plenér"/>
+		<tag k="shop" v="wine"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="dominika@vinarstviplener.cz"/>
+		<tag k="phone" v="+420 774 109 486"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.vinarstviplener.cz/cs/"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="23. dubna"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="94"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/vinarstviplener/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/vinarstviplener/"/>
+	</node>
+	<node id="6968568700" lat="48.875427" lon="16.6672158" version="1" timestamp="2019-11-12T09:51:00Z" changeset="0">
+		<tag k="name" v="Vinařství Paulus"/>
+		<tag k="shop" v="wine"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="obchod@vinarstvipaulus.cz"/>
+		<tag k="phone" v="+420775262008"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.vinarstvipaulus.cz/"/>
+		<tag k="operator" v="Vinařství Paulus s.r.o."/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="wheelchair" v="yes"/>
+		<tag k="addr:street" v="Na Cimbuří"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="159"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/VINARSTVIPAULUS/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/vinarstvipaulus/"/>
+	</node>
+	<node id="6968916340" lat="48.8748723" lon="16.6691907" version="1" timestamp="2019-11-12T12:23:33Z" changeset="0">
+		<tag k="name" v="Jirkův sklep"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="lenkasilinkova@seznam.cz"/>
+		<tag k="phone" v="+420 606 700 786"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.jirkuvsklep.cz/"/>
+		<tag k="stroller" v="yes"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="opening_hours" v="Jul,Aug: Mo-Su 17:00-22:00"/>
+		<tag k="addr:housenumber" v="210"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/padesatosm/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/sklep_padesatosm/"/>
+	</node>
+	<node id="6969091438" lat="48.8733772" lon="16.6673719" version="1" timestamp="2019-11-12T13:19:06Z" changeset="0">
+		<tag k="name" v="Přátelé Pavlova - vinný sklep"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="pavel@pritelpavlova.cz"/>
+		<tag k="phone" v="+420 602 500 266"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.pratelepavlova.cz/"/>
+		<tag k="operator" v="Přátelé Pavlova, s.r.o."/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Vinařská"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="37"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/PratelePavlova/"/>
+	</node>
+	<node id="6970828623" lat="48.8743478" lon="16.6688864" version="1" timestamp="2019-11-13T07:35:39Z" changeset="0">
+		<tag k="name" v="Vinařství Nepraš &#38; Co."/>
+		<tag k="shop" v="wine"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="info@vinarstvinepras.cz"/>
+		<tag k="phone" v="+420 775 605 783"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://vinarstvinepras.cz/"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="187"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/VinarstviNeprasCo/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/vinarstvinepras/"/>
+	</node>
+	<node id="6971189805" lat="48.9350157" lon="16.8209104" version="1" timestamp="2019-11-13T09:40:26Z" changeset="0">
+		<tag k="name" v="Víno J. Stávek"/>
+		<tag k="shop" v="wine"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="alena@jstavek.cz"/>
+		<tag k="phone" v="+420 777 906 991"/>
+		<tag k="min_age" v="0"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.jstavek.cz/"/>
+		<tag k="operator" v="Ing. Jan Stávek, Ph.D."/>
+		<tag k="stroller" v="yes"/>
+		<tag k="addr:city" v="Němčičky"/>
+		<tag k="addr:street" v="Němčičky"/>
+		<tag k="payment:cash" v="yes"/>
+		<tag k="payment:visa" v="yes"/>
+		<tag k="addr:postcode" v="69107"/>
+		<tag k="opening_hours" v="Mo-Fr 08:00-16:00"/>
+		<tag k="internet_access" v="wlan"/>
+		<tag k="outdoor_seating" v="yes"/>
+		<tag k="payment:maestro" v="yes"/>
+		<tag k="addr:housenumber" v="176"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/jstavek/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/jstavek/"/>
+		<tag k="internet_access:fee" v="no"/>
+		<tag k="payment:american_express" v="yes"/>
+	</node>
+	<node id="6971727741" lat="48.8754065" lon="16.6690248" version="2" timestamp="2019-11-19T15:32:33Z" changeset="0">
+		<tag k="name" v="Sekt bar"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="info@sektbarpavlov.cz"/>
+		<tag k="phone" v="+420 604 406 552"/>
+		<tag k="amenity" v="restaurant"/>
+		<tag k="cuisine" v="coffee_shop;tapas;cake;sandwich;wine"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://sektbarpavlov.cz/"/>
+		<tag k="operator" v="Pálavská sektárna Pavlov,s.r.o."/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="opening_hours" v="Th 16:00-22:00; Fr 16:00-23:00; Sa 15:00-23:00; Su 15:00-22:00"/>
+		<tag k="outdoor_seating" v="yes"/>
+		<tag k="addr:housenumber" v="252"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/SektbarPavlov/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/sektbarpavlov/"/>
+	</node>
+	<node id="6972711460" lat="48.8718214" lon="16.666087" version="1" timestamp="2019-11-13T12:33:04Z" changeset="0">
+		<tag k="name" v="Vinařství Prágerovi"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="jaja.pragerova@seznam.cz"/>
+		<tag k="phone" v="+420 602 775 504"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://pragerovi-cz.webnode.cz/"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Vinařská"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="20"/>
+	</node>
+	<node id="6973287369" lat="48.8737231" lon="16.6682507" version="1" timestamp="2019-11-13T13:51:31Z" changeset="0">
+		<tag k="name" v="Vinařství Zatloukal - vinný sklep"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="vino@zatloukalpavlov.cz"/>
+		<tag k="phone" v="+420 603 483 614"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.zatloukalpavlov.cz/"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="112"/>
+	</node>
+	<node id="6990093321" lat="48.8755823" lon="16.6762132" version="1" timestamp="2019-11-19T15:32:33Z" changeset="0">
+		<tag k="name" v="Vinum Via - vinotéka a kavárna"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="sklipek@vinum-via.cz"/>
+		<tag k="phone" v="+420 603 501 907"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.vinum-via.cz/"/>
+		<tag k="stroller" v="limited"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="wheelchair" v="limited"/>
+		<tag k="addr:street" v="23. dubna"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="opening_hours" v="Jun-Oct: Mo-Su 14:00-22:00"/>
+		<tag k="outdoor_seating" v="yes"/>
+		<tag k="addr:housenumber" v="99"/>
+	</node>
+	<node id="7004098146" lat="48.8312758" lon="16.749552" version="1" timestamp="2019-11-23T13:36:16Z" changeset="0">
+		<tag k="name" v="Nad Sklepy - vinotéka a sklep"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="info@nadsklepy.cz"/>
+		<tag k="phone" v="+420 777 172 298"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.nadsklepy.cz/index.php?chapter=22&#38;lang=cz"/>
+		<tag k="addr:city" v="Bulhary"/>
+		<tag k="addr:street" v="Bulhary"/>
+		<tag k="addr:postcode" v="69189"/>
+		<tag k="opening_hours" v="Mo-Sa 10:00-21:30; Su 09:30-14:00"/>
+		<tag k="outdoor_seating" v="yes"/>
+		<tag k="addr:housenumber" v="90"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/nadsklepy/"/>
+	</node>
+	<node id="7075264945" lat="48.8559988" lon="16.0469707" version="1" timestamp="2019-12-21T15:18:02Z" changeset="0">
+		<tag k="name" v="Vino Loigi"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="loigi@email.cz"/>
+		<tag k="phone" v="+420 602 82 64 12"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.loigi.cz/"/>
+		<tag k="operator" v="Vladimír Lojda"/>
+		<tag k="addr:city" v="Znojmo"/>
+		<tag k="addr:street" v="Václavské náměstí"/>
+		<tag k="addr:postcode" v="66902"/>
+		<tag k="addr:housenumber" v="13/4"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/vinoloigi/"/>
+	</node>
+	<node id="7075358024" lat="48.8609762" lon="16.8965511" version="1" timestamp="2019-12-21T15:34:27Z" changeset="0">
+		<tag k="name" v="Vinařství Jaroslav Osička"/>
+		<tag k="shop" v="wine"/>
+		<tag k="email" v="info@jaroslavosicka.cz"/>
+		<tag k="phone" v="+420 608 747 452"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://jaroslavosicka.cz/"/>
+		<tag k="operator" v="Jaroslav Osička"/>
+		<tag k="addr:city" v="Velké Bílovice"/>
+		<tag k="addr:street" v="Pod Předníma"/>
+		<tag k="addr:postcode" v="69102"/>
+		<tag k="addr:housenumber" v="386/36"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/vinarstvijaroslavosicka/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/jaroslavosicka/"/>
+	</node>
+	<node id="7075711713" lat="50.7455726" lon="15.8214253" version="1" timestamp="2019-12-21T18:04:50Z" changeset="0">
+		<tag k="name" v="Chata Hradečanka"/>
+		<tag k="email" v="info@hradecanka.cz"/>
+		<tag k="phone" v="+420 737 282 668"/>
+		<tag k="amenity" v="restaurant"/>
+		<tag k="cuisine" v="italian;pizza;coffee;wine"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.hradecanka.cz/"/>
+		<tag k="addr:city" v="Malá Úpa"/>
+		<tag k="addr:street" v="Horní Malá Úpa"/>
+		<tag k="addr:postcode" v="54221"/>
+		<tag k="opening_hours" v="Mo-Su 11:00-22:00"/>
+		<tag k="addr:housenumber" v="41"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/hradecanka/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/chata_hradecanka_1931/"/>
+	</node>
+	<node id="7131113272" lat="48.847898" lon="16.5802283" version="1" timestamp="2020-01-14T13:59:38Z" changeset="0">
+		<tag k="name" v="Mikrosvín Mikulov"/>
+		<tag k="shop" v="wine"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="info@mikrosvin.cz"/>
+		<tag k="phone" v="+420 720 069 824"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.mikrosvinmikulov.cz/"/>
+		<tag k="operator" v="Vinařství Mikrosvín Mikulov a.s."/>
+		<tag k="addr:city" v="Dolní Dunajovice"/>
+		<tag k="addr:street" v="Sklepní"/>
+		<tag k="addr:postcode" v="69185"/>
+		<tag k="addr:housenumber" v="657"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/MikrosvinMikulov/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/mikrosvinmikulov/"/>
+	</node>
+	<node id="7290871535" lat="48.8737644" lon="16.6685714" version="1" timestamp="2020-03-13T07:02:34Z" changeset="0">
+		<tag k="name" v="Vinařství Strapina"/>
+		<tag k="craft" v="winery"/>
+		<tag k="email" v="info@vinarstvistrapina.cz"/>
+		<tag k="phone" v="+420 736 669 287"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="https://www.vinarstvistrapina.cz/"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="addr:housenumber" v="152"/>
+		<tag k="contact:facebook" v="https://www.facebook.com/vinarstvistrapina/"/>
+		<tag k="contact:instagram" v="https://www.instagram.com/vinarstvistrapina/"/>
+	</node>
+	<node id="7572170001" lat="48.8753843" lon="16.6759122" version="1" timestamp="2020-05-30T09:28:13Z" changeset="0">
+		<tag k="name" v="Vinný sklípek Marada"/>
+		<tag k="shop" v="wine"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Přehradní"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="outdoor_seating" v="yes"/>
+		<tag k="addr:housenumber" v="96"/>
+	</node>
+	<way id="398415326" version="1" timestamp="2016-02-17T21:11:25Z" changeset="0">
+		<nd ref="4011763845"/>
+		<nd ref="4011763838"/>
+		<nd ref="4011763840"/>
+		<nd ref="4011763835"/>
+		<nd ref="4011763836"/>
+		<nd ref="4011763830"/>
+		<nd ref="4011763829"/>
+		<nd ref="4011763823"/>
+		<nd ref="4011763818"/>
+		<nd ref="4011763822"/>
+		<nd ref="4011763815"/>
+		<nd ref="4011763819"/>
+		<nd ref="4011763817"/>
+		<nd ref="4011763816"/>
+		<nd ref="4011763821"/>
+		<nd ref="4011763826"/>
+		<nd ref="4011763824"/>
+		<nd ref="4011763834"/>
+		<nd ref="4011763837"/>
+		<nd ref="4011763839"/>
+		<nd ref="4011763841"/>
+		<nd ref="4011763843"/>
+		<nd ref="4011763845"/>
+		<tag k="name" v="Dominant"/>
+		<tag k="craft" v="winery"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="website" v="http://www.vinarsky-dum-dominant.cz/"/>
+		<tag k="building" v="commercial"/>
+	</way>
+	<way id="530504234" version="1" timestamp="2017-10-06T10:14:32Z" changeset="0">
+		<nd ref="5151398525"/>
+		<nd ref="5151398526"/>
+		<nd ref="5151398527"/>
+		<nd ref="5151398528"/>
+		<nd ref="5151398525"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="building" v="yes"/>
+	</way>
+	<way id="629932508" version="2" timestamp="2019-11-13T11:11:47Z" changeset="0">
+		<nd ref="5948939397"/>
+		<nd ref="5948939396"/>
+		<nd ref="5948939395"/>
+		<nd ref="5948939394"/>
+		<nd ref="5948939397"/>
+		<tag k="source" v="cuzk:ruian"/>
+		<tag k="tourism" v="wine_cellar"/>
+		<tag k="building" v="yes"/>
+		<tag k="addr:city" v="Pavlov"/>
+		<tag k="addr:street" v="Česká"/>
+		<tag k="addr:postcode" v="69201"/>
+		<tag k="ref:ruian:building" v="49978152"/>
+		<tag k="building:ruian:type" v="19"/>
+	</way>
+</osm>
