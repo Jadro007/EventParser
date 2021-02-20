@@ -50,7 +50,10 @@ class EventParser:
         soup = RemovalPreprocessor.unwrap(soup)
 
         # reloading the tree helps for some reason
-        soup = BeautifulSoup(str(soup), 'html.parser')
+        soup_str = str(soup)
+        soup_str.replace(u'\xa0', " ")
+        soup_str.replace('&nbsp;', " ")
+        soup = BeautifulSoup(soup_str, 'html.parser')
 
         i = 1
         for tag in soup.findAll(True):

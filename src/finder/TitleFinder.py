@@ -40,7 +40,7 @@ class TitleFinder:
                 use_main_title = True
 
         title_from_list = TitleFinder._find_internal(soup, True, True)
-        if use_main_title:
+        if use_main_title and title_from_list is not None:
             title_from_list.alternative_value = main_title.value
 
         return title_from_list
@@ -82,6 +82,10 @@ class TitleFinder:
                             if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "" and TitleFinder.__title_contains_only_date(link) is False:
                                 title = link
 
+        if recursive is True and (title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(
+                title.getText()) == "" or TitleFinder.__title_contains_only_date(title)):
+            title = soup.find("strong", recursive=recursive)
+
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
         # That could accidentally get title from other event.
         if (title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist) and soup.parent is not None:
@@ -93,7 +97,8 @@ class TitleFinder:
         if title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist:
             return None
 
-        text = Utils.clean(title.getText())
+        text = Utils.get_first_line(title.getText())
+        text = Utils.clean(text)
         aleternative_text = ""
         if len(text) < 50:
             container = soup
@@ -112,7 +117,7 @@ class TitleFinder:
         text = title.getText()
         if len(text) < 5:
             return False
-        dates = DateFinder.find(title)
+        dates = DateFinder.find(title, False)
         for date in dates:
             text = text.replace(date.realValue, "")
 
@@ -184,6 +189,7 @@ class TitleFinder:
         if title is None:
             return None
 
-        text = Utils.clean(title.getText())
+        text = Utils.get_first_line(title.getText())
+        text = Utils.clean(text)
 
         return Title(text, "", title)

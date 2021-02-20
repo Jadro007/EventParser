@@ -1,3 +1,5 @@
+import re
+
 from bs4 import NavigableString
 
 
@@ -38,12 +40,23 @@ class Utils:
             string = string.replace(u"\\xa0", u" ")
             string = string.replace(r'\n', '')
             string = string.replace("\n", '')
+            string = string.replace("\r", '')
             string = string.replace(r'\t', '')
             string = string.replace("\t", '')
+            string = re.sub(' +', ' ', string)
             # string = string.replace('\xa', '')
             return string.strip(" ':")
         except TypeError:
             return ""
+
+    @staticmethod
+    def get_first_line(string):
+        splitted = string.split("\n")
+        for line in splitted:
+            if Utils.clean(line) != "":
+                return line
+
+        return string
 
     @staticmethod
     def getTag(element):

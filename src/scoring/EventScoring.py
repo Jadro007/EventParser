@@ -59,8 +59,15 @@ class EventScoring:
             if event.date.dateFrom.group is not None and event.date.container.html is not None:
                 event.score -= 30
 
-            # other ideas - add score for having price
+            # for single events (not in lists)
+            if event.date.dateFrom.group is None:
+                diff = abs(Utils.getTag(event.date.dateFrom.container).sourceline - Utils.getTag(event.title.container).sourceline)
+                if diff > 25:
+                    event.score -= min(diff - 25, 60)
+
+
             # other ideas - add score for having time close to date
+            # other ideas - add score for having price
 
         return events
 

@@ -20,7 +20,7 @@ class RemovalPreprocessor:
 
     @staticmethod
     def unwrap(soup):
-        for element in soup.find_all(["small", "span", "b", "strong", "i", "u", "big"]):
+        for element in soup.find_all(["small", "i", "u", "big"]):
             parent = element.parent
             try:
                 element.unwrap()

@@ -49,7 +49,7 @@ class SingleEventParser:
         for d in dates:
             if d.datetime < first_date.datetime and date.container.parent.sourceline - d.container.parent.sourceline < 20:
                 first_date = d
-            if d.datetime > last_date.datetime:
+            if d.datetime > last_date.datetime and date.container.parent.sourceline - d.container.parent.sourceline < 20:
                 last_date = d
 
         # if event is in different year than current year, we might have guessed the year wrong, so if day and month match, lets ignore it
@@ -143,8 +143,14 @@ class SingleEventParser:
                 print("Found event without title (date: " + date.realValue + ", place: " + place.city + "), skipping")
             return None
 
+        if container.sourceline is not None and container.sourceline - title.container.sourceline > 150:
+            if verbose > 2:
+                print("Found event with title too far (date: " + date.realValue + ", place: " + place.city + "), skipping")
+            return None
+
         # we cannot remove the event, because it could break selectors created for Selenium
-        # soup.extract()  # event was successfully found, we can now safely remove it
+        if config.allow_selenium is False:
+             soup.extract()  # event was successfully found, we can now safely remove it
 
         return Event(title, DateRange(first_date, last_date, soup), "", place, price_range, soup)
 

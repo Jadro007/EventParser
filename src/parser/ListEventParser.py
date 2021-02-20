@@ -47,8 +47,9 @@ class ListEventParser:
                 previous_parent = parent
                 parent = parent.parent
 
+            previous_parent = Utils.getTag(previous_parent)
             # if whole page was used as container for the list events event, we need to clone it to prevent messing the HTML structure
-            if previous_parent.parent is None or previous_parent.parent.parent is None:
+            if previous_parent.find("body") is not None:
                 previous_parent = BeautifulSoup(str(previous_parent), 'html.parser')
 
             event = SingleEventParser.parse(previous_parent, date, allow_external_place, force_place_if_none)
@@ -58,12 +59,14 @@ class ListEventParser:
 
             if event is not None:
                 events.append(event)
+                if event.container.find("body") is None:
+                    event.container.extract()  # event was successfully found, we can now safely remove it
 
-        for event in events:
-            # if whole page was used as container for the list events, we do not want to remove it
-            if event.container.parent is not None:
-                event.container.extract()  # event was successfully found, we can now safely remove it
-
+        # for event in events:
+        #     # if whole page was used as container for the list events, we do not want to remove it
+        #     if event.container.parent is not None:
+        #         event.container.extract()  # event was successfully found, we can now safely remove it
+        #
 
 
         if date_counter == date_without_place_counter and allow_external_place is False:
