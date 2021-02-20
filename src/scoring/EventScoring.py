@@ -10,6 +10,7 @@ from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
 from src.dto.Title import Title
 from src.finder.DateFinder import DateFinder
+from src.finder.PlaceFinder import PlaceFinder
 from src.utils.Utils import Utils
 
 
@@ -65,6 +66,8 @@ class EventScoring:
                 if diff > 25:
                     event.score -= min(diff - 25, 60)
 
+            if event.place.city.lower() in PlaceFinder.online_places:
+                event.score -= 10
 
             # other ideas - add score for having time close to date
             # other ideas - add score for having price

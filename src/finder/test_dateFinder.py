@@ -49,6 +49,7 @@ class TestDateFinder(TestCase):
                "<li>3. duben 2020</li>" \
                "<li>2. února 2020</li>" \
                "<li>5. 12.</li>" \
+               "<li>7. března</li>" \
                "</body></html>"
         soup = BeautifulSoup(html, 'html.parser')
 
@@ -171,3 +172,6 @@ class TestDateFinder(TestCase):
         # without a year
         self.assertEqual(results[36].realValue, "5. 12.")
         self.assertEqual(results[36].datetime, datetime.datetime(2021, 12, 5))
+
+        self.assertEqual(results[37].realValue, "7. března")
+        self.assertEqual(results[37].datetime, datetime.datetime(2021, 3, 7))

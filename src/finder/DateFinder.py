@@ -51,7 +51,7 @@ class DateFinder:
 
     # [^0-9] means not a number, so we do not find same events again
     date_without_year_separator_regex = "[\.|\/]\s?"
-    date_without_year_separator_after_month_regex = "[\.|\/|\s]\s?"
+    date_without_year_separator_after_month_regex = "[\.|\/|\s]?\s?"
 
     date_without_year_regex = "((\d{1,2})" + date_without_year_separator_regex + "(\d{1,2}|" + regexMonthsNames + ")" + date_without_year_separator_after_month_regex + ")"
     date_without_year_regex_compiled = None

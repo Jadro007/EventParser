@@ -8,6 +8,7 @@ from dateutil import parser
 import dateparser
 import pickle
 
+from config import config
 from src.EventParser import EventParser
 import time
 
@@ -70,7 +71,7 @@ for filename in os.listdir(path):
 
     for found in parsed_events:
         total_events += 1
-        if found.score <= 50:
+        if found.score <= config.minimum_score:
             total_events_under_score_limit += 1
 
         found_title = found.title.value.lower().strip()
@@ -156,7 +157,7 @@ for filename in os.listdir(path):
                     and (
                     found_date is not None and found_date_value in expected_date or
                     found_date is not None and found_date_value2 in expected_date
-            ) and found.score >= 50
+            ) and found.score >= config.minimum_score
             ):
                 print("FOUND MATCH: ")
                 print("Name: " + found_title + ", date: " + found_date_value + ", place: " + found_location)
