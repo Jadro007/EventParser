@@ -114,3 +114,13 @@ class DatePreprocessor:
             print("PREPARED DATE RANGE " + fixed_text)
 
         return soup
+
+    @staticmethod
+    def fix_today_and_tomorrow(soup_str):
+        today = datetime.datetime.now()
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+
+        soup_str = soup_str.replace("dnes", str(today.day) + ". " + str(today.month) + ". " + str(today.year))
+        soup_str = soup_str.replace("zítra", str(tomorrow.day) + ". " + str(tomorrow.month) + ". " + str(tomorrow.year))
+
+        return soup_str

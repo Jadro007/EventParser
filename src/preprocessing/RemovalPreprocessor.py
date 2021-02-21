@@ -8,6 +8,7 @@ from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
 from src.dto.Title import Title
 from src.finder.DateFinder import DateFinder
+from src.utils.Utils import Utils
 
 
 class RemovalPreprocessor:
@@ -15,12 +16,13 @@ class RemovalPreprocessor:
     def cleanup(soup):
         RemovalPreprocessor.remove_comments(soup)
         RemovalPreprocessor.remove_script_and_style_tag(soup)
+        RemovalPreprocessor.remove_fake_dates(soup)
 
         return soup
 
     @staticmethod
     def unwrap(soup):
-        for element in soup.find_all(["small", "i", "u", "big"]):
+        for element in soup.find_all(["small", "b", "i", "u", "big"]):
             parent = element.parent
             try:
                 element.unwrap()
@@ -38,12 +40,30 @@ class RemovalPreprocessor:
             comment.extract()
 
         return soup
-    @staticmethod
 
+    @staticmethod
     def remove_script_and_style_tag(soup):
         [x.extract() for x in soup.findAll(['script', 'style', 'br'])]
         [x.extract() for x in soup.findAll(attrs={"role": "dialog"})]
         # for item in soup.contents:
         #     if isinstance(item, Doctype):
         #         item.extract()
+        return soup
+
+    @staticmethod
+    def remove_fake_dates(soup):
+        fake_dates = [
+                        "Vytvořeno", "Poslední aktualizace", "Naposledy změněno", "Dnes je", "Publikováno",
+                        "Vloženo", "Počasí dnes", "svátek má", "Zveřejněno"
+                        ]
+
+        regex_for_fake_dates = '|'.join(fake_dates)
+        regex_for_fake_dates_compiled = re.compile(regex_for_fake_dates, flags=re.IGNORECASE)
+
+        matched_fake_dates = soup.find_all(text=regex_for_fake_dates_compiled)
+        for match in matched_fake_dates:
+            if len(DateFinder.find(match, False)) == 0:
+                Utils.getTag(match).parent.extract()
+            else:
+                Utils.getTag(match).extract()
         return soup

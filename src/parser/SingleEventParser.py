@@ -145,7 +145,7 @@ class SingleEventParser:
 
         if container.sourceline is not None and container.sourceline - title.container.sourceline > 150:
             if verbose > 2:
-                print("Found event with title too far (date: " + date.realValue + ", place: " + place.city + "), skipping")
+                print("Found event with title too far (title: " + title.value + ",date: " + date.realValue + ", place: " + place.city + "), skipping")
             return None
 
         # we cannot remove the event, because it could break selectors created for Selenium

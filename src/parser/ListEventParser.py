@@ -83,8 +83,9 @@ class ListEventParser:
                 if event.place is None:
                     continue
                 same_place_counter += 1
-                if previous_place is None or previous_place.city == event.place.city:
-                    previous_place = event.place
+                if previous_place is None or previous_place.city == event.place.city or event.place.city in PlaceFinder.online_places:
+                    if event.place.city not in PlaceFinder.online_places:
+                        previous_place = event.place
                 else:
                     all_events_have_same_place = False
                     break

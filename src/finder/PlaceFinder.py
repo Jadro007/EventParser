@@ -10,12 +10,15 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    online_places = ["facebook", "online", "on-line"]
+    online_places = ["facebook", "online", "on-line", "virtuální",
+                     "Facebook", "Online", "On-line", "Virtuální",
+                     "FACEBOOK", "ONLINE", "ON-LINE", "VIRTUÁLNÍ"]
     forbidden_cities = ["Výsluní", "Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly",
                         "Košík", "Diváky", "Ostrov", "Řeka", "Pátek", "Hory", "Černá", "Louka", "Veselé", "Železnice",
-                        "Lety", "Kruh"]
+                        "Lety", "Kruh", "Stránka", "Koupě"]
     regex_for_cities = None
 
+    cities = []
     @staticmethod
     def find(soup) -> [Place]:
 
@@ -39,7 +42,7 @@ class PlaceFinder:
                 cities.extend(poi)
 
             regex_for_cities = '|'.join(cities)
-            PlaceFinder.regex_for_cities = re.compile(regex_for_cities, flags=re.IGNORECASE)
+            PlaceFinder.regex_for_cities = re.compile(regex_for_cities)  # , flags=re.IGNORECASE
 
         if soup.__class__.__name__ == "NavigableString":
             soup = soup.parent

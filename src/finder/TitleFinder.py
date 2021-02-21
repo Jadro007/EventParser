@@ -1,3 +1,4 @@
+import math
 import re
 
 from typing import Optional
@@ -8,6 +9,7 @@ from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
 from src.dto.Title import Title
 from src.finder.DateFinder import DateFinder
+from src.finder.PlaceFinder import PlaceFinder
 from src.utils.Utils import Utils
 from config import shared
 from selenium.webdriver import Chrome
@@ -21,7 +23,16 @@ class TitleFinder:
                        "Praha", "Vstupenky", "Koupit", "Termíny", "Kontakty", "Mapa", "Doprava",
                        "Termíny", "Profil", "Tento měsíc", "Základní informace", "Štítky", "RSS", "příspěvky",
                        "Nejnovější příspěvky", "Rubriky", "Děkujeme za podporu", "Aktuality", "Naše akce",
-                       "Registrační podmínky"
+                       "Registrační podmínky", "PDF", "DOC", "XLSX", "XLS", "Přílohy", "Zjistit více",
+                       "Nejbližší akce", "Kalendář akcí", "Fotogalerie akcí", "Provozovatel", "Časová náročnost",
+                       "Akce v okolí", "celý text", "Svátek", "Návštěvnost", "Aktuální počasí", "Senioři",
+                       "Univerzální překladač", "Hlášení", "Mobilní aplikace", "Obsah", "Navigace",
+                       "Adresa", "Úřední hodiny", "Vyhledávání", "Facebook", "Ohodnoťte tento produkt",
+                       "Vstupné", "Více informací a kontakt", "Kdy se akce koná", "Dejte o akci vědět přátelům!",
+                       "Témata webu", "Navigace menu", "Místo konání", "Podrobnosti", "Redakce", "Přidat do kalendáře",
+                       "Další termíny akce", "V okolí doporučujeme...", "Aktuální koncerty", "Další akce v tomto místě",
+                       "Umělci", "Information about the concert", "Tickets", "Předprodej online", "Novinky emailem",
+                       "Web", "E-shop", "KONCERTY - aktuální"
                        ]
 
     @staticmethod
@@ -78,9 +89,17 @@ class TitleFinder:
                         if title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "" or TitleFinder.__title_contains_only_date(title):
                             # for list event, it is possible to contain link to event and usually there is either
                             # event name (we want that) or just url (we do not want that)
-                            link = soup.find("a", recursive=recursive)
-                            if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "" and TitleFinder.__title_contains_only_date(link) is False:
-                                title = link
+                            links = soup.find_all("a", recursive=recursive)
+                            if len(links) > 0:
+                                link = links[0]
+
+                                if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "" and TitleFinder.__title_contains_only_date(link) is False:
+                                    title = link
+
+                                if title is None and len(links) > 1:
+                                    link = links[1]
+                                    if link is not None and "www" not in link.getText() and ".cz" not in link.getText() and "http" not in link.getText() and Utils.clean(link.getText()) != "" and TitleFinder.__title_contains_only_date(link) is False:
+                                        title = link
 
         if recursive is True and (title is None or title.getText() in TitleFinder.title_blacklist or Utils.clean(
                 title.getText()) == "" or TitleFinder.__title_contains_only_date(title)):
@@ -173,8 +192,10 @@ class TitleFinder:
                 else:
                     near_sourceline = near_container.sourceline
                 # this checks for distance in html (max penalty 30)
-                score += min([30, abs(near_sourceline - t.sourceline)])
-
+                # log used here - if something is further from container, linear penalization would be too much
+                # and just lowering the maximum would not reflect that something is further
+                # (the + 0.1 prevents getting log from 0 which is undefined operation)
+                score += min([10, math.log(abs(near_sourceline - t.sourceline) + 0.1)])
                 # this issues depth penalty (less difference in depth means less penalty, max 10)
                 score += 10 - min(
                     [10, Utils.get_depth(Utils.lowest_common_ancestor(near_container, t))]

@@ -53,6 +53,9 @@ class EventParser:
         soup_str = str(soup)
         soup_str.replace(u'\xa0', " ")
         soup_str.replace('&nbsp;', " ")
+
+        soup_str = DatePreprocessor.fix_today_and_tomorrow(soup_str)
+
         soup = BeautifulSoup(soup_str, 'html.parser')
 
         i = 1

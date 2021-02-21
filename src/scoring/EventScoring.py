@@ -69,6 +69,19 @@ class EventScoring:
             if event.place.city.lower() in PlaceFinder.online_places:
                 event.score -= 10
 
+            # is something is moved or cancelled, it is likely to be event
+            if (
+                "zrušeno" in event.title.value.lower() or "přesunuto" in event.title.value.lower() or
+                "zrušeno" in event.title.alternative_value.lower() or "přesunuto" in event.title.alternative_value.lower()
+            ):
+                event.score += 15
+
+            if event.score > 100:
+                event.score = 100
+
+            if event.score < 0:
+                event.score = 0
+
             # other ideas - add score for having time close to date
             # other ideas - add score for having price
 
