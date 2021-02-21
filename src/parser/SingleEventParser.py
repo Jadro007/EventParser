@@ -143,7 +143,7 @@ class SingleEventParser:
                 print("Found event without title (date: " + date.realValue + ", place: " + place.city + "), skipping")
             return None
 
-        if container.sourceline is not None and container.sourceline - title.container.sourceline > 150:
+        if container is not None and container.sourceline is not None and title.container is not None and container.sourceline - title.container.sourceline > 150:
             if verbose > 2:
                 print("Found event with title too far (title: " + title.value + ",date: " + date.realValue + ", place: " + place.city + "), skipping")
             return None

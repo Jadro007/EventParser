@@ -7,6 +7,7 @@ from pathlib import Path
 from dateutil import parser
 import dateparser
 import pickle
+from urllib.parse import urlparse
 
 from config import config
 from src.EventParser import EventParser
@@ -19,9 +20,9 @@ start_time = time.time()
 
 verbose = 3
 
-path = './data/test/'
+path = './data/test2/'
 
-total_results = []
+total_results = {}
 total_events = 0
 total_events_under_score_limit = 0
 
@@ -41,6 +42,17 @@ for filename in os.listdir(path):
     parsed_events = EventParser.parse(html)
 
     result_filename = new_filename = Path(filename).stem + ".txt"
+    url_filename = new_filename = Path(filename).stem + "_url.txt"
+
+    url = ""
+    domain = result_filename
+    try:
+        with open(path + url_filename, 'r') as file:
+            url = file.read()
+            url_parsed = urlparse(url)
+            domain = url_parsed.netloc.rjust(30, " ")
+    except FileNotFoundError:
+        pass
     if verbose > 1:
         print("Found results")
 
@@ -68,11 +80,15 @@ for filename in os.listdir(path):
     found_counter = 0
 
     expected_results_count = len(expected_results)
-
+    under_score_count = 0
+    found_over_limit = 0
     for found in parsed_events:
         total_events += 1
         if found.score <= config.minimum_score:
+            under_score_count += 1
             total_events_under_score_limit += 1
+            continue
+        found_over_limit += 1
 
         found_title = found.title.value.lower().strip()
         found_alternative_title = found.title.alternative_value.lower().strip()
@@ -166,7 +182,14 @@ for filename in os.listdir(path):
                 expected_results.remove(expected)
                 break
 
-    total_results.append([filename, found_counter, expected_results_count])
+    if domain not in total_results:
+        # found successfully ; expected total count ; found but under limit ; false positive count
+        total_results[domain] = [found_counter, expected_results_count, under_score_count, found_over_limit - found_counter]
+    else:
+        total_results[domain][0] += found_counter
+        total_results[domain][1] += expected_results_count
+        total_results[domain][2] += under_score_count
+        total_results[domain][3] += found_over_limit - found_counter
 
     print("NOT FOUND")
     for expected_result in expected_results:
@@ -177,7 +200,7 @@ try:
     with open('outfile', 'rb') as fp:
         itemlist = pickle.load(fp)
         for item in itemlist:
-            print('\t'.join(map(str, item)))
+            print('\t'.join(map(str, [item] + itemlist[item])))
 except FileNotFoundError:
     pass
 
@@ -185,17 +208,20 @@ print("\n")
 print("TOTAL RESULTS")
 total_found = 0
 total_expected = 0
+total_false_positive = 0
+print ("DOMAIN; TOTAL FOUND; EXPECTED COUNT; UNDER SCORE; FALSE POSITIVE")
 for result in total_results:
-    total_found += result[1]
-    total_expected += result[2]
-    print('\t'.join(map(str, result)))
+    total_found += total_results[result][0]
+    total_expected += total_results[result][1]
+    total_false_positive += total_results[result][3]
+    print('\t'.join(map(str, [result] + total_results[result])))
 
 with open('outfile', 'wb') as fp:
     pickle.dump(total_results, fp)
 
-print("TOTAL PERCENTAGE: " + repr(total_found) + "/" + repr(total_expected) + " = " + repr(
-    round(total_found / total_expected * 100, 2)) + "%")
-
-print("TOTAL (included fake positive) found " + str(total_events))
-print("TOTAL under limit found" + str(total_events_under_score_limit))
+print("TOTAL %                                              : " + repr(total_found) + "/" + repr(total_expected) + " = " + repr(round(total_found / total_expected * 100, 2)) + "%")
+print("TOTAL (included false positive and under limit) found: " + str(total_events))
+print("TOTAL under limit found                              : " + str(total_events_under_score_limit))
+print("TOTAL false positive                                 : " + str(total_false_positive))
+print("TOTAL false positive %                               : " + str(total_false_positive / (total_found + total_false_positive) * 100) + "%")
 print("--- %s seconds ---" % (time.time() - start_time))
