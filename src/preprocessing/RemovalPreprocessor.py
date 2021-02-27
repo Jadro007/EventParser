@@ -45,6 +45,7 @@ class RemovalPreprocessor:
     def remove_script_and_style_tag(soup):
         [x.extract() for x in soup.findAll(['script', 'style', 'br'])]
         [x.extract() for x in soup.findAll(attrs={"role": "dialog"})]
+        [x.extract() for x in soup.findAll(attrs={"class": "post-date"})]
         # for item in soup.contents:
         #     if isinstance(item, Doctype):
         #         item.extract()
@@ -65,5 +66,5 @@ class RemovalPreprocessor:
             if len(DateFinder.find(match, False)) == 0:
                 Utils.getTag(match).parent.extract()
             else:
-                Utils.getTag(match).extract()
+                match.extract()
         return soup

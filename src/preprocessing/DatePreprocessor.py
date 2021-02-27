@@ -13,7 +13,17 @@ from src.utils.Utils import Utils
 
 class DatePreprocessor:
     @staticmethod
+    def fix_dates_attributes(soup):
+        soup.find_all("[]")
+        data_date_texts = soup.findAll(lambda tag: tag.get("data-date-text") is not None)
+        for data_date_text in data_date_texts:
+            data_date_text.insert(0, data_date_text.get("data-date-text"))
+
+    @staticmethod
     def fix_dates(soup):
+
+        DatePreprocessor.fix_dates_attributes(soup)
+
         # exactly month name (usually this expects shortcuts, like čvn, can can contain dot (.) at the end
         # another supported format is month shortcut with year after it (e.g., čvn. 2020)
         # another supported format is day number in parent element as text and child that contains only month

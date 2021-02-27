@@ -59,8 +59,6 @@ class ListEventParser:
 
             if event is not None:
                 events.append(event)
-                if event.container.find("body") is None:
-                    event.container.extract()  # event was successfully found, we can now safely remove it
 
         # for event in events:
         #     # if whole page was used as container for the list events, we do not want to remove it
@@ -89,8 +87,12 @@ class ListEventParser:
                 else:
                     all_events_have_same_place = False
                     break
-            if all_events_have_same_place and previous_place is not None and force_place_if_none is None:
+            if all_events_have_same_place and previous_place is not None and force_place_if_none is None and (same_place_counter > len(events) or date_without_place_counter > same_place_counter):
                 return ListEventParser.parse(soup, dates, allow_external_place, previous_place)
+
+        for event in events:
+            if event.container.find("body") is None:
+                event.container.extract()  # event was successfully found, we can now safely remove it
 
         return events
 

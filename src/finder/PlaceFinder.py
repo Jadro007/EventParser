@@ -10,12 +10,12 @@ from src.dto.Place import Place
 
 
 class PlaceFinder:
-    online_places = ["facebook", "online", "on-line", "virtuální",
-                     "Facebook", "Online", "On-line", "Virtuální",
-                     "FACEBOOK", "ONLINE", "ON-LINE", "VIRTUÁLNÍ"]
+    online_places = ["facebook", "online", "on-line", "virtuální", "live",
+                     "Facebook", "Online", "On-line", "Virtuální", "Live",
+                     "FACEBOOK", "ONLINE", "ON-LINE", "VIRTUÁLNÍ", "LIVE"]
     forbidden_cities = ["Výsluní", "Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly",
                         "Košík", "Diváky", "Ostrov", "Řeka", "Pátek", "Hory", "Černá", "Louka", "Veselé", "Železnice",
-                        "Lety", "Kruh", "Stránka", "Koupě"]
+                        "Lety", "Kruh", "Stránka", "Koupě", "Okna", "Krásné", "Hosty", "Srbsko"]
     regex_for_cities = None
 
     cities = []
@@ -29,6 +29,7 @@ class PlaceFinder:
                     city = city.strip()
                     if city not in PlaceFinder.forbidden_cities:
                         cities.append(re.escape(city))
+                        cities.append(re.escape(city.upper()))
 
             cities.extend(PlaceFinder.online_places)
             cities.reverse()  # this is here because the list of cities is ascending and we would not find some cities,

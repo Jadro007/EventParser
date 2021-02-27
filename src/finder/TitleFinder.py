@@ -32,7 +32,9 @@ class TitleFinder:
                        "Témata webu", "Navigace menu", "Místo konání", "Podrobnosti", "Redakce", "Přidat do kalendáře",
                        "Další termíny akce", "V okolí doporučujeme...", "Aktuální koncerty", "Další akce v tomto místě",
                        "Umělci", "Information about the concert", "Tickets", "Předprodej online", "Novinky emailem",
-                       "Web", "E-shop", "KONCERTY - aktuální"
+                       "Web", "E-shop", "Detail akce", "Informace o akci", "Naše tipy...",
+                       "Další informace", "Doporučujeme", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota",
+                       "Neděle", "Předchozí", "Tradiční akce", "Akce", "Otevírací doba", "Místo", "Číst více..."
                        ]
 
     @staticmethod
@@ -107,11 +109,13 @@ class TitleFinder:
 
         # Traverse up (when traversing up, we want to try find title only in direct children, not in all structure.
         # That could accidentally get title from other event.
-        if (title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist) and soup.parent is not None:
+        if (title is None or Utils.clean(Utils.get_first_line(title.getText())) in TitleFinder.title_blacklist) and soup.parent is not None:
             return TitleFinder._find_internal(soup.parent, False)
 
+        is_from_title_element = False
         if title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist or Utils.clean(title.getText()) == "":
             title = soup.find("title")
+            is_from_title_element = True
 
         if title is None or Utils.clean(title.getText()) in TitleFinder.title_blacklist:
             return None
@@ -129,7 +133,7 @@ class TitleFinder:
             if h1 is not None and Utils.clean(h1.getText()) not in TitleFinder.title_blacklist and Utils.clean(h1.getText()) != "":
                 aleternative_text = Utils.clean(h1.getText()) + " - " + text
 
-        return Title(text, aleternative_text, title)
+        return Title(text, aleternative_text, title, is_from_title_element)
 
     @staticmethod
     def __title_contains_only_date(title):
@@ -195,7 +199,7 @@ class TitleFinder:
                 # log used here - if something is further from container, linear penalization would be too much
                 # and just lowering the maximum would not reflect that something is further
                 # (the + 0.1 prevents getting log from 0 which is undefined operation)
-                score += min([10, math.log(abs(near_sourceline - t.sourceline) + 0.1)])
+                score += min([10, math.log(abs(near_sourceline - t.sourceline) + 0.1) * 3])
                 # this issues depth penalty (less difference in depth means less penalty, max 10)
                 score += 10 - min(
                     [10, Utils.get_depth(Utils.lowest_common_ancestor(near_container, t))]
@@ -204,13 +208,14 @@ class TitleFinder:
                 lowest_score = score
                 title = t
 
+        is_from_title_element = False
         if title is None:
             title = soup.find("title")
-
+            is_from_title_element = True
         if title is None:
             return None
 
         text = Utils.get_first_line(title.getText())
         text = Utils.clean(text)
 
-        return Title(text, "", title)
+        return Title(text, "", title, is_from_title_element)

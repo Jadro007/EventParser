@@ -23,12 +23,16 @@ verbose = 3
 path = './data/test2/'
 
 total_results = {}
+total_pages = 0
 total_events = 0
 total_events_under_score_limit = 0
 
 for filename in os.listdir(path):
 
     # if not filename.startswith("5 "):
+    #     continue
+    #
+    # if not filename.startswith("vkhbrnoczakce"):
     #     continue
 
     if not filename.endswith(".html"):
@@ -37,6 +41,7 @@ for filename in os.listdir(path):
     if verbose > 0:
         print("TESTING " + filename)
 
+    total_pages += 1
     html = open(path + filename, 'r', errors='ignore', encoding="utf-8").read()
 
     parsed_events = EventParser.parse(html)
@@ -84,7 +89,7 @@ for filename in os.listdir(path):
     found_over_limit = 0
     for found in parsed_events:
         total_events += 1
-        if found.score <= config.minimum_score:
+        if found.score < config.minimum_score:
             under_score_count += 1
             total_events_under_score_limit += 1
             continue
@@ -100,20 +105,20 @@ for filename in os.listdir(path):
         found_location = found.place.city.lower().strip()
 
         found_date_value = '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + '{:02d}'.format(
-            found_date.dateFrom.datetime.month) + ". "
+            found_date.dateFrom.datetime.month) + ". " + str(found_date.dateTo.datetime.year)
         found_date_value2 = found_date_value
         if found_date.dateFrom.datetime != found_date.dateTo.datetime:
             found_date_value = (
                     '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + '{:02d}'.format(
                 found_date.dateFrom.datetime.month) + ". - " +
                     '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(
-                found_date.dateTo.datetime.month) + ". "
+                found_date.dateTo.datetime.month) + ". " + str(found_date.dateTo.datetime.year)
             )
 
             found_date_value2 = (
                     '{:02d}'.format(found_date.dateFrom.datetime.day) + ". " + "- " +
                     '{:02d}'.format(found_date.dateTo.datetime.day) + ". " + '{:02d}'.format(
-                found_date.dateTo.datetime.month) + ". "
+                found_date.dateTo.datetime.month) + ". " + str(found_date.dateTo.datetime.year)
             )
 
         # found_price = found[4]
@@ -224,4 +229,6 @@ print("TOTAL (included false positive and under limit) found: " + str(total_even
 print("TOTAL under limit found                              : " + str(total_events_under_score_limit))
 print("TOTAL false positive                                 : " + str(total_false_positive))
 print("TOTAL false positive %                               : " + str(total_false_positive / (total_found + total_false_positive) * 100) + "%")
+print("TOTAL unique domains                                 : " + str(len(total_results)))
+print("TOTAL pages                                          : " + str(total_pages))
 print("--- %s seconds ---" % (time.time() - start_time))

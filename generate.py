@@ -22,6 +22,7 @@ def write_response(html, filedir, filename):
 
 url = sys.argv[1]
 filename = "".join(x for x in url if x.isalnum()).strip("httpswww").strip("httpwww")
+headers = {"Accept-language": "cs,en;q=0.8,en-GB;q=0.6"}
 r = requests.get(url, allow_redirects=True)
 html = r.content
 soup = BeautifulSoup(html, 'html.parser')

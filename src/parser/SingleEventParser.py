@@ -124,29 +124,31 @@ class SingleEventParser:
 
         # we want to be able to find the most relevant title for event, so we will start with container that contains
         # both date and place, so there is quite chance there will be also the title
+        title = None
         if is_single_event:
             container = Utils.lowest_common_ancestor(date.container, place.container)
             if container is None:
                 return None
             container = container.parent
+            title = TitleFinder.find(container, is_single_event, [first_date.container, place.container])
         else:
+            container = soup
+            title = TitleFinder.find(container, is_single_event, [first_date.container, place.container])
+            if title is None and date.container == place.container and soup.parent is not None:
+                container = soup.parent
+                title = TitleFinder.find(container, is_single_event, [first_date.container, place.container])
             # in case that date and place are in the same container, it might happen that title will not be there,
             # so we increase search container to parent
-            if date.container == place.container and soup.parent is not None:
-                container = soup.parent
-            else:
-                container = soup
 
-        title = TitleFinder.find(container, is_single_event, [first_date.container, place.container])
         if title is None:
             if verbose > 2:
                 print("Found event without title (date: " + date.realValue + ", place: " + place.city + "), skipping")
             return None
 
-        if container is not None and container.sourceline is not None and title.container is not None and container.sourceline - title.container.sourceline > 150:
-            if verbose > 2:
-                print("Found event with title too far (title: " + title.value + ",date: " + date.realValue + ", place: " + place.city + "), skipping")
-            return None
+        # if container is not None and container.sourceline is not None and title.container is not None and container.sourceline - title.container.sourceline > 150:
+        #     if verbose > 2:
+        #         print("Found event with title too far (title: " + title.value + ",date: " + date.realValue + ", place: " + place.city + "), skipping")
+        #     return None
 
         # we cannot remove the event, because it could break selectors created for Selenium
         if config.allow_selenium is False:

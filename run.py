@@ -12,13 +12,18 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 start_time = time.time()
 
 html = None
-if __name__ == '__main__':
-    url = sys.argv[1]
-    if config.allow_selenium is False:
-        r = requests.get(url, allow_redirects=True)
-        html = r.content
+# if __name__ == '__main__':
+# url = sys.argv[1]
+
+
+
+url = "https://www.zemezivitelka.cz/"
+path = None
+# path = "./data/test2/informujiczakcezitrahudba.html"
+if path is None:
+    r = requests.get(url, allow_redirects=True)
+    html = r.content
 else:
-    path = "./data/test/10 MSV - Veletrhy Brno - m.bvv.cz.html"
     html = open(path, 'r', errors='ignore', encoding="utf-8").read()
 
 
