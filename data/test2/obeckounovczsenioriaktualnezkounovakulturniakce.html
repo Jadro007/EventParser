@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="Galileo Corporation s.r.o. - www.igalileo.cz" name="author"/>
+<meta content="Obce Kounov,Kounov,obec,obecní úřad,Senioři" name="keywords"/>
+<meta content="Oficiální stránky Obce Kounov * Senioři" name="description"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="all" lang="cs" name="robots"/>
+<link href="https://www.obec-kounov.cz/favicon.ico" rel="icon" type="image/x-icon"/>
+<base href="https://www.obec-kounov.cz/"/><!--[if lte IE 6]></base><![endif]-->
+<title>Oficiální stránky Obce Kounov - Senioři</title>
+<link href="//static.gc-system.cz/seniori/seniori.css?v=3.5.0a.h" media="all" rel="stylesheet" type="text/css"/>
+<link href="https://www.obec-kounov.cz/js/jquery.datepicker/jquery.datepick.css?v=3.5.0a.h" media="all" rel="stylesheet" type="text/css"/>
+<style><!-- 
+.mini_translator .minitranslator {
+	min-height:30px;
+}
+.mini_translator .minitranslator .goog-te-gadget-simple {
+ width:180px;
+}
+.mini_translator .minitranslator .goog-te-menu-value {
+	text-align:right;
+ display:inline-block;
+ _display:inline;
+ width:151px;
+}
+--></style>
+<script src="https://www.obec-kounov.cz/js/dom.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jquery/jquery.min.js?v=3.5.0a.h"></script>
+<script>jQuery.noConflict();</script>
+<script src="https://www.obec-kounov.cz/js/jquery.migrate/jquery.migrate.min.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jquery.tools/jquery.tools.min.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jquery.datepicker/jquery.datepick.min.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jquery.datepicker/jquery.datepick.ext.min.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jquery.datepicker/jquery.datepick-cs.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/modules/minitranslator/js/minitranslator.js?v=3.5.0a.h"></script>
+<script src="modules/seniori/js/seniori_guest.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jquery.xdomainrequest.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/modules/tts/js/tts_functions.min.js?v=3.5.0a.h"></script>
+<script src="https://www.obec-kounov.cz/js/jplayer/jquery.jplayer.min.js?v=3.5.0a.h"></script>
+<script src="modules/tts/js/tts.js.php?v=3.5.0a.h&amp;sen=1&amp;lang=cs"></script>
+<!--bootstrap js-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1 class="snr-h1">Kounov<span> - Zjednodušená verze stránek</span></h1>
+<script>
+    var SENIORI_BASEHREF = "seniori/";
+    var GCM_BASEHREF = "https://www.obec-kounov.cz/";
+</script>
+<div class="snr-item" id="polozka_detail">
+<div class="snr-header container-fluid">
+<div class="container">
+<div class="row">
+<div class="snr-header-links">
+<a class="snr-home-link btn btn-outline-primary" href="https://www.obec-kounov.cz/">Přepnout na standardní web</a>
+<a class="snr-back-link btn btn-primary" href="seniori/"><i class="fas fa-home"></i>Zpět na úvod</a>
+</div>
+<div class="snr-header-font-size">
+<div class="snr-topic">Nastavení velikosti písma</div>
+<div class="btn-group">
+<a alt="Zmenšit písmo o 10%" class="btn btn-primary" href="javascript:void(0);" id="but_small" onclick="SmallerFont();" role="button" title="Zmenšit písmo o 10%">—</a>
+<a class="btn btn-outline-primary" href="javascript:void(0);" id="but_def" onclick="SetDefaultSize();" role="button" title="Nastavit základní velikost písma"><span class="snr-font-size" id="font_size"></span></a>
+<a class="btn btn-primary" href="javascript:void(0);" id="but_big" onclick="BiggerFont();" role="button" title="Zvětšit písmo o 10%">+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<h2 class="snr-h2">Kulturní akce</h2>
+<div class="readable" id="editor_content"></div>
+<div class="module_content default" id="ka">
+<form action="modules/kalendar_akci/update.php" method="post">
+<div id="mess_form">
+<h4>Omezit výpis akcí na</h4>
+<br class="cleaner"/>
+<p id="form_typ"><label for="kak_typ">Typ akce:</label><select id="kak_typ" name="typ" onchange="this.form.submit();"><option selected="selected" value="0">Všechny akce</option>
+<option value="1">Komerce</option>
+<option value="2">Kultura, zábava</option>
+<option value="3">Kultura, zábava - divadlo</option>
+<option value="4">Kultura, zábava - kino, film</option>
+<option value="5">Kultura, zábava - koncert</option>
+<option value="6">Kultura, zábava - módní přehlídka</option>
+<option value="7">Kultura, zábava - ostatní</option>
+<option value="8">Kultura, zábava - pouť</option>
+<option value="9">Kultura, zábava - slavnost</option>
+<option value="10">Kultura, zábava - tanec, zábava, ples, disko, bál</option>
+<option value="11">Kultura, zábava - výstava</option>
+<option value="13">Náboženství, církev</option>
+<option value="14">Náboženství, církev - ostatní</option>
+<option value="15">Náboženství, církev - pouť</option>
+<option value="16">Občanská angažovanost</option>
+<option value="17">Politika</option>
+<option value="18">Sport</option>
+<option value="19">Sport - aerobic</option>
+<option value="20">Sport - atletika</option>
+<option value="21">Sport - automobilismus</option>
+<option value="22">Sport - fitness</option>
+<option value="23">Sport - hokej</option>
+<option value="24">Sport - kopaná</option>
+<option value="25">Sport - ostatní</option>
+<option value="26">Sport - turistika</option>
+<option value="27">Sport - turistika - cyklo</option>
+<option value="28">Sport - turistika - ostatní</option>
+<option value="29">Sport - turistika - pěší</option>
+<option value="30">Sport - turistika - vodáctví</option>
+<option value="31">Sport - turistika - zájezd</option>
+<option value="32">Vzdělávání</option>
+<option value="33">Zájmy a záliby, koníčky, ...</option>
+<option value="1010">Kultura, zábava - pro děti</option>
+<option value="1011">Kultura, zábava - trhy, jarmark, pouť</option>
+<option value="1012">Kultura, zábava - oslava, výroční</option>
+<option value="1013">Kultura, zábava – vinobraní, ochutnávka vín</option>
+<option value="1014">Politika - zasedání</option>
+<option value="1015">Politika - zastupitelstvo</option>
+<option value="1016">Politika - schůze</option>
+<option value="1017">Politika - porada</option>
+<option value="1018">Vzdělávání - Školení</option>
+<option value="1019">Vzdělávání - Přednáška</option>
+<option value="1020">Vzdělávání - Konference</option>
+</select></p>
+<p id="form_archiv"><label for="kak_archiv">Zobrazit:</label><select id="kak_archiv" name="archiv" onchange="this.form.submit();"><option value="false">Aktuální akce</option>
+<option selected="selected" value="true">Archiv akcí</option>
+</select></p>
+<div class="cleaner"></div>
+<noscript><p class="btn"><input name="submit" type="submit" value="OK"/></p></noscript>
+</div>
+</form>
+<form action="modules/kalendar_akci/update.php" method="post">
+<div class="per_page">
+<h4>Stránka: </h4>
+<ul><li><strong>1</strong></li><li><a href="/seniori/aktualne-z-kounova/kulturni-akce/?od=2" rel="next">2</a></li></ul>
+<p class="per_page"><label for="kak_perpage_1">Počet zpráv na stránku </label><select id="kak_perpage_1" name="kak_per_page" onchange="this.form.submit();"><option value="5">5</option>
+<option selected="selected" value="10">10</option>
+<option value="20">20</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select></p>
+</div>
+</form>
+<div class="readable_list">
+<div class="item">
+<a name="ka154"></a>
+<h3 class="nadpis readable_item">Poutní mše<div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">23. 4. 2017 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Náboženství, církev - pouť</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kounov - Kounov</dd>
+</dl>
+<p class="popis readable_item">Poutní mše v kapli sv.Vojtěcha se koná 23.4.2017 od 15 hod.</p>
+<div class="msg_editor readable"></div>
+<p class="more"></p>
+</div>
+<div class="item">
+<a name="ka152"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=152#ka152" title="Zobrazit více- Oslava Dne matek 8.5.2016">Oslava Dne matek 8.5.2016</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">8. 5. 2016 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava - slavnost</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Sokolovna - Kounov</dd>
+</dl>
+<p class="popis readable_item">Den matek</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=152#ka152" title="Zobrazit více- Oslava Dne matek 8.5.2016">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka144"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=144#ka144" title="Zobrazit více- Dětský den">Dětský den</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">7. 6. 2014 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava - pro děti</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kounov - Kounov</dd>
+</dl>
+<p class="popis readable_item">Zábavné odpoledne pro děti</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=144#ka144" title="Zobrazit více- Dětský den">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka138"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=138#ka138" title="Zobrazit více- Oslava Dne matek">Oslava Dne matek</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">11. 5. 2013 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Sokolovna - Kounov</dd>
+</dl>
+<p class="popis readable_item">Oslava s bohatým kulturním programem.</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=138#ka138" title="Zobrazit více- Oslava Dne matek">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka134"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=134#ka134" title="Zobrazit více- Pouť ke kapli sv. Vojtěcha">Pouť ke kapli sv. Vojtěcha</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">21. 4. 2013 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Náboženství, církev - pouť</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kaple sv. Vojtěcha - Kounov</dd>
+</dl>
+<p class="popis readable_item">Tradiční duchovní setkání</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=134#ka134" title="Zobrazit více- Pouť ke kapli sv. Vojtěcha">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka133"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=133#ka133" title="Zobrazit více- Rozsvícení vánočního stromu">Rozsvícení vánočního stromu</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">1. 12. 2012 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kounov - Kounov</dd>
+</dl>
+<p class="popis readable_item">Rozsvícení vánočního stromu</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=133#ka133" title="Zobrazit více- Rozsvícení vánočního stromu">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka130"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=130#ka130" title="Zobrazit více- FK Kounov  vs. FK klub AMFORA Praha">FK Kounov  vs. FK klub AMFORA Praha</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">3. 6. 2012 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Fotbalové hřiště - Kounov</dd>
+</dl>
+<p class="popis readable_item">Fotbalové utkání</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=130#ka130" title="Zobrazit více- FK Kounov  vs. FK klub AMFORA Praha">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka129"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=129#ka129" title="Zobrazit více- Staročeské máje">Staročeské máje</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">18.  - 19. 5. 2012 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava - slavnost</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kounov - Kounov</dd>
+</dl>
+<p class="popis readable_item">Staročeské máje</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=129#ka129" title="Zobrazit více- Staročeské máje">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka128"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=128#ka128" title="Zobrazit více- Pouť ke kapli sv. Vojtěcha">Pouť ke kapli sv. Vojtěcha</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">29. 4. 2012 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Náboženství, církev - pouť</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kounov - Kounov</dd>
+</dl>
+<p class="popis readable_item">Tradiční pouť s bohoslužbou</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=128#ka128" title="Zobrazit více- Pouť ke kapli sv. Vojtěcha">Zobrazit více</a></p>
+</div>
+<div class="item">
+<a name="ka116"></a>
+<h3 class="nadpis readable_item"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=116#ka116" title="Zobrazit více- Letnicová merenda">Letnicová merenda</a><div class="social-networks-sharelinks"></div></h3>
+<div class="social-networks-buttons"></div>
+<dl class="data readable_item">
+<dt>Datum konání:</dt> <dd class="cas">12. 6. 2011 </dd>
+<dt>Typ akce:</dt> <dd class="typ">Kultura, zábava</dd>
+</dl>
+<dl class="misto readable_item readable_pause">
+<dt>Místo konání:</dt> <dd>Kounov - Kounov</dd>
+</dl>
+<p class="popis readable_item">Letnicová merenda</p>
+<div class="msg_editor readable"></div>
+<p class="more"><a href="https://www.obec-kounov.cz/seniori/aktualne-z-kounova/kulturni-akce/?ftshow=116#ka116" title="Zobrazit více- Letnicová merenda">Zobrazit více</a></p>
+</div>
+</div>
+<form action="modules/kalendar_akci/update.php" method="post">
+<div class="per_page">
+<h4>Stránka: </h4>
+<ul><li><strong>1</strong></li><li><a href="/seniori/aktualne-z-kounova/kulturni-akce/?od=2" rel="next">2</a></li></ul>
+<p class="per_page"><label for="kak_perpage_2">Počet zpráv na stránku </label><select id="kak_perpage_2" name="kak_per_page" onchange="this.form.submit();"><option value="5">5</option>
+<option selected="selected" value="10">10</option>
+<option value="20">20</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select></p>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+    function getCookieSize() {
+        var c_size, cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+            c_size = cookies[i].split('=');
+            if (c_size[0].replace(/^\s+|\s+$/g, "") == 'sen_font_size')
+                return unescape(c_size[1]);
+        }
+
+        return false;
+    }
+
+    function setCookieSize(size) {
+        var expire = new Date();
+        expire.setDate(expire.getDate() + 1);
+
+        document.cookie = "sen_font_size=" + size + "; expires=" + expire.toUTCString() + "; path=/";
+    }
+
+    function BiggerFont() {
+        var old_size;
+        if (document.getElementById('polozka_detail').style.fontSize == '')
+            old_size = 100;
+        else
+            old_size = parseFloat(document.getElementById('polozka_detail').style.fontSize.replace('%', ''));
+
+        if (old_size == 200)
+            old_size = 190;
+
+        SetFontSize(old_size + 10);
+        setCookieSize(old_size + 10);
+    }
+
+    function SmallerFont() {
+        var old_size;
+        if (document.getElementById('polozka_detail').style.fontSize == '')
+            old_size = 100;
+        else
+            old_size = parseFloat(document.getElementById('polozka_detail').style.fontSize.replace('%', ''));
+
+        if (old_size == 100)
+            old_size = 110;
+
+        SetFontSize(old_size - 10);
+        setCookieSize(old_size - 10);
+    }
+
+    function SetFontSize(size) {
+        document.getElementById('polozka_detail').style.fontSize = size + '%';
+        setCookieSize(size);
+        ShowFontSize();
+    }
+
+    function SetDefaultSize() {
+        SetFontSize(100);
+        setCookieSize(100);
+        ShowFontSize();
+    }
+
+    function GetFontSize() {
+        var size = document.getElementById('polozka_detail').style.fontSize.replace('%', '');
+
+        if (size == '')
+            size = '100';
+
+        return parseFloat(size);
+    }
+
+    function ShowFontSize() {
+        document.getElementById('font_size').innerHTML = GetFontSize() + ' %';
+    }
+
+    function initFontSize() {
+        var size = getCookieSize();
+
+        if (size)
+            SetFontSize(size);
+        else
+            SetDefaultSize();
+    }
+
+    jQuery(document).ready(initFontSize());
+</script>
+</body>
+</html>

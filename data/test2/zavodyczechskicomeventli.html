@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="width=device-width" name="viewport"/>
+<title>Kalendář závodů</title>
+<meta charset="utf-8"/>
+<meta content="#" name="description"/>
+<meta content="#" name="keywords"/>
+<meta content="ALL" name="robots"/>
+<link href="/content/common/css/skeleton.css" media="all" rel="stylesheet" type="text/css"/>
+<!--<link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />-->
+<link href="/content/common/css/jquery-ui.min.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/content/common/css/project-style.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/content/common/colorbox/colorbox.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/content/common/megamenu/css/megamenu.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/content/common/css/isas-common.css" media="all" rel="stylesheet" type="text/css"/>
+<link href="/content/common/css/portal-override.css" media="all" rel="stylesheet" type="text/css"/>
+<script src="/content/common/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/content/common/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/content/common/js/messages_cs.js" type="text/javascript"></script>
+<script src="/content/common/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/content/common/colorbox/jquery.colorbox.js" type="text/javascript"></script>
+<script src="/content/common/megamenu/js/megamenu.js" type="text/javascript"></script>
+<script src="/content/common/megamenu/js/megamenu_plugins.js" type="text/javascript"></script>
+<script src="/content/common/js/scripts.js" type="text/javascript"></script>
+<script src="/content/js/global-init.js" type="text/javascript"></script>
+<link href="/content/common/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+</head>
+<body>
+<div class="container">
+<div class="twelve columns" id="first_header_logo">
+<a href="http://www.czech-ski.com">
+<img alt="czech ski" src="/content/common/img/logo_czech_ski1.png"/></a>
+</div>
+<div class="eleven columns" id="drobek">
+<a href="http://www.czech-ski.com/">Home</a>
+<span>
+                            Závody a výsledky
+                        </span>
+</div>
+<div class="five columns">
+<span action="http://www.czech-ski.com/search.php" class="form-wrapper-all cf">
+<input class="search" name="sw" placeholder="Vyhledat na webu,..." type="text" value=""/>
+<button type="submit">Vyhledat</button>
+</span>
+</div>
+<div class="sixteen columns"><div class="megamenu_container megamenu_dark_bar megamenu_light"><ul class="megamenu"><li class="home"><a href="http://www.czech-ski.com/"> </a></li><li><a href="http://www.czech-ski.com/fotogalerie-a-video.php">FOTO &amp; VIDEO</a></li><li class="subs"><a class="megamenu_drop" href="#">O nás</a><div class="dropdown_fullwidth"><div class="col_12"><ul class="submenu"><li><a href="http://www.czech-ski.com/o-nas/aktuality">Aktuality</a></li><li><a href="http://www.czech-ski.com/o-nas/o-slcr">O SLČR</a></li><li><a href="http://www.czech-ski.com/o-nas/historie">Historie</a></li><li><a href="http://www.czech-ski.com/o-nas/organizacni-struktura">Organizační struktura</a></li><li><a href="http://www.czech-ski.com/o-nas/sin-slavy">Síň slávy</a></li><li><a href="http://www.czech-ski.com/o-nas/dokumenty">Dokumenty</a></li><li><a href="http://www.czech-ski.com/o-nas/fotogalerie">Fotogalerie</a></li><li><a href="http://www.czech-ski.com/o-nas/partneri">Partneři</a></li><li><a href="http://www.czech-ski.com/o-nas/kraje/aktuality">Kraje</a></li></ul></div></div></li><li class="subs"><a class="megamenu_drop" href="#">Evidence</a><div class="dropdown_fullwidth"><div class="col_12"><ul class="submenu"><li><a href="http://www.czech-ski.com/evidence/vyhody-clenstvi">Výhody členství</a></li><li><a href="http://evidence.czech-ski.com/zajem-o-clenstvi">Zájem o členství</a></li><li><a href="http://skitest.aquasoft.eu/evidence/persons/list">Členové SLČR</a></li><li><a href="http://skitest.aquasoft.eu/evidence/teams/list">Sportovní kluby</a></li><li><a href="http://www.czech-ski.com/evidence/dokumenty">Dokumenty</a></li><li><a href="http://www.czech-ski.com/evidence/kontakt">Kontakt</a></li></ul></div></div></li><li class="subs"><a class="megamenu_drop" href="http://skitest.aquasoft.eu/vysledky">Závody a výsledky</a><div class="dropdown_fullwidth"><div class="col_12"><ul class="submenu"><li><a href="http://skitest.aquasoft.eu/vysledky">Vše</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=2">Alpské disciplíny</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=1">Akrobati</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=3">Běh na lyžích</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=7">Snowboarding</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=4">Severská kombinace</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=5">Skok na lyžích</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=6">Travní lyžování</a></li><li><a href="http://skitest.aquasoft.eu/vysledky/event/list?filter.departmentid=8">Zákl. lyžování</a></li></ul></div></div></li><li><a href="http://www.czech-ski.com/bazar/">Bazar</a></li><li><a href="http://www.czech-ski.com/vstupenky/">Vstupenky</a></li><li><a href="http://www.czech-ski.com/kontakt">Kontakt</a></li></ul></div></div>
+<div class="sixteen columns clearfix" id="main_content_wrapper">
+<div class="three columns alpha" id="sidebar">
+<ul id="sidemenu">
+<li class="active">
+<a href="/event/list">Kalendář závodů</a>
+</li>
+<li>
+<a href="/results">Výsledky</a>
+</li>
+<li>
+<a href="/gallery">Fotogalerie</a>
+</li>
+<!-- vyhodnotíme poháry -->
+<li>
+<a href="#">
+				Žebříčky a listiny bodů
+			</a>
+<ul>
+<li>
+<a href="http://vysledky.czech-ski.cz/alpske-discipliny/body">
+						Alpské disciplíny
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=AL">
+						Akrobatické lyžování
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=BD">
+						Běh na lyžích
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=SK">
+						Severská kombinace
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=SL">
+						Skok na lyžích
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=TL">
+						Lyžování na trávě
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=SB">
+						Snowboarding
+					</a>
+</li>
+<li>
+<a href="/rating/list?dep=ZL">
+						Základní lyžování
+					</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/season/list?returnUrl=%2Fevent%2Flist">Sezóny</a>
+</li>
+<li>
+<a href="http://www.tipyprolyzare.cz/" target="_blank">Tipy pro lyžaře</a>
+</li>
+</ul>
+<div class="side_boxies">
+<div class="shapes"><span>Přihlášení</span></div>
+<form action="/account/login?returnUrl=%2Fevent%2Flist" id="login" method="post"> <form action="/account/login" id="login" method="post">
+<input autocomplete="off" name="UserName" placeholder="Jméno" type="text" value=""/>
+<input autocomplete="off" name="Password" placeholder="Heslo" type="password" value=""/>
+<input name="login" type="submit" value="PŘIHLÁSIT SE">
+</input></form>
+</form>
+</div>
+<div class="side_boxies">
+<div class="shapes"><span>Newsletter</span></div>
+<a href="http://www.czech-ski.com/registrace_newsletteru.php">
+<img alt="newsletter" class="newsletter" src="/content/common/img/newsletter.png"/>
+</a>
+</div>
+<div class="side_boxies">
+<div class="shapes"><span>Video</span></div>
+<a href="https://www.youtube.com/watch?v=iRF6UVIj8bg">
+<img alt="fis video kanál" class="fis_video" src="http://www.czech-ski.com/img/fis_video_kanal.png"/>
+</a>
+</div>
+<div class="side_boxies">
+<div class="shapes"><span>Sociální sítě</span></div>
+<div class="social">
+<a href="http://www.facebook.com/pages/Czech-Ski-Association/117195671677390">
+<img alt="facebook" onmouseout="this.src = '/content/common/img/facebook.png'" onmouseover="this.src = '/content/common/img/facebook_hover.png'" src="/content/common/img/facebook.png">
+</img></a><a href="https://twitter.com/#!/CzechSki">
+<img alt="twitter" onmouseout="this.src = '/content/common/img/twitter.png'" onmouseover="this.src = '/content/common/img/twitter_hover.png'" src="/content/common/img/twitter.png"/>
+</a>
+</div>
+</div>
+</div>
+<div class="thirteen columns omega">
+<h2 class="isas-page-title">
+	Kalendář závodů
+</h2>
+<form class="isas-box isas-filter" method="post">
+<table>
+<tr>
+<td class="isas-label">Název</td>
+<td><input class="text-box single-line" id="Filter_Name" name="Filter.Name" type="text" value=""/></td>
+<td class="isas-label">
+				Úsek
+		</td>
+<td>
+<select data-val="true" data-val-number="The field DepartmentId must be a number." id="Filter_DepartmentId" name="Filter.DepartmentId"><option value="">Všechny úseky</option>
+<option value="1">Akrobatické lyžování</option>
+<option value="2">Alpské disciplíny</option>
+<option value="3">Běh na lyžích</option>
+<option value="6">Lyžování na trávě</option>
+<option value="4">Severská kombinace</option>
+<option value="5">Skok na lyžích</option>
+<option value="7">Snowboarding</option>
+<option value="8">Základní lyžování</option>
+</select>
+</td>
+<td class="isas-label">
+			Datum od
+	</td>
+<td><input class="datepicker" data-val="true" data-val-date="The field DateFrom must be a date." id="Filter_DateFrom" name="Filter.DateFrom" type="text" value="27.2.2021"/></td>
+</tr>
+<tr>
+<td class="isas-label">Místo</td>
+<td><input id="Filter_Place" name="Filter.Place" type="text" value=""/></td>
+<td class="isas-label">
+		Země
+</td>
+<td>
+<select id="Filter_Locality" name="Filter.Locality"><option value="">Všechny</option>
+<option value="Local">Pouze ČR</option>
+<option value="Abroad">Pouze zahraničí</option>
+</select>
+</td>
+<td class="isas-label">Datum do</td>
+<td><input class="datepicker" data-val="true" data-val-date="The field DateTo must be a date." id="Filter_DateTo" name="Filter.DateTo" type="text" value=""/></td>
+</tr>
+<tr>
+<td class="isas-label">Kraj</td>
+<td>
+<select data-val="true" data-val-number="The field RegionId must be a number." id="Filter_RegionId" name="Filter.RegionId"><option value="">Všechny kraje</option>
+<option value="1">Jihočeský</option>
+<option value="2">Jihomoravský</option>
+<option value="3">Karlovarský</option>
+<option value="4">Královéhradecký</option>
+<option value="5">Liberecký</option>
+<option value="6">Moravskoslezský</option>
+<option value="8">Olomoucký</option>
+<option value="9">Pardubický</option>
+<option value="10">Plzeňský</option>
+<option value="11">Praha</option>
+<option value="12">Středočeský</option>
+<option value="13">Ústecký</option>
+<option value="14">Vysočina</option>
+<option value="15">Zlínský</option>
+</select>
+</td>
+</tr>
+</table>
+<div class="isas-buttons">
+<input type="submit" value="Filtrovat"/>
+	nebo
+	<a href="/event/list">Zrušit filtr</a>
+</div>
+</form>
+<div class="isas-box">
+<table class="isas-table">
+<thead>
+<tr>
+<th style="text-align: left;">
+<a href="/event/list?Filter.DateFrom=27.2.2021&amp;PagingInfo.Page=1&amp;PagingInfo.RecordCount=28&amp;PagingInfo.PageSize=25&amp;PagingInfo.PageCount=2&amp;PagingInfo.FirstRecordIndex=0&amp;PagingInfo.LastRecorsIndex=25&amp;Sorting.ColumnName=DateFromString&amp;Sorting.Direction=Desc">Datum</a>
+</th>
+<th style="text-align: left;">
+<a href="/event/list?Filter.DateFrom=27.2.2021&amp;PagingInfo.Page=1&amp;PagingInfo.RecordCount=28&amp;PagingInfo.PageSize=25&amp;PagingInfo.PageCount=2&amp;PagingInfo.FirstRecordIndex=0&amp;PagingInfo.LastRecorsIndex=25&amp;Sorting.ColumnName=Name&amp;Sorting.Direction=Asc">Název</a>
+</th>
+<th>
+					Kraj
+				</th>
+<th>
+<a href="/event/list?Filter.DateFrom=27.2.2021&amp;PagingInfo.Page=1&amp;PagingInfo.RecordCount=28&amp;PagingInfo.PageSize=25&amp;PagingInfo.PageCount=2&amp;PagingInfo.FirstRecordIndex=0&amp;PagingInfo.LastRecorsIndex=25&amp;Sorting.ColumnName=CountryCode&amp;Sorting.Direction=Asc">Země</a>
+</th>
+<th>
+<a href="/event/list?Filter.DateFrom=27.2.2021&amp;PagingInfo.Page=1&amp;PagingInfo.RecordCount=28&amp;PagingInfo.PageSize=25&amp;PagingInfo.PageCount=2&amp;PagingInfo.FirstRecordIndex=0&amp;PagingInfo.LastRecorsIndex=25&amp;Sorting.ColumnName=DepartmentCode&amp;Sorting.Direction=Asc">Úsek</a>
+</th>
+<th>
+<abbr title="Disciplína">
+						Disc.
+					</abbr>
+</th>
+<th>
+					Kategorie
+				</th>
+<th>
+					Pohlaví
+				</th>
+<th>
+					Závod
+				</th>
+<th>
+					Pozn.
+				</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 90px;">
+					31.1.-21.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16904?returnUrl=%2Fevent%2Flist">Krušnohorská třicítka - virtuální ind. výzva</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Ústecký">U</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+V K			</td>
+<td style="text-align: center;">
+				Kat. C
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+VZ			</td>
+<td class="isas-center">
+Změna			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					24.-27.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16879?returnUrl=%2Fevent%2Flist">FIS EC - Slopestyle - Deštné v Orlických horách</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr class="isas-alert">
+<td style="width: 90px;">
+					26.-28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16898?returnUrl=%2Fevent%2Flist">Český pohár Skicross Dolní Morava</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Pardubický">E</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+SX			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS ZČP			</td>
+<td class="isas-center">
+Zrušeno			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					26.-28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16936?returnUrl=%2Fevent%2Flist">FIS ČP dosp/dorost Jablonec n.N.</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Liberecký">L</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+SP DL			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					27.-28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16937?returnUrl=%2Fevent%2Flist">Osecká 10 virtuálně</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Ústecký">U</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+V K			</td>
+<td style="text-align: center;">
+				Kat. C
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+KVZ KSL			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr class="isas-alert">
+<td style="width: 90px;">
+					27.-28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16912?returnUrl=%2Fevent%2Flist">ČP dosp/dorost - Capartice</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Plzeňský">P</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+SP DL			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+ČP			</td>
+<td class="isas-center">
+Zrušeno			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					27.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16887?returnUrl=%2Fevent%2Flist">JeLyMan - součást seriálu SkiTour</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Praha">A</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					28.-28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16880?returnUrl=%2Fevent%2Flist">ČP  Deštné  - SS</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16927?returnUrl=%2Fevent%2Flist">FIS Junior Lipno</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Jihočeský">C</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					28.2.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16921?returnUrl=%2Fevent%2Flist">Snowboard Zezula KIDZ Tour Lipno</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Jihočeský">C</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					5.-8.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16897?returnUrl=%2Fevent%2Flist">EC + FIS SX Dolní Morava</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Pardubický">E</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+SX			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS			</td>
+<td class="isas-center">
+Změna			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					6.-7.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16918?returnUrl=%2Fevent%2Flist">ČP žactva - Jilemnice</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Liberecký">L</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+R DL			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					6.-7.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16891?returnUrl=%2Fevent%2Flist">Klasifikační závod PSL (mládež+dospělí) a VŠ liga</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Praha">A</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					6.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16868?returnUrl=%2Fevent%2Flist">Big Air MČR Šp. Mlýn</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+BA			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS MČR			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					7.-7.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16881?returnUrl=%2Fevent%2Flist">ČP Špindlerův Mlýn - BA</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					7.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16922?returnUrl=%2Fevent%2Flist">Snowboard Zezula KIDZ Tour Mísečky</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					11.-16.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16935?returnUrl=%2Fevent%2Flist">MČR Skicross Jezerné 2021</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Zlínský">Z</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+SX			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS MČR			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr class="isas-alert">
+<td style="width: 90px;">
+					12.-14.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16899?returnUrl=%2Fevent%2Flist">Český pohár Skicross Albrechtice</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Liberecký">L</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+SX			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS ZČP			</td>
+<td class="isas-center">
+Zrušeno			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					12.-14.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16913?returnUrl=%2Fevent%2Flist">M-ČR/ČP dosp/dor - Boží Dar</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Karlovarský">K</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Běh na lyžích">BD</abbr>
+</td>
+<td style="text-align: center;">
+R SP DL			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+MČR ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					13.-14.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16869?returnUrl=%2Fevent%2Flist">ČP SBX Boží Dar</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Karlovarský">K</abbr>
+</td>
+<td style="width: 30px; text-align: center;"></td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBX			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					14.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16923?returnUrl=%2Fevent%2Flist">Snowboard Zezula KIDZ Tour Boží Dar</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Karlovarský">K</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					14.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16926?returnUrl=%2Fevent%2Flist">FIS Junior Boží Dar</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr class="isas-alert">
+<td style="width: 90px;">
+					19.-21.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16900?returnUrl=%2Fevent%2Flist">MČR Skicross 2021</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Karlovarský">K</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Akrobatické lyžování">AL</abbr>
+</td>
+<td style="text-align: center;">
+SX			</td>
+<td style="text-align: center;">
+				Kat. A
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS MČR ZČP			</td>
+<td class="isas-center">
+Zrušeno			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					20.-21.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16870?returnUrl=%2Fevent%2Flist">ČP alpine SB a MČR Špindl</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Královéhradecký">H</abbr>
+</td>
+<td style="width: 30px; text-align: center;"></td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+PSL PGS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+FIS MČR			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+<tr>
+<td style="width: 90px;">
+					21.3.2021
+				</td>
+<td style="width: 150px;">
+<a href="/event/details/16924?returnUrl=%2Fevent%2Flist">Snowboard Zezula KIDZ Tour finále Dvoračky</a>
+</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Liberecký">L</abbr>
+</td>
+<td style="width: 30px; text-align: center;">CZE</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Snowboarding">SB</abbr>
+</td>
+<td style="text-align: center;">
+SBS			</td>
+<td style="text-align: center;">
+				---
+			</td>
+<td style="width: 30px; text-align: center;">
+<abbr title="Muži">M</abbr>
+<abbr title="Ženy">L</abbr>
+</td>
+<td style="text-align: center;">
+ČP			</td>
+<td class="isas-center">
+				---
+			</td>
+</tr>
+</tbody>
+</table>
+<div class="isas-pager"><span class="isas-pager-title">Stránka:</span><span class="current">1</span><a href="/event/list?Filter.DateFrom=27.2.2021&amp;Sorting.ColumnName=DateFromString&amp;Sorting.Direction=Asc&amp;PagingInfo.Page=2">2</a><a href="/event/list?Filter.DateFrom=27.2.2021&amp;Sorting.ColumnName=DateFromString&amp;Sorting.Direction=Asc&amp;PagingInfo.Page=2">&gt;</a><span class="isas-pager-total">(celkem 28 záznamů)</span></div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		setupFilterValueHilight('.isas-filter');
+	});
+</script>
+</div>
+</div>
+<div class="sixteen columns" id="footer">
+<p>
+        © Svaz lyžařů České republiky 2007-2021, Cukrovarnická 483/42, 16017 Praha 6, Tel.: +420 242 429 256, e-mail: <a href="mailto:ski@czech-ski.com">ski@czech-ski.com</a> |
+        <a href="http://m.czech-ski.com/">Mobilní verze</a>
+        | <a href="http://archiv.czech-ski.com">Archiv</a>
+</p>
+</div>
+</div>
+<script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-152775-9', 'auto');
+            ga('send', 'pageview');
+        </script>
+</body>
+</html>

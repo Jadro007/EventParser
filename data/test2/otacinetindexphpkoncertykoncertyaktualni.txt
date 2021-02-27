@@ -1,0 +1,40 @@
+KONCERTY - aktuální();10. 01. 2020;;Praha
+KONCERTY - aktuální();11. 01. 2020;;Brno
+KONCERTY - aktuální();17. 01. 2020;;Harrachov
+KONCERTY - aktuální();18. 01. 2020;;Slaný
+KONCERTY - aktuální();21. 05. 2020;;Slaný
+KONCERTY - aktuální();06. 06. 2020;;Pavlíkov
+KONCERTY - aktuální();20. 06. 2020;;Chomutov
+KONCERTY - aktuální();27. 06. 2020;;Milevsko
+KONCERTY - aktuální();27. 06. 2020;;Litomyšl
+KONCERTY - aktuální();11. 07. 2020;;Poděbrady
+KONCERTY - aktuální();11. 07. 2020;;Prysk
+KONCERTY - aktuální();11. 07. 2020;;Strenice
+KONCERTY - aktuální();15. 07. 2020;;Praha
+KONCERTY - aktuální();17. 07. 2020;;Domažlice
+KONCERTY - aktuální();18. 07. 2020;;Peruc
+KONCERTY - aktuální();31. 07. 2020;;Podolí
+KONCERTY - aktuální();01. 08. 2020;;Kamenice nad Lipou
+KONCERTY - aktuální();02. 08. 2020;;České Budějovice
+KONCERTY - aktuální();05. 08. 2020;;Hronov
+KONCERTY - aktuální();07. 08. 2020;;Harrachov
+KONCERTY - aktuální();08. 08. 2020;;Heřmanova Huť
+KONCERTY - aktuální();13. 08. 2020;;Vyškov
+KONCERTY - aktuální();14. 08. 2020;;Říčany
+KONCERTY - aktuální();22. 08. 2020;;Slaný
+KONCERTY - aktuální();05. 09. 2020;;Slaný
+KONCERTY - aktuální();05. 09. 2020;;Šabina
+KONCERTY - aktuální();13. 03. 2020;;Rakovník
+KONCERTY - aktuální();14. 03. 2020;;Plzeň
+KONCERTY - aktuální();21. 03. 2020;;Strakonice
+KONCERTY - aktuální();27. 03. 2020;;České Budějovice
+KONCERTY - aktuální();28. 03. 2020;;Praha
+KONCERTY - aktuální();03. 04. 2020;;Brno
+KONCERTY - aktuální();10. 04. 2020;;Ostrava
+KONCERTY - aktuální();11. 04. 2020;;Uherské Hradiště
+KONCERTY - aktuální();12. 04. 2020;;Jistebnice
+KONCERTY - aktuální();17. 04. 2020;;Teplice
+KONCERTY - aktuální();18. 04. 2020;;Liberec
+KONCERTY - aktuální();15. 08. 2020;;Mladá Vožice
+KONCERTY - aktuální();29. 08. 2020;;Oldřichov
+KONCERTY - aktuální();17. 10. 2020;;Praha

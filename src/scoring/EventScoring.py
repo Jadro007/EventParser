@@ -76,6 +76,9 @@ class EventScoring:
             ):
                 event.score += 15
 
+            if event.title.is_from_title_element:
+                event.score -= 15
+
             if event.score > 100:
                 event.score = 100
 

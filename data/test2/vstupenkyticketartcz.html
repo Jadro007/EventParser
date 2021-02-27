@@ -1,0 +1,2493 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta content="TICKET ART" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="On-line předprodej vstupenek na muzikály, koncerty, divadelní představení, sport a další. Vstupenky zasíláme obratem poštou nebo je lze osobně vyzvednout v největší prodejní síti kdekoli po celé ČR a také na Slovensku." name="description"/>
+<meta content="ticket-art, ticketart, ticket, tickets, art, kultura, předprodej, vstupenka,vstupenky, online, prodej, muzikál, muzikály, koncert, koncerty, divadlo,divadla, sport, show, hudba, vážná, činohra, balet, černé, festival,festivaly, jazz, kino, opera, opereta, karlín, hudební, broadway, kalich,goja, aréna, arena, klub, kluby, gottland, zábradlí, národní, stavovské, fidlovačka, švandovo" name="keywords"/>
+<base href="https://vstupenky.ticket-art.cz/"/>
+<link href="favicon.ico" rel="SHORTCUT ICON"/>
+<link href="https://vstupenky.ticket-art.cz/style.css" rel="stylesheet" type="text/css"/>
+<link href="https://vstupenky.ticket-art.cz/css/style-new-v3.css?vr=8.011" rel="stylesheet" type="text/css"/>
+<link href="https://vstupenky.ticket-art.cz/css/gridiculous.css?vr=8.011" media="screen" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+		var SID = "";
+		var maxPocVstupenek = 8;
+		var OBJEDNAVKA__MAX_POCET_VSTUPENEK = 8;
+		var httpPath = "https://vstupenky.ticket-art.cz/";	// Script URI path
+		var strScriptName = "index.php";				// Script name
+		var OTC = false;
+		var inView = false;
+	</script>
+<script src="https://vstupenky.ticket-art.cz/cz/script.js?vr=8.011" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<!--<script src="https://code.jquery.com/jquery-migrate-3.3.1.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js" type="text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" rel="stylesheet">
+<script src="js/vyber_sedadel_gui.js" type="text/javascript"></script>
+<script src="js/jquery.capty.min.js" type="text/javascript"></script>
+<script src="js/jquery.cycle.all.js" type="text/javascript"></script>
+<script src="js/jquery.json-2.3.min.js" type="text/javascript"></script>
+<script src="js/pixastic.custom.v2.js" type="text/javascript"></script>
+<!-- Calendar -->
+<link href="js/cal/calendar-blue.css" media="all" rel="stylesheet" title="win2k-cold-1" type="text/css">
+<script src="js/cal/CalendarPopup.js" type="text/javascript"></script>
+<script src="js/cal/PopupWindow.js" type="text/javascript"></script>
+<script src="js/cal/calendar.js" type="text/javascript"></script>
+<script src="js/cal/lang/calendar-en.js" type="text/javascript"></script>
+<script src="js/cal/lang/calendar-cs-win.js" type="text/javascript"></script>
+<script src="js/cal/calendar-setup.js" type="text/javascript"></script>
+<!-- jQuery UI -->
+<script src="js/jquery-ui.min.js?vr=8.011" type="text/javascript"></script>
+<link href="css/jquery-ui.min.css?vr=8.011" media="screen" rel="stylesheet" type="text/css"/>
+<script src="js/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
+<title>Online vstupenky na muzikál, koncert, divadlo, sport, festival - Ticket Art</title>
+<meta content="Online vstupenky na muzikál, koncert, divadlo, sport, festival - Ticket Art" property="og:title">
+<meta content="On-line předprodej vstupenek na muzikály, koncerty, divadelní představení, sport a další. Vstupenky zasíláme obratem poštou nebo je lze osobně vyzvednout v největší prodejní síti kdekoli po celé ČR a také na Slovensku." property="og:description">
+<script type="text/javascript">
+        /**
+         * Google Analytics
+         *
+         */
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21414671-2']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function()
+        {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+<meta content="width=device-width" name="viewport"/>
+<!--<link rel="stylesheet" href="https://vstupenky.ticket-art.cz/css/gridiculous.css?vr=8.011" type="text/css" media="screen" />-->
+<link href="https://vstupenky.ticket-art.cz/style.css" rel="stylesheet" type="text/css"/>
+<link href="https://vstupenky.ticket-art.cz/css/style-new-v3.css?vr=8.011" rel="stylesheet" type="text/css"/>
+<link href="https://vstupenky.ticket-art.cz/css/redesign.css?vr=8.011" media="screen" rel="stylesheet" type="text/css">
+<script src="https://vstupenky.ticket-art.cz/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script>
+        $(document).ready(function(){
+            $("div#cookieBar a.OK").click(function() {
+                $("div#cookieBar").hide();
+                $.cookie('cookieAgreed', 1, { expires: 10000 });
+                return false;
+            });
+        });
+    </script>
+</link></meta></meta></link></link></link></head>
+<body style="background-image: url(https://vstupenky.ticket-art.cz/img/banner/banner_2036.jpg); background-position: center top; background-repeat: no-repeat; background-attachment:fixed;">
+<script>
+        //loader
+        $('body').append('<div id="spinner"><div id="spinner-in"></div></div>');
+    </script>
+<script src="https://vstupenky.ticket-art.cz/js/popupWindow.js?vr=8.011" type="text/javascript"></script>
+<div class="main">
+<div class="container">
+<!--noindex-->
+<!--googleoff: index-->
+<div class="header" id="headerPage">
+<div class="header-wrapper">
+<div class="header-line">
+<a class="fLeft" href="./" id="logo" title="TICKET ART – online předprodej vstupenek – koncerty, muzikály, divadla, festivaly, show, pro děti, hudba, sport."><img alt="Online vstupenky na muzikál, koncert, divadlo, sport, festival – TICKET ART" src="img/logo/logoTA-web-new.jpg"/></a>
+<div class="zahlavi-menu bColorfdb74a sipka-dolu fLeft" data-type="kategorie" id="mainMenuBlock" style="display: block">
+                            Vyberte kategorii akce                        </div>
+<span class="zahlavi-menu icon jazyk" data-type="jazyk">
+<img alt="czech" height="15" src="img/portal/czechlg.gif" width="31"/>
+</span>
+<span class="zahlavi-menu icon menu" data-type="menu"></span>
+<span class="zahlavi-menu icon uzivatel" data-type="uzivatel"></span>
+<div class="search">
+<form action="https://vstupenky.ticket-art.cz/index.php" method="get" name="formFulltext" onsubmit="if(document.formFulltext.id.value.length &lt; 2 || document.formFulltext.id.value == 'Název akce, místo konání, město') { showPopupAlert('Zadejte alespoň 2 znaky z hledaného slova'); return false;}">
+<a class="search-icon rozsirene-vyhl" href="#"></a>
+<button class="search-icon vyhl" type="submit"></button>
+<input id="fulltext" name="id" placeholder="Název akce, místo konání, město" title="Hledání nerozlišuje diakritiku ani velikost písmen" value=""/>
+<input name="pg" type="hidden" value="hledani"/>
+<input name="sby" type="hidden" value="f"/>
+<input id="fulltextType" name="fulltextType" type="hidden" value=""/>
+</form>
+</div>
+</div>
+<div class="bColorfdb74a row zahlavi-blok kategorie" id="mainMenu">
+<ul class="c6">
+<li><a href="cinohry/">Činohry</a>
+<li><a href="festivaly/">Festivaly</a>
+<li><a href="jazz/">Jazz</a>
+<li><a href="koncerty-domaci-interpret-/">Koncerty (domácí interpret)</a>
+<li><a href="koncerty-zahranicni-interpret-/">Koncerty (zahraniční interpret)</a>
+<li><a href="loutkova-divadla/">Loutková divadla</a>
+<li><a href="muzikaly/">Muzikály</a>
+<li><a href="operety/">Operety</a>
+</li></li></li></li></li></li></li></li></ul>
+<ul class="c6">
+<li><a href="pro-deti/">Pro děti</a>
+<li><a href="show/">Show</a>
+<li><a href="tanec/">Tanec</a>
+<li><a href="unikove-hry/">Únikové hry</a>
+<li><a href="vanocni-programy/">Vánoční programy</a>
+<li><a href="vazna-hudba/">Vážná hudba</a>
+<li><a href="vystavy/">Výstavy</a>
+<li><a href="zasilkovy-obchod/">Zásilkový obchod</a>
+</li></li></li></li></li></li></li></li></ul>
+</div>
+<div class="zahlavi-pravy-blok zahlavi-blok vyhl"></div>
+<div class="zahlavi-pravy-blok zahlavi-blok rozsirene-vyhl pad">
+<form action="https://vstupenky.ticket-art.cz/index.php" method="get" name="formKategorie" onsubmit="return checkFormKategorie()">
+<div class="radekForm clearfix">
+<select class="inputText w12" name="skat">
+<option value="">Kategorie</option>
+<option value="3">Činohry</option>
+<option value="10">Festivaly</option>
+<option value="21">Jazz</option>
+<option value="46">Koncerty (domácí interpret)</option>
+<option value="2">Koncerty (zahraniční interpret)</option>
+<option value="16">Loutková divadla</option>
+<option value="1">Muzikály</option>
+<option value="32">Operety</option>
+<option value="26">Pro děti</option>
+<option value="4">Show</option>
+<option value="24">Tanec</option>
+<option value="54">Únikové hry</option>
+<option value="33">Vánoční programy</option>
+<option value="6">Vážná hudba</option>
+<option value="44">Výstavy</option>
+<option value="20">Zásilkový obchod</option>
+</select>
+</div>
+<div class="radekForm clearfix">
+<select class="inputText w12" name="sdiv">
+<option selected="" value="">Místo ...</option>
+<option value="1884">Adalbertinum Hradec Králové</option>
+<option value="2038">Amfiteátr Mikulov</option>
+<option value="1762">Amfiteátr na Horečkách</option>
+<option value="1003">Besední dům, Brno</option>
+<option value="2075">Betlémská kaple Plzeň</option>
+<option value="109">Budvar Aréna Č. Budějovice</option>
+<option value="620">Centrální tenisový kurt Praha 7</option>
+<option value="1934">Divadelní sál ZŠ Brušperk</option>
+<option value="1252">Divadlo Gong Praha 9</option>
+<option value="557">Divadlo Hybernia Praha 1</option>
+<option value="426">Divadlo Komedie Praha 1</option>
+<option value="9">Divadlo Lucie Bílé Praha</option>
+<option value="29">Divadlo Na Fidlovačce, Praha 4</option>
+<option value="2025">Divadlo Na Maninách Praha</option>
+<option value="1495">Divadlo Oskara Nedbala, Tábor</option>
+<option value="466">Divadlo Palace Theatre Praha 1</option>
+<option value="30">Divadlo U Hasičů, Praha 2</option>
+<option value="22">Divadlo v Dlouhé, Praha 1</option>
+<option value="2067">Divišovo divadlo Žamberk</option>
+<option value="99">DRFG Arena Brno</option>
+<option value="1203">Dům kultury Bzenec</option>
+<option value="769">Dům kultury Frenštát pod Radhoštěm</option>
+<option value="888">Dům kultury Kladno</option>
+<option value="2041">Dům kultury Koruna Hořice</option>
+<option value="82">Dům kultury města Ostravy</option>
+<option value="715">Dům kultury Ústí nad Labem</option>
+<option value="1996">Dům kultury Vizovice</option>
+<option value="1865">Egypt Room Praha</option>
+<option value="1864">Elixir Mystery Praha</option>
+<option value="1894">Endorfin Praha</option>
+<option value="55">enteria arena Pardubice</option>
+<option value="1859">Escape Master Prosecká</option>
+<option value="1860">Escape Master Soudní</option>
+<option value="1861">Escape Point Praha</option>
+<option value="1971">Evangelický kostel Pardubice</option>
+<option value="1440">Forum Karlín, Praha 8</option>
+<option value="2031">Holiday Resort Losinka Rapotín</option>
+<option value="1663">Hotel Gregor</option>
+<option value="1231">Hotel Týnec</option>
+<option value="24">Hudební divadlo Karlín, Praha 8</option>
+<option value="2079">Husův sbor Praha</option>
+<option value="1847">Chess Key Room Praha</option>
+<option value="1825">Jazz &amp; Cocktail Club U staré paní Praha</option>
+<option value="162">Jeskyně Moravského krasu</option>
+<option value="1570">Jupiter Club, Velké Meziříčí</option>
+<option value="1190">KD Cihelna Vimperk</option>
+<option value="125">KD Domovina Praha</option>
+<option value="1310">KD Hronovická Pardubice</option>
+<option value="1427">KD Krumvíř (Břeclav)</option>
+<option value="2072">KD Musilka Brno</option>
+<option value="2057">Kino Frenštát pod Radhoštěm</option>
+<option value="128">Klub Barikádníků, Praha</option>
+<option value="101">Kongresové centrum ALDIS Hradec Králové</option>
+<option value="1109">Kongresové centrum Zlín</option>
+<option value="1703">Kult. středisko města Blansko</option>
+<option value="2102">Kultura Volyně - Sál na Nové</option>
+<option value="2060">Kulturní centrum Petrovice u Karviné</option>
+<option value="777">Kulturní centrum Rakovník</option>
+<option value="2048">Kulturní dům Březnice</option>
+<option value="1474">Kulturní dům Dolní Benešov</option>
+<option value="1926">Kulturní dům Dubňany</option>
+<option value="2012">Kulturní dům Holice</option>
+<option value="1638">Kulturní dům Holýšov</option>
+<option value="1991">Kulturní dům Kamenice nad Lipou</option>
+<option value="2040">Kulturní dům Kelč</option>
+<option value="93">Kulturní dům Letovice</option>
+<option value="1717">Kulturní dům Stříbro</option>
+<option value="1834">Kulturní dům Velké Bílovice</option>
+<option value="2086">Kulturní dům Zliv</option>
+<option value="1867">Kulturní středisko Omega Brno</option>
+<option value="842">KV Arena Karlovy Vary</option>
+<option value="1970">Lobezský park Plzeň</option>
+<option value="1877">Locked in Prague</option>
+<option value="1878">LOSTROOMS Praha</option>
+<option value="1650">Maiselova synagoga Praha</option>
+<option value="1850">Maphia.cz Praha</option>
+<option value="1968">Městské divadlo Žatec</option>
+<option value="1237">Městské divadlo Žďár nad Sázavou</option>
+<option value="1343">Městský dům, Přerov</option>
+<option value="2099">Městský klub Sokolovna Vamberk</option>
+<option value="886">Městský společenský dům Kolín</option>
+<option value="972">Měšťanská beseda, Plzeň</option>
+<option value="84">Metropol České Budějovice</option>
+<option value="1844">MindMaze Balbínova</option>
+<option value="1843">MindMaze Tyršova</option>
+<option value="1965">MKS Beseda Moravské Budějovice</option>
+<option value="774">Mohelnické kulturní centrum, Mohelnice</option>
+<option value="1866">MP Games Praha</option>
+<option value="1922">Muzeum Kampa Praha</option>
+<option value="831">Novoměstská radnice Praha 2</option>
+<option value="18">Obecní dům, Praha</option>
+<option value="46">OSTRAVAR ARÉNA</option>
+<option value="1761">Přírodní areál Dubňany</option>
+<option value="14">Rudolfinum, Praha 1</option>
+<option value="795">Slezskoostravský hrad Ostrava</option>
+<option value="1431">Společenské centrum Jesenice</option>
+<option value="2004">Společenský dům Hořovice</option>
+<option value="2104">Státní zámek Jaroměřice nad Rokytnou</option>
+<option value="1635">Středisko volného času Rýmařov</option>
+<option value="114">Studio DVA divadlo, Praha 1</option>
+<option value="164">Švandovo divadlo Praha 5</option>
+<option value="5">TIPSPORT ARENA Praha 7</option>
+<option value="1863">Únikové hry Malešická</option>
+<option value="1862">Únikové hry Na Smetance</option>
+<option value="1858">Únikové hry – Trap As Mamas</option>
+<option value="1872">VR PLAY PARK Praha</option>
+<option value="1149">Výstaviště PVA EXPO Praha 9</option>
+<option value="2090">Zahrádka Na Střeláku Brno</option>
+<option value="1189">Zámek Hluboká</option>
+<option value="2103">Zámek Krásný Dvůr</option>
+<option value="2065">Zámek Kuks</option>
+<option value="848">Zámek Mělník</option>
+<option value="2101">Zámek Moravská Třebová</option>
+<option value="2084">Zámek Slavkov u Brna</option>
+<option value="1027">Zámek Sychrov</option>
+<option value="540">Zámek Žďár nad Sázavou</option>
+<option value="108">Zásilkový obchod TA</option>
+</select>
+</div>
+<div class="radekForm clearfix">
+<input checked="" class="c1" name="obdobi" onclick="do_obdobi(this)" type="radio" value="1"/>
+<select class="inputText c11" name="sdate">
+<option selected="" value="">Období ...</option>
+<option value="d">dnes</option>
+<option value="z">zítra</option>
+<option value="v">tento víkend</option>
+<option value="p">příští víkend</option>
+<option value="t">příštích 7 dní</option>
+<option value="m">příštích 31 dní</option>
+<option value="c">příští 3 měsíce</option>
+</select>
+</div>
+<div class="radekForm clearfix">
+<input class="c1" name="obdobi" onclick="do_obdobi(this)" type="radio" value="2"/>
+<input class="inputText c5" disabled="" id="od_datum" maxlength="20" name="od_datum" onclick="this.value = ''" title="" value=""/>
+<input class="inputText s1 c5" disabled="" id="do_datum" maxlength="20" name="do_datum" onclick="this.value = ''" title="" value=""/>
+<script type="text/javascript">
+							document.formKategorie.od_datum.value = od_datum;
+							document.formKategorie.do_datum.value = do_datum;
+							</script> <script type="text/javascript">
+                                    $.datepicker.regional['cz'] = {
+                                        monthNames: ['Leden','Únor','Březen','Duben','Květen','Červen', 'Červenec','Srpen','Září','Říjen','Listopad','Prosinec'],
+                                        dayNamesShort: ['Ne','Po','Út','St','Čt','Pá','So',],
+                                        dayNamesMin: ['Ne','Po','Út','St','Čt','Pá','So'],
+                                        dateFormat: 'dd.mm.yy',
+                                        firstDay: 1,
+                                        isRTL: false,
+                                        showMonthAfterYear: false,
+                                        yearSuffix: ''};
+
+                                    $.datepicker.setDefaults($.datepicker.regional['cz']);
+
+                                    $.datepicker.setDefaults({
+                                        onSelect: function(a, b) { b.input.trigger("keypress"); b.input.blur(); }
+                                    });
+
+                                    $(function() {
+                                        $("#od_datum, #do_datum").cDatepicker({dateFormat: "dd.mm.yy"});
+
+                                        $("#od_datum").change(function() {
+                                            $("#do_datum").cDatepicker('option', 'minDate', $(this).val())
+                                        });
+
+                                        $("#do_datum").change(function() {
+                                            $("#od_datum").cDatepicker('option', 'maxDate', $(this).val())
+                                        });
+                                    });
+
+                                </script>
+</div>
+<!--<INPUT TYPE="image" NAME="img" SRC="cz/img/tlacitko/vyhledat.jpg" ALT="Vyhledat" WIDTH="70" HEIGHT="15" VSPACE="3" BORDER="0">-->
+<button class="button" type="submit">Vyhledat</button>
+<input name="pg" type="hidden" value="hledani"/>
+<input name="sby" type="hidden" value="d"/>
+</form>
+</div>
+<div class="zahlavi-pravy-blok zahlavi-blok uzivatel">
+<ul id="listaLogin" style="">
+<li>
+<form class="pad" id="formLogin">
+						Přihlášení zákazníka<br/> <br/>
+<div style="margin-bottom: 5px">
+<div class="errorLogin" id="errorLogin" style="margin-bottom: 5px"></div>
+<span class="help" data-popup-element="#resetPwdHelpBlock" id="helpResetPwd" style="display:none">?</span>
+<a href="#" id="btnresetPwd">Obnovit zapomenuté heslo</a>
+</div>
+<div class="input">
+<input id="emailLogin" name="emailLogin" placeholder="Zadejte Váš e-mail" type="text">
+</input></div>
+<div class="input">
+<input id="pwdLogin" name="pwdLogin" placeholder="Zadejte Vaše heslo" type="password">
+</input></div>
+<div>
+<button class="bColorfdb74a" id="login" name="prihlasit" type="submit">Přihlásit se</button>
+</div>
+</form>
+<div class="resetPwdBlock pad" id="resetPwdBlock">
+<a class="fRight" href="#" id="helpResetPwdBack">Zavřít</a>
+<div class="popWindowNadpis">Změna hesla</div>
+<span class="resetPwdResult" id="resetPwdResult"></span>
+<form id="formResetPwd">
+<div class="input">
+<input class="required inputText" id="emailResetPwd" name="emailResetPwd" placeholder="Zadejte Váš e-mail" type="text"/><br/>
+</div>
+<button class="bColor646464" id="btnResetPwdSubmit" name="btnResetPwdSubmit" type="button">Odeslat</button>
+</form>
+</div>
+<div class="textHelp" id="resetPwdHelpBlock" style="display: none;">
+<div class="popWindowNadpisPodtrzeny">Obnovit zapomenuté heslo</div>
+<p>Pro obnovu hesla zadejte emailovou adresu, kterou jste použili pro registraci u TICKET ART a klikněte na Obnovit zapomenuté heslo. Heslo pro přihlášení Vám bude vygenerováno systémem TICKET ART. Po přihlášení si heslo změňte.</p>
+</div>
+</li>
+<li><a class="sipka" href="index.php?pg=Customer&amp;action=showRegistration" rel="nofollow" title="Registrací získáváte spoustu výhod">Registrace</a></li>
+<li><a class="sipka" href="index.php?pg=MojeObjednavky" rel="nofollow" title="Zjistíte aktuální stav objednávky">Moje objednávky</a></li>
+</ul>
+<ul id="listaLogged" style="display:none">
+<li class="listaUzivatel pad">
+					Přihlášený zákazník<br/>
+<strong>
+<a href="index.php?pg=Customer&amp;action=showCustomerUpdate" id="uzivatelJmeno" rel="nofollow" style="display:none" title="Úprava osobních a kontaktních informací"></a>
+</strong>
+</li>
+<li><a class="sipka" href="index.php?pg=MojeObjednavky" title="Přehled Vašich objednávek">Moje objednávky</a></li>
+<li><a class="sipka" href="" id="logout">Odhlásit</a></li>
+</ul>
+<script type="text/javascript">
+            isLoginUser();
+            
+			function loginUser(uid, pwd, errorFce) {
+				$.post("work.php", { uUID: uid, uPWD: pwd, pg: "login_ire" }, 
+					function(data){
+													
+						if( $(data).find('div.KO').length>0 ){
+							var chybaPrihlaseni = $(data).find('div.KO').text();
+							if (typeof errorFce === "function") { 
+								errorFce(chybaPrihlaseni);
+							}
+						}
+						else {
+							$('#errorLogin, #eErrorLogin').text('');
+							$('#uzivatelJmeno').show().text(uid);
+							$('#listaLogin, #eLogin').hide();
+							$('#anonym').hide();
+							$('.close span').click();
+							$('#listaLogged').show();
+							$('.alertLogged').show();
+							$('.popWindow').hide();
+							$('#btnresetPwd, #helpResetPwd').hide();
+							$("#headerPage .icon.uzivatel").removeClass("uzivatel").addClass("uzivatel-aktivni");
+							prihlasen = 1;
+
+							// zpristupni evstupenku po prihlaseni
+							eTicketLabel();
+							
+							if (typeof afterLogin === "function") { 
+								afterLogin();
+							}
+							
+							if(typeof(obHallViewOrder) !== "undefined") {
+								obHallViewOrder.refresh();
+								obHallViewOrder.reloadIrIaValues();
+							}
+							
+							if(typeof(obHallViewWizardController) !== "undefined" && (obHallViewWizardController.strPaymentType != null || obHallViewWizardController.strDeliveryType != null)) {
+								$('#dokoncit').click();
+							}
+						} 
+					}
+				)
+			}
+			
+            $(function() {
+            	$('#helpResetPwdBack').click(function(){ 
+					$('#resetPwdBlock, #helpResetPwd, #btnresetPwd, #resetPwdHelpBlock').hide();
+					$('#resetPwdResult').text('');
+					$('#errorLogin').text('');
+					$('#formLogin').show();	
+					
+					return false;
+				});
+            	            	
+            	$('.close span').click(function(){
+            		$(this).parent().parent().hide();
+            	});
+            	            	
+            	$('#formLogin').submit(function(){
+					var errorPwd = 'Chybné heslo.';
+				
+            		var uid= $('#emailLogin').val();
+					var pwd= $('#pwdLogin').val(); 
+					
+					if (uid == "" || pwd == "") {$('#errorLogin').text('Vyplňte email i heslo'); return false;}
+					
+					loginUser(uid, pwd, function(err) {
+						
+						$('#errorLogin, #eErrorLogin').text(err);
+						if(err == errorPwd) {
+							$('#btnresetPwd, #helpResetPwd').show();
+						}
+						
+					});
+            		return false;
+            	});
+            	
+            	$('#logout').click(function(){
+            		$.get("index.php?pg=Customer&action=logout", 
+					 	function(data){
+					 		$('#errorLogin').text('');
+					        	$('#uzivatelJmeno').hide().text('');
+					        	$('#anonym').show();
+								$('#listaLogin').show();
+								$('#listaLogged').hide();
+								$('.alertLogged').hide();
+								
+								$("#headerPage .icon.uzivatel-aktivni").removeClass("uzivatel-aktivni").addClass("uzivatel")
+								
+								$(window).off('beforeunload');
+								$(window).off('unload');
+								
+								location.reload();
+								location.href = location.href;
+				 	});
+					
+					return false;
+            	});
+            	
+            	$('#btnresetPwd').click(function(){
+            		$('#resetPwdBlock,#formResetPwd').show();
+            		$('#formLogin').hide();
+            		$('#emailResetPwd').focus().val($('#emailLogin').val());
+            		return false;
+            	});
+            	
+            	$('#btnResetPwdSubmit').click(function(){
+            		$('#formResetPwd').validate();
+					var validace = $('#emailResetPwd').valid();
+			 		if(validace){
+						var uid=$('#emailResetPwd').val();
+						$.get("xmlrpc.php?controller=Customer&action=getUserNewPwdJSON", {uUID: uid},  
+			 				function(data){
+			 					$('#resetPwdResult').html(data).show();
+			 					$('#formResetPwd').hide();
+			 	
+			 				},"json");
+					}
+				})
+	
+            });
+          
+			function isLoginUser(){
+				$.ajax ({
+						url: "xmlrpc.php?controller=Customer&action=getLoginUserDataJSON",
+						type: "get",
+						dataType:'json',
+						success: 
+							function(data){
+								if("uid" in data && data['uid'].length > 0) {
+											$('#errorLogin').text('');
+											$('#anonym').hide();
+											$('#uzivatelJmeno').show().text(data['uid']);
+											$('#listaLogin').hide()
+											$('#listaLogged').show();
+											$("#headerPage .icon.uzivatel").removeClass("uzivatel").addClass("uzivatel-aktivni");
+								}else {
+									$('#anonym').show();
+									$("#headerPage .icon.uzivatel-aktivni").removeClass("uzivatel-aktivni").addClass("uzivatel");
+							if ($('#listaLogged').is(':visible')) {
+							   $('#listaLogged,#uzivatelJmeno').hide();
+							   location.href = location.href;
+							}
+								}
+							}
+				});
+			}
+		
+			function eTicketLabel(){
+				var labelValue = $('.posta input:radio[name=doruceni]:checked').attr('value');
+				if (labelValue == "D5") {
+					$('#HallViewOrderDeliveryDeliverySum').text('E-TICKET');
+				}
+				
+				if (labelValue == "D6") {
+					$('#HallViewOrderDeliveryDeliverySum').text('SMS-TICKET + E-TICKET');
+				} 
+				
+				$('#e-vstupenka-label > .text').text('E-TICKET');
+				$('#sms-label > .text').text('SMS-TICKET + E-TICKET');
+			}
+			
+			function cleanUnloadConfirmation() {
+				$(window).off('beforeunload');
+				$(window).off('unload');
+			}
+            </script> </div>
+<div class="zahlavi-pravy-blok zahlavi-blok jazyk">
+<ul class="">
+<li>
+<span class="bez-sipky">
+<img alt="czech" height="15" src="img/portal/czechlg.gif" width="31"/>
+                                                                                    Česká republika									</span>
+<div class="jazyky">
+<a href="/?lang=cz" rel="nofollow">Jazyk: Česky</a><a href="/?lang=en" rel="nofollow">Language: English</a> </div>
+</li>
+<li>
+<a class="bez-sipky" href="http://www.ticket-art.sk">
+<img alt="slovak" height="15" src="img/portal/slovaklg.gif" width="31"/>
+                                                                                        Slovenská republika                                        </a>
+</li>
+</ul>
+</div>
+<div class="zahlavi-pravy-blok zahlavi-blok menu">
+<ul>
+<li>
+<a class="sipka" href="#" title="Vyberete region konání akcí">akce dle kraje</a>
+<ul>
+<li><a class="sipka" href="praha/">Praha</a></li>
+<li><a class="sipka" href="stredocesky-kraj/">Středočeský kraj</a></li>
+<li><a class="sipka" href="jihocesky-kraj/">Jihočeský kraj</a></li>
+<li><a class="sipka" href="plzensky-kraj/">Plzeňský kraj</a></li>
+<li><a class="sipka" href="karlovarsky-kraj/">Karlovarský kraj</a></li>
+<li><a class="sipka" href="ustecky-kraj/">Ústecký kraj</a></li>
+<li><a class="sipka" href="liberecky-kraj/">Liberecký kraj</a></li>
+<li><a class="sipka" href="kralovehradecky-kraj/">Královéhradecký kraj</a></li>
+<li><a class="sipka" href="pardubicky-kraj/">Pardubický kraj</a></li>
+<li><a class="sipka" href="vysocina/">Vysočina</a></li>
+<li><a class="sipka" href="jihomoravsky-kraj/">Jihomoravský kraj</a></li>
+<li><a class="sipka" href="olomoucky-kraj/">Olomoucký kraj</a></li>
+<li><a class="sipka" href="zlinsky-kraj/">Zlínský kraj</a></li>
+<li><a class="sipka" href="moravskoslezsky-kraj/">Moravskoslezský kraj</a></li>
+</ul>
+</li>
+<li><a class="sipka sprite-sipka-top-menu" href="#" title="Seznam prodejců s kontaktními údaji">prodejní místa</a>
+<ul>
+<li><a class="sipka" href="#">Prodejní místa podle regionů </a>
+<ul>
+<li><a class="sipka" href="prodejni-mista/praha/">Praha  <span class="PocetRegionu">(25)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/jihocesky-kraj/">Jihočeský kraj  <span class="PocetRegionu">(32)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/jihomoravsky-kraj/">Jihomoravský kraj  <span class="PocetRegionu">(29)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/karlovarsky-kraj/">Karlovarský kraj  <span class="PocetRegionu">(11)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/kralovehradecky-kraj/">Královéhradecký kraj  <span class="PocetRegionu">(33)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/liberecky-kraj/">Liberecký kraj  <span class="PocetRegionu">(13)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/moravskoslezsky-kraj/">Moravskoslezský kraj  <span class="PocetRegionu">(46)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/olomoucky-kraj/">Olomoucký kraj  <span class="PocetRegionu">(16)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/pardubicky-kraj/">Pardubický kraj  <span class="PocetRegionu">(24)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/plzensky-kraj/">Plzeňský kraj  <span class="PocetRegionu">(29)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/stredocesky-kraj/">Středočeský kraj  <span class="PocetRegionu">(55)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/ustecky-kraj/">Ústecký kraj  <span class="PocetRegionu">(28)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/vysocina/">Vysočina  <span class="PocetRegionu">(16)</span></a></li>
+<li><a class="sipka" href="prodejni-mista/zlinsky-kraj/">Zlínský kraj  <span class="PocetRegionu">(18)</span></a></li>
+</ul>
+</li>
+<li><a class="sipka" href="#">Prodejní místa ve světě</a>
+<ul>
+<li><a class="sipka" href="index.php?pg=regiony&amp;typ=prodejci&amp;predstaveni=1&amp;trh_zeme=2">Slovenská republika  <span class="PocetRegionu">(78)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="sipka" href="index.php?pg=napoveda" title="Postupy, jak nakupovat vstupenky">Nápověda</a></li>
+<li><a class="sipka" href="index.php?pg=kontakt" title="Vše podstatné o TICKET ART">Kontakty</a></li>
+</ul>
+</div>
+</div>
+</div>
+<!--googleon: index-->
+<!--/noindex-->
+<div class="layout w980 main-layout">
+<div class="row contentPage" id="contentPage">
+<div class="c9">
+<div class="nadpisTmaveSedy" id="adblock-info" style="display: none; margin-bottom: 10px;">
+<img alt="" class="line1-image" src="img/portal/adblock.jpg">
+<div class="line1">Pro správné zobrazení stránek<br/>si prosím vypněte AdBlock</div>
+<div class="clearfix"></div>
+<div class="line2">Naše stránky neobsahují žádnou externí reklamu,<br/>program AdBlock však blokuje některé<br/>důležité prvky stránek</div>
+<div class="line3">Děkujeme za pochopení</div>
+</img></div>
+<div class="clearfix">
+<script type="text/javascript">
+   		function imageClick(url) {
+    		window.location = url;
+		}
+
+      $(function() {
+         $('#dominantChangerImages').cycle() // pre-transform changer
+      })
+      $(window).on("load", function() { // wait for images to be loaded
+         // changer definition
+         $('#dominantChangerImages').cycle({
+            fx: 'fade',
+            timeout: 2500,
+            speed:  1000,
+            fastOnEvent: 300,
+            pager:  '.dominantChangerThumbs',
+            //pause: true,
+            pagerEvent: 'mouseover',
+            allowPagerClickBubble: true,
+            //pauseOnPagerHover: true,
+            pagerAnchorBuilder: function(idx, slide) {
+               return '.dominantChangerThumbs li:eq(' + (idx) + ') a'
+            }
+                        ,
+            updateActivePagerLink: function(pager, currSlide, clsName) {
+               if ($(pager).find('.' + clsName).length == 0) { // first time
+                  // let thumbnails without an effect (no default effect)
+               } else { // not first time
+                  // get previous thumbnail (still marked as active) to a default state
+                  try { Pixastic.revert($(pager).find('.' + clsName + ' .thumb').get(0)) } catch(e) {}
+               }
+               // mark thumbnail for current image as active
+               $(pager).children().removeClass(clsName).eq(currSlide).addClass(clsName)
+               // perform an effect on current thumbnail
+               try { $(pager).find('.' + clsName + ' .thumb').pixastic("glow", {amount:0.5,radius:0.5}) } catch(e) {}
+            }
+                     })
+         // pause/play function when mouse over
+         if ($('#dominantChangerImages a').length > 1) {
+            $("#dominantChanger").mouseout(function() {
+               $('#dominantChangerImages').cycle('resume') // fix FF hang
+            })
+            $("#dominantChanger").mouseover(function() {
+               $('#dominantChangerImages').cycle('pause')
+            })
+         }
+      })
+   </script>
+<div id="dominantChanger">
+<h2 class="nadpisStruktura">Nejžádanější akce</h2>
+<ul class="dominantChangerThumbs">
+<li><a href="index.php?pg=banner_show_detail&amp;id=2103&amp;uri" title="Info o představení LÁSKA JE LÁSKA"><img alt="LÁSKA JE LÁSKA" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2103_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2119&amp;uri" title="Info o představení PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO"><img alt="PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2119_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2079&amp;uri" title="Info o představení DIVADLO LUCIE BÍLÉ"><img alt="DIVADLO LUCIE BÍLÉ" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2079_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1558&amp;uri" title="Info o představení SESTRA V AKCI"><img alt="SESTRA V AKCI" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1558_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=344&amp;uri" title="Info o představení Neviditelná výstava"><img alt="Neviditelná výstava" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_344_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1086&amp;uri" title="Info o představení HANA ZAGOROVÁ &amp; PETR REZEK"><img alt="HANA ZAGOROVÁ &amp; PETR REZEK" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1086_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2096&amp;uri" title="Info o představení ALEXANDROVCI - Europen Tour 2022"><img alt="ALEXANDROVCI - Europen Tour 2022" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2096_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2124&amp;uri" title="Info o představení RICHARD MÜLLER"><img alt="RICHARD MÜLLER" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2124_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2037&amp;uri" title="Info o představení WE WILL ROCK YOU"><img alt="WE WILL ROCK YOU" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2037_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1639&amp;uri" title="Info o představení DÁRKOVÝ POUKAZ TICKET ART 2020"><img alt="DÁRKOVÝ POUKAZ TICKET ART 2020" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1639_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1344&amp;uri" title="Info o představení JESUS CHRIST SUPERSTAR"><img alt="JESUS CHRIST SUPERSTAR" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1344_thumb.jpg" width="56"/></a></li>
+</ul>
+<div id="dominantChangerImages">
+<a href="index.php?pg=banner_show_detail&amp;id=2103&amp;uri" title="Info o představení LÁSKA JE LÁSKA"><img alt="LÁSKA JE LÁSKA" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2103.jpg" width="765"/>
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>LÁSKA JE LÁSKA</h3>
+<p>Svůj osud nezměníš! Vše, co se stane, se má stát.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení LÁSKA JE LÁSKA" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2103&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení LÁSKA JE LÁSKA"/>
+<img alt="Zakoupení vstupenek na LÁSKA JE LÁSKA" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2103&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na LÁSKA JE LÁSKA"/>
+</div>
+</div>
+</a>
+<a href="index.php?pg=banner_show_detail&amp;id=2119&amp;uri" title="Info o představení PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO"><img alt="PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2119.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO</h3>
+<p>Lední revue legendárního Jevgenija Pljuščenka</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2119&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO"/>
+<img alt="Zakoupení vstupenek na PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2119&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2079&amp;uri" title="Info o představení DIVADLO LUCIE BÍLÉ"><img alt="DIVADLO LUCIE BÍLÉ" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2079.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>DIVADLO LUCIE BÍLÉ</h3>
+<p>Nově otevřené divadlo Lucie Bílé</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení DIVADLO LUCIE BÍLÉ" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2079&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení DIVADLO LUCIE BÍLÉ"/>
+<img alt="Zakoupení vstupenek na DIVADLO LUCIE BÍLÉ" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2079&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na DIVADLO LUCIE BÍLÉ"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1558&amp;uri" title="Info o představení SESTRA V AKCI"><img alt="SESTRA V AKCI" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1558.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>SESTRA V AKCI</h3>
+<p>Americká muzikálová komedie od října 2017 v Hudebním divadle Karlín s Lucií Bílou v hlavní roli.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení SESTRA V AKCI" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1558&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení SESTRA V AKCI"/>
+<img alt="Zakoupení vstupenek na SESTRA V AKCI" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1558&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na SESTRA V AKCI"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=344&amp;uri" title="Info o představení Neviditelná výstava"><img alt="Neviditelná výstava" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_344.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>Neviditelná výstava</h3>
+<p>Neviditelná výstava v Praze se snaží návštěvníkům ukázat svět nevidomých lidí.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení Neviditelná výstava" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=344&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení Neviditelná výstava"/>
+<img alt="Zakoupení vstupenek na Neviditelná výstava" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=344&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na Neviditelná výstava"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1086&amp;uri" title="Info o představení HANA ZAGOROVÁ &amp; PETR REZEK"><img alt="HANA ZAGOROVÁ &amp; PETR REZEK" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1086.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>HANA ZAGOROVÁ &amp; PETR REZEK</h3>
+<p>Exkluzivní galakoncerty plné největších hitů za doprovodu skupiny Boom!Band Jiřího Dvořáka</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení HANA ZAGOROVÁ &amp; PETR REZEK" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1086&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení HANA ZAGOROVÁ &amp; PETR REZEK"/>
+<img alt="Zakoupení vstupenek na HANA ZAGOROVÁ &amp; PETR REZEK" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1086&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na HANA ZAGOROVÁ &amp; PETR REZEK"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2096&amp;uri" title="Info o představení ALEXANDROVCI - Europen Tour 2022"><img alt="ALEXANDROVCI - Europen Tour 2022" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2096.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>ALEXANDROVCI - Europen Tour 2022</h3>
+<p>Legendární pěvecký soubor opět v České republice!</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení ALEXANDROVCI - Europen Tour 2022" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2096&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení ALEXANDROVCI - Europen Tour 2022"/>
+<img alt="Zakoupení vstupenek na ALEXANDROVCI - Europen Tour 2022" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2096&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na ALEXANDROVCI - Europen Tour 2022"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2124&amp;uri" title="Info o představení RICHARD MÜLLER"><img alt="RICHARD MÜLLER" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2124.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>RICHARD MÜLLER</h3>
+<p>Richard Müller a všechny jeho velké hity na Slezskoostravském hradu</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení RICHARD MÜLLER" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2124&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení RICHARD MÜLLER"/>
+<img alt="Zakoupení vstupenek na RICHARD MÜLLER" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2124&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na RICHARD MÜLLER"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2037&amp;uri" title="Info o představení WE WILL ROCK YOU"><img alt="WE WILL ROCK YOU" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2037.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>WE WILL ROCK YOU</h3>
+<p>Česká premiéra muzikálu s hity QUEEN</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení WE WILL ROCK YOU" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2037&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení WE WILL ROCK YOU"/>
+<img alt="Zakoupení vstupenek na WE WILL ROCK YOU" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2037&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na WE WILL ROCK YOU"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1639&amp;uri" title="Info o představení DÁRKOVÝ POUKAZ TICKET ART 2020"><img alt="DÁRKOVÝ POUKAZ TICKET ART 2020" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1639.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>DÁRKOVÝ POUKAZ TICKET ART 2020</h3>
+<p>Potřebujete udělat někomu blízkému radost a nevíte čím? Darujte naši dárkovou poukázku.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení DÁRKOVÝ POUKAZ TICKET ART 2020" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1639&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení DÁRKOVÝ POUKAZ TICKET ART 2020"/>
+<img alt="Zakoupení vstupenek na DÁRKOVÝ POUKAZ TICKET ART 2020" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1639&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na DÁRKOVÝ POUKAZ TICKET ART 2020"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1344&amp;uri" title="Info o představení JESUS CHRIST SUPERSTAR"><img alt="JESUS CHRIST SUPERSTAR" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1344.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>JESUS CHRIST SUPERSTAR</h3>
+<p>Muzikál vypráví o posledních dnech Ježíše Krista od jeho příchodu do Jeruzaléma až po ukřižování.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení JESUS CHRIST SUPERSTAR" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1344&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení JESUS CHRIST SUPERSTAR"/>
+<img alt="Zakoupení vstupenek na JESUS CHRIST SUPERSTAR" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1344&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na JESUS CHRIST SUPERSTAR"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1865&amp;uri" title="Info o představení ČARODĚJKA"><img alt="ČARODĚJKA" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1865.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>ČARODĚJKA</h3>
+<p>Nejúspěšnější současný světový muzikál v české premiéře v GoJa Music Hall.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení ČARODĚJKA" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1865&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení ČARODĚJKA"/>
+<img alt="Zakoupení vstupenek na ČARODĚJKA" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1865&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na ČARODĚJKA"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1889&amp;uri" title="Info o představení TARZAN"><img alt="TARZAN" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1889.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>TARZAN</h3>
+<p>Jeden z nejúspěšnějších světových muzikálů s hity Phila Collinse v Divadle Hybernia.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení TARZAN" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1889&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení TARZAN"/>
+<img alt="Zakoupení vstupenek na TARZAN" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1889&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na TARZAN"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2097&amp;uri" title="Info o představení NOC NA KARLŠTEJNĚ"><img alt="NOC NA KARLŠTEJNĚ" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2097.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>NOC NA KARLŠTEJNĚ</h3>
+<p>Perla letních scén míří z Karlštejna k Vám.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení NOC NA KARLŠTEJNĚ" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2097&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení NOC NA KARLŠTEJNĚ"/>
+<img alt="Zakoupení vstupenek na NOC NA KARLŠTEJNĚ" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2097&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na NOC NA KARLŠTEJNĚ"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2098&amp;uri" title="Info o představení ROBINSON CRUSOE"><img alt="ROBINSON CRUSOE" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2098.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>ROBINSON CRUSOE</h3>
+<p>Dobrodružný muzikálový román</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení ROBINSON CRUSOE" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2098&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení ROBINSON CRUSOE"/>
+<img alt="Zakoupení vstupenek na ROBINSON CRUSOE" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2098&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na ROBINSON CRUSOE"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1823&amp;uri" title="Info o představení HRDINOVÉ"><img alt="HRDINOVÉ" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1823.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>HRDINOVÉ</h3>
+<p>Petr Kostka, Jaroslav Satoranský a Miroslav Vladyka v komedii Divadla v Rytířské.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení HRDINOVÉ" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1823&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení HRDINOVÉ"/>
+<img alt="Zakoupení vstupenek na HRDINOVÉ" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1823&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na HRDINOVÉ"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1498&amp;uri" title="Info o představení ČAS RŮŽÍ"><img alt="ČAS RŮŽÍ" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1498.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>ČAS RŮŽÍ</h3>
+<p>Nový hitmuzikál s písněmi Karla Gotta od března 2017 v Hudebním divadle Karlín.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení ČAS RŮŽÍ" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1498&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení ČAS RŮŽÍ"/>
+<img alt="Zakoupení vstupenek na ČAS RŮŽÍ" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1498&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na ČAS RŮŽÍ"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=2101&amp;uri" title="Info o představení LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN"><img alt="LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_2101.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN</h3>
+<p>Prázdniny plné hudby, tance a zpěvu na Výstavišti PVA EXPO Praha</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2101&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN"/>
+<img alt="Zakoupení vstupenek na LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=2101&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN"/>
+</div>
+</div>
+</img></a>
+<a href="index.php?pg=banner_show_detail&amp;id=1718&amp;uri" title="Info o představení LEGENDA JMÉNEM HOLMES"><img alt="LEGENDA JMÉNEM HOLMES" height="265" src="https://vstupenky.ticket-art.cz/img/banner/banner_1718.jpg" width="765">
+<div class="dominantChangerImageText">
+<div class="fLeft">
+<h3>LEGENDA JMÉNEM HOLMES</h3>
+<p>Kultovní muzikál z pera Ondřeje G. Brzobohatého brzy v Hudebním divadle Karlín.</p>
+</div>
+<div class="topChangerPikto">
+<img alt="Info o představení LEGENDA JMÉNEM HOLMES" class="info" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1718&amp;uri');return false;" src="img/portal/icon_info.png" title="Info o představení LEGENDA JMÉNEM HOLMES"/>
+<img alt="Zakoupení vstupenek na LEGENDA JMÉNEM HOLMES" onclick="imageClick('https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&amp;id=1718&amp;typeURL=terminy&amp;uri');return false;" src="img/portal/icon_koupit.png" title="Zakoupení vstupenek na LEGENDA JMÉNEM HOLMES"/>
+</div>
+</div>
+</img></a>
+</div>
+<ul class="dominantChangerThumbs">
+<li><a href="index.php?pg=banner_show_detail&amp;id=1865&amp;uri" title="Info o představení ČARODĚJKA"><img alt="ČARODĚJKA" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1865_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1889&amp;uri" title="Info o představení TARZAN"><img alt="TARZAN" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1889_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2097&amp;uri" title="Info o představení NOC NA KARLŠTEJNĚ"><img alt="NOC NA KARLŠTEJNĚ" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2097_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2098&amp;uri" title="Info o představení ROBINSON CRUSOE"><img alt="ROBINSON CRUSOE" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2098_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1823&amp;uri" title="Info o představení HRDINOVÉ"><img alt="HRDINOVÉ" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1823_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1498&amp;uri" title="Info o představení ČAS RŮŽÍ"><img alt="ČAS RŮŽÍ" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1498_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=2101&amp;uri" title="Info o představení LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN"><img alt="LETNÍ SCÉNA HUDEBNÍHO DIVADLA KARLÍN" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_2101_thumb.jpg" width="56"/></a></li>
+<li><a href="index.php?pg=banner_show_detail&amp;id=1718&amp;uri" title="Info o představení LEGENDA JMÉNEM HOLMES"><img alt="LEGENDA JMÉNEM HOLMES" class="thumb" height="56" src="https://vstupenky.ticket-art.cz/img/banner/banner_1718_thumb.jpg" width="56"/></a></li>
+</ul>
+</div>
+</div>
+<div class="clearfix">
+<a href="index.php?pg=covid" style="
+    display: block;
+    margin-bottom: 20px;
+    background-color: #f7ad31;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    font-weight: normal;
+    "><img src="img/portal/info-xxl.png" style="height: 46px;margin-right: 20px;line-height: 2em;margin-bottom: 5px;"/>
+<span style="font-size: 2em;line-height: 2em;">INFORMACE + PŘESUNUTÁ PŘEDSTAVENÍ</span>
+<br/>
+<span>JAK POSTUPOVAT PŘI VÝMĚNĚ VSTUPENEK NA ZRUŠENÁ/PŘESUNUTÁ PŘEDSTAVENÍ</span></a>
+</div>
+<div class="clearfix">
+<a href="index.php?pg=VymenaVstupenek" style="
+    display: block;
+    margin-bottom: 20px;
+    background-color: #aa0000;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    text-decoration: none;
+    font-weight: normal;
+    "><img src="img/portal/info-xxl.png" style="height: 46px;margin-right: 20px;line-height: 2em;margin-bottom: 5px;"/>
+<span style="font-size: 2em;line-height: 2em;">VÝMĚNA VSTUPENEK ZA VOUCHER</span>
+<br/>
+<span>POSTUP A ONLINE FORMULÁŘ PRO VÝMĚNU VSTUPENEK ZA VOUCHER ZA NEODEHRANÁ PŘEDSTAVENÍ<br/> V OBDOBÍ 10.3.2020-28.2.2021</span></a>
+</div>
+<script src="js/jquery.unveil.js"></script>
+<script>
+    $(function() {
+        $("img").unveil(300);
+    });
+    </script>
+<div class="clearfix">
+<h2 class="nadpisTmaveSedy">Naše tipy</h2>
+<script type="text/javascript">
+            $(function() {
+               $('.pauzak').capty({
+                  height: 31,
+                  opacity: 1,
+                  speed: 500
+               })
+               $('.capty-caption').css("filter", "none") // fix png transparency problems in ie
+               $('.capty-caption div').show()   // initially hidden to fix flashing when loading page
+            })
+         </script>
+<div class="clearfix naseTipyContainer"><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="WE WILL ROCK YOU (Praha), TIPSPORT ARENA Praha 7, od 17.4.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_15553.jpg?mt=1571045403" height="100" name="#caption0" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/we-will-rock-you-praha-15553/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení WE WILL ROCK YOU (Praha)" width="100"/>
+<div id="caption0" style="display:none;">
+<a href="muzikaly/we-will-rock-you-praha-15553/" title="Info o představení WE WILL ROCK YOU (Praha)"><img alt="Info o představení WE WILL ROCK YOU (Praha)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=15553" title="Zakoupení vstupenek na WE WILL ROCK YOU (Praha), TIPSPORT ARENA Praha 7, od 17.4.2021"><img alt="Zakoupení vstupenek na WE WILL ROCK YOU (Praha)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=15553" title="Info o představení WE WILL ROCK YOU (Praha)">
+<div class="naseTipyPopis">
+<strong>WE WILL ROCK YOU - 17.4. - 12.6.2021 Praha, Brno, Ostrava. Muzikál s hity Queen</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO, TIPSPORT ARENA Praha 7, 19.9.2021, 18:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16117.jpg?mt=1611749402" height="100" name="#caption1" onclick="window.location='https://vstupenky.ticket-art.cz/show/pan-ledu-jevgenij-alexander-pljuscenko-16117/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" width="100"/>
+<div id="caption1" style="display:none;">
+<a href="show/pan-ledu-jevgenij-alexander-pljuscenko-16117/" title="Info o představení PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO"><img alt="Info o představení PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16117" title="Zakoupení vstupenek na PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO, TIPSPORT ARENA Praha 7, 19.9.2021, 18:00"><img alt="Zakoupení vstupenek na PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16117" title="Info o představení PÁN LEDU – JEVGENIJ &amp; ALEXANDER PLJUŠČENKO">
+<div class="naseTipyPopis">
+<strong>PÁN LEDU – JEVGENIJ PLJUŠČENKO - 19.9.2021 Tipsport Aréna Praha</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="ALEXANDROVCI - European Tour 2022 (Ostrava), OSTRAVAR ARÉNA, od 22.5.2022" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_12254.jpg?mt=1602496202" height="100" name="#caption2" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-zahranicni-interpret-/alexandrovci-european-tour-2022-ostrava-12254/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ALEXANDROVCI - European Tour 2022 (Ostrava)" width="100"/>
+<div id="caption2" style="display:none;">
+<a href="koncerty-zahranicni-interpret-/alexandrovci-european-tour-2022-ostrava-12254/" title="Info o představení ALEXANDROVCI - European Tour 2022 (Ostrava)"><img alt="Info o představení ALEXANDROVCI - European Tour 2022 (Ostrava)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=12254" title="Zakoupení vstupenek na ALEXANDROVCI - European Tour 2022 (Ostrava), OSTRAVAR ARÉNA, od 22.5.2022"><img alt="Zakoupení vstupenek na ALEXANDROVCI - European Tour 2022 (Ostrava)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=12254" title="Info o představení ALEXANDROVCI - European Tour 2022 (Ostrava)">
+<div class="naseTipyPopis">
+<strong>ALEXANDROVCI - EUROPEAN TOUR 2022 - 7 měst po celé ČR</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="PARADOXY - 2. ročník hudebně sportovního festivalu, Lobezský park Plzeň, 5.6.2021, 12:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_15639.jpg?mt=1596790801" height="100" name="#caption3" onclick="window.location='https://vstupenky.ticket-art.cz/festivaly/paradoxy-2-rocnik-hudebne-sportovniho-festivalu-15639/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení PARADOXY - 2. ročník hudebně sportovního festivalu" width="100"/>
+<div id="caption3" style="display:none;">
+<a href="festivaly/paradoxy-2-rocnik-hudebne-sportovniho-festivalu-15639/" title="Info o představení PARADOXY - 2. ročník hudebně sportovního festivalu"><img alt="Info o představení PARADOXY - 2. ročník hudebně sportovního festivalu" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=15639" title="Zakoupení vstupenek na PARADOXY - 2. ročník hudebně sportovního festivalu, Lobezský park Plzeň, 5.6.2021, 12:00"><img alt="Zakoupení vstupenek na PARADOXY - 2. ročník hudebně sportovního festivalu" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=15639" title="Info o představení PARADOXY - 2. ročník hudebně sportovního festivalu">
+<div class="naseTipyPopis">
+<strong>PARADOXY - 5.6.2021 Plzeň. 2. ročník hudebně sportovního festivalu</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava), Český rozhlas Ostrava - studio 1, 16.3.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_1807.jpg?mt=1604417402" height="100" name="#caption4" onclick="window.location='https://vstupenky.ticket-art.cz/vazna-hudba/koncert-miroslava-beinhauera-klavir-ostrava-1807/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava)" width="100"/>
+<div id="caption4" style="display:none;">
+<a href="vazna-hudba/koncert-miroslava-beinhauera-klavir-ostrava-1807/" title="Info o představení KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava)"><img alt="Info o představení KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=1807" title="Zakoupení vstupenek na KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava), Český rozhlas Ostrava - studio 1, 16.3.2021, 19:00"><img alt="Zakoupení vstupenek na KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=1807" title="Info o představení KONCERT MIROSLAVA BEINHAUERA - klavír (Ostrava)">
+<div class="naseTipyPopis">
+<strong>KONCERT M. BEINHAUERA - 14.3.2021 Hradec nad Moravicí, 16.3.2021 Ostrava</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="LEGENDA JMÉNEM HOLMES, Hudební divadlo Karlín, Praha 8, od 30.9.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_14627.jpg?mt=1522846801" height="100" name="#caption5" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/legenda-jmenem-holmes-14627/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení LEGENDA JMÉNEM HOLMES" width="100"/>
+<div id="caption5" style="display:none;">
+<a href="muzikaly/legenda-jmenem-holmes-14627/" title="Info o představení LEGENDA JMÉNEM HOLMES"><img alt="Info o představení LEGENDA JMÉNEM HOLMES" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=14627" title="Zakoupení vstupenek na LEGENDA JMÉNEM HOLMES, Hudební divadlo Karlín, Praha 8, od 30.9.2021"><img alt="Zakoupení vstupenek na LEGENDA JMÉNEM HOLMES" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=14627" title="Info o představení LEGENDA JMÉNEM HOLMES">
+<div class="naseTipyPopis">
+<strong>LEGENDA JMÉNEM HOLMES - kultovní muzikál v Hudebním divadle Karlín Praha</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="MEDA, Muzeum Kampa Praha, od 26.8.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_15336.jpg?mt=1585845601" height="100" name="#caption6" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/meda-15336/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení MEDA" width="100"/>
+<div id="caption6" style="display:none;">
+<a href="cinohry/meda-15336/" title="Info o představení MEDA"><img alt="Info o představení MEDA" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=15336" title="Zakoupení vstupenek na MEDA, Muzeum Kampa Praha, od 26.8.2021"><img alt="Zakoupení vstupenek na MEDA" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=15336" title="Info o představení MEDA">
+<div class="naseTipyPopis">
+<strong>MEDA - 26. - 30.8.2021 Museum Kampa Praha. O životě Medy Mládkové</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="REBELOVÉ (Letní scéna), Výstaviště PVA EXPO Praha 9, od 18.6.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17011.jpg?mt=1606218004" height="100" name="#caption7" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/rebelove-letni-scena-17011/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení REBELOVÉ (Letní scéna)" width="100"/>
+<div id="caption7" style="display:none;">
+<a href="muzikaly/rebelove-letni-scena-17011/" title="Info o představení REBELOVÉ (Letní scéna)"><img alt="Info o představení REBELOVÉ (Letní scéna)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17011" title="Zakoupení vstupenek na REBELOVÉ (Letní scéna), Výstaviště PVA EXPO Praha 9, od 18.6.2021"><img alt="Zakoupení vstupenek na REBELOVÉ (Letní scéna)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17011" title="Info o představení REBELOVÉ (Letní scéna)">
+<div class="naseTipyPopis">
+<strong>LETNÍ SCÉNA Hudebního divadla Karlín - 10.6. - 19.8.2021 Praha Letňany</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="SESTRA V AKCI, Hudební divadlo Karlín, Praha 8, od 27.10.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_13602.jpg?mt=1521672912" height="100" name="#caption8" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/sestra-v-akci-13602/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení SESTRA V AKCI" width="100"/>
+<div id="caption8" style="display:none;">
+<a href="muzikaly/sestra-v-akci-13602/" title="Info o představení SESTRA V AKCI"><img alt="Info o představení SESTRA V AKCI" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=13602" title="Zakoupení vstupenek na SESTRA V AKCI, Hudební divadlo Karlín, Praha 8, od 27.10.2021"><img alt="Zakoupení vstupenek na SESTRA V AKCI" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=13602" title="Info o představení SESTRA V AKCI">
+<div class="naseTipyPopis">
+<strong>SESTRA V AKCI - americká muzikálová komedie v Hudebním divadle Karlín</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice), Metropol České Budějovice, 9.9.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16510.jpg?mt=1580738402" height="100" name="#caption9" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/tour-barvy-zeme-marta-jandova-vaclav-noid-barta-ceske-budejovice-16510/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice)" width="100"/>
+<div id="caption9" style="display:none;">
+<a href="koncerty-domaci-interpret-/tour-barvy-zeme-marta-jandova-vaclav-noid-barta-ceske-budejovice-16510/" title="Info o představení TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice)"><img alt="Info o představení TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16510" title="Zakoupení vstupenek na TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice), Metropol České Budějovice, 9.9.2021, 19:00"><img alt="Zakoupení vstupenek na TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16510" title="Info o představení TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta (České Budějovice)">
+<div class="naseTipyPopis">
+<strong>TOUR BARVY ZEMĚ – Marta Jandová, Václav NOID Bárta - 4 města</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="VLASTA REDL S KAPELOU, Muzeum Kampa Praha, 22.7.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17018.jpg?mt=1606910404" height="100" name="#caption10" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/vlasta-redl-s-kapelou-17018/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení VLASTA REDL S KAPELOU" width="100"/>
+<div id="caption10" style="display:none;">
+<a href="koncerty-domaci-interpret-/vlasta-redl-s-kapelou-17018/" title="Info o představení VLASTA REDL S KAPELOU"><img alt="Info o představení VLASTA REDL S KAPELOU" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17018" title="Zakoupení vstupenek na VLASTA REDL S KAPELOU, Muzeum Kampa Praha, 22.7.2021, 19:00"><img alt="Zakoupení vstupenek na VLASTA REDL S KAPELOU" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17018" title="Info o představení VLASTA REDL S KAPELOU">
+<div class="naseTipyPopis">
+<strong>VLASTA REDL S KAPELOU - 22.7.2021 Museum Kampa Praha. Folkový koncert</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="WERICH, Muzeum Kampa Praha, od 14.6.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17014.jpg?mt=1606740001" height="100" name="#caption11" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/werich-17014/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení WERICH" width="100"/>
+<div id="caption11" style="display:none;">
+<a href="cinohry/werich-17014/" title="Info o představení WERICH"><img alt="Info o představení WERICH" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17014" title="Zakoupení vstupenek na WERICH, Muzeum Kampa Praha, od 14.6.2021"><img alt="Zakoupení vstupenek na WERICH" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17014" title="Info o představení WERICH">
+<div class="naseTipyPopis">
+<strong>WERICH 21.6. - 11.8.2021 Museum Kampa Praha. Životní příběh Jana Wericha</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="MEGAKONCERT S APUTIME.CZ 2021, OSTRAVAR ARÉNA, 27.11.2021, 17:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_11665.jpg?mt=1595593801" height="100" name="#caption12" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/megakoncert-s-aputime-cz-2021-11665/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení MEGAKONCERT S APUTIME.CZ 2021" width="100"/>
+<div id="caption12" style="display:none;">
+<a href="koncerty-domaci-interpret-/megakoncert-s-aputime-cz-2021-11665/" title="Info o představení MEGAKONCERT S APUTIME.CZ 2021"><img alt="Info o představení MEGAKONCERT S APUTIME.CZ 2021" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=11665" title="Zakoupení vstupenek na MEGAKONCERT S APUTIME.CZ 2021, OSTRAVAR ARÉNA, 27.11.2021, 17:00"><img alt="Zakoupení vstupenek na MEGAKONCERT S APUTIME.CZ 2021" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=11665" title="Info o představení MEGAKONCERT S APUTIME.CZ 2021">
+<div class="naseTipyPopis">
+<strong>MEGAKONCERT S APUTIME.CZ 2021 - 27.11. Ostravar Aréna Ostrava</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="ADDAMS FAMILY, Hudební divadlo Karlín, Praha 8, od 14.10.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_9886.jpg?mt=1570095602" height="100" name="#caption13" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/addams-family-9886/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ADDAMS FAMILY" width="100"/>
+<div id="caption13" style="display:none;">
+<a href="muzikaly/addams-family-9886/" title="Info o představení ADDAMS FAMILY"><img alt="Info o představení ADDAMS FAMILY" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=9886" title="Zakoupení vstupenek na ADDAMS FAMILY, Hudební divadlo Karlín, Praha 8, od 14.10.2021"><img alt="Zakoupení vstupenek na ADDAMS FAMILY" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=9886" title="Info o představení ADDAMS FAMILY">
+<div class="naseTipyPopis">
+<strong>ADDAMS FAMILY - Hudební divadlo Karlín Praha. Muzikálová komedie</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="A. DVOŘÁK - RUSALKA (Sychrov), Zámek Sychrov, od 18.6.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16994.jpg?mt=1605694802" height="100" name="#caption14" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/a-dvorak-rusalka-sychrov-16994/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení A. DVOŘÁK - RUSALKA (Sychrov)" width="100"/>
+<div id="caption14" style="display:none;">
+<a href="muzikaly/a-dvorak-rusalka-sychrov-16994/" title="Info o představení A. DVOŘÁK - RUSALKA (Sychrov)"><img alt="Info o představení A. DVOŘÁK - RUSALKA (Sychrov)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16994" title="Zakoupení vstupenek na A. DVOŘÁK - RUSALKA (Sychrov), Zámek Sychrov, od 18.6.2021"><img alt="Zakoupení vstupenek na A. DVOŘÁK - RUSALKA (Sychrov)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16994" title="Info o představení A. DVOŘÁK - RUSALKA (Sychrov)">
+<div class="naseTipyPopis">
+<strong>A. DVOŘÁK - RUSALKA - 18. - 19.6.2021 Státní zámek Sychrov. Muzikál</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="Benefiční ROT KART FEST (dvoudenní vstupenka), Holiday Resort Losinka Rapotín, 28.5.2021, 15:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16131.jpg?mt=1601395202" height="100" name="#caption15" onclick="window.location='https://vstupenky.ticket-art.cz/festivaly/beneficni-rot-kart-fest-dvoudenni-vstupenka-16131/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení Benefiční ROT KART FEST (dvoudenní vstupenka)" width="100"/>
+<div id="caption15" style="display:none;">
+<a href="festivaly/beneficni-rot-kart-fest-dvoudenni-vstupenka-16131/" title="Info o představení Benefiční ROT KART FEST (dvoudenní vstupenka)"><img alt="Info o představení Benefiční ROT KART FEST (dvoudenní vstupenka)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16131" title="Zakoupení vstupenek na Benefiční ROT KART FEST (dvoudenní vstupenka), Holiday Resort Losinka Rapotín, 28.5.2021, 15:00"><img alt="Zakoupení vstupenek na Benefiční ROT KART FEST (dvoudenní vstupenka)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16131" title="Info o představení Benefiční ROT KART FEST (dvoudenní vstupenka)">
+<div class="naseTipyPopis">
+<strong>Benefiční ROT KART FEST - 28. - 29.5.2021 Resort Losinka Rapotín. 2. ročník festivalu</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="BÍLÉ VÁNOCE LUCIE BÍLÉ II., Hudební divadlo Karlín, Praha 8, 13.12.2021, 20:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_8072.jpg?mt=1521672927" height="100" name="#caption16" onclick="window.location='https://vstupenky.ticket-art.cz/vanocni-programy/bile-vanoce-lucie-bile-ii-8072/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení BÍLÉ VÁNOCE LUCIE BÍLÉ II." width="100"/>
+<div id="caption16" style="display:none;">
+<a href="vanocni-programy/bile-vanoce-lucie-bile-ii-8072/" title="Info o představení BÍLÉ VÁNOCE LUCIE BÍLÉ II."><img alt="Info o představení BÍLÉ VÁNOCE LUCIE BÍLÉ II." src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=8072" title="Zakoupení vstupenek na BÍLÉ VÁNOCE LUCIE BÍLÉ II., Hudební divadlo Karlín, Praha 8, 13.12.2021, 20:00"><img alt="Zakoupení vstupenek na BÍLÉ VÁNOCE LUCIE BÍLÉ II." src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=8072" title="Info o představení BÍLÉ VÁNOCE LUCIE BÍLÉ II.">
+<div class="naseTipyPopis">
+<strong>BÍLÉ VÁNOCE LUCIE BÍLÉ II. 13.12.2021 Hudební divadlo Karlín Praha</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="BONFIRE + support, Kulturní dům Zliv, 30.10.2021, 21:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17061.jpg?mt=1612529401" height="100" name="#caption17" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-zahranicni-interpret-/bonfire-support-17061/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení BONFIRE + support" width="100"/>
+<div id="caption17" style="display:none;">
+<a href="koncerty-zahranicni-interpret-/bonfire-support-17061/" title="Info o představení BONFIRE + support"><img alt="Info o představení BONFIRE + support" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17061" title="Zakoupení vstupenek na BONFIRE + support, Kulturní dům Zliv, 30.10.2021, 21:00"><img alt="Zakoupení vstupenek na BONFIRE + support" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17061" title="Info o představení BONFIRE + support">
+<div class="naseTipyPopis">
+<strong>BONFIRE + support - 30.10.2021 Zliv. Monstrózní turné k novému albu</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6., Jeskyně Moravského krasu, od 13.6.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_8559.jpg?mt=1588672802" height="100" name="#caption18" onclick="window.location='https://vstupenky.ticket-art.cz/festivaly/carovne-tony-macochy-punkevni-jeskyne-13-6-8559/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6." width="100"/>
+<div id="caption18" style="display:none;">
+<a href="festivaly/carovne-tony-macochy-punkevni-jeskyne-13-6-8559/" title="Info o představení ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6."><img alt="Info o představení ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6." src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=8559" title="Zakoupení vstupenek na ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6., Jeskyně Moravského krasu, od 13.6.2021"><img alt="Zakoupení vstupenek na ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6." src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=8559" title="Info o představení ČAROVNÉ TÓNY MACOCHY - Punkevní jeskyně 13.6.">
+<div class="naseTipyPopis">
+<strong>ČAROVNÉ TÓNY MACOCHY 2021 - 9. - 13.6., jeskyně Moravského krasu</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="ČAS RŮŽÍ, Hudební divadlo Karlín, Praha 8, od 24.9.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_12872.jpg?mt=1521672913" height="100" name="#caption19" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/cas-ruzi-12872/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ČAS RŮŽÍ" width="100"/>
+<div id="caption19" style="display:none;">
+<a href="muzikaly/cas-ruzi-12872/" title="Info o představení ČAS RŮŽÍ"><img alt="Info o představení ČAS RŮŽÍ" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=12872" title="Zakoupení vstupenek na ČAS RŮŽÍ, Hudební divadlo Karlín, Praha 8, od 24.9.2021"><img alt="Zakoupení vstupenek na ČAS RŮŽÍ" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=12872" title="Info o představení ČAS RŮŽÍ">
+<div class="naseTipyPopis">
+<strong>ČAS RŮŽÍ - muzikál v Hudebním divadle Karlín z hitů repertoáru Karla Gotta</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="DALIBOR JANDA A KAPELA PROTOTYP, Přírodní areál Dubňany, 17.7.2021, 21:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16575.jpg?mt=1590392401" height="100" name="#caption20" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/dalibor-janda-a-kapela-prototyp-16575/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení DALIBOR JANDA A KAPELA PROTOTYP" width="100"/>
+<div id="caption20" style="display:none;">
+<a href="koncerty-domaci-interpret-/dalibor-janda-a-kapela-prototyp-16575/" title="Info o představení DALIBOR JANDA A KAPELA PROTOTYP"><img alt="Info o představení DALIBOR JANDA A KAPELA PROTOTYP" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16575" title="Zakoupení vstupenek na DALIBOR JANDA A KAPELA PROTOTYP, Přírodní areál Dubňany, 17.7.2021, 21:00"><img alt="Zakoupení vstupenek na DALIBOR JANDA A KAPELA PROTOTYP" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16575" title="Info o představení DALIBOR JANDA A KAPELA PROTOTYP">
+<div class="naseTipyPopis">
+<strong>DALIBOR JANDA a kapela Prototyp - 17.7.2021 Dubňany. 40 let na scéně</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="DOGA, Kulturní dům Zliv, 20.11.2021, 21:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16984.jpg?mt=1604418001" height="100" name="#caption21" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/doga-16984/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení DOGA" width="100"/>
+<div id="caption21" style="display:none;">
+<a href="koncerty-domaci-interpret-/doga-16984/" title="Info o představení DOGA"><img alt="Info o představení DOGA" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16984" title="Zakoupení vstupenek na DOGA, Kulturní dům Zliv, 20.11.2021, 21:00"><img alt="Zakoupení vstupenek na DOGA" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16984" title="Info o představení DOGA">
+<div class="naseTipyPopis">
+<strong>DOGA - 20.2.2021 Zliv. Koncert české rockové legendy</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="DRACULA, Hudební divadlo Karlín, Praha 8, od 6.10.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_10680.jpg?mt=1578912602" height="100" name="#caption22" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/dracula-10680/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení DRACULA" width="100"/>
+<div id="caption22" style="display:none;">
+<a href="muzikaly/dracula-10680/" title="Info o představení DRACULA"><img alt="Info o představení DRACULA" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=10680" title="Zakoupení vstupenek na DRACULA, Hudební divadlo Karlín, Praha 8, od 6.10.2021"><img alt="Zakoupení vstupenek na DRACULA" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=10680" title="Info o představení DRACULA">
+<div class="naseTipyPopis">
+<strong>DRACULA  - nejúspěšnější česká legenda znovu ožívá v HDK Praha</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="Dva nahatý chlapi (Hořice), Dům kultury Koruna Hořice, 20.5.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16287.jpg?mt=1574241002" height="100" name="#caption23" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/dva-nahaty-chlapi-horice-16287/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení Dva nahatý chlapi (Hořice)" width="100"/>
+<div id="caption23" style="display:none;">
+<a href="cinohry/dva-nahaty-chlapi-horice-16287/" title="Info o představení Dva nahatý chlapi (Hořice)"><img alt="Info o představení Dva nahatý chlapi (Hořice)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16287" title="Zakoupení vstupenek na Dva nahatý chlapi (Hořice), Dům kultury Koruna Hořice, 20.5.2021, 19:00"><img alt="Zakoupení vstupenek na Dva nahatý chlapi (Hořice)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16287" title="Info o představení Dva nahatý chlapi (Hořice)">
+<div class="naseTipyPopis">
+<strong>DVA NAHATÝ CHLAPI - populární komedie se uvádí ve 11ti městech ČR</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček, TIPSPORT ARENA Praha 7, 31.10.2021, 15:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16173.jpg?mt=1602249601" height="100" name="#caption24" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/fantazie-na-koleckach-zahada-mizejicich-hracek-16173/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček" width="100"/>
+<div id="caption24" style="display:none;">
+<a href="muzikaly/fantazie-na-koleckach-zahada-mizejicich-hracek-16173/" title="Info o představení FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček"><img alt="Info o představení FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16173" title="Zakoupení vstupenek na FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček, TIPSPORT ARENA Praha 7, 31.10.2021, 15:00"><img alt="Zakoupení vstupenek na FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16173" title="Info o představení FANTAZIE NA KOLEČKÁCH …záhada mizejících hraček">
+<div class="naseTipyPopis">
+<strong>FANTAZIE NA KOLEČKÁCH - 31.10.2021 Praha. Muzikálová revuue</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="FLATLEY’S LORD OF THE DANCE (Pardubice), enteria arena Pardubice, 1.3.2022, 20:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_14952.jpg?mt=1604676601" height="100" name="#caption25" onclick="window.location='https://vstupenky.ticket-art.cz/tanec/flatley-s-lord-of-the-dance-pardubice-14952/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení FLATLEY’S LORD OF THE DANCE (Pardubice)" width="100"/>
+<div id="caption25" style="display:none;">
+<a href="tanec/flatley-s-lord-of-the-dance-pardubice-14952/" title="Info o představení FLATLEY’S LORD OF THE DANCE (Pardubice)"><img alt="Info o představení FLATLEY’S LORD OF THE DANCE (Pardubice)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=14952" title="Zakoupení vstupenek na FLATLEY’S LORD OF THE DANCE (Pardubice), enteria arena Pardubice, 1.3.2022, 20:00"><img alt="Zakoupení vstupenek na FLATLEY’S LORD OF THE DANCE (Pardubice)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=14952" title="Info o představení FLATLEY’S LORD OF THE DANCE (Pardubice)">
+<div class="naseTipyPopis">
+<strong>FLATLEY’S LORD OF THE DANCE - 1.3.2022  enteria arena Pardubice</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou), Hotel Týnec, 17.6.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16158.jpg?mt=1569847204" height="100" name="#caption26" onclick="window.location='https://vstupenky.ticket-art.cz/show/halina-pawlowska-manual-zrale-zeny-tynec-nad-sazavou-16158/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou)" width="100"/>
+<div id="caption26" style="display:none;">
+<a href="show/halina-pawlowska-manual-zrale-zeny-tynec-nad-sazavou-16158/" title="Info o představení HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou)"><img alt="Info o představení HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16158" title="Zakoupení vstupenek na HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou), Hotel Týnec, 17.6.2021, 19:00"><img alt="Zakoupení vstupenek na HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16158" title="Info o představení HALINA PAWLOWSKÁ - Manuál zralé ženy (Týnec nad Sázavou)">
+<div class="naseTipyPopis">
+<strong>HALINA PAWLOWSKÁ - Manuál zralé ženy - 6 měst v prodeji. Talk show</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové), Kongresové centrum ALDIS Hradec Králové, 15.2.2022, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16662.jpg?mt=1586247002" height="100" name="#caption27" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/hana-zagorova-a-petr-rezek-se-skupinou-boom-band-jiriho-dvoraka-hradec-kralove-16662/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové)" width="100"/>
+<div id="caption27" style="display:none;">
+<a href="koncerty-domaci-interpret-/hana-zagorova-a-petr-rezek-se-skupinou-boom-band-jiriho-dvoraka-hradec-kralove-16662/" title="Info o představení HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové)"><img alt="Info o představení HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16662" title="Zakoupení vstupenek na HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové), Kongresové centrum ALDIS Hradec Králové, 15.2.2022, 19:00"><img alt="Zakoupení vstupenek na HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16662" title="Info o představení HANA ZAGOROVÁ a PETR REZEK se skupinou BOOM!BAND JIŘÍHO DVOŘÁKA (Hradec Králové)">
+<div class="naseTipyPopis">
+<strong>Koncert HANA ZAGOROVÁ a PETR REZEK - Březnice, Stříbro, Hradec Králové</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="HOREČKY FEST 2021, Amfiteátr na Horečkách, 10.7.2021, 13:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_13811.jpg?mt=1589273401" height="100" name="#caption28" onclick="window.location='https://vstupenky.ticket-art.cz/festivaly/horecky-fest-2021-13811/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení HOREČKY FEST 2021" width="100"/>
+<div id="caption28" style="display:none;">
+<a href="festivaly/horecky-fest-2021-13811/" title="Info o představení HOREČKY FEST 2021"><img alt="Info o představení HOREČKY FEST 2021" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=13811" title="Zakoupení vstupenek na HOREČKY FEST 2021, Amfiteátr na Horečkách, 10.7.2021, 13:00"><img alt="Zakoupení vstupenek na HOREČKY FEST 2021" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=13811" title="Info o představení HOREČKY FEST 2021">
+<div class="naseTipyPopis">
+<strong>HOREČKY FEST 2021 - 10.7. Frenštát pod Radhoštěm. 10. ročník festivalu</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="JEPTIŠKY, Divadlo Na Fidlovačce, Praha 4, od 21.3.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_6354.jpg?mt=1548941402" height="100" name="#caption29" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/jeptisky-6354/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení JEPTIŠKY" width="100"/>
+<div id="caption29" style="display:none;">
+<a href="muzikaly/jeptisky-6354/" title="Info o představení JEPTIŠKY"><img alt="Info o představení JEPTIŠKY" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=6354" title="Zakoupení vstupenek na JEPTIŠKY, Divadlo Na Fidlovačce, Praha 4, od 21.3.2021"><img alt="Zakoupení vstupenek na JEPTIŠKY" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=6354" title="Info o představení JEPTIŠKY">
+<div class="naseTipyPopis">
+<strong>DIVADLO NA FIDLOVAČCE a KOMORNÍ FIDLOVAČKA - kompletní repertoár</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="KAFE U OSMANYHO (Frenštát pod Radhoštěm), Dům kultury Frenštát pod Radhoštěm, 23.3.2022, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16956.jpg?mt=1601473202" height="100" name="#caption30" onclick="window.location='https://vstupenky.ticket-art.cz/show/kafe-u-osmanyho-frenstat-pod-radhostem-16956/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení KAFE U OSMANYHO (Frenštát pod Radhoštěm)" width="100"/>
+<div id="caption30" style="display:none;">
+<a href="show/kafe-u-osmanyho-frenstat-pod-radhostem-16956/" title="Info o představení KAFE U OSMANYHO (Frenštát pod Radhoštěm)"><img alt="Info o představení KAFE U OSMANYHO (Frenštát pod Radhoštěm)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16956" title="Zakoupení vstupenek na KAFE U OSMANYHO (Frenštát pod Radhoštěm), Dům kultury Frenštát pod Radhoštěm, 23.3.2022, 19:00"><img alt="Zakoupení vstupenek na KAFE U OSMANYHO (Frenštát pod Radhoštěm)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16956" title="Info o představení KAFE U OSMANYHO (Frenštát pod Radhoštěm)">
+<div class="naseTipyPopis">
+<strong>KAFE U OSMANYHO - Rýmařov, Vamberk, Žatec, Frenštát pod Radhoštěm</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="KDYŽ SE ZHASNE (Pardubice), KD Hronovická Pardubice, 11.5.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16795.jpg?mt=1592487001" height="100" name="#caption31" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/kdyz-se-zhasne-pardubice-16795/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení KDYŽ SE ZHASNE (Pardubice)" width="100"/>
+<div id="caption31" style="display:none;">
+<a href="cinohry/kdyz-se-zhasne-pardubice-16795/" title="Info o představení KDYŽ SE ZHASNE (Pardubice)"><img alt="Info o představení KDYŽ SE ZHASNE (Pardubice)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16795" title="Zakoupení vstupenek na KDYŽ SE ZHASNE (Pardubice), KD Hronovická Pardubice, 11.5.2021, 19:00"><img alt="Zakoupení vstupenek na KDYŽ SE ZHASNE (Pardubice)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16795" title="Info o představení KDYŽ SE ZHASNE (Pardubice)">
+<div class="naseTipyPopis">
+<strong>KDYŽ SE ZHASNE - 11.5.2021 Pardubice. Mrazivá komedie, která knockoutuje bránice</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="KREYSON + support, Kulturní dům Zliv, 23.10.2021, 21:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17007.jpg?mt=1606134602" height="100" name="#caption32" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/kreyson-support-17007/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení KREYSON + support" width="100"/>
+<div id="caption32" style="display:none;">
+<a href="koncerty-domaci-interpret-/kreyson-support-17007/" title="Info o představení KREYSON + support"><img alt="Info o představení KREYSON + support" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17007" title="Zakoupení vstupenek na KREYSON + support, Kulturní dům Zliv, 23.10.2021, 21:00"><img alt="Zakoupení vstupenek na KREYSON + support" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17007" title="Info o představení KREYSON + support">
+<div class="naseTipyPopis">
+<strong>KREYSON + support - 23.10.2021 Zliv. Koncert české rockové legendy</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.), Dům kultury Frenštát pod Radhoštěm, 6.10.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16276.jpg?mt=1573735202" height="100" name="#caption33" onclick="window.location='https://vstupenky.ticket-art.cz/show/ladislav-spacek-etiketa-neni-veda-frenstat-p-r-16276/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.)" width="100"/>
+<div id="caption33" style="display:none;">
+<a href="show/ladislav-spacek-etiketa-neni-veda-frenstat-p-r-16276/" title="Info o představení LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.)"><img alt="Info o představení LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16276" title="Zakoupení vstupenek na LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.), Dům kultury Frenštát pod Radhoštěm, 6.10.2021, 19:00"><img alt="Zakoupení vstupenek na LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16276" title="Info o představení LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA (Frenštát p. R.)">
+<div class="naseTipyPopis">
+<strong>LADISLAV ŠPAČEK - ETIKETA NENÍ VĚDA - Žamberk, Žatec, Frenštát pod Radhoštěm</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv), Kulturní dům Zliv, 27.11.2021, 20:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17060.jpg?mt=1612440601" height="100" name="#caption34" onclick="window.location='https://vstupenky.ticket-art.cz/show/lukas-pavlasek-kdo-neplace-neni-cech-zliv-17060/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv)" width="100"/>
+<div id="caption34" style="display:none;">
+<a href="show/lukas-pavlasek-kdo-neplace-neni-cech-zliv-17060/" title="Info o představení LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv)"><img alt="Info o představení LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17060" title="Zakoupení vstupenek na LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv), Kulturní dům Zliv, 27.11.2021, 20:00"><img alt="Zakoupení vstupenek na LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17060" title="Info o představení LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! (Zliv)">
+<div class="naseTipyPopis">
+<strong>LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! - 27.11.2021 Zliv. Stand-up</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="MARIAN VOJTKO, Zámek Mělník, 24.7.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16386.jpg?mt=1602767401" height="100" name="#caption35" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/marian-vojtko-16386/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení MARIAN VOJTKO" width="100"/>
+<div id="caption35" style="display:none;">
+<a href="koncerty-domaci-interpret-/marian-vojtko-16386/" title="Info o představení MARIAN VOJTKO"><img alt="Info o představení MARIAN VOJTKO" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16386" title="Zakoupení vstupenek na MARIAN VOJTKO, Zámek Mělník, 24.7.2021, 19:00"><img alt="Zakoupení vstupenek na MARIAN VOJTKO" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16386" title="Info o představení MARIAN VOJTKO">
+<div class="naseTipyPopis">
+<strong>LETNÍ SCÉNA MĚLNÍK - 17. - 25.7.2021 Zámek Mělník. Koncert, činohra, muzikál</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="MERSEY GATHERING, Zahrádka Na Střeláku Brno, 29.5.2021, 14:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16862.jpg?mt=1601894406" height="100" name="#caption36" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/mersey-gathering-16862/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení MERSEY GATHERING" width="100"/>
+<div id="caption36" style="display:none;">
+<a href="koncerty-domaci-interpret-/mersey-gathering-16862/" title="Info o představení MERSEY GATHERING"><img alt="Info o představení MERSEY GATHERING" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16862" title="Zakoupení vstupenek na MERSEY GATHERING, Zahrádka Na Střeláku Brno, 29.5.2021, 14:00"><img alt="Zakoupení vstupenek na MERSEY GATHERING" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16862" title="Info o představení MERSEY GATHERING">
+<div class="naseTipyPopis">
+<strong>MERSEY GATHERING - 29.5.2021 Brno. Bare Escape, Ghost of You, Sinks a další</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="Mistr a Markétka, Divadlo v Dlouhé, Praha 1, od 28.6.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17046.jpg?mt=1610616002" height="100" name="#caption37" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/mistr-a-marketka-17046/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení Mistr a Markétka" width="100"/>
+<div id="caption37" style="display:none;">
+<a href="cinohry/mistr-a-marketka-17046/" title="Info o představení Mistr a Markétka"><img alt="Info o představení Mistr a Markétka" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17046" title="Zakoupení vstupenek na Mistr a Markétka, Divadlo v Dlouhé, Praha 1, od 28.6.2021"><img alt="Zakoupení vstupenek na Mistr a Markétka" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17046" title="Info o představení Mistr a Markétka">
+<div class="naseTipyPopis">
+<strong>DIVADLO V DLOUHÉ Praha - kompletní repertoár v prodeji. Doporučujeme</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra, Kulturní dům Zliv, 20.3.2021, 20:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16882.jpg?mt=1606738802" height="100" name="#caption38" onclick="window.location='https://vstupenky.ticket-art.cz/show/na-stojaka-lukas-pavlasek-ester-kocickova-petr-vydra-16882/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra" width="100"/>
+<div id="caption38" style="display:none;">
+<a href="show/na-stojaka-lukas-pavlasek-ester-kocickova-petr-vydra-16882/" title="Info o představení NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra"><img alt="Info o představení NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16882" title="Zakoupení vstupenek na NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra, Kulturní dům Zliv, 20.3.2021, 20:00"><img alt="Zakoupení vstupenek na NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16882" title="Info o představení NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra">
+<div class="naseTipyPopis">
+<strong>NA STOJÁKA - Lukáš Pavlásek, Ester Kočičková, Petr Vydra - 20.3.2021 Zliv</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="Neviditelná výstava, Novoměstská radnice Praha 2, od 27.2.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_9507.jpg?mt=1521672915" height="100" name="#caption39" onclick="window.location='https://vstupenky.ticket-art.cz/vystavy/neviditelna-vystava-9507/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení Neviditelná výstava" width="100"/>
+<div id="caption39" style="display:none;">
+<a href="vystavy/neviditelna-vystava-9507/" title="Info o představení Neviditelná výstava"><img alt="Info o představení Neviditelná výstava" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=9507" title="Zakoupení vstupenek na Neviditelná výstava, Novoměstská radnice Praha 2, od 27.2.2021"><img alt="Zakoupení vstupenek na Neviditelná výstava" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=9507" title="Info o představení Neviditelná výstava">
+<div class="naseTipyPopis">
+<strong>NEVIDITELNÁ VÝSTAVA - mějte slepou důvěru! Novoměstská radnice Praha</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz), Zámek Slavkov u Brna, od 20.8.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16987.jpg?mt=1605000006" height="100" name="#caption40" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/noc-na-karlstejne-zamek-slavkov-austerlitz-16987/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz)" width="100"/>
+<div id="caption40" style="display:none;">
+<a href="muzikaly/noc-na-karlstejne-zamek-slavkov-austerlitz-16987/" title="Info o představení NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz)"><img alt="Info o představení NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16987" title="Zakoupení vstupenek na NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz), Zámek Slavkov u Brna, od 20.8.2021"><img alt="Zakoupení vstupenek na NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16987" title="Info o představení NOC NA KARLŠTEJNĚ (Zámek Slavkov – Austerlitz)">
+<div class="naseTipyPopis">
+<strong>NOC NA KARLŠTEJNĚ 2021 - Kuks, Mor. Třebová, Slavkov, Hluboká, Krásný Dvůr</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="Osm eur na hodinu (Dolní Benešov), Kulturní dům Dolní Benešov, 30.3.2022, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16899.jpg?mt=1599218401" height="100" name="#caption41" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/osm-eur-na-hodinu-dolni-benesov-16899/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení Osm eur na hodinu (Dolní Benešov)" width="100"/>
+<div id="caption41" style="display:none;">
+<a href="cinohry/osm-eur-na-hodinu-dolni-benesov-16899/" title="Info o představení Osm eur na hodinu (Dolní Benešov)"><img alt="Info o představení Osm eur na hodinu (Dolní Benešov)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16899" title="Zakoupení vstupenek na Osm eur na hodinu (Dolní Benešov), Kulturní dům Dolní Benešov, 30.3.2022, 19:00"><img alt="Zakoupení vstupenek na Osm eur na hodinu (Dolní Benešov)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16899" title="Info o představení Osm eur na hodinu (Dolní Benešov)">
+<div class="naseTipyPopis">
+<strong>OSM EUR NA HODINU - komedie, která se uvádí v osmi městech ČR</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="RICHARD MÜLLER, Slezskoostravský hrad Ostrava, 25.9.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16971.jpg?mt=1603281601" height="100" name="#caption42" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-zahranicni-interpret-/richard-muller-16971/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení RICHARD MÜLLER" width="100"/>
+<div id="caption42" style="display:none;">
+<a href="koncerty-zahranicni-interpret-/richard-muller-16971/" title="Info o představení RICHARD MÜLLER"><img alt="Info o představení RICHARD MÜLLER" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16971" title="Zakoupení vstupenek na RICHARD MÜLLER, Slezskoostravský hrad Ostrava, 25.9.2021, 19:00"><img alt="Zakoupení vstupenek na RICHARD MÜLLER" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16971" title="Info o představení RICHARD MÜLLER">
+<div class="naseTipyPopis">
+<strong>RICHARD MULLER - 25.9.2021 Ostrava. Koncert československé legendy</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="ROBINSON CRUSOE, Divadlo Na Maninách Praha, od 27.2.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16735.jpg?mt=1596631204" height="100" name="#caption43" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/robinson-crusoe-16735/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ROBINSON CRUSOE" width="100"/>
+<div id="caption43" style="display:none;">
+<a href="muzikaly/robinson-crusoe-16735/" title="Info o představení ROBINSON CRUSOE"><img alt="Info o představení ROBINSON CRUSOE" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16735" title="Zakoupení vstupenek na ROBINSON CRUSOE, Divadlo Na Maninách Praha, od 27.2.2021"><img alt="Zakoupení vstupenek na ROBINSON CRUSOE" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16735" title="Info o představení ROBINSON CRUSOE">
+<div class="naseTipyPopis">
+<strong>ROBINSON CRUSOE - nový muzikál v Divadle Na Maninách Praha</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="ROCKOVÉ VELIKONOCE NA BARČE, Klub Barikádníků, Praha, 8.4.2021, 18:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_9497.jpg?mt=1597326002" height="100" name="#caption44" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/rockove-velikonoce-na-barce-9497/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ROCKOVÉ VELIKONOCE NA BARČE" width="100"/>
+<div id="caption44" style="display:none;">
+<a href="koncerty-domaci-interpret-/rockove-velikonoce-na-barce-9497/" title="Info o představení ROCKOVÉ VELIKONOCE NA BARČE"><img alt="Info o představení ROCKOVÉ VELIKONOCE NA BARČE" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=9497" title="Zakoupení vstupenek na ROCKOVÉ VELIKONOCE NA BARČE, Klub Barikádníků, Praha, 8.4.2021, 18:00"><img alt="Zakoupení vstupenek na ROCKOVÉ VELIKONOCE NA BARČE" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=9497" title="Info o představení ROCKOVÉ VELIKONOCE NA BARČE">
+<div class="naseTipyPopis">
+<strong>ROCKOVÉ VELIKONOCE NA BARČE - 8.4.2021 Praha. Aleš Brichta Project, Alkehol...</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="SANDRA, Centrální tenisový kurt Praha 7, 21.5.2022, 20:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16902.jpg?mt=1599577201" height="100" name="#caption45" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-zahranicni-interpret-/sandra-16902/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení SANDRA" width="100"/>
+<div id="caption45" style="display:none;">
+<a href="koncerty-zahranicni-interpret-/sandra-16902/" title="Info o představení SANDRA"><img alt="Info o představení SANDRA" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16902" title="Zakoupení vstupenek na SANDRA, Centrální tenisový kurt Praha 7, 21.5.2022, 20:00"><img alt="Zakoupení vstupenek na SANDRA" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16902" title="Info o představení SANDRA">
+<div class="naseTipyPopis">
+<strong>SANDRA - 21.5.2022 Praha Štvanice. Koncert legendární popové hvězdy</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="SAXANA, Studio DVA divadlo, Praha 1, od 13.3.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_15975.jpg?mt=1562667007" height="100" name="#caption46" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/saxana-15975/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení SAXANA" width="100"/>
+<div id="caption46" style="display:none;">
+<a href="muzikaly/saxana-15975/" title="Info o představení SAXANA"><img alt="Info o představení SAXANA" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=15975" title="Zakoupení vstupenek na SAXANA, Studio DVA divadlo, Praha 1, od 13.3.2021"><img alt="Zakoupení vstupenek na SAXANA" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=15975" title="Info o představení SAXANA">
+<div class="naseTipyPopis">
+<strong>STUDIO DVA divadlo Praha - kompletní program muzikálů a činoher v prodeji</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="Smrt mu sluší, Švandovo divadlo Praha 5, od 25.6.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17035.jpg?mt=1611652202" height="100" name="#caption47" onclick="window.location='https://vstupenky.ticket-art.cz/cinohry/smrt-mu-slusi-17035/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení Smrt mu sluší" width="100"/>
+<div id="caption47" style="display:none;">
+<a href="cinohry/smrt-mu-slusi-17035/" title="Info o představení Smrt mu sluší"><img alt="Info o představení Smrt mu sluší" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17035" title="Zakoupení vstupenek na Smrt mu sluší, Švandovo divadlo Praha 5, od 25.6.2021"><img alt="Zakoupení vstupenek na Smrt mu sluší" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17035" title="Info o představení Smrt mu sluší">
+<div class="naseTipyPopis">
+<strong>ŠVANDOVO DIVADLO Na Smíchově Praha - kompletní repertoár v prodeji</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="SUGAR (Někdo to rád horké), Divadlo Na Fidlovačce, Praha 4, od 20.3.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_13576.jpg?mt=1521672912" height="100" name="#caption48" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/sugar-nekdo-to-rad-horke-13576/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení SUGAR (Někdo to rád horké)" width="100"/>
+<div id="caption48" style="display:none;">
+<a href="muzikaly/sugar-nekdo-to-rad-horke-13576/" title="Info o představení SUGAR (Někdo to rád horké)"><img alt="Info o představení SUGAR (Někdo to rád horké)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=13576" title="Zakoupení vstupenek na SUGAR (Někdo to rád horké), Divadlo Na Fidlovačce, Praha 4, od 20.3.2021"><img alt="Zakoupení vstupenek na SUGAR (Někdo to rád horké)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=13576" title="Info o představení SUGAR (Někdo to rád horké)">
+<div class="naseTipyPopis">
+<strong>DIVADLO NA FIDLOVAČCE Praha - kompletní repertoár v prodeji. Doporučujeme</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="TARZAN, Divadlo Hybernia Praha 1, od 1.10.2021" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_15740.jpg?mt=1555600802" height="100" name="#caption49" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/tarzan-15740/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení TARZAN" width="100"/>
+<div id="caption49" style="display:none;">
+<a href="muzikaly/tarzan-15740/" title="Info o představení TARZAN"><img alt="Info o představení TARZAN" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=15740" title="Zakoupení vstupenek na TARZAN, Divadlo Hybernia Praha 1, od 1.10.2021"><img alt="Zakoupení vstupenek na TARZAN" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=15740" title="Info o představení TARZAN">
+<div class="naseTipyPopis">
+<strong>TARZAN - Divadlo Hybernia Praha. Jeden z nejúspěšnějších muzikálů</strong>
+</div>
+</a>
+</div><div class="clearfix"></div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery, Amfiteátr Mikulov, 15.8.2021, 20:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17029.jpg?mt=1607507401" height="100" name="#caption50" onclick="window.location='https://vstupenky.ticket-art.cz/vazna-hudba/tereza-matlova-a-ester-pavlu-v-ariich-a-duetech-svetove-romanticke-opery-17029/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery" width="100"/>
+<div id="caption50" style="display:none;">
+<a href="vazna-hudba/tereza-matlova-a-ester-pavlu-v-ariich-a-duetech-svetove-romanticke-opery-17029/" title="Info o představení TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery"><img alt="Info o představení TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17029" title="Zakoupení vstupenek na TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery, Amfiteátr Mikulov, 15.8.2021, 20:00"><img alt="Zakoupení vstupenek na TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17029" title="Info o představení TEREZA MÁTLOVÁ A ESTER PAVLŮ v áriích a duetech světové romantické opery">
+<div class="naseTipyPopis">
+<strong>TEREZA MÁTLOVÁ A ESTER PAVLŮ - 15.8.2021 Amfiteátr Mikulov. Světové árie</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+</div>
+<img alt="TŘI MUŠKETÝŘI (Žďár nad Sázavou), Zámek Žďár nad Sázavou, 2.7.2021, 20:30" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_17038.jpg?mt=1609779602" height="100" name="#caption51" onclick="window.location='https://vstupenky.ticket-art.cz/muzikaly/tri-musketyri-zdar-nad-sazavou-17038/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení TŘI MUŠKETÝŘI (Žďár nad Sázavou)" width="100"/>
+<div id="caption51" style="display:none;">
+<a href="muzikaly/tri-musketyri-zdar-nad-sazavou-17038/" title="Info o představení TŘI MUŠKETÝŘI (Žďár nad Sázavou)"><img alt="Info o představení TŘI MUŠKETÝŘI (Žďár nad Sázavou)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=17038" title="Zakoupení vstupenek na TŘI MUŠKETÝŘI (Žďár nad Sázavou), Zámek Žďár nad Sázavou, 2.7.2021, 20:30"><img alt="Zakoupení vstupenek na TŘI MUŠKETÝŘI (Žďár nad Sázavou)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=17038" title="Info o představení TŘI MUŠKETÝŘI (Žďár nad Sázavou)">
+<div class="naseTipyPopis">
+<strong>ČTYŘI MUZIKÁLY na Zámku Žďár nad Sázavou 2. - 4.7.2021</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+<img alt="E-TICKET" src="img/portal/ETICKET.JPG" title="E-TICKET">
+</img></div>
+<div class="obalHandles sms">
+<img alt="SMS-TICKET" src="img/portal/SMS.JPG" title="SMS-TICKET">
+</img></div>
+<img alt="VESELÁ VDOVA, Hudební divadlo Karlín, Praha 8, 3.11.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_15184.jpg?mt=1537964403" height="100" name="#caption52" onclick="window.location='https://vstupenky.ticket-art.cz/operety/vesela-vdova-15184/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení VESELÁ VDOVA" width="100"/>
+<div id="caption52" style="display:none;">
+<a href="operety/vesela-vdova-15184/" title="Info o představení VESELÁ VDOVA"><img alt="Info o představení VESELÁ VDOVA" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=15184" title="Zakoupení vstupenek na VESELÁ VDOVA, Hudební divadlo Karlín, Praha 8, 3.11.2021, 19:00"><img alt="Zakoupení vstupenek na VESELÁ VDOVA" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=15184" title="Info o představení VESELÁ VDOVA">
+<div class="naseTipyPopis">
+<strong>VESELÁ VDOVA - Hudební divadlo Karlín Praha. Slavná opereta F. Lehára</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="ZDENĚK IZER NA PLNÝ COOLE!, Divadlo Gong Praha 9, 19.5.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_12033.jpg?mt=1527088202" height="100" name="#caption53" onclick="window.location='https://vstupenky.ticket-art.cz/show/zdenek-izer-na-plny-coole-12033/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení ZDENĚK IZER NA PLNÝ COOLE!" width="100"/>
+<div id="caption53" style="display:none;">
+<a href="show/zdenek-izer-na-plny-coole-12033/" title="Info o představení ZDENĚK IZER NA PLNÝ COOLE!"><img alt="Info o představení ZDENĚK IZER NA PLNÝ COOLE!" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=12033" title="Zakoupení vstupenek na ZDENĚK IZER NA PLNÝ COOLE!, Divadlo Gong Praha 9, 19.5.2021, 19:00"><img alt="Zakoupení vstupenek na ZDENĚK IZER NA PLNÝ COOLE!" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=12033" title="Info o představení ZDENĚK IZER NA PLNÝ COOLE!">
+<div class="naseTipyPopis">
+<strong>ZDENĚK IZER NA PLNÝ COOLE! - Divadlo Gong Praha. Těžký útok na vaši bránici</strong>
+</div>
+</a>
+</div><div class="tipySeparator"> </div><div class="pauzakObal" style="width:18%">
+<div class="imgInfoKategorie">
+<div class="obalHandles">
+</div>
+<div class="obalHandles sms">
+</div>
+<img alt="4 TENOŘI - MUZIKÁLOVÉ GALA (Praha), Forum Karlín, Praha 8, 11.12.2021, 19:00" class="pauzak" data-src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_16523.jpg?mt=1606220403" height="100" name="#caption54" onclick="window.location='https://vstupenky.ticket-art.cz/koncerty-domaci-interpret-/4-tenori-muzikalove-gala-praha-16523/'" src="https://vstupenky.ticket-art.cz/img/predstaveni_velky/predstaveni_velky_nic.gif?mt=1521672913" title="Info o představení 4 TENOŘI - MUZIKÁLOVÉ GALA (Praha)" width="100"/>
+<div id="caption54" style="display:none;">
+<a href="koncerty-domaci-interpret-/4-tenori-muzikalove-gala-praha-16523/" title="Info o představení 4 TENOŘI - MUZIKÁLOVÉ GALA (Praha)"><img alt="Info o představení 4 TENOŘI - MUZIKÁLOVÉ GALA (Praha)" src="img/portal/icon_info.png"/></a>
+<a href="index.php?pg=hledani&amp;sby=p&amp;id=16523" title="Zakoupení vstupenek na 4 TENOŘI - MUZIKÁLOVÉ GALA (Praha), Forum Karlín, Praha 8, 11.12.2021, 19:00"><img alt="Zakoupení vstupenek na 4 TENOŘI - MUZIKÁLOVÉ GALA (Praha)" src="img/portal/icon_koupit.png"/></a>
+</div>
+</div>
+<a class="naseTipyOdkaz" href="index.php?pg=predstaveni&amp;id=16523" title="Info o představení 4 TENOŘI - MUZIKÁLOVÉ GALA (Praha)">
+<div class="naseTipyPopis">
+<strong>4 TENOŘI - MUZIKÁLOVÉ GALA - 11.12.2021 Praha, 28.1.2021 Zlín</strong>
+</div>
+</a>
+</div><div class="clearfix"></div></div> <br/><div class="strankovaniStred"></div>
+</div>
+</div>
+<!--noindex-->
+<!--googleoff: index-->
+<div class="c3 rightBlock" id="rightBlock">
+<a name="novinky"></a>
+<div class="news">
+<h4 class="first sprite-sipka-news1">NOVĚ V PRODEJI</h4>
+<ul>
+<li class="clearfix">
+<div class="newsDate">11.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13416&amp;nset1=1">TERCHOVSKÉ VIANOCE - 13.12.2021 Obecní dům Praha</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">11.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13414&amp;nset1=1">Muzikály TARZAN, GALILEO a MEFISTO v prodeji do 31.10.2021</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">9.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=9090&amp;nset1=1">ŠVANDOVO DIVADLO Praha 5 - program na červen - srpen v prodeji</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">5.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13412&amp;nset1=1">LUKÁŠ PAVLÁSEK: KDO NEPLÁČE, NENÍ ČECH! - 27.11.2021 Kulturní dům Zliv</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="fLeft w49-9">
+</div>
+<div class="fRight w49-9 textRight">
+<a href="?nset1=2" rel="nofollow" style="font-size:8pt;">Starší &gt;</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="news">
+<h4 class="first sprite-sipka-news">SLEVY + VÝHODNÝ NÁKUP</h4>
+<ul style="display:none">
+<li class="clearfix">
+<div class="newsDate">6.2.2019</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=12209&amp;nset2=1">Ubytování v hotelu Oya*** Praha se slevou 5% pro naše klienty</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="news">
+<h4 class="first sprite-sipka-news">ZMĚNY - ZRUŠENÍ</h4>
+<ul style="display:none">
+<li class="clearfix">
+<div class="newsDate">25.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13424&amp;nset3=1">HANA ZAGOROVÁ ve Stříbře  - původně 2.2.2021 - nový termín 2.2.2022</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">25.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13423&amp;nset3=1">HANA ZAGOROVÁ v Hradci Králové - původně 10.2.2021 - nový termín 15.2.2022</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">25.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13422&amp;nset3=1">LADISLAV ŠPAČEK  Frenštát p. R.  - původně 24.3.2021 - nový termín 6.10.2021</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">25.2.2021</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13421&amp;nset3=1">KAFE U OSMANYHO Rýmařov - přeloženo z 15.4.2021 na 1.3.2022</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="fLeft w49-9">
+</div>
+<div class="fRight w49-9 textRight">
+<a href="?nset3=2" rel="nofollow" style="font-size:8pt;">Starší &gt;</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="news">
+<h4 class="first sprite-sipka-news">TISKOVÉ ZPRÁVY</h4>
+<ul style="display:none">
+<li class="clearfix">
+<div class="newsDate">28.8.2020</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=13187&amp;nset11=1">Prohlášení pražského DIVADLA KALICH divákům</a>
+</div>
+</li>
+<li class="clearfix">
+<div class="newsDate">14.3.2020</div>
+<div class="newsText">
+<a href="index.php?pg=novinka&amp;id=12934&amp;nset11=1">Uzavření obchodního oddělení dle nařízení vlády.</a>
+</div>
+</li>
+</ul>
+</div>
+<div id="bannerKampan">
+<a href="index.php?pg=banner_show_detail&amp;id=2082&amp;uri" title="  LUCIE NA BÍLO">
+<img alt="  LUCIE NA BÍLO" src="https://vstupenky.ticket-art.cz/img/banner/banner_2082.jpg">
+</img></a><a href="index.php?pg=banner_show_detail&amp;id=2028&amp;uri" title="ČAROVNÉ TÓNY MACOCHY">
+<img alt="ČAROVNÉ TÓNY MACOCHY" src="https://vstupenky.ticket-art.cz/img/banner/banner_2028.jpg">
+</img></a><a href="index.php?pg=banner_show_detail&amp;id=2061&amp;uri" title="ROBINSON CRUSOE">
+<img alt="ROBINSON CRUSOE" src="https://vstupenky.ticket-art.cz/img/banner/banner_2061.jpg">
+</img></a><a href="index.php?pg=banner_show_detail&amp;id=2118&amp;uri" title="PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO">
+<img alt="PÁN LEDU - JEVGENIJ &amp; ALEXANDER PLJUŠČENKO" src="https://vstupenky.ticket-art.cz/img/banner/banner_2118.jpg">
+</img></a>
+<script>
+	function showBannerDetail( parOtwBannerId, parOtwBannerURI ) {
+		var width = 800;
+		var height = 800;
+		var path = "index.php?pg=banner_show_detail&id=" + parOtwBannerId + "&uri=" + parOtwBannerURI;
+		/*
+	    window.open( path, "view", "top=" + getTop( height ) + ", left=" + getLeft( width ) + ", height=" + height + ", width=" + width + ", status=no, toolbar=no, menubar=no, location=no, scrollbars=yes, resizable=yes" );
+        */
+        location.href = path;
+	}
+	
+	var bannerHeight0;
+	var bannerWidth0;
+	var bannerTop0;
+	var bannerBottom0;
+	var topHeight0 = 50;
+	var contentMargin = 20;
+
+	function updateBannerPosition() {
+		if(!$("html").hasClass("overlay")) {
+			var contentPageHeight0 = $("#contentPage").outerHeight(true)
+			var contentPageBottom0 = $("#contentPage").offset().top + contentPageHeight0
+			
+			if($("#bannerKampan").css('position') == "static") {
+				bannerTop0 = $("#bannerKampan").position().top + topHeight0 + contentMargin
+				bannerBottom0 = bannerTop0 + bannerHeight0;
+			}
+			
+			if(contentPageHeight0 > $("#rightBlock").outerHeight(true) + contentMargin) { // stranka je delsi nez pravy sloupec, aby toto melo smysl
+				if(bannerHeight0 > $(window).height() - topHeight0) { // banner je vetsi nez okno
+					if(contentPageBottom0 < $(window).scrollTop() + $(window).height()) { // konec praveho sloupce je nize nez zacatek paticky
+						$("#bannerKampan").css('position', 'absolute')
+						$("#bannerKampan").css('top', contentPageHeight0 - bannerHeight0 - contentMargin)
+						$("#bannerKampan").css('bottom', '')
+						$("#bannerKampan").width(bannerWidth0)
+					} else if(bannerBottom0 < $(window).scrollTop() + $(window).height()) { // konec praveho sloupce je vyse nez je odskrolovano
+						$("#bannerKampan").css('position', 'fixed')
+						$("#bannerKampan").css('top', '')
+						$("#bannerKampan").css('bottom', 0)
+						$("#bannerKampan").width(bannerWidth0)
+					} else {
+						$("#bannerKampan").css('position', '')
+						$("#bannerKampan").css('top', '')
+						$("#bannerKampan").css('bottom', '')
+						$("#bannerKampan").css('width', '')
+					}
+				} else { // banner je mensi nez okno
+					if(contentPageBottom0 < $(window).scrollTop() + bannerHeight0 + topHeight0) { // konec praveho sloupce je nize nez zacatek paticky
+						$("#bannerKampan").css('position', 'absolute')
+						$("#bannerKampan").css('top', contentPageHeight0 - bannerHeight0)
+						$("#bannerKampan").css('bottom', '')
+						$("#bannerKampan").width(bannerWidth0)
+					} else if(bannerTop0 < $(window).scrollTop() + topHeight0) { // zacatek praveho sloupce je vyse nez je odskrolovano
+						$("#bannerKampan").css('position', 'fixed')
+						$("#bannerKampan").css('top', topHeight0)
+						$("#bannerKampan").css('bottom', '')
+						$("#bannerKampan").width(bannerWidth0)
+					} else {
+						$("#bannerKampan").css('position', '')
+						$("#bannerKampan").css('top', '')
+						$("#bannerKampan").css('bottom', '')
+						$("#bannerKampan").css('width', '')
+					}
+				}
+			}
+		}
+	}
+
+	$(window).on("load", function(){
+	
+		bannerHeight0 = $("#bannerKampan").outerHeight(true)
+		bannerWidth0 = $("#bannerKampan").width()
+		
+		updateBannerPosition()
+		$(window).scroll(updateBannerPosition)
+	})
+
+	</script>
+</div>
+</div>
+<!--googleon: index-->
+<!--/noindex-->
+</div>
+</div>
+<!--noindex-->
+<!--googleoff: index-->
+<div class="row footer" id="footerPage">
+<div class="layout w980">
+<div class="c7 left">
+<div>
+<span class="title">TICKET ART</span>
+<span class="links">
+<a href="index.php?pg=nabidka" title="Vše o předprodeji vstupenek u TICKET ART">O nás</a> |
+						<a href="index.php?pg=regiony" title="Seznam prodejců s kontaktními údaji">Prodejní místa</a> |
+                                <!--<a href="index.php?pg=napoveda&amp;sekce=spoluprace&amp;id=partner" title="">Spolupráce</a>-->
+<a href="index.php?pg=kontakt" title="Vše podstatné o TICKET ART">Kontakty</a> |
+						<a href="http://tiskovecentrum.ticket-art.cz/www-data/op-ta-cz.pdf" target="_blank" title="Všeobecné obchodní podmínky TICKET ART a pořadatelů akcí">Obchodní podmínky</a> |
+						<a data-popup-element="#partners" data-popup-width="600" href="javascript:">Naši partneři</a>
+</span>
+</div>
+<div>
+<span class="title">NÁPOVĚDA</span>
+<span class="links">
+<a href="index.php?pg=napoveda" title="Postupy, jak nakupovat vstupenky">Pro zákazníky</a> |
+						<a href="index.php?pg=napoveda&amp;sekce=ochrana" title="Ochrana osobních údajů zákazníků, informace o zabezpečovacích principech">Ochrana dat</a> |
+						<a href="index.php?pg=sluzby_login" title="Služby pro pořadatele akcí">Služby</a> |
+						<a href="index.php?pg=kontrola_platby" title="Kontrola stavu platby platební kartou">Stav platby kartou</a>
+</span>
+</div>
+</div>
+<div class="c5 right">
+<div class="social">
+<a class="facebook" href="http://www.facebook.com/ticketart" target="_blank" title="Facebook"></a>
+<a class="twitter" href="http://twitter.com/ticket_art" target="_blank" title="Twitter"></a> <a class="youtube" href="http://www.youtube.com/ticketart" target="_blank" title="YouTube"></a>
+</div>
+<div>
+                            Copyright © 2002 - 2021 <a href="adresa.php?url=www.ticket-art.cz" target="_blank">TICKET ART</a>, <a href="adresa.php?url=www.definity.cz" target="_blank">DEFINITY Systems</a>, v8.011.
+                        </div>
+</div>
+</div>
+<div id="partners" style="display: none">
+<h2 class="nadpisTmaveSedy">Naši partneři</h2>
+<div style="text-align: center;">
+<a href="http://www.ta-production.cz/" target="_blank" title="TICKET ART PRODUCTION"><img alt="TICKET ART PRODUCTION" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/tap.gif"/></a>
+<a href="http://www.hyperinzerce.cz/" target="_blank" title="Hyperinzerce"><img alt="Hyperinzerce" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/hyperinzerce2.gif"/></a>
+<a href="http://www.definity.cz/" target="_blank" title="Definity Systems"><img alt="Definity Systems" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/definity2.gif"/></a>
+<a href="http://www.musical.cz/" target="_blank" title="Český muzikálový server Musical.cz"><img alt="Český muzikálový server Musical.cz" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/musicalcz.gif"/></a>
+<a href="http://www.messenger.cz/" target="_blank" title="Messenger"><img alt="Messenger" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/messenger2.gif"/></a>
+<a href="http://www.zpovednice.cz/" target="_blank" title="Zpovědnice"><img alt="Zpovědnice" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/zpovednice2.gif"/></a>
+<a href="http://www.tv-pohoda.cz/" target="_blank" title="TV Pohoda"><img alt="TV Pohoda" src="https://vstupenky.ticket-art.cz/www-data/partneri-loga/tvpohoda1.gif"/></a>
+</div>
+</div>
+</div>
+<!--googleon: index-->
+<!--/noindex-->
+</div>
+</div>
+<script type="text/javascript">
+        var sessionExpiredReload = false;
+        var lastDtSessionChecked = new Date();
+        var showReloadAlert = false;
+        function checkSession() {
+            var retValue = true;
+            var currDate = new Date();
+            var datesDiff = currDate - lastDtSessionChecked;
+            if(datesDiff > (719940)) {
+                $.ajax({
+                    async: false,
+                    url: 'checkSession.php',
+                    success: function(result) {
+                        if(result == 1) {
+                            if(showReloadAlert) {
+                                showPopupAlert('Platnost relace vypršela, stránka bude přenačtena', function() {
+                                    sessionExpiredReload = true;
+                                    location.reload();
+                                });
+                            }
+                            retValue = false;
+                        } else if(result == 0) {
+                            lastDtSessionChecked = new Date();
+                        }
+                    },
+                    beforeSend: null,
+                    complete: null
+                });
+            }
+
+            return retValue;
+        }
+
+        $(function(){
+            // open/close categories
+            /*$('#mainMenuBlock').click(function(){
+                  $(this).toggleClass('sprite-dvojita-sipka-nahoru').children('#mainMenu').toggle()
+              })*/
+
+            // open/close menu popups
+            /*$('#menu .sipka').click(function(){
+               if (!$(this).parent().find('.podmenu').is(':visible')){
+                  $('.podmenu').hide().parent().find('a').removeClass('sprite-sipka-top-menu1')
+               }
+               $(this).toggleClass('sprite-sipka-top-menu1').parent().find('.podmenu').toggle()
+                  return false;
+              })*/
+
+            // toggle Novinky / Co se deje
+            var defaultSlideSpeed = 'fast'
+            var slideSpeed = defaultSlideSpeed
+            $('.news h4').click(function(){
+                var closed = $(this).hasClass('sprite-sipka-news');
+                $('.news h4').addClass('sprite-sipka-news').removeClass('sprite-sipka-news1');
+                $('.news ul').slideUp(slideSpeed)
+                if(closed) {
+                    $(this).addClass('sprite-sipka-news1').removeClass('sprite-sipka-news');;
+                    $(this).next().slideDown(slideSpeed);
+                }
+            })
+
+            // open Co se deje when paging
+            /*if (location.search.lastIndexOf('nsset=') > location.search.lastIndexOf('nnset=')) {
+               slideSpeed = 0 // toggle immediately
+               $('.news:eq(1) h4').click()
+               slideSpeed = defaultSlideSpeed
+            }*/
+
+            // close popups by clicking outside it
+            $(document).mouseup(function(e) {
+                var popups = [
+                    // [ popup element , toggling element ],
+                    /*[ $('.podmenu1') , $('.podmenu1').prev() ],
+                    [ $('.podmenu2') , $('.podmenu2').prev() ],
+                    [ $('.podmenu3') , $('.podmenu3').prev() ],
+                    [ $('.popWindow.login') , $('#prihlasit') ],
+                    [ $('#mainMenu') , $('#mainMenuBlock') ],*/
+                    [ $('.zahlavi-pravy-blok.rozsirene-vyhl, #ui-datepicker-div, #popupWindow') , $('.search-icon.rozsirene-vyhl') ]
+                ]
+                for (var i = 0; i < popups.length; i++) {
+                    if (popups[i][0].has(e.target).length === 0 && (popups[i][0].is(':visible') && popups[i][0].css("visibility") != "hidden") && !popups[i][1].is(':hover')) {
+                        popups[i][1].click()
+                        /*if(popups[i][0].is(':visible')) { // kvuli stavovemu chovani prihlaseni - obnoveni hesla
+                            popups[i][1].click()
+                        }*/
+                    }
+                }
+            })
+
+            //open/close advanced search
+            $('#advancedSearchHeader').click(function(){
+                $('#advancedSearch').toggle();
+            })
+
+            setInterval(checkSession, 720000);
+
+            //setup ajax
+            $.ajaxSetup({
+                beforeSend: function() {
+                    var spinner = $('#spinner');
+                    if(spinner.is(":visible")) {
+                        spinner.addClass("keepVisible");
+                    } else {
+                        spinner.show();
+                    }
+                    if(!checkSession()) {
+                        xhr.abort();
+                    }
+                },
+                complete:function() {
+                    var spinner = $('#spinner');
+                    if(spinner.hasClass("keepVisible")) {
+                        spinner.removeClass("keepVisible");
+                    } else {
+                        setTimeout(function(){$('#spinner').hide()},50);
+                    }
+                }
+            });
+
+            //naseptavac
+            $("#fulltext").autocomplete({
+                source: "xmlrpc.php?controller=searchFulltext",
+                appendTo: ".zahlavi-blok.vyhl",
+                minLength: 2,
+                position: {my: "top-right", at: "top-right", of: ".zahlavi-blok.vyhl"},
+                select: function( event, ui ) {
+                    $( "#fulltext" ).val(ui.item.value);
+                    $( "#fulltextType" ).val(ui.item.type);
+                    $( "form[name=formFulltext]" ).submit();
+                    return false;
+                },
+                open: function( event, ui ) {
+                    clearTimeout(hideBlokTimeout);
+                    var blok = $("#headerPage .zahlavi-blok.vyhl");
+                    $("#headerPage .zahlavi-blok:not(.vyhl)").css("visibility", "hidden");
+                    blok.css("visibility", "visible");
+                }
+            });
+
+            $("#fulltext").data("ui-autocomplete")._renderMenu = function( ul, items ) {
+                ul.removeClass();
+                ul.addClass("zahlavi-autocomplete")
+                var that = this;
+                $.each( items, function( index, item ) {
+                    that._renderItemData( ul, item );
+                });
+            }
+
+            $("#fulltext").data("ui-autocomplete")._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                    .removeClass()
+                    .append( "<a class='sipka'>" + item.label + "</a>")
+                    .appendTo( ul );
+            };
+
+                        // odkaz na pozadi
+            $("html").click(function(e) {
+                if ($(e.target).is("html, div.container") && e.pageY < $("#footerPage").offset().top && Math.abs($("html").width() - 2 * e.pageX) > 1024 /* page width */) {
+                    location.href = 'https://vstupenky.ticket-art.cz/index.php?pg=banner_show_detail&id=2036&uri';
+                }
+            })
+            
+            $(window).scroll(function() {
+                if(!$("html").hasClass("overlay")) {
+                    $(".main").toggleClass("scrolled", $(window).scrollTop() > 0);
+                }
+            });
+
+            var hideBlokTimeout;
+
+            $(".search-icon.rozsirene-vyhl").click(function() {
+                var blok = $("#headerPage .zahlavi-blok.rozsirene-vyhl");
+                if(blok.css("visibility") === "visible") {
+                    blok.css("visibility", "hidden");
+                } else {
+                    clearTimeout(hideBlokTimeout);
+                    $("#headerPage .zahlavi-blok:not(.rozsirene-vyhl)").css("visibility", "hidden");
+                    blok.css("visibility", "visible");
+                }
+                return false;
+            });
+
+            $("#headerPage .zahlavi-menu").hover(function() {
+                var type = $(this).data("type");
+                clearTimeout(hideBlokTimeout);
+                var blok = $("#headerPage .zahlavi-blok." + type);
+                $("#headerPage .zahlavi-blok:not(." + type +")").css("visibility", "hidden");
+                blok.css("visibility", "visible");
+            }, function() {
+                var type = $(this).data("type");
+                hideBlokTimeout = setTimeout(function() {
+                    var blok = $("#headerPage .zahlavi-blok." + type);
+                    blok.css("visibility", "hidden");
+                }, 500);
+            });
+
+            $("#headerPage .zahlavi-blok:not(.vyhl, .rozsirene-vyhl)").hover(function() {
+                clearTimeout(hideBlokTimeout);
+            }, function() {
+                var blok = $(this);
+                if(blok.find(":focus").length === 0) {
+                    hideBlokTimeout = setTimeout(function() {
+                        blok.css("visibility", "hidden");
+                    }, 500);
+                }
+            });
+        })
+
+        function setCategory(name) {
+            $("#mainMenuBlock").text(name);
+        }
+        $(window).on("load", function(){
+            setTimeout(function() {
+                $("#bannerKampan > a > img, #dominantChanger > ul > li > a > img").each(function() {
+                    if(!$(this).is(":visible")) {
+                        $("#adblock-info").show();
+                        return false;
+                    }
+                });
+            }, 500);
+        })
+    </script>
+<!--noindex-->
+<!--googleoff: index-->
+<div id="cookieBar">
+            Při poskytování služeb nám pomáhají soubory cookie. Používáním našich služeb vyjadřujete souhlas s naším používáním souborů cookie. <a href="https://www.google.com/policies/technologies/cookies/" target="_blank">Další informace</a> <a class="OK" href="#">OK</a>
+</div>
+<!--googleon: index-->
+<!--/noindex-->
+<div id="overlay"></div>
+<div id="popupWindow">
+<a class="close" href="#"><img alt="" class="icon" src="https://vstupenky.ticket-art.cz/img/portal/close.png"/></a>
+<div class="content"></div>
+<div class="popup-actions actions"><button class="close buttonDokoncit">OK</button></div>
+<div class="confirm-actions actions">
+<button class="yes buttonDokoncit">OK</button>
+<button class="no buttonDokoncit">Zrušit</button>
+</div>
+</div>
+<!-- Facebook Pixel Code -->
+<script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                        fbq('init', '761590363982265');
+            fbq('track', 'PageView');
+                        fbq('init', '381804738876018');
+            fbq('track', 'PageView');
+                    </script>
+<noscript>
+<img height="1" src="https://www.facebook.com/tr?id=761590363982265&amp;ev=PageView&amp;noscript=1" style="display:none" width="1">
+<img height="1" src="https://www.facebook.com/tr?id=381804738876018&amp;ev=PageView&amp;noscript=1" style="display:none" width="1">
+</img></img></noscript>
+<!-- End Facebook Pixel Code -->
+</body>
+</html>

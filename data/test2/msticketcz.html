@@ -1,0 +1,2828 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Vstupenky v mobilu | smsticket</title>
+<meta content="on" http-equiv="cleartype"/>
+<meta content="no-cache" http-equiv="cache-control"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="True" name="HandheldFriendly"/>
+<meta content="320" name="MobileOptimized"/>
+<meta content="telephone=no" name="format-detection"/>
+<link href="/static/icons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="/static/icons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+<link href="/static/icons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/static/icons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/static/icons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/static/icons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/static/icons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/static/icons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/static/icons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/static/icons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/static/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/static/icons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/static/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#ffffff" name="msapplication-TileColor"/>
+<meta content="/static/icons/ms-icon-144x144.png" name="msapplication-TileImage"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="Nejjednodušší cesta ke vstupenkám. Jednoduchý a přehledný on-line nákup. Výběr akcí z celé ČR." name="description">
+<link href="https://www.smsticket.cz/" rel="canonical">
+<!-- CSS minimal -->
+<link href="/static/styles/minimal?v=VjExEPxxKRQQPX4mPs5QskxlBXYq7sqW4Pn2TPZzDmM1" media="all" rel="stylesheet"/>
+<!-- CSS mobile -->
+<link href="/static/styles/mobile?v=76qsjSSdboHktGho0NAq4I3iCMKhHZNYn5A32GjxYIA1" media="screen and (max-width: 979px)" rel="stylesheet"/>
+<!-- CSS desktop -->
+<link href="/static/styles/standard?v=uUPWSP8jkfXGeR1vRq0hBKCThdw8VAK7iWOjpbZehAk1" media="screen and (min-width: 980px)" rel="stylesheet"/>
+<!-- CSS wide -->
+<link href="/static/styles/wide?v=O6V0e2vRH9vmXvE9JPygH56dWpcSXbZFVRUJgae2kaw1" media="screen and (min-width: 1201px)" rel="stylesheet"/>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1577785652291664');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" src="https://www.facebook.com/tr?id=1577785652291664&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
+<!-- CSS FOR IE8 AND OLDER -->
+<!--[if lte IE 8]>
+		<link rel="stylesheet" href="/static/styles/standard?v=uUPWSP8jkfXGeR1vRq0hBKCThdw8VAK7iWOjpbZehAk1">
+		<link rel="stylesheet" href="/static/styles/ie-old?v=gQeFJkRmlv-8GTN0--2WtfjJQnPgit2-mAyem6aMYCo1">
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	<![endif]-->
+<script src="/static/js/modernizr?v=M58ssb0ip5odQ4LlZ35jyfM_Pce_jexcVIerPVE8XU81"></script>
+<script>
+        window.smsticket = window.smsticket || {};
+        window.smsticket.settings = window.smsticket.settings || {};
+        window.smsticket.settings.production = true;
+
+        if ( smsticket.settings.production || !window.console ) {
+            smsticket.console = window.console;
+            window.log = function () { };
+            window.error = function () { };
+            window.warn = function () { };
+            window.trace = function () { };
+        }
+    </script>
+</link></meta></head>
+<body class="no-js" data-loader-text="Nahrávám">
+<div id="wrapper">
+<div class="fullScreen">
+<div id="header">
+<div class="center">
+<a class="logo" href="/">
+<span>smsticket</span><i></i>
+</a>
+<div class="menuWrapper">
+<a class="menuTrigger" href="#" style="display: none;">Menu</a>
+<ul class="menu">
+<li>
+<a class="" href="/jak-to-funguje">Jak to funguje</a>
+</li>
+<li>
+<a class="" href="/pro-poradatele">Pro pořadatele</a>
+</li>
+<li>
+<a class="" href="/prodejni-mista">Prodejní místa</a>
+</li>
+</ul>
+<div id="mobile-dropmenu">
+<div class="loginForm">
+<form action="/muj/facebook/connect?returnUrl=%2F&amp;sourceForm=header" class="facebook" method="post"><input name="__RequestVerificationToken" type="hidden" value="EkLL7Uk7fkR8kt-F4p8yq354JT6TnINLI5IgSPZPl_JMZg6pYhN6ZxtLb6nJxMbWhQo_Kf_k2ZnBwPhj6bX8PRLtAoY1"/> <div class="formRow noIndent">
+<div class="formElement">
+<button class="fbConnect" type="submit"><i></i>Přes Facebook</button>
+</div>
+</div>
+</form>
+<p class="linethrough">nebo přes účet<i></i><em></em></p>
+<form action="/account/login" class="internal" method="post"><input name="__RequestVerificationToken" type="hidden" value="s4SAK6T4TmxtgGo0o0BFtNQqLYm5BTyR7iOdaG0obSk-wfSb-Cw_68xPcTvV9qNtIhVfMbraRAXnJZBS9zEzyzAIzmc1"/><input id="FanReturnUrl" name="FanReturnUrl" type="hidden" value="/"/> <div class="formRow">
+<div class="formElement smallest">
+<input data-val="true" data-val-email="Zadej email" data-val-required="Zadej email" id="LoginEmail" name="LoginEmail" placeholder="Email" type="text" value=""/>
+<span class="field-validation-valid error left" data-valmsg-for="LoginEmail" data-valmsg-replace="true"></span>
+</div>
+</div>
+<div class="formRow">
+<div class="formElement smallest">
+<input data-val="true" data-val-length="Minimální délka hesla je {0} znaků" data-val-length-max="50" data-val-length-min="5" data-val-required="Zadej heslo" id="Password" name="Password" placeholder="Heslo" type="password"/>
+<span class="field-validation-valid error left" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+</div>
+</div>
+<div class="formRow">
+<input type="submit" value="Přihlásit se"/>
+</div>
+<a class="forgotPass" href="/zapomenute-heslo">Zapomněl jsi heslo?</a></form>
+</div>
+<ul class="loggedUserOptions">
+<li>
+<a class="" href="/muj/ucet/registrace">Zaregistrovat</a>
+</li>
+<li class="showLoginForm">
+<a href="#nogo">Přihlásit</a>
+</li>
+<li class="language">
+<form action="/jazyk" method="post"> <input name="language" type="hidden" value="en">
+<input name="returnUrl" type="hidden" value="/"/>
+<button class="link short" type="submit">En</button>
+<button class="link long" type="submit">English</button>
+</input></form>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden" id="mainNotification">
+</div>
+<div class="content homepage">
+<div class="linePromo notice">
+<p><span class="part">Přesunuté a zrušené akce</span> <span class="separator"> </span> <span class="part">informace <a href="https://blog.smsticket.cz/aktualni-informace-ohledne-akci/" target="_blank">na našem blogu</a></span></p>
+</div>
+<div class="promoActions" id="promoSlider">
+<div class="items" id="scroller">
+<div class="item" style="background-image: url('/cdn/events/2021/24128/210-90d036147f1044e9807c3c5bfd145aad.jpg'); background-color: #462000;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/vstupenky/24128-wektor-festival">
+<img alt="Wektor Festival" src="/cdn/events/2021/24128/220-758e6571d3af4ed6bee63e79247b5ba5.jpg" title="Wektor Festival"/>
+</a>
+<span class="text">
+<strong><a href="/vstupenky/24128-wektor-festival">Wektor Festival</a></strong><br/>
+<span>
+pátek <span class="startDate literal">11. června</span><span class="startDate numeric">11.6.</span> <br>
+										Dolní oblast Vítkovice, Ostrava
+									</br></span>
+</span>
+</div>
+</div>
+</div>
+<div class="item" style="background-image: url('/cdn/events/2020/22785/210-367dcae938fe4deeb9b2883721266ce8.jpg'); background-color: #317A71;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/vstupenky/22785-mig-21">
+<img alt="Mig 21 " src="/cdn/events/2020/22785/220-1445323f27564f5eb3bd62695609ab3e.jpg" title="Mig 21 "/>
+</a>
+<span class="text">
+<strong><a href="/vstupenky/22785-mig-21">Mig 21 </a></strong><br/>
+<span>
+čtvrtek <span class="startDate literal">10. června</span><span class="startDate numeric">10.6.</span> <br>
+										Hrad Špilberk - Hlavní Nádvoří, Brno
+									</br></span>
+</span>
+</div>
+</div>
+</div>
+<div class="item" style="background-image: url('/cdn/events/2020/23612/210-fda71baf7c334c7ca496387b3a6d584f.jpg'); background-color: #FC4B00;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/vstupenky/23612-downtown-fest-dacice-2021">
+<img alt="DOWNTOWN Fest Dačice 2021" src="/cdn/events/2020/23612/220-4ec4a2155fc4477fbdaf4064f758151e.jpg" title="DOWNTOWN Fest Dačice 2021"/>
+</a>
+<span class="text">
+<strong><a href="/vstupenky/23612-downtown-fest-dacice-2021">DOWNTOWN Fest Dačice 2021</a></strong><br/>
+<span>
+sobota <span class="startDate literal">5. června</span><span class="startDate numeric">5.6.</span> <br>
+										Letní scéna zámeckého parku, Dačice
+									</br></span>
+</span>
+</div>
+</div>
+</div>
+<div class="item" style="background-image: url('/cdn/groups/2021/400/210-e0425829734f4835a45d48af6b83fa6e.jpg'); background-color: #A28074;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/skupiny/400-nedele-na-skalaku">
+<img alt="Neděle na Skaláku" src="/cdn/groups/2021/400/220-b04f5b45a47a4937a4a8a12cbc543e86.jpg" title="Neděle na Skaláku"/>
+</a>
+<span class="text">
+<strong><a href="/skupiny/400-nedele-na-skalaku">Neděle na Skaláku</a></strong><br/>
+<span>
+<span class="startDate literal">18. července</span><span class="startDate numeric">18.7.</span>											-
+<span class="startDate literal">8. srpna</span><span class="startDate numeric">8.8.</span>
+</span>
+</span>
+</div>
+</div>
+</div>
+<div class="item" style="background-image: url('/cdn/groups/2020/397/210-cd772e8ff17e4485a30af8cfc404d493.jpg'); background-color: #926256;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/skupiny/397-arakain-a-lucie-bila-koncert-pod-hvezdami">
+<img alt="Arakain a Lucie Bílá - Koncert pod hvězdami" src="/cdn/groups/2020/397/220-57ce4b9c11cc4cbb8f0ec3a54ecab8a3.jpg" title="Arakain a Lucie Bílá - Koncert pod hvězdami"/>
+</a>
+<span class="text">
+<strong><a href="/skupiny/397-arakain-a-lucie-bila-koncert-pod-hvezdami">Arakain a Lucie Bílá - Koncert pod hvězdami</a></strong><br/>
+<span>
+<span class="startDate literal">23. června</span><span class="startDate numeric">23.6.</span>											-
+<span class="startDate literal">22. července</span><span class="startDate numeric">22.7.</span>
+</span>
+</span>
+</div>
+</div>
+</div>
+<div class="item" style="background-image: url('/cdn/events/2021/24165/210-67eb91ce5d7e47cd89a7edd27e853986.jpg'); background-color: #656565;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/vstupenky/24165-rock-majales-2021">
+<img alt="ROCK MAJÁLES 2021" src="/cdn/events/2021/24165/220-5b5ccb8468d847338a3ded97b10c1c89.jpg" title="ROCK MAJÁLES 2021"/>
+</a>
+<span class="text">
+<strong><a href="/vstupenky/24165-rock-majales-2021">ROCK MAJÁLES 2021</a></strong><br/>
+<span>
+sobota <span class="startDate literal">29. května</span><span class="startDate numeric">29.5.</span> <br>
+										Sportovní ovál za Lužánkami, Bystřice nad Pernštejnem
+									</br></span>
+</span>
+</div>
+</div>
+</div>
+<div class="item" style="background-image: url('/cdn/events/2021/24132/210-79a4d35f729544469cba59a9417c0752.jpg'); background-color: #CCFF66;">
+<div class="inner-item">
+<div class="center">
+<a class="poster" href="/vstupenky/24132-festival-kolem-sveta-online-unor">
+<img alt="Festival KOLEM SVĚTA - ONLINE - ÚNOR" src="/cdn/events/2021/24132/220-9de11ba061be4a05915ffb900ef0c152.jpg" title="Festival KOLEM SVĚTA - ONLINE - ÚNOR"/>
+</a>
+<span class="text">
+<strong><a href="/vstupenky/24132-festival-kolem-sveta-online-unor">Festival KOLEM SVĚTA - ONLINE - ÚNOR</a></strong><br/>
+<span>
+<span class="startDate literal">pátek 29. ledna – 28. února</span><span class="startDate numeric">29.1. – 28.2.</span> <br>
+										Kolem Světa, Online
+									</br></span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<ul class="navig"></ul>
+</div>
+<div class="actionSearch">
+<div class="center">
+<div class="search" id="filter">
+<p>
+<input autocomplete="off" class="query" id="bigSearch" placeholder="Hledej vstupenky. Napiš kam, na co, nebo na koho." type="text"/>
+<input class="submit" src="/static/images/search-ico.png" type="image"/>
+<a class="rollExpand expand" data-expand-element=".expandedSearch" data-text-after="Skrýt filtr" data-text-before="Zobrazit filtr" href="#nogo">
+						Zobrazit filtr
+					</a>
+</p>
+<div class="expandedSearch rollExpandContent">
+<p>
+<select class="city" id="ListModel_FilterCitySelected" name="ListModel.FilterCitySelected"><option value="">Místo</option>
+<option value="1">Praha</option>
+<option value="2">Brno</option>
+<option value="4">Ostrava</option>
+<option value="5">Olomouc</option>
+<option value="9">Plzeň</option>
+</select>
+<select class="term" id="selTerm" name="selTerm">
+<option value="">Termín</option>
+<option value="today">Dnes</option>
+<option value="tomorrow">Zítra</option>
+<option value="this_week">Tento týden</option>
+<option value="next_week">Příští týden</option>
+<option value="this_month">Tento měsíc</option>
+<option value="next_month">Příští měsíc</option>
+</select>
+<select class="genre" id="ListModel_FilterGenreSelected" name="ListModel.FilterGenreSelected"><option value="">Žánr</option>
+<option value="44">Online</option>
+<option value="31">Rock</option>
+<option value="32">Pop</option>
+<option value="33">Punk</option>
+<option value="1">Hudba</option>
+<option value="14">Metal / HC</option>
+<option value="15">Hip Hop / R&amp;B</option>
+<option value="16">World music / Ethno / Folk</option>
+<option value="17">Elektronika</option>
+<option value="18">Jazz / Blues / Klasika</option>
+<option value="38">Spirituální</option>
+<option value="28">Party</option>
+<option value="30">Festival</option>
+<option value="10">Divadlo</option>
+<option value="11">Kino</option>
+<option value="22">Výstavy</option>
+<option value="23">Přednáška / Konference</option>
+<option value="24">Byznys</option>
+<option value="25">Sport</option>
+<option value="26">Jídlo / Nápoje</option>
+<option value="27">Umění</option>
+<option value="34">Tanec</option>
+<option value="35">Ples</option>
+<option value="36">Pro děti</option>
+<option value="37">Workshop</option>
+<option value="39">Osobní rozvoj</option>
+<option value="40">Cestování</option>
+<option value="41">Design</option>
+<option value="42">Stand-up</option>
+<option value="43">Zábavní park</option>
+</select>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="actionList">
+<div class="center">
+<div class="list" id="list">
+<div class="chapter page1" data-page="1">
+<a class="item" data-id="19002" href="/vstupenky/21458-9-sezona-bacha-na-mozarta">
+<img alt="9. sezóna Bacha na Mozarta!" class="delayed" data-src="/cdn/events/2020/21458/320-606d29f123c941108f40c6192078a92b.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>9. sezóna Bacha na Mozarta!</strong>
+<span class="date">
+24.9.2020 – 10.6.2021                                </span>
+<br>
+<span class="place">Besední dům, Brno</span>
+</br></span>
+<span class="tickets">
+                                Vstupenky
+                                <br>
+                                od
+                                <strong>1 200</strong> Kč
+                                <br/>
+                                do
+                                <strong>2 200</strong> Kč
+                            </br></span>
+</span>
+</a>
+<a class="item" data-id="20985" href="/vstupenky/23674-jiri-kovanda-karel-adamus-tomas-absolon">
+<img alt="Jiří Kovanda / Karel Adamus / Tomáš Absolon" class="delayed" data-src="/cdn/events/2020/23674/320-066f3fe05fc94eb381b414eb3cbf3e3f.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Jiří Kovanda / Karel Adamus / Tomáš Absolon</strong>
+<span class="date">
+9.10.2020 od 11:00 – 10.4.2021                                </span>
+<br/>
+<span class="place">Fait Gallery, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>30</strong> Kč
+                                <br/>
+                                do
+                                <strong>180</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17252" href="/skupiny/347-pokacovo-jaro-2020">
+<span class="multipleImg">
+<img alt="Pokáčovo jaro 2020" class="delayed" data-src="/cdn/groups/2019/347/320-d247a18104a345fea9b2f4ed1791252c.png"/>
+<img alt="Pokáčovo jaro 2020" class="img2 delayed" data-src="/cdn/groups/2019/347/320-d247a18104a345fea9b2f4ed1791252c.png"/>
+<img alt="Pokáčovo jaro 2020" class="img3 delayed" data-src="/cdn/groups/2019/347/320-d247a18104a345fea9b2f4ed1791252c.png"/>
+</span>
+<span class="desc">
+<span class="text">
+<strong>Pokáčovo jaro 2020</strong>
+<span class="date">
+12.10.2020 od 20:00 – 10.6.2021                                </span>
+<br/>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>350</strong> Kč
+                                <br/>
+                                do
+                                <strong>450</strong>
+</span>
+</span>
+</a>
+<a class="item" data-id="21040" href="/vstupenky/23758-konference-zeny-v-byznysu-online">
+<img alt="Konference Ženy v Byznysu Online" class="delayed" data-src="/cdn/events/2020/23758/320-c598f6d93d5c4b759860f67aaa7867a6.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Konference Ženy v Byznysu Online</strong>
+<span class="date">
+17.10.2020 od 20:00 – 31.12.2021                                </span>
+<br/>
+<span class="place">Streamio, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>780</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21028" href="/vstupenky/23737-pavel-moric-vztahy">
+<img alt="Pavel Moric: Vztahy" class="delayed" data-src="/cdn/events/2020/23737/320-150b3b94b86e49b18ef95d60ecc56749.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Pavel Moric: Vztahy</strong>
+<span class="date">
+21.10.2020 od 18:00 – 31.3.2021                                </span>
+<br/>
+<span class="place">Pavelmoric.com, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>1 210</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21157" href="/vstupenky/23881-online-afrika-pavel-svoboda-zaznam-prednasky">
+<img alt="ONLINE: Afrika! - Pavel Svoboda (záznam přednášky)" class="delayed" data-src="/cdn/events/2020/23881/320-40277aa6fa604dacb4b3617d9d91e302.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Afrika! - Pavel Svoboda (záznam přednášky)</strong>
+<span class="date">
+11.11.2020 od 14:00 – 28.2.2021                                </span>
+<br/>
+<span class="place">ONLINE z Café Práh, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>100</strong> Kč
+                                <br/>
+                                do
+                                <strong>200</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21165" href="/vstupenky/23899-zaznam-z-konference-duse-mamy">
+<img alt="Záznam z konference Duše mámy" class="delayed" data-src="/cdn/events/2020/23899/320-24090af0e0ce4308a7a188704e675654.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Záznam z konference Duše mámy</strong>
+<span class="date">
+17.11.2020 od 9:00 – 31.1.2021                                </span>
+<br/>
+<span class="place">www.dusemamy.cz, Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>250</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20588" href="/skupiny/392-pokacovo-podzim-2021">
+<span class="multipleImg">
+<img alt="Pokáčovo podzim 2021" class="delayed" data-src="/cdn/groups/2020/392/320-61b57bb729c641f68f18cca325c78be6.png"/>
+<img alt="Pokáčovo podzim 2021" class="img2 delayed" data-src="/cdn/groups/2020/392/320-61b57bb729c641f68f18cca325c78be6.png"/>
+<img alt="Pokáčovo podzim 2021" class="img3 delayed" data-src="/cdn/groups/2020/392/320-61b57bb729c641f68f18cca325c78be6.png"/>
+</span>
+<span class="desc">
+<span class="text">
+<strong>Pokáčovo podzim 2021</strong>
+<span class="date">
+4.12.2020 od 20:00 – 11.12.2021                                </span>
+<br/>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>390</strong> Kč
+                                <br/>
+                                do
+                                <strong>415</strong>
+</span>
+</span>
+</a>
+<a class="item" data-id="21289" href="/vstupenky/24045-online-barma-pavel-svoboda-zaznam-prednasky">
+<img alt="ONLINE: BARMA - Pavel Svoboda (záznam přednášky)" class="delayed" data-src="/cdn/events/2020/24045/320-0015a12b3eaf49559bf9940cbe41c8ca.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: BARMA - Pavel Svoboda (záznam přednášky)</strong>
+<span class="date">
+11.12.2020 od 0:00 – 30.6.2021                                </span>
+<br/>
+<span class="place">ONLINE z Café Práh, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>100</strong> Kč
+                                <br/>
+                                do
+                                <strong>200</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21345" href="/vstupenky/24114-23-filmovych-melodii-videokoncert">
+<img alt="23 filmových melodií - videokoncert" class="delayed" data-src="/cdn/events/2021/24114/320-61ad34cad04249e594883046a4309f0c.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>23 filmových melodií - videokoncert</strong>
+<span class="date">
+19. ledna od 9:00 – 31.3.                                </span>
+<br/>
+<span class="place">Streamio, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>199</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21390" href="/vstupenky/24172-matterhorn-co-mi-vystup-na-treti-pokus-rekl-o-strachu">
+<img alt="Matterhorn: Co mi výstup na třetí pokus řekl o strachu?" class="delayed" data-src="/cdn/events/2021/24172/320-56d7ced9f8ed493396011223755ec78d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Matterhorn: Co mi výstup na třetí pokus řekl o strachu?</strong>
+<span class="date">
+21.1.2021 od 19:00 – 1.1.2022                                </span>
+<br/>
+<span class="place">Streamio, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>80</strong> Kč
+                                <br/>
+                                do
+                                <strong>200</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21395" href="/vstupenky/24200-zimni-hra-hod-si-kostkou">
+<img alt="Zimní hra - Hoď si kostkou" class="delayed" data-src="/cdn/events/2021/24200/320-0d1675648cf3454893936a560ab21839.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Zimní hra - Hoď si kostkou</strong>
+<span class="date">
+29. ledna od 16:00 – 31.3.                                </span>
+<br/>
+<span class="place">Pohádková zahrada, Pardubice</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>60</strong> Kč
+                                <br/>
+                                do
+                                <strong>100</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21396" href="/vstupenky/24201-zimni-hra-zkouska-mrstnosti">
+<img alt="Zimní hra - Zkouška mrštnosti" class="delayed" data-src="/cdn/events/2021/24201/320-3ee3b4867c174e1fac9632f45d3c20b2.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Zimní hra - Zkouška mrštnosti</strong>
+<span class="date">
+29. ledna od 16:00                                </span>
+<br/>
+<span class="place">Hřiště Dukla, Pardubice</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>60</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21397" href="/vstupenky/24199-zimni-hra-po-stopach-farmare">
+<img alt="Zimní hra - Po stopách farmáře" class="delayed" data-src="/cdn/events/2021/24199/320-1a95246a73284c8cab4b47f6f7192cf6.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Zimní hra - Po stopách farmáře</strong>
+<span class="date">
+29. ledna od 16:00 – 31.3.                                </span>
+<br/>
+<span class="place">Farma Apolenka, Pardubice</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>50</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21403" href="/vstupenky/24198-zimni-hra-zazimovani-zviratek">
+<img alt="Zimní hra - Zazimování zvířátek" class="delayed" data-src="/cdn/events/2021/24198/320-5ce97850d8ca4ca79e621102994aa5ac.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Zimní hra - Zazimování zvířátek</strong>
+<span class="date">
+29. ledna od 16:00                                </span>
+<br/>
+<span class="place">Spojilský les, Pardubice</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>150</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21382" href="/vstupenky/24132-festival-kolem-sveta-online-unor">
+<img alt="Festival KOLEM SVĚTA - ONLINE - ÚNOR" class="delayed" data-src="/cdn/events/2021/24132/320-bdc265e6256c41d09ed2233bd9e91015.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Festival KOLEM SVĚTA - ONLINE - ÚNOR</strong>
+<span class="date">
+29. ledna od 20:00 – 28.2.                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>990</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20629" href="/skupiny/393-cernobyl-spici-peklo">
+<span class="multipleImg">
+<img alt="Černobyl – spící peklo" class="delayed" data-src="/cdn/groups/2020/393/320-fd79758316604d7b96d6167f1656a707.png"/>
+<img alt="Černobyl – spící peklo" class="img2 delayed" data-src="/cdn/groups/2020/393/320-fd79758316604d7b96d6167f1656a707.png"/>
+<img alt="Černobyl – spící peklo" class="img3 delayed" data-src="/cdn/groups/2020/393/320-fd79758316604d7b96d6167f1656a707.png"/>
+</span>
+<span class="desc">
+<span class="text">
+<strong>Černobyl – spící peklo</strong>
+<span class="date">
+9. února od 18:00 – 21.9.                                </span>
+<br/>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>100</strong> Kč
+                                <br/>
+                                do
+                                <strong>130</strong>
+</span>
+</span>
+</a>
+<a class="item" data-id="21506" href="/vstupenky/24283-e-voucher-na-unikovou-hru-qg">
+<img alt="e-Voucher na Únikovou hru QG" class="delayed" data-src="/cdn/events/2021/24283/320-cbb553af9bd34d40800e73c685855bbc.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>e-Voucher na Únikovou hru QG</strong>
+<span class="date">
+17. února od 10:00 – 31.12.                                </span>
+<br/>
+<span class="place">Quest Games, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>1 390</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21498" href="/vstupenky/24292-poeticka-improshow">
+<span class="info saleNotStartedYet">Brzy v prodeji</span>
+<img alt="Poetická improshow" class="delayed" data-src="/cdn/events/2021/24292/320-8700460ae2844ee188bc92ff76fb122c.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Poetická improshow</strong>
+<span class="date">
+17. února od 19:00                                </span>
+<br/>
+<span class="place">Facebook stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>50</strong> Kč
+                                <br/>
+                                do
+                                <strong>100</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21412" href="/vstupenky/24229-online-embeckem-kolem-sveta-michal-vicar">
+<img alt="ONLINE: Embéčkem kolem světa (Michal Vičar)" class="delayed" data-src="/cdn/events/2021/24229/320-e3858e7e061b4279ad0a6bcb60cb336b.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Embéčkem kolem světa (Michal Vičar)</strong>
+<span class="date">
+26. února od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21451" href="/vstupenky/24244-webinar-gastrobyznys-jak-prezit-v-dobe-krize">
+<img alt="Webinář: Gastrobyznys: Jak přežít v době krize " class="delayed" data-src="/cdn/events/2021/24244/320-7090f73d1d3f47dd97bf22ed0fa48fb6.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Gastrobyznys: Jak přežít v době krize </strong>
+<span class="date">
+27. února od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>160</strong> Kč
+                                <br/>
+                                do
+                                <strong>220</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21381" href="/vstupenky/24157-online-madeira-klenot-atlantiku-za-dvermi-m-nemcova">
+<img alt="ONLINE: Madeira – klenot Atlantiku za dveřmi (M. Němcová)" class="delayed" data-src="/cdn/events/2021/24157/320-687eec207744400e9922273141f49f12.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Madeira – klenot Atlantiku za dveřmi (M. Němcová)</strong>
+<span class="date">
+28. února od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>187</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21443" href="/vstupenky/24238-webinar-zdrave-emoce-jak-byt-stastnejsi-i-v-dnesni-dobe">
+<img alt="Webinář: Zdravé emoce - jak být šťastnější i v dnešní době" class="delayed" data-src="/cdn/events/2021/24238/320-5eb6730dcdfc4a2b859ea350ce725e70.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Zdravé emoce - jak být šťastnější i v dnešní době</strong>
+<span class="date">
+1. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>200</strong> Kč
+                                <br/>
+                                do
+                                <strong>260</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21408" href="/vstupenky/24202-online-festival-zazij-novy-zeland">
+<img alt="ONLINE FESTIVAL: Zažij Nový Zéland !! " class="delayed" data-src="/cdn/events/2021/24202/320-8dcc43837a9d4b0285023bdc77760994.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE FESTIVAL: Zažij Nový Zéland !! </strong>
+<span class="date">
+1. března od 19:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21439" href="/vstupenky/24232-festival-kolem-sveta-online-brezen">
+<img alt="Festival KOLEM SVĚTA - ONLINE - BŘEZEN" class="delayed" data-src="/cdn/events/2021/24232/320-62e7f843cde640cda20ffc3c1a464d52.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Festival KOLEM SVĚTA - ONLINE - BŘEZEN</strong>
+<span class="date">
+1. března od 20:00 – 31.3.                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>980</strong> Kč
+                                <br/>
+                                do
+                                <strong>990</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21452" href="/vstupenky/24246-suhr-webinar-interni-komunikace">
+<img alt="#suHR webinář: Interní komunikace" class="delayed" data-src="/cdn/events/2021/24246/320-26ef67b6424b47af8dc7b8fb5690265d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>#suHR webinář: Interní komunikace</strong>
+<span class="date">
+2. března od 17:30                                </span>
+<br/>
+<span class="place">Zoom, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>250</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="19810" href="/vstupenky/22406-10-000-kilometru-pesky-jizni-amerikou">
+<img alt="10 000 kilometrů pěšky Jižní Amerikou" class="delayed" data-src="/cdn/events/2020/22406/320-4a1f813afcef404595572dbd6f233996.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>10 000 kilometrů pěšky Jižní Amerikou</strong>
+<span class="date">
+2. března od 18:00                                </span>
+<br/>
+<span class="place">K-Klub, Havířov</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>150</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21457" href="/skupiny/402-chytry-kviz-on-air">
+<span class="multipleImg">
+<img alt="Chytrý Kvíz On Air" class="delayed" data-src="/cdn/groups/2021/402/320-aed41706d8e34f0fbb2e1055f4f53f51.png"/>
+<img alt="Chytrý Kvíz On Air" class="img2 delayed" data-src="/cdn/groups/2021/402/320-aed41706d8e34f0fbb2e1055f4f53f51.png"/>
+<img alt="Chytrý Kvíz On Air" class="img3 delayed" data-src="/cdn/groups/2021/402/320-aed41706d8e34f0fbb2e1055f4f53f51.png"/>
+</span>
+<span class="desc">
+<span class="text">
+<strong>Chytrý Kvíz On Air</strong>
+<span class="date">
+2. března od 19:00 – 17.3.                                </span>
+<br/>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>59</strong> Kč
+                                <br/>
+                                do
+                                <strong>99</strong>
+</span>
+</span>
+</a>
+<a class="item" data-id="21459" href="/vstupenky/24250-interaktivni-kvizova-liga-o-ceny-3-7">
+<img alt="Interaktivní kvízová liga o ceny (3/7)" class="delayed" data-src="/cdn/events/2021/24250/320-47e7996164a242bc8bb62061699b5c52.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní kvízová liga o ceny (3/7)</strong>
+<span class="date">
+2. března od 19:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>59</strong> Kč
+                                <br/>
+                                do
+                                <strong>69</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21431" href="/vstupenky/24203-online-z-tibetu-pres-nepal-do-indie-miloslav-martan">
+<img alt="ONLINE: Z Tibetu přes Nepál do Indie (Miloslav Martan)" class="delayed" data-src="/cdn/events/2021/24203/320-4df2564ef7684b3caeef8d7acaeddd39.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Z Tibetu přes Nepál do Indie (Miloslav Martan)</strong>
+<span class="date">
+2. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21461" href="/vstupenky/24254-interaktivni-show-o-ceny-zimni-sporty">
+<img alt="Interaktivní show o ceny: ZIMNÍ SPORTY" class="delayed" data-src="/cdn/events/2021/24254/320-e76b48fed37b4683a0799b135ce4a391.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní show o ceny: ZIMNÍ SPORTY</strong>
+<span class="date">
+2. března od 20:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>59</strong> Kč
+                                <br/>
+                                do
+                                <strong>69</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21502" href="/vstupenky/24297-online-poutni-cesty-ceska-a-slovenska">
+<img alt="ONLINE: Poutní cesty Česka a Slovenska" class="delayed" data-src="/cdn/events/2021/24297/320-1d5130b938f34f6a81ea6b5d91d74c9f.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Poutní cesty Česka a Slovenska</strong>
+<span class="date">
+2. března od 20:00                                </span>
+<br/>
+<span class="place">Zoom, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>220</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20357" href="/vstupenky/23002-madagaskar-zeme-krale-jelimana-i-hradec-kralove">
+<img alt="Madagaskar - Země krále Jelimána I Hradec Králové" class="delayed" data-src="/cdn/events/2020/23002/320-0033de2e02ab4e29be3e47db92203667.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Madagaskar - Země krále Jelimána I Hradec Králové</strong>
+<span class="date">
+3. března od 18:00                                </span>
+<br/>
+<span class="place">NáPLAVKA café &amp; music bar, Hradec Králové</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>120</strong> Kč
+                                <br/>
+                                do
+                                <strong>150</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21394" href="/vstupenky/24191-webinar-sebevrazda-souvisejici-faktory-a-prevence">
+<img alt="Webinář: Sebevražda: související faktory a prevence" class="delayed" data-src="/cdn/events/2021/24191/320-e7a27ac9846940958fa9bdaad18746c0.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Sebevražda: související faktory a prevence</strong>
+<span class="date">
+3. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>60</strong> Kč
+                                <br/>
+                                do
+                                <strong>260</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20048" href="/vstupenky/22645-od-oltare-do-santiaga-aneb-3327-km-pesky">
+<img alt="Od oltáře do Santiaga aneb 3327 km pěšky" class="delayed" data-src="/cdn/events/2020/22645/320-ac61e01435004687a64c623c56d171b4.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Od oltáře do Santiaga aneb 3327 km pěšky</strong>
+<span class="date">
+3. března od 19:00                                </span>
+<br/>
+<span class="place">Klub Na Rampě, Jablonec nad Nisou</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>99</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21467" href="/vstupenky/24255-interaktivni-show-o-ceny-tema-svet">
+<img alt="Interaktivní show o ceny: téma SVĚT" class="delayed" data-src="/cdn/events/2021/24255/320-75ecfaf05dfd4f3c81d6b1b7ee0a8318.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní show o ceny: téma SVĚT</strong>
+<span class="date">
+3. března od 19:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>89</strong> Kč
+                                <br/>
+                                do
+                                <strong>99</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21474" href="/vstupenky/24290-koncert-artcafe-live-magdalena-vartui">
+<img alt="Koncert ArtCafé Live - Magdaléna &amp; Vartui" class="delayed" data-src="/cdn/events/2021/24290/320-da4e50086284491e8ce07cfd11696654.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Koncert ArtCafé Live - Magdaléna &amp; Vartui</strong>
+<span class="date">
+3. března od 19:00                                </span>
+<br/>
+<span class="place">Klášter Broumov, Broumov</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>50</strong> Kč
+                                <br/>
+                                do
+                                <strong>300</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21518" href="/vstupenky/24318-greenscreen-improshow">
+<img alt="Greenscreen improshow" class="delayed" data-src="/cdn/events/2021/24318/320-26752b79d0d34366b9d7c083dd24c7b8.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Greenscreen improshow</strong>
+<span class="date">
+3. března od 19:00                                </span>
+<br/>
+<span class="place">Facebook stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>50</strong> Kč
+                                <br/>
+                                do
+                                <strong>100</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21424" href="/vstupenky/24184-online-kostarika-skryte-kouty-exotickeho-raje-mullerova">
+<img alt="ONLINE: Kostarika - skryté kouty exotického ráje (Mullerová)" class="delayed" data-src="/cdn/events/2021/24184/320-397568685b6345c2a07707dcc97dbd06.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Kostarika - skryté kouty exotického ráje (Mullerová)</strong>
+<span class="date">
+3. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>187</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21287" href="/vstupenky/24055-work-life-balance-aneb-vsichni-jsme-jenom-lidi">
+<img alt="Work-Life balance aneb všichni jsme jenom lidi" class="delayed" data-src="/cdn/events/2020/24055/320-7073697c13a14825a804ff1be61dbe9b.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Work-Life balance aneb všichni jsme jenom lidi</strong>
+<span class="date">
+4. března od 18:00                                </span>
+<br/>
+<span class="place">Google meet, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>100</strong> Kč
+                                <br/>
+                                do
+                                <strong>300</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21405" href="/vstupenky/24222-webinar-historie-japonske-animovane-kinematografie">
+<img alt="Webinář: Historie japonské animované kinematografie" class="delayed" data-src="/cdn/events/2021/24222/320-66f0b6e68d6d4e3082271f7de05149af.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Historie japonské animované kinematografie</strong>
+<span class="date">
+4. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>200</strong> Kč
+                                <br/>
+                                do
+                                <strong>260</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21425" href="/vstupenky/24185-online-lovy-skvostu-temne-oblohy-petr-horalek">
+<img alt="ONLINE: Lovy skvostů temné oblohy (Petr Horálek)" class="delayed" data-src="/cdn/events/2021/24185/320-08e317a9257f48eda12677f2b1b81661.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Lovy skvostů temné oblohy (Petr Horálek)</strong>
+<span class="date">
+4. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>187</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21500" href="/vstupenky/24295-online-travel-zvedni-zadek-show-jizni-amerika">
+<img alt="ONLINE: TRAVEL zvedni zadek SHOW - Jižní Amerika" class="delayed" data-src="/cdn/events/2021/24295/320-9964cd85cb83429aac630dd9c74eb3b6.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: TRAVEL zvedni zadek SHOW - Jižní Amerika</strong>
+<span class="date">
+4. března od 20:00                                </span>
+<br/>
+<span class="place">Travel SHOW, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>89</strong> Kč
+                                <br/>
+                                do
+                                <strong>139</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21398" href="/vstupenky/24186-online-nasledky-valky-o-nahorni-karabach-marketa-kutilova">
+<img alt="ONLINE: Následky války o Náhorní Karabach (Markéta Kutilová)" class="delayed" data-src="/cdn/events/2021/24186/320-34660fff0ab64fd79f042c7d8e1109cf.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Následky války o Náhorní Karabach (Markéta Kutilová)</strong>
+<span class="date">
+5. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20627" href="/vstupenky/23280-konference-mladych-lekaru">
+<img alt="Konference Mladých lékařů" class="delayed" data-src="/cdn/events/2020/23280/320-ab2ca6510b0c48a79aa810d9e6976304.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Konference Mladých lékařů</strong>
+<span class="date">
+6. března od 8:15 – 7.3.                                </span>
+<br/>
+<span class="place">Vienna House Diplomat Prague, Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>490</strong> Kč
+                                <br/>
+                                do
+                                <strong>1 990</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="18496" href="/vstupenky/20954-killer-queen-uk">
+<span class="info cancelled">Zrušeno</span>
+<img alt="Killer Queen /UK/" class="delayed" data-src="/cdn/events/2020/20954/320-28e71530877e4919ad979a89209da87a.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Killer Queen /UK/</strong>
+<span class="date">
+6. března od 20:00                                </span>
+<br/>
+<span class="place">Lucerna - Velký sál, Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>799</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21426" href="/vstupenky/24188-online-napric-patagonii-v-dodavce-vojtech-lhotsky">
+<img alt="ONLINE: Napříč Patagonií v dodávce (Vojtěch Lhotský)" class="delayed" data-src="/cdn/events/2021/24188/320-840250cf21d24870960ed75db59dfd85.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Napříč Patagonií v dodávce (Vojtěch Lhotský)</strong>
+<span class="date">
+7. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>187</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21423" href="/vstupenky/24189-online-jak-se-stat-pruvodcem-v-patagonii-katka-bartosova">
+<img alt="ONLINE: Jak se stát průvodcem v Patagonii? (Katka Bartošová)" class="delayed" data-src="/cdn/events/2021/24189/320-2fcfd789d9d14a6884a86bde913c4408.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Jak se stát průvodcem v Patagonii? (Katka Bartošová)</strong>
+<span class="date">
+8. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>187</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21441" href="/vstupenky/24237-suhr-workshop-zaklady-skecnoutingu">
+<img alt="#suHR workshop: Základy skečnoutingu" class="delayed" data-src="/cdn/events/2021/24237/320-bbde3dc28e29466eab9783f8e766177f.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>#suHR workshop: Základy skečnoutingu</strong>
+<span class="date">
+9. března od 17:00                                </span>
+<br/>
+<span class="place">Zoom, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>550</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21453" href="/vstupenky/24247-webinar-tomas-sebek-chirurg-bez-hranic-nebe-nad-jemenem">
+<img alt="Webinář: Tomáš Šebek – Chirurg bez hranic: Nebe nad Jemenem" class="delayed" data-src="/cdn/events/2021/24247/320-3ab8748c048a46238efeb1fa51d064a9.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Tomáš Šebek – Chirurg bez hranic: Nebe nad Jemenem</strong>
+<span class="date">
+9. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>200</strong> Kč
+                                <br/>
+                                do
+                                <strong>260</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20831" href="/vstupenky/23531-prednaska-ing-arch-zdenka-lukese-bohuslav-fuchs">
+<img alt="Přednáška Ing. Arch. Zdeňka Lukeše: Bohuslav Fuchs" class="delayed" data-src="/cdn/events/2020/23531/320-bc7066e7dfb8455b93c1b59c5e4537d8.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Přednáška Ing. Arch. Zdeňka Lukeše: Bohuslav Fuchs</strong>
+<span class="date">
+9. března od 18:30                                </span>
+<br/>
+<span class="place">Kaštan - Scéna Unijazzu , Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>99</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21422" href="/vstupenky/24204-online-island-stopem-na-koni-a-pesky-v-hlavackova">
+<img alt="ONLINE: Island - stopem, na koni a pěšky (V. Hlaváčková)" class="delayed" data-src="/cdn/events/2021/24204/320-faeb41a7ef404e3e9eb5e8ae9429c9e3.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Island - stopem, na koni a pěšky (V. Hlaváčková)</strong>
+<span class="date">
+9. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21465" href="/vstupenky/24256-interaktivni-show-o-ceny-pratele">
+<img alt="Interaktivní show o ceny: PŘÁTELÉ" class="delayed" data-src="/cdn/events/2021/24256/320-105ca8dc8efc44e6902b7bd2cb726fb2.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní show o ceny: PŘÁTELÉ</strong>
+<span class="date">
+9. března od 20:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>59</strong> Kč
+                                <br/>
+                                do
+                                <strong>69</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21509" href="/vstupenky/24303-umeni-empatie-v-tymu-aneb-emocni-inteligence-pro-managery">
+<img alt="Umění empatie v týmu aneb EMOČNÍ INTELIGENCE pro managery" class="delayed" data-src="/cdn/events/2021/24303/320-5e5515799f0c42749b777ca7f67420b3.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Umění empatie v týmu aneb EMOČNÍ INTELIGENCE pro managery</strong>
+<span class="date">
+10. března od 15:00                                </span>
+<br/>
+<span class="place">Zoom, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>330</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21520" href="/vstupenky/24321-on-line-s-cajem-caje-z-japonska-studene-a-ambientni-caje">
+<img alt="On-line s čajem – čaje z Japonska, studené a ambientní čaje" class="delayed" data-src="/cdn/events/2021/24321/320-3f9db729a5b84b81b94ced52e11276d1.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>On-line s čajem – čaje z Japonska, studené a ambientní čaje</strong>
+<span class="date">
+10. března od 17:00                                </span>
+<br/>
+<span class="place">Oriental Lounge, Ostrava</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>399</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21516" href="/vstupenky/24317-webinar-dobro-a-zlo-na-prahu-nove-dekady">
+<img alt="Webinář: Dobro a zlo  – na prahu nové dekády" class="delayed" data-src="/cdn/events/2021/24317/320-64ee86216dd944f287d34e843fefb38e.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Dobro a zlo  – na prahu nové dekády</strong>
+<span class="date">
+10. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>290</strong> Kč
+                                <br/>
+                                do
+                                <strong>350</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21463" href="/vstupenky/24257-interaktivni-show-o-ceny-pirati-z-karibiku">
+<img alt="Interaktivní show o ceny: PIRÁTI Z KARIBIKU" class="delayed" data-src="/cdn/events/2021/24257/320-8238c98967b4449e85ae64906e29fcb1.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní show o ceny: PIRÁTI Z KARIBIKU</strong>
+<span class="date">
+10. března od 19:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>89</strong> Kč
+                                <br/>
+                                do
+                                <strong>99</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21427" href="/vstupenky/24205-online-o-neobycejnem-zivote-cesko-etiopske-rodiny-v-etiopii">
+<img alt="ONLINE: O neobyčejném životě česko-etiopské rodiny v Etiopii" class="delayed" data-src="/cdn/events/2021/24205/320-7a8113dd49504342a0acc95cb4f94caf.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: O neobyčejném životě česko-etiopské rodiny v Etiopii</strong>
+<span class="date">
+10. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="18571" href="/skupiny/364-stredisko-kulturnich-sluzeb-svitavy">
+<span class="multipleImg">
+<img alt="Středisko kulturních služeb Svitavy" class="delayed" data-src="/cdn/groups/2020/364/320-04abd1699e8a4c0d96bb5d309b2e0433.png"/>
+<img alt="Středisko kulturních služeb Svitavy" class="img2 delayed" data-src="/cdn/groups/2020/364/320-04abd1699e8a4c0d96bb5d309b2e0433.png"/>
+<img alt="Středisko kulturních služeb Svitavy" class="img3 delayed" data-src="/cdn/groups/2020/364/320-04abd1699e8a4c0d96bb5d309b2e0433.png"/>
+</span>
+<span class="desc">
+<span class="text">
+<strong>Středisko kulturních služeb Svitavy</strong>
+<span class="date">
+11. března od 18:00 – 15.12.                                </span>
+<br/>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>80</strong> Kč
+                                <br/>
+                                do
+                                <strong>490</strong>
+</span>
+</span>
+</a>
+<a class="item" data-id="21348" href="/vstupenky/24125-webinar-co-vime-o-zabijeni-psychologicke-aspekty">
+<img alt="Webinář: Co víme o zabíjení? psychologické aspekty" class="delayed" data-src="/cdn/events/2021/24125/320-5f86a85198ef4359a151788be361132c.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Co víme o zabíjení? psychologické aspekty</strong>
+<span class="date">
+11. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>60</strong> Kč
+                                <br/>
+                                do
+                                <strong>310</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20482" href="/vstupenky/23144-oswald-schneider-otk">
+<img alt="Oswald Schneider, OTK" class="delayed" data-src="/cdn/events/2020/23144/320-d9311a54b834427d8004b71413115b97.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Oswald Schneider, OTK</strong>
+<span class="date">
+11. března od 20:00                                </span>
+<br/>
+<span class="place">Kaštan - Scéna Unijazzu , Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>139</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21433" href="/vstupenky/24206-online-iran-lost-czech-man-martin-pulpan">
+<img alt="ONLINE: ÍRÁN - Lost Czech Man (Martin Půlpán)" class="delayed" data-src="/cdn/events/2021/24206/320-fbdc58b199f04f868b579adde0f7cc78.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: ÍRÁN - Lost Czech Man (Martin Půlpán)</strong>
+<span class="date">
+11. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21421" href="/vstupenky/24207-online-irsko-nekolik-mesicu-v-drsne-zemi-jan-papez">
+<img alt="ONLINE: Irsko - několik měsíců v drsné zemi (Jan Papež)" class="delayed" data-src="/cdn/events/2021/24207/320-a651dbbdf7a24f4b91e73a7a6b2efe52.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Irsko - několik měsíců v drsné zemi (Jan Papež)</strong>
+<span class="date">
+12. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="19965" href="/vstupenky/22531-echoes-john-talabot-es">
+<img alt="Echoes: John Talabot (ES)" class="delayed" data-src="/cdn/events/2020/22531/320-7a5bd562b41d4b02a409fdbbe8429c8c.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Echoes: John Talabot (ES)</strong>
+<span class="date">
+12. března od 21:00                                </span>
+<br/>
+<span class="place">Fléda, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>371</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21504" href="/vstupenky/24298-webinar-vladimir-benes-cesta-do-hlubin-mozku">
+<img alt="Webinář: Vladimír Beneš: Cesta do hlubin mozku" class="delayed" data-src="/cdn/events/2021/24298/320-c261d0cd15574279b2646596d7f0d093.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Vladimír Beneš: Cesta do hlubin mozku</strong>
+<span class="date">
+13. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>200</strong> Kč
+                                <br/>
+                                do
+                                <strong>260</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20567" href="/vstupenky/23176-poletime-v-knaku">
+<img alt="Poletíme? v Knaku" class="delayed" data-src="/cdn/events/2020/23176/320-c36520684b724300b05d4153d1c20cd7.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Poletíme? v Knaku</strong>
+<span class="date">
+13. března od 20:00                                </span>
+<br/>
+<span class="place">KNAK music klub, Teplice</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>250</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21446" href="/vstupenky/24239-online-chamonix-a-tour-du-mont-blanc-david-hainall">
+<img alt="ONLINE: Chamonix a Tour du Mont Blanc (David Hainall)" class="delayed" data-src="/cdn/events/2021/24239/320-dfeb2495df1d4a4bae0d36352e128140.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Chamonix a Tour du Mont Blanc (David Hainall)</strong>
+<span class="date">
+13. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21499" href="/vstupenky/24291-1-online-ples">
+<img alt="1. Online ples" class="delayed" data-src="/cdn/events/2021/24291/320-2f5896a1baad42d68f925f0d93c03bbd.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>1. Online ples</strong>
+<span class="date">
+13. března od 20:00                                </span>
+<br/>
+<span class="place">YouTube, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>390</strong> Kč
+                                <br/>
+                                do
+                                <strong>990</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17118" href="/vstupenky/19297-vltava">
+<img alt="Vltava" class="delayed" data-src="/cdn/events/2019/19297/320-52cebd8ffdc14bb2b2083afc8ddbbf26.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Vltava</strong>
+<span class="date">
+13. března od 20:30                                </span>
+<br/>
+<span class="place">Klub Mír, Uherské Hradiště</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>210</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="18625" href="/vstupenky/20861-brichomluvec-zdenek-polach-matysek">
+<span class="info cancelled">Zrušeno</span>
+<img alt="Břichomluvec Zdeněk Polách &amp; Matýsek" class="delayed" data-src="/cdn/events/2020/20861/320-8503eb2ed2d04827b8c03c7ddf6d3e2d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Břichomluvec Zdeněk Polách &amp; Matýsek</strong>
+<span class="date">
+14. března od 15:00                                </span>
+<br/>
+<span class="place">Jupiter klub, Velké Meziříčí</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>200</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="18949" href="/vstupenky/21420-ferda-mravenec-a-brouk-pytlik-na-selepce">
+<img alt="Ferda mravenec a brouk Pytlík na Šelepce" class="delayed" data-src="/cdn/events/2020/21420/320-36a1394879674abb8319a31a25a25bd4.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Ferda mravenec a brouk Pytlík na Šelepce</strong>
+<span class="date">
+14. března od 15:00                                </span>
+<br/>
+<span class="place">Klub Šelepka, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>65</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21134" href="/vstupenky/23861-moment-studio-damuza">
+<img alt="Moment! • Studio Damúza" class="delayed" data-src="/cdn/events/2020/23861/320-639d09e2beb444c4931eaa11d5df3d5d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Moment! • Studio Damúza</strong>
+<span class="date">
+14. března od 15:00                                </span>
+<br/>
+<span class="place">Divadlo Trám, Svitavy</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>80</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21519" href="/vstupenky/24319-longforma">
+<span class="info saleNotStartedYet">Brzy v prodeji</span>
+<img alt="Longforma" class="delayed" data-src="/cdn/events/2021/24319/320-1c9d49af900144d3a484d4899507f03f.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Longforma</strong>
+<span class="date">
+14. března od 19:00                                </span>
+<br/>
+<span class="place">Facebook stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>50</strong> Kč
+                                <br/>
+                                do
+                                <strong>100</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21434" href="/vstupenky/24208-online-severni-taiwan-martin-hajek">
+<img alt="ONLINE: Severní Taiwan (Martin Hájek)" class="delayed" data-src="/cdn/events/2021/24208/320-4d344c61130e40a4bd743de0995a4747.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Severní Taiwan (Martin Hájek)</strong>
+<span class="date">
+14. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20013" href="/vstupenky/22571-od-oltare-do-santiaga-aneb-3327-km-pesky">
+<img alt="Od oltáře do Santiaga aneb 3327 km pěšky" class="delayed" data-src="/cdn/events/2020/22571/320-9718eb2b8fd64f2ca14e1f8a142feafe.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Od oltáře do Santiaga aneb 3327 km pěšky</strong>
+<span class="date">
+15. března od 18:00                                </span>
+<br/>
+<span class="place">Obvodní knihovna Skvrňany, Plzeň</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>59</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21418" href="/vstupenky/24209-online-fotografujeme-na-cestach-jana-kupcakova">
+<img alt="ONLINE: Fotografujeme na cestách (Jana Kupčáková)" class="delayed" data-src="/cdn/events/2021/24209/320-1cbc3c9d7bda4d17a3aeec2baf687f70.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Fotografujeme na cestách (Jana Kupčáková)</strong>
+<span class="date">
+15. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20047" href="/vstupenky/22640-od-oltare-do-santiaga-aneb-3327-km-pesky">
+<img alt="Od oltáře do Santiaga aneb 3327 km pěšky" class="delayed" data-src="/cdn/events/2020/22640/320-0e8f0302e5bf4785912b1d55ddba08d7.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Od oltáře do Santiaga aneb 3327 km pěšky</strong>
+<span class="date">
+16. března od 17:00                                </span>
+<br/>
+<span class="place">Krajská knihovna Karlovy Vary - společenský sál, Karlovy Vary</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>59</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21468" href="/vstupenky/24285-webinar-psychologie-nakupnich-rozhodnuti">
+<img alt="Webinář: Psychologie nákupních rozhodnutí" class="delayed" data-src="/cdn/events/2021/24285/320-936b4937fa894b1a8e99844d3194d2c5.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Psychologie nákupních rozhodnutí</strong>
+<span class="date">
+16. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>190</strong> Kč
+                                <br/>
+                                do
+                                <strong>250</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21513" href="/vstupenky/24312-ledovym-severem">
+<img alt="Ledovým severem" class="delayed" data-src="/cdn/events/2021/24312/320-e3af1d51ac034c53a0584b695e60b7c5.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Ledovým severem</strong>
+<span class="date">
+16. března od 18:00                                </span>
+<br/>
+<span class="place">Zoom, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>90</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20551" href="/vstupenky/21370-cernobyl-spici-peklo-blansko">
+<img alt="Černobyl – spící peklo – Blansko" class="delayed" data-src="/cdn/events/2020/21370/320-d99156d69cd04c7298022a5dc7089769.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Černobyl – spící peklo – Blansko</strong>
+<span class="date">
+16. března od 19:00                                </span>
+<br/>
+<span class="place">Kino Blansko, Blansko</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>120</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20977" href="/vstupenky/19088-karel-plihal-recital">
+<img alt="Karel Plíhal - recitál" class="delayed" data-src="/cdn/events/2019/19088/320-b541e1fb4a9446f8b89b8c43d1a983c0.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Karel Plíhal - recitál</strong>
+<span class="date">
+16. března od 19:00                                </span>
+<br/>
+<span class="place">Kulturní centrum, Česká Třebová</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>280</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20766" href="/vstupenky/23469-laska-a-parecky">
+<img alt="Láska a párečky" class="delayed" data-src="/cdn/events/2020/23469/320-2ae25ca0edb540378c543cd402e331c0.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Láska a párečky</strong>
+<span class="date">
+16. března od 20:00                                </span>
+<br/>
+<span class="place">Sál České Pojišťovny, Beroun</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>415</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21414" href="/vstupenky/24210-online-antarktida-nejlepsi-cesta-meho-zivota-vl-vachal">
+<img alt="ONLINE: Antarktida - nejlepší cesta mého života (Vl. Váchal)" class="delayed" data-src="/cdn/events/2021/24210/320-3047675e52064ec3b744b98c6467e097.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Antarktida - nejlepší cesta mého života (Vl. Váchal)</strong>
+<span class="date">
+16. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21462" href="/vstupenky/24258-interaktivni-show-o-ceny-deskove-hry">
+<img alt="Interaktivní show o ceny: DESKOVÉ HRY" class="delayed" data-src="/cdn/events/2021/24258/320-a9ca6d062c5c4edc8bbb004282c9234a.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní show o ceny: DESKOVÉ HRY</strong>
+<span class="date">
+16. března od 20:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>59</strong> Kč
+                                <br/>
+                                do
+                                <strong>69</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20046" href="/vstupenky/22632-od-oltare-do-santiaga-aneb-3327-km-pesky">
+<img alt="Od oltáře do Santiaga aneb 3327 km pěšky" class="delayed" data-src="/cdn/events/2020/22632/320-a637d1d5cdab4f288208fe179440e7d8.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Od oltáře do Santiaga aneb 3327 km pěšky</strong>
+<span class="date">
+17. března od 17:30                                </span>
+<br/>
+<span class="place">Horká Vana, České Budějovice</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>59</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21511" href="/vstupenky/24309-webinar-juraj-karpis-jak-prezit-zle-penize">
+<img alt="Webinář: Juraj Karpiš: Jak přežít zlé peníze" class="delayed" data-src="/cdn/events/2021/24309/320-271753c7fb6b4f4c92e686f5556946d4.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Juraj Karpiš: Jak přežít zlé peníze</strong>
+<span class="date">
+17. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>220</strong> Kč
+                                <br/>
+                                do
+                                <strong>280</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21466" href="/vstupenky/24259-interaktivni-show-o-ceny-sci-fi">
+<img alt="Interaktivní show o ceny: SCI-FI" class="delayed" data-src="/cdn/events/2021/24259/320-0537fee7b74340cf95f3006c2756c43e.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Interaktivní show o ceny: SCI-FI</strong>
+<span class="date">
+17. března od 19:00                                </span>
+<br/>
+<span class="place">Chytrý kvíz.cz, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>89</strong> Kč
+                                <br/>
+                                do
+                                <strong>99</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21419" href="/vstupenky/24211-online-gruzie-pres-hrebeny-velkeho-kavkazu-jakub-solc">
+<img alt="ONLINE: Gruzie – přes hřebeny Velkého Kavkazu (Jakub Šolc)" class="delayed" data-src="/cdn/events/2021/24211/320-f022f82b0b4f43b5bcdee14371325e20.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Gruzie – přes hřebeny Velkého Kavkazu (Jakub Šolc)</strong>
+<span class="date">
+17. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21297" href="/vstupenky/24067-architektky-predavani-zkusenosti-s-katerinou-sedou">
+<img alt="Architektky: Předávání zkušeností s Kateřinou Šedou" class="delayed" data-src="/cdn/events/2020/24067/320-8d0744101c9741db86e910c0315fb245.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Architektky: Předávání zkušeností s Kateřinou Šedou</strong>
+<span class="date">
+18. března od 17:00                                </span>
+<br/>
+<span class="place">ARCHIP, Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>500</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="19281" href="/vstupenky/21592-sibir-drsnou-divocinou-olomouc">
+<img alt="Sibiř – drsnou divočinou – Olomouc" class="delayed" data-src="/cdn/events/2020/21592/320-db211d35b8824028a2bfb4aea49f63ac.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Sibiř – drsnou divočinou – Olomouc</strong>
+<span class="date">
+18. března od 18:00                                </span>
+<br/>
+<span class="place">Vlastivědné muzeum , Olomouc</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>120</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17531" href="/vstupenky/19755-mnaga-a-zdorp">
+<img alt="Mňága a Žďorp" class="delayed" data-src="/cdn/events/2019/19755/320-92a7234c0f2e4f8f99135b937a04a718.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Mňága a Žďorp</strong>
+<span class="date">
+18. března od 20:00                                </span>
+<br/>
+<span class="place">Fléda, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>370</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20819" href="/vstupenky/23513-ivo-cicvarek-a-velky-svet">
+<img alt="Ivo Cicvárek a Velký svět" class="delayed" data-src="/cdn/events/2020/23513/320-556476cefb434ef3909c63e2fa694e06.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Ivo Cicvárek a Velký svět</strong>
+<span class="date">
+18. března od 20:00                                </span>
+<br/>
+<span class="place">Stará Pekárna, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>130</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21430" href="/vstupenky/24220-online-vychodni-timor-a-dalsi-zeme-jv-asie-karel-stepanek">
+<img alt="ONLINE: Východní Timor a další země JV Asie (Karel Štěpánek)" class="delayed" data-src="/cdn/events/2021/24220/320-d0b7b0de9d584af1b8b0a4f7bb6bb542.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Východní Timor a další země JV Asie (Karel Štěpánek)</strong>
+<span class="date">
+18. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20249" href="/vstupenky/22868-degustace-vin-vinarstvi-michlovsky-provadi-l-michlovska">
+<img alt="Degustace vín Vinařství Michlovský - provádí L. Michlovská" class="delayed" data-src="/cdn/events/2020/22868/320-09ea156517a94c5c97354a2975336356.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Degustace vín Vinařství Michlovský - provádí L. Michlovská</strong>
+<span class="date">
+19. března od 19:00                                </span>
+<br/>
+<span class="place">Chrudimská šatlava, Chrudim</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>370</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17949" href="/vstupenky/20212-ac-dc-tribute">
+<img alt="AC/DC Tribute" class="delayed" data-src="/cdn/events/2020/20212/320-0dbf211d85e74759937ad573650c895d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>AC/DC Tribute</strong>
+<span class="date">
+19. března od 20:00                                </span>
+<br/>
+<span class="place">MC Kotelna, Litomyšl</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>150</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21417" href="/vstupenky/24212-online-ekvador-dzungle-plaze-sopky-misa-peskova">
+<img alt="ONLINE: Ekvádor - džungle, pláže, sopky (Míša Pešková)" class="delayed" data-src="/cdn/events/2021/24212/320-90bef1629a9040ee9bb6203f1c6b6047.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Ekvádor - džungle, pláže, sopky (Míša Pešková)</strong>
+<span class="date">
+19. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20820" href="/vstupenky/23514-kamelot-ahoj-leto">
+<img alt="Kamelot - Ahoj léto" class="delayed" data-src="/cdn/events/2020/23514/320-5872fa634b624cfb9088ee9a53f65e48.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Kamelot - Ahoj léto</strong>
+<span class="date">
+20. března od 17:00                                </span>
+<br/>
+<span class="place">Jeskyně Výpustek, Adamov</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>350</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="18739" href="/vstupenky/21213-hvezdy-swingu">
+<img alt="Hvězdy swingu" class="delayed" data-src="/cdn/events/2020/21213/320-05219aa85b5f4498a239020c0dc50a33.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Hvězdy swingu</strong>
+<span class="date">
+20. března od 18:30                                </span>
+<br/>
+<span class="place">Adalbertinum, Velký sál, Hradec Králové</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>369</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17132" href="/vstupenky/19326-california-dreams-na-selepce">
+<span class="info soldOut">Bude plno</span>
+<img alt="California Dreams na Šelepce!" class="delayed" data-src="/cdn/events/2019/19326/320-0f3b0278bfa54d0ab6ec3ee5689d7d6d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>California Dreams na Šelepce!</strong>
+<span class="date">
+20. března od 19:00                                </span>
+<br/>
+<span class="place">Klub Šelepka, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>240</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21386" href="/vstupenky/24053-narozeninovy-koncert-petr-tomecek-40">
+<img alt='Narozeninový koncert "Petr Tomeček 40"' class="delayed" data-src="/cdn/events/2020/24053/320-1f86c11392644285a819106b2152ce57.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Narozeninový koncert "Petr Tomeček 40"</strong>
+<span class="date">
+20. března od 19:30                                </span>
+<br/>
+<span class="place">Zámek Karlova Koruna, Chlumec nad Cidlinou</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>990</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21469" href="/vstupenky/24289-online-filipiny-tropicky-raj-milada-rehakova">
+<img alt="ONLINE: Filipíny - tropický ráj (Milada Řeháková)" class="delayed" data-src="/cdn/events/2021/24289/320-d6db66b93ffa4f3a96929b7ea5fe7b15.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Filipíny - tropický ráj (Milada Řeháková)</strong>
+<span class="date">
+20. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20510" href="/vstupenky/23174-vanessa-after-party">
+<img alt="Vanessa + after párty" class="delayed" data-src="/cdn/events/2020/23174/320-af23630dcc2e4ad4804768dca3e11e60.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Vanessa + after párty</strong>
+<span class="date">
+20. března od 20:30                                </span>
+<br/>
+<span class="place">Alternativní klub Tyjátr, Svitavy</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>299</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="18436" href="/vstupenky/20819-ca-hanova-bulhar">
+<img alt="Ca$hanova Bulhar" class="delayed" data-src="/cdn/events/2020/20819/320-eab032d8444f4212862c7c39b37ee316.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Ca$hanova Bulhar</strong>
+<span class="date">
+20. března od 21:00                                </span>
+<br/>
+<span class="place">Sádek 2000 Music Hall, Sádek</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>170</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21387" href="/vstupenky/24176-jana-uriel-kratochvilova-a-illuminati-ca-v-kostantinkach">
+<img alt="Jana Uriel Kratochvílová a ILLUMINATI.CA v Kostantinkách" class="delayed" data-src="/cdn/events/2021/24176/320-f3147f736ec042babb4ad2bd12f770ca.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Jana Uriel Kratochvílová a ILLUMINATI.CA v Kostantinkách</strong>
+<span class="date">
+20. března od 21:00                                </span>
+<br/>
+<span class="place">Music club Panteon, Konstantinovy Lázně</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>220</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21111" href="/vstupenky/23837-gayazovs-brothers-in-prague">
+<img alt="Gayazovs Brothers in Prague" class="delayed" data-src="/cdn/events/2020/23837/320-75b821e7b25846f59d7732eebb7c5aed.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Gayazovs Brothers in Prague</strong>
+<span class="date">
+20. března od 23:00                                </span>
+<br/>
+<span class="place">Fashion Club &amp; Restaurant Prague, Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>600</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17921" href="/vstupenky/20183-kocour-v-botach-na-selepce">
+<img alt="Kocour v botách na Šelepce" class="delayed" data-src="/cdn/events/2020/20183/320-7efe36b0f25644bf9b0222452ac6ee96.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Kocour v botách na Šelepce</strong>
+<span class="date">
+21. března od 15:00                                </span>
+<br/>
+<span class="place">Klub Šelepka, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>60</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21444" href="/vstupenky/24235-online-fotografovani-nejen-v-dolomitech-martin-rak">
+<img alt="ONLINE: Fotografování (nejen) v Dolomitech (Martin Rak)" class="delayed" data-src="/cdn/events/2021/24235/320-8a16d01f9ebb4e97a6bc77e7dcfbd45f.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Fotografování (nejen) v Dolomitech (Martin Rak)</strong>
+<span class="date">
+21. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21514" href="/vstupenky/24314-kolaps-dva-pribehy-z-praxe">
+<img alt="Kolaps !? (dva příběhy z praxe)" class="delayed" data-src="/cdn/events/2021/24314/320-00be79d92446478c9cc5122c25da28f2.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Kolaps !? (dva příběhy z praxe)</strong>
+<span class="date">
+22. března od 18:00                                </span>
+<br/>
+<span class="place">Zoom, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>112</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21428" href="/vstupenky/24213-online-peru-incke-pamatky-a-studium-samanismu-d-holik">
+<img alt="ONLINE: Peru - incké památky a studium šamanismu (D. Holík)" class="delayed" data-src="/cdn/events/2021/24213/320-3a8684bec64a4df69bca33a6d9e2afe3.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Peru - incké památky a studium šamanismu (D. Holík)</strong>
+<span class="date">
+22. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20044" href="/vstupenky/22631-od-oltare-do-santiaga-aneb-3327-km-pesky">
+<img alt="Od oltáře do Santiaga aneb 3327 km pěšky" class="delayed" data-src="/cdn/events/2020/22631/320-f07a9857988b4b5097f2b5073f7201b7.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Od oltáře do Santiaga aneb 3327 km pěšky</strong>
+<span class="date">
+23. března od 18:30                                </span>
+<br/>
+<span class="place">Vault 42, Olomouc</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>59</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21420" href="/vstupenky/24214-online-illes-medes-potapecska-perla-stredomori-m-cerny">
+<img alt="ONLINE: Illes Medes - potápěčská perla středomoří (M. Černý)" class="delayed" data-src="/cdn/events/2021/24214/320-851ba65df023441da71f360c4ba55e06.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Illes Medes - potápěčská perla středomoří (M. Černý)</strong>
+<span class="date">
+23. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21503" href="/vstupenky/24299-webinar-fenomen-vampyrismu-v-dejinach-evropy">
+<img alt="Webinář: Fenomén vampyrismu v dějinách Evropy" class="delayed" data-src="/cdn/events/2021/24299/320-dca66982355140c4ac7e9cef3ce4df6b.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Fenomén vampyrismu v dějinách Evropy</strong>
+<span class="date">
+24. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>180</strong> Kč
+                                <br/>
+                                do
+                                <strong>240</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21059" href="/vstupenky/23778-gala-koncert-klasicka-hudba-potkava-nejen-muzikalovou">
+<img alt="Gala koncert Klasická hudba potkává nejen muzikálovou" class="delayed" data-src="/cdn/events/2020/23778/320-348cbe1f082d403099e97e2b087892ab.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Gala koncert Klasická hudba potkává nejen muzikálovou</strong>
+<span class="date">
+24. března od 18:30                                </span>
+<br/>
+<span class="place">Husův sbor (Dejvice), Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>600</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20804" href="/vstupenky/23366-bourlive-jaro">
+<span class="info cancelled">Zrušeno</span>
+<img alt="Bouřlivé jaro" class="delayed" data-src="/cdn/events/2020/23366/320-97a8b83814374202ab4aee8a3349bfb6.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Bouřlivé jaro</strong>
+<span class="date">
+24. března od 19:00                                </span>
+<br/>
+<span class="place">Společenský sál DOV, Praha-Petrovice, Praha</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>220</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21415" href="/vstupenky/24215-online-bhutan-posledni-sangri-la-michal-thoma">
+<img alt="ONLINE: Bhútán - poslední Šangri-La (Michal Thoma)" class="delayed" data-src="/cdn/events/2021/24215/320-8d2a2660ba5b47be9ae72e023d3aae1b.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Bhútán - poslední Šangri-La (Michal Thoma)</strong>
+<span class="date">
+24. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21454" href="/vstupenky/24284-webinar-radkin-honzak-psychopati-mezi-nami">
+<img alt="Webinář: Radkin Honzák: Psychopati mezi námi " class="delayed" data-src="/cdn/events/2021/24284/320-7ebe679b8b00411ca596eb532ab2706d.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Webinář: Radkin Honzák: Psychopati mezi námi </strong>
+<span class="date">
+25. března od 18:00                                </span>
+<br/>
+<span class="place">Live stream, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>250</strong> Kč
+                                <br/>
+                                do
+                                <strong>310</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="17580" href="/vstupenky/19810-hm">
+<img alt="Hm..." class="delayed" data-src="/cdn/events/2019/19810/320-2f28a54a32b44130a5c2cc9302fcccd5.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Hm...</strong>
+<span class="date">
+25. března od 20:00                                </span>
+<br/>
+<span class="place">Stará Pekárna, Brno</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>160</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="21445" href="/vstupenky/24240-online-bolivie-pavel-svoboda">
+<img alt="ONLINE: Bolívie (Pavel Svoboda)" class="delayed" data-src="/cdn/events/2021/24240/320-7f3cdd14760d49b68b6c7e4f3911c2f1.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>ONLINE: Bolívie (Pavel Svoboda)</strong>
+<span class="date">
+25. března od 20:00                                </span>
+<br/>
+<span class="place">Kolem Světa, Online</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+                                od
+                                <strong>99</strong> Kč
+                                <br/>
+                                do
+                                <strong>177</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20563" href="/vstupenky/23089-cernobyl-spici-peklo-trinec">
+<img alt="Černobyl – spící peklo – Třinec" class="delayed" data-src="/cdn/events/2020/23089/320-cde6360917a84e19aa0b8e948fa866d8.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Černobyl – spící peklo – Třinec</strong>
+<span class="date">
+26. března od 17:00                                </span>
+<br/>
+<span class="place">Knihovna Třinec, Třinec</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>100</strong> Kč
+                            </span>
+</span>
+</a>
+<a class="item" data-id="20564" href="/vstupenky/23091-cernobyl-spici-peklo-trinec">
+<img alt="Černobyl – spící peklo – Třinec " class="delayed" data-src="/cdn/events/2020/23091/320-d183022551ca48969b6ac311e2280430.jpg"/>
+<span class="desc">
+<span class="text">
+<strong>Černobyl – spící peklo – Třinec </strong>
+<span class="date">
+26. března od 19:00                                </span>
+<br/>
+<span class="place">Knihovna Třinec, Třinec</span>
+</span>
+<span class="tickets">
+                                Vstupenky
+                                <br/>
+<strong>100</strong> Kč
+                            </span>
+</span>
+</a>
+</div>
+</div>
+<div class="clear"></div>
+<script id="chapterTemplate" type="text/x-handlebars-template">
+    <div class="chapter page1">
+        {{#each items}}
+        <a class="item" data-id="{{id}}" href="{{url}}">
+            {{#if stickerCanceled}}
+                <span class="info cancelled">Zrušeno</span>
+            {{/if}}
+            {{#if stickerSoldOut}}
+                <span class="info soldOut">Bude plno</span>
+            {{/if}}
+            {{#if stickerWaiting}}
+                <span class="info saleNotStartedYet">Brzy v prodeji</span>
+            {{/if}}
+
+            {{#if isEvent}}
+                <img class="delayed" data-src="{{poster}}" alt="{{title}}" />
+            {{/if}}
+            {{#if isGroup}}
+                <span class="multipleImg">
+                    <img class="delayed" data-src="{{poster}}" alt="{{title}}" />
+                    <img class="img2 delayed" data-src="{{poster}}" alt="{{title}}" />
+                    <img class="img3 delayed" data-src="{{poster}}" alt="{{title}}" />
+                </span>
+            {{/if}}
+                <span class="desc">
+                    <span class="text">
+                        <strong>{{title}}</strong>
+                        {{#if date}}
+                            <span class="date">
+                                {{date}}
+                            </span>
+                        <br />
+                        {{/if}}
+
+                        {{#if isEvent}}
+                            <span class="place">{{place}}, {{city}}</span>
+                        {{/if}}
+                    </span>
+
+                    {{#if minPrice}}
+                        <span class="tickets">
+                            Vstupenky<br>
+                            {{#if maxPrice}}
+                                od
+                            {{/if}}
+
+                            {{currencySymbolMinPriceBefore}}
+                            <strong>{{minPrice}}</strong>
+                            {{currencySymbolMinPriceAfter}}
+
+                            {{#if maxPrice}}
+                            <br />
+                            do
+                            {{currencySymbolMaxPriceBefore}}
+                            <strong>{{maxPrice}}</strong>
+                            {{currencySymbolMaxPriceAfter}}
+                            {{/if}}
+                        </span>
+                    {{/if}}
+                </span>
+        </a>
+        {{/each}}
+    </div>
+</script>
+</div>
+</div>
+<div class="hidden" id="listEmpty">
+<h2>Bohužel jsme nenašli žádnou akci</h2>
+</div>
+<div class="hpActions" id="listNext">
+<a class="bigButton fixedWid" href="#">Zobrazit další akce</a>
+</div>
+</div>
+<div id="footer">
+<div id="vouchersOffer">
+<a class="button" href="https://smsticket.zakaznik.cz" target="_blank">
+        Daruj poukaz na vstupenky
+    </a>
+<div class="banner">
+<a href="https://smsticket.zakaznik.cz" target="_blank">
+            Daruj poukaz na vstupenky
+        </a>
+</div>
+</div>
+<div class="center with-logo">
+<a class="logo" href="/"><span>smsticket</span></a>
+<a class="instagram" href="https://www.instagram.com/smsticket.cz" target="_blank"><span>Sleduj náš Instagram</span></a>
+<a class="facebook" href="https://www.facebook.com/smsticket/" target="_blank"><span>Sleduj náš Facebook</span></a>
+</div>
+<div class="center with-links">
+<ul class="menu">
+<li><a href="/kontakty">Kontakty</a></li>
+<li><a href="http://blog.smsticket.cz" target="_blank">Blog</a></li>
+<li><a href="/affiliate">Affiliate</a></li>
+<li><a href="/obchodni-podminky">Obchodní podmínky</a></li>
+</ul>
+<p class="copy">
+        ©2021 smsticket s.r.o. - <a href="https://www.axima-brno.cz" target="_blank">AXIMA spol. s r.o.</a> - <a href="http://bandzone.cz" target="_blank">BANDZONE s.r.o.</a> - <a href="https://www.pays.cz/" target="_blank">Platební brána</a> pays.cz s.r.o.<br/>
+</p>
+</div>
+</div>
+</div>
+</div>
+<script src="/static/js/site?v=NA8zjMqok6OUDNdYblxAdC4djpyfQTmp4oQv0RCm9Q41"></script>
+<script src="/static/js/public?v=8TziPDplBp_jgpN0hlCCNg0-tCY0t68ehm8PIdMp3L41"></script>
+<script type="text/javascript">
+	var ab_instance = "affiliate.smsticket.cz";
+	var ab_inzerent = 3;
+	var ab_kampan = 1;
+</script>
+<script async="" defer="" src="https://affiliate.smsticket.cz/js/module/tracking-v3.js" type="text/javascript"></script>
+<script src="/static/js/languages/cs?v=zt33KGHyeVN_sG1gJQ9TmoyRCL-KDs-qoyk1fJgkdtQ1"></script>
+<script>
+		APP.run( function() {
+            APP.rollExpand.init();
+            $( 'select' ).selectmenu();
+		} );
+
+		$(function () {
+			var sets = {
+				ajaxUrl: '/public/home/indexgetevents',
+				chaptersCount: 4,
+				currentChapter: 1
+				};
+			list = new EventList(sets);
+		});
+	</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PTFTRDB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PTFTRDB');</script>
+<!-- End Google Tag Manager -->
+<script>
+        $(function () {
+            //TODO: temporary solution of date unobtrusive validation
+            $.validator.methods.date = function (value, element) {
+                if (this.optional(element))
+                    return true;
+
+                var options = smsticket.settings.datepickerOptions,
+                    date = $.fn.datepicker.DPGlobal.parseDate(value, options.format, options.language),
+                    string = $.fn.datepicker.DPGlobal.formatDate(date, options.format, options.language);
+
+                return value.trim() === string;
+            }
+
+            smsticket.layout.init();
+
+            if (typeof CKEDITOR !== 'undefined') {
+                CKEDITOR.basePath = '/static/scripts/ckeditor/';
+                CKEDITOR.config.contentsCss = '/static/scripts/ckeditor/editor.css';
+            }
+        });
+    </script>
+<script src="/static/js/app_run?v=q9TTld_d56bNcLLWTVGysfUrInkC2bhpRFzo6aeUFw41"></script>
+</body>
+</html>

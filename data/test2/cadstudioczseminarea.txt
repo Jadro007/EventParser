@@ -1,0 +1,12 @@
+BIM pro profesi zdravotechnika();16. 03. 2021;;Brno
+BIM pro investory, provozovatele a správce nemovitostí();16. 03. 2021;;Brno
+BIM nástroje CAD Studio Civil Tools pod drobnohledem();18. 03. 2021;;Online
+BIM nástroje CAD Studio Revit Tools pod drobnohledem();23. 03. 2021;;Online
+CAM aktuality – shrnutí a výhled(Semináře, školení a výstavy v kalendáriu CAD Studia - CAM aktuality – shrnutí a výhled);22. 02. 2021;;Online
+Základy programování 3osých frézovacích center ve Fusion 360;04. 03. 2021;;Online
+Pokročilé možnosti programování 3osých frézovacích center ve Fusion 360;11. 03. 2021;;Online
+PLM v praxi - funkcionalita Autodesk Fusion Lifecycle - 1. část();25. 02. 2021;;Online
+PLM v praxi - funkcionalita Autodesk Fusion Lifecycle - 2. část();25. 03. 2021;;Online
+PLM v praxi - funkcionalita Autodesk Fusion Lifecycle - 3. část();22. 04. 2021;;Online
+PLM v praxi - funkcionalita Autodesk Fusion Lifecycle - 4. část();20. 05. 2021;;Online
+PLM v praxi - funkcionalita Autodesk Fusion Lifecycle - 5. část();24. 06. 2021;;Online

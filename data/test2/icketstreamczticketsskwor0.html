@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+
+<html id="ts" lang="en">
+<head>
+<title>Škwor,  - Tickets | Ticketstream</title>
+<meta charset="utf-8"/>
+<link href="/assets/css/reset.css" rel="stylesheet"/>
+<link href="/assets/css/booker.css?1614069829" rel="stylesheet"/>
+<link href="/assets/css/nice-select.css" rel="stylesheet"/>
+<meta content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" name="viewport"/>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M8J4C2C');</script>
+<!-- End Google Tag Manager -->
+<link href="/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/favicon/manifest.json" rel="manifest"/>
+<link color="#e71d2b" href="/favicon/safari-pinned-tab.svg" rel="mask-icon"/>
+<meta content="Ticketstream" name="apple-mobile-web-app-title"/>
+<meta content="Ticketstream" name="application-name"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="Škwor,  - Tickets" property="og:title"/>
+<meta content="Ticketstream.cz" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="https://www.ticketstream.cz/tickets/skwor-0" property="og:url"/>
+<meta content="Buy tickets to Škwor " name="description"/>
+<meta content="Buy tickets to Škwor " property="og:description"/>
+<meta content="https://ticketstream-images.s3.eu-central-1.amazonaws.com/fixed-schedule/2020/11/n0gasqt1rq_TS_1580x600_v3.png" property="og:image"/>
+<noscript><style>.eu-cookies { display:none }</style></noscript>
+</head>
+<body class="cls_SiteDetailfixed_schedule">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-M8J4C2C" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="header">
+<div class="content">
+<a class="logo" href="/en">
+<img alt="Tickestream.cz - Online Tickets" src="/assets/img/ticketstream-logo.svg"/>
+</a>
+<div id="menu_button" onclick="$('.menu').slideToggle(400); $('#menu_button').toggleClass('active');"></div>
+<div class="menu">
+<a href="https://live.ticketstream.cz"><span class="live-menu-dot"></span> LIVE</a>
+<a href="/events">Events</a>
+<a href="/interprets">Interprets</a>
+<a href="/agencies">Our agents</a>
+<a href="/cart">Cart</a>
+<span class="cart-count"></span>
+<a class="" href="#" id="menu-login" onclick="showLogin();">Sign in</a>
+<a class="show-submenu hidden" href="#" id="menu-profile"></a>
+<div class="submenu">
+<div>
+<a href="/account/myevents">My Tickets</a>
+<a href="/account/profile">Account settings</a>
+<a href="#" onclick="logout();">Sign out</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="expiration-display-fixed expiration-display-parent hidden">
+<div class="expiration-display-wrapper">
+<div class="expiration-display">
+<span>reservation expires in:</span>
+<span class="expiration-timer"></span>
+<div class="cart-content">
+<span>Cart content: </span>
+<a class="popup-ticket-count" href="/cart"></a>
+</div>
+</div>
+</div>
+</div>
+<input id="translation-more" type="hidden" value="show more"/>
+<div class="overlay">
+<div class="content-desktop">
+<div class="popup right-side center login" id="login-popup">
+<div class="close" onclick="backToInitialScreen();"></div>
+<div class="inside" id="login-form">
+<div class="h2">Welcome!</div>
+<button class="facebook big" onclick="facebookLogin();">Facebook login</button>
+<div>or sign in using e-mail</div>
+<input data-label="E-mail" id="login-email" name="email" type="email"/>
+<input data-label="Password" id="login-password" name="password" type="password"/>
+<div style="margin-top: 60px">
+<div class="err" id="login-err" style="margin-bottom: 20px;"></div>
+<button class="big" id="login-button" onclick="login();">Sign in</button>
+<div class="left hidden" id="login-loader" style="margin-bottom: 85px;">
+<div class="loader small float-left"></div>
+<span>signing in...</span>
+<div class="clear"></div>
+</div>
+<a class="reset-password" href="#" onclick="$('#login-form').hide(); $('#lost-password-form').show();">Reset password</a>
+</div>
+<div>
+<span>No account yet?</span>
+<a class="red" href="#" onclick="$('#login-form').hide(); $('#register-form').show();">register</a>
+</div>
+</div>
+<div class="inside hidden" id="register-form">
+<div class="h2">New user</div>
+<input data-label="First Name" name="firstName" type="text"/>
+<input data-label="Last Name" name="lastName" type="text"/>
+<input class="allow-blank" data-label="Phone number (optional)" name="phone" type="tel"/>
+<input data-label="E-mail" name="email" type="email"/>
+<input data-label="Password" id="register-password" name="password" type="password"/>
+<input data-label="Repeat password" id="register-password2" type="password"/>
+<div class="clear"></div>
+<br/>
+<br/>
+<div class="err" id="register-form-missing-fields">Please fill in all mandatory fields.</div>
+<div class="err" id="register-form-passwords-nomatch">Passwords do not match</div>
+<div class="err" id="register-form-generic-err"></div>
+<button class="big" onclick="registerUser();">register</button>
+</div>
+<div class="inside hidden" id="lost-password-form">
+<div class="h2">Lost password</div>
+<p>Fill in your e-mail address and we will send you an e-mail with a link to reset your password.</p>
+<input data-label="E-mail" name="email" type="email"/>
+<div class="padding-top">
+<div class="err" id="lost-password-form-missing-fields">Please fill in your e-mail address.</div>
+<div class="err" id="lost-password-form-generic-err"></div>
+</div>
+<div class="padding-top-less">
+<button class="big" onclick="lostPassword();">Submit</button>
+</div>
+</div>
+<div class="inside hidden" id="lost-password-result">
+<div class="h2">Lost password</div>
+<p>A password reset link was just sent to the e-mail address you entered.</p>
+<div class="padding-top-less">
+<button class="big" onclick="backToInitialScreen();">close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="snippet--flashes"></div>
+<div class="container">
+<div class="iframe-scroller">
+<div class="event-detail fixed-schedule">
+<input id="translation-load-more" type="hidden" value="show more"/>
+<div class="initial-screen height-reference">
+<div itemscope="" itemtype="http://schema.org/Event">
+<meta content="/tickets/15949" itemprop="url"/>
+<div class="content narrow">
+</div>
+<div class="content narrow padding-top">
+<div class="row">
+<div class="col-24">
+<img alt="Škwor&lt;br&gt;" class="event-image" itemprop="image" loading="lazy" src="https://ticketstream-images.s3.eu-central-1.amazonaws.com/fixed-schedule/2020/11/gpwdffz2vy_TS_560x760_v3..png" srcset="https://ticketstream-images.s3.eu-central-1.amazonaws.com/fixed-schedule/2020/11/gpwdffz2vy_TS_560x760_v3._1x.png , https://ticketstream-images.s3.eu-central-1.amazonaws.com/fixed-schedule/2020/11/gpwdffz2vy_TS_560x760_v3._2x.png  2x"/>
+</div>
+<div class="col-3"></div>
+<div class="col-33">
+<h1>
+<span id="event-name" itemprop="name">Škwor</span><span></span>
+</h1>
+<div class="info">
+<div class="info-block date date-time-range">
+<meta class="date-from" content="2021-05-01 17:00:00" itemprop="startDate"/>
+<meta class="date-to" content="2021-06-30 21:59:00" itemprop="endDate"/>
+</div>
+</div>
+<div class="expandable styled-description" data-height-threshold="200">
+<div itemprop="description">
+<p><b>Škwor - open air tour 2021
+
+</b></p><p><br/></p><p><b>1. května 2021 vyrážíme na open air tour. Můžete se těšit na velkolepou show k nové desce – TVÁŘE SMUTNEJCH HRDINŮ.</b></p><p><b><br/></b></p><p><b>
+</b></p><p>Při současné situaci doufáme, že koncerty pod širým nebem mají šanci. Vybírali jsme z amfiteátrů, letních kin, zabrousíme také na dostihové závodiště nebo nádvoří hradu. Vstupenky budou zatím v předprodeji v omezeném množství, abychom mohli lépe kopírovat možné omezení vlády na jaře příštího roku. Samozřejmě je budeme uvolňovat, jakmile to půjde. Prahu z tohoto tour rozhodně nechceme vynechat, ale jednání o místě a termínu ještě nejsou finálně uzavřena. Podrobnosti budeme průběžně doplňovat. 
+
+</p><p>Vstupenky zakoupené v roce 2020 zůstávají nadále v platnosti a to i za svou výhodnější cenu! Přehled koncertů nového turné a s nimi i místa, z nichž vstupenka na nový koncert platí naleznete v odkazu <a href="https://www.ticketstream.cz/stranka/skwor-open-air-tour-2021-presun" target="_blank">https://www.ticketstream.cz/stranka/skwor-open-air-tour-2021-presun</a></p><p><br/></p><p>Pokud se měly konat na některých místech v roce 2020 dva koncerty po sobě, jsou nově sloučeny do jednoho dne. 
+
+</p><p><br/></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="content narrow prices show-on-mobile variable-height">
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-01 17:00:00" data-date-text="01/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-01 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-01 22:00:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Pardubice Racecourse" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Pardubice" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Pardubice</div>
+<div class="venue">Pardubice Racecourse</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124239, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138503" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-05 17:00:00" data-date-text="05/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-05 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-05 22:00:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Loucky - culture and sports area" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Litvinov" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Litvinov</div>
+<div class="venue">Loucky - culture and sports area</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124241, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138505" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-08 17:00:00" data-date-text="08/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-08 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-08 22:00:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Swimming Area Zabreh" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Zabreh" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Zabreh</div>
+<div class="venue">Swimming Area Zabreh</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124242, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138506" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-15 17:00:00" data-date-text="15/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-15 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-15 22:00:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Přírodní amfiteátr Konopiště" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Benesov u Prahy" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Benesov u Prahy</div>
+<div class="venue">Přírodní amfiteátr Konopiště</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124245, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138509" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-21 17:00:00" data-date-text="21/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-21 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-21 22:00:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Summer Cinema Jihlava" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Jihlava" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Jihlava</div>
+<div class="venue">Summer Cinema Jihlava</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124246, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138510" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-26 17:00:00" data-date-text="26/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-26 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-26 21:59:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Lochotín Amphitheatre" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Pilsen" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Pilsen</div>
+<div class="venue">Lochotín Amphitheatre</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124240, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138504" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-05-29 17:00:00" data-date-text="29/05/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-05-29 17:00:00" itemprop="startDate"/>
+<meta content="2021-05-29 21:59:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Amphitheatre Loket" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Loket nad Ohri" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Loket nad Ohri</div>
+<div class="venue">Amphitheatre Loket</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124243, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138507" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-06-05 17:00:00" data-date-text="05/06/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-06-05 17:00:00" itemprop="startDate"/>
+<meta content="2021-06-05 21:59:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Areál Anthropos" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Brno" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Brno</div>
+<div class="venue">Areál Anthropos</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124250, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138513" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-06-18 17:00:00" data-date-text="18/06/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-06-18 17:00:00" itemprop="startDate"/>
+<meta content="2021-06-18 21:59:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Exhibition fields Č. Budějovice" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Ceske Budejovice" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Ceske Budejovice</div>
+<div class="venue">Exhibition fields Č. Budějovice</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124251, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138514" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-06-26 17:00:00" data-date-text="26/06/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-06-26 17:00:00" itemprop="startDate"/>
+<meta content="2021-06-26 21:59:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Amphitheatre Mikulov" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Mikulov na Morave" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Mikulov na Morave</div>
+<div class="venue">Amphitheatre Mikulov</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124252, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138515" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row variable-height" itemprop="" itemscope="" itemtype="http://schema.org/Event">
+<div class="col-30 condensed vertical-center date format-date-segments" data-date="2021-06-30 17:00:00" data-date-text="30/06/2021"></div>
+<meta content="Škwor, Tváře smutnejch hrdinů TOUR" itemprop="name"/>
+<meta content="2021-06-30 17:00:00" itemprop="startDate"/>
+<meta content="2021-06-30 21:59:00" itemprop="endDate"/>
+<div itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+<meta content="Slezskoostravský hrad" itemprop="name"/>
+<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+<meta content="Ostrava" itemprop="addressLocality"/>
+</div>
+</div>
+<div class="col-10 vertical-center">
+<div class="city">Ostrava</div>
+<div class="venue">Slezskoostravský hrad</div>
+</div>
+<div class="col-20 right vertical-center button-wrapper">
+<div>
+<button class="btn black" onclick="showTickets(1124253, 'performance');">Tickets</button>
+<div class="more-link-wrapper">
+<a class="condensed-upper-case small more-link replace-nbsp" href="/event/skwor-tvare-smutnejch-hrdinu-tour-138516" itemprop="url">Event detail</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="/assets/js/cart-common.js?1614069829"></script>
+<script src="/assets/js/tickets.js?1614069829"></script>
+<script src="/assets/js/calendars.js?1614069829"></script>
+<script src="/assets/js/seatingchart.js?1614069829"></script>
+<input id="translation-show-more-info" type="hidden" value="Additional info"/>
+<input id="translation-hide-more-info" type="hidden" value="hide additional info"/>
+<input id="translation-tickets-not-on-sale" type="hidden" value="&lt;b&gt;TEMPORARY UNAVAILABLE&lt;/b&gt;.&lt;br&gt;&lt;br&gt;All alloted seats are sold or reserved.&lt;br&gt;Try again later."/>
+<input id="translation-tickets" type="hidden" value="Tickets"/>
+<input id="translation-choose-tickets" type="hidden" value="Number of tickets?"/>
+<input id="translation-communication-error" type="hidden" value="There was an error while communicating with the server."/>
+<input id="translation-try-again" type="hidden" value="try again"/>
+<input id="translation-close" type="hidden" value="close"/>
+<input id="translation-price-change" type="hidden" value="change"/>
+<input id="translation-setting-price" type="hidden" value="setting price"/>
+<div class="overlay">
+<div class="popup full-width full-height height-reference" id="seatingchart-popup">
+<div class="stick-to-top top-wrapper iframe-booker-only full-width">
+<div class="mobile-content mobile-content-wide full-width">
+<button class="back-btn btn" onclick="ticketsBack();">Back</button>
+<button class="go-to-cart-button right with-icon" onclick="goToCart();"><img alt="Cart" src="/assets/img/cart.svg"/> Cart <span class="cart-count"></span></button>
+</div>
+</div>
+<div class="popup-content iframe-scroller">
+<div class="mobile-content-wrapper no-mobile-float mobile-header full-width">
+<div class="mobile-content full-width">
+<div class="close close-overlay" onclick="activeSeatingChart.backToInitialScreenIfPossible();"></div>
+<div id="sector-back-button-wrapper" style="display:none;">
+<button class="back-btn btn" id="sector-back-button" onclick="activeSeatingChart.backToMain();">Back to the main chart</button>
+</div>
+<div class="seatingchart-expiration-top desktop-only-strict">
+<div class="hidden expiration-display-parent desktop-only-strict">
+<div class="expiration-display">
+<span>reservation expires in:</span>
+<span class="expiration-timer"></span>
+<div class="cart-content mobile-only">
+<span>Cart content: </span>
+<a class="popup-ticket-count"></a>
+</div>
+</div>
+</div>
+</div>
+<div class="event-name-wrapper">
+<span class="event-name"></span>
+<span class="event-date hide"></span>
+</div>
+<div class="h1" id="sectors-headline">Choose your seats</div>
+<div id="seatingchart-loader">
+<div class="loader"></div>
+<h5>Loading seating chart...</h5>
+</div>
+</div>
+</div>
+<div class="seating-chart-wrapper">
+<div class="seating-chart-message-wrapper hide" id="sector-sold-out">
+<div class="seating-chart-message">This sector is already sold out.</div>
+</div>
+<div id="unzoomButtonWrapper">
+<button class="black hide hidden" id="unzoomButton" onclick="activeSeatingChart.unZoom();" style="display:none;">
+<img alt="unzoom" src="/assets/img/unzoom.svg"/>
+</button>
+</div>
+<div id="sectorLoaderWrapper" style="display:none;">
+<div id="sectorLoaderInside">
+<div class="loader"></div>
+</div>
+</div>
+<canvas id="seating-chart"></canvas>
+<div class="hidden" id="images"></div>
+<div class="info-box-wrapper" id="seat-info-wrapper">
+<div class="info-box" id="seat-info">
+<div class="cross">
+<button onclick="activeSeatingChart.seatInfoHide(true, true);"></button>
+</div>
+<div id="seat-info-category-color"></div>
+<h5 id="seat-info-category"> </h5>
+<div class="row seats">
+<div class="col-30">
+<label>Section</label>
+<span class="resize" id="seat-info-sector"></span>
+</div>
+<div class="col-15">
+<label>Row</label>
+<span class="resize" id="seat-info-row"></span>
+</div>
+<div class="col-15">
+<label>Seat</label>
+<span class="resize" id="seat-info-seat"></span>
+</div>
+</div>
+<div class="seatingchart-tickets-overview" id="seat-info-price-wrapper">
+<div class="row">
+<div class="full-width">
+<label>price</label>
+<span>
+<b class="right" id="seat-info-price"></b>
+<span class="resize" id="seat-info-price-category"></span>
+</span>
+</div>
+</div>
+</div>
+<div class="seatingchart-tickets-overview" id="seat-info-price-select-wrapper">
+<div class="row seats">
+<label>Choose your price</label>
+<select class="price-dropdown" data-progress-text="updating price..." id="seat-info-price-select"></select>
+</div>
+</div>
+<div class="hide" id="seat-info-price-additional-info">
+<a onclick="activeSeatingChart.showAdditionalInfo();">Additional info</a>
+</div>
+<div class="bottom">
+<p id="seat-info-progress">Checking for availability...</p>
+<div id="seat-info-delete-progress">
+<div class="loader small"></div>
+<p>Cancelling reservation...</p>
+</div>
+<div id="seat-info-reserved">
+<div class="red mobile-only">reservation expires in: <span class="expiration-timer"></span></div>
+<div class="desktop-only">
+<button class="arrow full-width with-icon" onclick="goToCart();"><img alt="Cart" src="/assets/img/cart.svg"/> Cart – <span class="popup-ticket-count"></span></button>
+</div>
+</div>
+<div id="seat-info-hover">
+<button onclick="activeSeatingChart.seatClick(activeSeatingChart.seatInfoID);">reserve</button>
+</div>
+<p id="seat-info-error">There was an error when sending request to the server. Please try again later.</p>
+<p id="seat-info-sold">We are sorry, but this seat is not available anymore.</p>
+</div>
+<div class="info-box-arrow-wrapper">
+<div class="info-box-arrow" id="seat-info-arrow"></div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+<input id="section-caption" type="hidden" value="Section"/>
+<input id="seat-caption" type="hidden" value="Seat"/>
+<input id="category-caption" type="hidden" value="category"/>
+<input id="row-caption" type="hidden" value="Row"/>
+<input id="price-caption" type="hidden" value="price"/>
+<input id="price-select-caption" type="hidden" value="Choose your price"/>
+<input id="available-seats-caption" type="hidden" value="available tickets"/>
+<div id="debug"></div>
+<div class="mobile-content full-width" id="seatingchart-legend-inside">
+<div id="prices-overview">
+<div id="prices-overview-content"></div>
+</div>
+<div id="sectors-overview">
+<div class="h2">Available sectors</div>
+<div id="sectors-overview-content"></div>
+</div>
+</div>
+<div class="mobile-content full-width seatingchart-tickets-overview" id="seatingchart-tickets-overview-wrapper">
+<div id="seatingchart-tickets-wrapper" style="display: none;">
+<div class="h2">Selected tickets</div>
+<div id="seatingchart-tickets"></div>
+</div>
+<p class="info" id="seatingchart-no-tickets" style="display: none;">Select your seats on seating chart to continue with your order.</p>
+<div class="desktop-only seatingchart-buttons">
+<button class="big white float-left" onclick="activeSeatingChart.backToInitialScreenIfPossible();">Back</button>
+<button class="big grey arrow float-right add-to-cart" onclick="event.preventDefault(); goToCartIfPossible();">place order</button>
+</div>
+</div>
+</div>
+</div>
+<div style="position:absolute; height: 0">
+<div class="add-to-cart mobile-only stick-to-bottom red-background single-button hidden hide-in-booker" onclick="event.preventDefault(); goToCartIfPossible();">
+<div class="btn arrow with-icon"><img alt="Cart" src="/assets/img/cart.svg"/>Cart – <span class="popup-ticket-count"></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="overlay overlay-popup">
+<div class="popup middle full-height height-reference" id="unnumbered-popup">
+<div class="stick-to-top top-wrapper">
+<div class="mobile-content">
+<button class="back-btn btn" onclick="backToInitialScreen();">Back</button>
+<button class="go-to-cart-button right with-icon iframe-booker-only" onclick="goToCart();" style="margin-top: 10px; display: none; padding-right: 12px;"><img alt="Cart" src="/assets/img/cart.svg"/> Cart <span class="cart-count"></span></button>
+</div>
+</div>
+<div class="mobile-content-wrapper">
+<div class="mobile-content">
+<img alt="" id="unnumbered-img" onclick="scrollToAnimation($('#unnumbered-headline').offset().top - 80, 1000);" src="/assets/img/blank.svg"/>
+<div class="h1" id="unnumbered-headline"> </div>
+<div class="prices-list" id="unnumbered-tickets"></div>
+<div class="padding-top-less iframe-booker-only">
+<button class="checkout-button big full-width white-background checkout-button" onclick="event.preventDefault(); Checkout();">Checkout</button>
+<div class="checkout-button-loader single-button hidden">
+<div class="loader small float-right"></div>
+<div class="btn">Please wait</div>
+</div>
+</div>
+</div>
+</div>
+<div class="checkout-button stick-to-bottom white-background single-button hide-in-iframe-booker" id="unnumberedCheckoutButton" onclick="event.preventDefault(); Checkout();">
+<div class="btn arrow with-icon"><img alt="Checkout" src="/assets/img/cart.svg"/>Checkout</div>
+</div>
+<div class="checkout-button-loader stick-to-bottom white-background single-button hidden hide-in-booker">
+<div class="loader small float-right"></div>
+<div class="btn">Please wait</div>
+</div>
+</div>
+</div>
+<div class="overlay">
+<div class="popup middle full-height height-reference" id="tickets-popup">
+<div class="stick-to-top top-wrapper hide-in-popup-iframe-booker">
+<div class="mobile-content">
+<button class="back-btn btn" onclick="ticketsBack();">Back</button>
+<button class="go-to-cart-button right with-icon" onclick="goToCart();" style="margin-top: 10px; display: none; padding-right: 12px;"><img alt="Cart" src="/assets/img/cart.svg"/> Cart <span class="cart-count"></span></button>
+</div>
+</div>
+<div class="popup-content iframe-scroller">
+<div class="iframe-popup-booker-only" style="height: 60px;">
+<button class="back-btn btn step step-prices-selection step-time-selection" onclick="ticketsBack();" style="margin-top: 20px;">Back</button>
+<button class="go-to-cart-button right with-icon" onclick="goToCart();" style="margin-right: 37px; margin-left: 40px; display: none; padding-right: 12px;"><img alt="Cart" src="/assets/img/cart.svg"/> Cart <span class="cart-count"></span></button>
+<div class="clear"></div>
+</div>
+<div class="mobile-content-wrapper step step-date-selection step-time-selection no-mobile-float mobile-header" id="mobile-select-date-header">
+<div class="mobile-content">
+<div class="event-name"></div>
+<div class="h1">When would you like to go?</div>
+</div>
+</div>
+<div class="step step-loader padding-top-extra" style="height: 1200px;">
+<div class="loader"></div>
+</div>
+<div class="step step-date-selection left">
+<div class="stick-when-scrolling mobile-content-wrapper" id="date-sticky-header">
+<div class="calendar">
+<div class="week week-header"></div>
+</div>
+</div>
+<div class="stick-to-bottom white-background single-button hidden" id="dateSelectionLoader">
+<div class="loader small float-right"></div>
+<div class="btn">Loading prices</div>
+</div>
+</div>
+<div class="step step-time-selection">
+<div class="stick-when-scrolling mobile-content-wrapper" id="time-sticky-header">
+<div class="mobile-content">
+<button id="cancelDate" onclick="cancelDate();"></button>
+<div class="h2" id="selectedDate"> </div>
+</div>
+</div>
+</div>
+<div class="date-and-time">
+<div class="step step-date-selection mobile-content-wrapper" id="select-date">
+<div id="calendars-placeholder"></div>
+</div>
+<div class="step step-time-selection mobile-content-wrapper" id="select-time">
+<div class="mobile-content" id="time-radio-buttons"></div>
+</div>
+</div>
+<div class="mobile-content-wrapper step step-discount-code-entry no-mobile-float mobile-header" id="mobile-prices-header">
+<div class="mobile-content">
+<div class="event-name"></div>
+<div class="h1" id="discount-coupon-title">Do you have a discount code?</div>
+<img alt="" class="hidden full-width" id="discount-coupon-image" src="/assets/img/blank.svg"/>
+<p class="hidden" id="discount-coupon-description"></p>
+<input class="full-width" data-label="Enter your coupon code" data-validate-url="/api/check-discount?performanceId=[performanceID]&amp;cart=0&amp;lang=en" id="coupon-code" onblur="couponValidate()" onkeyup="discountCodeChange()" type="text"/>
+<div class="full-width">
+<div class="h2 small hide coupon-status coupon-valid padding-top">Coupon is valid.</div>
+<p class="small hide coupon-status coupon-invalid">Coupon is not valid!</p>
+</div>
+<div class="padding-top">
+<button class="big full-width" id="discount-codeContinueButton" onclick="event.preventDefault(); discountCodeContinue();">Continue with no code</button>
+</div>
+</div>
+</div>
+<div class="mobile-content-wrapper step step-prices-selection no-mobile-float mobile-header">
+<div class="mobile-content">
+<div class="event-name"></div>
+<div class="event-date hide"></div>
+<div class="h1">
+<span class="multiple-tickets">Pick your tickets</span>
+<span class="single-ticket hidden">Number of tickets?</span>
+</div>
+</div>
+</div>
+<div class="step step-prices-selection">
+<div class="mobile-content-wrapper">
+<div class="mobile-content">
+<div class="prices-list" id="prices-list"></div>
+<div class="iframe-booker-only padding-top-less">
+<button class="checkout-button big full-width white-background checkout-button" onclick="event.preventDefault(); Checkout();">Checkout</button>
+<div class="checkout-button-loader single-button hidden">
+<div class="loader small float-right"></div>
+<div class="btn">Please wait</div>
+</div>
+</div>
+</div>
+</div>
+<div class="checkout-button stick-to-bottom white-background single-button hide-in-booker" id="checkoutButton" onclick="event.preventDefault(); Checkout();">
+<div class="btn arrow with-icon"><img alt="Cart" src="/assets/img/cart.svg"/>Checkout</div>
+</div>
+<div class="checkout-button-loader stick-to-bottom white-background single-button hidden hide-in-booker">
+<div class="loader small float-right"></div>
+<div class="btn">Please wait</div>
+</div>
+</div>
+</div>
+<div class="step step-cart" id="ajax-cart">
+<div class="padding-top-extra">
+<div class="loader"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="black-background footer" id="footer">
+<div class="content">
+<div class="row">
+<div class="col-14">
+<a class="email" href="mailto:info@ticketstream.cz">info@ticketstream.cz</a>
+<label for="lang">Language</label>
+<select class="black lang" data-lang="en" id="lang" name="lang">
+<option data-url="/tickets/skwor-0" value="en">English</option>
+<option data-url="/vstupenky/skwor-tvare-smutnejch-hrdinu-tour" value="cs">Česky</option>
+</select>
+</div>
+<div class="col-6"></div>
+<div class="footer-menu col-15">
+<h5>Information</h5>
+<a href="/page/contact" target="_blank">Contact</a>
+<a href="/page/about-ticketstream">About Ticketstream</a>
+<a href="/page/privacy-policy">Privacy policy</a>
+<a href="https://images.ticketstream.cz/images/system_images/PP-VST_en.pdf" target="_blank">Insurance terms and conditions</a>
+</div>
+<div class="footer-menu col-15">
+<h5>For clients</h5>
+<a href="/page/faq" target="_blank">FAQ</a>
+<a href="/page/terms-and-conditions">Terms and Conditions</a>
+<a href="/agencies">Our agents</a>
+<a href="/page/invoice">Inovice order</a>
+<a href="/refundation">Ticket refunds</a>
+<a href="/static-page/refunds" target="_blank">Changes, cancellations</a>
+</div>
+<div class="footer-menu col-10">
+<h5>For partners</h5>
+<a href="/page/partners">Our services</a>
+<a href="/page/become-our-partners">Become our partners</a>
+<a href="https://partners.ticketstream.net">Professional access</a>
+</div>
+</div>
+<div class="row">
+<div class="col-30">
+<div class="bottomLogo">Ticketstream</div>
+</div>
+<div class="col-30 right social-icons">
+<a href="https://www.instagram.com/ticketstream.cz" target="_blank">
+<img alt="Instagram logo" src="/assets/img/instagram.svg"/>
+</a>
+<a href="https://www.facebook.com/ticketstream" target="_blank">
+<img alt="Facebook logo" src="/assets/img/facebook.svg"/>
+</a>
+<a href="https://twitter.com/ticketstream" target="_blank">
+<img alt="Twitter logo" src="/assets/img/twitter.svg"/>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="overlay top-overlay">
+<div class="popup message-box" id="message-box">
+<div class="close" onclick="hideMessageBox();"></div>
+<p id="message-box-content"></p>
+</div>
+</div>
+<div class="eu-cookies">
+    This site uses cookies to provide services, personalize ads and analyze traffic (<a href="/page/privacy-policy">more info</a>). By using this site you agree with our Terms and Conditions.
+    <button>I accept</button>
+</div>
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+<script src="/assets/js/jquery.nice-select.js?1614069829"></script>
+<script src="/assets/js/common.js?1614069829"></script>
+<script src="/assets/js/generic.js?1614069829"></script>
+<script src="/assets/js/login.js?1614069829"></script>
+<script src="/assets/js/user-interface.js?1614069829"></script>
+<script src="/assets/js/localisation-en.js?1614069829"></script>
+<script src="/assets/js/iscroll.js"></script>
+<script src="/assets/js/search.js?1614069829"></script>
+<script>
+        $(function () {
+            init();
+        });
+
+        var userLoggedIn = false;
+
+    </script>
+<script>
+        $('.eu-cookies button').click(function() {
+            var date = new Date();
+            date.setFullYear(date.getFullYear() + 10);
+            document.cookie = 'eu-cookies=1; path=/; expires=' + date.toGMTString();
+            $('.eu-cookies').hide();
+        });
+    </script>
+<!-- GTM Data Layer setup -->
+<script>
+        let setupDataLayerDone = false;
+
+        function setupGtmDataLayer() {
+            if (dataLayer !== undefined && !setupDataLayerDone) {
+                dataLayer.push([]);
+                setupDataLayerDone = true;
+            }
+        }
+
+        $(setupGtmDataLayer());
+    </script>
+<script>
+        	if (cartData)
+        		cartData.tickets = [];
+
+            cartUrl = "/cart";
+		</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+TJ Třebíč();12. 12. - 20. 12. 2021;;Třebíč
+TJ Valašské Meziříčí();03. 01. - 12. 12. 2021;;Valašské Meziříčí
+SK Žižkov Praha();10. 01. - 14. 12. 2021;;Praha
+SKK Vrchlabí();06. 01. - 18. 12. 2021;;Vrchlabí
+Kuželky Jiskra Hazlov();08. 01. - 26. 12. 2021;;Hazlov
+TJ Bižuterie Jablonec nad Nisou();02. 01. - 10. 01. 2021;;Jablonec nad Nisou
+Kuželkářské turnaje();01. 08. - 13. 09. 2021;;Duchcov
+Kuželkářské turnaje();25. 08. - 06. 09. 2021;;Vrchlabí
+Kuželkářské turnaje();24. 08. - 06. 09. 2021;;Ratíškovice
+Kuželkářské turnaje();22. 08. - 06. 09. 2021;;Holýšov
+Kuželkářské turnaje();21. 08. - 06. 09. 2021;;Dvůr Králové nad Labem
+Kuželkářské turnaje();24. 08. - 04. 09. 2021;;Kosmonosy
+Kuželkářské turnaje();17. 08. - 30. 08. 2021;;Třebíč
+Kuželkářské turnaje();14. 08. - 30. 08. 2021;;Třebíč
+Kuželkářské turnaje();03. 08. - 30. 08. 2021;;Valašské Meziříčí
+Kuželkářské turnaje();21. 08. - 29. 08. 2021;;Machová
+Kuželkářské turnaje();21. 08. - 28. 08. 2021;;Vracov
+Kuželkářské turnaje();14. 08. - 23. 08. 2021;;Ratíškovice
+Kuželkářské turnaje();09. 08. - 23. 08. 2021;;Bohumín
+Kuželkářské turnaje();08. 08. - 23. 08. 2021;;Praha
+Kuželkářské turnaje();31. 07. - 23. 08. 2021;;Šumperk
+Kuželkářské turnaje();10. 08. - 19. 08. 2021;;Brno
+Kuželkářské turnaje();08. 08. - 16. 08. 2021;;Rosice
+Kuželkářské turnaje();31. 07. - 16. 08. 2021;;Česká Lípa
+Kuželkářské turnaje();20. 07. - 08. 08. 2021;;Prušánky
+Kuželkářské turnaje();20. 06. - 26. 07. 2021;;Louny
+Kuželkářské turnaje();22. 06. - 05. 07. 2021;;Ústí nad Labem
+Kuželkářské turnaje();06. 06. - 14. 06. 2021;;Praha
+Kuželkářské turnaje();06. 06. - 13. 06. 2021;;Aš
+Kuželkářské turnaje();27. 05. - 04. 06. 2021;;Opava
+Kuželkářské turnaje();06. 01. - 12. 01. 2021;;Kutná Hora
+Kuželkářské turnaje();12. 01. - 07. 12. 2021;;Valašské Meziříčí
+Kuželkářské turnaje();09. 01. - 28. 12. 2021;;Rokycany
+Kuželkářské turnaje();05. 01. - 27. 12. 2021;;Blansko
+Kuželkářské turnaje();05. 01. - 15. 12. 2021;;Praha
+Kuželkářské turnaje();05. 01. - 13. 12. 2021;;Vrchlabí
+Kuželkářské turnaje();26. 12. - 30. 12. 2021;;Rychnov nad Kněžnou
+Kuželkářské turnaje();09. 12. - 29. 12. 2021;;Tábor
+Kuželkářské turnaje();07. 12. - 22. 12. 2021;;Ústí nad Labem
+Kuželkářské turnaje();09. 12. - 19. 12. 2021;;Solnice
+Kuželkářské turnaje();07. 12. - 15. 12. 2021;;Třebíč
+Kuželkářské turnaje();14. 12. 2021;;Rychnov nad Kněžnou
+Kuželkářské turnaje();02. 09. - 20. 09. 2021;;Žatec
+Kuželkářské turnaje();02. 09. - 11. 09. 2021;;Trutnov

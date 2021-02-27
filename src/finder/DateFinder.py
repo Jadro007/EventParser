@@ -74,8 +74,6 @@ class DateFinder:
         ##############################################################
         # todo: there is duplicated almost same logic, refactor this #
         ##############################################################
-        print("damn")
-        print(DateFinder.dateRegex)
         if DateFinder.date_regex_compiled is None:
             DateFinder.date_regex_compiled = re.compile(DateFinder.dateRegex, flags=re.IGNORECASE)
 
