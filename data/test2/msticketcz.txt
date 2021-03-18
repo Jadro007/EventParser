@@ -28,7 +28,7 @@ Interaktivníshow o ceny: ZIMNÍ SPORTY();02. 03. 2021;;Online
 ONLINE: Poutní cesty Česka a Slovenska;02. 03. 2021;;Online
 Madagaskar - Země krále Jelimána I Hradec Králové();03. 03. 2021;;Hradec Králové
 Webinář: Sebevražda: související faktory a prevence();03. 03. 2021;;Online
-Od oltáře do Santiaga aneb 3327 km pěšky();03. 03. 2023;;Jablonec nad Nisou
+Od oltáře do Santiaga aneb 3327 km pěšky();03. 03. 2021;;Jablonec nad Nisou
 Interaktivní show o ceny: téma SVĚT();03. 03. 2021;;Online
 ONLINE: Kostarika - skryté kouty exotického ráje (Mullerová)();03. 03. 2021;;ONLINE
 Koncery ArtCafé Live - Magdaléna & Vartui;03. 03. 2021;; Broumov (Klášter Broumov)
@@ -68,9 +68,9 @@ Ferda Mravenec a Brouk Pytlík na Šelepce;14. 03. 2021;;Brno (Šelepka)
 Moment!;14. 03. 2021;;Svitavy (Divadlo Trám)
 Longforma();14. 03. 2021;;Facebook
 ONLINE: Severní Taiwan (Martin Hájek)();14. 03. 2021;;ONLINE
-Od oltáře do Santiaga aneb 3327 km pěšky();15. 03. 2023;;Plzeň
+Od oltáře do Santiaga aneb 3327 km pěšky();15. 03. 2021;;Plzeň
 ONLINE: Fotografujeme na cestách (Jana Kupčáková)();15. 03. 2021;;ONLINE
-Od oltáře do Santiaga aneb 3327 km pěšky();16. 03. 2023;;Karlovy Vary
+Od oltáře do Santiaga aneb 3327 km pěšky();16. 03. 2021;;Karlovy Vary
 Webinář: Psychologie nákupních rozhodnutí();16. 03. 2021;;Live
 Ledovým severem;16. 03. 2021;;Online
 Černobyl – spící peklo – Blansko();16. 03. 2021;;Blansko
@@ -78,7 +78,7 @@ Karel Plíhal;16. 03. 2021;; Česká Třebová (kulturní centrum)
 Láska a párečky();16. 03. 2021;;Beroun
 ONLINE: Antarktida - nejlepsí cesta mého života (VI. Váchal);16. 03. 2021;;ONLINE
 Interaktivní show o ceny: DESKOVÉ HRY;16. 03. 2021;;Online
-Od oltáře do Santiaga aneb 3327 km pěšky();17. 03. 2023;;České Budějovice
+Od oltáře do Santiaga aneb 3327 km pěšky();17. 03. 2021;;České Budějovice
 Webinář: Juraj Karpiš: Jak přežít zlé peníze();17. 03. 2021;;Live
 Interaktivní show o ceny: SCI-FI();17. 03. 2021;;Online
 ONLINE: Gruzie – přes hřebeny Velkého Kavkazu (Jakub Šolc)();17. 03. 2021;;ONLINE
@@ -103,7 +103,7 @@ Kocour v botách na Šelepce();21. 03. 2021;;Brno
 ONLINE: Fotografování (nejen) v Dolomitech (Martin Rak)();21. 03. 2021;;ONLINE
 Kolaps !? (dva příběhy z praxe)();22. 03. 2021;;Online
 ONLINE: Peru - incké památky a studium šamanismu (D. Holík)();22. 03. 2021;;ONLINE
-Od oltáře do Santiaga aneb 3327 km pěšky();23. 03. 2023;;Olomouc
+Od oltáře do Santiaga aneb 3327 km pěšky();23. 03. 2021;;Olomouc
 ONLINE: Illes Medes - potápěčská perla středomoří (M. Černý)();23. 03. 2021;;ONLINE
 Webinář: Fenomén vampyrismu v dějinách Evropy();24. 03. 2021;;Live
 Gala koncert Klasická hudba potkává nejen muzikálovou();24. 03. 2021;;Praha
@@ -115,5 +115,5 @@ ONLINE: Bolívie (Pavel Svoboda);25. 03. 2021;;ONLINE
 Černobyl – spící peklo – Třinec();26. 03. 2021;;Třinec
 Wektor Festival();11. 06. 2021;;Dačice
 Mig 21();10. 06. 2021;;Brno
-DOWNTOWN Fest Dačice 2021();05. 06. 2023;;Dačice
-ROCK MAJÁLES 2021();29. 05. 2023;;Bystřice nad Pernštejnem
+DOWNTOWN Fest Dačice 2021();05. 06. 2021;;Dačice
+ROCK MAJÁLES 2021();29. 05. 2021;;Bystřice nad Pernštejnem

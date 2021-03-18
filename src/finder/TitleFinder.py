@@ -34,7 +34,16 @@ class TitleFinder:
                        "Umělci", "Information about the concert", "Tickets", "Předprodej online", "Novinky emailem",
                        "Web", "E-shop", "Detail akce", "Informace o akci", "Naše tipy...",
                        "Další informace", "Doporučujeme", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota",
-                       "Neděle", "Předchozí", "Tradiční akce", "Akce", "Otevírací doba", "Místo", "Číst více..."
+                       "Neděle", "Předchozí", "Tradiční akce", "Akce", "Otevírací doba", "Místo", "Číst více...",
+                       "zobrazit celý text", "Další akce pro veřejnost", "Zobrazit archiv aktualit",
+                       "Čas", "Popis", "Naše tipy", "Odloženo", "Zrušeno", "Připravujeme", "Kontaktujte nás",
+                       "Fotogaléria", "Aktualita", "Adresa a kontakt", "Parkování", "Vrácení vstupenek", "a",
+                       "Novinky", "Popis", "Podobné akce", "vstupenky", "Navigovat", "Program", "Podobné události",
+                       "Headlines", "Kontakt", "Adresát", "Archiv aktualit", "Mohlo by vás zajímat", "Sdílet obsah",
+                       "Klasická verze", "Podmínky", "Leden", "LEDEN", "Zakázka", "Přijímáme online platby",
+                       "Související články", "Mohlo by vás zajímat", "Zprávy", "Autor", "Hlavní zprávy", "Sdílet obsah",
+                       "Info", "News", "Zrušeno", "ZRUŠENO", "zrušeno", "Zobrazit více →", "Navštivte také", "Podmínky výzvy",
+                       "Poslední hodnocení", "Úvodní stránka", "Najdete nás", "zde", "AKTUALITY", "home"
                        ]
 
     @staticmethod
@@ -55,6 +64,17 @@ class TitleFinder:
         title_from_list = TitleFinder._find_internal(soup, True, True)
         if use_main_title and title_from_list is not None:
             title_from_list.alternative_value = main_title.value
+
+        if title_from_list is not None and title_from_list.alternative_value is None:
+            container = soup
+            parent = soup.parent
+            while parent is not None:
+                container = parent
+                parent = parent.parent
+
+            title_element = container.find("title")
+            if title_element is not None:
+                title_from_list.alternative_value = Utils.clean(title_element.getText())
 
         return title_from_list
 
@@ -215,7 +235,12 @@ class TitleFinder:
         if title is None:
             return None
 
+        title_element = soup.find("title")
+        alternative_title = ""
+        if title_element is not None:
+            alternative_title = Utils.clean(title_element.getText())
+
         text = Utils.get_first_line(title.getText())
         text = Utils.clean(text)
 
-        return Title(text, "", title, is_from_title_element)
+        return Title(text, alternative_title, title, is_from_title_element)

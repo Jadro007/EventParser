@@ -34,7 +34,7 @@ class YearPostprocessor:
             if fixed_year is not None:
                 if event.date.dateFrom.isYearGuessed:
                     new_datetime = datetime.datetime(
-                        event.date.dateFrom.datetime.year + 1,
+                        int(fixed_year),
                         event.date.dateFrom.datetime.month,
                         event.date.dateFrom.datetime.day
                     )
@@ -43,7 +43,7 @@ class YearPostprocessor:
 
                 if event.date.dateTo.isYearGuessed:
                     new_datetime = datetime.datetime(
-                        event.date.dateTo.datetime.year + 1,
+                        int(fixed_year),
                         event.date.dateTo.datetime.month,
                         event.date.dateTo.datetime.day
                     )

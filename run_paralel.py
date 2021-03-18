@@ -24,10 +24,10 @@ processes = []
 for url in urls:
     f = tempfile.TemporaryFile()
     print("Starting url: " + url, flush=True)
-    p = subprocess.Popen(['python', 'run.py', url], stdout=f)
+    p = subprocess.Popen(['python3', 'run.py', url], stdout=f)
     processes.append((p, f))
     print("Waiting", flush=True)
-    p.wait()
+    # p.wait()
 
 
 for p, f in processes:

@@ -48,6 +48,7 @@ class ListEventParser:
                 parent = parent.parent
 
             previous_parent = Utils.getTag(previous_parent)
+
             # if whole page was used as container for the list events event, we need to clone it to prevent messing the HTML structure
             if previous_parent.find("body") is not None:
                 previous_parent = BeautifulSoup(str(previous_parent), 'html.parser')

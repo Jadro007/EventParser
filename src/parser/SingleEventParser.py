@@ -9,6 +9,7 @@ from src.dto.Place import Place
 from src.finder.PriceFinder import PriceFinder
 from src.finder.DateFinder import DateFinder
 from src.finder.PlaceFinder import PlaceFinder
+from src.finder.TimeFinder import TimeFinder
 from src.finder.TitleFinder import TitleFinder
 from src.utils.Utils import Utils
 
@@ -150,11 +151,27 @@ class SingleEventParser:
         #         print("Found event with title too far (title: " + title.value + ",date: " + date.realValue + ", place: " + place.city + "), skipping")
         #     return None
 
-        # we cannot remove the event, because it could break selectors created for Selenium
-        if config.allow_selenium is False:
-             soup.extract()  # event was successfully found, we can now safely remove it
+        small_soup = None
+        if title.is_from_title_element is False:
+            small_soup = Utils.lowest_common_ancestor(title.container, first_date.container)
 
-        return Event(title, DateRange(first_date, last_date, soup), "", place, price_range, soup)
+        if small_soup is None or small_soup.find("body") is not None:
+            small_soup = Utils.lowest_common_ancestor(first_date.container, place.container)
+
+        if small_soup is not None:
+            small_soup = Utils.getTag(small_soup)
+
+        # we cannot remove the event, because it could break selectors created for Selenium
+        # if config.allow_selenium is False:
+        #      soup.extract()  # event was successfully found, we can now safely remove it
+
+        times = TimeFinder.find(small_soup)
+        if times is None:
+            times = TimeFinder.find(soup)
+        if times is None:
+            times = []
+
+        return Event(title, DateRange(first_date, last_date, soup), times, place, price_range, soup, small_soup)
 
 
 

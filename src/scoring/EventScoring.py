@@ -85,6 +85,8 @@ class EventScoring:
             if event.score < 0:
                 event.score = 0
 
+            event.score = round(event.score, 2)
+
             # other ideas - add score for having time close to date
             # other ideas - add score for having price
 

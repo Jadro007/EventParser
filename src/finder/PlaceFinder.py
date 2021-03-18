@@ -15,7 +15,7 @@ class PlaceFinder:
                      "FACEBOOK", "ONLINE", "ON-LINE", "VIRTUÁLNÍ", "LIVE"]
     forbidden_cities = ["Výsluní", "Místo", "Miroslav", "Zájezd", "Česká", "České", "Vysoké", "Vysoká", "Úterý", "Díly",
                         "Košík", "Diváky", "Ostrov", "Řeka", "Pátek", "Hory", "Černá", "Louka", "Veselé", "Železnice",
-                        "Lety", "Kruh", "Stránka", "Koupě", "Okna", "Krásné", "Hosty", "Srbsko"]
+                        "Lety", "Kruh", "Stránka", "Koupě", "Okna", "Krásné", "Hosty", "Srbsko", "Zlatá"]
     regex_for_cities = None
 
     cities = []

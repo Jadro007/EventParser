@@ -104,7 +104,7 @@ class DateFinder:
                 year = date[3]
                 normalised = day + "/" + month + "/" + year
                 datetime_value = dateparser.parse(normalised, languages=["cs"])
-                if datetime_value is None:
+                if datetime_value is None or day == "00" or month == "00":
                     if verbose > 2:
                         print("Invalid date", day, month, year)
                     continue
@@ -149,7 +149,7 @@ class DateFinder:
                 year = str(now.year)
                 normalised = day + "/" + month + "/" + year
                 datetime_value = dateparser.parse(normalised, languages=["cs"])
-                if datetime_value is None:
+                if datetime_value is None or day == "00" or month == "00":
                     # if verbose > 2:
                     #     print("Invalid date", day, month, year)
                     continue

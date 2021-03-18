@@ -15,7 +15,7 @@ class TestPlaceFinder(TestCase):
                "<li>Třebíč</li>" \
                "<li>Bílov</li>" \
                "<li>Bílovec</li>" \
-               "<li>bor</li>" \
+               "<li>Bor</li>" \
                "<li>borovička je super</li>" \
                "<li>Uherské Hradiště</li>" \
                "</div></body></html>"
@@ -29,5 +29,5 @@ class TestPlaceFinder(TestCase):
         self.assertEqual(results[3].city, "Třebíč")
         self.assertEqual(results[4].city, "Bílov")
         self.assertEqual(results[5].city, "Bílovec")
-        self.assertEqual(results[6].city, "bor")
+        self.assertEqual(results[6].city, "Bor")
         self.assertEqual(results[7].city, "Uherské Hradiště")

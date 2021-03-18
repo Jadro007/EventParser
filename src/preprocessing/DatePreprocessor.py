@@ -9,6 +9,7 @@ from src.dto.Price import Price
 from src.dto.Title import Title
 from src.finder.DateFinder import DateFinder
 from src.utils.Utils import Utils
+from config import config
 
 
 class DatePreprocessor:
@@ -69,7 +70,8 @@ class DatePreprocessor:
                 new_date_tag.string = new_date
                 parent.append(new_date_tag)
 
-                print("date fixed from", tmp , "to", new_date)
+                if config.verbose > 2:
+                    print("date fixed from", tmp , "to", new_date)
 
         return soup
 
@@ -80,7 +82,8 @@ class DatePreprocessor:
 
         date_range_with_different_months_regex = DateFinder.date_without_year_regex + "\s?\-\s?" + DateFinder.dateRegex
 
-        print(date_range_with_different_months_regex)
+        if config.verbose > 2:
+            print(date_range_with_different_months_regex)
 
         date_range_regex_with_different_months_compiled = re.compile(date_range_with_different_months_regex, flags=re.IGNORECASE)
         date_range_matches = soup.find_all(text=date_range_regex_with_different_months_compiled)
@@ -92,13 +95,15 @@ class DatePreprocessor:
             to_date_text = match.group(4)
             fixed_text = date_range_match.replace(range_text, from_date_day_and_month + year + "##" + to_date_text)
             date_range_match.replace_with(fixed_text)
-            print("PREPARED DATE RANGE " + fixed_text)
+            if config.verbose > 2:
+                print("PREPARED DATE RANGE " + fixed_text)
 
         # we want to also prepare date ranges here
         # e.g., 13.-17. 9. 2021
         # note: that [\-|–] "-" (dash) and "–" (hyphen) are two different signs (which is fun to debug)
         date_range_regex = "(\d{1,2})" + DateFinder.separatorRegex + "\s?[\-|–]\s?" + DateFinder.dateRegex
-        print(date_range_regex)
+        if config.verbose > 2:
+            print(date_range_regex)
 
         date_range_regex_compiled = re.compile(date_range_regex, flags=re.IGNORECASE)
         date_range_matches = soup.find_all(text=date_range_regex_compiled)
@@ -121,7 +126,8 @@ class DatePreprocessor:
 
             fixed_text = date_range_match.replace(range_text, from_date_text + "##" + to_date_text)
             date_range_match.replace_with(fixed_text)
-            print("PREPARED DATE RANGE " + fixed_text)
+            if config.verbose > 2:
+                print("PREPARED DATE RANGE " + fixed_text)
 
         return soup
 
