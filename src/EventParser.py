@@ -4,8 +4,11 @@ import re
 from bs4 import BeautifulSoup
 
 from src.dto.Event import Event
+from src.finder.CategoryFinder import CategoryFinder
+from src.finder.DescriptionFinder import DescriptionFinder
 from src.finder.DateFinder import DateFinder
 from src.finder.PlaceFinder import PlaceFinder
+from src.finder.TargetUrlFinder import TargetUrlFinder
 from src.parser.ListEventParser import ListEventParser
 from src.parser.SingleEventParser import SingleEventParser
 from src.postprocessing.DuplicateEventsPostprocessor import DuplicateEventPostprocessor
@@ -16,7 +19,10 @@ from src.scoring.EventScoring import EventScoring
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from config import shared
+from config import config
 from src.utils.Utils import Utils
+
+
 
 
 class EventParser:
@@ -32,21 +38,28 @@ class EventParser:
         return EventParser.parse(html)
 
     @staticmethod
-    def parse(html) -> [Event]:
-        print("WELCOME")
+    def parse(html, url = "") -> [Event]:
+        if config.verbose >= 1:
+            print("WELCOME")
         soup = BeautifulSoup(html, 'html.parser')
 
-        print("CLEANING THE HTML DOCUMENT")
+        if config.verbose >= 1:
+            print("CLEANING THE HTML DOCUMENT")
 
-        print("REMOVING COMMENTS, REMOVING SCRIPT AND STYLE TAG")
+        if config.verbose >= 1:
+            print("REMOVING COMMENTS, REMOVING SCRIPT AND STYLE TAG")
         soup = RemovalPreprocessor.cleanup(soup)
 
-        print("FIXING BROKEN DATES")
+        if config.verbose >= 1:
+            print("FIXING BROKEN DATES")
         soup = DatePreprocessor.fix_dates(soup)
-        print("PREPARING DATE RANGES")
+
+        if config.verbose >= 1:
+            print("PREPARING DATE RANGES")
         soup = DatePreprocessor.prepare_date_ranges(soup)
 
-        print("UNWRAPPING ELEMENTS")
+        if config.verbose >= 1:
+            print("UNWRAPPING ELEMENTS")
         soup = RemovalPreprocessor.unwrap(soup)
 
         # reloading the tree helps for some reason
@@ -68,9 +81,11 @@ class EventParser:
         #     file.write(str(soup))
         # exit(1)
 
-        print("STARTING TO FIND EVENTS")
+        if config.verbose >= 1:
+            print("STARTING TO FIND EVENTS")
         dates = DateFinder.find(soup)
-        print("FOUND", len(dates), "DATES")
+        if config.verbose >= 1:
+            print("FOUND", len(dates), "DATES")
 
         # try to parse Events separated in groups
         groups = {}
@@ -105,6 +120,15 @@ class EventParser:
                         continue
                     if single_event is not None:
                         events.append(single_event)
+
+        CategoryFinder.add_category(events)
+
+        DescriptionFinder.add_description(events)
+
+        TargetUrlFinder.add_target_url(events, url)
+
+        for event in events:
+            event.source_url = url
 
         YearPostprocessor.fix_year(events)
 

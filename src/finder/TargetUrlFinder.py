@@ -10,6 +10,7 @@ from src.dto.Description import Description
 from src.dto.Event import Event
 from src.dto.PriceRange import PriceRange
 from src.dto.Price import Price
+from src.finder.CategoryFinder import CategoryFinder
 from src.utils.Utils import Utils
 
 
@@ -19,6 +20,10 @@ class TargetUrlFinder:
     def add_target_url(events, url) -> [Event]:
 
         for event in events:
+            if event.category == CategoryFinder.SINGLE_EVENT or event.category == CategoryFinder.SINGLE_EVENT_WITH_TIMELINE:
+                event.target_url = url
+                continue
+
             target_url = None
 
             for a in event.title.container.find_all("a"):
