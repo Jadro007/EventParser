@@ -37,7 +37,7 @@ class GroupEnhancer:
             for date in group[0]:
                 # we care about groups that have multiple dates
                 # If the container is whole page, we should treat it as date without a group
-                if len(group[0]) > 1 and group[1].find("html") is None and group[1].parent.find("body") is None:
+                if len(group[0]) > 1 and group[1].find("html") is None and group[1].find("body") is None and group[1].parent.find("body") is None:
                     date.set_group(group_dto)
 
     @staticmethod

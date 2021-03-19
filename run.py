@@ -14,7 +14,10 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 sys.path.insert(0, dir_path)
 sys.path.insert(0, dir_path + "/lib/")
+sys.path.insert(0, dir_path + "/nlp/")
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 from config import config
 from src.EventParser import EventParser
@@ -52,7 +55,7 @@ for opt, arg in opts:
 path = None
 # path = "./data/test2/informujiczakcezitrahudba.html"
 if path is None:
-    r = requests.get(url, allow_redirects=True)
+    r = requests.get(url, allow_redirects=True, verify=False)
     html = r.content
 else:
     html = open(path, 'r', errors='ignore', encoding="utf-8").read()

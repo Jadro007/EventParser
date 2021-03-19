@@ -43,7 +43,8 @@ class TitleFinder:
                        "Klasická verze", "Podmínky", "Leden", "LEDEN", "Zakázka", "Přijímáme online platby",
                        "Související články", "Mohlo by vás zajímat", "Zprávy", "Autor", "Hlavní zprávy", "Sdílet obsah",
                        "Info", "News", "Zrušeno", "ZRUŠENO", "zrušeno", "Zobrazit více →", "Navštivte také", "Podmínky výzvy",
-                       "Poslední hodnocení", "Úvodní stránka", "Najdete nás", "zde", "AKTUALITY", "home"
+                       "Poslední hodnocení", "Úvodní stránka", "Najdete nás", "zde", "AKTUALITY", "home", "Výběr článků",
+                       "KVĚTEN", "Platnost voucheru", "Odehrané koncerty"
                        ]
 
     @staticmethod

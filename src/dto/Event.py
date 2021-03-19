@@ -10,6 +10,7 @@ class Event:
     target_url = None
     source_url = None
     category = None
+    tags = None
 
     def __init__(self, title, date: DateRange, times, place: Place, price_range: PriceRange, container, small_container):
         self.title = title

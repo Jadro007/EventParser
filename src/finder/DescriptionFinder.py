@@ -40,13 +40,13 @@ class DescriptionFinder:
             return None
         longest_text = 0
         longest_text_elem = None
-        for elem in common_container.find_all():  # text=True
+        for elem in common_container.find_all(text=True):  # text=True
             elem = Utils.getTag(elem)
             text = elem.text
             text_len = len(text)
             if longest_text_elem is None or text_len > longest_text:
                 longest_text_elem = elem
                 longest_text = text_len
-        if longest_text < 300:
+        if longest_text < 80:
             longest_text_elem = common_container
         return longest_text_elem

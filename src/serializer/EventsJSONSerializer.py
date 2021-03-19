@@ -39,12 +39,17 @@ class EventsJSONSerializer:
             if event.times is not None:
                 if len(event.times) > 1:
                     time_value = event.times[0].value + " - " + event.times[-1].value
-                else:
+                elif len(event.times) > 0:
                     time_value = event.times[0].value
 
             category = ""
             if event.category is not None:
                 category = event.category
+
+            tags = ""
+            if event.tags is not None:
+                tags = event.tags
+
 
             results.append({
                 "title":  event.title.value,
@@ -59,7 +64,8 @@ class EventsJSONSerializer:
                 "description": description,
                 "target_url": target_url,
                 "source_url": source_url,
-                "category": category
+                "category": category,
+                "tags": tags
             })
 
         results.sort(key=lambda x: x["score"], reverse=True)

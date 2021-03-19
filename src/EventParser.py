@@ -20,9 +20,8 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 from config import shared
 from config import config
+from src.scoring.NerScoring import NerScoring
 from src.utils.Utils import Utils
-
-
 
 
 class EventParser:
@@ -135,6 +134,7 @@ class EventParser:
         events = DuplicateEventPostprocessor.filter_duplicates(events)
 
         EventScoring.score_events(events)
+        NerScoring.score_events(events)
 
         if shared.driver is not None:
             shared.driver.close()
