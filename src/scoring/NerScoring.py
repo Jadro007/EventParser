@@ -69,7 +69,6 @@ class NerScoring:
             event_classes = []
             for ner_class in ner_classes.lower().split(" "):
                 event_classes.append(ner_class[1:])
-            event.place.city += " ".join(event_classes)
 
             event.tags = event_classes
 

@@ -18,6 +18,10 @@ result = []
 
 print ("started", flush=True)
 i = 0
+
+cities = list(set(cities))
+cities.sort()
+
 with open("cities_list.txt", "a", encoding="utf-8") as f:
     for city in cities:
 

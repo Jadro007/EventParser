@@ -122,6 +122,17 @@ class SingleEventParser:
 
 
         price_range = PriceFinder.find(soup)
+        price_soup = soup
+        if price_range is None and is_single_event is True:
+            while price_range is None:
+                price_range = PriceFinder.find(price_soup)
+
+                if price_soup.parent is None:
+                    break
+
+                price_soup = price_soup.parent
+
+
 
         # we want to be able to find the most relevant title for event, so we will start with container that contains
         # both date and place, so there is quite chance there will be also the title

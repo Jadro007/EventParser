@@ -16,8 +16,9 @@ class PriceFinder:
     def find(soup) -> Optional[PriceRange]:
 
         if PriceFinder.regex_for_price is None:
-            PriceFinder.regex_for_price = re.compile("((\d+)\s*(kc|kč|Kč|,-))")
-
+            # [-|–] spojovnik vs pomlcka
+            PriceFinder.regex_for_price = re.compile("((\d+)([-|–]\s*(\d+)\s)*\s*(kc|kč|Kč|,-))")
+        # 9901190 Kč
         # we try to find all prices in the soup using regex
         matched_prices = Utils.getTag(soup).find_all(text=PriceFinder.regex_for_price)
         prices = []
@@ -33,7 +34,10 @@ class PriceFinder:
             results = PriceFinder.regex_for_price.findall(match)
             for result in results:
                 # do not forget that we need to have value as number (int)
-                prices.append(Price(int(result[1]), result[0], result[2], match))
+                if result[3] != "":
+                    prices.append(Price(int(result[3]), result[0], result[4], match))
+
+                prices.append(Price(int(result[1]), result[0], result[4], match))
 
         # if there was one result, we return it as PriceRange with same from and to values
         if len(prices) == 1:

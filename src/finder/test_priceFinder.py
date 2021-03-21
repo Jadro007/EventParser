@@ -123,3 +123,19 @@ class TestPriceFinder(TestCase):
         self.assertEqual(results.priceTo.value, 300)
         self.assertEqual(results.priceTo.text, "300 Kč")
         self.assertEqual(results.priceTo.currency, "Kč")
+
+    def test_find_price_range(self):
+        html = "<html><body><div>" \
+               "<li>100-200 Kč</li>" \
+               "</div></body></html>"
+        soup = BeautifulSoup(html, 'html.parser')
+
+        results = PriceFinder.find(soup)
+
+        self.assertEqual(results.priceFrom.value, 100)
+        self.assertEqual(results.priceFrom.text, "100-200 Kč")
+        self.assertEqual(results.priceFrom.currency, "Kč")
+        self.assertEqual(results.priceTo.value, 200)
+        self.assertEqual(results.priceTo.text, "100-200 Kč")
+        self.assertEqual(results.priceTo.currency, "Kč")
+
